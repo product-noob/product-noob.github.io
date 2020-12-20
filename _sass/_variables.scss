@@ -1,0 +1,44 @@
+
+//
+// VARIABLES
+//
+
+// Colors
+//$blue: #4183C4;
+$blue: 0000EE;
+
+// Grays
+$black: #000;
+$darkerGray: #222;
+$darkGray: #333;
+$gray: #666;
+$lightGray: #eee;
+$white: #fff;
+//Manas Blog Color Scheme
+$base-font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif !default;
+$base-font-size:   21px !default;
+$base-font-weight: normal !default;
+$small-font-size:  $base-font-size * 0.875 !default;
+$base-line-height: 1.5 !default;
+$text-color:       #292929 !default;
+$a-color:          #428442 !default;
+$background-color: #ffffff !default;
+$brand-color:      #2a7ae2 !default;
+$grey-color:       #828282 !default;
+$grey-color-light: lighten($grey-color, 40%) !default;
+$grey-color-dark:  darken($grey-color, 25%) !default;
+$orange-color:     #f66a0a !default;
+//Manas Scheme ends
+
+// Font stacks
+$sansPro: "Source Sans Pro", sans-serif;
+$helvetica: Helvetica, Arial, sans-serif;
+$helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$georgia: Georgia, serif;
+
+// Mobile breakpoints
+@mixin mobile {
+  @media screen and (max-width: 800px) { //Earlier 640px
+    @content;
+  }
+}
