@@ -34,7 +34,7 @@ Well, folks from China seems to have figured this out! Their solution is called 
 
 It really is a Super-App in the sense that from a single app, you can serve a multitude of use cases: from buying tickets for shows, to paying bills and making calls to investing in mutual funds and making payments to online shopping and ordering a taxi to playing games. Literally the list of use cases you can fulfil from this app seems to be endless. The magic here is achieved through what they call “Mini Programs”
 
-# What are Mini Programs?
+## What are Mini Programs?
 
 Mini Programs in the simplest sense are sub-applications within the Host App, serving a multitude of use-cases achieved through functionalities enabled by the host app. Typically Mini Programs offers most frequently used features of any app. Say in Ola Mini Program on Paytm, you can book a Cab from point-to-point, which is enough for majority of the users! How many of us, have a use case for an Outstation or a Ola Pass? (Yes, you can book Ola cabs from Paytm!)
 In simple words, it can either be seen as a mobile website on steroids or native app’s lite version. It offers like 80% of the features you would typically get in any Native App which is enough to serve most customer’s use cases.
@@ -59,7 +59,7 @@ In simple words, it can either be seen as a mobile website on steroids or native
 
 * Much lesser regulations than the walled garden of App Stores (though they do have their own set of rules but those are much less stringent )
 
-# WeChat Mini Programs: Key Highlights
+## WeChat Mini Programs: Key Highlights
 
 Tencent has re-engineered the WeChat messaging app in a way that Mini Programs can run instantly on WeChat’s interface.
 
@@ -72,30 +72,33 @@ They are tightly integrated with WeChat’s platform with discovery via Subscrip
 
 *More details on this in a possible next article!*
 
-# Key Value Proposition of Mini Programs
+## Key Value Proposition of Mini Programs
 
 Mini Programs has primarily three important value proposition for the merchants:
 
-1. Aggregate Low Frequency services: Majority of apps are used very infrequently by the users and thus a Mini Program offering makes much more sense ( Say ordering medicines once a month!). They offer seamless “In-Out” experience to the user with no hassle of remembering or entering any passwords or payment details.
+<div class="smalltext" markdown="1">
+1. **Aggregate Low Frequency services:** Majority of apps are used very infrequently by the users and thus a Mini Program offering makes much more sense ( Say ordering medicines once a month!). They offer seamless “In-Out” experience to the user with no hassle of remembering or entering any passwords or payment details.
 
-1. New customer acquisition Channel: Most users in Tier 2/3 cities typically have only a very limited number of apps installed on their phone due to less capable device hardware, poor data reach (though Jio has changed this paradigm) and lack of awareness about the various apps out there. Typically for all these cases, Mini Programs serves as very effective customer Acquisition Channel.
+1. **New customer acquisition Channel:** Most users in Tier 2/3 cities typically have only a very limited number of apps installed on their phone due to less capable device hardware, poor data reach (though Jio has changed this paradigm) and lack of awareness about the various apps out there. Typically for all these cases, Mini Programs serves as very effective customer Acquisition Channel.
 
-1. Cost Effective Marketing Tool: Payment apps with their rich user transactional data can effectively help marketeers target their ideal audience. Also due to the seamless user journey post clicking on Ads in a Mini Program ( Remember no need of download or signup!) the funnel conversions are also much better!
+1. **Cost Effective Marketing Tool:** Payment apps with their rich user transactional data can effectively help marketeers target their ideal audience. Also due to the seamless user journey post clicking on Ads in a Mini Program ( Remember no need of download or signup!) the funnel conversions are also much better!
 What is happening in India?
+
+</div>
 
 India’s Mini Program ecosystem is still in early days with leading payment apps still in the phase of exploring how customers react and what they want. It is in some form or other, being pursued by all the major payment players. Brief snapshot of the program for the major players:
 
-* Paytm: Paytm was already a superapp in lot of ways but recently it has launched a full fledged “Mini Programs” offering for its users. Ola, Netmeds, 1mg, McDelivery, Coolwinks and many other leading players are part of the initial offering.
+* **Paytm:** Paytm was already a superapp in lot of ways but recently it has launched a full fledged “Mini Programs” offering for its users. Ola, Netmeds, 1mg, McDelivery, Coolwinks and many other leading players are part of the initial offering.
 
-* PhonePe: Under the branding of “PhonePe Switch”, it currently has the largest number of Mini Programs being offered. It was one of the first player to start with a integration of merchant web apps onto its platform.
+* **PhonePe:** Under the branding of “PhonePe Switch”, it currently has the largest number of Mini Programs being offered. It was one of the first player to start with a integration of merchant web apps onto its platform.
 
-* GooglePay: Google also jumped into the SuperApp bandwagon by launching “Google Spot” last year. It still has very limited discovery and very few merchants as part of its offering.
+* **GooglePay:** Google also jumped into the SuperApp bandwagon by launching “Google Spot” last year. It still has very limited discovery and very few merchants as part of its offering.
 
-* Flipkart: Flipkart (parent company of PhonePe) have also launched their own Mini Programs platform under the branding of “Partner Apps” leveraging PhonePe Switch’s reach. It has also deeply integrated the platform with its SuperCoins offering
+* **Flipkart:** Flipkart (parent company of PhonePe) have also launched their own Mini Programs platform under the branding of “Partner Apps” leveraging PhonePe Switch’s reach. It has also deeply integrated the platform with its SuperCoins offering
 
-* Amazon: Amazon is yet to launch a full fledged Mini Program offering on its app but there are many hints pointing towards an eventual release: from its acquisition of Tapzo to revamping of Amazon Pay’s landing page to show Merchant App Icons and redirecting to merchants webpages (which could then be changed to a Mini Program re-direction!)
+* **Amazon:** Amazon is yet to launch a full fledged Mini Program offering on its app but there are many hints pointing towards an eventual release: from its acquisition of Tapzo to revamping of Amazon Pay’s landing page to show Merchant App Icons and redirecting to merchants webpages (which could then be changed to a Mini Program re-direction!)
 
-* JioMart (Reliance + Facebook): This is a latest entrant in this space with clear cut agenda to become the “WeChat of India”.
+* **JioMart** (Reliance + Facebook): This is a latest entrant in this space with clear cut agenda to become the “WeChat of India”.
 More detailed analytics on these apps and the current landscape in a possible next article!
 
-Disclaimer: I am currently leading Product for Paytm Mini Programs and through this article trying to just share what all is available in public domain aided by my learnings being aligned with this project. This post was earlier shared on my Linked Profile
+*Disclaimer: I am currently leading Product for Paytm Mini Apps and through this article trying to just share what all is available in public domain aided by my learnings being aligned with this project. This post was earlier shared on my LinkedIn*

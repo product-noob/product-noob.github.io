@@ -3,21 +3,24 @@
 
 @import "reset";
 @import "variables";
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 html {
   font-size: 100%;
 }
 
 body {
-	background: $white;
-	//font-family: 'Source Sans Pro', sans-serif;
-  	font: 20px/1.4 $helvetica;
+  font-family: $helveticaNeue;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 1em 0 15px;
+  padding: 0; 
+  background: $white;
+//	font: 20px/1.4 $helvetica;
 	color: $darkerGray;
-	min-height: 100vh; //Added new
- 	display: flex; //Added new
-  	flex-direction: column; //Added new
+	min-height: 100vh;
+ 	display: flex; 
+  flex-direction: column; 
 }
 
 .container {
@@ -44,11 +47,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-//font-family: 'Roboto', sans-serif;
   font-family: $helveticaNeue;
   color: $darkerGray;
-  font-weight: bold;
-
+  font-weight: normal;
   line-height: 1.7;
   margin: 1em 0 15px;
   padding: 0;
@@ -67,57 +68,54 @@ h1 {
 }
 
 h2 {
-  font-size: 24px;
-  font-weight: normal;
+  font-size: 26px;
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 h4 {
-  font-size: 18px;
-  color: $gray;
-}
-h5 {
-  color: $gray;
-  text-align: center;
-  font-size: 12px;
-  font-weight: normal;
-	// Added as a end-tag
-	
+  font-size: 20px;
 }
 
+h5 {
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 16px;
+}
 p {
   margin: 15px 0;
   font-size: 15px;
-  font-weight: 300;
-	
-}
+	}
 
 a {
   color: $blue;
   text-decoration: none;
 	cursor: pointer;
-  &:hover, &:active {
+  &:hover {
     color: $blue;
   }
+  &:active {
+    color: #f01; 
+  }
 }
+
 
 ul, ol {
   margin: 15px 0;
   padding-left: 30px;
+  font-size: 15px;
 }
 
 ul {
   list-style-type: circle;
-  //font-size: 15px;
 }
 
 ol {
   list-style-type: decimal;
-  //font-size: 15px;
-	
 }
 
 ol ul, ul ol, ul ul, ol ol {
@@ -133,7 +131,7 @@ em, i {
 }
 
 strong, b {
-  font-weight: normal;
+  font-weight: bold;
 }
 
 img {
@@ -327,7 +325,6 @@ footer {
   text-align: center;
 }
 
-// Settled on moving the import of syntax highlighting to the bottom of the CSS
-// ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
+
 @import "highlights";
 @import "svg-icons";
