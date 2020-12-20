@@ -16,8 +16,10 @@ Its been a ride!
 <h3> This is a sample header H3 </h3>
 <h4> This is a sample header H4 </h4>
 <h5> This is a sample header H5 </h5>
-<h6> This is a sample header H5 </h6>
+<h6> This is a sample header H6 </h6>
 <strong> This is sample bold </strong>
+
+<i> This is sample italics </i>
 <p> This is sample text <p>
 <ul> 
 <li>This is Unordered List </li>
@@ -31,4 +33,9 @@ Its been a ride!
 <li>This is Ordered List </li>
 </ol>
 
-<iframe src="https://www.google.com" title="W3Schools Free Online Web Tutorials">
+<p> This is sample img tag </p>
+<img src="/images/my-image.png" alt="Prince Jain" width="200">
+<br> <br>
+<hr>
+<p> This is sample I-frame tag </p>
+<iframe src="https://product-noob.github.io/" title="W3Schools Free Online Web Tutorials" style="border:2px solid lightgrey" height="400">
