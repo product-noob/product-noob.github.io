@@ -1,12 +1,7 @@
 ---
 layout: post
-title: Sample text for testing!
+title: Covid-19 Slot Finder App
 ---
-
-# Covid Slot Finder App
-
-Date Completed: May 31, 2021 → June 12, 2021
-Status: Ongoing
 
 ## **How we started:**
 
@@ -14,11 +9,11 @@ It all started with a [Tweet](https://twitter.com/vijayshekhar/status/1387260729
 
 On Apr 28, RS Sharma (CEO, National Health Authority) tweeted announcing the launch of Public APIs to fetch real-time slot availability and encouraged third party applications to use them to help spread awareness about the vaccination drive and as an end goal to get India Vaccinated sooner!
 
-[https://twitter.com/vijayshekhar/status/1387260729028272129](https://twitter.com/vijayshekhar/status/1387260729028272129)
+[Tweet](https://twitter.com/vijayshekhar/status/1387260729028272129)
 
 Reading this tweet (and the mention of "mini-apps" I pinged Shreyas that I wanted to be ap 
 
-We started studying their [**APIs](https://apisetu.gov.in/public/marketplace/api/cowin/cowin-public-v2)** (almost immediately) after them being made public. Sadly, the initial APIs were behind an Authorisation layer and couldn’t be used publicly. To my amusement, the Government machinery worked round the clock on it! and around Saturday evening, 30th April launched a public version of the APIs.
+We started studying their [APIs](https://apisetu.gov.in/public/marketplace/api/cowin/cowin-public-v2) (almost immediately) after them being made public. Sadly, the initial APIs were behind an Authorisation layer and couldn’t be used publicly. To my amusement, the Government machinery worked round the clock on it! and around Saturday evening, 30th April launched a public version of the APIs.
 
 [](https://apisetu.gov.in/public/marketplace/api/cowin/cowinapi-v2#/)
 
