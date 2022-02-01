@@ -5,103 +5,35 @@ permalink: /proofofwork/
 ---
 (Summarising my professional work)
 
-### Gojek (~3 years) ###
+### Paytm (~3 years) ###
 
-- **October 2021 - Now**
-- Group Product Manager, Growth and Key Initiatives (GKI), Transport.
-- Run these streams inside Transport: Core Growth, GoCorp (B2B product), Instant(on spot bookings), Service Excellence, and Engineering Excellence.
-  - Shipped GoCarXL in Singapore. [press](https://kr-asia.com/gojek-expands-services-in-singapore-but-lags-behind-grab)
-  - Launched our B2B product GoCorp in Singapore.
-  - Shipped Protect+, a new hygiene focused service for both 4W and 2W in Indonesia. [press](https://en.antaranews.com/news/189549/guarantees-a-more-hygienic-customer-journey-gojek-prepares-goride-and-gocar-protect)
-  - Launched Protect+ service in Vietnam. [press](https://e.vnexpress.net/news/business/companies/gojek-launches-car-ride-hailing-service-in-hcmc-4388082.html)
-  - Shipped a new suscription pass product for Singapore to improve incremental transactions and boost customer loyalty.
+- **Sept 2021 - Now**
+- Senior Product Manager, Paytm Health.
+- Launched the Paytm Health vertical  [press](https://twitter.com/Paytm/status/1479712862746517506)  
+- [press](https://www.livemint.com/technology/paytm-users-can-now-create-their-health-id-know-its-benefits-11640596211499.html)
+  -
 
-- **July 2020 - Septmber 2021**
-- Manager, Growth and Key Initiatives (GKI), Transport. Managed a team of 3 PMs.
-  - Own Service Excellence: all safety related features in Transport, is in charge of improving service quality of our Transport products, the Tipping experience and Comms with customers (Call Masking, Customer Support).
-  - Led the launch of our Taxi product in Singapore. [press](https://asia.nikkei.com/Business/Technology/Gojek-starts-car-hailing-service-in-Vietnam-in-challenge-to-Grab)
-  - Launched our 4W product GoCar in Vietnam. [press](https://www.techinasia.com/gojek-officially-launches-gocar-vietnam-years-debut)
-  - Run GoCorp (Gojek's business product for Transport). [press](https://kr-asia.com/gojek-reveals-new-features-for-corporate-clients-to-keep-up-with-grab)
-  - Shipped a premium schedule a ride feature.
-  - Own the loyalty levers for Transport: Subscription, Bundles, GoClub, Vouchers, Missions.
-  - Redesigned the voucher experience.
-  - Own the Experiments roadmap for Transport and in charge of improving the capabilities of our experimentation platform.
-  - Own the resurrection charter: getting back users lost during Covid.
-  - Launched GoClub (Gojek's loyalty product) in Transport.
-  - Launched v1 of Ads on Transport.
-  - Run Gojek's Instant product for Transport (on the spot booking at airports and other popular areas). [press](https://www.marketing-interactive.com/gojek-indonesia-caters-to-travellers-and-gamers-with-gocar-instant-and-gogames)
+- **May 2019 - Septmber 2021**
+- Product Manager, Paytm Mini Apps. Managed a team of 2 PMs and 20+ developers.
+  -Product owner for the Paytm Mini Apps platform (Android & iOS App; Onboarding, Integration & Discovery flows)
+- Worked directly with CEO and senior leadership to develop strategy, feature roadmap and execute strategic initiatives
+-Led the end-to-end development of the platform; developed multiple product properties to enable the offering: core
+SDK, DIY Flow (link), Internal Panel, App Listing, Developer Community and merchant panel
+-Spearheaded the launch of platform’s pilot with 15 merchant apps including Dominos, McDelivery, Netmeds, 1mg, etc.
+-Worked closely with 10+ internal product teams to transition core Paytm verticals such as Paytm Movies, Cashback,
+Settings, Customer Support, KYC and Fasttag as ‘Mini apps’
+-Developed four in-house Mini-apps (DigiLocker, AQI, Speedtest, Astro) currently garnering a combined 3Mn+ MAUs
+-Strategised & launched OLA’s Mini App by integrating with their booking APIs on Paytm, enabling 100k+ rides monthly
+- Led cross functional teams to establish internal processes and SOPs for onboarding, development, testing and hosting
+of merchant apps on the platform
 
-- **July 2019 - June 2020**
-- Product Lead for Booking Experience and Flexibility. Led 2 PMs.
-  - Redesigned the entire booking experience for Transport in 2019.
-  - Worked on Project Athena for Transport: Getting Vietnam and Thailand Transport users inside the Gojek super app. [press](https://asia.nikkei.com/Business/Startups/Gojek-to-unify-brand-across-four-nations-as-Grab-war-rekindles)
-  - Built the multi stop feature and v2 of edit destination. [press](https://vulcanpost.com/705258/gojek-multi-destination-cancellation-fee-singapore/)
-  - Shipped pre booking ETA.
-  - Redesigned the Finding Driver experience.
-  - Implemented Odd Even rule for Transport services in Jakarta.
 
-- **November 2018 - June 2019**
-- First PM for Safety, Payments and On Trip Experience in Transport. Joined as an IC when the Transport product group was just 2 people.
-  - Shipped the following features within 2 months of joining Gojek's Transport team: Share Trip, SOS, Safety handbook. [press](https://en.tempo.co/read/1282777/un-women-praises-gojeks-efforts-to-assure-womens-safety)
-  - Created the Call Masking feature that was later adopted by all product groups inside Gojek. [press](https://www.thejakartapost.com/news/2019/04/23/grab-go-jek-add-features-to-protect-female-drivers-passengers.html)
-  - Shipped outstanding balance feature which helped us reduce fraud and earn back lost revenue.
-
-![Vik's reco](/assets/img/vik_reco.png)
-
-(Manager's recommendation on Twitter)
-
-### Directi (~2 years) ###
-
-- **Dec 2016 - Nov 2018**
-- Flock is a leading enterprise collaboration platform owned by Directi. I was the PM looking at long term retention for our users. [press](https://www.financialexpress.com/industry/flock-messaging-apps-makes-communication-seamless-brings-team-together/633182/)
-  - Product owner of the Flock App Store, which has 50+ apps and third party integrations.
-  - Led experience of 6 core apps built on Flock’s platform: Mailcast, Notes, Polls, Reactions, Reminders, Favourite.
-  - Built 5 third party integrations for Flock App Store: Github, Gitlab, Facebook Pages, Freshdesk, Opsgenie.
-  - Created Flock Support, a lightweight Helpdesk inside Flock Messenger, which on-boards users and lets them chat with Customer Support.
-
-![Madhur's reco](/assets/img/madhur_reco.png)
-(Hiring Manager's recommendation on Linkedin)
-
-### Craftsvilla (~1 year) ###
-
-- **Jan 2016 - Sep 2016**
-- I was the Product Owner of both Android and iOS mobile apps. I rebuilt the Android app from scratch. [press](https://economictimes.indiatimes.com/small-biz/startups/craftsvilla-bets-on-customisation-to-drive-more-traffic-to-its-app/articleshow/51183666.cms)
-  - 100% Growth in number of users visiting Product Detail Page.
-  - 20% Jump in monthly retention of the users.
-  - 6X Jump in the number of users logged-in.
-  - Avg. application ratings run-rate of 4.08 post application launch.
-  - Conceptualised and released the first version of iOS app.
-- Also led mobile growth across all digital channels.
-  - Scaled installs of the Android app from 1 to 4 million users in less than a year.
-  - Increased active user base by 200%.
-  - Doubled share of mobile app transactions from 25% to 50% of total transactions.
-
-![Ranjit reco](/assets/img/ranjit_reco.png)
-(Hiring Manager's recommendation on Linkedin)
-
-### CouponDunia (~1 year) ###
-
-- **Dec 2014 - Dec 2015**
-- CouponDunia is India’s largest digital coupon marketplace. It was acquired by Times Internet in 2014.
-- Product & Business Owner for CashBoss, a new business unit within CouponDunia. [press](https://www.financialexpress.com/industry/coupondunia-launches-new-incentive-app-cashboss/55229/)
-  - Shipped the v1 of CashBoss Android App in 4 months and scaled it to 1 million installs.
-  - The app has a rating of 4.3 and is one of the top apps in its category.
-  - The business unit has been profitable since launch.
-- Product Owner of the CouponDunia Web Team (Desktop).
-  - Took additional responsibility of the CouponDunia website which received close to 100k DAU.
-- Led growth for all of CouponDunia products.
-  - Ran multiple experiments to improve funnel conversion across the website.
-  - Worked with the SEO, Digital Marketing teams to deliver growth goals.
-
-![Sameer reco](/assets/img/sameer_reco.png)
-(Hiring Manager's recommendation in the form of a mail sent to the company)
 
 ### Oracle (~2 years) ###
 
-- **Aug 2015 - May 2015**
+**Aug 2015 - May 2015**
 -  Worked in Oracle’s Financial Software Service (OFSS) entity, which builds tools to help banking clients manage and monitor their data. 
--  CBSdata governance platform team. [link](https://www.oracle.com/a/ocom/docs/industries/financial-services/ds-ofs-dgrr-3714726.pdf)
-  - Joined the platform team of Data Governance Studio as one of the first developers
+  - Joined the platform team of Data Governance Studio as one of the first developers [link](https://www.oracle.com/a/ocom/docs/industries/financial-services/ds-ofs-dgrr-3714726.pdf)
   - Contributed in building the first iteration of the DGS platform; helping US banks with their regulatory reporting submissions
   - Conceptualised and built the automation utitity for Data ingestion 
   - Worked on the Reporting dashboard, which is now one of the core features of the offering
