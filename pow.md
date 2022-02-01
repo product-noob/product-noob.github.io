@@ -1,9 +1,9 @@
 ---
 layout: page
-title: POW
+title: Proof of Work
 permalink: /proofofwork/
 ---
-(Proof of Work)
+(Summarising my professional work)
 
 ### Gojek (~3 years) ###
 
@@ -96,13 +96,12 @@ permalink: /proofofwork/
 ![Sameer reco](/assets/img/sameer_reco.png)
 (Hiring Manager's recommendation in the form of a mail sent to the company)
 
-### Kore (~1.5 years) ###
+### Oracle (~2 years) ###
 
-- **Aug 2013 - Nov 2014**
-- Kore pivoted and became Kore.ai, a bot platform in 2016. Before that, Kore was a messaging platform for enterprises. [press](https://www.pcworld.com/article/3035098/these-two-startups-are-out-to-dethrone-slack.html)
-  - Joined its Android team and worked on the Video and Camera features of the Kore application.
-  - Contributed to the location based message delivery feature of the app. It was a differentiator from other enterprise collaboration applications in the market.
-  - Worked on the Reporting service, which is now used by all teams of Kore for data analysis.
-  - Created the Push notification system for Kore, which handles all notifications going to users.
-- Kore spun out from Kony Labs where it was incubated. Kony is the leading multi-channel application development platform provider with over 350 customers in 45 countries.
-  - As a member of the Vertical Apps Team, I built mobile applications on Kony's proprietary platform Kony Studio using JavaScript.
+- **Aug 2015 - May 2015**
+-  Worked in Oracle’s Financial Software Service (OFSS) entity, which builds tools to help banking clients manage and monitor their data. 
+-  CBSdata governance platform team. [link](https://www.oracle.com/a/ocom/docs/industries/financial-services/ds-ofs-dgrr-3714726.pdf)
+  - Joined the platform team of Data Governance Studio as one of the first developers
+  - Contributed in building the first iteration of the DGS platform; helping US banks with their regulatory reporting submissions
+  - Conceptualised and built the automation utitity for Data ingestion 
+  - Worked on the Reporting dashboard, which is now one of the core features of the offering
