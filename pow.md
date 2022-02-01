@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Proof of Work
-permalink: /proofofwork/
+permalink: /worksummary/
 ---
 (Summarising my professional journey so far)
 
