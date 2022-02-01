@@ -23,7 +23,7 @@ permalink: /worksummary/
   - Launched the Universal QR reader functionality to allow merchants to link any QR with their Mini Apps; driving O2O (Offline to Online) conversion
   - Launched five in-house Mini-apps ( [DigiLocker](https://www.hindustantimes.com/business/paytm-integrates-digilocker-brings-access-to-documents-on-its-app-101634105338544.html), [Vaccine Finder](https://www.livemint.com/technology/apps/want-to-book-covid-19-vaccination-slots-on-paytm-here-s-how-11624093960278.html), AQI, Speedtest, Astro) on the platform.
   - Led the launch of OLA’s Mini App by integrating with their booking APIs on Paytm, enabling 100k+ rides monthly.
- - Ideated and launched the Vaccine Finder tool, which become the second most used vaccine booking tool in the country enabling more than 3 Million Vaccine Slot bookings.
+ - Ideated and launched the [Vaccine Finder tool](https://product-noob.github.io/Journey-to-create-the-Covid-Slot-Finder-Tool/), which become the second most used vaccine booking tool in the country enabling more than 3 Million Vaccine Slot bookings.
  - Rated as the Best Performer (5/5 rating) consistently on all appraisals during the tenure.
 
 
