@@ -15,14 +15,13 @@ permalink: /proofofwork/
 
 **May 2019 - Septmber 2021**
 
-*Product Manager, Paytm Mini Apps. Managed a team of 2 PMs and 20+ developers.*
+*Product Manager, Paytm Mini Apps. Managed a team of 20+ developers.*
   - Product owner for the entire Paytm Mini Apps platform (Android & iOS App; Merchant Onboarding & Integration & Discovery flows)
-  -Led the end-to-end development of the platform; developed multiple product properties to enable the offering: core SDK, DIY Flow (link), Internal Panel, App Listing, Developer Community and merchant panel
-  - Launched the Universal QR Code reader functionality
-  - Ideated and launched the Vaccine Finder tool
-  -Spearheaded the launch of platform’s pilot with 15 merchant apps including Dominos, McDelivery, Netmeds, 1mg, etc.
-  - Helped in the
-  - Launched five in-house Mini-apps (DigiLocker, Vaccine Finder AQI, Speedtest, Astro) on the platform
+  - Led the development of the app platform to enable "Mini Apps"; grew the platform to over 2000+ apps from 10+ categories
+  - Launched DIY flow which helped in reducing the onboarding and integration friction and timelines considerably [press](https://www.youtube.com/watch?v=W0qN81dujfs)
+  - Launched the Universal QR reader functionality to allow merchants to link any QR with their Mini Apps; driving O2O (Offline to Online) conversion
+  - Ideated and launched the Vaccine Finder tool, which become the second most used vaccine booking tool in the country
+  - Launched five in-house Mini-apps (DigiLocker, Vaccine Finder, AQI, Speedtest, Astro) on the platform
   - Led the launch of OLA’s Mini App by integrating with their booking APIs on Paytm, enabling 100k+ rides monthly.
   - Established internal processes and SOPs for onboarding, development, testing and hosting of merchant apps on the platform.
 
