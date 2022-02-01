@@ -21,7 +21,7 @@ permalink: /worksummary/
   - Established internal processes and SOPs for onboarding, development, testing and hosting of merchant apps on the platform. Wrote the first version of developer documentation for merchants [link](https://business.paytm.com/docs/miniprograms/overview/)
   - Launched DIY flow which helped in reducing the onboarding and integration friction and timelines considerably [link](https://www.youtube.com/watch?v=W0qN81dujfs)
   - Launched the Universal QR reader functionality to allow merchants to link any QR with their Mini Apps; driving O2O (Offline to Online) conversion
-  - Launched five in-house Mini-apps (DigiLocker [press](https://www.hindustantimes.com/business/paytm-integrates-digilocker-brings-access-to-documents-on-its-app-101634105338544.html), Vaccine Finder [press](https://www.livemint.com/technology/apps/want-to-book-covid-19-vaccination-slots-on-paytm-here-s-how-11624093960278.html), AQI, Speedtest, Astro) on the platform.
+  - Launched five in-house Mini-apps ( [DigiLocker](https://www.hindustantimes.com/business/paytm-integrates-digilocker-brings-access-to-documents-on-its-app-101634105338544.html), [Vaccine Finder](https://www.livemint.com/technology/apps/want-to-book-covid-19-vaccination-slots-on-paytm-here-s-how-11624093960278.html), AQI, Speedtest, Astro) on the platform.
   - Led the launch of OLA’s Mini App by integrating with their booking APIs on Paytm, enabling 100k+ rides monthly.
  - Ideated and launched the Vaccine Finder tool, which become the second most used vaccine booking tool in the country enabling more than 3 Million Vaccine Slot bookings.
  - Rated as the Best Performer (5/5 rating) consistently on all appraisals during the tenure.
@@ -31,7 +31,7 @@ permalink: /worksummary/
 
 **Aug 2015 - May 2015**
 
-*Worked in Oracle’s Financial Software Service(OFSS) entity, which builds tools to help banking clients manage and monitor their data.*
+*Worked in Oracle’s Financial Software Service(OFSS) entity, which builds technology solutions for banking clients.*
   - Joined the platform team of Data Governance Studio as one of the first developers and contributed in the launch of first two iterations [link](https://www.oracle.com/a/ocom/docs/industries/financial-services/ds-ofs-dgrr-3714726.pdf)
   - Ideated and built few core features of the platform including Variance Indicators, Reporting Dashboard and Data Quality Controls 
   - Worked on the Reporting dashboard, which is now one of the core features of the offering, helping the agents to quickly monitor their data quality and submission status
