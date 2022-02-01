@@ -8,23 +8,23 @@ permalink: /worksummary/
 ### Paytm (~3 years) ###
 
 **Sept 2021 - Now**
-- Senior Product Manager, Paytm Health.
-- Launched the Paytm Health vertical  [press](https://twitter.com/Paytm/status/1479712862746517506)  
+- Senior Product Manager, Paytm Health and Mini Apps.
+- Took on additional responsibility to launch the Paytm Health vertical [press](https://twitter.com/Paytm/status/1479712862746517506)  
 - Testing [press](https://www.livemint.com/technology/paytm-users-can-now-create-their-health-id-know-its-benefits-11640596211499.html)
 
 
 **May 2019 - Septmber 2021**
 
 *Product Manager, Paytm Mini Apps. Managed a team of 20+ developers.*
-  - Product owner for the entire Paytm Mini Apps platform (Android & iOS App; Merchant Onboarding & Integration & Discovery flows)
-  - Led the development of the app platform to enable "Mini Apps"; grew the platform to over 2000+ apps from 10+ categories
-  - Launched DIY flow which helped in reducing the onboarding and integration friction and timelines considerably [press](https://www.youtube.com/watch?v=W0qN81dujfs)
+  - Product owner for the entire Paytm Mini Apps platform (Android & iOS App, merchant integrations and platform growth)
+  - Led the development of the app SDK and to enable "Mini Apps"; grew the platform to over 2000+ apps from 10+ categories; hosted developer conference to launch the platform [press] (https://www.livemint.com/technology/apps/paytm-announces-mini-apps-developers-conference-on-8-october-11601965880559.html) [link] (https://www.youtube.com/watch?v=nuK7Ct59Vyk&t=3162s)
+  - Established internal processes and SOPs for onboarding, development, testing and hosting of merchant apps on the platform. Wrote the first version of developer documentation for merchants [link](https://business.paytm.com/docs/miniprograms/overview/)
+  - Launched DIY flow which helped in reducing the onboarding and integration friction and timelines considerably [link](https://www.youtube.com/watch?v=W0qN81dujfs)
   - Launched the Universal QR reader functionality to allow merchants to link any QR with their Mini Apps; driving O2O (Offline to Online) conversion
-  - Ideated and launched the Vaccine Finder tool, which become the second most used vaccine booking tool in the country
-  - Launched five in-house Mini-apps (DigiLocker, Vaccine Finder, AQI, Speedtest, Astro) on the platform
+  - Launched five in-house Mini-apps (DigiLocker [press](https://www.hindustantimes.com/business/paytm-integrates-digilocker-brings-access-to-documents-on-its-app-101634105338544.html), Vaccine Finder [press](https://www.livemint.com/technology/apps/want-to-book-covid-19-vaccination-slots-on-paytm-here-s-how-11624093960278.html), AQI, Speedtest, Astro) on the platform.
   - Led the launch of OLA’s Mini App by integrating with their booking APIs on Paytm, enabling 100k+ rides monthly.
-  - Established internal processes and SOPs for onboarding, development, testing and hosting of merchant apps on the platform.
-
+ - Ideated and launched the Vaccine Finder tool, which become the second most used vaccine booking tool in the country enabling more than 3 Million Vaccine Slot bookings.
+ - Rated as the Best Performer (5/5 rating) consistently on all appraisals during the tenure.
 
 
 ### Oracle (~2 years) ###
