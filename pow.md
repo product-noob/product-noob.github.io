@@ -14,6 +14,7 @@ permalink: /proofofwork/
   -
 
 **May 2019 - Septmber 2021**
+
 *Product Manager, Paytm Mini Apps. Managed a team of 2 PMs and 20+ developers.*
   - Product owner for the entire Paytm Mini Apps platform (Android & iOS App; Merchant Onboarding & Integration & Discovery flows)
   -Led the end-to-end development of the platform; developed multiple product properties to enable the offering: core SDK, DIY Flow (link), Internal Panel, App Listing, Developer Community and merchant panel
