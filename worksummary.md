@@ -17,7 +17,7 @@ permalink: /worksummary/
 
 *Product Manager, Paytm Mini Apps. Managed a team of 20+ developers.*
   - Product owner for the entire Paytm Mini Apps platform (Android & iOS App, merchant integrations and platform growth)
-  - Led the development of the app SDK and to enable "Mini Apps"; grew the platform to over 2000+ apps from 10+ categories; hosted developer conference to launch the platform [press] (https://www.livemint.com/technology/apps/paytm-announces-mini-apps-developers-conference-on-8-october-11601965880559.html) [link] (https://www.youtube.com/watch?v=nuK7Ct59Vyk&t=3162s)
+  - Led the development of the app SDK and to enable "Mini Apps"; grew the platform to over 2000+ apps from 10+ categories; hosted developer conference to launch the platform [press](https://www.livemint.com/technology/apps/paytm-announces-mini-apps-developers-conference-on-8-october-11601965880559.html) [link](https://www.youtube.com/watch?v=nuK7Ct59Vyk&t=3162s)
   - Established internal processes and SOPs for onboarding, development, testing and hosting of merchant apps on the platform. Wrote the first version of developer documentation for merchants [link](https://business.paytm.com/docs/miniprograms/overview/)
   - Launched DIY flow which helped in reducing the onboarding and integration friction and timelines considerably [link](https://www.youtube.com/watch?v=W0qN81dujfs)
   - Launched the Universal QR reader functionality to allow merchants to link any QR with their Mini Apps; driving O2O (Offline to Online) conversion
