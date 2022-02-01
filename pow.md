@@ -3,7 +3,7 @@ layout: page
 title: Proof of Work
 permalink: /proofofwork/
 ---
-(Summarising my professional work)
+(Summarising my professional journey so far)
 
 ### Paytm (~3 years) ###
 
@@ -32,8 +32,8 @@ of merchant apps on the platform
 ### Oracle (~2 years) ###
 
 **Aug 2015 - May 2015**
--  Worked in Oracle’s Financial Software Service (OFSS) entity, which builds tools to help banking clients manage and monitor their data. 
-  - Joined the platform team of Data Governance Studio as one of the first developers [link](https://www.oracle.com/a/ocom/docs/industries/financial-services/ds-ofs-dgrr-3714726.pdf)
-  - Contributed in building the first iteration of the DGS platform; helping US banks with their regulatory reporting submissions
-  - Conceptualised and built the automation utitity for Data ingestion 
-  - Worked on the Reporting dashboard, which is now one of the core features of the offering
+Worked in Oracle’s Financial Software Service(OFSS) entity, which builds tools to help banking clients manage and monitor their data. 
+  - Joined the platform team of Data Governance Studio as one of the first developers and contributed in the launch of first two iterations of the DGS platform [link](https://www.oracle.com/a/ocom/docs/industries/financial-services/ds-ofs-dgrr-3714726.pdf)
+  - Contributed in the ideation of few core features of the platform including Variance Indicators, Reporting Dashboard and Data Quality Controls 
+  - Worked on the Reporting dashboard, which is now one of the core features of the offering, helping the agents to quickly monitor their data quality and submission status
+  - Conceptualised and built the automation utitity for data ingestion to automate regulatory reporting, this helped in significantly speeding up new report generation
