@@ -10,8 +10,8 @@ permalink: /worksummary/
 **Sept 2021 - Now**
 - Senior Product Manager, Paytm Health.
 - Launched the Paytm Health vertical  [press](https://twitter.com/Paytm/status/1479712862746517506)  
-- [press](https://www.livemint.com/technology/paytm-users-can-now-create-their-health-id-know-its-benefits-11640596211499.html)
-  -
+- Testing [press](https://www.livemint.com/technology/paytm-users-can-now-create-their-health-id-know-its-benefits-11640596211499.html)
+
 
 **May 2019 - Septmber 2021**
 
@@ -32,7 +32,8 @@ permalink: /worksummary/
 **Aug 2015 - May 2015**
 
 *Worked in Oracle’s Financial Software Service(OFSS) entity, which builds tools to help banking clients manage and monitor their data.*
-  - Joined the platform team of Data Governance Studio as one of the first developers and contributed in the launch of first two iterations of the DGS platform [link](https://www.oracle.com/a/ocom/docs/industries/financial-services/ds-ofs-dgrr-3714726.pdf)
-  - Contributed in the ideation of few core features of the platform including Variance Indicators, Reporting Dashboard and Data Quality Controls 
+  - Joined the platform team of Data Governance Studio as one of the first developers and contributed in the launch of first two iterations [link](https://www.oracle.com/a/ocom/docs/industries/financial-services/ds-ofs-dgrr-3714726.pdf)
+  - Ideated and built few core features of the platform including Variance Indicators, Reporting Dashboard and Data Quality Controls 
   - Worked on the Reporting dashboard, which is now one of the core features of the offering, helping the agents to quickly monitor their data quality and submission status
   - Conceptualised and built the automation utitity for data ingestion to automate regulatory reporting, this helped in significantly speeding up new report generation
+  
