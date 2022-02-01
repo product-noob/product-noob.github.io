@@ -30,6 +30,7 @@ permalink: /proofofwork/
 ### Oracle (~2 years) ###
 
 **Aug 2015 - May 2015**
+
 *Worked in Oracle’s Financial Software Service(OFSS) entity, which builds tools to help banking clients manage and monitor their data.*
   - Joined the platform team of Data Governance Studio as one of the first developers and contributed in the launch of first two iterations of the DGS platform [link](https://www.oracle.com/a/ocom/docs/industries/financial-services/ds-ofs-dgrr-3714726.pdf)
   - Contributed in the ideation of few core features of the platform including Variance Indicators, Reporting Dashboard and Data Quality Controls 
