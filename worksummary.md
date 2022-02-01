@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Proof of Work
+title:  Work Summary
 permalink: /worksummary/
 ---
 (Summarising my professional journey so far)
