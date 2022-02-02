@@ -42,7 +42,7 @@ We started analysing the APIs around the evening, ideated and hashed out an MVP 
 
 ---
 
-### Questions we had while starting the project:**
+### Questions we had while starting the project:
 
 Before we went ahead and started working on the project in full steam, there were a couple of WHYs and Hows we thought to answer for ourselves and the team to have the right intensions and the idea of what we wanted to build.
 
@@ -68,7 +68,6 @@ NONE, we thought of or wanted. We never had any discussion on if it makes any bu
 
 Till date, we have not added any promotions/ adverts or any have made use of any user generated data from this tool and kept this openly available to all users of our app. This was our humble offering to do a very small bit in the fight against this pandemic.
 
----
 
 #### II. Why is it better than the existing solutions:
 
