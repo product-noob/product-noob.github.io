@@ -63,7 +63,7 @@ In simple words, it can either be seen as a mobile website on steroids or native
 
 Tencent has re-engineered the WeChat messaging app in a way that Mini Programs can run instantly on WeChat’s interface.
 
-![WeChat Mini Program Highlights](https://media-exp1.licdn.com/dms/image/C5612AQGPnq1q7V1_HA/article-inline_image-shrink_1000_1488/0/1590320235944?e=1613606400&v=beta&t=nFYESOg6o3UITLSnJI5y7H_R91N___9Sh6z0zApNIM0)
+![WeChat Mini Program Highlights](/image/wechat_Miniapps.png)
 <blockquote>
   <p>There are more than a million Mini Programs on WeChat with more than 200 Mn Active users.</p>
 </blockquote>
