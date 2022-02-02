@@ -85,7 +85,7 @@ Long Answer: Yes, but we need to make the right architectural and design decisio
 
 The tech folks did most of the magic here. We wanted the system to be cheap and scalable for us to allow us to run it for the many months to come until the vaccination drive finishes and be able to handle the scale this tool can potentially have. What we used is a combination of Mongo-DB and Lambda and created essentially a Stateless system to avoid storing/ processing too much data. Over the many weeks, we did multiple iterations to improve almost each and every aspect of the tool: the alerting logic, the UX, the frequency with which we sent out alerts, the customisation options and new functionalities to the tool.
 
-#### IV. How quickly can we launch this?**
+#### IV. How quickly can we launch this?
 
 Ideally we wanted to launch this as quickly as we could! This was an urgent requirement for millions of our users and launching this as fast as we possibly could was the need of the hour.
 
