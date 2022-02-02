@@ -5,7 +5,7 @@ title:  "There are Apps and then there are SuperApps"
 ---
 
 
-As more and more businesses around the world transition to a mobile-led discovery, there has been an exponential rise in the number of apps available in the App Stores.
+As more and more businesses around the world transition to a mobile-led discovery, there has been an exponential rise in the number of apps available in the App Stores
 
 Just for context the chart below shows the number of apps released on Google play store per month/ week as of last year’s figures:
 
