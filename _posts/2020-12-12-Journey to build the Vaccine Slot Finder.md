@@ -1,14 +1,10 @@
 ---
 layout: post
-title: Covid-19 Slot Finder App
+title: Journey to build the Vaccine Slot Finder Tool on Paytm
 ---
 
-# Journey to build the Vaccine Slot Finder Tool on Paytm
 
-Date Completed: May 31, 2021 → June 12, 2021
-Status: Done
-
-## Introduction
+### Introduction
 
 What started as a weekend project ended up becoming one of the most popular vaccination tool for millions of people in the country! This is behind the scenes story of how the Paytm Vaccine Finder tool came to life; it's a story of what at the surface may seem to be an easy problem, takes a large, capable team and multiple iterations to make it work!
 
@@ -18,7 +14,7 @@ The Vaccine Finder tool has helped more than **15 million** users from over 750 
 
 In the details that follow, I have tried sharing the story of how we built this tool.
 
-## **How we started**
+### How we started
 
 **Background:**
 
@@ -46,11 +42,11 @@ We started analysing the APIs around the evening, ideated and hashed out an MVP 
 
 ---
 
-## **Questions we had while starting the project:**
+### Questions we had while starting the project:**
 
 Before we went ahead and started working on the project in full steam, there were a couple of WHYs and Hows we thought to answer for ourselves and the team to have the right intensions and the idea of what we wanted to build.
 
-### I. **Why should we do this?**
+#### I. Why should we do this?
 
 This one was probably the easiest one to answer:
 
@@ -74,7 +70,7 @@ Till date, we have not added any promotions/ adverts or any have made use of any
 
 ---
 
-### II. Why is it **better than the existing solutions:**
+#### II. Why is it better than the existing solutions:
 
 I have been asked this question multiple times by many friends and colleagues in the days following the launch of this tool. Couple of reasons we thought of then:
 
@@ -84,7 +80,7 @@ I have been asked this question multiple times by many friends and colleagues in
 - **Personalised Alerts:** The Telegram / Twitter bots served only for a handful of major cities (around 160 at the time of writing this article) and they were sending generalised alerts for slot availability. Our tool allowed us to go much deeper into user specific personalisation: basis PIN Code, vaccine type, dose count etc., which effectively meant every alert we sent to the user was highly relevant and instantly actionable. This became more and more useful as the vaccination drive progressed.
 - **Enable users to directly book on Paytm:** We had an opportunity to improve on the overall vaccine booking experience for the users and wanted to finally build an integrated slot booking on our app (thankfully we were able to do so within a few weeks of launching the tool)
 
-### III**. Can we handle scale?**
+#### III. Can we handle scale?
 
 Short Answer : Yes.
 
@@ -92,7 +88,7 @@ Long Answer: Yes, but we need to make the right architectural and design decisio
 
 The tech folks did most of the magic here. We wanted the system to be cheap and scalable for us to allow us to run it for the many months to come until the vaccination drive finishes and be able to handle the scale this tool can potentially have. What we used is a combination of Mongo-DB and Lambda and created essentially a Stateless system to avoid storing/ processing too much data. Over the many weeks, we did multiple iterations to improve almost each and every aspect of the tool: the alerting logic, the UX, the frequency with which we sent out alerts, the customisation options and new functionalities to the tool.
 
-### IV**. How quickly can we launch this?**
+#### IV. How quickly can we launch this?**
 
 Ideally we wanted to launch this as quickly as we could! This was an urgent requirement for millions of our users and launching this as fast as we possibly could was the need of the hour.
 
@@ -100,13 +96,13 @@ We set ourselves an insane timeline of **4 days** to launch the first version of
 
 ---
 
-# **Here’s how we actually did it……**
+### Here’s how we actually did it……
 
 What we started with is to find a use-case for the tool which was important enough for us to build for. In Product Manager's terminology, the user-story for it read like this: ***"***
 
  ***As a user I want the tool to help me find and book vaccine slots as easily as possible!"***
 
-### **I. Creating a strong value proposition for our tool**
+### I. Creating a strong value proposition for our tool
 
 To figure out value prop, I analysed the existing options in the market to find a use-case we can excel at: the Co-WIN website, Aarogya Setu app and the Telegram and Twitter bots. We tried finding use-cases which were unserved.
 
@@ -132,7 +128,7 @@ To figure out value prop, I analysed the existing options in the market to find 
 - To ensure we can easily enable booking flow in future: We wanted our tool to enable direct vaccine bookings in the future *(the government had already announced their plans to open the booking APIs for public)* and hence took conscious design decisions to ensure we can accommodate the booking flow quickly when needed
 - Faster to build: Since we were chasing insane timelines and this tool was largely utilitarian and was to be used by different sections of the society, we kept the overall UI/UX decisions with these aspects in mind.
 
-### **II. Launching an MVP Quickly**
+#### II. Launching an MVP Quickly
 
 It was essential for us to launch an MVP quickly to validate our hypothesis if the market really had a need for such a tool and gather crucial user feedback. Since the APIs were launched over a weekend, it was not possible to get a designer aligned to get the UI of the app designed.
 
@@ -162,7 +158,7 @@ We created a simple Front-end page which fetched data from Co-WIN's APIs directl
 
 To enable the alerting flow, we created a single API to allow users to subscribe to alerts and periodically fetch new data from Co-WIN APIs at our backend for those locations and alert users on Paytm Chats when any new slot opens up.
 
-### **III. First Launch:**
+#### III. First Launch:
 
 With all these decisions in place, we worked round the clock and launched this tool internally on 2nd  May (in under 48 hours!). We couldn’t make the app live for the entire Paytm user base initially due to rate limitations of Co-WIN APIs. We iterated and worked our way around that for the next few days and launched the tool officially on 6th May.
 
@@ -182,7 +178,7 @@ We were adding thousands of new users to the tool every hour and people started 
 
 These messages (and many of the personal one's on WhatsApp) literally helped boost the entire team’s motivation to keep on iterating and making this tool as useful as we could.
 
-### IV. Major Milestones:
+#### IV. Major Milestones:
 
 While we did the first launch in under 5 days, it took us almost the next 2 months to perfect the tool. With each version we were improving specific aspects of the tool, be it adding new features, improving alerting speed or accuracy, adding more customisation options and working on user feedback and suggestions.
 
