@@ -100,5 +100,3 @@ India’s Mini Program ecosystem is still in early days with leading payment app
 
 * **JioMart** (Reliance + Facebook): This is a latest entrant in this space with clear cut agenda to become the “WeChat of India”.
 More detailed analytics on these apps and the current landscape in a possible next article!
-
-*Disclaimer: I am currently leading Product for Paytm Mini Apps and through this article trying to just share what all is available in public domain aided by my learnings being aligned with this project. This post was earlier shared on my LinkedIn*
