@@ -3,6 +3,8 @@ layout: post
 title: Covid-19 Slot Finder App
 ---
 
+What started as a weekend project ended up becoming one of the most popular vaccination tool for millions of people in the country! This is behind the scenes story of how the Paytm Vaccine Finder tool came to life; it's a story of what at the surface may seem to be an easy problem, takes a large, capable team and multiple iterations to make it work!
+
 ## **How we started:**
 
 It all started with a [Tweet](https://twitter.com/vijayshekhar/status/1387260729028272129)! Isn't that always the case now-a-days?
