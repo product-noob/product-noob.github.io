@@ -200,6 +200,11 @@ img {
     text-align: center;
   }
 }
+ .entry p
+{
+    max-height: 50px;
+    overflow: hidden;
+}
 
 .site-avatar {
   float: left;
@@ -212,6 +217,7 @@ img {
     display: block;
     margin: 0 auto;
   }
+  
 
   img {
     border-radius: 50%;
