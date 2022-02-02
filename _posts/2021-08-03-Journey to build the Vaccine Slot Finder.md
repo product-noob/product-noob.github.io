@@ -163,7 +163,7 @@ With all these decisions in place, we worked round the clock and launched this t
 
 The response immediately after launch was phenomenal making all our efforts worthwhile! This is how the users trend looked like day over day:
 
-![Vaccine Finder New User Trend](VaccineFinder_Usergraph.png)
+![Vaccine Finder New User Trend](/images/VaccineFinder_Usergraph.png)
 
 We were adding thousands of new users to the tool every hour and people started sharing on social media how they benefitted by these alerts and were able to book slots!
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">The Notification update related to the vaccine available slots are awesome!<br>Thank you <a href="https://twitter.com/Paytm?ref_src=twsrc%5Etfw">@Paytm</a> for the remainders. Appreciate your efforts. <a href="https://twitter.com/vijayshekhar?ref_src=twsrc%5Etfw">@vijayshekhar</a> <a href="https://twitter.com/hashtag/gratitude?src=hash&amp;ref_src=twsrc%5Etfw">#gratitude</a> <a href="https://twitter.com/hashtag/cowin?src=hash&amp;ref_src=twsrc%5Etfw">#cowin</a> <a href="https://twitter.com/hashtag/CovidIndia?src=hash&amp;ref_src=twsrc%5Etfw">#CovidIndia</a> <a href="https://twitter.com/hashtag/Paytm?src=hash&amp;ref_src=twsrc%5Etfw">#Paytm</a></p>&mdash; Afreed Patan (@afreedUX) <a href="https://twitter.com/afreedUX/status/1391729370956406786?ref_src=twsrc%5Etfw">May 10, 2021</a></blockquote>
