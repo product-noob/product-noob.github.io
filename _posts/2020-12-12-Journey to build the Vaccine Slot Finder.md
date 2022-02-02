@@ -4,8 +4,6 @@ title: Building the Vaccine Slot Finder tool
 ---
 
 
-### Introduction
-
 What started as a weekend project ended up becoming one of the most popular vaccination tool for millions of people in the country! This is behind the scenes story of how the Paytm Vaccine Finder tool came to life; it's a story of what at the surface may seem to be an easy problem, takes a large, capable team and multiple iterations to make it work!
 
 **Some stats on the tool:**
