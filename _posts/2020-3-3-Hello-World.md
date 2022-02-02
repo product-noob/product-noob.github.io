@@ -5,7 +5,7 @@ title:  "Setting up Github Pages"
 ---
 
 
-This is the font setting for my blog. Just keeping it here for quick reference. You may ignore this.
+This is just the font setting for my blog, keeping it here for quick reference. You may ignore this.
 
 This is a sample text.
 
