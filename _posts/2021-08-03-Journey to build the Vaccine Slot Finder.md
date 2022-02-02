@@ -194,7 +194,9 @@ I have tried summarising the major versions we had for the tool:
     
 - **Version** **4,5,6,...n:** During the course of the next many weeks, we iterated multiple times to improve our tool: adding new functionalities, supporting new vaccines types and even enabling users to download their International Travel Certificate. We even launched a (now viral) social media campaign to educate users
 
-[https://www.youtube.com/watch?v=3lXDcM3VrTo](https://www.youtube.com/watch?v=3lXDcM3VrTo)
+<iframe width="420" height="315"
+src="https://www.youtube.com/watch?v=3lXDcM3VrTo">
+</iframe>
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Ready, on your marks – <a href="https://twitter.com/hashtag/GetShotGo?src=hash&amp;ref_src=twsrc%5Etfw">#GetShotGo</a> 💉 <a href="https://t.co/Em9nsWnJ9p">pic.twitter.com/Em9nsWnJ9p</a></p>&mdash; Paytm (@Paytm) <a href="https://twitter.com/Paytm/status/1405744353310433288?ref_src=twsrc%5Etfw">June 18, 2021</a></blockquote>
 
