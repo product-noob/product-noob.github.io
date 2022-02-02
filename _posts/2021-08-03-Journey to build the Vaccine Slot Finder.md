@@ -26,7 +26,7 @@ There were a lot of tools which sprung up to serve this need: Telegram Channels,
 
 This all started during a casual mid-day twitter browsing on a Wednesday (blame WFH!). On Apr 28, Dr. RS Sharma (CEO, National Health Authority) tweeted announcing the launch of Public APIs to fetch real-time slot availability and encouraged third-party applications to integrate them and help spread awareness about the vaccination drive.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Today, we have opened Co-Win APIs for vacancies search and downloading certificates of vaccinations for third party applications. API specs can be found at <a href="https://t.co/2t0Ac8Ftmi">https://t.co/2t0Ac8Ftmi</a>.</p>&mdash; Dr. RS Sharma (@rssharma3) <a href="https://twitter.com/rssharma3/status/1387252842667208704?ref_src=twsrc%5Etfw">April 28, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Today, we have opened Co-Win APIs for vacancies search and downloading certificates of vaccinations for third party applications. API specs can be found at <a href="https://t.co/2t0Ac8Ftmi">https://t.co/2t0Ac8Ftmi</a>.</p>&mdash; Dr. RS Sharma (@rssharma3) <a href="https://twitter.com/rssharma3/status/1387252842667208704?ref_src=twsrc%5Etfw">April 28, 2021</a></blockquote>
 
 Reading this tweet I discussed with my manager almost immediately that we should do something on this initiative. After all, I was also struggling to book a vaccine slot for my family and understood the need very well and could see the immediate benefit millions of people would get from such a tool.
 
@@ -133,11 +133,11 @@ Thankfully in Paytm we have a [standard design library](https://thehardcopy.co/u
 
 This is how our first cut (without any design inputs) looked like:
 
-![Journey%20to%20build%20the%20Vaccine%20Slot%20Finder%20Tool%20on%20P%20af25032644a442ec93a67399c6e7994b/Untitled.png](Journey%20to%20build%20the%20Vaccine%20Slot%20Finder%20Tool%20on%20P%20af25032644a442ec93a67399c6e7994b/Untitled.png)
+![First cut for Vaccine Finder Tool](/images/VaccineFinder_Screenshot.png)
 
 The broad UI thankfully to my satisfaction (and my developer's happiness) has remained the same even after the many iterations.
 
-In case you don’t know, I am also managing the **Mini Apps** Product and the [benefits](https://business.paytm.com/miniapps) we offer to our merchants via this platform also helped us immensely in this tool! Few I can share here were:
+In case you don’t know, I was also managing the **Mini Apps** Product and the [benefits](https://business.paytm.com/miniapps) we offer to our merchants via this platform also helped us immensely in this tool! Few I can share here were:
 
 - To not have to worry about the UI we shipped with during launch since we could iterate on the UI pretty easily and not worry about releases due to it being a web-based framework
 - The most important benefit was **instant adoption** for our tool since we could launch this in all older versions of the Paytm app with the Mini Apps SDK (*which effectively meant reaching almost 70-80% of the entire user base of Paytm instantly on launch!)*
@@ -159,15 +159,14 @@ To enable the alerting flow, we created a single API to allow users to subscribe
 
 With all these decisions in place, we worked round the clock and launched this tool internally on 2nd  May (in under 48 hours!). We couldn’t make the app live for the entire Paytm user base initially due to rate limitations of Co-WIN APIs. We iterated and worked our way around that for the next few days and launched the tool officially on 6th May.
 
-[https://twitter.com/Prince_Jain17/status/1390172849072001027](https://twitter.com/Prince_Jain17/status/1390172849072001027)
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Happy to have done my small part in help India Vaccinate sooner :)<br>Paytm is tracking all the available vaccine slots across the country in real-time. Find available slots &amp; get instant alerts if a new vaccine slot opens up using : <a href="https://t.co/ctNq7PCYDr">https://t.co/ctNq7PCYDr</a> <a href="https://t.co/kvjj1DcLma">pic.twitter.com/kvjj1DcLma</a></p>&mdash; Prince Jain (@Prince_Jain17) <a href="https://twitter.com/Prince_Jain17/status/1390172849072001027?ref_src=twsrc%5Etfw">May 6, 2021</a></blockquote>
 
 The response immediately after launch was phenomenal making all our efforts worthwhile! This is how the users trend looked like day over day:
 
-![Untitled](Journey%20to%20build%20the%20Vaccine%20Slot%20Finder%20Tool%20on%20P%20af25032644a442ec93a67399c6e7994b/Untitled%201.png)
+![Vaccine Finder New User Trend](VaccineFinder_Usergraph.png)
 
 We were adding thousands of new users to the tool every hour and people started sharing on social media how they benefitted by these alerts and were able to book slots!
-
-[https://twitter.com/afreedUX/status/1391729370956406786](https://twitter.com/afreedUX/status/1391729370956406786)
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">The Notification update related to the vaccine available slots are awesome!<br>Thank you <a href="https://twitter.com/Paytm?ref_src=twsrc%5Etfw">@Paytm</a> for the remainders. Appreciate your efforts. <a href="https://twitter.com/vijayshekhar?ref_src=twsrc%5Etfw">@vijayshekhar</a> <a href="https://twitter.com/hashtag/gratitude?src=hash&amp;ref_src=twsrc%5Etfw">#gratitude</a> <a href="https://twitter.com/hashtag/cowin?src=hash&amp;ref_src=twsrc%5Etfw">#cowin</a> <a href="https://twitter.com/hashtag/CovidIndia?src=hash&amp;ref_src=twsrc%5Etfw">#CovidIndia</a> <a href="https://twitter.com/hashtag/Paytm?src=hash&amp;ref_src=twsrc%5Etfw">#Paytm</a></p>&mdash; Afreed Patan (@afreedUX) <a href="https://twitter.com/afreedUX/status/1391729370956406786?ref_src=twsrc%5Etfw">May 10, 2021</a></blockquote>
 
 [https://twitter.com/ajhaamit39/status/1391008391410057220](https://twitter.com/ajhaamit39/status/1391008391410057220)
 
