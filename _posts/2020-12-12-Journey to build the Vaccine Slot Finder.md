@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Journey to build the Vaccine Slot Finder Tool on Paytm
+title: Building the Vaccine Slot Finder tool
 ---
 
 
