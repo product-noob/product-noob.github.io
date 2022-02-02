@@ -8,7 +8,8 @@ permalink: /worksummary/
 ### Paytm (~3 years) ###
 
 **Sept 2021 - Now**
-- Senior Product Manager, Paytm Health and Mini Apps.
+
+*Senior Product Manager, Paytm Health and Mini Apps.*
 - Took on additional responsibility to launch the Paytm Health vertical [press](https://twitter.com/Paytm/status/1479712862746517506) 
 - Envisioned to be a one stop shop for users for all their healthcare needs : *Medicine Ordering, Teleconsult, Digital Health Identity, Blood banks repository* 
 - Launched Paytm PHR (Public Health Records) app integrated with the UHI ecosytem) [press](https://www.livemint.com/technology/paytm-users-can-now-create-their-health-id-know-its-benefits-11640596211499.html)
@@ -24,8 +25,8 @@ permalink: /worksummary/
   - Product owner for the entire Paytm Mini Apps platform (Android & iOS App, merchant integrations and platform growth)
   - Led the development of the App SDK to enable "Mini Apps"; grew the platform to over 2000+ apps from 10+ categories
   - Planned and hosted a developer conference to launch the platform [press](https://www.livemint.com/technology/apps/paytm-announces-mini-apps-developers-conference-on-8-october-11601965880559.html) [link](https://www.youtube.com/watch?v=nuK7Ct59Vyk&t=3162s)
-  - Established internal processes and SOPs for onboarding, development, testing and hosting of merchant apps on the platform. Wrote the first version of developer documentation for merchants [link](https://business.paytm.com/docs/miniprograms/overview/)
-  - Launched DIY flow which helped in reducing the onboarding and integration friction and timelines considerably [link](https://www.youtube.com/watch?v=W0qN81dujfs)
+  - Established internal processes and SOPs for merchant apps on the platform. Wrote the first version of developer documentation for merchants [link](https://business.paytm.com/docs/miniprograms/overview/)
+  - Launched DIY flow which helped in reducing integration friction & timelines considerably [link](https://www.youtube.com/watch?v=W0qN81dujfs)
   - Launched Universal QR reader functionality to allow merchants to link any QR with their Mini Apps; driving O2O (Offline to Online) conversion
   - Launched five in-house Mini-apps ( [DigiLocker](https://www.hindustantimes.com/business/paytm-integrates-digilocker-brings-access-to-documents-on-its-app-101634105338544.html), [Vaccine Finder](https://www.livemint.com/technology/apps/want-to-book-covid-19-vaccination-slots-on-paytm-here-s-how-11624093960278.html), AQI, Speedtest, Astro) on the platform.
   - Led the launch of OLA’s Mini App by integrating with their booking APIs on Paytm, enabling 100k+ rides monthly.
@@ -37,7 +38,7 @@ permalink: /worksummary/
 
 **Aug 2015 - May 2015**
 
-*Worked in Oracle’s Financial Software Service(OFSS) entity, which builds technology solutions for banking clients.*
+*Worked in Oracle’s Financial Software Services(OFSS) entity, which builds technology solutions for banking clients.*
   - Joined the platform team of Data Governance Studio as one of the first developers and contributed in the launch of first two iterations [link](https://www.oracle.com/a/ocom/docs/industries/financial-services/ds-ofs-dgrr-3714726.pdf)
   - Ideated and built few core features of the platform including Variance Indicators, Reporting Dashboard and Data Quality Controls 
   - Worked on the Reporting dashboard, which is now one of the core features of the offering, helping the agents to quickly monitor their data quality and submission status
