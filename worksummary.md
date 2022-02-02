@@ -3,9 +3,9 @@ layout: page
 title:  Work Summary
 permalink: /worksummary/
 ---
-(Summarising my professional journey so far)
+**Summarising my professional journey so far**
 
-### Paytm (~3 years) ###
+#### Paytm (~3 years) ####
 
 **Sept 2021 - Now**
 
@@ -34,7 +34,7 @@ permalink: /worksummary/
  - Rated as the Best Performer (5/5 rating) consistently on all appraisals during the tenure.
 
 
-### Oracle (~2 years) ###
+#### Oracle (~2 years) ####
 
 **Aug 2015 - May 2015**
 
