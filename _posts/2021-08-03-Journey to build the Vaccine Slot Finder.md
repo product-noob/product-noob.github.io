@@ -168,9 +168,9 @@ The response immediately after launch was phenomenal making all our efforts wort
 We were adding thousands of new users to the tool every hour and people started sharing on social media how they benefitted by these alerts and were able to book slots!
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">The Notification update related to the vaccine available slots are awesome!<br>Thank you <a href="https://twitter.com/Paytm?ref_src=twsrc%5Etfw">@Paytm</a> for the remainders. Appreciate your efforts. <a href="https://twitter.com/vijayshekhar?ref_src=twsrc%5Etfw">@vijayshekhar</a> <a href="https://twitter.com/hashtag/gratitude?src=hash&amp;ref_src=twsrc%5Etfw">#gratitude</a> <a href="https://twitter.com/hashtag/cowin?src=hash&amp;ref_src=twsrc%5Etfw">#cowin</a> <a href="https://twitter.com/hashtag/CovidIndia?src=hash&amp;ref_src=twsrc%5Etfw">#CovidIndia</a> <a href="https://twitter.com/hashtag/Paytm?src=hash&amp;ref_src=twsrc%5Etfw">#Paytm</a></p>&mdash; Afreed Patan (@afreedUX) <a href="https://twitter.com/afreedUX/status/1391729370956406786?ref_src=twsrc%5Etfw">May 10, 2021</a></blockquote>
 
-[https://twitter.com/ajhaamit39/status/1391008391410057220](https://twitter.com/ajhaamit39/status/1391008391410057220)
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Vaccine slot notifier by <a href="https://twitter.com/Paytm?ref_src=twsrc%5Etfw">@Paytm</a> actually works, unlike many other such tools. <a href="https://twitter.com/vijayshekhar?ref_src=twsrc%5Etfw">@vijayshekhar</a> definitely knows how to help Indians at large scale, given the current scale of paytm app, even in tier 2 &amp; 3 towns, it was just perfect to launch vaccine slot notifier. 👍 <a href="https://t.co/OcuH6dfHhI">https://t.co/OcuH6dfHhI</a></p>&mdash; ak47_iitm (@ajhaamit39) <a href="https://twitter.com/ajhaamit39/status/1391008391410057220?ref_src=twsrc%5Etfw">May 8, 2021</a></blockquote>
 
-[https://twitter.com/ada10rsh/status/1391024868435533827](https://twitter.com/ada10rsh/status/1391024868435533827)
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I was trying to schedule a vaccine appointment for the last 10 days but all slots were showing booked. <br><br>Thanks to <a href="https://twitter.com/Paytm?ref_src=twsrc%5Etfw">@Paytm</a> for simplifying the process. Got the availability alert when the slots open, booked my slot and got the confirmation.<br><br>Thanks, <a href="https://twitter.com/vijayshekhar?ref_src=twsrc%5Etfw">@vijayshekhar</a> &amp; Team.</p>&mdash; Adarsh (@ada10rsh) <a href="https://twitter.com/ada10rsh/status/1391024868435533827?ref_src=twsrc%5Etfw">May 8, 2021</a></blockquote>
 
 These messages (and many of the personal one's on WhatsApp) literally helped boost the entire team’s motivation to keep on iterating and making this tool as useful as we could.
 
@@ -182,21 +182,21 @@ I have tried summarising the major versions we had for the tool:
 
 - **Version 1- MVP Launch:** Enable users to find available slots and set availability alerts, launched on 6th May.
     
-    [https://twitter.com/Paytm/status/1390205121389154309](https://twitter.com/Paytm/status/1390205121389154309)
+  <blockquote class="twitter-tweet"><p lang="en" dir="ltr">🚨 BREAKING: Now track &amp; get real-time alerts about COVID vaccination slots in your city on the Paytm App! 📱<br><br>Get Started: <a href="https://t.co/tcYY5cbXKq">https://t.co/tcYY5cbXKq</a> <a href="https://t.co/LHMyocZ8Jg">pic.twitter.com/LHMyocZ8Jg</a></p>&mdash; Paytm (@Paytm) <a href="https://twitter.com/Paytm/status/1390205121389154309?ref_src=twsrc%5Etfw">May 6, 2021</a></blockquote>
     
 - **Version 2 -** **Improving the accuracy and speed of alerts:** We integrated directly with Co-WIN's web-hook to receive real-time availability information and tweaked a lot of backend logic to make our alerts as fast as we could and added some UI feature basis user feedback.
 
-[https://twitter.com/Paytm/status/1391630208621416448](https://twitter.com/Paytm/status/1391630208621416448)
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">🚨 [Update] Basis your feedback, we&#39;ve added more enhancements to our COVID Vaccine Slot Finder tool.<br><br>Try here: <a href="https://t.co/tcYY5cbXKq">https://t.co/tcYY5cbXKq</a><br><br>Please RT and help India fight COVID-19. 🙏🏼 <a href="https://t.co/1JMuadkLMQ">pic.twitter.com/1JMuadkLMQ</a></p>&mdash; Paytm (@Paytm) <a href="https://twitter.com/Paytm/status/1391630208621416448?ref_src=twsrc%5Etfw">May 10, 2021</a></blockquote>
 
 - **Version 3 - Enabled Booking Flow:** We finally got approval to enable vaccine booking directly on our app and enabled the booking flow on our app on 11th June.
     
-    [https://twitter.com/Paytm/status/1404375332354887680](https://twitter.com/Paytm/status/1404375332354887680)
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">From instant alerts to now directly booking on your Paytm app – the new &amp; improved Vaccine Slot Finder tool is here.<br><br>Give it a go! 📱 💉</p>&mdash; Paytm (@Paytm) <a href="https://twitter.com/Paytm/status/1404375332354887680?ref_src=twsrc%5Etfw">June 14, 2021</a></blockquote>
     
 - **Version** **4,5,6,...n:** During the course of the next many weeks, we iterated multiple times to improve our tool: adding new functionalities, supporting new vaccines types and even enabling users to download their International Travel Certificate. We even launched a (now viral) social media campaign to educate users
 
 [https://www.youtube.com/watch?v=3lXDcM3VrTo](https://www.youtube.com/watch?v=3lXDcM3VrTo)
 
-[https://twitter.com/Paytm/status/1405744353310433288](https://twitter.com/Paytm/status/1405744353310433288)
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Ready, on your marks – <a href="https://twitter.com/hashtag/GetShotGo?src=hash&amp;ref_src=twsrc%5Etfw">#GetShotGo</a> 💉 <a href="https://t.co/Em9nsWnJ9p">pic.twitter.com/Em9nsWnJ9p</a></p>&mdash; Paytm (@Paytm) <a href="https://twitter.com/Paytm/status/1405744353310433288?ref_src=twsrc%5Etfw">June 18, 2021</a></blockquote>
 
 OK, I know, it’s time to wrap this up (although there is so so much more to write on this..)
 
@@ -206,6 +206,6 @@ Let me conclude by sharing that this has been the single most satisfying project
 
 ![Onto the Next challenge](/images/onto_the_next.gif)
 
-I would like to thank the whole team from engineering to design to marketing who came together and went out of their way to build this tool and make it a success! Back to drawing boards.
+Back to drawing boards.
 
 #GetShotGo!
