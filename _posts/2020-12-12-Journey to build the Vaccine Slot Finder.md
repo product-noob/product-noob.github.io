@@ -205,7 +205,7 @@ Thanks for reaching this far to the end. If want to try the tool for your self y
 
 Let me conclude by sharing that this has been the single most satisfying project I have undertaken in my professional career. The ability to impact millions of people around me and see people getting benefitted from something I build is the utmost gratification for a Product Manager. ✌️
 
-[Onto the Next challenge](/images/onto_the_next.gif)
+![Onto the Next challenge](/images/onto_the_next.gif)
 
 I would like to thank the whole team from engineering to design to marketing who came together and went out of their way to build this tool and make it a success! Back to drawing boards.
 
