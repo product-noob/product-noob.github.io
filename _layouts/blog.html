@@ -8,7 +8,7 @@ layout: default
 		<article class="post">
 			<!-- <div class="date"> Published on {{ page.date | date: "%B %e, %Y" }} </div> -->
      			<h4><a href="{{ site.baseurl }}{{ post.url }}" class="blogheader">{{ post.title }}</a></h4>
-			<div class="entry"> <div class="blogheader">{{ post.excerpt }} </div> </div> 
+			<div class="entry"> <div class="blogsubtext">{{ post.excerpt }} </div> </div> 
 			<a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
 		</article> {% endfor %} 
 	</div>
