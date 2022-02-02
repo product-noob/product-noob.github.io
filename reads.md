@@ -4,7 +4,6 @@ title: Reads
 permalink: /reads/
 ---
 
-Please send my something good you recommened, would love to check them out as well.
 
 #### Transitioning to a PM role
 
@@ -14,9 +13,6 @@ I will soon start writing blogs to help you make this transition.
 
 Will be updating this soon (Reading Hooked by Nir Eyal at this moment)
 
-
-
-#### Links you might find interesting
 
 
 #### Great Product Leaders I try to learn from
@@ -30,3 +26,5 @@ Will be updating this soon (Reading Hooked by Nir Eyal at this moment)
 
 - **[Recode Decode](https://www.recode.net/recode-decode-podcast-kara-swisher)**
   - fav: [https://www.recode.net/2016/8/29/12684872/bret-taylor-quip-salesforce-acquisition-friendfeed-twitter-facebok-failure](https://www.recode.net/2016/8/29/12684872/bret-taylor-quip-salesforce-acquisition-friendfeed-twitter-facebok-failure)
+
+Please send my something good you recommened, would love to check them out as well.
