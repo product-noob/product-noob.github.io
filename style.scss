@@ -161,7 +161,14 @@ img {
 .blogheader {
   font-size: 120%;
   color: red;
+}
 
+ .entry p
+{
+    max-height: 50px;
+    overflow: hidden;
+}
+  
 // Specify the color of the selection
 ::-moz-selection {
   color: $black;
