@@ -5,8 +5,9 @@ layout: default
 	<div class="posts"> {% for post in site.posts %}
 		<article class="post">
 			<!-- <div class="date"> Published on {{ page.date | date: "%B %e, %Y" }} </div> -->
-     			<div class="blogheader"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></div>
-			<div class="entry"> {{ post.excerpt }} </div> <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+     			<h4><a href="{{ site.baseurl }}{{ post.url }}" class="blogheader">{{ post.title }}</a></h4>
+			<div class="entry"> {{ post.excerpt }} </div> 
+			<a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
 		</article> {% endfor %} 
 	</div>
 </div>
