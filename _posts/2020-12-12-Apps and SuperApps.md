@@ -9,7 +9,7 @@ As more and more businesses around the world transition to a mobile-led discover
 
 Just for context the chart below shows the number of apps released on Google play store per month/ week as of last year’s figures:
 
-![Image of App Release Figures](https://media-exp1.licdn.com/dms/image/C5612AQH37R657G5MXg/article-inline_image-shrink_1000_1488/0/1590318580068?e=1613606400&v=beta&t=nc8Mz9X0RXKa5iCt40OrE6vP33GNf-Qej2bXQD3uF0s)
+![Image of App Release Figures](/images/apps_superapps_stats.png)
 
 <blockquote>
 <p>“There are more than 2.87 Million apps listed on the Play store as of latest available figures. 3739 apps are added to the Play Store every single day!” </p>
