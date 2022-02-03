@@ -11,10 +11,7 @@ footer-links:
   twitter: Prince_Jain17  
   linkedin: princejain17
   permalink: /:title/
-  twitter:
-    username: Prince_Jain17
-    card: summary_large_image
-
+  
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
 google_analytics: G-WZLF9K3MJB
 
