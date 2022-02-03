@@ -4,20 +4,17 @@ title: About Me
 permalink: /about/
 ---
 
-👋 Hey there stranger, Welcome for reaching out to my online home :)
+<h6> 👋 Hey there stranger, Welcome for reaching out to my online home :) <h6>
 <h5> I am Prince Jain </h5>
 
 If you landed here without knowing me at all, here is a little something about me.
 
-I graduated from NIT Jaipur as an Electrical Engineer but the desire to be associated with technology led me to join Oracle as a software developer. There I helped build the first version of the [Data Governance Studio](https://docs.oracle.com/cd/E93133_01/PDF/8.0.6.0.0/OFSAA_DM_Pack_DGS_US_Regulatory_Reporting_8.0.6.0.0_User_Guide.pdf) and honed my coding skills (which even helped my build this website) and learn about the nuances of software development.
+I graduated from NIT Jaipur as an Electrical Engineer but the desire to be associated with technology led me to join Oracle as a software developer. There I helped build the first version of the [Data Governance Studio](https://docs.oracle.com/cd/E93133_01/PDF/8.0.6.0.0/OFSAA_DM_Pack_DGS_US_Regulatory_Reporting_8.0.6.0.0_User_Guide.pdf).
 
-I eventually (and thankfully quickly) realised I was intrigued more by other parts of the business and product than just the engineering and also due to some well placed FOMO, I took the plunge and joined a full time MBA program at FMS Delhi.
-There I wanted to explore the various amazing career options presented before settling in one. Joined Citibank as a Finance Intern in their [Treasury & Trade Solutions](https://www.citibank.com/tts) department. There I got a chance to work with so-and-so's of the banking world. Figured finance is not for me.
+I eventually (and thankfully quickly) realised I was intrigued more by other parts of the business and product than just the engineering and also due to some well placed FOMO, I took the plunge and joined a full time MBA program at FMS Delhi. I wanted to explore the varied career options available before settling in one and joined Citibank as a Finance Intern in their [Treasury & Trade Solutions](https://www.citibank.com/tts) department. There I got a chance to work with so-and-so's of the banking world. Figured finance is not for me.
 I also tried my hands in a lot of corporate competitions during my MBA tenure, highlight being getting a chance to present my idea on National Television and winning 5-lacs in Reckitt Benckiser's [Case Competition](https://www.youtube.com/watch?v=180lua2YSTI&t=502s).
 
-Thankfully I circled back on technology and chose Product Management as the choice of career and joined Paytm as a Product Manager post graduation. There I worked on a bunch on super intresting 0 to 1 problems including building the ["Paytm Mini Apps Store"](https://www.youtube.com/watch?v=nuK7Ct59Vyk&t=3161s) and laying the foundation of Paytm Health.
-
-I have worked on as a software developer, tried my hands in Finance, Marketing, Strategy and now the good, bad and ugly (mostly good!) of Product, and thankfully thoroughly enjoying the stuff I do on a day-to-day basis.
+Thankfully I circled back on technology and chose Product Management as the choice of career and joined Paytm as a Product Manager post graduation. There I worked on a bunch on super intresting 0 to 1 problems including building the ["Paytm Mini Apps Store"](https://www.youtube.com/watch?v=nuK7Ct59Vyk&t=3161s) and laying the foundation of Paytm Health. 
 
 **Reach me at:**
 
