@@ -4,7 +4,7 @@ title: About Me
 permalink: /about/
 ---
 
-<h6> 👋 Hey there stranger, Welcome for reaching out to my online home :) <h6>
+👋 Hey there stranger, Welcome for reaching out to my online home :) 
 <h5> I am Prince Jain </h5>
 
 If you landed here without knowing me at all, here is a little something about me.
