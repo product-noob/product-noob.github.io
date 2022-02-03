@@ -5,7 +5,7 @@ title:  "Setting up Github Pages"
 ---
 
 
-This is just the font setting for my blog, keeping it here for quick reference. You may ignore this.
+This is just the typesetting for my blog, keeping it here for quick reference. You may ignore this.
 
 This is a sample text.
 
@@ -33,11 +33,9 @@ This is a sample text.
 
 <p> This is sample img tag </p>
 <img src="/images/my-image.png" alt="Prince Jain" width="200">
-<br> <br>
-<hr>
 <p> This is sample I-frame tag </p>
 Linking here some of the good sources to visit later for Markdown or HTML tutorials
 
-* [Markdown](https://www.markdownguide.org/cheat-sheet/)
-<br>
+* [Markdown](https://www.markdownguide.org/cheat-sheet)
+
 <iframe src="https://product-noob.github.io/" title="W3Schools Free Online Web Tutorials" style="border:2px solid lightgrey" height="400">
