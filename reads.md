@@ -20,7 +20,8 @@ Will be updating this soon (Reading Hooked by Nir Eyal at this moment)
 
 - **Shreyas Doshi. [https://twitter.com/shreyas](https://twitter.com/shreyas)**
   - fav: [Why Products Don't Succeed: The 7 Biases of Product Teams](https://www.linkedin.com/pulse/why-products-dont-succeed-7-biases-product-teams-shreyas-doshi/)
-
+ - **Lenny Rachitsky. [https://twitter.com/shreyas](https://twitter.com/lennysan)**
+ - fav: [How the biggest consumer apps got their first 1,000 users](https://www.lennysnewsletter.com/p/how-the-biggest-consumer-apps-got)
 
 #### Great podcasts for you to listen to
 
