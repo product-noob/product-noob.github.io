@@ -1,9 +1,27 @@
-<!-- This goes in head.html -->
-<meta charset="utf-8" />
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-<meta property="og:image" content="https://avatars0.githubusercontent.com/u/75776873?s=400&u=5a4092d6327021ef2d5db7030d3f3f61a338f7e7&v=4" />
+<!-- This goes in head.html. Meta tags are used in SEO Optimisation-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta property="og:locale" content="en_US">
+
+<link rel="shortcut icon" type="image/png" href="/assets/favicon.png">
+
+<meta property="og:title" content="Prince Jain">
+<meta name="author" content="Prince Jain">
+<meta name="description" content="My personal blog to share/ document my Product Management journey.">
+<meta property="og:description" content="My personal blog to share/ document my Product Management journey.">
+<link rel="canonical" href="/">
+<meta property="og:url" content="/">
+<meta property="og:site_name" content="Prince Jain">
+<meta property="og:image" content="https://princejain.me/images/my-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="https://princejain.me/images/my-image.png">
+<meta property="twitter:title" content="Prince Jain">
+<meta name="twitter:site" content="@Prince_Jain17">
+<script type="application/ld+json">
+
 
 {% if page.excerpt %}
 <meta name="description" content="{{ page.excerpt| strip_html }}" />
@@ -18,13 +36,3 @@
 <meta property="og:title" content="{{ page.title }}" />
 <meta property="twitter:title" content="{{ page.title }}" />
 {% endif %}
-
-<link rel="shortcut icon" type="image/png" href="/assets/favicon.png" />
-
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:site" content="@Prince_Jain17" />
-<meta name="twitter:description" content="My personal blog where I share random good stuff, mostly about Product" />
-<meta name="twitter:image" content="https://www.prodpad.com/wp-content/uploads/2020/09/what-is-product-management-1.png" />
-
-<!-- Testing out some twitter meta tags on 21-Dec-2020 -->
-<!-- <meta name="twitter:title" content="Product-Noob" /> -->
