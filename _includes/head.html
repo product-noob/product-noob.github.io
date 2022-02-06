@@ -5,9 +5,14 @@
 	{%- seo -%}
 	<link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
 	<link rel="shortcut icon" type="image/png" href="/assets/favicon.png" /> 
-	{%- feed_meta -%} 
-	{%- if jekyll.environment == 'production' andsite.google_analytics -%} 
-	{%- include google-analytics.html -%} 
-	{%- endif -%}
+	<title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.name }} </title> 
+	{% include meta.html %}
+	{% include analytics.html %}
+	{%- if jekyll.environment == 'production' and site.google_analytics -%} {%- endif -%}
 
 </head>
+
+
+
+
+
