@@ -148,11 +148,7 @@ nav {
       color: $blue;
     }
   }
-}
-footer {
-  padding: 20px 0;
-  text-align: center;
-}
+
 
 //Defining all classes for customisat look and feel basis the usecases
 
@@ -317,4 +313,10 @@ footer {
   border-bottom: 1px solid #ddd;
   background-color: $lightGray;
   padding-bottom: 0px;
+}
+  
+  }
+footer {
+  padding: 0px;
+  text-align: center;
 }
