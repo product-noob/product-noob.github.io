@@ -24,12 +24,7 @@ body {
   flex-direction: column;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1,h2,h3,h4,h5,h6 {
   font-family: "Lato", sans-serif;
   color: $darkerGray;
   font-weight: normal;
@@ -131,7 +126,6 @@ nav {
   float: right;
   margin-top: 23px; // @TODO: Vertically middle align
   font-family: "Lato", sans-serif;
-  // font-family: $helveticaNeue;
   font-size: 18px;
   font-weight: 400; //Added font weight
 
@@ -237,14 +231,11 @@ nav {
   width: 70px;
   height: 70px;
   margin-right: 15px;
-
   @include mobile {
     float: none;
     display: block;
     margin: 0 auto;
   }
-  
-
   img {
     border-radius: 50%;
   }
@@ -295,10 +286,6 @@ nav {
 }
 
 
-//
-// .main
-//
-
 .posts > .post {
   padding-bottom: 1.4em;
   border-bottom: 1px solid $lightGray;
@@ -317,10 +304,6 @@ nav {
     color: $gray;
     font-size: 22px;
     font-style: italic;
-  }
-
-  .comments {
-    margin-top: 10px;
   }
 
   .read-more {
