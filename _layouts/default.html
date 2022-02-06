@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
-  {% include head.html %}
+  <head>
+    {% include head.html %}
+    {% include analytics.html %}
+    {% include meta.html %} 
+    <!-- Editing Page Title -->
+    <title>
+      {% if page.title %}{{ page.title }} | {% endif %}{{ site.name }}
+    </title>
+
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css"/>
+    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml"/>
+
+  </head>
 
   <body>
     <div class="wrapper-masthead">
