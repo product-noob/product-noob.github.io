@@ -3,6 +3,7 @@ layout: post
 title: Demystifying: SEO
 ---
 
+
 As a product manager who builds digital products, the list of things you could/should know about is *long* to say the least. And it only ever seems to get *longer*!
 
 SEO is one such term I have seen many of my product peers knowing just vaguely enough to leave it to the marketeers *(I had the same stance until I had to understand it for a product feature I was working on). These are my personal notes/  initial summary of the topic.*
