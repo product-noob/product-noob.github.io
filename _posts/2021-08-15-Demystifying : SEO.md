@@ -1,4 +1,7 @@
-# Demystifying : SEO
+---
+layout: post
+title: Demystifying : SEO
+---
 
 As a product manager who builds digital products, the list of things you could/should know about is *long* to say the least. And it only ever seems to get *longer*!
 
@@ -23,7 +26,7 @@ SEO or Search Engine Optimisation is simply the process of optimising your conte
 - Less than 1% users visit on the results second results page
 - The higher you rank in search result, higher is your CTR (kind of obvious!)
     
-    ![Untitled](Demystifying%20SEO%20f2d24b4aba0f445bb24b207035704cc9/Untitled%201.png)
+    ![SEO_Google Search Trend ](/images/SEO_GoogleSearchTrend.png)
     
 
 There are two main advantages of SEO over advertising:
