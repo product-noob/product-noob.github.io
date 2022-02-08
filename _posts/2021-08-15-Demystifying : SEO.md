@@ -12,7 +12,7 @@ SEO is one such term I have seen many of my product peers knowing just vaguely e
 SEO or Search Engine Optimisation is simply the process of optimising your content to be discovered through search results “organically”. Simply put SEO decides how does your website ranks in search results for keywords relevant to your business: the higher the better.
 
 <blockquote>
-<p>💡 One of the companies I find really excelling in their SEO game is [Cleartax](https://cleartax.in/)! Think of any keyword related to Personal Income tax and they will almost always be the first result “organically”, even before the gov’s Income tax website!. Just think of the organic users they are able to acquire due to this and in my opinion this a very BIG moat! </p>
+<p>💡 One of the companies I find really excelling in their SEO game is [Cleartax](https://cleartax.in/) Think of any keyword related to Personal Income tax and they will almost always be the first result “organically”, even before the gov’s Income tax website!. Just think of the organic users they are able to acquire due to this and in my opinion this a very BIG moat! </p>
 </blockquote>
 ![SEO_Cleartax](/images/SEO_Cleartax.png)
 
