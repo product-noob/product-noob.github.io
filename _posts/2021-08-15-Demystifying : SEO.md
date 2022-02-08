@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Demystifying : SEO
+title: Demystifying: SEO
 ---
 
 As a product manager who builds digital products, the list of things you could/should know about is *long* to say the least. And it only ever seems to get *longer*!
@@ -16,7 +16,7 @@ SEO or Search Engine Optimisation is simply the process of optimising your conte
 
 </aside>
 
-![Untitled](Demystifying%20SEO%20f2d24b4aba0f445bb24b207035704cc9/Untitled.png)
+![SEO_Cleartax](/images/SEO_Cleartax.png)
 
 ### **Why is SEO important?**
 
@@ -43,7 +43,7 @@ For most practical purposes, Google is the single most important place for your 
 **Keywords**: Keywords are the words or phrases user’s type into search engines to find what they are looking for. In a nutshell, SEO is all about finding keywords people are putting into search engines and link those with your business.
 *For instance say if you are Domino’s, you would want to occupy topmost spot for the keyword “**Pizza**” : as is interestingly the case currently!*
 
-![Untitled](Demystifying%20SEO%20f2d24b4aba0f445bb24b207035704cc9/Untitled%202.png)
+![SEO_Dominos](/images/SEO_Dominos.png)
 
 **Starting with setting up your SEO:**
 
