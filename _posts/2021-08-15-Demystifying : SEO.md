@@ -61,6 +61,7 @@ These are some of the commonly known parameters where you can add your keyword t
 * Meta Tags
 * Alt links for images/ videos
 * Anchor text
+![SEO_Moz Sample Page](/images/SEO_Moz.gif)
 
 While there is a whole lot to write about SEO, infact there are companies and people who made their career in SEO. For now I'll end here and share few links I found useful during my research:
 
