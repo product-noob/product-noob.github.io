@@ -52,8 +52,9 @@ To start with setting up SEO with your business, start by putting up a list of k
 
 There are tools you can use to get the keywords and metrics like [Keyword planner](https://ads.google.com/intl/en_en/home/tools/keyword-planner/), [Google Trends](https://trends.google.com/trends/?geo=IN) and third party tools like [Ahref](https://ahrefs.com/keyword-generator), [UberSuggest](https://neilpatel.com/ubersuggest/) etc. 
 
-Once you are done choosing the relevant keywords, next step is to add those keywords to your app/ website. These can/ should be added at various places depending on the site structure and content.
-There are very complex algorithm running at Google's end to determine ranking of each keyword with more than 1000+ parameters with different weightages. These are some of the common places widely used to improve your SEO ranking:
+Once you are done choosing the relevant keywords, next step is to add those keywords to your app/ website. These can/ should be added at various places depending on the site structure and content. <br>
+There are complex algorithm running at Google's end to determine ranking of results for each keywords with more than 500 odd parameters in consideration (most of which are blackbox). 
+These are some of the commonly known parameters where you can add your keyword to improve your SEO ranking:
 
 * Body of the text 
 * Title
@@ -61,7 +62,7 @@ There are very complex algorithm running at Google's end to determine ranking of
 * Alt links for images/ videos
 * Anchor text
 
-While there is a whole lot to write about SEO, infact there are people and companies who made their career in SEO. For now I'll end here and share few links I found useful during my research:
+While there is a whole lot to write about SEO, infact there are companies and people who made their career in SEO. For now I'll end here and share few links I found useful during my research:
 
 ### Some blogs/ links to learn more about SEO:
 
