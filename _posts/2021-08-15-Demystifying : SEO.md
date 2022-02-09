@@ -50,9 +50,10 @@ To start with setting up SEO with your business, start by putting up a list of k
 - **Search Demand for the keyword :** This simply means the total searches for the keywords in a given period. The more the demand, more are your chances for reaching customers.
 - **Traffic potential for the keyword :** This means total traffic you would get if you were to rank at the top of search result for your keyword. Thanks to Google’s showing relevant info upfront in widgets (try searching for usd to inr), many search results have a very poor CTR.
 
-There are tools you can use to get the keywords and metrics like [Keyword planner](https://ads.google.com/intl/en_en/home/tools/keyword-planner/), [Google Trends](https://trends.google.com/trends/?geo=IN) and third party tools. 
+There are tools you can use to get the keywords and metrics like [Keyword planner](https://ads.google.com/intl/en_en/home/tools/keyword-planner/), [Google Trends](https://trends.google.com/trends/?geo=IN) and third party tools like [Ahref](https://ahrefs.com/keyword-generator), [UberSuggest](https://neilpatel.com/ubersuggest/) etc. 
 
-Once you are done choosing the relevant keywords, next step is to link those keywords to your app/ website. The way to do that, is to add meta tags in your pages and include all relevant keywords you want to be associated with.
+Once you are done choosing the relevant keywords, next step is to link those keywords to your app/ website. 
+The way to do it, is to add meta tags in your pages and include all relevant keywords you want to be associated with.
 
 {{ **WIP**}}
 
