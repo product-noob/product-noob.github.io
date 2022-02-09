@@ -55,7 +55,7 @@ Once you are done choosing the relevant keywords, next step is to link those key
 ### Some blogs/ links to learn more about SEO:
 
 - [https://neilpatel.com/blog/](https://neilpatel.com/blog/)
-- [https://www.reddit.com/r/SEO/comments/2y1r8z/rseo_sucks_lately_i_want_to_make_it_better_here/](https://www.reddit.com/r/SEO/comments/2y1r8z/rseo_sucks_lately_i_want_to_make_it_better_here/)
-- [https://www.youtube.com/playlist?list=PLvJ_dXFSpd2vk6rQ4Rta5MhDIRmakFbp6](https://www.youtube.com/playlist?list=PLvJ_dXFSpd2vk6rQ4Rta5MhDIRmakFbp6)
+- [Reddit Gyaan](https://www.reddit.com/r/SEO/comments/2y1r8z/rseo_sucks_lately_i_want_to_make_it_better_here/)
+- [Ahref Tutorials on SEO](https://www.youtube.com/playlist?list=PLvJ_dXFSpd2vk6rQ4Rta5MhDIRmakFbp6)
 
-****If you see the header of this blog, I have added few meta tags to improve the SEO so that the next time you search for SEO, this article might “one day” come up in your google search result🤞
+**If you see the header of this blog, I have added few meta tags to improve the SEO so that the next time you search for SEO, this article might “one day” come up in your google search result🤞**
