@@ -61,7 +61,6 @@ These are some of the commonly known parameters where you can add your keyword t
 * Meta Tags
 * Alt links for images/ videos
 * Anchor text
-![SEO_Moz Sample Page](/images/SEO_Moz.gif)
 
 While there is a whole lot to write about SEO, infact there are companies and people who made their career in SEO. For now I'll end here and share few links I found useful during my research:
 
@@ -70,6 +69,6 @@ While there is a whole lot to write about SEO, infact there are companies and pe
 - [Google's SEO Starter Guide](https://developers.google.com/search/docs/beginner/seo-starter-guide)
 - [Reddit Gyaan](https://www.reddit.com/r/SEO/comments/2y1r8z/rseo_sucks_lately_i_want_to_make_it_better_here/)
 - [Ahref Tutorials on SEO](https://www.youtube.com/playlist?list=PLvJ_dXFSpd2vk6rQ4Rta5MhDIRmakFbp6)
-- [https://neilpatel.com/blog/](https://neilpatel.com/blog/)
+- [https://neilpatel.com/blog/](https://neilpatel.com/blog/) 
 
 **If you see the head HTML element of this blog, you'll find I have added few meta tags to improve the SEO so that the next time you search for SEO, this article might “one day” come up in your google search result🤞**
