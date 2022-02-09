@@ -19,29 +19,30 @@ SEO or Search Engine Optimisation is simply the process of optimising your conte
 
 ### **Why is SEO important?**
 
-**Some Stats:**
-
-- More than 50% of trackable traffic comes via [Organic Search](https://videos.brightedge.com/research-report/BrightEdge_ChannelReport2019_FINAL.pdf)
-- More than 95% users visit on the results from the [first results page](https://www.brafton.com/news/95-percent-of-web-traffic-goes-to-sites-on-page-1-of-google-serps-study/)
-- The higher you rank in search result, higher is your CTR (kind of obvious!) 
- 
-    ![SEO_Google Search Trend ](/images/SEO_GoogleSearchTrend.png)
-    
 There are two main advantages of SEO over advertising:
 
 - Unlike paying for Ads, search traffic is free!
 - Organic Traffic is pretty consistent once you are ranking high.
 **Bonus**: Ad blockers won’t block your result from getting displayed 😉
 
+
 For most practical purposes, Google is the single most important place for your SEO. 
 *Google Search has more than 1B MAUs with 93% market share in search engine traffic!*
 
-**Starting with setting up SEO for your business:**
+**Some Stats on Google Search:**
+
+- More than 50% of trackable traffic comes via [Organic Search](https://videos.brightedge.com/research-report/BrightEdge_ChannelReport2019_FINAL.pdf)
+- More than 95% users visit on the results from the [first results page](https://www.brafton.com/news/95-percent-of-web-traffic-goes-to-sites-on-page-1-of-google-serps-study/)
+- The higher you rank in search result, higher is your CTR (kind of obvious!) 
+ 
+    ![SEO_Google Search Trend ](/images/SEO_GoogleSearchTrend.png)
+
+### Starting with setting up SEO for your business:
 
 **Keywords**: Keywords are the words or phrases user’s type into search engines to find what they are looking for. In a nutshell, SEO is all about finding keywords people are putting into search engines and link those with your business.
 
-![SEO_Dominos](/images/SEO_Dominos.png)
 *For instance say if you are Domino’s, you would want to occupy topmost spot for the keyword “**Pizza**” : as is interestingly the case currently!*
+![SEO_Dominos](/images/SEO_Dominos.png)
 
 Start with putting up a list of keywords, you believe user’s associate with your business / you want to target for your business. (like the Pizza keyword for Dominos). For keywords relevant to your business offering, try finding two metrics:
 
