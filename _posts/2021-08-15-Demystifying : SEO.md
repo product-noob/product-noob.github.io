@@ -42,7 +42,7 @@ For most practical purposes, Google is the single most important place for your 
 
 **Keywords**: Keywords are the words or phrases users type into search engines to find what they are looking for. In a nutshell, SEO is all about finding keywords people are putting into search engines and linking those with your business.
 
-*For instance say if you are Domino’s, you would want to occupy topmost spot for the keyword “**Pizza**” : as is interestingly the case currently!*
+*For instance say if you are Domino’s, you would want to occupy topmost spot for the keyword “**Pizza**” : as is interestingly the case currently!* <br>
 ![SEO_Dominos](/images/SEO_Dominos.png)
 
 To start with setting up SEO with your business, start by putting up a list of keywords user’s associate with your business / you want to target for your business. (like the Pizza keyword for Dominos). For keywords relevant to your business offering, try finding two metrics:
