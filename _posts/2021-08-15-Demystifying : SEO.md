@@ -15,6 +15,7 @@ SEO or Search Engine Optimisation is simply the process of optimising your conte
 <blockquote>
 <p> One of the companies I find really excelling in their SEO game is Cleartax. Think of any keyword related to Personal Income tax and they will almost always be the first result “organically”, even before the Gov’s Income tax website! Just think of the organic users they acquire due to this and in my opinion this a very BIG moat! </p>
 </blockquote>
+
 ![SEO_Cleartax](/images/SEO_Cleartax.png)
 
 ### **Why is SEO important?**
