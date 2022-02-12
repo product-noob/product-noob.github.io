@@ -3,14 +3,14 @@ layout: post
 title: Demystifying SEO
 
 ---
-As a product manager who builds digital products, the list of things you could/should know about is *long* to say the least. And it only ever seems to get *longer*!
+As a product manager who builds digital products, the list of things you should know about is *long* to say the least and it only ever seems to get *longer*!
 
 SEO is one such term I have seen many of my product peers knowing just vaguely enough to leave it to the marketeers *(I had the same stance until I had to understand it for a product feature I was working on).* 
 These are my personal notes from the initial research on the topic.
 
 ### What is SEO?
 
-SEO or Search Engine Optimisation is simply the process of optimising your content so that it can be discovered through search results “organically”.  Simply put SEO decides how does your website ranks in search results for keywords relevant to your business: the higher the better.
+SEO or Search Engine Optimisation is the process of optimising your content so that it can be discovered through search results “organically”.  Simply put SEO decides how does your website ranks in search results for keywords relevant to your business: the higher the better.
 
 <blockquote>
 <p> One of the companies I find really excelling in their SEO game is Cleartax. Think of any keyword related to Personal Income tax and they will almost always be the first result “organically”, even before the Gov’s Income tax website! Just think of the organic users they acquire due to this and this in my opinion is a very BIG moat for them! </p>
@@ -61,6 +61,11 @@ These are some of the commonly known parameters where you can add your keyword t
 * Meta Tags
 * Alt links for images/ videos
 * Anchor text
+* XML Sitemap
+
+Once you have added relevant keywords to your website content, next step is for that content to be indexed by the search engines. The way this happens is Google keep running web crawlers (commonly known as spiders) to collect these keywords and index them for their search engine. It typically takes 2-4 days for new content to be indexed (in my experience) and then voila your site is available on the search results for those keywords.
+
+The real work starts from here: you need to convince Google's algorigthms that your content is the most relevant for those keywords. There are a bunch of useful strategies like getting quality backlinks, ad driven intital push, optimisation in keywords & content, improving on the site load time & performance etc. Its a process constant iteration and learning to keep on optimising your SEO.
 
 While there is a whole lot to write about SEO, infact there are companies and people who made their career in SEO. For now I'll end here and share few links I found useful during my research:
 
