@@ -3,13 +3,10 @@ layout: page
 title:  Work Summary
 permalink: /worksummary/
 ---
-**Summarising my professional journey so far**
 
 #### Paytm (~3 years) ####
 
-**Sept 2021 - Now**
-
-*Senior Product Manager, Paytm Health and Mini Apps.*
+*Senior Product Manager, Paytm Health and Mini Apps.* **Sept 2021 - Now**
 - Took on additional responsibility to launch the [Paytm Health vertical](https://twitter.com/Paytm/status/1479712862746517506) 
 - Envisioned to be a one stop shop for users for all their healthcare needs : *Medicine Ordering, Teleconsult, Digital Health Identity, Blood banks repository* 
 - Launched Paytm PHR (Public Health Records) app integrated with the UHI ecosytem) [press](https://www.livemint.com/technology/paytm-users-can-now-create-their-health-id-know-its-benefits-11640596211499.html)
@@ -19,9 +16,9 @@ permalink: /worksummary/
 - Laid down next 12 months roadmap for both Paytm Health and Mini Apps
 
 
-**May 2019 - Sept 2021**
 
-*Product Manager, Paytm Mini Apps.*
+*Product Manager, Paytm Mini Apps.* **May 2019 - Sept 2021**
+
   - Product owner for the entire Paytm Mini Apps platform (Android & iOS App, merchant integrations and platform growth); managed a team of 20+ developers and 1 APM.
   - Led the development of the App SDK to enable "Mini Apps"; grew the platform to over 2000+ apps across 10+ categories
   - Planned and hosted a developer conference to announce the launch the platform [press release](https://www.livemint.com/technology/apps/paytm-announces-mini-apps-developers-conference-on-8-october-11601965880559.html) , [conference link](https://www.youtube.com/watch?v=nuK7Ct59Vyk&t=3162s)
@@ -36,7 +33,7 @@ permalink: /worksummary/
 
 #### Oracle (~2 years) ####
 
-**Aug 2015 - May 2015**
+*Applications Developers * **Aug 2015 - May 2015**
 
 *Worked in Oracle’s Financial Software Services(OFSS) entity, which builds technology solutions for banking clients.*
   - Joined the platform team of Data Governance Studio as one of the first developers and contributed in the launch of first two iterations [link](https://www.oracle.com/a/ocom/docs/industries/financial-services/ds-ofs-dgrr-3714726.pdf)
