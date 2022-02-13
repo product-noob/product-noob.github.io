@@ -36,7 +36,7 @@ This is a sample text.
 <p> This is sample I-frame tag </p>
 Linking here some of the good sources to visit later for Markdown or HTML tutorials
 
-
+<!-- 
 ### Basic Site Structure
 
 Listing down some of the basic structure/ to-do's for the website:
@@ -75,3 +75,5 @@ Step by step process to make a new entry in the blog:
     ![{{Image Title}}]("/images/image_name.png")
     4. To add a hyperlink to the document: 
 4. Safe and Refresh to see the latest blog post published!
+
+--> 
