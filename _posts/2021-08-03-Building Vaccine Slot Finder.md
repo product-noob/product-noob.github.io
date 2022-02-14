@@ -4,11 +4,11 @@ title: Building the Vaccine Slot Finder tool
 ---
 
 
-What started as a weekend project ended up becoming one of the most popular vaccination tool for millions of people in the country! This is behind the scenes story of how the Paytm Vaccine Finder tool came to life; it's a story of what at the surface may seem to be an easy problem, takes a large, capable team and multiple iterations to make it work!
+What started as a weekend project ended up becoming one of the most popular vaccination tool for millions of people in the country! This is behind the scenes story of how the Paytm Vaccine Finder tool came to life.
 
 **Some stats on the tool:**
 
-The Vaccine Finder tool has helped more than **15 million** users from over 750 districts and 19,000+ PIN codes in the country by sending more than **1 billion** vaccine availability alerts , enabling **~3 million** vaccine slot booking on the Paytm app.
+The tool helped more than **15 million** users from over 750 districts and 19,000+ PIN codes in the country by sending more than **1 billion** vaccine availability alerts, and achieved **3 million+** vaccine slot booking on the Paytm app.
 
 In the details that follow, I have tried sharing the story of how we built this tool.
 
@@ -28,9 +28,7 @@ This all started during a casual mid-day twitter browsing on a Wednesday (blame 
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Today, we have opened Co-Win APIs for vacancies search and downloading certificates of vaccinations for third party applications. API specs can be found at <a href="https://t.co/2t0Ac8Ftmi">https://t.co/2t0Ac8Ftmi</a>.</p>&mdash; Dr. RS Sharma (@rssharma3) <a href="https://twitter.com/rssharma3/status/1387252842667208704?ref_src=twsrc%5Etfw">April 28, 2021</a></blockquote>
 
-Reading this tweet I discussed with my manager almost immediately that we should do something on this initiative. After all, I was also struggling to book a vaccine slot for my family and understood the need very well and could see the immediate benefit millions of people would get from such a tool.
-
-All I was told is to gather a team and start hashing out the idea of what we want the tool to be. Yes, that's one of the many benefits of working in Paytm, there's never been a decision paralysis!
+Reading this tweet I discussed with my manager almost immediately that we should do something on this initiative. After all, I was also struggling to book a vaccine slot for my family and understood the need very well and could see the immediate benefit millions of people would get from such a tool and was confident we could build a value prop on top of the exposed APIs.
 
 With the alignment set, I started pinging folks I knew who'd be willing to work over a weekend for a side project and to my amusement, everyone I pinged was interested to be a part! With the team in place we started studying the [Co-WIN APIs](https://apisetu.gov.in/public/marketplace/api/cowin/cowin-public-v2) almost immediately.
 
@@ -42,7 +40,7 @@ We started analysing the APIs around the evening, ideated and hashed out an MVP 
 
 ### Questions we had while starting the project:
 
-Before we went ahead and started working on the project in full steam, there were a couple of WHYs and Hows we thought to answer for ourselves and the team to have the right intensions and the idea of what we wanted to build.
+Before we went ahead and started working on the project in full steam, there were a couple of WHYs and HOWs we thought to answer for ourselves and the team to have the right intensions and the idea of what we wanted to build.
 
 #### I. Why should we do this?
 
@@ -52,11 +50,9 @@ This one was probably the easiest one to answer:
 
 Getting people vaccinated was our best bet to overcome this pandemic! In our role as the technology leaders in the country it was our duty if I may say to help our users and fellow citizens in the best way we can to overcome this pandemic.
 
-I am glad to share that Paytm has always been at the forefront for helping the country for social causes: be it collecting donations for Flood victims in [Kerala](https://www.businesstoday.in/latest/corporate/story/paytm-collects-rs-30-crore-12-lakh-users-kerala-flood-relief-fund-109193-2018-08-21) and [Bihar](https://www.indiatoday.in/information/story/here-s-how-you-can-donate-for-assam-and-bihar-flood-victims-using-paytm-app-1706004-2020-07-31) or contributing to [PM-CARES fund](https://economictimes.indiatimes.com/small-biz/startups/newsbuzz/paytm-collects-rs-100-cr-contributions-for-pm-cares-fund/articleshow/75093399.cms) or [serving meals](https://economictimes.indiatimes.com/magazines/panache/a-kind-gesture-paytm-partners-with-kvn-foundation-to-provide-75000-meals-to-migrants-daily-wage-workers-per-day/articleshow/75040515.cms?from=mdr) to migrant workers during lockdown. Paytm had then also launched an [Oxygen Donation](https://paytm.com/oxygen-campaign#/donations?utm_source=social_media&utm_medium=Twitter&utm_campaign=oxygen) drive few days back (and was able to get contributions of more than INR 100Mn+) and this tool would have been a useful addition in our efforts towards fighting COVID-19
-
 Creating this utility was our next small bit in making sure that information about the vaccination drive is widely available to users from all sections and strata of society and we are able to help them with relevant info to get them vaccinated sooner.
 
-This motivation was useful and meaningful enough to keep us motivated to burn the midnight oil for the next many days to create a “simple” tool to help our users.
+This motivation was meaningful enough to keep us motivated to burn the midnight oil for the next many days to create a “simple” tool to help our users.
 
 “*simple” because we wanted to solve a complex problem at our end to make it simpler for the users to find and book slots.*
 
@@ -71,9 +67,9 @@ Till date, we have not added any promotions/ adverts or any have made use of any
 
 I have been asked this question multiple times by many friends and colleagues in the days following the launch of this tool. Couple of reasons we thought of then:
 
-- **Reach**: Paytm has a wide user base (600+ Mn users!) spread across the country and with such a tool we might be able to help a much larger base and help in a widespread awareness for vaccination among our users.
+- **Reach**: Paytm has a wide user base (500+ Mn users!) spread across the country and with such a tool we might be able to help a much larger base and help in a widespread awareness for vaccination.
 - **Technological Barrier:** Not many people are tech-savvy to be able to run bots/ utilities to find and book as and when new slots come. We wanted to bridge on this technology divide and make info about new slots accessible to anyone and everyone.
-- **User Trust/ Data Privacy:** A lot of bots/ tools which cropped up were (for good or bad) just data gathering dumps with no surety if they would ever work or if the user data was safe! With Paytm being already trusted by millions of users and us not requiring any details from the user (they were already in the Paytm app), ours was a much safer way for them to get vaccine related information.
+- **User Trust/ Data Privacy:** A lot of bots/ tools which cropped up were just data gathering dumps with no surety if they would ever work or if the user data was safe! With Paytm already being a trusted brand and us not requiring any details from the user (they were already in the Paytm app), ours was a much safer way for them to get vaccine availability related information.
 - **Personalised Alerts:** The Telegram / Twitter bots served only for a handful of major cities (around 160 at the time of writing this article) and they were sending generalised alerts for slot availability. Our tool allowed us to go much deeper into user specific personalisation: basis PIN Code, vaccine type, dose count etc., which effectively meant every alert we sent to the user was highly relevant and instantly actionable. This became more and more useful as the vaccination drive progressed.
 - **Enable users to directly book on Paytm:** We had an opportunity to improve on the overall vaccine booking experience for the users and wanted to finally build an integrated slot booking on our app (thankfully we were able to do so within a few weeks of launching the tool)
 
@@ -81,9 +77,10 @@ I have been asked this question multiple times by many friends and colleagues in
 
 Short Answer : Yes.
 
-Long Answer: Yes, but we need to make the right architectural and design decisions in order to do so.! While designing the initial architecture, we designed the system with a target of 1 million users (we were happy to be proven wrong later!)
+Long Answer: Yes, but we had to make the right architectural and design decisions and iterate quickly various times in order to do so.! 
+While designing the initial architecture, we designed the system with a target of 1 million users (we were happy to be proven wrong later!)
 
-The tech folks did most of the magic here. We wanted the system to be cheap and scalable for us to allow us to run it for the many months to come until the vaccination drive finishes and be able to handle the scale this tool can potentially have. What we used is a combination of Mongo-DB and Lambda and created essentially a Stateless system to avoid storing/ processing too much data. Over the many weeks, we did multiple iterations to improve almost each and every aspect of the tool: the alerting logic, the UX, the frequency with which we sent out alerts, the customisation options and new functionalities to the tool.
+The tech folks did most of the magic here. We wanted the system to be cheap and scalable for us to allow us to run it for the many months to come until the vaccination drive finishes and be able to handle the scale this tool can potentially have. What we used is a combination of Mongo-DB and Lambda and created essentially a Stateless system to avoid storing/ processing too much data. Over the many weeks, we did multiple iterations to improve almost each and every aspect of the tool: the alerting logic, the UX, the frequency with which we sent out alerts, the customisation options and adding new functionalities to the tool.
 
 #### IV. How quickly can we launch this?
 
@@ -95,7 +92,7 @@ We set ourselves an insane timeline of **4 days** to launch the first version of
 
 ### Here’s how we actually did it……
 
-What we started with is to find a use-case for the tool which was important enough for us to build for. In Product Manager's terminology, the user-story for it read like this: ***"***
+What we started with is to narrow down a use-case for the tool which was important enough for us to build for. In Product Manager's lingo the user-story for it read like this: ***"***
 
  ***As a user I want the tool to help me find and book vaccine slots as easily as possible!"***
 
@@ -129,7 +126,7 @@ To figure out value prop, I analysed the existing options in the market to find 
 
 It was essential for us to launch an MVP quickly to validate our hypothesis if the market really had a need for such a tool and gather crucial user feedback. Since the APIs were launched over a weekend, it was not possible to get a designer aligned to get the UI of the app designed.
 
-Thankfully in Paytm we have a [standard design library](https://thehardcopy.co/under-paytms-design-hood/) (shout-out to [Rahul](https://www.linkedin.com/in/rahulsaini) and his team!) and we used that to our advantage. I opened Figma Design PODS, combined various existing UI elements based on our needs and created a workable UI flow. Also, since our focus was to not make the flow too different from the Co-WIN’s UI, it helped in making design decisions.
+Thankfully in Paytm we have a [standard design library](https://thehardcopy.co/under-paytms-design-hood/) and we used that to our advantage. I opened Figma Design PODS, combined various existing UI elements based on our needs and created a workable UI flow. Also, since our focus was to not make the flow too different from the Co-WIN’s UI, it helped in making design decisions.
 
 This is how our first cut (without any design inputs) looked like:
 
@@ -194,13 +191,9 @@ I have tried summarising the major versions we had for the tool:
     
 - **Version** **4,5,6,...n:** During the course of the next many weeks, we iterated multiple times to improve our tool: adding new functionalities, supporting new vaccines types and even enabling users to download their International Travel Certificate. We even launched a (now viral) social media campaign to educate users
 
-<iframe width="420" height="315"
-src="https://www.youtube.com/watch?v=3lXDcM3VrTo">
-</iframe>
-
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Ready, on your marks – <a href="https://twitter.com/hashtag/GetShotGo?src=hash&amp;ref_src=twsrc%5Etfw">#GetShotGo</a> 💉 <a href="https://t.co/Em9nsWnJ9p">pic.twitter.com/Em9nsWnJ9p</a></p>&mdash; Paytm (@Paytm) <a href="https://twitter.com/Paytm/status/1405744353310433288?ref_src=twsrc%5Etfw">June 18, 2021</a></blockquote>
 
-OK, I know, it’s time to wrap this up (although there is so so much more to write on this..)
+OK, I know, it’s time to wrap this up (although there is still so much more to write on this.. ;) )
 
 Thanks for reaching this far to the end. If want to try the tool for your self you can still do so by visiting [https://m.paytm.me/vaccineslotfinder](https://m.paytm.me/vaccineslotfinder)
 
