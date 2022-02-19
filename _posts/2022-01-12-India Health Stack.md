@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title:  "Explaining the National Health Stack"
