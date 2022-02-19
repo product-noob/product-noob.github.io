@@ -49,7 +49,7 @@ In a nutshell, the India Stack enabled us widen **access to financial services, 
 - Payments: UPI
 - Data: DEPA
 
-*If you want to learn more about the India Stack, read *[this](https://tigerfeathers.substack.com/p/the-internet-country)** amazing blog on by Aaryaman on Substack.*
+*If you want to learn more about the India Stack, read [this](https://tigerfeathers.substack.com/p/the-internet-country) amazing blog on by Aaryaman on Substack.*
 
 ---
 
