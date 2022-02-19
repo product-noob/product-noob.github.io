@@ -48,7 +48,7 @@ In a nutshell, the India Stack enabled us widen access to financial services, dr
 - Payments: UPI
 - Data: DEPA
 
-*If you want to learn more about the India Stack, read [this](https://tigerfeathers.substack.com/p/the-internet-country) amazing blog on by Aaryaman on Substack.*
+*If you want to learn more about the India Stack, read [this](https://tigerfeathers.substack.com/p/the-internet-country) amazing blog on India Stack by Aaryaman Vir.*
 
 ---
 
@@ -203,7 +203,7 @@ While there is some merit to this critic since the government did create HealthI
     > 
     Of 165 million health IDs that have been generated, CoWIN alone aided in generation of 127 million of them
     >   
-Looking back this certainly was an oversight on behalf of policy makers but considering that no other document was added to this,  I don’t see this as any harm done. 
+    Looking back this certainly was an oversight on behalf of policy makers but considering that no other document was added to this,  I don’t see this as any harm done. 
     *Note: It has been rolled backed since then and new cowin certificates don’t have a HID.* 
     
 - **Loose definition on encryption for Health Lockers/ PHR apps**
