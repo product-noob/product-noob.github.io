@@ -156,18 +156,19 @@ Okay, so now that you understand the basic construct of the National Health Stac
 ### Key tenants of the Health Stack
 
 - **Inter-Operablility**
-    
     UHI is designed to be a truly inter-operable model. You can have your health records from various different providers (Labs, clinics, private & government health facilities, self uploaded medical records) and all of it will be consolidated for the user linked to their Health ID and available to the entire ecosystem for access ***post an explicit end user consent.***
-    
     This ensures that health data is easily accessible by everyone in the ecosystem and large players do not build a closed wall around user data using their proprietary protocol.
     
 - **Consent**
 Another core tenant of UHI is that any user data flows only upon explicit user consent. No health data for the user flows There are even granular controls to choose the health document type and time validity for which the documents are shared. No entity can ever access your health documents without explicit consent.
+
 - **Choice**
 Another key fundamental of the UHI network is that it is **optional** and only users who wishes to participate in this network do. No one by default gets a Health Id or gets their data shared with anyone in the ecosystem*  
 *(**Note**: There was a known deviation to this where Health IDs were created for millions of users during their Covid Vaccination and has been rolled back since then)*
+
 - **Ownership**
 While the construct of ownership is still loosely defined, probably due to impeding PDP bill. The idea here is that user owns their health care data and are free to fetch their data from all healthcare entities in the ecosystem and store it permanently* for themselves in a separate health locker of their choice. (* depending on the capabilities of the Health Locker)
+
 - **Privacy** 
 All user data is stored and is exchanged in an encrypted manner and only the relevant parties authorised (with a valid private key) can decrypt and view the health care data.
 
@@ -177,8 +178,10 @@ While the Health Stack is still currently being worked upon and many opportuniti
 
 - **PHR App**: Any private entity which has a good understanding and capability to build user side flows can become a PHR App. It is essentially the app which users will use to interact with the UHI stack (like the fintech apps incase of UPI). 
 There are significant potential to integrate and enable a lot of value added services like payments, doctor ratings/reviews, health records storage, upselling services like insurance, lab tests, hardware devices etc.
+
 - **Health Locker:** This is another user facing functionality enabled by NDHM. This is Google Drive equivalent of Health where users can store their longitudinal health data from all health providers, digitise existing health documents (uploading them) and ensuring its accessible and stored perenially.
 This is the data layer of UHI stack and a lot of interesting use cases from insurance to analytics can be build on top of the health locker layer.
+
 - **HIMS/ LIMS:** Most labs and hospitals currently use outdated HIMS systems, which barely serves the purpose of digitising their information flow. In order for them to integrate with the NDHM ecosystem, they would need to upgrade their information management systems to make it FHIR and UHI compliant and also invest considerably in hardware to digitise the data collection and viewing flow. 
 There is significant business potential for hardware and software players in hospital-tech.
 
@@ -195,23 +198,23 @@ There are some of the critics I have come across while researching and discussin
 
 - **Its meant to INDIA and not for BHARAT**
 While most of what I discussed about for the stack assumes the user has a smartphone (blame my privilege), most part of the UHI functions even without one! Users can create a HealthID account at health centres by showing physical documents and get a physical Health ID Card, and avail most of these services offline. The fundamental utlity of the documents available digitally still is valid. However, some intricate aspects like health data sharing and consent flow for non-smartphone users though are something yet to be detailed out further.
+
 - **Health IDs were created without consent during Vaccination drive**
 While there is some merit to this critic since the government did create HealthIDs for users without any explicit consent or education and most of them got to know about this when opening their vaccination certificate, there was no leakage or miss-use of user’s health data in my opinion.
-    
     > Of 165 million health IDs that have been generated, CoWIN alone aided in generation of 127 million of them
-    > 
-    
-    Looking back this certainly was an oversight on behalf of policy makers but considering that no other document was added to this,  I don’t see this as any harm done.
-    
-     *Note: It has been rolled backed since then and new cowin certificates don’t have a HID.* 
+    >   
+    Looking back this certainly was an oversight on behalf of policy makers but considering that no other document was added to this,  I don’t see this as any harm done. 
+    *Note: It has been rolled backed since then and new cowin certificates don’t have a HID.* 
     
 - **Loose definition on encryption for Health Lockers/ PHR apps**
 Currently there is not enough regulations/ policies around how health lockers/ PHR apps need to handle or store user’s health data. While NDHM lays out broad principles and guidelines, there are no well defined requirements on data encryption and storage for these entities.
 In my opinion, as the ecosystem evolves, this will eventualy become more clearer.
+
 - **Opposition from the incumbents**
 This ecosystem in a lot of ways is a direct threat to the current business models of the incumbents.  Lets take Practo for example: it has invested considerable money and resources in getting tens of thousands of doctors onboarded and verified on their platform, which is the hook they use to get users onto their platform. 
 In the UHI scheme of things all health professional will be onboarded by NDHM and are available for all players to leverage. The moat Practo had (the closed wall) might be made irrelevant. But this is also why a lot of innovations might happen in health-tech space and new and interesting business models will arrive.
 
+The end. Thank you for bearing with me all the way till the end, I hope you got to learn some stuff about the National Health Stack.
 ***Disclaimer:** As of writing this article, I am associated with Paytm working on their Health Initaitive.*
 
 ### **References:**
