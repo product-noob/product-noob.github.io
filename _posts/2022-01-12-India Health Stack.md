@@ -13,7 +13,6 @@ India Stack is the comprehensive digital identity, payment, and data-management 
 It all started with building the digital identity for all citizens under the Aadhaar initiative ( literally meaning “foundation” in Hindi). This gave everyone a unique 12-digit identification number that could be used to access a wide range of services. 
 More than 90% of the country’s population, 1.2 Bn of them have enrolled for a Aadhaar, about half of them linked it to their bank accounts.
 
-![Aadhaar Trend](/images/Health_Stack.png)
 <img src="/images/Health_Stack.png" alt="Aadhaar Trend" class="center">
 
 Prior to Aadhaar, lack of a central identity meant nearly half of the country’s population lacked a nationally accepted identity. This meant complex processes for banks to verify identity, ultimately driving up the cost for banking. All other popular modes of identity (PAN, Passport, Driving License, Ration Card) are fragmented in their adoption and many lacks digitisation.
@@ -26,7 +25,7 @@ While the government was widening access to bank accounts, RBI under the NPCI di
 
 Since its launch in April 2016, UPI has been nothing short of a runaway success story, with few parallels in the history of global payments. In just 4 years, the second layer of India Stack grew from an ambitious idea to the world’s 5th largest payment network by volume, behind only Visa, Alipay, WeChat Pay, and MasterCard.
 
-![UPI Trend](/images/Health_Stack_1.png)
+<img src="/images/Health_Stack_1.png" alt="UPI Trend" class="center">
 
 In simple sense, the way UPI works is that all banks are connected to a central server operated by NPCI (National Payments Corporation of India) and NPCI acts as a middlemen and a custodian of all the information exchange between banks. 
 
@@ -188,7 +187,8 @@ There is significant business potential for hardware and software players in hos
 > NDHM can spur a fundamental transformation in India’s healthcare system and unlock economic value worth over $200 billion by 2030- Niti Aayog
 > 
 
-![Various Entities participating in UHI. Source: The Ken](/images/Health_Stack_6.png)
+<img src="/images/Health_Stack_6.png" alt="Various Entities participating in UHI. Source: The Ken" class="center">
+
 
 Various Entities participating in UHI. Source: The Ken
 
@@ -218,7 +218,8 @@ This ecosystem in a lot of ways is a direct threat to the current business model
 In the UHI scheme of things all health professional will be onboarded by NDHM and are available for all players to leverage. The moat Practo had (the closed wall) might be made irrelevant. But this is also why a lot of innovations might happen in health-tech space and new and interesting business models will arrive.
 
 The end. 
-Thank you for bearing with me all the way till the end, I hope you got to learn some stuff about the National Health Stack.
+
+Thank you for bearing with me all the way till the end, I hope you got to learn something about the National Health Stack.
 
 ***Disclaimer:** As of writing this article, I am associated with Paytm working on their Health Initaitive.*
 
