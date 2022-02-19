@@ -191,6 +191,12 @@ footer {
   color: $black;
   background: $lightGray;
 }
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
 
 .clearfix:before,
 .clearfix:after {
