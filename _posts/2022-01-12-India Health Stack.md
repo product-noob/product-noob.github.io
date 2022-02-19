@@ -85,6 +85,7 @@ India health stack is the infrastructure which aims to provide the foundational 
 #### Health Stack Building Blocks
 
 ![National Health Stack. Source: UHI Consultation Paper](/images/Health_Stack_2.png)
+
 National Health Stack. Source: UHI Consultation Paper
 
 There are four broad layers or stack to the National Health Stack Architecture:
@@ -187,7 +188,10 @@ There is significant business potential for hardware and software players in hos
 > NDHM can spur a fundamental transformation in India’s healthcare system and unlock economic value worth over $200 billion by 2030- Niti Aayog
 > 
 
-<img src="/images/Health_Stack_6.png" alt="Various Entities participating in UHI. Source: The Ken" class="center">
+<figure>
+   <img src="/images/Health_Stack_6.png" alt="Various Entities participating in UHI. Source: The Ken" class="center">
+    <figcaption>National Health Stack. Source: UHI Consultation Paper </figcaption>
+</figure>
 
 
 Various Entities participating in UHI. Source: The Ken
