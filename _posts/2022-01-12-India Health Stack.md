@@ -119,6 +119,7 @@ health services. It lays down the foundation of “open networks”
     
     ![Health Services Interface](/images/Health_Stack_3.png)
     
+    
     Open Networks are set of shared technical standards accessible to everyone. Being a non proprietary protocol means no one is locked into using any particular entity’s product and makes the ecosystem interoperable. 
     
     This is akin to UPI and the role of NPCI in Payments layer of India Stack. The way NPCI controls the central server and lays out protocol for banks to talk to each other (maybe now you realise why I had to cover India Stack before!), this layer lays down open protocols for various participating health care entities to talk and exchange data with each other by a introducing the concept of **Unified Health Interface** (India Stack parallel: UPI 😉) 
@@ -126,10 +127,11 @@ health services. It lays down the foundation of “open networks”
     UHI is envisioned as an open protocol for digital health services and aims to allow interactions between end-user applications (EUAs) and Health Service Providers (HSPs). This has the potential to bring a lot of benefits to the entire health ecosytem, ultimately bringing down the cost of delivery health care services: Interoperability, easy discoverability, trust and network effects. 
     
     As a small snippet assume the current scenario where every health-tech player from Apollo to Practo to EkaCare needs to have their own onboarding flows for users and doctors, incur a significant cost for verification and data accuracy. These platform operators have put in place their own doctor credential verification systems to reassure end users but the standards used by these operators are not scrutinized by any regulatory body. In the UHI scheme of things, they can simply plugin to the NDHM stack and get the list of all users and doctors which are already onboarded and can choose to build value added services on top of the stack.
-    
-    ![Digital Health Services possible on UHI. Source: NHA ](/images/Health_Stack_4.png)
-    
-    Digital Health Services possible on UHI. Source: NHA 
+               
+    <figure>
+    <img src="/images/Health_Stack_4.png" alt="Digital Health Services possible on UHI. Source: NHA ">
+    <figcaption>Digital Health Services possible on UHI. Source: NHA </figcaption>
+    </figure>
     
 4. **User Applications:** This is the final end-user layer of the NDHM ecosystem. It comprises the
 applications and platforms developed by the government or private sector through which
@@ -143,7 +145,7 @@ interchange.UHI defines various entities with regards to their participation in 
     - **Health Locker:** Think of this as a Google Drive for your health documents. The way you have all your identity documents available in Digilocker, the same way users have an option to store all their health documents in a health locker.
         
         <figure>
-        <img src="/images/Health_Stack_5.png" alt="High level information flow in UHI" class="center">
+        <img src="/images/Health_Stack_5.png" alt="High level information flow in UHI">
         <figcaption>High level information flow in UHI </figcaption>
         </figure>
     
