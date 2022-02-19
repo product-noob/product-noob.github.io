@@ -117,7 +117,7 @@ patients and healthcare providers. Some of the key components of this layer are:
 interoperable and seamless interactions between the patients and providers of digital
 health services. It lays down the foundation of “open networks”
     
-    ![Health Services Interface](/images/Health_Stack_4.png)
+    ![Health Services Interface](/images/Health_Stack_3.png)
     
     Open Networks are set of shared technical standards accessible to everyone. Being a non proprietary protocol means no one is locked into using any particular entity’s product and makes the ecosystem interoperable. 
     
