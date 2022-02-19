@@ -190,11 +190,9 @@ There is significant business potential for hardware and software players in hos
 
 <figure>
    <img src="/images/Health_Stack_6.png" alt="Various Entities participating in UHI. Source: The Ken" class="center">
-    <figcaption>National Health Stack. Source: UHI Consultation Paper </figcaption>
+    <figcaption>Various Entities participating in UHI. Source: The Ken </figcaption>
 </figure>
 
-
-Various Entities participating in UHI. Source: The Ken
 
 ### Critics to UHI
 
