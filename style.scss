@@ -119,20 +119,18 @@ b {
 }
 
 img {
-  max-width: 80%;
+  max-width: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;
-//  width: 60%;
 }
 
 nav {
   float: right;
-  margin-top: 23px; // @TODO: Vertically middle align
+  margin-top: 23px;
   font-family: "Lato", sans-serif;
   font-size: 18px;
-  font-weight: 400; //Added font weight
-
+  font-weight: 400; 
   @include mobile {
     float: none;
     margin-top: 9px;
@@ -158,7 +156,7 @@ footer {
   text-align: center;
 }
 
-//Defining all classes for customisat look and feel basis the usecases
+//Defining Classes for customisation of the look and feel for various components
 
 .container {
   margin: 0 auto;
@@ -186,7 +184,6 @@ footer {
   font-size: 14px;
 }
 
-// Specify the color of the selection
 ::-moz-selection {
   color: $black;
   background: $lightGray;
@@ -211,7 +208,6 @@ footer {
 .clearfix:after {
   clear: both;
 }
-
 
 .wrapper-masthead {
   margin-bottom: 10px;
@@ -293,7 +289,6 @@ footer {
   line-height: 2.68125rem;
   margin: 1.625rem auto 0;
 }
-
 
 .posts > .post {
   padding-bottom: 1.4em;
