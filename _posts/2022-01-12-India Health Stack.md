@@ -214,10 +214,12 @@ In my opinion, as the ecosystem evolves, this will eventualy become more clearer
 This ecosystem in a lot of ways is a direct threat to the current business models of the incumbents.  Lets take Practo for example: it has invested considerable money and resources in getting tens of thousands of doctors onboarded and verified on their platform, which is the hook they use to get users onto their platform. 
 In the UHI scheme of things all health professional will be onboarded by NDHM and are available for all players to leverage. The moat Practo had (the closed wall) might be made irrelevant. But this is also why a lot of innovations might happen in health-tech space and new and interesting business models will arrive.
 
-The end. Thank you for bearing with me all the way till the end, I hope you got to learn some stuff about the National Health Stack.
+The end. 
+Thank you for bearing with me all the way till the end, I hope you got to learn some stuff about the National Health Stack.
+
 ***Disclaimer:** As of writing this article, I am associated with Paytm working on their Health Initaitive.*
 
-### **References:**
+#### References:
 
 - **[UHI Consultation Paper](https://abdm.gov.in/assets/uploads/consultation_papersDocs/UHI_Consultation_Paper.pdf)**
 - **[National Health Stack](https://abdm.gov.in/publications/NHS_Strategy_and_Approach)**
