@@ -32,7 +32,11 @@ This is a sample text.
 </ol>
 
 <p> This is sample img tag </p>
-<img src="/images/my-image.png" alt="Prince Jain" width="200">
+<figure>
+   <img src="/images/my-image.png" alt="Prince Jain" class="center">
+    <figcaption>This is imagecaption </figcaption>
+</figure>
+
 <p> This is sample I-frame tag </p>
 Linking here some of the good sources to visit later for Markdown or HTML tutorials
 
