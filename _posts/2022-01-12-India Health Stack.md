@@ -142,11 +142,10 @@ interchange.UHI defines various entities with regards to their participation in 
     - **Public Health Record (PHR):** User facing app which facilitates HealthId creation, consent management and health record viewing. (by that definition most PHRs would be HIUs as well
     - **Health Locker:** Think of this as a Google Drive for your health documents. The way you have all your identity documents available in Digilocker, the same way users have an option to store all their health documents in a health locker.
         
-        
-        ![High level information flow in UHI](/images/Health_Stack_5.png)
-        
-        High level information flow in UHI
-        
+        <figure>
+        <img src="/images/Health_Stack_5.png" alt="High level information flow in UHI" class="center">
+        <figcaption>High level information flow in UHI </figcaption>
+        </figure>
     
      It is crucial to note that this layer is envisioned as the hotbed for market innovation. NDHM as an entity doesn’t aim to directly participate in user interactions and expects private and public sector participants to take a lead in building use cases and innovative solutions on top of this stack.
     
@@ -184,10 +183,8 @@ This is the data layer of UHI stack and a lot of interesting use cases from insu
 
 - **HIMS/ LIMS:** Most labs and hospitals currently use outdated HIMS systems, which barely serves the purpose of digitising their information flow. In order for them to integrate with the NDHM ecosystem, they would need to upgrade their information management systems to make it FHIR and UHI compliant and also invest considerably in hardware to digitise the data collection and viewing flow. 
 There is significant business potential for hardware and software players in hospital-tech.
-
 > NDHM can spur a fundamental transformation in India’s healthcare system and unlock economic value worth over $200 billion by 2030- Niti Aayog
 > 
-
 <figure>
    <img src="/images/Health_Stack_6.png" alt="Various Entities participating in UHI. Source: The Ken" class="center">
     <figcaption>Various Entities participating in UHI. Source: The Ken </figcaption>
@@ -204,10 +201,8 @@ While most of what I discussed about for the stack assumes the user has a smartp
 - **Health IDs were created without consent during Vaccination drive**
 While there is some merit to this critic since the government did create HealthIDs for users without any explicit consent or education and most of them got to know about this when opening their vaccination certificate, there was no leakage or miss-use of user’s health data in my opinion.
    
-   
    > Of 165 million health IDs that have been generated, CoWIN alone aided in generation of 127 million of them
 > 
-
     Looking back this certainly was an oversight on behalf of policy makers but considering that no other document was added to this,  I don’t see this as any harm done. 
     *Note: It has been rolled backed since then and new cowin certificates don’t have a HID.* 
     
