@@ -82,11 +82,13 @@ All the key traits of India stack are well utilised in National Health stack as 
 India health stack is the infrastructure which aims to provide the foundational components for health programs in India. It aims to bring a holistic view across multiple health entities and enable interoperability between the various public and private players.
 > “*Built as a Common Public Good by the Centre for adoption by all states, it will eliminate any repetitive efforts on part of, yet retain autonomy for, the states—paving way for rapid rollout of various health initiatives, achieve convergence and accelerate the momentum to achieve the goal of Universal Health Coverage*” - NHA
 > 
+
 #### Health Stack Building Blocks
 
-![National Health Stack. Source: UHI Consultation Paper](/images/Health_Stack_2.png)
-
-National Health Stack. Source: UHI Consultation Paper
+<figure>
+<img src="/images/Health_Stack_2.png" alt="National Health Stack. Source: UHI Consultation Paper">
+<figcaption>National Health Stack. Source: UHI Consultation Paper</figcaption>
+</figure>
 
 There are four broad layers or stack to the National Health Stack Architecture:
 
