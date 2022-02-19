@@ -15,7 +15,7 @@ India Stack is the comprehensive digital identity, payment, and data-management 
 
 It all started with building the digital identity for all citizens under the Aadhaar initiative ( literally meaning “foundation” in Hindi). This gave everyone a unique 12-digit identification number that could be used to access a wide range of services. More than 90% of the country’s population, 1.2 Bn of them have enrolled for a Aadhaar, about half of them linked it to their bank accounts.
 
-![Untitled](Explaining%20b9ddd/Untitled.png)
+![Aadhaar Trend](/images/Health_Stack.png)
 
 Prior to Aadhaar, lack of a central identity meant nearly half of the country’s population lacked a nationally accepted identity. This meant complex processes for banks to verify identity, ultimately driving up the cost for banking. All other popular modes of identity (PAN, Passport, Driving License, Ration Card) are fragmented in their adoption and many lacks digitisation.
 
