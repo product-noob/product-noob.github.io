@@ -43,7 +43,7 @@ In a sentence, DEPA is a policy framework that defines how the economic primitiv
 
 The three layers of India Stack. Source: iSPIRT
 
-In a nutshell, the India Stack enabled us widen **access to financial services, dramatically lower the cost of confirming people’s identities and allowed control on access to people’s personal data  through consent.**
+In a nutshell, the India Stack enabled us widen access to financial services, dramatically lower the cost of confirming people’s identities and allowed control on access to people’s personal data  through consent.
 
 - Identity: Aadhaar
 - Payments: UPI
