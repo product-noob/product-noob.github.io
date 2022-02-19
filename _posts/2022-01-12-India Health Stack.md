@@ -4,16 +4,14 @@ title:  "Explaining the National Health Stack"
 
 ---
 
-
-### Background
-
 Before I start with detailing the National Health Stack, I believe it’s important to mention **India Stack.**
 
 India Stack is the comprehensive digital identity, payment, and data-management system we as a nation have been working towards for a little more than 10 years. Under it, we are trying to solve for the three economic primitives of identity, payments, and data.
 
 **Stage 1: Digital Identity**
 
-It all started with building the digital identity for all citizens under the Aadhaar initiative ( literally meaning “foundation” in Hindi). This gave everyone a unique 12-digit identification number that could be used to access a wide range of services. More than 90% of the country’s population, 1.2 Bn of them have enrolled for a Aadhaar, about half of them linked it to their bank accounts.
+It all started with building the digital identity for all citizens under the Aadhaar initiative ( literally meaning “foundation” in Hindi). This gave everyone a unique 12-digit identification number that could be used to access a wide range of services. 
+More than 90% of the country’s population, 1.2 Bn of them have enrolled for a Aadhaar, about half of them linked it to their bank accounts.
 
 ![Aadhaar Trend](/images/Health_Stack.png)
 
@@ -39,42 +37,37 @@ From an end-user aspect, everyone is free to choose the app of their choice and 
 
 The third and final piece of the India Stack focuses on establishing a new model for data governance in India. Enshrined in a policy framework known as the Data Empowerment and Protection Architecture (DEPA), the ‘data’ layer of India Stack aims to restore the ownership and control over user data to its rightful owners. 
 
-In a sentence, DEPA is a policy framework that defines how the economic primitive of data can be freed up so that individuals and businesses can choose how to best protect it and use it for their own gain. This innovation, which is presently being rolled out in the financial services industry, has its philosophical roots in a piece of impending legislation known as the Personal Data Protection Bill (PDP). ******
+In a sentence, DEPA is a policy framework that defines how the economic primitive of data can be freed up so that individuals and businesses can choose how to best protect it and use it for their own gain. This innovation, which is presently being rolled out in the financial services industry, has its philosophical roots in a piece of impending legislation known as the Personal Data Protection Bill (PDP).
 
 ![The three layers of India Stack. Source: iSPIRT](https://cdn.substack.com/image/fetch/w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6b17b401-f3bd-4366-8b53-aa650b8ca3d9_946x475.png)
 
 The three layers of India Stack. Source: iSPIRT
 
-In a nutshell, the India Stack enabled us widen **access to financial services, dramatically lower the cost of confirming people’s identities and allowed control on access to people’s personal data  through consent.
+In a nutshell, the India Stack enabled us widen **access to financial services, dramatically lower the cost of confirming people’s identities and allowed control on access to people’s personal data  through consent.**
 
 - Identity: Aadhaar
 - Payments: UPI
 - Data: DEPA
 
-*If you want to learn more about the India Stack, read **[this](https://tigerfeathers.substack.com/p/the-internet-country)** amazing blog on by Aaryaman on Substack.*
+*If you want to learn more about the India Stack, read *[this](https://tigerfeathers.substack.com/p/the-internet-country)** amazing blog on by Aaryaman on Substack.*
 
 ---
 
-### **Introduction**
+#### **Introduction**
 
 Now that you know about India Stack, before we dig deeper into the National Health Stack, I want to help you imagine a worldview where this infrastructure has come to life. 
 
 Lets take the case of a normal doctor consultation:
 
-1. You visit a Hospital and find a QR on the registration desk. You pull out your smartphone, launch the app of your choice and scan it. The hospital instantly gets accurate information about you and you are instantly registered – **Profile Sharing**
-2. The health facility then sends you a request, asking you to share relevant documents from your previous medical visits. You use your smartphone to relevant documents. -  “**Health data sharing & consent”**
-3. When you walk into the doctor’s room, she has your full medical history open on her computer. She uses that to aid in your assessment and and writes you a new prescription. You instantly get a notification on your mobile and can view the recent prescription digitally - **Digital Health Records**
-4. Doctor’s treatment plan and prescription shows up on your mobile and you can schedule a follow up visit or have a tele-consult or order medicines directly from your phone. - **Value added services like tele-consult, medicine ordering**
-5. You can then use all these documents to get instant and seamless digital claims processed for your health insurance - **e-Insurance claims**
+1. You visit a Hospital and find a QR on the registration desk. You pull out your smartphone, launch the app of your choice and scan it. The hospital instantly gets accurate information about you and you are instantly registered – *Profile Sharing*
+2. The health facility then sends you a request, asking you to share relevant documents from your previous medical visits. You use your smartphone to relevant documents. -  *Health data sharing & consent*
+3. When you walk into the doctor’s room, she has your full medical history open on her computer. She uses that to aid in your assessment and and writes you a new prescription. You instantly get a notification on your mobile and can view the recent prescription digitally - *Digital Health Records*
+4. Doctor’s treatment plan and prescription shows up on your mobile and you can schedule a follow up visit or have a tele-consult or order medicines directly from your phone. - *Value added services like tele-consult, medicine ordering*
+5. You can then use all these documents to get instant and seamless digital claims processed for your health insurance - *e-Insurance claims*
 
-<aside>
-💡 **These are some of the actual flows being enabled by the National Health Stack, currently being built piece by piece!**
+*These are some of the actual flows being enabled by the National Health Stack, currently being built piece by piece!*
 
-</aside>
-
----
-
-### Okay, so what is India Health Stack
+#### Okay, so what is India Health Stack
 
 Now that we have done a crash course on **India Stack** and understood what the future with NHS may look like, let’s actually try to understand it. NHS takes learnings from the best of what India stack has to offer:
 
@@ -87,20 +80,12 @@ All the key traits of India stack are well utilised in National Health stack as 
 - **Consent layer:** Give users control over their data and allow them to share it in a safe and secure manner
 
 India health stack is the infrastructure which aims to provide the foundational components for health programs in India. It aims to bring a holistic view across multiple health entities and enable interoperability between the various public and private players.
-
 > “*Built as a Common Public Good by the Centre for adoption by all states, it will eliminate any repetitive efforts on part of, yet retain autonomy for, the states—paving way for rapid rollout of various health initiatives, achieve convergence and accelerate the momentum to achieve the goal of Universal Health Coverage*” - NHA
 > 
 
-**Terminologies:**
-Throughout this read, you will find various new terminologies being used. This will serve as your glossary of all the terms you have find :
+#### Health Stack Building Blocks
 
-- ***NDHM**- National Digital Health Mission (now renamed as ABDM - Ayushman Bharat Digital Mission) is the government agency tasked with developing the necessary infrastructure to support digital health in the country. Think of is Health-stack equivalent of NPCI.*
-- ***HealthID***-
-- 
-
-### Health Stack Building Blocks
-
-![National Health Stack. Source: UHI Consultation Paper](/images/Health_Stack-2.png)
+![National Health Stack. Source: UHI Consultation Paper](/images/Health_Stack_2.png)
 National Health Stack. Source: UHI Consultation Paper
 
 There are four broad layers or stack to the National Health Stack Architecture:
@@ -114,15 +99,15 @@ building blocks include core participant registries, Health Information Exchange
 Manager, Health Data Standards (based on FHIR), coding terminology and data
 aggregation specifications that drive trust and shareability of health data between
 patients and healthcare providers. Some of the key components of this layer are:
-    1. **Digital** **Registries:** This is aimed to serve as a reliable and easily accessible master data about all the players in the health ecosystem. It plans to include consolidated e-registries for healthcare providers (hospitals, clinics, labs etc), beneficiaries, doctors, insurers and ASHAs etc. Similar to how every citizen has a digital identity with Aadhaar, every health participant will have a digital identity:
+    -  **Digital** **Registries:** This is aimed to serve as a reliable and easily accessible master data about all the players in the health ecosystem. It plans to include consolidated e-registries for healthcare providers (hospitals, clinics, labs etc), beneficiaries, doctors, insurers and ASHAs etc. Similar to how every citizen has a digital identity with Aadhaar, every health participant will have a digital identity:
         1. **Health Id :** Each user in the system will be issued an unique 14-digit Health ID
         2. **Doctor Id:** Each doctor in the ecosystem will be issued a unique 14-digit Doctor ID.
         3. **Facility Registry:** Each participating healthcare facility (clinic/hospital/lab etc) will be issued a unique facility ID.
         
-    2. **Health Information Exchange:** This lays down the principles of how health data is to be shared inter-operably between patients and health care providers. It lays down the FHIR so that health data is encoded in a machine readable and globally accepted format for it to be processed universally.
+    -  **Health Information Exchange:** This lays down the principles of how health data is to be shared inter-operably between patients and health care providers. It lays down the FHIR so that health data is encoded in a machine readable and globally accepted format for it to be processed universally.
     Another key aspect of this layer is **“Consent”.** It lays down the details of a consent manager which details how users consent is managed, maintained and taken into account while sharing any health data. It also gives user the control or rather the ownership of their health data  
     
-    3. **Health Claims Standards:** This component aims to provide building blocks for implementing a large scale health insurance program, with the vision of allowing private and public players to implement insurance schemes in a data driven manner through open APIs. It is meant to do enable of wide-impacting use cases in the Insurance space:
+    -  **Health Claims Standards:** This component aims to provide building blocks for implementing a large scale health insurance program, with the vision of allowing private and public players to implement insurance schemes in a data driven manner through open APIs. It is meant to do enable of wide-impacting use cases in the Insurance space:
         1. Enable a policy engine to allow for defining and storing a machine readable insurance policies
         2. Instant digital activation of policy on verification of premium transfer
         3. Setting up a Claim Engine for auto adjudication of claims**.** Scope for a smart contract (shoutout to cryto bois’ reading this ) to auto execute insurance payments on meetings conditions of the claim process
@@ -132,7 +117,7 @@ patients and healthcare providers. Some of the key components of this layer are:
 interoperable and seamless interactions between the patients and providers of digital
 health services. It lays down the foundation of “open networks”
     
-    ![Untitled](Explaining%20b9ddd/Untitled%203.png)
+    ![Health Services Interface](/images/Health_Stack_4.png)
     
     Open Networks are set of shared technical standards accessible to everyone. Being a non proprietary protocol means no one is locked into using any particular entity’s product and makes the ecosystem interoperable. 
     
