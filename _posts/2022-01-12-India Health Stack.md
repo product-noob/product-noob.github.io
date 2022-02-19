@@ -127,7 +127,7 @@ health services. It lays down the foundation of “open networks”
     
     As a small snippet assume the current scenario where every health-tech player from Apollo to Practo to EkaCare needs to have their own onboarding flows for users and doctors, incur a significant cost for verification and data accuracy. These platform operators have put in place their own doctor credential verification systems to reassure end users but the standards used by these operators are not scrutinized by any regulatory body. In the UHI scheme of things, they can simply plugin to the NDHM stack and get the list of all users and doctors which are already onboarded and can choose to build value added services on top of the stack.
     
-    ![Digital Health Services possible on UHI. Source: NHA ](Explaining%20b9ddd/Untitled%204.png)
+    ![Digital Health Services possible on UHI. Source: NHA ](/images/Health_Stack_4.png)
     
     Digital Health Services possible on UHI. Source: NHA 
     
@@ -143,7 +143,7 @@ interchange.UHI defines various entities with regards to their participation in 
     - **Health Locker:** Think of this as a Google Drive for your health documents. The way you have all your identity documents available in Digilocker, the same way users have an option to store all their health documents in a health locker.
         
         
-        ![High level information flow in UHI](Explaining%20b9ddd/Untitled%205.png)
+        ![High level information flow in UHI](/images/Health_Stack_5.png)
         
         High level information flow in UHI
         
@@ -185,7 +185,7 @@ There is significant business potential for hardware and software players in hos
 > NDHM can spur a fundamental transformation in India’s healthcare system and unlock economic value worth over $200 billion by 2030- Niti Aayog
 > 
 
-![Various Entities participating in UHI. Source: The Ken](Explaining%20b9ddd/Untitled%206.png)
+![Various Entities participating in UHI. Source: The Ken](/images/Health_Stack_6.png)
 
 Various Entities participating in UHI. Source: The Ken
 
