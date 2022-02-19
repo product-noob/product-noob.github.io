@@ -200,9 +200,11 @@ While most of what I discussed about for the stack assumes the user has a smartp
 
 - **Health IDs were created without consent during Vaccination drive**
 While there is some merit to this critic since the government did create HealthIDs for users without any explicit consent or education and most of them got to know about this when opening their vaccination certificate, there was no leakage or miss-use of user’s health data in my opinion.
-    > 
-    Of 165 million health IDs that have been generated, CoWIN alone aided in generation of 127 million of them
-    >   
+   
+   
+   > Of 165 million health IDs that have been generated, CoWIN alone aided in generation of 127 million of them
+> 
+
     Looking back this certainly was an oversight on behalf of policy makers but considering that no other document was added to this,  I don’t see this as any harm done. 
     *Note: It has been rolled backed since then and new cowin certificates don’t have a HID.* 
     
