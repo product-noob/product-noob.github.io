@@ -39,9 +39,10 @@ The third and final piece of the India Stack focuses on establishing a new model
 
 In a sentence, DEPA is a policy framework that defines how the economic primitive of data can be freed up so that individuals and businesses can choose how to best protect it and use it for their own gain. This innovation, which is presently being rolled out in the financial services industry, has its philosophical roots in a piece of impending legislation known as the Personal Data Protection Bill (PDP).
 
-![The three layers of India Stack. Source: iSPIRT](https://cdn.substack.com/image/fetch/w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6b17b401-f3bd-4366-8b53-aa650b8ca3d9_946x475.png)
-
-The three layers of India Stack. Source: iSPIRT
+<figure>
+<img src="https://cdn.substack.com/image/fetch/w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6b17b401-f3bd-4366-8b53-aa650b8ca3d9_946x475.png" alt="The three layers of India Stack. Source: iSPIRT">
+<figcaption>The three layers of India Stack. Source: iSPIRT</figcaption>
+</figure>
 
 In a nutshell, the India Stack enabled us widen access to financial services, dramatically lower the cost of confirming people’s identities and allowed control on access to people’s personal data  through consent:
 - Identity: Aadhaar
@@ -81,7 +82,6 @@ All the key traits of India stack are well utilised in National Health stack as 
 India health stack is the infrastructure which aims to provide the foundational components for health programs in India. It aims to bring a holistic view across multiple health entities and enable interoperability between the various public and private players.
 > “*Built as a Common Public Good by the Centre for adoption by all states, it will eliminate any repetitive efforts on part of, yet retain autonomy for, the states—paving way for rapid rollout of various health initiatives, achieve convergence and accelerate the momentum to achieve the goal of Universal Health Coverage*” - NHA
 > 
-
 #### Health Stack Building Blocks
 
 ![National Health Stack. Source: UHI Consultation Paper](/images/Health_Stack_2.png)
