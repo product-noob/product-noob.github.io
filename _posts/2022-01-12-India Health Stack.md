@@ -208,8 +208,7 @@ While there is some merit to this critic since the government did create HealthI
    > Of 165 million health IDs that have been generated, CoWIN alone aided in generation of 127 million of them
 > 
 
-Looking back this certainly was an oversight on behalf of policy makers but considering that no other document was added to this,  I don’t see this as any harm done. 
- *Note: It has been rolled backed since then and new cowin certificates don’t have a HID.* 
+    Looking back this certainly was an oversight on behalf of policy makers but considering that no other document was added to this,  I don’t see this as any harm done. <br> *Note: It has been rolled backed since then and new cowin certificates don’t have a HID.* 
     
 - **Loose definition on encryption for Health Lockers/ PHR apps**
 Currently there is not enough regulations/ policies around how health lockers/ PHR apps need to handle or store user’s health data. While NDHM lays out broad principles and guidelines, there are no well defined requirements on data encryption and storage for these entities.
