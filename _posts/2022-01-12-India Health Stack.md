@@ -27,7 +27,7 @@ While the government was widening access to bank accounts, RBI under the NPCI di
 
 Since its launch in April 2016, UPI has been nothing short of a runaway success story, with few parallels in the history of global payments. In just 4 years, the second layer of India Stack grew from an ambitious idea to the world’s 5th largest payment network by volume, behind only Visa, Alipay, WeChat Pay, and MasterCard.
 
-![Untitled](Explaining%20b9ddd/Untitled%201.png)
+![UPI Trend](/images/Health_Stack_1.png)
 
 In simple sense, the way UPI works is that all banks are connected to a central server operated by NPCI (National Payments Corporation of India) and NPCI acts as a middlemen and a custodian of all the information exchange between banks. 
 
@@ -100,8 +100,7 @@ Throughout this read, you will find various new terminologies being used. This w
 
 ### Health Stack Building Blocks
 
-![National Health Stack. Source: UHI Consultation Paper](Explaining%20b9ddd/Untitled%202.png)
-
+![National Health Stack. Source: UHI Consultation Paper](/images/Health_Stack-2.png)
 National Health Stack. Source: UHI Consultation Paper
 
 There are four broad layers or stack to the National Health Stack Architecture:
