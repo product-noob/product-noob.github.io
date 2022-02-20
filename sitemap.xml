@@ -1,65 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-
-<url>
-  <loc>https://princejain.me/</loc>
-  <lastmod>2022-02-20T09:30:28+00:00</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://princejain.me/blogs/</loc>
-  <lastmod>2022-02-20T09:30:28+00:00</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://princejain.me/worksummary/</loc>
-  <lastmod>2022-02-20T09:30:28+00:00</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://princejain.me/about/</loc>
-  <lastmod>2022-02-20T09:30:28+00:00</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://princejain.me/2022/01/12/India-Health-Stack.html</loc>
-  <lastmod>2022-02-20T09:30:28+00:00</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://princejain.me/2021/08/15/Demystifying-SEO.html</loc>
-  <lastmod>2022-02-20T09:30:28+00:00</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://princejain.me/2021/08/03/Building-Vaccine-Slot-Finder.html</loc>
-  <lastmod>2022-02-20T09:30:28+00:00</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://princejain.me/2020/02/15/Apps-and-SuperApps.html</loc>
-  <lastmod>2022-02-20T09:30:28+00:00</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://princejain.me/2020/02/02/Hello-World.html</loc>
-  <lastmod>2022-02-20T09:30:28+00:00</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-
+  <url>
+    <loc>https://princejain.me/</loc>
+    <lastmod>2022-02-20T09:30:28+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://princejain.me/blogs/</loc>
+    <lastmod>2022-02-20T09:30:28+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://princejain.me/worksummary/</loc>
+    <lastmod>2022-02-20T09:30:28+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://princejain.me/about/</loc>
+    <lastmod>2022-02-20T09:30:28+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://princejain.me/2022/01/12/India-Health-Stack.html</loc>
+    <lastmod>2022-02-20T09:30:28+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://princejain.me/2021/08/15/Demystifying-SEO.html</loc>
+    <lastmod>2022-02-20T09:30:28+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://princejain.me/2021/08/03/Building-Vaccine-Slot-Finder.html</loc>
+    <lastmod>2022-02-20T09:30:28+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://princejain.me/2020/02/15/Apps-and-SuperApps.html</loc>
+    <lastmod>2022-02-20T09:30:28+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://princejain.me/2020/02/02/Hello-World.html</loc>
+    <lastmod>2022-02-20T09:30:28+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.64</priority>
+  </url>
 
 </urlset>
