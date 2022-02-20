@@ -10,7 +10,7 @@ permalink: /worksummary/
 
 -   Took on additional responsibility to launch the [Paytm Health vertical](https://twitter.com/Paytm/status/1479712862746517506)
 -   Envisioned to be one stop shop for all their healthcare usecases: _Medicine Ordering, Teleconsult, Digital Health Identity, Blood banks repository_
--   Launched the first iteration of Paytm Health as a PHR(Public Health Records) app, integrated with National Health Stack [press](https://www.livemint.com/technology/paytm-users-can-now-create-their-health-id-know-its-benefits-11640596211499.html)
+-   Launched the first iteration of Paytm Health as a PHR(Public Health Records) app, integrated with National Health Stack. [PR](https://www.livemint.com/technology/paytm-users-can-now-create-their-health-id-know-its-benefits-11640596211499.html)
 -   Launched e-Raktkosh Mini App to help users to find and donate blood on nearby blood banks
 -   Launched a dedicated Health storefront to enable users to discover all health related services on Paytm App
 -   Worked closely with Government stakeholders to help in suggesting improvements to the UHI stack.
