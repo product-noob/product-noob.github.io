@@ -20,14 +20,14 @@ permalink: /worksummary/
 **May 2019 - Sept 2021** *Product Manager, Paytm Mini Apps.*
 
 -   Product owner for the Mini Apps platform (Android & iOS app, merchant integrations and platform growth); managed a team of 20+ developers and 1 APM.
--   Led the development of the App SDK to enable hosting "Mini Apps"; grew the platform to over 2000+ apps across 10+ categories
--   Planned and hosted a developer conference to formally launch the platform [Press Release](https://www.livemint.com/technology/apps/paytm-announces-mini-apps-developers-conference-on-8-october-11601965880559.html) , [Conference link](https://www.youtube.com/watch?v=nuK7Ct59Vyk&t=3162s)
--   Established internal processes, SOPs for merchant apps. Wrote the first version of developer documentation [link](https://business.paytm.com/docs/miniprograms/overview/)
--   Launched DIY (Do-It-Yourself) flow which helped in reducing onboarding timelines and integration friction considerably [link](https://www.youtube.com/watch?v=W0qN81dujfs)
+-   Led the development of the App SDK to enable "Mini Apps"; grew the platform to over 2000+ apps across 10+ categories
+-   Planned and hosted a [developer conference](https://www.youtube.com/watch?v=nuK7Ct59Vyk&t=3162s) to formally launch the platform [PR](https://www.livemint.com/technology/apps/paytm-announces-mini-apps-developers-conference-on-8-october-11601965880559.html)
+-   Established internal processes, SOPs for merchant apps. Wrote the first version of [developer documentation](https://business.paytm.com/docs/miniprograms/overview/)
+-   Launched [DIY](https://www.youtube.com/watch?v=W0qN81dujfs) (Do-It-Yourself) flow to reduce onboarding timelines and integration friction
 -   Launched Universal QR reader functionality to allow merchants to link any QR with their Mini Apps; driving O2O (Offline to Online) conversion.
 -   Launched five in-house Mini-apps ( [DigiLocker](https://www.hindustantimes.com/business/paytm-integrates-digilocker-brings-access-to-documents-on-its-app-101634105338544.html), [Vaccine Finder](https://www.livemint.com/technology/apps/want-to-book-covid-19-vaccination-slots-on-paytm-here-s-how-11624093960278.html), AQI, Speedtest, Astro) on the platform.
--   Launched OLA’s Mini App by integrating with their booking APIs on Paytm, enabling 100k+ rides monthly.
--   Ideated and launched the [Vaccine Finder tool](https://product-noob.github.io/Journey-to-create-the-Covid-Slot-Finder-Tool/), which become the second most used vaccine booking tool in the country enabling more than 3 Million Vaccine Slot bookings.
+-   Launched OLA’s Mini App by integrating with their booking APIs, enabling 100k+ rides monthly.
+-   Ideated and launched the [Vaccine Finder tool](https://product-noob.github.io/Journey-to-create-the-Covid-Slot-Finder-Tool/), which become the second most used vaccine booking tool in the country enabling more than **3 Million** vaccine slot bookings.
 -   Rated as **"Significantly exceeds expectations"** (5/5 rating) consistently on all appraisals during the tenure.
 
 #### Oracle (~2 years) ####
