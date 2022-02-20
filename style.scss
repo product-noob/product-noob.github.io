@@ -290,12 +290,10 @@ footer {
   margin: 0;
   color: $darkGray;
   cursor: pointer;
-  font-family: "Lato", sans-serif;
-  // font-family: $helveticaNeue;
+  font-family: sans-serif;
   font-weight: 350;
   font-size: 28px;
   letter-spacing: 1px;
-  // Added position and top to correct the orientation i.e. shift the name to the centre.
   position: relative;
   top: 10px;
 }
