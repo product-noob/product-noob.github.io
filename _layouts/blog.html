@@ -6,9 +6,11 @@ layout: default
 <div class="containerblog">
 	<div class="posts"> {% for post in site.posts %}
 		<article class="post">
-     			<h4><a href="{{ site.baseurl }}{{ post.url }}" class="blogheader">{{ post.title }}</a></h4>
-			<div class="entry"> <div class="blogsubtext">{{ post.excerpt }} </div> </div> 
+			<h4><a href="{{ site.baseurl }}{{ post.url }}" class="blogheader">{{ post.title }}</a></h4>
+			<div class="entry">
+				<div class="blogsubtext">{{ post.excerpt }} </div>
+			</div>
 			<a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-		</article> {% endfor %} 
+		</article> {% endfor %}
 	</div>
 </div>
