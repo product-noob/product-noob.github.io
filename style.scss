@@ -338,3 +338,18 @@ footer {
   background-color: $lightGray;
   padding-bottom: 0px;
 }
+
+/* Progress bar */
+#progress-bar {
+  --scrollAmount: 0%;
+  
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  width: var(--scrollAmount);
+
+  /*  background: linear-gradient(to right, #F24E1E var(--scrollAmount), transparent 0);
+  width: 100%; */
+  height: 7px;
+  position: fixed;
+  bottom: 0;
+  //top: 0;
+}
