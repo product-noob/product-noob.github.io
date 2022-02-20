@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 
 <html>
-    {% include head.html %}
+{% include head.html %}
 
-  <body oncontextmenu="return false;">
-      
-    {% include header.html %}
-    <div id="progress-bar"></div>
-    <div id="main" role="main" class="container">
+<body>
+
+  {% include header.html %}
+  <div id="progress-bar"></div>
+  <div id="main" role="main" class="container">
     {{ content }}
-    </div>
+  </div>
 
-    {% include footer.html %}
-  </body>
+  {% include footer.html %}
+</body>
+
 </html>
