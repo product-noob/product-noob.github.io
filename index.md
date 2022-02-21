@@ -2,11 +2,10 @@
 layout: page
 ---
 
-👋, Hey there stranger, Welcome for reaching out to my online home :) 
+👋, Hey there stranger, Welcome to my online home :)
 
-I currently work as a Product Manager at [Paytm](https://www.paytm.com/), and have led the development of [Mini Apps Platform](https://business.paytm.com/miniapps)
+I am Prince Jain.
 
-In the past I have worked for [Citibank](https://www.citibank.com/tts/) and [Oracle](https://www.oracle.com/in/industries/financial-services/analytics/). Find more about my professional journey here: [LinkedIn](https://www.linkedin.com/in/princejain17)
+I currently work as a Product Manager at [Paytm](https://www.paytm.com/) working on Mini Apps and Paytm Health initiatives.
 
-I spend my time reading, watching & tinkering with tech and occasionally cooking and binging on Netflix.
-Some posts I’ve written are [here](https://product-noob.github.io/blogs/).
+You can learn more about me [here](https://princejain.me/about). Some of the posts I’ve written on this blog are [here](https://princejain.me/blogs/).
