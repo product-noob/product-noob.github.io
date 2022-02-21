@@ -28,7 +28,7 @@ There were a lot of tools which sprung up to serve this need: Telegram Channels,
 
 This all started during a casual mid-day twitter browsing on a Wednesday (blame WFH!). On Apr 28, Dr. RS Sharma (CEO, National Health Authority) tweeted announcing the launch of Public APIs to fetch real-time slot availability and encouraged third-party applications to integrate them and help spread awareness about the vaccination drive.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Today, we have opened Co-Win APIs for vacancies search and downloading certificates of vaccinations for third party applications. API specs can be found at <a href="https://t.co/2t0Ac8Ftmi">https://t.co/2t0Ac8Ftmi</a>.</p>&mdash; Dr. RS Sharma (@rssharma3) <a href="https://twitter.com/rssharma3/status/1387252842667208704?ref_src=twsrc%5Etfw">April 28, 2021</a></blockquote>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Today, we have opened Co-Win APIs for vacancies search and downloading certificates of vaccinations for third party applications. API specs can be found at <a href="https://t.co/2t0Ac8Ftmi">https://t.co/2t0Ac8Ftmi</a>.</p>&mdash; Dr. RS Sharma (@rssharma3) <a href="https://twitter.com/rssharma3/status/1387252842667208704?ref_src=twsrc%5Etfw">April 28, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Reading this tweet I discussed with my manager almost immediately that we should do something on this initiative. After all, I was also struggling to book a vaccine slot for my family and understood the need very well and could see the immediate benefit millions of people would get from such a tool and was confident we could build a value prop on top of the exposed APIs.
 
