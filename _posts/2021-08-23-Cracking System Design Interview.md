@@ -91,11 +91,8 @@ If you are also expecting to interview for a TPM role, this should be a useful r
 5.  **Tracking and Success Metric:** This is often missed during an interview since around reaching this part of the interview you have already invested ~30 mins and want to end it. But this is a good identifier of your product+business sense in the aspect that if you know what success metrics would look like and what all would you want to track and monitor.
 
 
-<aside>
 💡 **Disclaimer:** I tend not to follow any set structure in interviews and prefer solving free hand, it’s something which has worked the best for me : to each his own.
 However there having a broad sense of what all you should cover helps in ensuring you cover all scenarios.
-
-</aside>
 
 
 **Tools to use:** I personally use **[LucidChart](https://lucid.app/documents#/dashboard)** for drawing the designs during the interviews, some other tools like [draw.io](http://draw.io) and [excalidraw.com](http://excalidraw.com) are decent as well.
