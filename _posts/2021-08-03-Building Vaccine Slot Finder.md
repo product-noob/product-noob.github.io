@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Building the Vaccine Slot Finder tool
+description: "This is the sample description of posts trying to test out a new way to show in blogs"
+
 ---
 
 
@@ -22,7 +24,7 @@ With a population of over 1.3 billion this was a task of massive proportions for
 
 There were a lot of tools which sprung up to serve this need: Telegram Channels, Twitter bots, Chrome extensions and sites which claimed to book slots for you (for a small fee!)
 
-**Ideation:** 
+**Ideation:**
 
 This all started during a casual mid-day twitter browsing on a Wednesday (blame WFH!). On Apr 28, Dr. RS Sharma (CEO, National Health Authority) tweeted announcing the launch of Public APIs to fetch real-time slot availability and encouraged third-party applications to integrate them and help spread awareness about the vaccination drive.
 
@@ -77,7 +79,7 @@ I have been asked this question multiple times by many friends and colleagues in
 
 Short Answer : Yes.
 
-Long Answer: Yes, but we had to make the right architectural and design decisions and iterate quickly various times in order to do so.! 
+Long Answer: Yes, but we had to make the right architectural and design decisions and iterate quickly various times in order to do so.!
 While designing the initial architecture, we designed the system with a target of 1 million users (we were happy to be proven wrong later!)
 
 The tech folks did most of the magic here. We wanted the system to be cheap and scalable for us to allow us to run it for the many months to come until the vaccination drive finishes and be able to handle the scale this tool can potentially have. What we used is a combination of Mongo-DB and Lambda and created essentially a Stateless system to avoid storing/ processing too much data. Over the many weeks, we did multiple iterations to improve almost each and every aspect of the tool: the alerting logic, the UX, the frequency with which we sent out alerts, the customisation options and adding new functionalities to the tool.
@@ -178,17 +180,17 @@ While we did the first launch in under 5 days, it took us almost the next 2 mont
 I have tried summarising the major versions we had for the tool:
 
 - **Version 1- MVP Launch:** Enable users to find available slots and set availability alerts, launched on 6th May.
-    
+
   <blockquote class="twitter-tweet"><p lang="en" dir="ltr">🚨 BREAKING: Now track &amp; get real-time alerts about COVID vaccination slots in your city on the Paytm App! 📱<br><br>Get Started: <a href="https://t.co/tcYY5cbXKq">https://t.co/tcYY5cbXKq</a> <a href="https://t.co/LHMyocZ8Jg">pic.twitter.com/LHMyocZ8Jg</a></p>&mdash; Paytm (@Paytm) <a href="https://twitter.com/Paytm/status/1390205121389154309?ref_src=twsrc%5Etfw">May 6, 2021</a></blockquote>
-    
+
 - **Version 2 -** **Improving the accuracy and speed of alerts:** We integrated directly with Co-WIN's web-hook to receive real-time availability information and tweaked a lot of backend logic to make our alerts as fast as we could and added some UI feature basis user feedback.
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">🚨 [Update] Basis your feedback, we&#39;ve added more enhancements to our COVID Vaccine Slot Finder tool.<br><br>Try here: <a href="https://t.co/tcYY5cbXKq">https://t.co/tcYY5cbXKq</a><br><br>Please RT and help India fight COVID-19. 🙏🏼 <a href="https://t.co/1JMuadkLMQ">pic.twitter.com/1JMuadkLMQ</a></p>&mdash; Paytm (@Paytm) <a href="https://twitter.com/Paytm/status/1391630208621416448?ref_src=twsrc%5Etfw">May 10, 2021</a></blockquote>
 
 - **Version 3 - Enabled Booking Flow:** We finally got approval to enable vaccine booking directly on our app and enabled the booking flow on our app on 11th June.
-    
+
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">From instant alerts to now directly booking on your Paytm app – the new &amp; improved Vaccine Slot Finder tool is here.<br><br>Give it a go! 📱 💉</p>&mdash; Paytm (@Paytm) <a href="https://twitter.com/Paytm/status/1404375332354887680?ref_src=twsrc%5Etfw">June 14, 2021</a></blockquote>
-    
+
 - **Version** **4,5,6,...n:** During the course of the next many weeks, we iterated multiple times to improve our tool: adding new functionalities, supporting new vaccines types and even enabling users to download their International Travel Certificate. We even launched a (now viral) social media campaign to educate users
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Ready, on your marks – <a href="https://twitter.com/hashtag/GetShotGo?src=hash&amp;ref_src=twsrc%5Etfw">#GetShotGo</a> 💉 <a href="https://t.co/Em9nsWnJ9p">pic.twitter.com/Em9nsWnJ9p</a></p>&mdash; Paytm (@Paytm) <a href="https://twitter.com/Paytm/status/1405744353310433288?ref_src=twsrc%5Etfw">June 18, 2021</a></blockquote>

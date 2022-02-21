@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Demystifying SEO
+description: "This is the sample description of posts trying to test out a new way to show in blogs"
 
 ---
 As a product manager who builds digital products, the list of things you should know about is *long* to say the least and it only ever seems to get *longer*!

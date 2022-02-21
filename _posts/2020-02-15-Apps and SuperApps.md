@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "There are Apps and then there are SuperApps"
+description: "This is the sample description of posts trying to test out a new way to show in blogs"
 
 ---
 

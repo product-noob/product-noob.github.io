@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Setting up Github Pages"
+description: "This is the sample description of posts trying to test out a new way to show in blogs"
 
 ---
 
@@ -19,13 +20,13 @@ This is a sample text.
 
 <i> This is sample italics </i>
 <p> This is sample text <p>
-<ul> 
+<ul>
 <li>This is Unordered List </li>
 <li>This is Unordered List </li>
 <li>This is Unordered List </li>
 </ul>
 
-<ol> 
+<ol>
 <li>This is Ordered List </li>
 <li>This is Ordered List </li>
 <li>This is Ordered List </li>
@@ -40,7 +41,7 @@ This is a sample text.
 <p> This is sample I-frame tag </p>
 Linking here some of the good sources to visit later for Markdown or HTML tutorials
 
-<!-- 
+<!--
 ### Basic Site Structure
 
 Listing down some of the basic structure/ to-do's for the website:
@@ -52,7 +53,7 @@ Listing down some of the basic structure/ to-do's for the website:
     - **Post.html**: This is the layout for individual posts in the blog.
 - **Includes :** This contains the header html for individual components:
     - **Analytics.html**:  ****This includes G-Tag Id and used to push GA events for the site. **IGNORE**
-    - 
+    -
 - **Images :** This is the repository of all the images in the site. You can then include them anywhere in the site.
 - **_sass:** This is the additional CSS file to do custom styling. **IGNORE**
 - **config.yml:** This is the basic structure of the website. **IGNORE**
@@ -64,20 +65,20 @@ Step by step process to make a new entry in the blog:
 
 1. Create a new file in _posts with [2020-02-02-Hello-World.md](http://2020-02-02-hello-world.md/) YYYY-MM-DD-{Post Title.md}
 2. Define the page structure to be used:
-    
+
     ```jsx
     ---
     layout: post
     title:  "{{Post Title}}"
     ---
     ```
-    
-3. Start writing the blog post either in HTML or Markdown or a combination. 
+
+3. Start writing the blog post either in HTML or Markdown or a combination.
     1. Basics of Markdown : [https://www.markdownguide.org/cheat-sheet/](https://www.markdownguide.org/cheat-sheet/)
     2. As a hack write the full post in Notion and export that as Markdown
-    3. To include a image just add image in the Images folder and in the file add a image tag: 
+    3. To include a image just add image in the Images folder and in the file add a image tag:
     ![{{Image Title}}]("/images/image_name.png")
-    4. To add a hyperlink to the document: 
+    4. To add a hyperlink to the document:
 4. Safe and Refresh to see the latest blog post published!
 
---> 
+-->
