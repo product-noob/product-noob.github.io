@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Explaining the National Health Stack"
-description: "National Health Stack is a new government initiate which might end up revolutionising healthcare in India. These are some of the notes from my research on the health stack."
+description: "National Health Stack is an upcoming government initiative which might end up revolutionising healthcare in India. These are some of the notes from my research on the health stack."
 
 ---
 
