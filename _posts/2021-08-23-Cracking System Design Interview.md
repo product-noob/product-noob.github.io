@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "Approaching a System Design Interview"
-description: "If you are also expecting to interview for a Technical PM role, this should be a useful read on the things you need to keep in mind"
+description: "If you are also planning to interview for a Technical PM role, this should be a useful read on the things you need to keep in mind"
 ---
 
-**\*Disclaimer:** While a system design interview is generally asked in engineering interviews, some companies for their Technical PM roles do assess the systems knowledge of candidates. These are just some of my personal notes I wrote from memory to serve as a quick refresher.
+**\Disclaimer:** While a system design interview is generally asked in engineering interviews, some companies for their Technical PM roles do assess the systems knowledge of candidates. These are just some of my personal notes I wrote from memory to serve as a quick refresher.
 If you are also expecting to interview for a TPM role, this should be a useful read.\*
 
 ### Before we see the structure here are some keywords commonly used in system design:
@@ -119,7 +119,7 @@ However there having a broad sense of what all you should cover helps in ensurin
 
 * * *
 
-**Tools to use:** I personally use **[LucidChart](https://lucid.app/documents#/dashboard)** for preparing the designs during the interviews, some other tools like [draw.io](http://draw.io) and [excalidraw.com](http://excalidraw.com) are decent as well.
+**Tools to use:** I personally use **[LucidChart](https://lucid.app/documents#/dashboard)** for drawing the designs during the interviews, some other tools like [draw.io](http://draw.io) and [excalidraw.com](http://excalidraw.com) are decent as well.
 
 **A system design architecture I designed during an interview:**
 
