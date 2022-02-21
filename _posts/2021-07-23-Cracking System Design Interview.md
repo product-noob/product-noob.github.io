@@ -32,10 +32,10 @@ If you are also expecting to interview for a TPM role, this should be a useful r
 
     2.  Scope the requirement
         Some of the sample questions for scoping:
-            1\. Questions like why are we doing this? Are we chasing a specific goal (revenue/ engagement etc.)
-            2\. Company’s history/ previous portfolio/ strengths.
-            3\. Is the solution for a specific geography?
-            4\. If there are any limitations to what we can do: bandwidth, cost, time, capability?
+            1. Questions like why are we doing this? Are we chasing a specific goal (revenue/ engagement etc.)
+            2. Company’s history/ previous portfolio/ strengths.
+            3. Is the solution for a specific geography?
+            4. If there are any limitations to what we can do: bandwidth, cost, time, capability?
 
     Other question as relevant depending on the case.
 
