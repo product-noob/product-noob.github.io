@@ -116,11 +116,14 @@ ul ul {
   list-style-type: circle;
 }
 
+li {
+  margin-bottom: 3px;
+}
+
 em,
 i {
   font-style: italic;
 }
-
 b,
 strong {
   font-weight: bold;
