@@ -33,14 +33,13 @@ If you are also expecting to interview for a TPM role, this should be a useful r
 
     2.  Scope the requirement
         Some of the sample questions for scoping:
-            1\. Questions like why are we doing this? Are we chasing a specific goal (revenue/ engagement etc.)
-            2\. Company’s history/ previous portfolio/ strengths.
-            3\. Is the solution for a specific geography?
-            4\. If there are any limitations to what we can do: bandwidth, cost, time, capability?
+            1. Questions like why are we doing this? Are we chasing a specific goal (revenue/ engagement etc.)
+            2. Company’s history/ previous portfolio/ strengths.
+            3. Is the solution for a specific geography?
+            4. If there are any limitations to what we can do: bandwidth, cost, time, capability?
 
     Other question as relevant depending on the case.
 
-    * * *
 
 2.  **User Segmentation.**
 
@@ -49,21 +48,20 @@ If you are also expecting to interview for a TPM role, this should be a useful r
     3.  Try to evaluate the solutions and pick the one’s which makes most sense
     4.  Think of the high level design, you will need to build this system. Talk through it with your interviewer(s)
 
-    * * *
 
 3.  **System Design**
 
     1.  Lay down any assumptions you make, detail out all you need to build this system
     2.  Think of the design considerations for the solution. Some of the common ones are:
 
-        1.  **High Availability:** This means ability of the system to serve the user at all times.
+        -  **High Availability:** This means ability of the system to serve the user at all times.
             Eg: live streaming, messaging
-        2.  **Low Latency:** Latency in laymanish term is the time taken for a page/ app to load. Certain use cases require to optimise on the latency primarily.
+        -  **Low Latency:** Latency in laymanish term is the time taken for a page/ app to load. Certain use cases require to optimise on the latency primarily.
             Eg: Online Gaming, Stock Trading, Conference calls
-        3.  **Consistency:** This means how critical is it for everyone to have the same data. Most systems are okay with a eventual consistency.
+        -  **Consistency:** This means how critical is it for everyone to have the same data. Most systems are okay with a eventual consistency.
             Eg: A user’s tweet doesn’t necesarily need to be available for all users immediately whereas banking system need to ensure high consitency for funds related data.
-        4.  **Redunancy:** This tells how critical is the data. If there is a super critical data, multiple redunancies are put in place. Eg: Banking
-        5.  **Scalability**: This is simply the scale the system can handle. Most systems these days are fairly scalable (thank AWS) and can be scaled up as reqd. However potential scale may end up deciding the system architecture in many cases.
+        -  **Redunancy:** This tells how critical is the data. If there is a super critical data, multiple redunancies are put in place. Eg: Banking
+        -  **Scalability**: This is simply the scale the system can handle. Most systems these days are fairly scalable (thank AWS) and can be scaled up as reqd. However potential scale may end up deciding the system architecture in many cases.
             Eg: Cloud Storage like Google Drive, OTT platforms like Netflix, YouTube
 
         _Remember to keep practical constraints in mind: you can never aim for the best of everything. If you go for improving a particular aspect, it may inherently hamper the other_
@@ -72,11 +70,11 @@ If you are also expecting to interview for a TPM role, this should be a useful r
 
         1.  Start with laying down a broad block diagram connecting interactions b/w the systems.
 
-            ![Untitled](System%20Des%20ea7f7/Untitled.png)
+            ![Untitled](/images/System_design.png)
 
         2.  Then lay down the end points of the APIs which might be required.
 
-            ![Untitled](System%20Des%20ea7f7/Untitled%201.png)
+            ![Untitled](/images/System_design_1.png)
 
         3.  Ask if they want **data schema** to be designed. Data schema is the basic db structure with field name and data type. Common data types:
 
@@ -87,7 +85,7 @@ If you are also expecting to interview for a TPM role, this should be a useful r
             5.  decimal
             6.  enum (pre-defined constants like size :s/m/l)
 
-                ![Untitled](System%20Des%20ea7f7/Untitled%202.png)
+                ![Untitled](/images/System_design_2.png)
 
 4.  Mostly you are done with the system design aspect of the interview. Try to then bring into other considerations like constraints: cost, timeframe, team size, complexity, risks etc. and then accordingly prioritise among the solutions discussed.
 5.  **Tracking and Success Metric:** This is often missed during an interview since around reaching this part of the interview you have already invested ~30 mins and want to end it. But this is a good identifier of your product+business sense in the aspect that if you know what success metrics would look like and what all would you want to track and monitor.
@@ -106,7 +104,7 @@ However there having a broad sense of what all you should cover helps in ensurin
 
 **A system design architecture I designed during an interview:**
 
-![Untitled](System%20Des%20ea7f7/Untitled%203.png)
+![Untitled](/images/System_design_3.png)
 
 ### Good Links to read about architecture design:
 
