@@ -4,8 +4,8 @@ title:  "Approaching a System Design Interview"
 description: "If you are also planning to interview for a Technical PM role, this should be a useful read on the things you need to keep in mind"
 ---
 
-**\Disclaimer:** While a system design interview is generally asked in engineering interviews, some companies for their Technical PM roles do assess the systems knowledge of candidates. These are just some of my personal notes I wrote from memory to serve as a quick refresher.
-If you are also expecting to interview for a TPM role, this should be a useful read.\*
+**Disclaimer:** While a system design interview is generally asked in engineering interviews, some companies for their Technical PM roles do assess the systems knowledge of candidates. These are just some of my personal notes I wrote from memory to serve as a quick refresher.
+If you are also expecting to interview for a TPM role, this should be a useful read.
 
 ### Before we see the structure here are some keywords commonly used in system design:
 
@@ -33,10 +33,10 @@ If you are also expecting to interview for a TPM role, this should be a useful r
 
     2.  Scope the requirement
         Some of the sample questions for scoping:
-            1. Questions like why are we doing this? Are we chasing a specific goal (revenue/ engagement etc.)
-            2. Company’s history/ previous portfolio/ strengths.
-            3. Is the solution for a specific geography?
-            4. If there are any limitations to what we can do: bandwidth, cost, time, capability?
+            1\. Questions like why are we doing this? Are we chasing a specific goal (revenue/ engagement etc.)
+            2\. Company’s history/ previous portfolio/ strengths.
+            3\. Is the solution for a specific geography?
+            4\. If there are any limitations to what we can do: bandwidth, cost, time, capability?
 
     Other question as relevant depending on the case.
 
@@ -99,23 +99,6 @@ If you are also expecting to interview for a TPM role, this should be a useful r
 However there having a broad sense of what all you should cover helps in ensuring you cover all scenarios.
 
 </aside>
-
-### Some keywords commonly used in system design:
-
--   **API:** Application Programming Interface. Think of this as the way a software system interacts with other systems/ people. For instance, an ATM's "API" includes adding money, withdrawing money, and a few other functions.
--   **Back-end:** The back-end often refers to the server-side of a system (mostly where the logic of what to happen if certain data is passed resides. For eg: If credentials are correct login the user.).
--   **Cache**: A cache is like a storage of information or content so that requests can be quicker. Many times you would want to cache requests at different nodes to serve fast (Eg: CDN )
--   **CDN:** Content delivery network. To ensure data (mostly web assets) is served quickly for different geographies, generally for high-traffic use cases. (For eg: Netflix puts their popular content on CDNs near you to serve you faster and save their bandwidth)
--   **Client:** Clients are one part of the client-server model, where clients (e.g. a local computer) initiates a communication session with a server (e.g. a company server hosted on Amazon EC2).
--   **Cookie:** A cookie is a piece of data stored on a client's browser from sites a client visits. This data includes volunteered information including visited pages. A common function of a cookie is to help users not have to log in every time they visit a site.
--   **Database/DBMS**: Database management system. This is a software that allows users to create, read, and update entries in a database. For instance, Exponent's user database stores a list of user emails and passwords for each user to log in.
--   **DNS:** Domain name system. This is a naming system to help map domain names to IP Addresses and other pieces of information across the internet. (For eg: DNS of this blog is [princejain.me](http://princejain.me))
--   **Front-end:** The front-end often refers to the client-side of development (e.g. the page you're reading right now and how it's formatted).
--   **Latency:** This refers to the load time of an experience. For instance, the latency would be considered high if it takes a long time to download large image files to load a page.
--   **Load Balancer:** Load balancers help to distribute a task over a series of databases/servers as opposed to overloading a single one. This is generally helpful when there's high-traffic.
--   **Redis**: Redis is used to do database cache at the server side. Used when your server is serving a same set of data again and again, you can use redis to cache it so that the db hit is avoided and overall operation latency is reduced.
--   **Server:** Servers provide functions to one or many clients. For instance, a web server serves web pages to clients (e.g. local computers, like the one you're reading this on!)
--   **Sharding:** Sharding is the act of partitioning databases into smaller data shards, to optimize for database speed. For eg: address book from A-Z can be sharded into smaller chunks of A-D, E-H, etc.
 
 * * *
 
