@@ -100,12 +100,12 @@ There are four broad layers or stack to the National Health Stack Architecture:
     modules needed to ensure the interoperability of various kinds of health data. These
     building blocks include core participant registries, Health Information Exchange and Consent
     Manager, Health Data Standards (based on FHIR), coding terminology and data
-    aggregation specifications that drive trust and shareability of health data between
+    aggregation specifications that drive trust and Sharing_ of health data between
     patients and healthcare providers. Some of the key components of this layer are:
-        \-  **Digital** **Registries:** This is aimed to serve as a reliable and easily accessible master data about all the players in the health ecosystem. It plans to include consolidated e-registries for healthcare providers (hospitals, clinics, labs etc), beneficiaries, doctors, insurers and ASHAs etc. Similar to how every citizen has a digital identity with Aadhaar, every health participant will have a digital identity:
-            1\. **Health Id :** Each user in the system will be issued an unique 14-digit Health ID
-            2\. **Doctor Id:** Each doctor in the ecosystem will be issued a unique 14-digit Doctor ID.
-            3\. **Facility Registry:** Each participating healthcare facility (clinic/hospital/lab etc) will be issued a unique facility ID.
+        -  **Digital** **Registries:** This is aimed to serve as a reliable and easily accessible master data about all the players in the health ecosystem. It plans to include consolidated e-registries for healthcare providers (hospitals, clinics, labs etc), beneficiaries, doctors, insurers and ASHAs etc. Similar to how every citizen has a digital identity with Aadhaar, every health participant will have a digital identity:
+            1. **Health Id :** Each user in the system will be issued an unique 14-digit Health ID
+            2. **Doctor Id:** Each doctor in the ecosystem will be issued a unique 14-digit Doctor ID.
+            3. **Facility Registry:** Each participating healthcare facility (clinic/hospital/lab etc) will be issued a unique facility ID.
 
         -  **Health Information Exchange:** This lays down the principles of how health data is to be shared inter-operably between patients and health care providers. It lays down the FHIR so that health data is encoded in a machine readable and globally accepted format for it to be processed universally.
         Another key aspect of this layer is **“Consent”.** It lays down the details of a consent manager which details how users consent is managed, maintained and taken into account while sharing any health data. It also gives user the control or rather the ownership of their health data  
@@ -118,7 +118,7 @@ There are four broad layers or stack to the National Health Stack Architecture:
 
 3.  **Health Services Interface:** Building blocks in this layer are envisioned to enable
     interoperable and seamless interactions between the patients and providers of digital
-    health services. It lays down the foundation of “open networks”
+    health services. It lays down the foundation of “open networks”.
 
         ![Health Services Interface](/images/Health_Stack_3.png)
 
