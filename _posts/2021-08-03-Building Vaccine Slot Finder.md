@@ -94,9 +94,9 @@ We set ourselves an insane timeline of **4 days** to launch the first version of
 
 ### Here’s how we actually did it……
 
-What we started with is to narrow down a use-case for the tool which was important enough for us to build for. In Product Manager's lingo the user-story for it read like this: ***"***
+What we started with is to narrow down a use-case for the tool which was important enough for us to build for. In Product Manager's lingo the user-story for it read like this:
 
- ***As a user I want the tool to help me find and book vaccine slots as easily as possible!"***
+ ***"As a user I want the tool to help me find and book vaccine slots as easily as possible!"***
 
 ### I. Creating a strong value proposition for our tool
 
