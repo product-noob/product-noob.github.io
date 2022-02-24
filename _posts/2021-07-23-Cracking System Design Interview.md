@@ -4,7 +4,7 @@ title:  "Approaching a System Design Interview"
 description: "If you are also planning to interview for a Technical PM role, this should be a useful read on the things you need to keep in mind"
 ---
 
-**Disclaimer:** While a system design interview is generally asked in engineering interviews, some companies for their Technical PM roles do assess the systems knowledge of candidates. These are just some of my personal notes I wrote from memory to serve as a quick refresher.
+**Disclaimer:** While a system design question is generally asked for engineering roles, some companies for their Technical PM roles do assess the systems knowledge of candidates. These are just some of my personal notes I wrote from memory to serve as a quick refresher.
 If you are also expecting to interview for a TPM role, this should be a useful read.
 
 #### Before we see the structure here are some keywords commonly used in system design:
