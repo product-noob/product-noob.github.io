@@ -5,8 +5,10 @@ description: "National Health Stack is an upcoming government initiative which m
 
 ---
 
-Before I start with detailing the National Health Stack, I believe it’s important to mention **India Stack.**
+The National Health Stack is a new digital health infrastructure launched by the National Health Authority of India. It's envisioned to serve as the building block for digitising the healthcare sector.
+It's essentially set of APIs to any which entity (public/ private) can hook into and enable complex solutions in the health space; the same way any fintech player these days can enable UPI payments with simple API integrations. The way India Stack revolutionised Payments in the country (among other things), the health stack is envisioned to revolutionise the healthcare ecosystem in India.
 
+Before I start with detailing the National Health Stack, I believe it’s important to mention **India Stack.**
 India Stack is the comprehensive digital identity, payment, and data-management system we as a nation have been working towards for a little more than 10 years. Under it, we are trying to solve for the three economic primitives of identity, payments, and data.
 
 **Stage 1: Digital Identity**
@@ -228,6 +230,7 @@ Thank you for bearing with me all the way till the end, I hope you got to learn 
 #### References:
 
 - **[UHI Consultation Paper](https://abdm.gov.in/assets/uploads/consultation_papersDocs/UHI_Consultation_Paper.pdf)**
-- **[National Health Stack](https://abdm.gov.in/publications/NHS_Strategy_and_Approach)**
+- **[National Health Stack Consultation Paper](https://abdm.gov.in/publications/NHS_Strategy_and_Approach)**
+- **[National Health Stack Consultation Paper](https://abdm.gov.in/publications/NHS_Strategy_and_Approach)**
 
 ---
