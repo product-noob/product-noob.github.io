@@ -6,7 +6,8 @@ description: "Shared the inside story of what went behind the scenes of building
 ---
 
 
-What started as a weekend project ended up becoming one of the most popular vaccination tool for millions of people in the country! This is behind the scenes story of how the Paytm Vaccine Finder tool came to life.
+What started as a weekend project ended up becoming one of the most popular vaccination tool for millions of people in the country! This is behind the scenes story of how the Paytm Vaccine Finder tool came to life. I shared the inside story of how I built the Paytm Vaccine Finder tool.. <br>
+Hope you enjoy this read.
 
 **Some stats on the tool:**
 
@@ -30,13 +31,11 @@ This all started during a casual mid-day twitter browsing on a Wednesday (blame 
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Today, we have opened Co-Win APIs for vacancies search and downloading certificates of vaccinations for third party applications. API specs can be found at <a href="https://t.co/2t0Ac8Ftmi">https://t.co/2t0Ac8Ftmi</a>.</p>&mdash; Dr. RS Sharma (@rssharma3) <a href="https://twitter.com/rssharma3/status/1387252842667208704?ref_src=twsrc%5Etfw">April 28, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Reading this tweet I discussed with my manager almost immediately that we should do something on this initiative. After all, I was also struggling to book a vaccine slot for my family and understood the need very well and could see the immediate benefit millions of people would get from such a tool and was confident we could build a value prop on top of the exposed APIs.
+Reading this tweet I immediately pinged my manager to discuss with him my crazy idea of something we could on this initiative. After all, I was also struggling to book a vaccine slot for my family and understood the need very well and could see the immediate benefit millions of people would get from such a tool and was confident we could build a value prop on top of the exposed APIs. After a brief discussion, he asked me to go running with the idea.With the alignment set, I started pinging folks I knew who'd be willing to work over a weekend for a side project and to my amusement, everyone I pinged was interested to be a part!
 
-With the alignment set, I started pinging folks I knew who'd be willing to work over a weekend for a side project and to my amusement, everyone I pinged was interested to be a part! With the team in place we started studying the [Co-WIN APIs](https://apisetu.gov.in/public/marketplace/api/cowin/cowin-public-v2) almost immediately.
+With the team in place we started studying the [Co-WIN APIs](https://apisetu.gov.in/public/marketplace/api/cowin/cowin-public-v2) almost immediately. Sadly, the initial APIs were behind an authorization layer and couldn’t be used publicly. We wrote to the folks at Co-WIN and to my surprise, the Government machinery worked round the clock on it (even during the weekend) and around Saturday evening on 30th April launched a public version of the APIs. This allowed anyone to hit the API to fetch real-time data on slot availability.
 
-Sadly, the initial APIs were behind an authorization layer and couldn’t be used publicly. We wrote to the folks at Co-WIN and to my surprise, the Government machinery worked round the clock on it (even during the weekend) and around Saturday evening on 30th April launched a public version of the APIs. This allowed anyone to hit the API to fetch real-time data on slot availability.
-
-We started analysing the APIs around the evening, ideated and hashed out an MVP that had a meaningful value proposition for the end-user by the late night.
+We started analysing the APIs around the evening, ideated and hashed out an MVP that had a meaningful value proposition for the end-user by the late night. The idea was to launch the tool within the next few days (to ensure we are the first one's to the market.)
 
 ---
 
@@ -48,21 +47,19 @@ Before we went ahead and started working on the project in full steam, there wer
 
 This one was probably the easiest one to answer:
 
-- **Social Cause:**
+- **Social Cause:** <br>
+  Getting people vaccinated was our best bet to overcome this pandemic! In our role as the technology leaders in the country it was our duty if I may say to help our users and fellow citizens in the best way we can to overcome this pandemic.
 
-Getting people vaccinated was our best bet to overcome this pandemic! In our role as the technology leaders in the country it was our duty if I may say to help our users and fellow citizens in the best way we can to overcome this pandemic.
+  Creating this utility was our next small bit in making sure that information about the vaccination drive is widely available to users from all sections and strata of society and we are able to help them with relevant info to get them vaccinated sooner.
 
-Creating this utility was our next small bit in making sure that information about the vaccination drive is widely available to users from all sections and strata of society and we are able to help them with relevant info to get them vaccinated sooner.
+  This motivation was meaningful enough to keep us motivated to burn the midnight oil for the next many days to create a “simple” tool to help our users.
 
-This motivation was meaningful enough to keep us motivated to burn the midnight oil for the next many days to create a “simple” tool to help our users.
+  “*simple” because we wanted to solve a complex problem at our end to make it simpler for the users to find and book slots.*
 
-“*simple” because we wanted to solve a complex problem at our end to make it simpler for the users to find and book slots.*
+- **Business Sense:** <br>
+  NONE, we thought of or wanted. We never had any discussion on if it makes any business sense for us or how we can earn money on this.
 
-- **Business Sense:**
-
-NONE, we thought of or wanted. We never had any discussion on if it makes any business sense for us or how we can earn money on this.
-
-Till date, we have not added any promotions/ adverts or any have made use of any user generated data from this tool and kept this openly available to all users of our app. This was our humble offering to do a very small bit in the fight against this pandemic.
+  Till date, we have not added any promotions/ adverts or any have made use of any user generated data from this tool and kept this openly available to all users of our app. This was our humble offering to do a very small bit in the fight against this pandemic.
 
 
 #### II. Why is it better than the existing solutions:
@@ -96,7 +93,7 @@ We set ourselves an insane timeline of **4 days** to launch the first version of
 
 What we started with is to narrow down a use-case for the tool which was important enough for us to build for. In Product Manager's lingo the user-story for it read like this:
 
- ***"As a user I want the tool to help me find and book vaccine slots as easily as possible!"***
+ _**"As a user I want the tool to help me find and book vaccine slots as easily as possible!"**_
 
 ### I. Creating a strong value proposition for our tool
 
@@ -109,7 +106,7 @@ To figure out value prop, I analysed the existing options in the market to find 
 
 **Problems with the Telegram/ Twitter bots:**
 
-- As I mentioned earlier, these tools were not personalised. These tools sent alerts for all possible slot openings for a district: most users had requirement of only alerts for a specific criterion: basis Dose count (1/2), Vaccine Type (Covishield/ Covaxin), Fee Type (Free/Paid) or sometimes even just for a specific PIN Code. We wanted to **support personalised alerting**
+- As I mentioned earlier, these tools were not personalised. These tools sent alerts for all possible slot openings for a district: most users had requirement of only alerts for a specific criterion: basis Dose count (1/2), Vaccine Type (Covishield/ Covaxin), Fee Type (Free/Paid) or sometimes even just for a specific PIN Code. We wanted to **support personalised alerting.**
 - They only covered a handful of districts : starting with just Bangalore when we launched this tool and expanding to around 400 odd by the time of writing this article! Clearly the majority of INDIA lived outside these major districts and our aim was **to serve the entire Indian populace**.
 
 **Establishing our value-prop:**
@@ -185,15 +182,15 @@ I have tried summarising the major versions we had for the tool:
 
 - **Version 2 -** **Improving the accuracy and speed of alerts:** We integrated directly with Co-WIN's web-hook to receive real-time availability information and tweaked a lot of backend logic to make our alerts as fast as we could and added some UI feature basis user feedback.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">🚨 [Update] Basis your feedback, we&#39;ve added more enhancements to our COVID Vaccine Slot Finder tool.<br><br>Try here: <a href="https://t.co/tcYY5cbXKq">https://t.co/tcYY5cbXKq</a><br><br>Please RT and help India fight COVID-19. 🙏🏼 <a href="https://t.co/1JMuadkLMQ">pic.twitter.com/1JMuadkLMQ</a></p>&mdash; Paytm (@Paytm) <a href="https://twitter.com/Paytm/status/1391630208621416448?ref_src=twsrc%5Etfw">May 10, 2021</a></blockquote>
+  <blockquote class="twitter-tweet"><p lang="en" dir="ltr">🚨 [Update] Basis your feedback, we&#39;ve added more enhancements to our COVID Vaccine Slot Finder tool.<br><br>Try here: <a href="https://t.co/tcYY5cbXKq">https://t.co/tcYY5cbXKq</a><br><br>Please RT and help India fight COVID-19. 🙏🏼 <a href="https://t.co/1JMuadkLMQ">pic.twitter.com/1JMuadkLMQ</a></p>&mdash; Paytm (@Paytm) <a href="https://twitter.com/Paytm/status/1391630208621416448?ref_src=twsrc%5Etfw">May 10, 2021</a></blockquote>
 
 - **Version 3 - Enabled Booking Flow:** We finally got approval to enable vaccine booking directly on our app and enabled the booking flow on our app on 11th June.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">From instant alerts to now directly booking on your Paytm app – the new &amp; improved Vaccine Slot Finder tool is here.<br><br>Give it a go! 📱 💉</p>&mdash; Paytm (@Paytm) <a href="https://twitter.com/Paytm/status/1404375332354887680?ref_src=twsrc%5Etfw">June 14, 2021</a></blockquote>
+  <blockquote class="twitter-tweet"><p lang="en" dir="ltr">From instant alerts to now directly booking on your Paytm app – the new &amp; improved Vaccine Slot Finder tool is here.<br><br>Give it a go! 📱 💉</p>&mdash; Paytm (@Paytm) <a href="https://twitter.com/Paytm/status/1404375332354887680?ref_src=twsrc%5Etfw">June 14, 2021</a></blockquote>
 
 - **Version** **4,5,6,...n:** During the course of the next many weeks, we iterated multiple times to improve our tool: adding new functionalities, supporting new vaccines types and even enabling users to download their International Travel Certificate. We even launched a (now viral) social media campaign to educate users
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Ready, on your marks – <a href="https://twitter.com/hashtag/GetShotGo?src=hash&amp;ref_src=twsrc%5Etfw">#GetShotGo</a> 💉 <a href="https://t.co/Em9nsWnJ9p">pic.twitter.com/Em9nsWnJ9p</a></p>&mdash; Paytm (@Paytm) <a href="https://twitter.com/Paytm/status/1405744353310433288?ref_src=twsrc%5Etfw">June 18, 2021</a></blockquote>
+  <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Ready, on your marks – <a href="https://twitter.com/hashtag/GetShotGo?src=hash&amp;ref_src=twsrc%5Etfw">#GetShotGo</a> 💉 <a href="https://t.co/Em9nsWnJ9p">pic.twitter.com/Em9nsWnJ9p</a></p>&mdash; Paytm (@Paytm) <a href="https://twitter.com/Paytm/status/1405744353310433288?ref_src=twsrc%5Etfw">June 18, 2021</a></blockquote>
 
 OK, I know, it’s time to wrap this up (although there is still so much more to write on this.. ;) )
 
