@@ -76,7 +76,6 @@ _More details on this in a possible next article!_
 
 Mini Programs has primarily three important value proposition for the merchants:
 
-<div class="smalltext" markdown="1">
 1. **Aggregate Low Frequency services:** Majority of apps are used very infrequently by the users and thus a Mini Program offering makes much more sense ( Say ordering medicines once a month!). They offer seamless “In-Out” experience to the user with no hassle of remembering or entering any passwords or payment details.
 
 1.  **New customer acquisition Channel:** Most users in Tier 2/3 cities typically have only a very limited number of apps installed on their phone due to less capable device hardware, poor data reach (though Jio has changed this paradigm) and lack of awareness about the various apps out there. Typically for all these cases, Mini Programs serves as very effective customer Acquisition Channel.
