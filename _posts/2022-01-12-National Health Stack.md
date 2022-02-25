@@ -5,10 +5,13 @@ description: "National Health Stack is an upcoming government initiative which m
 
 ---
 
-The National Health Stack is a new digital health infrastructure launched by the National Health Authority of India. It's envisioned to serve as the building block for digitising the healthcare sector.
-It's essentially set of APIs to any which entity (public/ private) can hook into and enable complex solutions in the health space; the same way any fintech player these days can enable UPI payments with simple API integrations. The way India Stack revolutionised Payments in the country (among other things), the health stack is envisioned to revolutionise the healthcare ecosystem in India.
+The National Health Stack is a new digital health infrastructure launched by the National Health Authority of India, envisioned to serve as the building block for digitising the healthcare sector in the country.
 
-Before I start with detailing the National Health Stack, I believe it’s important to mention **India Stack.**
+It's essentially set of APIs to any which entity (public/ private) can hook into and enable complex solutions in the health space; the same way any fintech player these days can enable UPI payments with simple API integrations. The basics of the NHS are very similar to India stack and the way India Stack revolutionised Payments in the country (among other things), NHS is envisioned to revolutionise the healthcare ecosystem in India.
+
+Before I start with detailing the National Health Stack, I believe it’s important to mention **India Stack.** It's imperative to understand how we reached here and what the future for healthcare may look like..
+
+Okay, let's start with India Stack first.
 India Stack is the comprehensive digital identity, payment, and data-management system we as a nation have been working towards for a little more than 10 years. Under it, we are trying to solve for the three economic primitives of identity, payments, and data.
 
 **Stage 1: Digital Identity**
@@ -115,12 +118,10 @@ patients and healthcare providers. Some of the key components of this layer are:
     -  **Health Claims Standards:** This component aims to provide building blocks for implementing a large scale health insurance program, with the vision of allowing private and public players to implement insurance schemes in a data driven manner through open APIs. It is meant to do enable of wide-impacting use cases in the Insurance space:
         1. Enable a policy engine to allow for defining and storing a machine readable insurance policies
         2. Instant digital activation of policy on verification of premium transfer
-        3. Setting up a Claim Engine for auto adjudication of claims**.** Scope for a smart contract (shoutout to cryto bois’ reading this ) to auto execute insurance payments on meetings conditions of the claim process
+        3. Setting up a Claim Engine for auto adjudication of claims**.** Scope for a smart contract (shoutout to cryto bois’ reading this) to auto execute insurance payments on meetings conditions of the claim process
         4. Data modelling backed fraud detection, better visibility of past claims history and deeper analysis of suspicious claims
 
-3. **Health Services Interface:** Building blocks in this layer are envisioned to enable
-interoperable and seamless interactions between the patients and providers of digital
-health services. It lays down the foundation of “open networks”
+3. **Health Services Interface:** Building blocks in this layer are envisioned to enable interoperable and seamless interactions between the patients and providers of digital health services. It lays down the foundation of “open networks”
 
     ![Health Services Interface](/images/Health_Stack_3.png)
 
@@ -157,20 +158,33 @@ interchange.UHI defines various entities with regards to their participation in 
      It is crucial to note that this layer is envisioned as the hotbed for market innovation. NDHM as an entity doesn’t aim to directly participate in user interactions and expects private and public sector participants to take a lead in building use cases and innovative solutions on top of this stack.
 
 
-Okay, so now that you understand the basic construct of the National Health Stack, lets look at some of key tenants on which this stack is based on:
+### Why do we need a National Health Stack?
+
+A bunch of reasons. The broad idea is that a National Health Stack will enable us to digitise and standardise health service by getting all entities to talk to a single central system. This has a bunch of potential benefits:
+
+- **Consolidate Digital Health**: A lot of our health documents these days are already in some form or other digital: be it the Covid Vaccination certificate or a Blood test report. The problem today is of consolidation since all these health data lie under various fragmented data systems and as a user we don't have a single place to store/view them. The health stack is supposed to solve this problem by bringing all your health documents under a single infrastructure.
+
+- **Standardise Digital Health records**: Currently there is no standardisation on how different health entities generate/ consume health records. While there exists few globally accepted Health document standards, India lacks adoption and NHS plans to solve that by adopting the [FHIR](https://www.hl7.org/fhir/)  standardisation. So that all entities generate and recognise health reports in the same format and it can be made machine readable
+
+- **Build longitudinal Health records**: A longitudinal health record is a collection of electronic medical record (EMR) of patient health information generated by one or more healthcare providers. Having your longitudinal health history available helps health professionals to quickly learn about your previous health history, allergies, medications and take quick remedial actions when urgently needed.
+
+- **Derive analytical insights from data**: Once health data is standardised, consolidated and made machine readable there are many powerful use cases which can be build of top of it. One of the powerful one's is to enable big data analytics to determine the health scenario in the country, complex study of diseases and pandemics for medical research purposes.
+
+
+Okay, so now that you understand the basic construct and why we may need the NHS for; lets look at some of key tenants on which this stack is based on:
 
 ### Key tenants of the Health Stack
 
 - **Inter-Operablility**
-    UHI is designed to be a truly inter-operable model. You can have your health records from various different providers (Labs, clinics, private & government health facilities, self uploaded medical records) and all of it will be consolidated for the user linked to their Health ID and available to the entire ecosystem for access ***post an explicit end user consent.***
-    This ensures that health data is easily accessible by everyone in the ecosystem and large players do not build a closed wall around user data using their proprietary protocol.
+UHI is designed to be a truly inter-operable model. You can have your health records from various different providers (Labs, clinics, private & government health facilities, self uploaded medical records) and all of it will be consolidated for the user linked to their Health ID and available to the entire ecosystem for access ***post an explicit end user consent.***
+This ensures that health data is easily accessible by everyone in the ecosystem and large players do not build a closed wall around user data using their proprietary protocol.
 
 - **Consent**
 Another core tenant of UHI is that any user data flows only upon explicit user consent. No health data for the user flows There are even granular controls to choose the health document type and time validity for which the documents are shared. No entity can ever access your health documents without explicit consent.
 
 - **Choice**
-Another key fundamental of the UHI network is that it is **optional** and only users who wishes to participate in this network do. No one by default gets a Health Id or gets their data shared with anyone in the ecosystem*  
-*(**Note**: There was a known deviation to this where Health IDs were created for millions of users during their Covid Vaccination and has been rolled back since then)*
+Another key fundamental of the UHI network is that it is **optional** and only users who wishes to participate in this network do. No one by default gets a Health Id or gets their data shared with anyone in the ecosystem  
+_(**Note**: There was a known deviation to this where Health IDs were created for millions of users during their Covid Vaccination and has been rolled back since then)_
 
 - **Ownership**
 While the construct of ownership is still loosely defined, probably due to impeding PDP bill. The idea here is that user owns their health care data and are free to fetch their data from all healthcare entities in the ecosystem and store it permanently* for themselves in a separate health locker of their choice. (* depending on the capabilities of the Health Locker)
@@ -190,10 +204,11 @@ This is the data layer of UHI stack and a lot of interesting use cases from insu
 
 - **HIMS/ LIMS:** Most labs and hospitals currently use outdated HIMS systems, which barely serves the purpose of digitising their information flow. In order for them to integrate with the NDHM ecosystem, they would need to upgrade their information management systems to make it FHIR and UHI compliant and also invest considerably in hardware to digitise the data collection and viewing flow.
 There is significant business potential for hardware and software players in hospital-tech.
+
 > NDHM can spur a fundamental transformation in India’s healthcare system and unlock economic value worth over $200 billion by 2030- Niti Aayog
 >
 <figure>
-   <img src="/images/Health_Stack_6.png" alt="Various Entities participating in UHI. Source: The Ken" class="center">
+   <img src="/images/Health_Stack_6.png" alt="Various Entities participating in UHI. Source: The Ken">
     <figcaption>Various Entities participating in UHI. Source: The Ken </figcaption>
 </figure>
 
@@ -211,21 +226,21 @@ While there is some merit to this critic since the government did create HealthI
    > Of 165 million health IDs that have been generated, CoWIN alone aided in generation of 127 million of them
 >
 
-    Looking back this certainly was an oversight on behalf of policy makers but considering that no other document was added to this,  I don’t see this as any harm done. <br> *Note: It has been rolled backed since then and new cowin certificates don’t have a HID.*
+    Looking back this certainly was an oversight on behalf of policy makers but considering that no other document was added to this,  I don’t see this as any harm done. _**Note**: It has been rolled backed since then and new cowin certificates don’t have a HID._
 
 - **Loose definition on encryption for Health Lockers/ PHR apps**
 Currently there is not enough regulations/ policies around how health lockers/ PHR apps need to handle or store user’s health data. While NDHM lays out broad principles and guidelines, there are no well defined requirements on data encryption and storage for these entities.
 In my opinion, as the ecosystem evolves, this will eventualy become more clearer.
 
 - **Opposition from the incumbents**
-This ecosystem in a lot of ways is a direct threat to the current business models of the incumbents.  Lets take Practo for example: it has invested considerable money and resources in getting tens of thousands of doctors onboarded and verified on their platform, which is the hook they use to get users onto their platform.
+This ecosystem in a lot of ways is a direct threat to the current business models of the incumbents.  Let's take Practo for example: it has invested considerable money and resources in getting tens of thousands of doctors onboarded and verified on their platform, which is the hook they use to get users onto their platform.
 In the UHI scheme of things all health professional will be onboarded by NDHM and are available for all players to leverage. The moat Practo had (the closed wall) might be made irrelevant. But this is also why a lot of innovations might happen in health-tech space and new and interesting business models will arrive.
 
 The end.
 
 Thank you for bearing with me all the way till the end, I hope you got to learn something about the National Health Stack.
 
-***Disclaimer:** As of writing this article, I am associated with Paytm working on their Health Initaitive.*
+**Disclaimer:** As of writing this article, I am associated with Paytm working on their Health Initaitive.*
 
 #### References:
 
