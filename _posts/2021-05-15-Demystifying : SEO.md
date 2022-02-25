@@ -37,6 +37,7 @@ _Google Search has more than 1B MAUs with 93% market share in search engine traf
 -   The higher you rank in search result, higher is your CTR (kind of obvious!)
 
 <img src="/images/SEO_GoogleSearchTrend.png" alt="SEO_Google Search Trend">
+
 ### Starting with setting up SEO for your business:
 
 **Keywords**: Keywords are the words or phrases users type into search engines to find what they are looking for. In a nutshell, SEO is all about finding keywords people are putting into search engines and linking those with your business.
@@ -76,4 +77,4 @@ While there is a whole lot to write about SEO, infact there are companies and pe
 -   [Google Search SEO Basics](https://developers.google.com/search/docs/basics/optimize-your-site)
 -   <https://neilpatel.com/blog/>
 
-**If you see the head HTML element of this blog, you'll find I have added few meta tags to improve the SEO so that the next time you search for SEO, this article might “one day” come up in your google search result🤞**
+_If you see the head HTML element of this blog, you'll find I have added few meta tags to improve the SEO so that the next time you search for SEO, this article might “one day” come up in your google search result🤞_
