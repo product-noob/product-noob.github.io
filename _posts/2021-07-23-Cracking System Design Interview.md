@@ -42,7 +42,7 @@ If you are also expecting to interview for a TPM role, this should be a useful r
 2.  **User Segmentation.**
 
     -   Think of user personas/segments and their pain points
-    -   Think of varous use cases and solutions you can come up with
+    -   Think of various use cases and solutions you can come up with
     -   Try to evaluate the solutions and pick the one’s which makes most sense
     -   Think of the high level design, you will need to build this system. Talk through it with your interviewer(s)
 
