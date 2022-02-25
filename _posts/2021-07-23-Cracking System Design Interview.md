@@ -27,17 +27,16 @@ If you are also expecting to interview for a TPM role, this should be a useful r
 
 1.  **Scoping**
 
-    1.  Clarify the question
+    -  Clarify the question
         For eg. If the question is design a clock for blind, clarify with questions like severity of blindness: partial or complete, any other disability, potential users eg. family members, care takers.
 
-    2.  Scope the requirement
+    -  Scope the requirement <br>
         Some of the sample questions for scoping:
-            1. Questions like why are we doing this? Are we chasing a specific goal (revenue/ engagement etc.)
-            2. Company’s history/ previous portfolio/ strengths.
-            3. Is the solution for a specific geography?
-            4. If there are any limitations to what we can do: bandwidth, cost, time, capability?
-
-    Other question as relevant depending on the case.
+        1. Questions like why are we doing this? Are we chasing a specific goal (revenue/ engagement etc.)
+        2. Company’s history/ previous portfolio/ strengths.
+        3. Is the solution for a specific geography?
+        4. If there are any limitations to what we can do: bandwidth, cost, time, capability?
+<br>Other question as relevant depending on the case.
 
 
 2.  **User Segmentation.**
@@ -57,10 +56,10 @@ If you are also expecting to interview for a TPM role, this should be a useful r
              Eg: live streaming, messaging
         -   **Low Latency:** Latency in laymanish term is the time taken for a page/ app to load. Certain use cases require to optimise on the latency primarily.
              Eg: Online Gaming, Stock Trading, Conference calls
-        -   **Consistency:** This means how critical is it for everyone to have the same data. Most systems are okay with a eventual consistency.
-             Eg: A user’s tweet doesn’t necesarily need to be available for all users immediately whereas banking system need to ensure high consitency for funds related data.
-        -   **Redunancy:** This tells how critical is the data. If there is a super critical data, multiple redunancies are put in place. Eg: Banking
-        -   **Scalability**: This is simply the scale the system can handle. Most systems these days are fairly scalable (thank AWS) and can be scaled up as reqd. However potential scale may end up deciding the system architecture in many cases.
+        -   **Consistency:** This means how critical is it for everyone to have the same data. Most Systems are okay with an eventual consistency.
+             Eg: A user’s tweet doesn’t necessarily need to be available for all users immediately whereas banking system need to ensure high consistency for funds related data.
+        -   **Redundancy:** This tells how critical is the data. If there is a super critical data, multiple redundancies are put in place. Eg: Banking
+        -   **Scalability**: This is simply the scale the system can handle. Most systems these days are fairly scalable (thank AWS) and can be scaled up as read. However potential scale may end up deciding the system architecture in many cases.
                  Eg: Cloud Storage like Google Drive, OTT platforms like Netflix, YouTube
 
             _Remember to keep practical constraints in mind: you can never aim for the best of everything. If you go for improving a particular aspect, it may inherently hamper the other_
@@ -90,7 +89,7 @@ If you are also expecting to interview for a TPM role, this should be a useful r
 5.  **Tracking and Success Metric:** This is often missed during an interview since around reaching this part of the interview you have already invested ~30 mins and want to end it. But this is a good identifier of your product+business sense in the aspect that if you know what success metrics would look like and what all would you want to track and monitor.
 
 💡 **Disclaimer:** I tend not to follow any set structure in interviews and prefer solving free hand, it’s something which has worked the best for me : to each his own.
-However there having a broad sense of what all you should cover helps in ensuring you cover all scenarios.
+However, having a broad sense of what all you should cover helps in ensuring you cover all scenarios.
 
 **Tools to use:** I personally use **[LucidChart](https://lucid.app/documents#/dashboard)** for drawing the designs during the interviews, some other tools like [draw.io](http://draw.io) and [excalidraw.com](http://excalidraw.com) are decent as well.
 
