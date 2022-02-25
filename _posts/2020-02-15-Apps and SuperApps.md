@@ -81,9 +81,8 @@ Mini Programs has primarily three important value proposition for the merchants:
 1.  **New customer acquisition Channel:** Most users in Tier 2/3 cities typically have only a very limited number of apps installed on their phone due to less capable device hardware, poor data reach (though Jio has changed this paradigm) and lack of awareness about the various apps out there. Typically for all these cases, Mini Programs serves as very effective customer Acquisition Channel.
 
 2.  **Cost Effective Marketing Tool:** Payment apps with their rich user transactional data can effectively help marketeers target their ideal audience. Also due to the seamless user journey post clicking on Ads in a Mini Program ( Remember no need of download or signup!) the funnel conversions are also much better!
-    What is happening in India?
 
-</div>
+### What's happening in India?
 
 India’s Mini Program ecosystem is still in early days with leading payment apps still in the phase of exploring how customers react and what they want. It is in some form or other, being pursued by all the major payment players. Brief snapshot of the program for the major players:
 
