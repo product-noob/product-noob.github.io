@@ -512,7 +512,6 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [A Usability Test, with Recommendations for Improvement of Skyscanner’s Mobile Flight Search & Booking App: Part I](https://medium.com/@mstephan/a-usability-test-with-recommendations-for-improvement-of-skyscanner-s-mobile-flight-search-56b6e598b8a2#.ibh610rne) - Sample Usability Test on Skyscanner
 -   [LinkedIn Groups Product Spec](https://medium.com/@ivanTr0n/designing-linkedins-next-killer-feature-to-awake-the-other-300m-users-product-spec-de00305ba13e#.e6df7kcxo) - Designing LinkedIn’s Next Killer Feature to awake the other 300M users
 
-## Communities to Join
 
 ### Groups
 
@@ -525,32 +524,6 @@ This list should be mainly useful for product managers from beginner to mid leve
 
 
 # Core 4: Get the Job
-
-## Hiring a Product Manager Tips/Tricks
-
--   [Inspire Me with your Job Description](https://medium.com/@mstephan/inspire-with-your-job-description-ecb5ce744cfc#.gjzd3n4ez) - Writing a job description that attracts inspired product managers from Mark Stephan
--   [Find, Vet and Close the Best Product Managers](https://firstround.com/review/find-vet-and-close-the-best-product-managers-heres-how/) - How to find, Vet and Close the Best Product Managers by Todd Jackson, VP of Product and Design at Dropbox
-
-## Career Prep Mentorship
-
--   [Get Product Management Career Coaching](https://producthired.com/coaches?types=career-coaching) - Book a career coaching session with a product expert to level up on your PM job
--   [Get Product Management Interview Prep Coaching](https://producthired.com/coaches?types=interview-prep) - Book an interview prep session with a product expert for your upcoming interviews
-
-## Career Prep: Resume
-
--   [Get Product Management Resume Review Coaching](https://producthired.com/coaches?types=resume-review) - Book a resume review session with a product expert before your job hunt
--   [Product Alliance's Resume Guide](https://course.productalliance.com/a/33298/spNMFmjD) - Lifetime access course on how to craft your resume and break into PM.
--   [APMList Resume Reviews](https://apmlist.com/resources) - $25 resume reviews by a PM at Yahoo.
--   [How do you write a good resume for product manager jobs?](https://www.quora.com/How-do-you-write-a-good-resume-for-product-manager-jobs) - Sample Advice on Quora
--   [Mike Bracco - Sample PM Resume](http://mikebracco.com/resume/) - Sample Resume Website from a PM
--   [Adam Mathes - Sample PM Resume](http://www.adammathes.com/resume/) - Sample Resume Website from a PM
--   [How to get that Next PM Job](http://svpma.org/eventarchives/SVPMA-03-2010-How_to_Get_That_Next_PM_Job-Shreyas_Doshi.pdf) - 200 slides from Google PM
--   [Nicholas Ivanecky - Sample PM Website](http://www.ivantron.com) - Nicholas Ivanecky Resume Website
-
-## Career Prep: Where to Apply
-
--   [ProductHired.com](http://www.producthired.com) - Simplify your Product Manager Job Search
--   [PathtoProduct.com](https://www.pathtoproduct.com) - Discover over 1,000 product jobs at startups and tech companies  
 
 ## Career Prep: The Interview
 
