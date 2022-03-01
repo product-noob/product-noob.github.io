@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Reads
+title: Product Management Resources
 permalink: /links/
 ---
 
@@ -70,7 +70,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 
 -->
 
-# Product Leaders I try to learn from
+### Product Leaders I try to learn from
 
 -   [Shreyas Doshi](https://twitter.com/shreyas) - ex-PM at Stripe, Twitter, Google, Yahoo.
 -   [Lenny Rachitsky.](https://twitter.com/lennysan) - runs the famous newsletter at [Lennysnewsletter](https://www.lennysnewsletter.com/)
