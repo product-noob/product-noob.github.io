@@ -74,32 +74,27 @@ This list should be mainly useful for product managers from beginner to mid leve
 
 -   [Shreyas Doshi](https://twitter.com/shreyas) - ex-PM at Stripe, Twitter, Google, Yahoo.
 -   [Lenny Rachitsky.](https://twitter.com/lennysan) - runs the famous newsletter at [Lennysnewsletter](https://www.lennysnewsletter.com/)
+-   [Jackie Bavaro](https://twitter.com/jackiebo) - Asana Product Manager. Co-Author of Cracking the PM Interview. Previously @ Google & Microsoft
+-   [Julie Zhuo](https://twitter.com/joulee) - Product design VP @ Facebook.
+-   [Sachin Rekhi](https://twitter.com/sachinrekhi) - Entrepreneur, Product Guy, and Software Engineer.
 -   [Ken Norton](https://twitter.com/kennethn) - Partner @GVTeam. Formerly PM @Google.
 -   [Josh Elman](https://twitter.com/joshelman) - Partner, @GreylockVC: @Medium, @discordapp @Nextdoor.
 -   [Hunter Walk](https://twitter.com/hunterwalk) - @homebrew. Made products at YouTube, Google
 -   [Ian McAllister](https://twitter.com/ianmcall) - Director of Product at Airbnb. Former Amazon and founder of @AmazonSmile.
 -   [Marty Cagan](https://twitter.com/cagan) - Partner at SVPG, specialising in product teams and product strategy
 -   [Ellen Chisa](https://twitter.com/ellenchisa) - VP Product for <http://lolatravel.com>
--   [Jackie Bavaro](https://twitter.com/jackiebo) - Asana Product Manager. Co-Author of Cracking the PM Interview. Previously @ Google & Microsoft
--   [Julie Zhuo](https://twitter.com/joulee) - Product design VP @ Facebook.
--   [Sachin Rekhi](https://twitter.com/sachinrekhi) - Entrepreneur, Product Guy, and Software Engineer.  
 -   [Adam Nash](https://twitter.com/adamnash) - CEO @Wealthfront
 -   [Eric Ries](https://twitter.com/ericries) - Trying to change how startups are built.
 -   [Steven Sinofsky](https://twitter.com/stevesi) - Board Partner @a16z • Adviser @BoxHQ • Writings @ Learning by Shipping
--   [Janna Bastow](https://twitter.com/simplybastow) - Co-Founder of MTP/CEO at ProdPad/CoFounder ProductTank and ProductCamp London
 -   [Martin Eriksson](https://twitter.com/bfgmartin) - Co-Founder at MTP/ProductTank
--   [Simon Cast](https://twitter.com/simoncast) - Co Founder MTP/ProductTank/ProdPad
--   [Charunethran Panchalam Govindarajan](https://twitter.com/charupg) - Product Manager, Intel / Social Entrepreneur / Tech Enthusiast
 
-
-#### Websites I follow to stay updated with the latest in Tech, Product and Startups
+#### Websites to stay updated with the latest in Tech, Product and Startups
 
 -   [Techcrunch](https://techcrunch.com/)
 -   [Product Hunt](https://www.producthunt.com/)
 -   [Yourstory](https://yourstory.com/)
 -   [Entrackr](https://entrackr.com/)
 -   [The Ken](https://the-ken.com/sea/)
-
 
 #### Product Blogs I find interesting
 
@@ -116,7 +111,6 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Good Product Manager](https://www.goodproductmanager.com/) - How To Be A Good Product Manager
 -   [15 Things You Should Know About Product Managers](https://medium.com/@johnpcutler/15-things-you-should-know-about-product-managers-f488513d246) - John Cutler
 -   [The Black Box of Product Management](https://blackboxofpm.com/) - Shining light on the PM discipline
-
 
 # Core 1: Product Management
 
@@ -467,7 +461,6 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [mindtheproduct.com Podcasts](https://www.mindtheproduct.com/tag/podcast/) - Podcasts by mindtheproduct.com
 -   [Masters of Scale with Reid Hoffman](https://podcasts.apple.com/us/podcast/masters-of-scale-with-reid-hoffman/id1227971746?mt=2) - How do companies grow from zero to a gazillion? Legendary Silicon Valley investor / entrepreneur Reid Hoffman tests his theories with famous founders.
 
-
 # Core 3: Real Life Product Management
 
 ## Interviews
@@ -512,7 +505,6 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [A Usability Test, with Recommendations for Improvement of Skyscanner’s Mobile Flight Search & Booking App: Part I](https://medium.com/@mstephan/a-usability-test-with-recommendations-for-improvement-of-skyscanner-s-mobile-flight-search-56b6e598b8a2#.ibh610rne) - Sample Usability Test on Skyscanner
 -   [LinkedIn Groups Product Spec](https://medium.com/@ivanTr0n/designing-linkedins-next-killer-feature-to-awake-the-other-300m-users-product-spec-de00305ba13e#.e6df7kcxo) - Designing LinkedIn’s Next Killer Feature to awake the other 300M users
 
-
 ### Groups
 
 -   [Product Led Institute](https://summit.productled.com/?ac=9Vdhr2PIm) - Product-Led Growth is a go-to-market strategy that relies on using your product as the main vehicle to acquire, activate, and retain customers
@@ -521,7 +513,6 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Designer Chat](https://www.producthunt.com/r/85601ad255/3697) - The Designer News community in a private Slack chat
 -   [Product Manager HQ](https://www.productmanagerhq.com/join-the-community/) - Product Manager HQ - Slack group
 -   [Product Camp](http://www.productcamp.org) - Product Camp Community Website and Blog
-
 
 # Core 4: Get the Job
 
@@ -544,6 +535,5 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [7 Steps: Interview Strategy to Get into Product Management With No Experience](https://www.linkedin.com/pulse/what-your-product-management-interview-strategy-7-steps-mohammad) - Afroz Mohammad
 -   [Product Management Job Interview Exercises](https://productmanagementexercises.com/) - Free repository of PM job interview questions and answers
 -   [Exponent](http://www.tryexponent.com) - Exponent offers online courses, a free interview questions database, and a Slack community for mock interviews.
-
 
 Please send me something good to read if you have recommendations, would love to check them out as well.
