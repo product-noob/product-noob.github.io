@@ -110,41 +110,39 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [The Black Box of Product Management](https://blackboxofpm.com/) - Shining light on the PM discipline
 
 ### Books
+List of books I have either personally read or purchased to read in the coming future.
 
-##### Design
+##### Product Design
 
 -   [Inspired - How to Create Products Customers Love](http://www.amazon.in/gp/product/B001AQ95UY?btkr=1) - Marty Cagan  
 -   [The Design of Everyday Things](https://en.wikipedia.org/wiki/The_Design_of_Everyday_Things) - Donald Norman
 -   [The Elements of User Experience](https://www.amazon.in/Elements-User-Experience-User-Centered-Design/dp/0321683684) - Jesse James Garrett
-
-#### Startups
-
--   [Zero to One](https://www.amazon.in/Zero-One-Start-Build-Future/dp/0753555190) - Peter Thiel
--   [Lean Startup](https://www.amazon.in/Lean-Startup-Innovation-Successful-Businesses/dp/0670921602/) - Eric Ries
 -   [Hooked: How to build habit forming products](http://www.amazon.in/Hooked-How-Build-Habit-Forming-Products-ebook/dp/B00HJ4A43S) - Nir Eyal
--   [The Hard Thing About Hard Things](http://www.amazon.in/Hard-Thing-About-Things-Building/dp/0062273205/) - Ben Horowitz
--   [Crossing the Chasm](http://www.amazon.in/Crossing-Chasm-Marketing-High-Tech-Mainstream/dp/0060517123) - Geoffrey A. Moore
--   [The Lean Product Playbook](http://www.amazon.in/The-Lean-Product-Playbook-Innovate/dp/1118960874) - Dan Olsen
--   [Xiaomi](https://www.amazon.in/Xiaomi-Startup-Disrupted-Created-Following/dp/9390327040) - JPK
 
 #### Product Development
 
 -   [Decode and Conquer](https://www.amazon.in/Decode-Conquer-Answers-Management-Interviews/dp/0615930417) - Lewis Lin
 -   [Inspired](https://www.amazon.in/INSPIRED-Create-Tech-Products-Customers-ebook/dp/B077NRB36N/) - Marty Cagan
 -   [Thinking in Bets](https://www.amazon.in/Thinking-Bets-Making-Smarter-Decisions-ebook/dp/B074DG9LQF) - Annie Duke
--   [Joel on Software](http://www.amazon.in/Joel-Software-Occasionally-Developers-Designers/dp/1590593898) - Joel Spolsky
 -   [Cracking the PM Interview](http://www.amazon.in/Cracking-PM-Interview-Product-Technology/dp/0984782818) - Jackie Bavaro
--   [The Timeless Way of Building](http://www.amazon.in/Timeless-Way-Building-Christopher-Alexander/dp/0195024028) - Christopher Alexander
+-   [Escaping the Build Trap](https://www.amazon.in/Escaping-Build-Trap-Melissa-Perri/dp/149197379X) - Melissa Perri
+
+#### Startups
+
+-   [Zero to One](https://www.amazon.in/Zero-One-Start-Build-Future/dp/0753555190) - Peter Thiel
+-   [Lean Startup](https://www.amazon.in/Lean-Startup-Innovation-Successful-Businesses/dp/0670921602/) - Eric Ries
+-   [The Hard Thing About Hard Things](http://www.amazon.in/Hard-Thing-About-Things-Building/dp/0062273205/) - Ben Horowitz
+-   [Crossing the Chasm](http://www.amazon.in/Crossing-Chasm-Marketing-High-Tech-Mainstream/dp/0060517123) - Geoffrey A. Moore
+-   [The Lean Product Playbook](http://www.amazon.in/The-Lean-Product-Playbook-Innovate/dp/1118960874) - Dan Olsen
+-   [Xiaomi](https://www.amazon.in/Xiaomi-Startup-Disrupted-Created-Following/dp/9390327040) - JPK
 
 #### Leadership
 
 -   [Measure What Matters](https://www.amazon.in/Measure-What-Matters-John-Doerr/dp/024134848X) - John Doerr
--   [The Everything Store: Jeff Bezos and the Age of Amazon](http://www.amazon.in/gp/product/0316219266/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0316219266&linkCode=as2&tag=httpstwit071f-20) - Brad Stone
--   [Freakonomics](http://www.amazon.in/Freakonomics-Economist-Explores-Hidden-Everything/dp/0060731338/ref=sr_1_1?s=books&ie=UTF8&qid=1451455126&sr=1-1&keywords=freakonomics) - Steven Levitt and Stephen J. Dubner
+-   [The Everything Store: Jeff Bezos and the Age of Amazon](http://www.amazon.in/gp/product/0316219266/) - Brad Stone
+-   [Freakonomics](http://www.amazon.in/Freakonomics-Economist-Explores-Hidden-Everything/dp/0060731338/) - Steven Levitt and Stephen J. Dubner
 -   [The 7 Habits of Highly Effective People](http://www.amazon.in/Habits-Highly-Effective-People-Powerful/dp/1451639619) - Stephen R. Covey
 -   [Thinking, Fast and Slow](https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow) - Daniel Kahneman
--   [The Tipping Point: How Little Things Can Make a Big Difference](http://www.amazon.in/The-Tipping-Point-Little-Difference-ebook/dp/B000OT8GD0) - Malcolm Gladwell
--   [How To Measure Anything](http://www.amazon.in/How-Measure-Anything-Intangibles-Business/dp/1118539273) - Douglas W. Hubbard
 
 * * *
 
