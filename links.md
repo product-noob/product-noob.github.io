@@ -10,6 +10,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 
 ## Content
 
+-   [Top Product Managers](#top-product-managers)
 -   [Open Product Management](#open-product-management)
     -   [About](#about)
     -   [How to Use](#how-to-use)
@@ -65,10 +66,6 @@ This list should be mainly useful for product managers from beginner to mid leve
     -   [Career Prep: Where to Apply](#career-prep-where-to-apply)
     -   [Career Prep: The Interview](#career-prep-the-interview)
     -   [Career Prep: Company Types](#career-prep-company-types)
--   [Top Product Managers](#top-product-managers)
--   [Special Thanks](#special-thanks)
--   [Contributing to the list](#contributing-to-the-list)
--   [License](#license)
 
 #### Product Leaders I try to learn from
 
@@ -94,9 +91,6 @@ This list should be mainly useful for product managers from beginner to mid leve
 -    [Simon Cast](https://twitter.com/simoncast) - Co Founder MTP/ProductTank/ProdPad
 -    [Charunethran Panchalam Govindarajan](https://twitter.com/charupg) - Product Manager, Intel / Social Entrepreneur / Tech Enthusiast
 
-    -   fav: [Why Products Don't Succeed: The 7 Biases of Product Teams](https://www.linkedin.com/pulse/why-products-dont-succeed-7-biases-product-teams-shreyas-doshi/)
--   **[Lenny Rachitsky.](https://twitter.com/lennysan)**
-    -   fav: [How the biggest consumer apps got their first 1,000 users](https://www.lennysnewsletter.com/p/how-the-biggest-consumer-apps-got)
 
 #### Blogs/ Articles I found interesting
 
@@ -650,29 +644,5 @@ This list should be mainly useful for product managers from beginner to mid leve
 -    [Facebook](https://www.quora.com/What-does-a-Product-Manager-at-Facebook-do) - Facebook PM Culture
 -    [The Ultimate Google APM Interview Guide](https://www.tryexponent.com/guides/google/apm-interview) - This guide explains each stage of the Google APM interview and has practice interview questions that were asked at Google
 -    [Mock PM Interview Practice](https://www.youtube.com/channel/UCjm_qVkCPjOVDz9BWjNqO9A) - This channel goes through various sample interview questions with FANG and other companies
-
-# Top Product Managers
-
--    [Ken Norton](https://twitter.com/kennethn) - Partner @GVTeam. Formerly PM @Google.
--    [Josh Elman](https://twitter.com/joshelman) - Partner, @GreylockVC: @Medium, @Jelly, @AppMeerkat, @Operator, @discordapp @Nextdoor.
--    [Hunter Walk](https://twitter.com/hunterwalk) - @homebrew, Seed Stage Venture Fund w @satyap. Made products at YouTube, Google & SecondLife.
--    [Ian McAllister](https://twitter.com/ianmcall) - Director of Product at Airbnb. Former Amazon and founder of @AmazonSmile.
--    [Marty Cagan](https://twitter.com/cagan) - I'm a partner at Silicon Valley Product Group, specializing in product teams and product strategy
--    [Ellen Chisa](https://twitter.com/ellenchisa) - VP Product for <http://lolatravel.com> , temporary @harvardhbs dropout.
--    [Jackie Bavaro](https://twitter.com/jackiebo) - Asana Product Manager. Co-Author of Cracking the PM Interview. Previously @ Google & Microsoft
--    [Fernando Delgado](https://www.linkedin.com/in/fernandodelgado/) - Sr. Product Manager at Google. Previously worked as an Entrepreneur, Product Management Coach, and Sr Director of Product Management at Yahoo.
--    [Julie Zhuo](https://twitter.com/joulee) - Product design VP @ Facebook.
--    [Joel Spolsky](https://twitter.com/spolsky) - CEO of Stack Overflow, co-founder of Fog Creek Software (FogBugz, Kiln), and creator of Trello.
--    [Bruce McCarthy](https://twitter.com/d8a_driven) - Innovator, consultant, coach, and evangelist for better products and product development
--    [Des Traynor](https://twitter.com/destraynor) - Co-founder of @intercom.
--    [Sachin Rekhi](https://twitter.com/sachinrekhi) - Entrepreneur, Product Guy, and Software Engineer.  
--    [Adam Nash](https://twitter.com/adamnash) - CEO @Wealthfront
--    [Rich Mironov](https://twitter.com/RichMironov) - Tech start-up veteran, product exec/coach/mentor, writer (Art of Product Management)
--    [Eric Ries](https://twitter.com/ericries) - Trying to change how startups are built.
--    [Steven Sinofsky](https://twitter.com/stevesi) - Board Partner @a16z • Adviser @BoxHQ • Writings @ Learning by Shipping
--    [Janna Bastow](https://twitter.com/simplybastow) - Co-Founder of MTP/CEO at ProdPad/CoFounder ProductTank and ProductCamp London
--    [Martin Eriksson](https://twitter.com/bfgmartin) - Co-Founder at MTP/ProductTank
--    [Simon Cast](https://twitter.com/simoncast) - Co Founder MTP/ProductTank/ProdPad
--    [Charunethran Panchalam Govindarajan](https://twitter.com/charupg) - Product Manager, Intel / Social Entrepreneur / Tech Enthusiast
 
 Please send me something good to read if you have recommendations, would love to check them out as well.
