@@ -91,10 +91,21 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Simon Cast](https://twitter.com/simoncast) - Co Founder MTP/ProductTank/ProdPad
 -   [Charunethran Panchalam Govindarajan](https://twitter.com/charupg) - Product Manager, Intel / Social Entrepreneur / Tech Enthusiast
 
-#### Blogs/ Articles I found interesting
 
--   **[Tigerfeathers Substack](https://tigerfeathers.substack.com/)** - Really detailed explanation on complex topics ranging from crypto to fintech to India Stack
--   **[Manas Saloi](https://manassaloi.com/posts/)** - He shit posts sometime but most times you get distilled and unfiltered product learnings
+### Websites I follow to stay updated with the latest in Tech, Product and Startups
+
+-   [Techcrunch](https://techcrunch.com/)
+-   [Product Hunt](https://www.producthunt.com/)
+-   [Yourstory](https://yourstory.com/)
+-   [Entrackr](https://entrackr.com/)
+-   [The Ken](https://the-ken.com/sea/)
+
+
+### Personal blogs I find interesting
+
+-   [Tigerfeathers Substack](https://tigerfeathers.substack.com/) - Really detailed explanation on complex topics ranging from crypto to fintech to India Stack
+-   [Manas Saloi](https://manassaloi.com/posts/) - He shit posts sometime but most times you get distilled and unfiltered product learnings
+
 
 # Core 1: Product Management
 
@@ -540,50 +551,6 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Product Manager HQ](https://www.productmanagerhq.com/join-the-community/) - Product Manager HQ - Slack group
 -   [Product Camp](http://www.productcamp.org) - Product Camp Community Website and Blog
 
-### Meetups
-
-#### North America
-
--   [Product Tank](http://www.meetup.com/producttanknyc/) - Product Tank NY Meetups
--   [Product Austin](http://www.meetup.com/ProductAustin/) - The largest Product Meet-up in Austin, TX
--   [The Product Group](http://www.meetup.com/TheProductGroup/) - The Product Group New York
--   [Lean Product & Lean UX Silicon Valley](http://www.meetup.com/lean-product/) - People interested in applying Lean Startup, Lean UX, and Agile principles to design and develop products that customers love
--   [Product Management Fast Track](http://www.meetup.com/ProductManagementFastTrack/) - Product Management in San Francisco
--   [SUPA Product Talks SFBay](http://www.meetup.com/SUPAProductTalks/) - SUPA Product Academy in San Francisco
--   [Silicon Valley Strategy, Innovation and Product Management](http://www.meetup.com/Silicon-Valley-Product-Management/) - Product Management in Cupertino, CA
--   [Startup Metrics Toronto, Canada](http://www.meetup.com/Startup-Metrics-Toronto/) - A group for entrepreneurs and product managers to discuss the metrics that matter to their startups.
--   [Product School - San Francisco Meetup](http://www.meetup.com/productmanagementSF/) - Product School Meetup
--   [Product School - Silicon Valley Meetup](http://www.meetup.com/productmanagementSV/) - Product School Meetup
--   [Product School - New York Meetup](http://www.meetup.com/productmanagementNY/) - Product School Meetup
--   [Product School - Los Angeles Meetup](http://www.meetup.com/productmanagementLA/) - Product School Meetup
--   [Product School - Boston Meetup](http://www.meetup.com/productmanagementBOS/) - Product School Meetup
-
-#### Europe
-
--   [The Product Group London](http://www.meetup.com/TheProductGroupLondon/) - The Product Group London
-
-#### Asia
-
--   [Product Management Singapore Facebook](https://www.facebook.com/groups/prodmgmtsg/) - Product Management SG Community
--   [Product Camp - Singapore Meetup](http://www.meetup.com/Product-Camp-Singapore/) - Product Camp Meetup
--   [Product Hunt - Singapore Meetup](http://www.meetup.com/Product-Hunt-Singapore-Meetup-Group/) - Product Hunt Meetup
--   [Product Talks - Singapore Meetup](http://www.meetup.com/producttalkssingapore/) - Product Talks Meetup
--   [Product Tank - Singapore Meetup](http://www.meetup.com/ProductTank-Singapore/) - Product Tank Meetup
-
-#### South America
-
--   [Produto.io - São Paulo](https://www.meetup.com/produto-io-sp/) - Produto.io Meetup in São Paulo
--   [Product School - Belo Horizonte](http://www.meetup.com/product-school-belohorizonte/) - Product School Meetup
-
-### Conferences
-
--   [Mind the Product Conference](http://mtpcon.com/sf/) - The Conference for Passionate Product People
--   [Industry - Product Conference](https://www.industryconference.com/virtual#pricing) - For people who build, launch and scale world-class product.
--   [Lean Startup Week](http://leanstartup.co/2016-conference/) - Lean Startup Week is a seven-day immersion into Lean Startup methodology led by star practitioners in big companies and hot startups from around the world.
--   [Product Camp Brazil](http://www.productcamp.com.br) - The event is now the largest on Product Management in Latin America, where Brazilian and international speakers share their learnings about Product, UX and Growth with the participants.
--   [Product Stars Brazil](http://www.productstars.com.br) - The event gather a constellation of experienced people to share experiences and hacks from day to day.
--   [Growth Camp Brazil](http://www.growthcamp.com.br) - The event is made by specialists for specialists who already operate in the market and have big interactions with Product Managers. In addition they always bring international keynotes.
--   [ProductCon](https://productschool.com/productcon/) - The online conference. Four times a year. 15,000+ attendees.
 
 # Core 4: Get the Job
 
