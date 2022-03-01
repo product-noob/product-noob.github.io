@@ -4,9 +4,10 @@ title: Links
 permalink: /links/
 ---
 
-This is a curated list of product management resources including frameworks, interviews, books, products, career preps, and much more. I have tried collating the list from few popular sources ([Open Product](https://github.com/ProductHired/open-product-management) being the main inspiration) and have added few of my own favourites.
+This is a curated list of product management resources : people,blogs and books I follow.
+This list should be useful for product managers from beginner to mid level (since that's my experience level).
 
-This list should be mainly useful for product managers from beginner to mid level (since that's what I have the experience of and I believe can help in). The idea is to know and learn from the best people and communities in PM.
+The idea is to know and learn from the best people and communities in PM.
 
 <!--
 ### List of contents:

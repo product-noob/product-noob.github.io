@@ -4,14 +4,11 @@ title: Product Management Resources
 permalink: /PM-Links/
 ---
 
-This is a curated list of product management resources including frameworks, interviews, books, products, career preps, and much more. I have tried collating the list from few popular sources ([Open Product](https://github.com/ProductHired/open-product-management) being the main inspiration) and have added few of my own favourites.
+This is a curated list of product management resources including frameworks, interviews, books, products, career preps, etc. I collated from few popular sources ([Open Product](https://github.com/ProductHired/open-product-management) being the main inspiration) and have added few of my own favourites.
 
-This list should be mainly useful for product managers from beginner to mid level (since that's what I have the experience of and I believe can help in). The idea is to know and learn from the best people and communities in PM.
+## Core 1: Product Management
 
-
-# Core 1: Product Management
-
-## What Is Product Management?
+### What Is Product Management?
 
 -   [What is product management?](https://www.leaninberlin.de/2019/03/what-is-product-management.html) - Bogdan Sturza
 -   [A Product Manager’s Job](https://medium.com/@joshelman/a-product-managers-job-63c09a43d0ec) - Josh Elman
@@ -27,7 +24,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [What It Takes to Become a Great Product Manager](http://hbr.org/2017/12/what-it-takes-to-become-a-great-product-manager) - Julia Austin
 -   [A Day in the Life of a Product Manager: Consumer and Enterprise](https://blog.tryexponent.com/day-in-life-pm/) - Kevin Wei
 
-## Is It Really For You?
+### Is It Really For You?
 
 -   [How to hire a Product Manager?](https://www.kennethnorton.com/essays/productmanager.html) - Kenneth Norton
 -   [The DNA of Product Management](https://www.linkedin.com/pulse/20121102003945-7298-the-dna-of-product-management/) - Hunter Walk
@@ -36,7 +33,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Ode to a Non Technical Product Manager](https://medium.com/@hunterwalk/ode-to-a-non-technical-product-manager-7776efb98acd) - Hunter Walk
 -   [3 Skillsets for PM Success](http://blog.kentonkivestu.com/3-skillsets-for-PM-success) - Kenton Kivetsu
 
-## Building Great Products
+### Building Great Products
 
 -   [How to build great products](http://www.defmacro.org/2013/09/26/products.html) - Slava Akhmechet
 -   [Make things as simple as possible but not simpler](http://blog.adamnash.com/2013/09/25/make-things-as-simple-as-possible-but-not-simpler/) - Adam Nash
@@ -46,7 +43,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Quality is not a tradeoff](https://medium.com/the-year-of-the-looking-glass/quality-is-not-a-tradeoff-bcddf7c85553) - Julie Zhuo
 -   [How to build products users love](http://startupclass.samaltman.com/courses/lec07/) - Kevin Hale
 
-## Get Out Of The Building
+### Get Out Of The Building
 
 -   [How to Listen to Customers](https://www.kennorton.com/essays/how-to-listen-to-customers.html) - Kenneth Norton
 -   [How do Customer Development and Product Management fit together](http://www.cindyalvarez.com/lean/how-do-customer-development-and-product-management-fit-together-2014) - Cindy Alvarez
@@ -54,14 +51,14 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [The customer is always right. Except when they aren’t](http://wadefoster.net/post/57403834478/the-customer-is-always-right-except-when-they-arent) - Wade Foster
 -   [Your MVP is about discovery not product](http://web.archive.org/web/20170112085359/http://kevindewalt.com/2013/07/14/your-mvp-is-about-discovery-not-product/) - Kevin Dewalt
 
-## All About Those Requirements
+### All About Those Requirements
 
 -   [Painless functional specifications](http://www.joelonsoftware.com/articles/fog0000000036.html) - Joel Spolsky
 -   [Requirements are not](http://www.svpg.com/requirements-are-not/) - Marty Cagan
 -   [Feed the beast](http://www.svpg.com/feed-the-beast/) - Marty Cagan
 -   [The end of requirements](http://www.svpg.com/the-end-of-requirements/) - Marty Cagan
 
-## Roadmaps, Planning, and Prioritization
+### Roadmaps, Planning, and Prioritization
 
 -   [The seven deadly sins of product planning](http://www.svpg.com/the-seven-deadly-sins-of-product-planning/) - Marty Cagan
 -   [Product strategy means saying no](http://blog.intercom.io/product-strategy-means-saying-no/) - Des Traynor
@@ -86,7 +83,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Making a Product Map](https://medium.com/@mstephan/making-a-product-map-4fbf6d440a19#.bpmtqfotk) - Mark Stephan
 -   [The Product Manager's Visual Guide to Feature Selection](https://taprun.com/articles/product-managers-visual-guide-to-feature-selection) - Adam Juda
 
-## How To Work With X
+### How To Work With X
 
 -   [The care and feeding of software engineers](http://www.nczonline.net/blog/2012/06/12/the-care-and-feeding-of-software-engineers-or-why-engineers-are-grumpy/) - Nicholas C. Zakas
 -   [The ten project management commandments](http://www.defmacro.org/2013/06/03/engineering-commandments.html) - Slava Akhmechet
@@ -101,18 +98,18 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Top 5 Ways Product Managers can help Developer’s Love them](https://medium.com/@mstephan/top-5-ways-product-managers-can-help-developers-love-them-4660ef7711d5) - Mark Stephan
 -   [How to work with designers](https://medium.com/the-year-of-the-looking-glass/how-to-work-with-designers-6c975dede146) - Julie Zhuo
 
-## User Experience
+### User Experience
 
 -   [Lean UX Canvas](https://medium.com/@mstephan/lean-ux-canvas-5f1fdd378077#.et3az0712) - Mark Stephan
 -   [User Experience Debt](https://medium.com/@vijaysundaram/user-experience-debt-c9bd265d521b) - Vijay Sundaram
 
-## Give and Receive Feedback
+### Give and Receive Feedback
 
 -   [You won’t regret positive feedback](http://zachholman.com/posts/positive-feedback/) - Zack Holman
 -   [Thirty percent feedback](https://42floors.com/blog/startups/thirty-percent-feedback) - Jason Freedman
 -   [How to run a design critique](http://scottberkun.com/essays/23-how-to-run-a-design-critique/) - Scott Berkun
 
-## Shipping and Measuring Products
+### Shipping and Measuring Products
 
 -   [Shipping is a feature](http://a16z.com/2014/04/16/shipping-is-a-feature-some-guiding-principals-for-people-that-build-things/) - Steven Sinofsky
 -   [Great product leaders win games](http://blog.adamnash.com/2012/02/29/great-product-leaders-win-games/) - Adam Nash
@@ -126,7 +123,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [What are the most important metrics for developing and managing a mobile product?](https://www.quora.com/What-are-the-most-important-metrics-for-developing-and-managing-a-mobile-product/answer/Drew-Dillon) - Drew Dillon
 -   [Google’s HEART Framework for Measuring UX](https://www.interaction-design.org/literature/article/google-s-heart-framework-for-measuring-ux) - Kenny Lee
 
-## Organizing Your Team
+### Organizing Your Team
 
 -   [Enter the Matrix - Organizing Product Management](https://www.braintreepayments.com/braintrust/Enter-the-Matrix-Organizing-Product-Management) - Mark Tattersall
 -   [Product organizational structure](http://www.svpg.com/product-organizational-structure/) - Marty Cagan
@@ -135,7 +132,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Maker's Schedule, Manager's Schedule](http://www.paulgraham.com/makersschedule.html) - Paul Graham
 -   [Take back your day: Time Management for PMs](https://pmblog.quora.com/Take-back-your-day-Time-Management-for-PMs) - Jackie Bavaro
 
-## Become The Best In The Field
+### Become The Best In The Field
 
 -   [Top hacks from a PM behind two of tech’s hottest products](https://review.firstround.com/Top-Hacks-from-a-PM-Behind-Two-of-Techs-Hottest-Products) - Todd Jackson
 -   [Stakeholder Management](http://www.svproduct.com/stakeholder-management/) - Marty Cagan
@@ -154,13 +151,13 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [What makes a great Product Manager?](http://hatchery.vc/what-makes-a-great-product-manager/) - Erik Torenberg
 -   [How a football coach taught me to product manage like a boss](https://medium.com/@biggiesu/how-a-football-coach-taught-me-to-product-manage-like-a-boss-926ab5c39156) - Mike Su
 
-## Minimum Viable Product Manager (MVPM)
+### Minimum Viable Product Manager (MVPM)
 
 -   [MVPM: Minimum Viable Product Manager](https://blackboxofpm.com/mvpm-minimum-viable-product-manager-e1aeb8dd421) - Brandon Chu
 
-# Core 2: Resources
+## Core 2: Resources
 
-## Resource Repositories
+### Resource Repositories
 
 -   [Product Management Toolkit](http://bit.ly/2LF34CO) - Curated directory of tools and resources for Product Managers by Product Managers
 -   [Software Product Management Stack](http://softwareproductmanagement.co/) - A curated list of Product Manager articles and resources
@@ -171,7 +168,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Product Management Processes](https://www.productprocesses.co) - A knowledge base of product management processes, tools and templates.
 -   [ProductNotion](https://productnotion.co/?ref=open-productmanagement/) - Loads of ready-made Product Management templates for Notion.so
 
-## Design
+### Design
 
 -   [Kindling](https://www.kindlingapp.com/) - Idea management tool
 -   (invalid link) Designer News Market(<https://www.designernews.co/stories/74282-designer-news-market-is-coming-to-a-close>) - The best design resources for your next project
@@ -189,7 +186,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [UI Movement](https://uimovement.com/) - The best UI design inspiration, daily
 -   [IconStore](http://iconstore.co/) - Free icon packs by first-class designers
 
-## Development
+### Development
 
 -   [Craft - Collaborative Place for Product Managers](https://craft.io) - Agile Product & Project Management Software
 -   [Meteor - The Fastest way to build Javascript Apps](https://www.meteor.com/) - open source platform for web, mobile, and desktop.
@@ -210,7 +207,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [The Step-By-Step PM Guide to Building Machine Learning Based Products](https://medium.com/@yaelg/product-manager-pm-step-by-step-tutorial-building-machine-learning-products-ffa7817aa8ab) - 6 step guide to get started in achieving business goals with machine learning.
 -   [AnimationEngine](https://github.com/intuit/AnimationEngine) - Easily build advanced custom animations on iOS.
 
-## Mockups and Marketing
+### Mockups and Marketing
 
 -   [moqups](https://moqups.com/) - A streamlined web app that helps you create and collaborate on
     wireframes, mockups, diagrams and prototypes.
@@ -223,7 +220,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [LaunchKit](https://github.com/launchkit/launchkit/) - A set of web-based tools for mobile app developers, now open source!
 -   [StartupResources.io](https://startupresources.io/) - Tightly curated lists of the best startup tools
 
-## Team Management
+### Team Management
 
 -   [Airtable](https://airtable.com) - Spreadsheet, meet database.
 -   [Trello](https://trello.com/) - Trello makes it easy to organize anything with anyone
@@ -239,7 +236,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Smartsheet](https://www.smartsheet.com/) - Microsoft Project alternative, best used for scheduling and resource management
 -   [Zenkit](https://zenkit.com/) - Better Trello, with Mindmaps
 
-## Analytics
+### Analytics
 
 -   [Matomo](https://github.com/matomo-org) - Number 1 all-in-one free web analytics platform (Piwik is now matomo)
 -   [KISSmetrics](https://www.kissmetricshq.com/) - Understand what people are doing on your website and products,
@@ -258,7 +255,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Heap Analytics](https://heapanalytics.com/) - Heap lets you automatically capture every user interaction from web, mobile, and cloud services.
 -   [Snowplow Analytics](https://snowplowanalytics.com/) - Open source web, mobile and event analytics platform.
 
-## Podcasts
+### Podcasts
 
 -   [Design Details Podcast](https://www.producthunt.com/r/f0a61978d9/12920) - A show about the people who design our favorite products.
 -   [AngelList Radio - Kirill Makharinsky](https://www.producthunt.com/podcasts/angellist-radio-kirill-makharinsky) - What factors can predict a company's future success
@@ -276,9 +273,9 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [mindtheproduct.com Podcasts](https://www.mindtheproduct.com/tag/podcast/) - Podcasts by mindtheproduct.com
 -   [Masters of Scale with Reid Hoffman](https://podcasts.apple.com/us/podcast/masters-of-scale-with-reid-hoffman/id1227971746?mt=2) - How do companies grow from zero to a gazillion? Legendary Silicon Valley investor / entrepreneur Reid Hoffman tests his theories with famous founders.
 
-# Core 3: Real Life Product Management
+## Core 3: Real Life Product Management
 
-## Interviews
+### Interviews
 
 -   [Janna Bastow on "How to Get into Product Management"](https://www.youtube.com/watch?v=p9Ubfv5v2i8) - A conversation between Janna Bastow, founder of ProdPad and previously a product manager / consultant
 -   [Eva Andreasson on "How to Get into Product Management"](https://www.youtube.com/watch?v=tIQLhdMrK2Y) - A conversation between Eva Andreasson, Senior Product Manager at Cloudera, and Jason Shah, Product Manager at Yammer
@@ -292,7 +289,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Ryan Hoover on "How to Get Into Product Management"](https://www.youtube.com/watch?v=gIJNfQZCY0s) - A conversation between Ryan Hoover, Director of Product, PlayHaven and Jason Shah
 -   [Marty Cagan and others on why they love the role, what they look for when hiring graduates, and the advice they offer prospective Product Managers](https://product.careers/stories/)
 
-## Product Case Studies
+### Product Case Studies
 
 -   [Building an Enterprise Product: Yammer's Development Methodology](https://www.youtube.com/watch?v=N8wdRZDv0ks) - Jason Shah, product manager at Yammer, shares aspects of Yammer's product development methodology.
 -   [Product Hunt’s Rise - Case Study](https://medium.com/@theunixbeard/product-hunt-s-rise-d49249a1a2c0#.bpns2qcg3) - Product Hunt’s Rise
@@ -304,7 +301,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Netflix Case Study](http://www.ecommerce-digest.com/netflix-case-study.html) - Netflix Case Study
 -   [Box Case Study](https://www.youtube.com/watch?v=qeY2BRaS11g) - Box Case Study
 
-## Sample Product Documentation
+### Sample Product Documentation
 
 -   [How I would grow Thumbtack’s Customer Side of the Marketplace — Product Spec](https://medium.com/@ivanTr0n/how-i-would-grow-thumbtack-s-customer-side-of-the-marketplace-product-spec-edc5c0521d08#.o9octd4pa) - Sample Product Spec about Thumbtack
 -   [Global Lynda](http://leenau.bitbucket.io/lynda/product-requirements-document/) - Sample Product Requirements Document
@@ -329,9 +326,9 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Product Manager HQ](https://www.productmanagerhq.com/join-the-community/) - Product Manager HQ - Slack group
 -   [Product Camp](http://www.productcamp.org) - Product Camp Community Website and Blog
 
-# Core 4: Get the Job
+## Core 4: Get the Job
 
-## Career Prep: The Interview
+### Career Prep: The Interview
 
 -   [Get Product Management Interview Prep Coaching](https://producthired.com/coaches?types=interview-prep) - Book an interview prep session with a product expert for your upcoming interviews
 -   [Preparing for PM interviews: how to get there in 15–20 hours](https://medium.com/pminsider/preparing-for-pm-interviews-how-to-get-there-in-15-20-hours-193f6fcbf606) - Preparing for PM interviews
