@@ -8,10 +8,12 @@ This is a curated list of product management resources including frameworks, int
 
 This list should be mainly useful for product managers from beginner to mid level (since that's what I have the experience of and I believe can help in). The idea is to know and learn from the best people and communities in PM.
 
-<!--
+
 ## Content
 
--   [Top Product Managers](#top-product-managers)
+-   [Top Product Managers](#product-leaders-on-twitter)
+-   [Websites to follow ](#Websites-to-stay-updated-with-the-latest-in-Tech,-Product-and-Startups)
+<!--
 -   [Open Product Management](#open-product-management)
     -   [About](#about)
     -   [How to Use](#how-to-use)
