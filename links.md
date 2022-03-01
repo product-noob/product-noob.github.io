@@ -4,10 +4,10 @@ title: Reads
 permalink: /links/
 ---
 
-This is a curated list of product management resources; including frameworks, interviews, books, products, career preps, and much more. I have tried collating the list from few popular sources ([Open Product](https://github.com/ProductHired/open-product-management) being the main inspiration) and have added few of my own favourites.
+This is a curated list of product management resources including frameworks, interviews, books, products, career preps, and much more. I have tried collating the list from few popular sources ([Open Product](https://github.com/ProductHired/open-product-management) being the main inspiration) and have added few of my own favourites.
 
-This list should be mainly useful for product managers from beginner to mid level(since that's what I have the experience of). The idea is to know and learn from the best people and communities in PM.
-
+This list should be mainly useful for product managers from beginner to mid level (since that's what I have the experience of and I believe can help in). The idea is to know and learn from the best people and communities in PM.
+<!--
 ## Content
 
 -   [Top Product Managers](#top-product-managers)
@@ -67,29 +67,28 @@ This list should be mainly useful for product managers from beginner to mid leve
     -   [Career Prep: The Interview](#career-prep-the-interview)
     -   [Career Prep: Company Types](#career-prep-company-types)
 
-#### Product Leaders I try to learn from
+-->
 
+# Product Leaders I try to learn from
 
-# Top Product Managers
-
--    [Shreyas Doshi](https://twitter.com/shreyas) - ex-PM at Stripe, Twitter, Google, Yahoo.
--    [Lenny Rachitsky.](https://twitter.com/lennysan) - runs the famous newsletter at [Lennysnewsletter](https://www.lennysnewsletter.com/)
--    [Ken Norton](https://twitter.com/kennethn) - Partner @GVTeam. Formerly PM @Google.
--    [Josh Elman](https://twitter.com/joshelman) - Partner, @GreylockVC: @Medium, @Jelly, @AppMeerkat, @Operator, @discordapp @Nextdoor.
--    [Hunter Walk](https://twitter.com/hunt erwalk) - @homebrew, Seed Stage Venture Fund w @satyap. Made products at YouTube, Google & SecondLife.
--    [Ian McAllister](https://twitter.com/ianmcall) - Director of Product at Airbnb. Former Amazon and founder of @AmazonSmile.
--    [Marty Cagan](https://twitter.com/cagan) - I'm a partner at Silicon Valley Product Group, specializing in product teams and product strategy
--    [Ellen Chisa](https://twitter.com/ellenchisa) - VP Product for <http://lolatravel.com> , temporary @harvardhbs dropout.
--    [Jackie Bavaro](https://twitter.com/jackiebo) - Asana Product Manager. Co-Author of Cracking the PM Interview. Previously @ Google & Microsoft
--    [Julie Zhuo](https://twitter.com/joulee) - Product design VP @ Facebook.
--    [Sachin Rekhi](https://twitter.com/sachinrekhi) - Entrepreneur, Product Guy, and Software Engineer.  
--    [Adam Nash](https://twitter.com/adamnash) - CEO @Wealthfront
--    [Eric Ries](https://twitter.com/ericries) - Trying to change how startups are built.
--    [Steven Sinofsky](https://twitter.com/stevesi) - Board Partner @a16z • Adviser @BoxHQ • Writings @ Learning by Shipping
--    [Janna Bastow](https://twitter.com/simplybastow) - Co-Founder of MTP/CEO at ProdPad/CoFounder ProductTank and ProductCamp London
--    [Martin Eriksson](https://twitter.com/bfgmartin) - Co-Founder at MTP/ProductTank
--    [Simon Cast](https://twitter.com/simoncast) - Co Founder MTP/ProductTank/ProdPad
--    [Charunethran Panchalam Govindarajan](https://twitter.com/charupg) - Product Manager, Intel / Social Entrepreneur / Tech Enthusiast
+-   [Shreyas Doshi](https://twitter.com/shreyas) - ex-PM at Stripe, Twitter, Google, Yahoo.
+-   [Lenny Rachitsky.](https://twitter.com/lennysan) - runs the famous newsletter at [Lennysnewsletter](https://www.lennysnewsletter.com/)
+-   [Ken Norton](https://twitter.com/kennethn) - Partner @GVTeam. Formerly PM @Google.
+-   [Josh Elman](https://twitter.com/joshelman) - Partner, @GreylockVC: @Medium, @discordapp @Nextdoor.
+-   [Hunter Walk](<https://twitter.com/hunt erwalk>) - @homebrew, Seed Stage Venture Fund @satyap. Made products at YouTube, Google & SecondLife.
+-   [Ian McAllister](https://twitter.com/ianmcall) - Director of Product at Airbnb. Former Amazon and founder of @AmazonSmile.
+-   [Marty Cagan](https://twitter.com/cagan) - I'm a partner at Silicon Valley Product Group, specializing in product teams and product strategy
+-   [Ellen Chisa](https://twitter.com/ellenchisa) - VP Product for <http://lolatravel.com> , temporary @harvardhbs dropout.
+-   [Jackie Bavaro](https://twitter.com/jackiebo) - Asana Product Manager. Co-Author of Cracking the PM Interview. Previously @ Google & Microsoft
+-   [Julie Zhuo](https://twitter.com/joulee) - Product design VP @ Facebook.
+-   [Sachin Rekhi](https://twitter.com/sachinrekhi) - Entrepreneur, Product Guy, and Software Engineer.  
+-   [Adam Nash](https://twitter.com/adamnash) - CEO @Wealthfront
+-   [Eric Ries](https://twitter.com/ericries) - Trying to change how startups are built.
+-   [Steven Sinofsky](https://twitter.com/stevesi) - Board Partner @a16z • Adviser @BoxHQ • Writings @ Learning by Shipping
+-   [Janna Bastow](https://twitter.com/simplybastow) - Co-Founder of MTP/CEO at ProdPad/CoFounder ProductTank and ProductCamp London
+-   [Martin Eriksson](https://twitter.com/bfgmartin) - Co-Founder at MTP/ProductTank
+-   [Simon Cast](https://twitter.com/simoncast) - Co Founder MTP/ProductTank/ProdPad
+-   [Charunethran Panchalam Govindarajan](https://twitter.com/charupg) - Product Manager, Intel / Social Entrepreneur / Tech Enthusiast
 
 
 #### Blogs/ Articles I found interesting
