@@ -70,7 +70,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 
 -->
 
-### Product Leaders I try to learn from
+#### Product Leaders I try to learn from
 
 -   [Shreyas Doshi](https://twitter.com/shreyas) - ex-PM at Stripe, Twitter, Google, Yahoo.
 -   [Lenny Rachitsky.](https://twitter.com/lennysan) - runs the famous newsletter at [Lennysnewsletter](https://www.lennysnewsletter.com/)
@@ -92,7 +92,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Charunethran Panchalam Govindarajan](https://twitter.com/charupg) - Product Manager, Intel / Social Entrepreneur / Tech Enthusiast
 
 
-### Websites I follow to stay updated with the latest in Tech, Product and Startups
+#### Websites I follow to stay updated with the latest in Tech, Product and Startups
 
 -   [Techcrunch](https://techcrunch.com/)
 -   [Product Hunt](https://www.producthunt.com/)
@@ -101,7 +101,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [The Ken](https://the-ken.com/sea/)
 
 
-### Personal blogs I find interesting
+#### Personal blogs I find interesting
 
 -   [Tigerfeathers Substack](https://tigerfeathers.substack.com/) - Really detailed explanation on complex topics ranging from crypto to fintech to India Stack
 -   [Manas Saloi](https://manassaloi.com/posts/) - He shit posts sometime but most times you get distilled and unfiltered product learnings
