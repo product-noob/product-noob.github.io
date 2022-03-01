@@ -1,22 +1,12 @@
 ---
 layout: page
 title: Reads
-permalink: /reads/
+permalink: /links/
 ---
 
-#### Product Leaders I try to learn from
+This is a curated list of product management resources; including frameworks, interviews, books, products, career preps, and much more. I have tried collating the list from few popular sources ([Open Product](https://github.com/ProductHired/open-product-management) being the main inspiration) and have added few of my own favourites.
 
--   **[Shreyas Doshi.](https://twitter.com/shreyas)**
-    -   fav: [Why Products Don't Succeed: The 7 Biases of Product Teams](https://www.linkedin.com/pulse/why-products-dont-succeed-7-biases-product-teams-shreyas-doshi/)
--   **[Lenny Rachitsky.](https://twitter.com/lennysan)**
-    -   fav: [How the biggest consumer apps got their first 1,000 users](https://www.lennysnewsletter.com/p/how-the-biggest-consumer-apps-got)
-
-#### Blogs/ Articles I found interesting
-
--   **[Tigerfeathers Substack](https://tigerfeathers.substack.com/)** - Really detailed explanation on complex topics ranging from crypto to fintech to India Stack
--   **[Manas Saloi](https://manassaloi.com/posts/)** - He shit posts sometime but most times you get distilled and unfiltered product learnings
-
-# Open Product Management
+This list should be mainly useful for product managers from beginner to mid level(since that's what I have the experience of). The idea is to know and learn from the best people and communities in PM.
 
 ## Content
 
@@ -79,6 +69,40 @@ permalink: /reads/
 -   [Special Thanks](#special-thanks)
 -   [Contributing to the list](#contributing-to-the-list)
 -   [License](#license)
+
+#### Product Leaders I try to learn from
+
+
+# Top Product Managers
+
+-    [Shreyas Doshi](https://twitter.com/shreyas) - ex-PM at Stripe, Twitter, Google, Yahoo.
+-    [Lenny Rachitsky.](https://twitter.com/lennysan) - runs the famous newsletter at [Lennysnewsletter](https://www.lennysnewsletter.com/)
+-    [Ken Norton](https://twitter.com/kennethn) - Partner @GVTeam. Formerly PM @Google.
+-    [Josh Elman](https://twitter.com/joshelman) - Partner, @GreylockVC: @Medium, @Jelly, @AppMeerkat, @Operator, @discordapp @Nextdoor.
+-    [Hunter Walk](https://twitter.com/hunt erwalk) - @homebrew, Seed Stage Venture Fund w @satyap. Made products at YouTube, Google & SecondLife.
+-    [Ian McAllister](https://twitter.com/ianmcall) - Director of Product at Airbnb. Former Amazon and founder of @AmazonSmile.
+-    [Marty Cagan](https://twitter.com/cagan) - I'm a partner at Silicon Valley Product Group, specializing in product teams and product strategy
+-    [Ellen Chisa](https://twitter.com/ellenchisa) - VP Product for <http://lolatravel.com> , temporary @harvardhbs dropout.
+-    [Jackie Bavaro](https://twitter.com/jackiebo) - Asana Product Manager. Co-Author of Cracking the PM Interview. Previously @ Google & Microsoft
+-    [Julie Zhuo](https://twitter.com/joulee) - Product design VP @ Facebook.
+-    [Sachin Rekhi](https://twitter.com/sachinrekhi) - Entrepreneur, Product Guy, and Software Engineer.  
+-    [Adam Nash](https://twitter.com/adamnash) - CEO @Wealthfront
+-    [Eric Ries](https://twitter.com/ericries) - Trying to change how startups are built.
+-    [Steven Sinofsky](https://twitter.com/stevesi) - Board Partner @a16z • Adviser @BoxHQ • Writings @ Learning by Shipping
+-    [Janna Bastow](https://twitter.com/simplybastow) - Co-Founder of MTP/CEO at ProdPad/CoFounder ProductTank and ProductCamp London
+-    [Martin Eriksson](https://twitter.com/bfgmartin) - Co-Founder at MTP/ProductTank
+-    [Simon Cast](https://twitter.com/simoncast) - Co Founder MTP/ProductTank/ProdPad
+-    [Charunethran Panchalam Govindarajan](https://twitter.com/charupg) - Product Manager, Intel / Social Entrepreneur / Tech Enthusiast
+
+    -   fav: [Why Products Don't Succeed: The 7 Biases of Product Teams](https://www.linkedin.com/pulse/why-products-dont-succeed-7-biases-product-teams-shreyas-doshi/)
+-   **[Lenny Rachitsky.](https://twitter.com/lennysan)**
+    -   fav: [How the biggest consumer apps got their first 1,000 users](https://www.lennysnewsletter.com/p/how-the-biggest-consumer-apps-got)
+
+#### Blogs/ Articles I found interesting
+
+-   **[Tigerfeathers Substack](https://tigerfeathers.substack.com/)** - Really detailed explanation on complex topics ranging from crypto to fintech to India Stack
+-   **[Manas Saloi](https://manassaloi.com/posts/)** - He shit posts sometime but most times you get distilled and unfiltered product learnings
+
 
 # Core 1: Product Management
 
