@@ -84,7 +84,6 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Hunter Walk](https://twitter.com/hunterwalk) - @homebrew. Made products at YouTube, Google
 -   [Ian McAllister](https://twitter.com/ianmcall) - Director of Product at Airbnb. Former Amazon and founder of @AmazonSmile.
 -   [Marty Cagan](https://twitter.com/cagan) - Partner at SVPG, specialising in product teams and product strategy
--   [Ellen Chisa](https://twitter.com/ellenchisa) - VP Product for <http://lolatravel.com>
 -   [Adam Nash](https://twitter.com/adamnash) - CEO @Wealthfront
 -   [Eric Ries](https://twitter.com/ericries) - Trying to change how startups are built.
 -   [Steven Sinofsky](https://twitter.com/stevesi) - Board Partner @a16z • Adviser @BoxHQ • Writings @ Learning by Shipping
