@@ -101,10 +101,21 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [The Ken](https://the-ken.com/sea/)
 
 
-#### Personal blogs I find interesting
+#### Product Blogs I find interesting
 
+-   [Silicon Valley Product Group](http://svpg.com/articles/) - Shares lessons learned and knowledge of product management.
+-   [Mind the Product](http://www.mindtheproduct.com/) - Product Management Blog and events.
+-   [Good Product Manager](https://www.goodproductmanager.com/) - How To Be A Good Product Manager
+-   [15 Things You Should Know About Product Managers](https://medium.com/@johnpcutler/15-things-you-should-know-about-product-managers-f488513d246) - John Cutler
 -   [Tigerfeathers Substack](https://tigerfeathers.substack.com/) - Really detailed explanation on complex topics ranging from crypto to fintech to India Stack
 -   [Manas Saloi](https://manassaloi.com/posts/) - He shit posts sometime but most times you get distilled and unfiltered product learnings
+-   [The Cranky Product Manager](http://crankypm.com/) - A blog on product management, product marketing, and the ugly side of software product development. As of April 2015, the author, Sue Raisty, no longer writes, but she has a large backlog of great posts.
+-   [Street Smart Product Manager](http://streetsmartproductmanager.com/) - Thriving in the urban jungle of product.
+-   [Product Talk](http://www.producttalk.org/) - Make better product decisions.
+-   [The Clever PM](http://thecleverpm.com/) - Tips, tricks, and hacks that help you to be a better, more clever, Product Manager.
+-   [Good Product Manager](https://www.goodproductmanager.com/) - How To Be A Good Product Manager
+-   [15 Things You Should Know About Product Managers](https://medium.com/@johnpcutler/15-things-you-should-know-about-product-managers-f488513d246) - John Cutler
+-   [The Black Box of Product Management](https://blackboxofpm.com/) - Shining light on the PM discipline
 
 
 # Core 1: Product Management
@@ -136,12 +147,9 @@ This list should be mainly useful for product managers from beginner to mid leve
 
 ## Becoming A Product Guru
 
--   [How do I become a Product Manager?](https://www.quora.com/How-do-I-become-a-product-manager-2) - Multiple authors
 -   [How I became a PM](http://blog.ellenchisa.com/2014/01/10/how-i-became-a-pm/) - Ellen Chisa
--   [Do Product Managers really need a background in CS](https://theartofproductmanagement.quora.com/Do-Product-Managers-really-need-a-background-in-CS) - Jackie Bavaro
 -   [Want to be a PM? Do a Project](http://blog.ellenchisa.com/2014/01/28/want-to-be-a-pm-do-a-project/) - Ellen Chisa
 -   [So You Want to Manage a Product](https://medium.com/@rohinivibha/so-you-want-to-manage-a-product-c664ba7e5138) - Rohini Viba
--   [The 4 ways to break into Product Management](https://theartofproductmanagement.quora.com/The-4-ways-to-Break-into-Product-Management) - Jackie Bavaro
 -   [Evolution of the Product Manager](http://queue.acm.org/detail.cfm?id=2683579) - Ellen Chisa
 -   [4 mistakes new Product Managers make](http://dev.hubspot.com/blog/4-mistakes-new-product-managers-make) - Matt Schnitt
 -   [Product Manager Skills By Seniority Level — A Deep Breakdown](https://medium.com/pminsider/product-manager-skills-by-seniority-level-a-deep-breakdown-cd0690f76d10) - Brent Tworetzky
@@ -184,7 +192,6 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Don’t publish a product roadmap](https://colinrand.com/post/51810660125/dont-publish-a-product-roadmap) - Colin Rand
 -   [Software Inventory](http://www.joelonsoftware.com/items/2012/07/09.html) - Joel Spolsky
 -   [Babe Ruth and feature lists](https://medium.com/bringing-the-donuts/babe-ruth-and-feature-lists-1818bb8c6ca8) - Kenneth Norton
--   [What are the best ways to prioritize a list of product features](https://www.quora.com/What-are-the-best-ways-to-prioritize-a-list-of-product-features) - Ian McAllister
 -   [Before you plan your product roadmap](http://blog.intercom.io/before-you-plan-your-product-roadmap/) - Des Traynor
 -   [Rodmaps focus on vision benefits, not features](http://www.productpowers.com/blog/roadmaps-focus-on-vision-benefits-not-features.html) - Bruce McCarthy
 -   [The one cost engineers and Product Managers don’t consider](http://firstround.com/article/The-one-cost-engineers-and-product-managers-dont-consider) - Kris Gale
@@ -253,7 +260,6 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Court scribe or Hand of the King](http://www.productpowers.com/blog/court-scribe-or-hand-of-the-king.html) - Bruce McCarthy
 -   [Influence without authority](http://www.sachinrekhi.com/blog/2013/02/19/the-most-underrated-product-management-skill-influence-without-authority) - Sachin Rekhi
 -   [Management clichés that work](http://blog.learningbyshipping.com/2014/10/23/management-cliches-that-work/) - Steven Sinofsky
--   [How to be persuasive](https://pmblog.quora.com/How-to-be-persuasive) - Jackie Bavaro
 -   [Bad Managers Talk, Good Managers Write](http://blog.idonethis.com/managers-write/) - Walter Chen
 -   [Good Product Manager, Bad Product Manager](http://benhorowitz.files.wordpress.com/2010/05/good-product-manager.pdf) - Ben Horowitz
 -   [Be a great product leader](http://blog.adamnash.com/2011/12/16/be-a-great-product-leader/) - Adam Nash
@@ -461,40 +467,6 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [mindtheproduct.com Podcasts](https://www.mindtheproduct.com/tag/podcast/) - Podcasts by mindtheproduct.com
 -   [Masters of Scale with Reid Hoffman](https://podcasts.apple.com/us/podcast/masters-of-scale-with-reid-hoffman/id1227971746?mt=2) - How do companies grow from zero to a gazillion? Legendary Silicon Valley investor / entrepreneur Reid Hoffman tests his theories with famous founders.
 
-## Online Courses
-
--   [Design Workflow with Sketch](https://github.com/facebook/pop) - An e-course from Clark Wimberly at InVision.
--   [Designlab](https://www.producthunt.com/r/b1ef8b4e5a/11546) - Learn design by doing, with hands-on projects & mentorship.
--   [Product Alliance](https://course.productalliance.com/a/33297/spNMFmjD) - All the tools you need to land your dream job as a product manager at _any_ tech company.
--   [You're Hired: How to Get a Job in Silicon Valley](https://www.udemy.com/youre-hired-how-to-get-a-job-in-silicon-valley/) - Learn how to get a job in Silicon Valley
--   [The Non-Technical Person's guide to building products & apps](https://www.udemy.com/launch-your-idea-idea-to-mvp-with-no-cto-and-no-coding/learn/v4/overview) - Go from Idea to MVP with no CTO and no coding. Launch your business, app, or product idea cheaply, quickly, and easily.
--   [Product Management Coursea](https://www.coursera.org/specializations/product-management) - Become an effective Software Product Manager by mastering Agile software development practices to confidently interact with clients and manage a development team.
--   [Product Management Course Brainstation - Toronto](https://github.com/intuit/AnimationEngine) - TRANSFORM YOUR IDEA INTO A PRODUCT.
--   [Product School - USA](http://www.productschool.com) - Get a Product Manager Job
--   [Product Management - General Assembly](https://generalassemb.ly/education/product-management) - 10-WEEK PART-TIME COURSE
--   [How to build a product roadmap everyone understands - Free e-Course](https://get.prodpad.com/theme-based-roadmap-course/) - How to build a roadmap
--   [Building a Pre-Launch Marketing Strategy for Beginners](https://www.udemy.com/building-a-pre-launch-marketing-strategy-for-beginners/) - Build your own Pre-launch Marketing Strategy for your company rollout or feature
--   [Idea To Revenue Masterclass](http://productmanageracademy.teachable.com/courses/ideatorevenuemasterclass) - Become a Strategic Product Leader: Validate Ideas, Launch Great Products, Deliver Business Results.
--   [Coursera - Software Product Management](https://www.coursera.org/specializations/product-management) - Create Better Software using Agile Practices. Master Agile development and effective interactions to drive the making of great software products (Capstone Project)
--   [Pragmatic Marketing Courses](https://www.pragmaticmarketing.com/courses) - Product Management and Marketing Training
--   [Product Management - Cursos PM3 (Portuguese Only)](https://www.cursospm3.com.br/curso-product-manager) - This was the first course 100% online in Portuguese about Product Management. It was made by product professionals and the course covers from the basics until the most advanced topics with +40 hours of content.
--   [Product Discovery - Cursos PM3 (Portuguese Only)](https://www.cursospm3.com.br/curso-de-product-discovery) - This course teaches how to discover valuable solutions for the users. The most current Product Discovery techniques, applied in practice, by the renowned Design and Product professionals from the Brazilian market.
--   [Product Growth - Cursos PM3 (Portuguese Only)](https://www.cursospm3.com.br/curso-product-growth) - This course teaches how to lead company's growth. The most current Product Growth techniques, applied in practice, by the best Marketing, Growth and Product professionals in the Brazilian market.
--   [Product Management Weekly Tips](https://www.linkedin.com/learning/product-management-weekly-tips/welcome) - Free Product Management Weekly Tip Videos From Linkedin Learning
-    -   [AI Product Manager](https://eu.udacity.com/course/ai-product-manager-nanodegree--nd088) - Learn to develop AI products that deliver business value. Build skills that help you compete in the new AI-powered world.
--   [Digital Product Management: Modern Fundamentals](https://www.coursera.org/learn/uva-darden-digital-product-management) - This course is ideal for current product or general  managers interested in today's modern product management methods.
-
-## Online Blogs
-
--   [The Cranky Product Manager](http://crankypm.com/) - A blog on product management, product marketing, and the ugly side of software product development. As of April 2015, the author, Sue Raisty, no longer writes, but she has a large backlog of great posts.
--   [Street Smart Product Manager](http://streetsmartproductmanager.com/) - Thriving in the urban jungle of product.
--   [Product Talk](http://www.producttalk.org/) - Make better product decisions.
--   [Silicon Valley Product Group](http://svpg.com/articles/) - Shares lessons learned and knowledge of product management.
--   [The Clever PM](http://thecleverpm.com/) - Tips, tricks, and hacks that help you to be a better, more clever, Product Manager.
--   [Mind the Product](http://www.mindtheproduct.com/) - Product Management Blog and events.
--   [Good Product Manager](https://www.goodproductmanager.com/) - How To Be A Good Product Manager
--   [15 Things You Should Know About Product Managers](https://medium.com/@johnpcutler/15-things-you-should-know-about-product-managers-f488513d246) - John Cutler
--   [The Black Box of Product Management](https://blackboxofpm.com/) - Shining light on the PM discipline
 
 # Core 3: Real Life Product Management
 
@@ -600,14 +572,5 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Product Management Job Interview Exercises](https://productmanagementexercises.com/) - Free repository of PM job interview questions and answers
 -   [Exponent](http://www.tryexponent.com) - Exponent offers online courses, a free interview questions database, and a Slack community for mock interviews.
 
-## Career Prep: Company Types
-
--   [Product Alliance's Deep Dives Course](https://course.productalliance.com/a/33300/spNMFmjD) - Exclusive interviews and 200+ pages of strategy guides for the Top 22 companies for PM (FAANG, LinkedIn, Uber, Airbnb, Pinterest, Twitter, ...
--   [Google by Larry page and Sergey Brin](http://www.google.com/about/company/philosophy/) - Google's culture
--   [Microsoft](https://blogs.msdn.microsoft.com/techtalk/2005/12/16/pm-at-microsoft/) - Microsoft PM Culture
--   [Amazon](https://www.quora.com/Amazon-company/What-is-Amazons-approach-to-product-development-and-product-management) - Amazon's culture
--   [Facebook](https://www.quora.com/What-does-a-Product-Manager-at-Facebook-do) - Facebook PM Culture
--   [The Ultimate Google APM Interview Guide](https://www.tryexponent.com/guides/google/apm-interview) - This guide explains each stage of the Google APM interview and has practice interview questions that were asked at Google
--   [Mock PM Interview Practice](https://www.youtube.com/channel/UCjm_qVkCPjOVDz9BWjNqO9A) - This channel goes through various sample interview questions with FANG and other companies
 
 Please send me something good to read if you have recommendations, would love to check them out as well.
