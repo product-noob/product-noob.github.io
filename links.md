@@ -70,16 +70,16 @@ This list should be mainly useful for product managers from beginner to mid leve
 
 -->
 
-#### Product Leaders I try to learn from
+#### Product Leaders on Twitter
 
 -   [Shreyas Doshi](https://twitter.com/shreyas) - ex-PM at Stripe, Twitter, Google, Yahoo.
 -   [Lenny Rachitsky.](https://twitter.com/lennysan) - runs the famous newsletter at [Lennysnewsletter](https://www.lennysnewsletter.com/)
 -   [Ken Norton](https://twitter.com/kennethn) - Partner @GVTeam. Formerly PM @Google.
 -   [Josh Elman](https://twitter.com/joshelman) - Partner, @GreylockVC: @Medium, @discordapp @Nextdoor.
--   [Hunter Walk](<https://twitter.com/hunt erwalk>) - @homebrew, Seed Stage Venture Fund @satyap. Made products at YouTube, Google & SecondLife.
+-   [Hunter Walk](https://twitter.com/hunterwalk) - @homebrew. Made products at YouTube, Google
 -   [Ian McAllister](https://twitter.com/ianmcall) - Director of Product at Airbnb. Former Amazon and founder of @AmazonSmile.
--   [Marty Cagan](https://twitter.com/cagan) - I'm a partner at Silicon Valley Product Group, specializing in product teams and product strategy
--   [Ellen Chisa](https://twitter.com/ellenchisa) - VP Product for <http://lolatravel.com> , temporary @harvardhbs dropout.
+-   [Marty Cagan](https://twitter.com/cagan) - Partner at SVPG, specialising in product teams and product strategy
+-   [Ellen Chisa](https://twitter.com/ellenchisa) - VP Product for <http://lolatravel.com>
 -   [Jackie Bavaro](https://twitter.com/jackiebo) - Asana Product Manager. Co-Author of Cracking the PM Interview. Previously @ Google & Microsoft
 -   [Julie Zhuo](https://twitter.com/joulee) - Product design VP @ Facebook.
 -   [Sachin Rekhi](https://twitter.com/sachinrekhi) - Entrepreneur, Product Guy, and Software Engineer.  
