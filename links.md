@@ -13,6 +13,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 
 -   [Top Product Managers](#product-leaders-on-twitter)
 -   [Websites to follow ](#Websites-to-stay-updated-with-the-latest-in-Tech,-Product-and-Startups)
+
 <!--
 -   [Open Product Management](#open-product-management)
     -   [About](#about)
