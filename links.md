@@ -8,12 +8,6 @@ This is a curated list of product management resources including frameworks, int
 
 This list should be mainly useful for product managers from beginner to mid level (since that's what I have the experience of and I believe can help in). The idea is to know and learn from the best people and communities in PM.
 
-
-## Content
-
--   [Top Product Managers](#product-leaders-on-twitter)
--   [Websites to follow ](#Websites-to-stay-updated-with-the-latest-in-Tech,-Product-and-Startups)
-
 <!--
 -   [Open Product Management](#open-product-management)
     -   [About](#about)
@@ -73,11 +67,18 @@ This list should be mainly useful for product managers from beginner to mid leve
 
 -->
 
+### List of contents:
+
+-   [Top Product Managers](#product-leaders-on-twitter)
+-   [Websites to follow ](#websites-I-follow)
+-   [Good Blogs on Product](#product-blogs)
+
+---
 #### Product Leaders on Twitter
 
 -   [Shreyas Doshi](https://twitter.com/shreyas) - ex-PM at Stripe, Twitter, Google, Yahoo.
 -   [Lenny Rachitsky.](https://twitter.com/lennysan) - runs the famous newsletter at [Lennysnewsletter](https://www.lennysnewsletter.com/)
--   [Jackie Bavaro](https://twitter.com/jackiebo) - Asana Product Manager. Co-Author of Cracking the PM Interview. Previously @ Google & Microsoft
+-   [Jackie Bavaro](https://twitter.com/jackiebo) - Asana PM. Co-Author of Cracking the PM Interview. Previously @ Google & Microsoft
 -   [Julie Zhuo](https://twitter.com/joulee) - Product design VP @ Facebook.
 -   [Sachin Rekhi](https://twitter.com/sachinrekhi) - Entrepreneur, Product Guy, and Software Engineer.
 -   [Ken Norton](https://twitter.com/kennethn) - Partner @GVTeam. Formerly PM @Google.
@@ -85,12 +86,10 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Hunter Walk](https://twitter.com/hunterwalk) - @homebrew. Made products at YouTube, Google
 -   [Ian McAllister](https://twitter.com/ianmcall) - Director of Product at Airbnb. Former Amazon and founder of @AmazonSmile.
 -   [Marty Cagan](https://twitter.com/cagan) - Partner at SVPG, specialising in product teams and product strategy
--   [Adam Nash](https://twitter.com/adamnash) - CEO @Wealthfront
 -   [Eric Ries](https://twitter.com/ericries) - Trying to change how startups are built.
 -   [Steven Sinofsky](https://twitter.com/stevesi) - Board Partner @a16z • Adviser @BoxHQ • Writings @ Learning by Shipping
--   [Martin Eriksson](https://twitter.com/bfgmartin) - Co-Founder at MTP/ProductTank
 
-#### Websites to stay updated with the latest in Tech, Product and Startups
+#### Websites I follow
 
 -   [Techcrunch](https://techcrunch.com/)
 -   [Product Hunt](https://www.producthunt.com/)
@@ -98,12 +97,12 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Entrackr](https://entrackr.com/)
 -   [The Ken](https://the-ken.com/sea/)
 
-#### Product Blogs I find interesting
+#### Product Blogs
 
 -   [Silicon Valley Product Group](http://svpg.com/articles/) - Shares lessons learned and knowledge of product management.
 -   [Mind the Product](http://www.mindtheproduct.com/) - Product Management Blog and events.
--   [Tigerfeathers Substack](https://tigerfeathers.substack.com/) - Really detailed explanation on complex topics ranging from crypto to fintech to India Stack
--   [Manas Saloi](https://manassaloi.com/posts/) - He shit posts sometime but most times you get distilled and unfiltered product learnings
+-   [Tigerfeathers Substack](https://tigerfeathers.substack.com/) - Detailed explanations on complex topics ranging from crypto to fintech to India Stack
+-   [Manas Saloi](https://manassaloi.com/posts/) - Shit posts sometime but mainly you can expect distilled and unfiltered product learnings
 -   [Good Product Manager](https://www.goodproductmanager.com/) - How To Be A Good Product Manager
 -   [15 Things You Should Know About Product Managers](https://medium.com/@johnpcutler/15-things-you-should-know-about-product-managers-f488513d246) - John Cutler
 -   [The Clever PM](http://thecleverpm.com/) - Tips, tricks, and hacks that help you to be a better, more clever Product Manager.
@@ -112,11 +111,11 @@ This list should be mainly useful for product managers from beginner to mid leve
 
 ### Books
 
-#### Design
+##### Design
 
 -   [Inspired - How to Create Products Customers Love](http://www.amazon.in/gp/product/B001AQ95UY?btkr=1) - Marty Cagan  
 -   [The Design of Everyday Things](https://en.wikipedia.org/wiki/The_Design_of_Everyday_Things) - Donald Norman
--   [The Elements of User Experience: User-Centered Design for the Web and Beyond](https://www.amazon.in/Elements-User-Experience-User-Centered-Design/dp/0321683684) - Jesse James Garrett
+-   [The Elements of User Experience](https://www.amazon.in/Elements-User-Experience-User-Centered-Design/dp/0321683684) - Jesse James Garrett
 
 #### Startups
 
@@ -124,7 +123,7 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Lean Startup](https://www.amazon.in/Lean-Startup-Innovation-Successful-Businesses/dp/0670921602/) - Eric Ries
 -   [Hooked: How to build habit forming products](http://www.amazon.in/Hooked-How-Build-Habit-Forming-Products-ebook/dp/B00HJ4A43S) - Nir Eyal
 -   [The Hard Thing About Hard Things](http://www.amazon.in/Hard-Thing-About-Things-Building/dp/0062273205/) - Ben Horowitz
--   [Crossing the Chasm: Marketing and Selling High-Tech Products to Mainstream Customers](http://www.amazon.in/Crossing-Chasm-Marketing-High-Tech-Mainstream/dp/0060517123) - Geoffrey A. Moore
+-   [Crossing the Chasm](http://www.amazon.in/Crossing-Chasm-Marketing-High-Tech-Mainstream/dp/0060517123) - Geoffrey A. Moore
 -   [The Lean Product Playbook](http://www.amazon.in/The-Lean-Product-Playbook-Innovate/dp/1118960874) - Dan Olsen
 -   [Xiaomi](https://www.amazon.in/Xiaomi-Startup-Disrupted-Created-Following/dp/9390327040) - JPK
 
@@ -135,12 +134,8 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Thinking in Bets](https://www.amazon.in/Thinking-Bets-Making-Smarter-Decisions-ebook/dp/B074DG9LQF) - Annie Duke
 -   [Joel on Software](http://www.amazon.in/Joel-Software-Occasionally-Developers-Designers/dp/1590593898) - Joel Spolsky
 -   [Cracking the PM Interview](http://www.amazon.in/Cracking-PM-Interview-Product-Technology/dp/0984782818) - Jackie Bavaro
--   [The Art of Product Management: Lessons from a Silicon Valley Innovator](http://www.amazon.in/The-Art-Product-Management-Innovator/dp/1439216061) - Rich Mironov
--   [Making It Right: Product Management For A Startup World](https://www.amazon.in/dp/B00M0KTVTO/?tag=leavethegreat-20) - Rian Van Der Merwe
--   [Team Geek](http://www.amazon.in/Team-Geek-Software-Developers-Working/dp/1449302440/ref=sr_1_1?s=books&ie=UTF8&qid=1414877530&sr=1-1&keywords=team+geek) - Brian Fitzpatrick
--   [The Mythical Man-Month](http://www.amazon.in/The-Mythical-Man-Month-Engineering-Anniversary/dp/0201835959) - Frederick Brooks
 -   [The Timeless Way of Building](http://www.amazon.in/Timeless-Way-Building-Christopher-Alexander/dp/0195024028) - Christopher Alexander
--   [Algorithms of the Intelligent Web](http://www.amazon.in/Algorithms-Intelligent-Web-Haralambos-Marmanis/dp/1933988665) - Haralambos Marmanis and Dmitry Babenko
+
 #### Leadership
 
 -   [Measure What Matters](https://www.amazon.in/Measure-What-Matters-John-Doerr/dp/024134848X) - John Doerr
@@ -151,10 +146,9 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [The Tipping Point: How Little Things Can Make a Big Difference](http://www.amazon.in/The-Tipping-Point-Little-Difference-ebook/dp/B000OT8GD0) - Malcolm Gladwell
 -   [How To Measure Anything](http://www.amazon.in/How-Measure-Anything-Intangibles-Business/dp/1118539273) - Douglas W. Hubbard
 
----
+* * *
 
 #### Interview Prep
-
 
 # Core 1: Product Management
 
