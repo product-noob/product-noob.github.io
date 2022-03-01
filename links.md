@@ -112,6 +112,74 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [15 Things You Should Know About Product Managers](https://medium.com/@johnpcutler/15-things-you-should-know-about-product-managers-f488513d246) - John Cutler
 -   [The Black Box of Product Management](https://blackboxofpm.com/) - Shining light on the PM discipline
 
+### Books
+
+#### Design
+
+-   [Inspired - How to Create Products Customers Love](http://www.amazon.com/gp/product/B001AQ95UY?btkr=1) - Marty Cagan  
+-   [The Design of Everyday Things](https://en.wikipedia.org/wiki/The_Design_of_Everyday_Things) - Donald Norman
+-   [Don't Make Me Think: A Common Sense Approach to Web Usability, 2nd Edition](http://www.amazon.com/Dont-Make-Me-Think-Usability/dp/0321344758) - Steve Krug
+-   [About Face: The Essentials of Interaction Design, 4th Edition](https://www.amazon.com/About-Face-Essentials-Interaction-Design/dp/1118766571) - Alan Cooper, Robert Reimann, David Cronin, Christopher Noessel
+-   [The Elements of User Experience: User-Centered Design for the Web and Beyond, 2nd Edition](https://www.amazon.com/Elements-User-Experience-User-Centered-Design/dp/0321683684) - Jesse James Garrett
+-   [Designing Products People Love](http://shop.oreilly.com/product/0636920038917.do?cmp=tw-design-books-videos-product-promo_cmjy_dp&ref=producthunt) - How great designers create successful products.
+-   [Badass: Making Users Awesome](http://seriouspony.com/badass-users-the-book) - Kathy Sierra
+
+#### Startups
+
+-   [The 4 steps to the Epiphany](http://www.amazon.com/Four-Steps-Epiphany-Steve-Blank/dp/0989200507) - Steve Blank
+-   [Business Model Generation: A Handbook for Visionaries, Game Changers, and Challengers](http://www.amazon.com/Business-Model-Generation-Visionaries-Challengers/dp/0470876417) - A handbook for designing tomorrow’s enterprises
+-   [Beginning Customer Development](https://app.convertkit.com/kevindewalt/beginning-customer-development_ebook) - Kevin Dewalt
+-   [The Innovator’s Dilemma](https://en.wikipedia.org/wiki/The_Innovator%27s_Dilemma) - Clayton Christensen
+-   [The Innovator's Solution: Creating and Sustaining Successful Growth](https://www.amazon.com/Innovators-Solution-Creating-Sustaining-Successful/dp/1578518520) - Clayton Christensen
+-   [The Innovator's DNA: Mastering the Five Skills of Disruptive Innovators](https://www.amazon.com/Innovators-DNA-Mastering-Skills-Disruptive/dp/1422134814/ref=asap_bc?ie=UTF8) - Clayton Christensen
+-   [It’s Your Ship: Management Techniques from the Best Damn Ship in the Navy​](http://www.amazon.com/Its-Your-Ship-Management-Techniques/dp/145552302X) - Michael Abrashoff
+-   [The Hard Thing About Hard Things](http://www.amazon.com/Hard-Thing-About-Things-Building/dp/0062273205/) - Ben Horowitz
+-   [Traction](http://www.amazon.com/Traction-Startup-Achieve-Explosive-Customer-ebook/dp/B00TY3ZOMS) - Gabriel Weinberg
+-   [The Lean Product Playbook](http://www.amazon.com/The-Lean-Product-Playbook-Innovate/dp/1118960874) - Dan Olsen
+-   [Hooked: How to build habit forming products](http://www.amazon.com/Hooked-How-Build-Habit-Forming-Products-ebook/dp/B00HJ4A43S) - Nir Eyal
+-   [Crossing the Chasm: Marketing and Selling High-Tech Products to Mainstream Customers](http://www.amazon.com/Crossing-Chasm-Marketing-High-Tech-Mainstream/dp/0060517123) - Geoffrey A. Moore
+
+#### Marketing
+
+-   [Peopleware](http://www.amazon.com/gp/product/0321934113/ref=pd_lpo_sbs_dp_ss_3?pf_rd_p=1944687462&pf_rd_s=lpo-top-stripe-1&pf_rd_t=201&pf_rd_i=0201835959&pf_rd_m=ATVPDKIKX0DER&pf_rd_r=1E20VC37Q8W2VN696453) - Tom DeMarco
+-   [Understanding Media](https://en.wikipedia.org/wiki/Understanding_Media) - Marshall McLuhan
+-   [Made to Stick](https://en.wikipedia.org/wiki/Made_to_Stick) - Chip and Dan Heath
+
+#### Product Development
+
+-   [Getting Real](http://gettingreal.37signals.com) - The smarter, faster, easier way to build a successful web application
+-   [Joel on Software](http://www.amazon.com/Joel-Software-Occasionally-Developers-Designers/dp/1590593898) - Joel Spolsky
+-   [Team Geek](http://www.amazon.com/Team-Geek-Software-Developers-Working/dp/1449302440/ref=sr_1_1?s=books&ie=UTF8&qid=1414877530&sr=1-1&keywords=team+geek) - Brian Fitzpatrick
+-   [The Mythical Man-Month](http://www.amazon.com/The-Mythical-Man-Month-Engineering-Anniversary/dp/0201835959) - Frederick Brooks
+-   [The Timeless Way of Building](http://www.amazon.com/Timeless-Way-Building-Christopher-Alexander/dp/0195024028) - Christopher Alexander
+-   [Algorithms of the Intelligent Web](http://www.amazon.com/Algorithms-Intelligent-Web-Haralambos-Marmanis/dp/1933988665) - Haralambos Marmanis and Dmitry Babenko
+-   [Cracking the PM Interview](http://www.amazon.com/Cracking-PM-Interview-Product-Technology/dp/0984782818) - Jackie Bavaro
+-   [The Art of Product Management: Lessons from a Silicon Valley Innovator](http://www.amazon.com/The-Art-Product-Management-Innovator/dp/1439216061) - Rich Mironov
+-   [Making It Right: Product Management For A Startup World](https://www.amazon.com/dp/B00M0KTVTO/?tag=leavethegreat-20) - Rian Van Der Merwe
+-   [Product Leadership: How Top Product Managers Launch Awesome Products and Build Successful Teams](https://www.amazon.ca/dp/1491960604) -  Richard Banfield, Martin Eriksson, and Nate Walkingshaw
+-   [Lovability: How to Build a Business That People Love and Be Happy Doing It](https://amazon.com/Lovability-Build-Business-People-Happy-ebook/dp/B06XJ9RGNY/) - Brian de Haaff
+-   [JavaScript and JQuery](https://www.amazon.com/JavaScript-JQuery-Interactive-Front-End-Development/dp/1118531647/ref=as_li_ss_tl?ie=UTF8&qid=1443455024&sr=8-1&keywords=javascript&linkCode=sl1&tag=amazonbook10-20&linkId=e2058acefb720ac58495e18a0567a33b) - Interactive front-end web development book
+-   [The Go Programming Language](https://www.amazon.com/Programming-Language-Addison-Wesley-Professional-Computing/dp/0134190440) - The authoritative resource for learning Go
+
+#### Leadership
+
+-   [How To Measure Anything](http://www.amazon.com/How-Measure-Anything-Intangibles-Business/dp/1118539273) - Douglas W. Hubbard
+-   [Creativity, Inc.](https://openlibrary.org/works/OL17078912W/Creativity_Inc.) - Ed Catmull
+-   [Where Wizards Stay Up Late](https://openlibrary.org/works/OL3270089W/Where_wizards_stay_up_late) - Katie Hafner
+-   [The Martian​](https://en.wikipedia.org/wiki/The_Martian_%28Weir_novel%29) - Andy Weir
+-   [What Every BODY Is Saying​](http://www.amazon.com/What-Every-BODY-Saying-Speed-Reading/dp/0061438294/) - Joe Navarro
+-   [The Death and Life of Great American Cities](http://www.amazon.com/Death-Life-Great-American-Cities/dp/067974195X) - Jane Jacobs
+-   [Predictably Irrational](http://www.amazon.com/Predictably-Irrational-Revised-Expanded-Decisions/dp/0061353248) - Dan Ariely
+-   [Freakonomics](http://www.amazon.com/Freakonomics-Economist-Explores-Hidden-Everything/dp/0060731338/ref=sr_1_1?s=books&ie=UTF8&qid=1451455126&sr=1-1&keywords=freakonomics) - Steven Levitt and Stephen J. Dubner
+-   [Getting Past NO](https://en.wikipedia.org/wiki/Getting_Past_No) - William Ury
+-   [The 7 Habits of Highly Effective People](http://www.amazon.com/Habits-Highly-Effective-People-Powerful/dp/1451639619) - Stephen R. Covey
+-   [Switch: How to Change Things When Change is Hard​](http://www.amazon.com/Switch-Change-Things-When-Hard/dp/0385528752) - Chip and Dan Heath
+-   [The Score Takes Care of Itself​](http://www.amazon.com/Score-Takes-Care-Itself-Philosophy/dp/1591843472/) - Bill Walsh, Steve Jamison & Craig Walsh
+-   [Thinking, Fast and Slow](https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow) - Daniel Kahneman
+-   [Managing Humans](http://www.amazon.com/gp/product/1430243147/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=1430243147&linkCode=as2&tag=httpstwit071f-20) - Former Manager at Apple
+-   [The Everything Store: Jeff Bezos and the Age of Amazon](http://www.amazon.com/gp/product/0316219266/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0316219266&linkCode=as2&tag=httpstwit071f-20) - Brad Stone
+-   [The Tipping Point: How Little Things Can Make a Big Difference](http://www.amazon.com/The-Tipping-Point-Little-Difference-ebook/dp/B000OT8GD0) - Malcolm Gladwell
+
 # Core 1: Product Management
 
 ## What Is Product Management?
@@ -139,14 +207,6 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [Ode to a Non Technical Product Manager](https://medium.com/@hunterwalk/ode-to-a-non-technical-product-manager-7776efb98acd) - Hunter Walk
 -   [3 Skillsets for PM Success](http://blog.kentonkivestu.com/3-skillsets-for-PM-success) - Kenton Kivetsu
 
-## Becoming A Product Guru
-
--   [How I became a PM](http://blog.ellenchisa.com/2014/01/10/how-i-became-a-pm/) - Ellen Chisa
--   [Want to be a PM? Do a Project](http://blog.ellenchisa.com/2014/01/28/want-to-be-a-pm-do-a-project/) - Ellen Chisa
--   [So You Want to Manage a Product](https://medium.com/@rohinivibha/so-you-want-to-manage-a-product-c664ba7e5138) - Rohini Viba
--   [Evolution of the Product Manager](http://queue.acm.org/detail.cfm?id=2683579) - Ellen Chisa
--   [4 mistakes new Product Managers make](http://dev.hubspot.com/blog/4-mistakes-new-product-managers-make) - Matt Schnitt
--   [Product Manager Skills By Seniority Level — A Deep Breakdown](https://medium.com/pminsider/product-manager-skills-by-seniority-level-a-deep-breakdown-cd0690f76d10) - Brent Tworetzky
 
 ## Building Great Products
 
@@ -369,79 +429,6 @@ This list should be mainly useful for product managers from beginner to mid leve
 -   [The golden rule of A/B testing: look beyond validation](https://blog.intercom.io/why-ab-tests-should-yield-more-than-results/) - Run successful, statistically accurate A/B tests.
 -   [Heap Analytics](https://heapanalytics.com/) - Heap lets you automatically capture every user interaction from web, mobile, and cloud services.
 -   [Snowplow Analytics](https://snowplowanalytics.com/) - Open source web, mobile and event analytics platform.
-
-## Books
-
-### Design
-
--   [Inspired - How to Create Products Customers Love](http://www.amazon.com/gp/product/B001AQ95UY?btkr=1) - Marty Cagan  
--   [The Design of Everyday Things](https://en.wikipedia.org/wiki/The_Design_of_Everyday_Things) - Donald Norman
--   [Don't Make Me Think: A Common Sense Approach to Web Usability, 2nd Edition](http://www.amazon.com/Dont-Make-Me-Think-Usability/dp/0321344758) - Steve Krug
--   [About Face: The Essentials of Interaction Design, 4th Edition](https://www.amazon.com/About-Face-Essentials-Interaction-Design/dp/1118766571) - Alan Cooper, Robert Reimann, David Cronin, Christopher Noessel
--   [The Elements of User Experience: User-Centered Design for the Web and Beyond, 2nd Edition](https://www.amazon.com/Elements-User-Experience-User-Centered-Design/dp/0321683684) - Jesse James Garrett
--   [Designing Products People Love](http://shop.oreilly.com/product/0636920038917.do?cmp=tw-design-books-videos-product-promo_cmjy_dp&ref=producthunt) - How great designers create successful products.
--   [Badass: Making Users Awesome](http://seriouspony.com/badass-users-the-book) - Kathy Sierra
-
-### Startups
-
--   [The 4 steps to the Epiphany](http://www.amazon.com/Four-Steps-Epiphany-Steve-Blank/dp/0989200507) - Steve Blank
--   [Business Model Generation: A Handbook for Visionaries, Game Changers, and Challengers](http://www.amazon.com/Business-Model-Generation-Visionaries-Challengers/dp/0470876417) - A handbook for designing tomorrow’s enterprises
--   [Beginning Customer Development](https://app.convertkit.com/kevindewalt/beginning-customer-development_ebook) - Kevin Dewalt
--   [The Innovator’s Dilemma](https://en.wikipedia.org/wiki/The_Innovator%27s_Dilemma) - Clayton Christensen
--   [The Innovator's Solution: Creating and Sustaining Successful Growth](https://www.amazon.com/Innovators-Solution-Creating-Sustaining-Successful/dp/1578518520) - Clayton Christensen
--   [The Innovator's DNA: Mastering the Five Skills of Disruptive Innovators](https://www.amazon.com/Innovators-DNA-Mastering-Skills-Disruptive/dp/1422134814/ref=asap_bc?ie=UTF8) - Clayton Christensen
--   [It’s Your Ship: Management Techniques from the Best Damn Ship in the Navy​](http://www.amazon.com/Its-Your-Ship-Management-Techniques/dp/145552302X) - Michael Abrashoff
--   [The Hard Thing About Hard Things](http://www.amazon.com/Hard-Thing-About-Things-Building/dp/0062273205/) - Ben Horowitz
--   [Traction](http://www.amazon.com/Traction-Startup-Achieve-Explosive-Customer-ebook/dp/B00TY3ZOMS) - Gabriel Weinberg
--   [The Lean Product Playbook](http://www.amazon.com/The-Lean-Product-Playbook-Innovate/dp/1118960874) - Dan Olsen
--   [Hooked: How to build habit forming products](http://www.amazon.com/Hooked-How-Build-Habit-Forming-Products-ebook/dp/B00HJ4A43S) - Nir Eyal
--   [Crossing the Chasm: Marketing and Selling High-Tech Products to Mainstream Customers](http://www.amazon.com/Crossing-Chasm-Marketing-High-Tech-Mainstream/dp/0060517123) - Geoffrey A. Moore
-
-### Marketing
-
--   [Peopleware](http://www.amazon.com/gp/product/0321934113/ref=pd_lpo_sbs_dp_ss_3?pf_rd_p=1944687462&pf_rd_s=lpo-top-stripe-1&pf_rd_t=201&pf_rd_i=0201835959&pf_rd_m=ATVPDKIKX0DER&pf_rd_r=1E20VC37Q8W2VN696453) - Tom DeMarco
--   [Understanding Media](https://en.wikipedia.org/wiki/Understanding_Media) - Marshall McLuhan
--   [Made to Stick](https://en.wikipedia.org/wiki/Made_to_Stick) - Chip and Dan Heath
-
-### Product Development
-
--   [Getting Real](http://gettingreal.37signals.com) - The smarter, faster, easier way to build a successful web application
--   [Joel on Software](http://www.amazon.com/Joel-Software-Occasionally-Developers-Designers/dp/1590593898) - Joel Spolsky
--   [Team Geek](http://www.amazon.com/Team-Geek-Software-Developers-Working/dp/1449302440/ref=sr_1_1?s=books&ie=UTF8&qid=1414877530&sr=1-1&keywords=team+geek) - Brian Fitzpatrick
--   [The Mythical Man-Month](http://www.amazon.com/The-Mythical-Man-Month-Engineering-Anniversary/dp/0201835959) - Frederick Brooks
--   [The Timeless Way of Building](http://www.amazon.com/Timeless-Way-Building-Christopher-Alexander/dp/0195024028) - Christopher Alexander
--   [Algorithms of the Intelligent Web](http://www.amazon.com/Algorithms-Intelligent-Web-Haralambos-Marmanis/dp/1933988665) - Haralambos Marmanis and Dmitry Babenko
--   [Cracking the PM Interview](http://www.amazon.com/Cracking-PM-Interview-Product-Technology/dp/0984782818) - Jackie Bavaro
--   [The Art of Product Management: Lessons from a Silicon Valley Innovator](http://www.amazon.com/The-Art-Product-Management-Innovator/dp/1439216061) - Rich Mironov
--   [Making It Right: Product Management For A Startup World](https://www.amazon.com/dp/B00M0KTVTO/?tag=leavethegreat-20) - Rian Van Der Merwe
--   [Product Leadership: How Top Product Managers Launch Awesome Products and Build Successful Teams](https://www.amazon.ca/dp/1491960604) -  Richard Banfield, Martin Eriksson, and Nate Walkingshaw
--   [Lovability: How to Build a Business That People Love and Be Happy Doing It](https://amazon.com/Lovability-Build-Business-People-Happy-ebook/dp/B06XJ9RGNY/) - Brian de Haaff
--   [JavaScript and JQuery](https://www.amazon.com/JavaScript-JQuery-Interactive-Front-End-Development/dp/1118531647/ref=as_li_ss_tl?ie=UTF8&qid=1443455024&sr=8-1&keywords=javascript&linkCode=sl1&tag=amazonbook10-20&linkId=e2058acefb720ac58495e18a0567a33b) - Interactive front-end web development book
--   [The Go Programming Language](https://www.amazon.com/Programming-Language-Addison-Wesley-Professional-Computing/dp/0134190440) - The authoritative resource for learning Go
-
-### Leadership
-
--   [How To Measure Anything](http://www.amazon.com/How-Measure-Anything-Intangibles-Business/dp/1118539273) - Douglas W. Hubbard
--   [Creativity, Inc.](https://openlibrary.org/works/OL17078912W/Creativity_Inc.) - Ed Catmull
--   [Where Wizards Stay Up Late](https://openlibrary.org/works/OL3270089W/Where_wizards_stay_up_late) - Katie Hafner
--   [The Martian​](https://en.wikipedia.org/wiki/The_Martian_%28Weir_novel%29) - Andy Weir
--   [What Every BODY Is Saying​](http://www.amazon.com/What-Every-BODY-Saying-Speed-Reading/dp/0061438294/) - Joe Navarro
--   [The Death and Life of Great American Cities](http://www.amazon.com/Death-Life-Great-American-Cities/dp/067974195X) - Jane Jacobs
--   [Predictably Irrational](http://www.amazon.com/Predictably-Irrational-Revised-Expanded-Decisions/dp/0061353248) - Dan Ariely
--   [Freakonomics](http://www.amazon.com/Freakonomics-Economist-Explores-Hidden-Everything/dp/0060731338/ref=sr_1_1?s=books&ie=UTF8&qid=1451455126&sr=1-1&keywords=freakonomics) - Steven Levitt and Stephen J. Dubner
--   [Getting Past NO](https://en.wikipedia.org/wiki/Getting_Past_No) - William Ury
--   [The 7 Habits of Highly Effective People](http://www.amazon.com/Habits-Highly-Effective-People-Powerful/dp/1451639619) - Stephen R. Covey
--   [Switch: How to Change Things When Change is Hard​](http://www.amazon.com/Switch-Change-Things-When-Hard/dp/0385528752) - Chip and Dan Heath
--   [The Score Takes Care of Itself​](http://www.amazon.com/Score-Takes-Care-Itself-Philosophy/dp/1591843472/) - Bill Walsh, Steve Jamison & Craig Walsh
--   [Thinking, Fast and Slow](https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow) - Daniel Kahneman
--   [Managing Humans](http://www.amazon.com/gp/product/1430243147/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=1430243147&linkCode=as2&tag=httpstwit071f-20) - Former Manager at Apple
--   [The Everything Store: Jeff Bezos and the Age of Amazon](http://www.amazon.com/gp/product/0316219266/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0316219266&linkCode=as2&tag=httpstwit071f-20) - Brad Stone
--   [The Tipping Point: How Little Things Can Make a Big Difference](http://www.amazon.com/The-Tipping-Point-Little-Difference-ebook/dp/B000OT8GD0) - Malcolm Gladwell
-
-## Newsletters
-
--   [Weekly Thoughts of Tim Herbig](https://herbigt.com/newsletter/) - A weekly digest of personal advice for product people and interesting articles around product, ux and entrepreneurship
--   [Austin Voice of Product](https://austinvop.com) - Product newsletter making the Austin product community stronger
 
 ## Podcasts
 
