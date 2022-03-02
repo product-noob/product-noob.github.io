@@ -46,7 +46,7 @@ The third and final piece of the India Stack focuses on establishing a new model
 In a sentence, DEPA is a policy framework that defines how the economic primitive of data can be freed up so that individuals and businesses can choose how to best protect it and use it for their own gain. This innovation, which is presently being rolled out in the financial services industry, has its philosophical roots in a piece of impending legislation known as the Personal Data Protection Bill (PDP).
 
 <figure>
-<img src="https://cdn.substack.com/image/fetch/w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6b17b401-f3bd-4366-8b53-aa650b8ca3d9_946x475.png" alt="The three layers of India Stack. Source: iSPIRT">
+<img src="/images/Health_Stack_7.png" alt="The three layers of India Stack. Source: iSPIRT" class="center">
 <figcaption>The three layers of India Stack. Source: iSPIRT</figcaption>
 </figure>
 
