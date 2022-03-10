@@ -2,16 +2,19 @@
 layout: post
 title:  "Explaining the National Health Stack"
 description: "National Health Stack is an upcoming government initiative which might end up revolutionising healthcare in India. These are some of the notes from my research on the health stack."
+image:
+ path: /images/Health_Stack_2.png
 
 ---
 
 The National Health Stack is a new digital health infrastructure launched by the National Health Authority of India, envisioned to serve as the building block for digitising the healthcare sector in the country.
 
-It's essentially set of APIs to any which entity (public/ private) can hook into and enable complex solutions in the health space; the same way any fintech player these days can enable UPI payments with simple API integrations. The basics of the NHS are very similar to India stack and the way India Stack revolutionised Payments in the country (among other things), NHS is envisioned to revolutionise the healthcare ecosystem in India.
+It's essentially set of APIs to any which entity (public/ private) can hook into and enable complex solutions in the health space, the same way any fintech player these days can enable UPI payments with simple API integrations. The basics of the NHS are very similar to India stack and the way India Stack revolutionised Payments in the country (among other things), NHS is envisioned to revolutionise the healthcare ecosystem in India.
 
-Before I start with detailing the National Health Stack, I believe it’s important to mention **India Stack.** It's imperative to understand how we reached here and what the future for healthcare may look like..
+Before I start with detailing the National Health Stack, I believe it’s important to mention **India Stack.** : it's imperative to understand how we reached here and what the future for healthcare may look like..
 
-Okay, let's start with India Stack first.
+Okay with that said, let's start with India Stack.
+
 India Stack is the comprehensive digital identity, payment, and data-management system we as a nation have been working towards for a little more than 10 years. Under it, we are trying to solve for the three economic primitives of identity, payments, and data.
 
 **Stage 1: Digital Identity**

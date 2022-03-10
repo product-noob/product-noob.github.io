@@ -18,6 +18,11 @@
 <meta property="og:site_name" content="Prince Jain">
 <meta property="og:image" content="https://princejain.me/images/my-image.webp">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="twitter:image" content="https://princejain.me/images/my-image.webp">
+<!-- <meta property="twitter:image" content="https://princejain.me/images/my-image.webp"> -->
 <meta property="twitter:title" content="Prince Jain">
 <meta name="twitter:site" content="@Prince_Jain17">
+
+
+{% if page.image %}
+<meta name="twitter:image" content="{{ page.url}}{{ page.image.path }}" />
+{% endif %}
