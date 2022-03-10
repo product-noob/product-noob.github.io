@@ -31,7 +31,7 @@ The Reserve Bank of India grasped this opportunity to transform banking. It crea
 **Stage 2: Interoperable Payments**
 
 While the government was widening access to bank accounts, RBI under the NPCI arm launched a new layer of retail payments called as UPI (Unified Payments Interface). This enabled banks and non banks to talk and exchange payments inter-operably amongst one other.
-> “*Since its launch in April 2016, UPI has been nothing short of a runaway success story, with few parallels in the history of global payments. In just 4 years, the second layer of India Stack grew from an ambitious idea to the world’s 5th largest payment network by volume, behind only Visa, Alipay, WeChat Pay, and MasterCard.*” - Tigerfeathers substack
+> “*Since its launch in April 2016, UPI has been nothing short of a runaway success story, with few parallels in the history of global payments. In just 4 years, the second layer of India Stack grew from an ambitious idea to the world’s 5th largest payment network by volume, behind only Visa, Alipay, WeChat Pay, and MasterCard.*” - Tigerfeathers substack.
 >
 
 In simple sense, the way UPI works is that all banks are connected to a central server operated by NPCI (National Payments Corporation of India) and NPCI acts as a middlemen and a custodian of all the information exchange between banks.
@@ -128,7 +128,6 @@ patients and healthcare providers. Some of the key components of this layer are:
 3. **Health Services Interface:** Building blocks in this layer are envisioned to enable interoperable and seamless interactions between the patients and providers of digital health services. It lays down the foundation of “open networks”
 
     ![Health Services Interface](/images/Health_Stack_3.png)
-
 
     Open Networks are set of shared technical standards, accessible to everyone. Being a non proprietary protocol means no one is locked into using any particular entity’s product and makes the ecosystem interoperable.
 
