@@ -57,7 +57,7 @@ access and sharing practices that disempower individuals, such as bulk printout 
 There is still a lot happening on this layer with an impending legislation under **[PDP Bill](https://www.meity.gov.in/writereaddata/files/Personal_Data_Protection_Bill,2018.pdf)** (Personal Data Protection) and many things are currently being build and enabled. The one which is most striking is the [Account Aggregator Framework](https://setu.co/data/account-aggregator) which is meant to solve for how we share our financial data.
 
 <figure>
-<img src="/images/Health_Stack_7.png" alt="The three layers of India Stack. Source: iSPIRT" class="center">
+<img src="/images/Health_Stack_7.png" alt="The three layers of India Stack. Source: iSPIRT">
 <figcaption>The three layers of India Stack. Source: iSPIRT</figcaption>
 </figure>
 
