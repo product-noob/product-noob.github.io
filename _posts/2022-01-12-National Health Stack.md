@@ -32,11 +32,12 @@ The Reserve Bank of India grasped this opportunity to transform banking. It crea
 
 While the government was widening access to bank accounts, RBI under the NPCI arm launched a new layer of retail payments called as UPI (Unified Payments Interface). This enabled banks and non banks to talk and exchange payments inter-operably amongst one other.
 
-Since its launch in April 2016, UPI has been nothing short of a runaway success story, with few parallels in the history of global payments. In just 4 years, the second layer of India Stack grew from an ambitious idea to the world’s 5th largest payment network by volume, behind only Visa, Alipay, WeChat Pay, and MasterCard.
-
-<img src="/images/Health_Stack_1.png" alt="UPI Trend" class="center">
+> “*Since its launch in April 2016, UPI has been nothing short of a runaway success story, with few parallels in the history of global payments. In just 4 years, the second layer of India Stack grew from an ambitious idea to the world’s 5th largest payment network by volume, behind only Visa, Alipay, WeChat Pay, and MasterCard.*” - Tigerfeathers substack
+>
 
 In simple sense, the way UPI works is that all banks are connected to a central server operated by NPCI (National Payments Corporation of India) and NPCI acts as a middlemen and a custodian of all the information exchange between banks.
+
+<img src="/images/Health_Stack_1.png" alt="UPI Trend" class="center">
 
 Banks can expose hooks (UPI handles like okhdfcbank, okicici) to private fintech players which allows them to extend seamless payments functionality to their users without having to implement a complex maze of banking flows.
 
@@ -129,7 +130,7 @@ patients and healthcare providers. Some of the key components of this layer are:
     ![Health Services Interface](/images/Health_Stack_3.png)
 
 
-    Open Networks are set of shared technical standards accessible to everyone. Being a non proprietary protocol means no one is locked into using any particular entity’s product and makes the ecosystem interoperable.
+    Open Networks are set of shared technical standards, accessible to everyone. Being a non proprietary protocol means no one is locked into using any particular entity’s product and makes the ecosystem interoperable.
 
     This is akin to UPI and the role of NPCI in Payments layer of India Stack. The way NPCI controls the central server and lays out protocol for banks to talk to each other (maybe now you realise why I had to cover India Stack before!), this layer lays down open protocols for various participating health care entities to talk and exchange data with each other by a introducing the concept of **Unified Health Interface** (India Stack parallel: UPI 😉)
 
