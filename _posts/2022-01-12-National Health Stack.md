@@ -11,7 +11,7 @@ The National Health Stack is a new digital health infrastructure launched by the
 
 It's essentially set of APIs to any which entity (public/ private) can hook into and enable complex solutions in the health space, the same way any fintech player these days can enable UPI payments with simple API integrations. The basics of the NHS are very similar to India stack and the way India Stack revolutionised Payments in the country (among other things), NHS is envisioned to revolutionise the healthcare ecosystem in India.
 
-Before I start with detailing the National Health Stack, I believe it’s important to mention **India Stack.**: it's imperative to understand how we reached here and what the future for healthcare may look like..
+Before I start with detailing the National Health Stack, I believe it’s important to mention **India Stack**: it's imperative to understand how we reached here and what the future for healthcare may look like..
 
 Okay with that said, let's start with a crash course on **India Stack**.
 
@@ -31,7 +31,6 @@ The Reserve Bank of India grasped this opportunity to transform banking. It crea
 **Stage 2: Interoperable Payments**
 
 While the government was widening access to bank accounts, RBI under the NPCI arm launched a new layer of retail payments called as UPI (Unified Payments Interface). This enabled banks and non banks to talk and exchange payments inter-operably amongst one other.
-
 > “*Since its launch in April 2016, UPI has been nothing short of a runaway success story, with few parallels in the history of global payments. In just 4 years, the second layer of India Stack grew from an ambitious idea to the world’s 5th largest payment network by volume, behind only Visa, Alipay, WeChat Pay, and MasterCard.*” - Tigerfeathers substack
 >
 
@@ -59,9 +58,10 @@ In a nutshell, the India Stack enabled us widen access to financial services, dr
 - Payments: UPI
 - Data: DEPA
 
-*If you want to learn more about the India Stack, read [this](https://tigerfeathers.substack.com/p/the-internet-country) amazing blog on India Stack by Aaryaman Vir.*
+*If you want to learn more about the India Stack, read **[this](https://tigerfeathers.substack.com/p/the-internet-country)** amazing blog on India Stack by Aaryaman Vir.*
 
 ---
+
 
 #### **Introduction**
 
@@ -244,12 +244,13 @@ The end.
 
 Thank you for bearing with me all the way till the end, I hope you got to learn something about the National Health Stack.
 
-**Disclaimer:** As of writing this article, I am associated with Paytm working on their Health Initaitive.*
+_**Disclaimer:** As of writing this article, I am associated with Paytm working on their Health Initiative._
 
 #### References:
 
 - **[UHI Consultation Paper](https://abdm.gov.in/assets/uploads/consultation_papersDocs/UHI_Consultation_Paper.pdf)**
 - **[National Health Stack Consultation Paper](https://abdm.gov.in/publications/NHS_Strategy_and_Approach)**
-- **[National Health Stack Consultation Paper](https://abdm.gov.in/publications/NHS_Strategy_and_Approach)**
+- **[The Ken](https://the-ken.com/story/behind-the-rush-and-hush-of-indias-digital-health-mission/)**
+- **[iSpirt Working Paper](https://itihaasa.com/public/pdf/History_and_Future_of_Digital_Health_in_the_World_and_India.pdf)**
 
 ---
