@@ -11,9 +11,7 @@ The National Health Stack is a new digital health infrastructure launched by the
 
 It's essentially set of APIs to any which entity (public/ private) can hook into and enable complex solutions in the health space, the same way any fintech player these days can enable UPI payments with simple API integrations. The basics of the NHS are very similar to India stack and the way India Stack revolutionised Payments in the country (among other things), NHS is envisioned to revolutionise the healthcare ecosystem in India.
 
-Before I start with detailing the National Health Stack, I believe it’s important to mention **India Stack**: it's imperative to understand how we reached here and what the future for healthcare may look like..
-
-Okay with that said, let's start with a crash course on **India Stack**.
+Before I start with detailing the National Health Stack, I believe it’s important to mention **India Stack**: it's imperative to understand how we reached here and what the future for healthcare may look like. Okay with that said, let's start with a crash course on **India Stack**.
 
 India Stack is the comprehensive digital identity, payment, and data-management system we as a nation have been working towards for a little more than 10 years. Under it, we are trying to solve for the three economic primitives of identity, payments, and data.
 
@@ -44,18 +42,20 @@ From an end-user aspect, everyone is free to choose the app of their choice and 
 
 **Stage 3: Data Empowerment through DEPA**
 
-Solving for the primitives of identity and payments, led to India becoming data-rich. People from both organised to semi and unorganised sectors including small shopkeepers, MSMEs, entrepreneurs and gig economy workers started generating digital data. It is so easy these days to send/ collect money using UPI.
-This digital footprint could be used, for the first time, to provide evidence that builds trust with institutions. This could also enable better access to services that could meaningfully improve people’s lives and all this eventually leads a need to solving for **data ownership**.
+Solving for the primitives of identity and payments, led to India becoming data-rich. People from organised to semi and un-organised sectors including small shopkeepers, MSMEs, entrepreneurs and gig economy workers started generating digital payments footprint. This digital footprint could be used, for the first time, to provide evidence that builds trust with institutions. This could also enable better access to services that could meaningfully improve people’s lives and all this eventually creates a need to solve for **data ownership**.
 
 The third and the final piece of India Stack focuses on establishing a new model for data governance in India. This is somewhat similar to what **[GPDR](https://gdpr.eu/what-is-gdpr/)** is for EU citizens.
 
-_To understand why this is needed, think of a practical situation where you apply for a loan and the loan provider asks for your last 3 month bank statements. Have you also felt uncomfortable sharing these? After all, they just need to verify your income to ensure you are capable to pay back your EMIs. Another problem in this regard is what if you receive income in multiple bank accounts, how do you prove your credit worthiness?_
+_To understand why this is needed, think of a practical situation where you apply for a loan and the loan provider asks for your last 3 month bank statements. Like me, have you also felt uncomfortable sharing these? After all, they just need to verify your income to ensure you are capable to pay back your EMIs. Another problem in this regard is what if you receive income in multiple bank accounts, how do you prove your credit worthiness?_
 
-This is what the third pillar of India Stack aims to solve by putting users in control and ownership of their data. This is done by freeing up data from the ownership of those who generate it and putting the actual owners on that data in control. It solves to ensure that users should not struggle to access or share their data from institutions
+This is what the DEPA aims to solve by putting users in control and ownership of their data. This is done by freeing up data from the ownership of those who generate it and putting the actual owners on that data in control. It solves to ensure that users should not struggle to access or share their data from institutions
 
 > *DEPA replaces costly and cumbersome data
 access and sharing practices that disempower individuals, such as bulk printout notarisation and physical submission, screen scraping, username/password sharing, and terms and conditions forms providing blanket consent.* - DEPA Consultation Paper
 >
+
+There is still a lot happening on this layer with an impending legislation under **[PDP Bill](https://www.meity.gov.in/writereaddata/files/Personal_Data_Protection_Bill,2018.pdf)** (Personal Data Protection) and many things are currently being build and enabled. The one which is most striking is the [Account Aggregator Framework](https://setu.co/data/account-aggregator) which is meant to solve for how we share our financial data.
+
 <figure>
 <img src="/images/Health_Stack_7.png" alt="The three layers of India Stack. Source: iSPIRT" class="center">
 <figcaption>The three layers of India Stack. Source: iSPIRT</figcaption>
