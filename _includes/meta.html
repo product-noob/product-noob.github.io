@@ -3,8 +3,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- , maximum-scale=1.0"-->
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <meta property="og:locale" content="en_US">
 
@@ -17,12 +15,12 @@
 <meta property="og:url" content="/">
 <meta property="og:site_name" content="Prince Jain">
 <meta property="og:image" content="https://princejain.me/images/my-image.webp">
+
 <meta name="twitter:card" content="summary_large_image">
-<!-- <meta property="twitter:image" content="https://princejain.me/images/my-image.webp"> -->
 <meta property="twitter:title" content="Prince Jain">
 <meta name="twitter:site" content="@Prince_Jain17">
-
-
+<meta name="twitter:description" content="{% if post.description %}{{ post.description | truncate: 140 }}{% else %}{{ site.description }}{% endif %}" />
+<!-- <meta property="twitter:image" content="https://princejain.me/images/my-image.webp"> -->
 {% if page.image %}
 <meta name="twitter:image" content="https://princejain.me{{ page.image.path }}" />
 {% endif %}
