@@ -42,12 +42,20 @@ Banks can expose hooks (UPI handles like okhdfcbank, okicici) to private fintech
 
 From an end-user aspect, everyone is free to choose the app of their choice and transfer money (send/request) from one VPA handle to other. This has led unprecedented innovation and growth in the payments space in the country in the last 5 years.
 
-**Stage 3: Data Empowerment**
+**Stage 3: Data Empowerment through DEPA**
 
-The third and final piece of the India Stack focuses on establishing a new model for data governance in India. Enshrined in a policy framework known as the Data Empowerment and Protection Architecture (DEPA), the ‘data’ layer of India Stack aims to restore the ownership and control over user data to its rightful owners.
+Solving for the primitives of identity and payments, led to India becoming data-rich. People from both organised to semi and unorganised sectors including small shopkeepers, MSMEs, entrepreneurs and gig economy workers started generating digital data. It is so easy these days to send/ collect money using UPI.
+This digital footprint could be used, for the first time, to provide evidence that builds trust with institutions. This could also enable better access to services that could meaningfully improve people’s lives and all this eventually leads a need to solving for **data ownership**.
 
-In a sentence, DEPA is a policy framework that defines how the economic primitive of data can be freed up so that individuals and businesses can choose how to best protect it and use it for their own gain. This innovation, which is presently being rolled out in the financial services industry, has its philosophical roots in a piece of impending legislation known as the Personal Data Protection Bill (PDP).
+The third and the final piece of India Stack focuses on establishing a new model for data governance in India. This is somewhat similar to what **[GPDR](https://gdpr.eu/what-is-gdpr/)** is for EU citizens.
 
+_To understand why this is needed, think of a practical situation where you apply for a loan and the loan provider asks for your last 3 month bank statements. Have you also felt uncomfortable sharing these? After all, they just need to verify your income to ensure you are capable to pay back your EMIs. Another problem in this regard is what if you receive income in multiple bank accounts, how do you prove your credit worthiness?_
+
+This is what the third pillar of India Stack aims to solve by putting users in control and ownership of their data. This is done by freeing up data from the ownership of those who generate it and putting the actual owners on that data in control. It solves to ensure that users should not struggle to access or share their data from institutions
+
+> *DEPA replaces costly and cumbersome data
+access and sharing practices that disempower individuals, such as bulk printout notarisation and physical submission, screen scraping, username/password sharing, and terms and conditions forms providing blanket consent.* - DEPA Consultation Paper
+>
 <figure>
 <img src="/images/Health_Stack_7.png" alt="The three layers of India Stack. Source: iSPIRT" class="center">
 <figcaption>The three layers of India Stack. Source: iSPIRT</figcaption>
@@ -248,7 +256,8 @@ _**Disclaimer:** As of writing this article, I am associated with Paytm working 
 
 - **[UHI Consultation Paper](https://abdm.gov.in/assets/uploads/consultation_papersDocs/UHI_Consultation_Paper.pdf)**
 - **[National Health Stack Consultation Paper](https://abdm.gov.in/publications/NHS_Strategy_and_Approach)**
-- **[The Ken](https://the-ken.com/story/behind-the-rush-and-hush-of-indias-digital-health-mission/)**
+- **[DEPA Consultation Paper](https://www.niti.gov.in/sites/default/files/2020-09/DEPA-Book.pdf)**
 - **[iSpirt Working Paper](https://itihaasa.com/public/pdf/History_and_Future_of_Digital_Health_in_the_World_and_India.pdf)**
+- **[The Ken - Article on UHI](https://the-ken.com/story/behind-the-rush-and-hush-of-indias-digital-health-mission/)**
 
 ---
