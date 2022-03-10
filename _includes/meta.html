@@ -17,11 +17,9 @@
 <meta property="og:image" content="https://princejain.me/images/my-image.webp">
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{% if page.title %}{{ page.title | truncate: 80 }}{% else %}{{ site.title}}{% endif %}" />
+<meta name="twitter:title" content="{% if page.title %}{{ page.title | truncate: 80 }}{% else %}{{ site.title }}{% endif %}" />
 <meta name="twitter:site" content="@Prince_Jain17">
 <meta name="twitter:description" content="{% if page.description %}{{ page.description | truncate: 140 }}{% else %}{{ site.description }}{% endif %}" />
 {% if page.image %}
 <meta name="twitter:image" content="https://princejain.me{{ page.image.path }}" />
 {% endif %}
-<!-- <meta property="twitter:title" content="Prince Jain"> -->
-<!-- <meta property="twitter:image" content="https://princejain.me/images/my-image.webp"> -->
