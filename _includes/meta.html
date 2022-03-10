@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta property="twitter:title" content="Prince Jain">
 <meta name="twitter:site" content="@Prince_Jain17">
-<meta name="twitter:description" content="{% if post.description %}{{ post.description | truncate: 140 }}{% else %}{{ site.description }}{% endif %}" />
+<meta name="twitter:description" content="{% if page.description %}{{ page.description | truncate: 140 }}{% else %}{{ site.description }}{% endif %}" />
 <!-- <meta property="twitter:image" content="https://princejain.me/images/my-image.webp"> -->
 {% if page.image %}
 <meta name="twitter:image" content="https://princejain.me{{ page.image.path }}" />
