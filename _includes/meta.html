@@ -19,13 +19,13 @@
 <meta name="og:image" content="https://princejain.me{{ page.image.path }}" />
 <!-- <meta property="og:image" content="https://princejain.me/images/my-image.webp"> -->
 
-<meta property="og:image" content="{% if page.image.path %}https://princejain.me{{ page.image.path }}{% else %}{{https://princejain.me/images/my-image.webp}}{% endif %}">
+{% if page.image %} <meta name="og:image" content="https://princejain.me{{ page.image.path }}" />
+{% else %}{{https://princejain.me/images/my-image.webp}}{% endif %}">
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{% if page.title %}{{ page.title | truncate: 80 }}{% else %}{{ site.title }}{% endif %}" />
 <meta name="twitter:site" content="@Prince_Jain17">
 <meta name="twitter:description" content="{{ page.description | truncate: 140 }}{% else %}{{ site.description }}{% endif %}" />
-{% if page.image %}
-<meta name="twitter:image" content="https://princejain.me{{ page.image.path }}" />
+{% if page.image %} <meta name="twitter:image" content="https://princejain.me{{ page.image.path }}" />
 {% endif %}
