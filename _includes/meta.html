@@ -9,10 +9,11 @@
 <meta name="author" content="Prince Jain">
 <!-- <meta name="description" content="My personal blog where I document my learnings and Product Management journey."> -->
 <meta name="description" content="{% if page.description %}{{ page.description | truncate: 140 }}{% else %}{{ site.description }}{% endif %}" />
+<meta name="title" content="{% if page.title %}{{ page.title | truncate: 80 }}{% else %}{{ site.title }}{% endif %}" />
+
 <!-- Facebook Meta Tags -->
 <!-- <meta property="og:title" content="Prince Jain"> -->
 <meta name="og:title" content="{% if page.title %}{{ page.title | truncate: 80 }}{% else %}{{ site.title }}{% endif %}" />
-<meta name="title" content="{% if page.title %}{{ page.title | truncate: 80 }}{% else %}{{ site.title }}{% endif %}" />
 <meta property="og:description" content="My personal blog to share/ document my Product Management journey.">
 <meta property="og:url" content="/">
 <meta property="og:site_name" content="Prince Jain">
