@@ -9,7 +9,6 @@
 <meta name="author" content="Prince Jain">
 <!-- <meta name="description" content="My personal blog where I document my learnings and Product Management journey."> -->
 <meta name="description" content="{% if page.description %}{{ page.description | truncate: 140 }}{% else %}{{ site.description }}{% endif %}" />
-<meta name="title" content="{% if page.title %}{{ page.title | truncate: 80 }}{% else %}{{ site.title }}{% endif %}" />
 
 <!-- Facebook Meta Tags -->
 <!-- <meta property="og:title" content="Prince Jain"> -->
@@ -17,13 +16,16 @@
 <meta property="og:description" content="My personal blog to share/ document my Product Management journey.">
 <meta property="og:url" content="/">
 <meta property="og:site_name" content="Prince Jain">
-<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+<meta name="og:image" content="https://princejain.me{{ page.image.path }}" />
+<!-- <meta property="og:image" content="https://princejain.me/images/my-image.webp"> -->
+
+<meta property="og:image" content="{% if page.image.path %}{{ page.image.path }}{% else %}{{https://princejain.me/images/my-image.webp}}{% endif %}">
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{% if page.title %}{{ page.title | truncate: 80 }}{% else %}{{ site.title }}{% endif %}" />
 <meta name="twitter:site" content="@Prince_Jain17">
-<meta name="twitter:description" content="{% if page.description %}{{ page.description | truncate: 140 }}{% else %}{{ site.description }}{% endif %}" />
+<meta name="twitter:description" content="{{ page.description | truncate: 140 }}{% else %}{{ site.description }}{% endif %}" />
 {% if page.image %}
 <meta name="twitter:image" content="https://princejain.me{{ page.image.path }}" />
 {% endif %}
