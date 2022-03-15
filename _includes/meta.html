@@ -1,4 +1,5 @@
 <!-- This goes in head.html-->
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,4 +27,5 @@
 <meta name="twitter:description" content="{% if page.description %}{{ page.description | truncate: 140 }}{% else %}{{ site.description }}{% endif %}" />
 {% if page.image %}
 <meta name="twitter:image" content="https://princejain.me{{ page.image.path }}" />
+<meta name="og:image" content="https://princejain.me{{ page.image.path }}" />
 {% endif %}
