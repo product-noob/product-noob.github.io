@@ -20,11 +20,13 @@
 <meta name="twitter:description" content="{{ page.description | truncate: 140 }}{% else %}{{ site.description }}{% endif %}" />
 
 <!-- image -->
-{% if page.image %}
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+
+<!-- {% if page.image %}
 <meta name="og:image" content="https://princejain.me{{ page.image.path }}" />
 {% else %}
-<meta property="og:image" content="https://princejain.me/images/my-image.webp">
-{% endif %}
+
+{% endif %} -->
 
 {% if page.image %}
 <meta name="twitter:image" content="https://princejain.me{{ page.image.path }}" />
