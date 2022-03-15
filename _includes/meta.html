@@ -19,7 +19,7 @@
 <meta name="og:image" content="https://princejain.me{{ page.image.path }}" />
 <!-- <meta property="og:image" content="https://princejain.me/images/my-image.webp"> -->
 
-<meta property="og:image" content="{% if page.image.path %}{{ page.image.path }}{% else %}{{https://princejain.me/images/my-image.webp}}{% endif %}">
+<meta property="og:image" content="{% if page.image.path %}https://princejain.me{{ page.image.path }}{% else %}{{https://princejain.me/images/my-image.webp}}{% endif %}">
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
