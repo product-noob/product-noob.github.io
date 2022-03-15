@@ -1,44 +1,29 @@
 <!-- This goes in head.html-->
-
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <meta property="og:locale" content="en_US">
 
-<!-- author -->
+<!-- Meta tags used for SEO Optimisation-->
 <meta name="author" content="Prince Jain">
-
-<!-- title -->
-<meta name="og:title" content="{% if page.title %}{{ page.title | truncate: 80 }}{% else %}{{ site.title }}{% endif %}" />
-<meta name="twitter:title" content="{% if page.title %}{{ page.title | truncate: 80 }}{% else %}{{ site.title }}{% endif %}" />
-<!-- <meta property="og:title" content="Prince Jain"> -->
-
-<!-- description -->
+<!-- <meta name="description" content="My personal blog where I document my learnings and Product Management journey."> -->
 <meta name="description" content="{% if page.description %}{{ page.description | truncate: 140 }}{% else %}{{ site.description }}{% endif %}" />
+<meta name="title" content="{% if page.title %}{{ page.title | truncate: 80 }}{% else %}{{ site.title }}{% endif %}" />
+
+<!-- Facebook Meta Tags -->
+<!-- <meta property="og:title" content="Prince Jain"> -->
+<meta name="og:title" content="{% if page.title %}{{ page.title | truncate: 80 }}{% else %}{{ site.title }}{% endif %}" />
 <meta property="og:description" content="My personal blog to share/ document my Product Management journey.">
-<meta name="twitter:description" content="{{ page.description | truncate: 140 }}{% else %}{{ site.description }}{% endif %}" />
-
-<!-- image -->
-<meta property="og:image" content="https://princejain.me/images/my-image.webp">
-
-<!-- {% if page.image %}
-<meta name="og:image" content="https://princejain.me{{ page.image.path }}" />
-{% else %}
-
-{% endif %} -->
-
-{% if page.image %}
-<meta name="twitter:image" content="https://princejain.me{{ page.image.path }}" />
-{% endif %}
-
-<!-- url -->
 <meta property="og:url" content="/">
-
-<!-- Site Name -->
 <meta property="og:site_name" content="Prince Jain">
-
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{% if page.title %}{{ page.title | truncate: 80 }}{% else %}{{ site.title }}{% endif %}" />
 <meta name="twitter:site" content="@Prince_Jain17">
+<meta name="twitter:description" content="{% if page.description %}{{ page.description | truncate: 140 }}{% else %}{{ site.description }}{% endif %}" />
+{% if page.image %}
+<meta name="twitter:image" content="https://princejain.me{{ page.image.path }}" />
+{% endif %}
