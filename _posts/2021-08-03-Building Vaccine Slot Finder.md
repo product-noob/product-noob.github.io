@@ -206,4 +206,4 @@ Back to drawing boards.
 
 #GetShotGo!
 
-_**Disclaimer:** I wrote this article for a [blog post](https://paytm.com/blog/engineering/journey-to-build-the-vaccine-slot-finder-tool-on-paytm/) at Paytm and this is a slightly edited version of that_
+_**Disclaimer:** I wrote this article for a [blog post](https://paytm.com/blog/engineering/journey-to-build-the-vaccine-slot-finder-tool-on-paytm/) for Paytm._
