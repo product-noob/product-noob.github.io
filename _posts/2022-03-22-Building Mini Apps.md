@@ -4,7 +4,6 @@ title:  "Building the Mini Apps Platform"
 description: "Mini Apps is platform Paytm build to allow it to move more closer to its journey of becoming a Superapp. Sharing the story of how it came into being. "
 image:
  path: /assets/blog_images/miniappsblog.png
-
 ---
 
 After a stint of nearly 3 years at Paytm, I recently took the tough call to leave Paytm and explore PM’ing in a new industry. During my tenure here I was lucky to work on few very meaningful and impactful projects most notable being Mini Apps, [Vaccine Finder](https://princejain.me/2021/08/03/Building-Vaccine-Slot-Finder.html) and [Paytm Health](https://princejain.me/2022/01/12/National-Health-Stack.html). I plan to write about my experience and share my learnings from working on these projects. This post is about the journey to build the Mini Apps Platform for Paytm.
@@ -52,8 +51,6 @@ All in all, there were a lot of benefits we had envisioned and thought through w
 
 With this context set, let me now venture deeper into how we actually built this platform
 
-* * *
-
 ## Here’s how we actually build the Mini Apps platform?
 
 If I talk about the product journey for the platform till now, it has been through three broad stages in the last 3 years: Introduction, Growth and the Maturity stage (typical of a PLC).
@@ -62,7 +59,6 @@ If I talk about the product journey for the platform till now, it has been throu
 <img src="/images/Mini_Apps_1.png" alt="Product Life Cycle Curve">
 <figcaption>Product Life Cycle Curve</figcaption>
 </figure>
-
 
 ### Introduction Phase
 
@@ -93,8 +89,6 @@ It all started with answering the questions on: **Why → How → What**
 -   How does a steady state in future with “Mini Programs” look like?
 -   How will we launch it and scale it?
 
-* * *
-
 By the end of this thought exercise (which took many weeks), we were ready with a broad idea of what we needed to build and how we needed to build it.
 
 **Core tenants for the Mini Apps:**
@@ -103,7 +97,7 @@ By the end of this thought exercise (which took many weeks), we were ready with 
 -   Easier for merchants/verticals to integrate
 -   Scalable platform for Paytm
 
-Here’s how we actually went about making these core tenants possible:
+Here’s how we actually went about making these tenants possible:
 
 -   Paytm had earlier experimented with an app in app approach which failed. **[Zomato](https://www.livemint.com/Companies/Eyo2sLq5Q36vzre26kMNbP/Zomato-partners-Paytm-online-food-delivery-business.html)** and Bigbasket were a part of the initial pilot and both these received decent user traction, where it failed was the lack of flexibility and heavy dependency on Paytm↔Merchant teams to work together (since it was a SDK integration) to make any updates. Also due to it being a SDK integration, it increased the Paytm app size and had to go through the adoption curve. Overall meaning it was not a scalable solution and hence a more deeper SDK approach was ruled out.
 -   There were different approaches in which the other players, mainly the Chinese apps had built their superapp platforms: broadly they were based on their custom language (DSL) and every merchant had to build an app from scratch in their proprietory frameworks. This had a significant adoption and development cost for merchants.
@@ -182,10 +176,8 @@ Personally this was the most fun phase of the project for me; where we did a lot
 
 Once we had a sizable numbers of merchant mini apps across categories and a lot of internal verticals on the platform, I consider us reaching the **Maturity** phase of the product. We were now focusing on questions about handling scale and platformising this SDK and overall making the whole thing better. Few things we did were:
 
--   With the large number of merchant apps we were onboarding a lot of manual processes were just becoming too tedious to manage operationally. To solve this we launched a **[“DIY flow”](https://www.youtube.com/watch?v=W0qN81dujfs)**.
-<iframe width="560" height="315" src="https://www.youtube.com/embed/W0qN81dujfs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-This allowed any merchant to come onboard as a Mini App without requirement any\_ involvement from Paytm’s end : instant onboarding, easy tools for app development and automated submission and go-live process.
-    \_In a nutshell we ended up building a smaller version of Google/ Apple Play Console.\*
+-   With the large number of merchant apps we were onboarding a lot of manual processes were just becoming too tedious to manage operationally. To solve this we launched a **[“DIY flow”](https://www.youtube.com/watch?v=W0qN81dujfs)**.<iframe width="560" height="315" src="https://www.youtube.com/embed/W0qN81dujfs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> This allowed any merchant to come onboard as a Mini App without requirement any\_ involvement from Paytm’s end : instant onboarding, easy tools for app development and automated submission and go-live process.
+        \_In a nutshell we ended up building a smaller version of Google/ Apple Play Console.\*
 -   As more and more internal verticals were using the platform, we felt it important for us to leverage this SDK in other Paytm app properties ( Paytm For Business, Paytm Money, Paytm Insider etc) and hence we worked towards making our SDK **multi-tenant.** This took us a good amount of effort to separate out every depedency and make the SDK work independently in any app just by integrating few hooks. This led to the “Phoenix” SDK being part of almost all Paytm App properties and any mini app (internal or external) which goes live technically can be made available on all other Paytm properties with just a single click.
 -   Launched UQR Flow: This is one of the feature which remain super close to my heart. Paytm app is the most used QR Scanner in the country and we wanted to leverage this mind frame to serve as an additional touchpoint for Mini Apps. This was a time when a lot of restaurants were moving to a contactless ordering and we felt that this was a good feature for us to enable for our users:  scan the restaurant QR to instantly open their Mini app and order (Remember: login and payments are seamlessly integrated in Mini Apps).
 
