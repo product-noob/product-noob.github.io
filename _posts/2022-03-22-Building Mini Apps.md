@@ -47,7 +47,7 @@ Having this platform allowed us to partner with businesses across the country to
 
 All in all, there were a lot of benefits we had envisioned and thought through which helped us get the leadership alignment, resourcing and ultimately led us to build the mini apps platform. With this context set, let me now venture deeper into how we actually built this platform
 
-## Here’s how we actually build the Mini Apps platform?
+## How we actually built the Mini Apps platform?
 
 If I talk about the product journey for the platform till now, it has been through three broad stages in the last 3 years: Introduction, Growth and the Maturity stage (typical of a PLC).
 
