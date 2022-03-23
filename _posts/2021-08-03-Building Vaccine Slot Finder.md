@@ -202,6 +202,6 @@ Let me conclude by sharing that this has been the single most satisfying project
 
 Back to drawing boards.
 
-\#GetShotGo!
+#GetShotGo!
 
 _**Disclaimer:** I wrote this article for a [blog post](https://paytm.com/blog/engineering/journey-to-build-the-vaccine-slot-finder-tool-on-paytm/) for Paytm._

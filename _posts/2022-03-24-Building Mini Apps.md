@@ -4,6 +4,7 @@ title:  "Building the Mini Apps Platform"
 description: "National Health Stack is an upcoming government initiative which might end up revolutionising healthcare in India"
 image:
  path: /assets/blog_images/healthstackblog.png
+ 
 ---
 
 After a stint of nearly 3 years at Paytm, I recently took the tough call to leave Paytm and explore PM’ing in a new industry. During my tenure here, I was lucky to work on few very meaningful and impactful projects: most notable being Mini Apps, [Vaccine Finder](https://princejain.me/2021/08/03/Building-Vaccine-Slot-Finder.html) and [Paytm Health](https://princejain.me/2022/01/12/National-Health-Stack.html).
