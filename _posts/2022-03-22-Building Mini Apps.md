@@ -39,7 +39,7 @@ Serving apps dynamically had many other advantages than just reducing app size:
 -   **Instant Adoption:** Any new feature launched on the Mini Apps platform is available instantly to all users. By just a config change at backend all our users can use the newer flows in their Paytm app (without requiring an app upgrade).
 -   **Quicker Iterations:** It give businesses the flexibility to iterate quickly since any required change could be rolled out directly on the web app.
 -   **Easier Development:** Typically web based apps require significantly lesser development effort: since you have to only develop once for both platforms, technology is relatively more mature and stable and its cheaper from resourcing POV.
--   **Easier Maintenance:** Being based on web based frameworks allows mini apps’ codebase to be same across iOS and Android. It solves a big pain point of ensuring feature parity and code maintenance.
+-   **Cheaper Maintenance:** Being based on web based frameworks allows mini apps’ codebase to be same across iOS and Android. It solves a big pain point of ensuring feature parity and code maintenance.
 
 There was another major angle to why we needed this platform, infact the very reason we built the platform for: **Merchant Mini Apps!** (the benefits for our internal verticals was something we realised eventually!)
 
