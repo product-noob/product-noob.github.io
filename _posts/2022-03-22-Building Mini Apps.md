@@ -177,9 +177,12 @@ Personally this was the most fun phase of the project for me; where we did a lot
 Once we had a sizable numbers of merchant mini apps across categories and a lot of internal verticals on the platform, I consider us reaching the **Maturity** phase of the product. We were now focusing on questions about handling scale and platformising this SDK and overall making the whole thing better. Few things we did were:
 
 -   With the large number of merchant apps we were onboarding a lot of manual processes were just becoming too tedious to manage operationally. To solve this we launched a **[“DIY flow”](https://www.youtube.com/watch?v=W0qN81dujfs)**.
-<center><iframe width="560" height="315" src="https://www.youtube.com/embed/W0qN81dujfs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
-This allowed any merchant to come onboard as a Mini App without requirement any\_ involvement from Paytm’s end : instant onboarding, easy tools for app development and automated submission and go-live process.
-        \_In a nutshell we ended up building a smaller version of Google/ Apple Play Console.\*
+    <center>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/W0qN81dujfs?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </center>
+      This allowed any merchant to come onboard as a Mini App without requirement any\_ involvement from Paytm’s end : instant onboarding, easy tools for app development and automated submission and go-live process.
+      _In a nutshell we ended up building a smaller version of Google/ Apple Play Console_
+
 -   As more and more internal verticals were using the platform, we felt it important for us to leverage this SDK in other Paytm app properties ( Paytm For Business, Paytm Money, Paytm Insider etc) and hence we worked towards making our SDK **multi-tenant.** This took us a good amount of effort to separate out every depedency and make the SDK work independently in any app just by integrating few hooks. This led to the “Phoenix” SDK being part of almost all Paytm App properties and any mini app (internal or external) which goes live technically can be made available on all other Paytm properties with just a single click.
 -   Launched UQR Flow: This is one of the feature which remain super close to my heart. Paytm app is the most used QR Scanner in the country and we wanted to leverage this mind frame to serve as an additional touchpoint for Mini Apps. This was a time when a lot of restaurants were moving to a contactless ordering and we felt that this was a good feature for us to enable for our users:  scan the restaurant QR to instantly open their Mini app and order (Remember: login and payments are seamlessly integrated in Mini Apps).
 
