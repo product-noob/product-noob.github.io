@@ -1,17 +1,15 @@
 ---
 layout: post
 title:  "Building the Mini Apps Platform"
-description: "National Health Stack is an upcoming government initiative which might end up revolutionising healthcare in India"
+description: "Mini Apps is platform Paytm build to allow it to move more closer to its journey of becoming a Superapp. Sharing the story of how it came into being. "
 image:
- path: /assets/blog_images/healthstackblog.png
+ path: /assets/blog_images/miniappsblog.png
 
 ---
 
-After a stint of nearly 3 years at Paytm, I recently took the tough call to leave Paytm and explore PM’ing in a new industry. During my tenure here, I was lucky to work on few very meaningful and impactful projects: most notable being Mini Apps, [Vaccine Finder](https://princejain.me/2021/08/03/Building-Vaccine-Slot-Finder.html) and [Paytm Health](https://princejain.me/2022/01/12/National-Health-Stack.html).
+After a stint of nearly 3 years at Paytm, I recently took the tough call to leave Paytm and explore PM’ing in a new industry. During my tenure here, I was lucky to work on few very meaningful and impactful projects most notable being Mini Apps, [Vaccine Finder](https://princejain.me/2021/08/03/Building-Vaccine-Slot-Finder.html) and [Paytm Health](https://princejain.me/2022/01/12/National-Health-Stack.html). I plan to write about my experience and share my learnings from working on these projects. This post is about the journey to build the Mini Apps Platform for Paytm.
 
-I plan to write about my experience and share my learnings from working on these projects. This post is about the journey to build the Mini Apps Platform for Paytm.
-
-_**Disclaimer:** As with most stories in this one too I have tried connecting the dots looking backwards and hence many approaches/ framework I have shared here were not explicitly used but we had a very similar thought process while approaching these problems and for me it’s very interesting to see how these framework match the natural thought process.
+_**Disclaimer:** As with most stories in this one too I have tried connecting the dots looking backwards and hence many approaches/ framework I have shared here were not explicitly used but we had a very similar thought process while approaching these problems. Looking back it’s very interesting to see how these framework match the natural thought process.
 Also I have tried sharing a very broad view of how we did things: its 3 years of works condensed into a single article plus a lot of internal data and decisions omitted for obvious reasons._
 
 * * *
