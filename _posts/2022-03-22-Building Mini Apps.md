@@ -118,9 +118,10 @@ With this broad understanding in place we started brainstorming on the broad arc
 
 This is how the broad architecture of the platform looks like:
 
-![Paytm Mini Apps Architecture](/images/Mini_Apps_3.png)
-
-Paytm Mini Apps Architecture
+<figure>
+<img src="/images/Mini_Apps_3.png" alt="Paytm Mini Apps Architecture" class="center">
+<figcaption>Paytm Mini Apps Architecture</figcaption>
+</figure>
 
 This architecture allowed us to render webpages inside our app’s webview which could interact via our custom JS library with Paytm App and Native Layer. This opened so many possibilities of what this platform could enable: seamless data transfer between Paytm app and the website (like login information, payment flows, analytics etc.) & between webapp and the Native device layer (like hardware details: GPS, Bluetooth, Camera etc.).
 
