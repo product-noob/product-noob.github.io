@@ -58,9 +58,11 @@ With this context set, let me now venture deeper into how we actually built this
 
 If I talk about the product journey for the platform till now, it has been through three broad stages in the last 3 years: Introduction, Growth and the Maturity stage (typical of a PLC).
 
-![Product Life Cycle Curve](/images/Mini_Apps_1.png)
+<figure>
+<img src="/images/Mini_Apps_1.png" alt="Product Life Cycle Curve">
+<figcaption>Product Life Cycle Curve</figcaption>
+</figure>
 
-Product Life Cycle Curve
 
 ### **Introduction Phase**
 
@@ -68,9 +70,10 @@ In the introduction phase as typically is the case it was more about figuring ou
 
 It all started with answering the questions on: **Why → How → What**
 
-![Golden Circle Model](/images/Mini_Apps_2.png)
-
-Golden Circle Model
+<figure>
+<img src="/images/Mini_Apps_2.png" alt="Golden Circle Model">
+<figcaption>Golden Circle Model</figcaption>
+</figure>
 
 **Why**
 
