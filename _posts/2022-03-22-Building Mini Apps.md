@@ -15,7 +15,7 @@ Also I have tried sharing a very broad view of how we did things, its 3 years of
 
 Before we start, some current stats about the Mini Apps platform:
 
--   **Mini Apps** platform now enables a lot of things in the Paytm app: with more than **80%** of all Paytm users having a touchpoint of Mini Apps.
+-   **Mini Apps** platform now enables a lot of things in the Paytm app: with more than **80%** of all Paytm users having a a touchpoint of Mini Apps.
 -   Core Paytm verticals ranging from Paytm Bank, Recharges, Movies, CST, Gold, Fasttag, Stocks, Lending, Paytm Health etc. now are in some form or fashion “Mini Apps”.
 -   It also has a full functioning partner app ecosystem hosting more than **2000+ apps** across different categories from food delivery to online shopping to games and healthcare.
 
@@ -32,9 +32,7 @@ _In Paytm we enable both kinds of mini apps: one’s built by the 2nd party ( in
 
 ## What we needed Mini Apps?
 
-In our journey to become a **[Superapp](https://princejain.me/2020/02/15/Apps-and-SuperApps.html)** it was essential for Paytm to develop a technology solution which allowed us to de-bundle non-core flows and serve them in real-time only when needed.
-
-The idea was that most users don’t need or use all our offerings at all times and it makes sense to serve some non-core flows dynamically via a hybrid approach. Also for many flows there are no visible advantages of increasing the app size for non essential flows when not all users would be using those extra features and increasing bundle size might negatively affect **[app install conversion](https://medium.com/googleplaydev/shrinking-apks-growing-installs-5d3fcba23ce2).**
+In our journey to become a **[Superapp](https://princejain.me/2020/02/15/Apps-and-SuperApps.html)** it was essential for Paytm to develop a technology solution which allowed us to de-bundle non-core flows and serve them in real-time only when needed. The idea was that most users don’t need or use all our offerings at all times and it makes sense to serve some non-core flows dynamically via a hybrid approach. Also for many flows there are no visible advantages of increasing the app size for non essential flows when not all users would be using those extra features and increasing bundle size might negatively affect **[app install conversion](https://medium.com/googleplaydev/shrinking-apks-growing-installs-5d3fcba23ce2).**
 
 Serving apps dynamically had many other advantages than just reducing app size:
 
@@ -47,9 +45,7 @@ There was another major angle to why we needed this platform, infact the very re
 
 Having this platform allowed us to partner with businesses across the country to bring their flows and offering to our users in the Paytm app. This had immense potential for Paytm to increase the overall usability and stickiness of the app since there were many many businesses we as a company never wanted to venture into ourselves but wanted still wanted to enable for our users by leveraging the rich insights we gathered from their payments behaviour and Mini Apps platform gave us just that.
 
-All in all, there were a lot of benefits we had envisioned and thought through which helped us get the leadership alignment, resourcing and ultimately led us to build the mini apps platform.
-
-With this context set, let me now venture deeper into how we actually built this platform
+All in all, there were a lot of benefits we had envisioned and thought through which helped us get the leadership alignment, resourcing and ultimately led us to build the mini apps platform. With this context set, let me now venture deeper into how we actually built this platform
 
 ## Here’s how we actually build the Mini Apps platform?
 
@@ -99,13 +95,13 @@ Here’s how we actually went about making these tenants possible:
 -   Paytm had earlier experimented with an app in app approach which failed. **[Zomato](https://www.livemint.com/Companies/Eyo2sLq5Q36vzre26kMNbP/Zomato-partners-Paytm-online-food-delivery-business.html)** and Bigbasket were a part of the initial pilot and both these received decent user traction, where it failed was the lack of flexibility and heavy dependency on Paytm↔Merchant teams to work together (since it was a SDK integration) to make any updates. Also due to it being a SDK integration, it increased the Paytm app size and had to go through the adoption curve. Overall meaning it was not a scalable solution and hence a more deeper SDK approach was ruled out.
 -   There were different approaches in which the other players, mainly the Chinese apps had built their superapp platforms: broadly they were based on their custom language (DSL) and every merchant had to build an app from scratch in their proprietory frameworks. This had a significant adoption and development cost for merchants.
     We were sure that such a high effort rework would never work in an Indian context and we wanted our platform to be based on existing open source technologies and ended up choosing up building the platform on HTML/ JS, since more merchants had a well functioning mobile compatible website!. This choice allowed us to enable any merchant with an existing website to come onboard as a Mini App with few simple integrations, which played a key role in the platform’s growth so far.
--   As to the question of why a merchant would be willing to partner with us for such a integration, there were few benefits they could leverage as part of their integration with us:
+-   As to the question of why a merchant would be willing to partner with us for such a integration, there were few benefits we believed they could leverage as part of their integration with us:
     -   **Customer acquisition channel:** Most users in Tier 2/3 cities typically had a very limited number of apps installed on their phone due to less capable device hardware, poor data reach (though Jio has changed this paradigm) and lack of awareness about the various apps out there. Typically for all these cases, Mini Apps was envisioned to serve as very effective customer acquisition channel.
     -   **Cost effective marketing tool:** Payment apps with their rich user transactional data could effectively help marketeers target their ideal audience. Also due to the seamless user journey post clicking on Ads ( Remember no need of download or signup!) the funnel conversions are also much better.
     -   **Suitable for low frequency services:** Majority of apps are used very infrequently by the users and thus a Mini App kind of offering makes much more sense (say ordering medicines or Pizza once a month!). They offer seamless “In-Out” experience to the user with no hassle of remembering or entering any passwords or payment details.
     -   **Allow experimentation on a limited audience:** The dynamic nature of mini apps allow merchants to experiment with newer flows to a limited audience base with controlled rollout and lesser risk to their core app business.
 
-With this broad understanding in place we started brainstorming on the broad architecture of the SDK. At a broad overview of what I can share publicly about the architecture, the architecture we ended up with was a webview rendered in the Paytm app and made more feature rich with custom JS injection. This enabled it to interact with the native layer (Paytm app and device layer).
+With this broad understanding in place we started brainstorming on the broad architecture of the SDK. At a high level of what I can share publicly, the architecture we ended up with was a native webview rendered in the Paytm app and made feature rich with custom JS injection. This enabled it to interact with the native layer (Paytm app and device layer) and exchange data and information.
 
 This is how the broad architecture of the platform looks like:
 
