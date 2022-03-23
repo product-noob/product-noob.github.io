@@ -71,7 +71,7 @@ In the introduction phase as typically is the case it was more about figuring ou
 It all started with answering the questions on: **Why → How → What**
 
 <figure>
-<img src="/images/Mini_Apps_2.png" alt="Golden Circle Model">
+<img src="/images/Mini_Apps_2.png" alt="Golden Circle Model" class="center">
 <figcaption>Golden Circle Model</figcaption>
 </figure>
 
