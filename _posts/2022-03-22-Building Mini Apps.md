@@ -54,7 +54,7 @@ With this context set, let me now venture deeper into how we actually built this
 
 * * *
 
-## Here’s how we actually build the **Mini Apps platform?**
+## Here’s how we actually build the Mini Apps platform?
 
 If I talk about the product journey for the platform till now, it has been through three broad stages in the last 3 years: Introduction, Growth and the Maturity stage (typical of a PLC).
 
@@ -64,7 +64,7 @@ If I talk about the product journey for the platform till now, it has been throu
 </figure>
 
 
-### **Introduction Phase**
+### Introduction Phase
 
 In the introduction phase as typically is the case it was more about figuring out what we needed to build by answering what needed, what the market needed, how others were doing it and then actually building an MVP.
 
@@ -119,7 +119,7 @@ With this broad understanding in place we started brainstorming on the broad arc
 This is how the broad architecture of the platform looks like:
 
 <figure>
-<img src="/images/Mini_Apps_3.png" alt="Paytm Mini Apps Architecture" class="center">
+<img src="/images/Mini_Apps_3.png" alt="Paytm Mini Apps Architecture">
 <figcaption>Paytm Mini Apps Architecture</figcaption>
 </figure>
 
@@ -138,7 +138,7 @@ This is how the first version of listing page looked like:
 <figcaption>Design mockup of Mini Apps listing</figcaption>
 </figure>
 
-### Growth **Phase**
+### Growth Phase
 
 Once the basic setup was in place and we had market tested our platform, we then wanted to grow our platform by onboarding more and more merchant apps. For this we built new flows, improved on the existing ones, wrote richer documentations and automated various manual processes. This took us another 6-8 months.
 
@@ -175,7 +175,7 @@ This is essentially is what I see as the **Growth** phase for the platform, wher
 
 Personally this was the most fun phase of the project for me; where we did a lot of brainstorming, experiments, launches, had a few failures and many successes to boast about :)
 
-### Maturity **Phase**
+### Maturity Phase
 
 Once we had a sizable numbers of merchant mini apps across categories and a lot of internal verticals on the platform, I consider us reaching the **Maturity** phase of the product. We were now focusing on questions about handling scale and platformising this SDK and overall making the whole thing better. Few things we did were:
 
