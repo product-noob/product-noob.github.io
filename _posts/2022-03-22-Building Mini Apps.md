@@ -183,9 +183,11 @@ Personally this was the most fun phase of the project for me; where we did a lot
 Once we had a sizeable numbers of merchant mini apps across categories and a lot of internal verticals on the platform, I consider us reaching the **Maturity** phase of the product. We were now focusing on questions about handling scale and platformising this SDK and overall making the whole thing better. Few things we did were:
 
 -   With the large number of merchant apps we were onboarding a lot of manual processes were just becoming too tedious to manage operationally. To solve this we launched a **“DIY flow”**.
+    <div class="videoWrapper">
     <center>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/W0qN81dujfs?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </center>
+    </center></div>
+
       This allowed any merchant to come onboard as a Mini App without requirement any\_ involvement from Paytm’s end : instant onboarding, easy tools for app development and automated submission and go-live process.
       _In a nutshell we ended up building a smaller version of Google/ Apple Play Console_
 
