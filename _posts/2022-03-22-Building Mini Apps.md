@@ -72,24 +72,21 @@ It all started with answering the questions on: **Why → How → What**
 </figure>
 
 **Why**
-
 -   Why are we building it? It is worth building for?
 -   Why is it useful for our users, for our merchant partners, for us?
 -   Why build right now? Why not before or later?
 
 **What**
-
 -   What’s are we trying to achieve?
 -   What does success for the platform look like? What’s our north star?
 -   What are the constraints under which we need to operate (resource, time, cost etc.)?
 
 **How**
-
 -   How will we build it? What does a MVP look like?
 -   How does a steady state in future with “Mini Programs” look like?
 -   How will we launch it and scale it?
 
-By the end of this thought exercise (which took many weeks), we were ready with a broad idea of what we needed to build and how we needed to build it.
+By the end of this thought exercise (which took many weeks), we were ready with a broad idea of what we needed and how we wanted to build it.
 
 **Core tenants for the Mini Apps:**
 
@@ -108,7 +105,7 @@ Here’s how we actually went about making these tenants possible:
     -   **Suitable for low frequency services:** Majority of apps are used very infrequently by the users and thus a Mini App kind of offering makes much more sense (say ordering medicines or Pizza once a month!). They offer seamless “In-Out” experience to the user with no hassle of remembering or entering any passwords or payment details.
     -   **Allow experimentation on a limited audience:** The dynamic nature of mini apps allow merchants to experiment with newer flows to a limited audience base with controlled rollout and lesser risk to their core app business.
 
-With this broad understanding in place we started brainstorming on the broad architecture of the SDK. In a nutshell of what I can share publicly about the architecture we ended up with was a webview rendered in the Paytm app made more powerful with custom JS injection which enabled it to interact with the Native layer (Paytm app and Device layer).
+With this broad understanding in place we started brainstorming on the broad architecture of the SDK. At a broad overview of what I can share publicly about the architecture, the architecture we ended up with was a webview rendered in the Paytm app and made more feature rich with custom JS injection. This enabled it to interact with the native layer (Paytm app and device layer).
 
 This is how the broad architecture of the platform looks like:
 
@@ -184,7 +181,7 @@ Personally this was the most fun phase of the project for me; where we did a lot
 
 ### Maturity Phase
 
-Once we had a sizeable numbers of merchant mini apps across categories and a lot of internal verticals on the platform, I consider us reaching the **Maturity** phase of the product. We were now focusing on questions about handling scale and platformising this SDK and overall making the whole thing better. Few things we did were:
+Once we had a sizeable numbers of merchant mini apps across categories and a lot of internal verticals on the platform what I consider as reaching the **Maturity** phase, we then started focusing on questions about handling scale, stability and standardisation of the SDK and the platform. Few things we did were:
 
 -   With the large number of merchant apps we were onboarding a lot of manual processes were just becoming too tedious to manage operationally. To solve this we launched a **“DIY flow”**.
     <div class="videoWrapper">
@@ -196,6 +193,10 @@ Once we had a sizeable numbers of merchant mini apps across categories and a lot
       _In a nutshell we ended up building a smaller version of Google/ Apple Play Console_
 
 -   As more and more internal verticals were using the platform, we felt it important for us to leverage this SDK in other Paytm app properties ( Paytm For Business, Paytm Money, Paytm Insider etc) and hence we worked towards making our SDK **multi-tenant.** This took us a good amount of effort to separate out every dependency and make the SDK work independently in any app just by integrating few hooks. This led to the “Phoenix” SDK being part of almost all Paytm App properties and any mini app (internal or external) which goes live technically can be made available on all other Paytm properties with just a single click.
--   Launched UQR Flow: This is one of the feature which remain super close to my heart. Paytm app is the most used QR Scanner in the country and we wanted to leverage this mind frame to serve as an additional touchpoint for Mini Apps. This was a time when a lot of restaurants were moving to a contactless ordering and we felt that this was a good feature for us to enable for our users:  scan the restaurant QR to instantly open their Mini app and order (Remember: login and payments are seamlessly integrated in Mini Apps).
+-   Standardised lot of aspects of the platform : JS APIs (Bridges) structure, error codes and their handling, Title bar, various UI elements etc.
+-   Launched new UQR Flow: This is one of the feature which remain super close to my heart. Paytm app is the most used QR Scanner in the country and we wanted to leverage this mind frame to serve as an additional touchpoint for Mini Apps. This was a time when a lot of restaurants were moving to a contactless ordering and we felt that this was a good feature for us to enable for our users:  scan the restaurant QR to instantly open their Mini app and order (Remember: login and payments are seamlessly integrated in Mini Apps).
+and many many more things to grow the platform to its current stage.
+
+
 
 * * *
