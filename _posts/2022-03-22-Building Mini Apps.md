@@ -140,7 +140,7 @@ We got tremendous developer response from this conference with more than 10,000 
 
 <div class="videoWrapper">
 <center>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/nuK7Ct59Vyk?start=3161&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/nuK7Ct59Vyk?start=3161" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </center>
 </div>
 
@@ -161,7 +161,7 @@ We built a lot more features to meet newer merchant  requirements like integrati
 
 <div class="videoWrapper">
   <center>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Qxa3kd4yw3o?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Qxa3kd4yw3o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </center>
 </div>
 
@@ -182,13 +182,13 @@ Once we had a sizeable numbers of merchant mini apps across categories and a lot
 -   With the large number of merchant apps we were onboarding a lot of manual processes were just becoming too tedious to manage operationally. To solve this we launched a **“DIY flow”**.
     <div class="videoWrapper">
     <center>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/W0qN81dujfs?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/W0qN81dujfs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </center></div>
 
       This allowed any merchant to come onboard as a Mini App without requirement any\_ involvement from Paytm’s end : instant onboarding, easy tools for app development and automated submission and go-live process.
       _In a nutshell we ended up building a smaller version of Google/ Apple Play Console_
 
--   As more and more internal verticals were using the platform, we felt it important for us to leverage this SDK in other Paytm app properties ( Paytm For Business, Paytm Money, Paytm Insider etc) and hence we worked towards making our SDK **multi-tenant.** This took us a good amount of effort to separate out every dependency and make the SDK work independently in any app just by integrating few hooks. This led to the “Phoenix” SDK being part of almost all Paytm App properties and any mini app (internal or external) which goes live technically can be made available on all other Paytm properties with just a single click.
+-   As more and more internal verticals were using the platform, we felt it important for us to leverage this SDK in other Paytm app properties: Paytm For Business app, Paytm Money app, Paytm Insider etc. and hence we worked towards making our SDK **multi-tenant.** This took us a good amount of effort to separate out every dependency and make the SDK work independently in any app just by integrating few hooks. This led to the “Phoenix” SDK being part of almost all Paytm App properties and any mini app (internal or external) which goes live technically can be made available on all other Paytm properties with just a single click.
 -   Standardised lot of aspects of the platform : JS APIs (Bridges) structure, error codes and their handling, Title bar, various UI elements etc.
 -   Launched new UQR Flow: This is one of the feature which remain super close to my heart. Paytm app is the most used QR Scanner in the country and we wanted to leverage this mind frame to serve as an additional touchpoint for Mini Apps. This was a time when a lot of restaurants were moving to a contactless ordering and we felt that this was a good feature for us to enable for our users:  scan the restaurant QR to instantly open their Mini app and order (Remember: login and payments are seamlessly integrated in Mini Apps).
 and many many more things to grow the platform to its current stage.
