@@ -16,7 +16,7 @@ Also I have tried sharing a very broad view of how we did things, its 3 years of
 Before we start, some current stats about the Mini Apps platform:
 
 -   **Mini Apps** platform now enables a lot of things in the Paytm app: with more than **80%** of all Paytm users having a a touchpoint of Mini Apps.
--   Core Paytm verticals ranging from Paytm Bank, Recharges, Movies, CST, Gold, Fasttag, Stocks, Lending, Paytm Health etc. now are in some form or fashion “Mini Apps”.
+-   Core Paytm verticals ranging from Paytm Bank, Recharges, Movies, CST, Gold, Fastag, Stocks, Lending, Paytm Health etc. now are in some form or fashion “Mini Apps”.
 -   It also has a full functioning partner app ecosystem hosting more than **2000+ apps** across different categories from food delivery to online shopping to games and healthcare.
 
 Let’s start going deeper into understanding what are Mini Apps and how we built this platform.
@@ -68,12 +68,12 @@ It all started with answering the questions on: **Why → How → What**
 </figure>
 
 **Why**
--   Why are we building it? It is worth building for?
+-   Why are we building it? Is it worth building for?
 -   Why is it useful for our users, for our merchant partners, for us?
 -   Why build right now? Why not before or later?
 
 **What**
--   What’s are we trying to achieve?
+-   What are we trying to achieve?
 -   What does success for the platform look like? What’s our north star?
 -   What are the constraints under which we need to operate (resource, time, cost etc.)?
 
@@ -165,11 +165,11 @@ We built a lot more features to meet newer merchant  requirements like integrati
   </center>
 </div>
 
-We also stumbled upon a super interesting thing with this platform (or was it planned the whole way 😉): using this platform for our internal usecases. The benefits we offered to our merchant partners: instant adoption, quicker iterations and easier code maintenance were infact super relevant for a lot of our internal use cases as well. And as it happened, the core-platform experience team internally was driving a charter to reduce the app size and **“Mini Apps”** seemed like a great fit! We started exploring using the platform for some of our internal verticals and start migrating few non-core flows like Paytm Gold, Paytm Education, Fasttag, Mall etc. as Mini Apps.
-
-> For every 10 MB decrease in app install size, the app install conversion rate improves by **[2.5%](https://medium.com/googleplaydev/shrinking-apks-growing-installs-5d3fcba23ce2)**
+We also stumbled upon a super interesting thing with this platform (or was it planned the whole way 😉): using this platform for our internal usecases. The benefits we offered to our merchant partners: instant adoption, quicker iterations and easier code maintenance were infact super relevant for a lot of our internal use cases as well. And as it happened, the core-platform experience team internally was driving a charter to reduce the app size and **“Mini Apps”** seemed like a great fit! We started exploring using the platform for some of our internal verticals and start migrating few non-core flows like Paytm Gold, Paytm Education, Fastag, Mall etc. as Mini Apps.
 
 There were few scaling challenges initially since we never accounted the platform to handle this level of scale so soon but with few optimisation and caching strategies later we were able to handle it. This allowed any internal Paytm vertical who did not had a DAU use case, to move as a Mini App. It also required us to optimise more heavily on our overall platform: how our webview launched, loaded, performed and optimise a lot of aspects of the SDK (there were many sprints dedicated to just optimisations!). We also had to build support for newer flows to enable verticals to migrate as Mini Apps. But eventually this helped us move more and more verticals as Mini Apps and helped us reduce the App bundle size of Paytm to just under 30MB (lowest among the top fintech players, despite having the most number of features!)
+
+> For every 10 MB decrease in app install size, the app install conversion rate improves by **[2.5%](https://medium.com/googleplaydev/shrinking-apks-growing-installs-5d3fcba23ce2)**
 
 This is essentially is what I see as the **Growth** phase for the platform, where we took our learnings from the pilot and made the platform better and grew it.
 
