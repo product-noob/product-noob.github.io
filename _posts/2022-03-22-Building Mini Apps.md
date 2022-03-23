@@ -160,7 +160,9 @@ This also gave us a very good insights on how the experience of developing a min
 Surprisingly enough these  got really great response and are available on the platform till date! With this confidence we started onboarding experimenting a bit more on non-transactional use cases and onboarded few content and gaming apps.
 We built a lot more features to meet newer merchant  requirements like integration with Paytm notification service, building support for subscription and pre-authorised payments, integration with Paytm’s promo engine, building a user customised app listing to enhance the app discovery, adding more analytics tracking etc. and onboarded apps from different categories and overall experimented a lot!
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Qxa3kd4yw3o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<center>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/Qxa3kd4yw3o?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
 
 We also experimented a super interesting thing with this platform: the benefits we offered to our merchant partners (instant adoption, quicker iterations and easier code maintenance) were infact super relevant for a lot of our internal use cases as well. And as it happened, the core-platform experience team internally was driving a charter to reduce the app size and **“Mini Apps”** seemed like a great fit! We started exploring using the platform for some of our internal verticals and start migrating few non-core flows like Paytm Gold, Paytm Education, Fastag, Mall etc. as Mini Apps.
 
