@@ -136,7 +136,7 @@ This is how the first version of listing page looked like:
 
 Once the basic setup was in place and we had market tested our platform, we then wanted to grow our platform by onboarding more and more merchant apps. For this we built new flows, improved on the existing ones, wrote richer documentations and automated various manual processes. This took us another 6-8 months.
 
-We also started brainstorming on various app categories which made sense as “Mini Apps” and started reaching out to some of the key players in each of those to explore partnership with them. Few key categories we circled on were Online Shopping, Food Delivery, Casual Gaming, Healthcare and Tools & Utilities. We onboarded large names like Domino’s, Decathlon, Box8, Gaming aggregators and announced a formal launch of the **[Mini Apps platform.](https://youtu.be/nuK7Ct59Vyk)**
+We also started brainstorming on various app categories which made sense as “Mini Apps” and started reaching out to some of the key players in each of those to explore partnership with them. Few key categories we circled on were Online Shopping, Food Delivery, Casual Gaming, Healthcare and Tools & Utilities. We onboarded large names like Domino’s, Decathlon, Box8, Gaming aggregators and announced a formal launch of the **Mini Apps platform.**
 
 <figure>
 <img src="/images/Mini_Apps_5.png" alt="Mini Apps Store Launch" class="center">
@@ -145,9 +145,13 @@ We also started brainstorming on various app categories which made sense as “M
 
 We got tremendous developer response from this conference with more than 10,000 registrations. This gave us a good pipeline of merchants to partner with and onboard as Mini Apps.
 
+<center>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/nuK7Ct59Vyk?start=3161&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+
 While onboarding payment led apps we wondered if non-transactional apps (one’s which didn’t had any payment flows) would make sense for us to onboard as a mini app, mainly since we were chasing the north star of engagement. But before we formed any partnership, we wanted to do a POC (Proof of Concept) to validate the market-fit and ended up building few mini apps of our own.
 
-The first one to hit the shelf was **[e-Newspaper](https://twitter.com/nightfury_19/status/1247862351467958272) :** due to covid lockdown delivery of physical newspapers had stopped and people were trying to find a easy way to read them digitially. We could the mini apps offering serving this use case pretty well and we launched this mini app **within 2 days** serving our users with various options of various national and local newspapers (It was technically like a simple storefront with newspaper pdf deployed on CDN and updated daily). This app instantly took off and we at one point served copies from ~30 different publishers to 100s of thousands of readers daily.
+The first one to hit the shelf was **[e-Newspaper](https://twitter.com/nightfury_19/status/1247862351467958272)** : due to covid induced lockdown, delivery of physical newspapers had stopped and people were trying to find a easy way to access them digitally. We could the mini apps offering serving this use case pretty well and we launched this mini app **within 2 days** serving our users with various options of various national and local newspapers (It was technically like a simple storefront with newspaper pdf deployed on CDN and updated daily). This app instantly took off and we at one point served copies from ~30 different publishers to 100s of thousands of readers daily.
 
 With the mini apps platform allowing us to quickly build, iterate and test our ideas we ended up launching few more in-house mini apps: AQI Monitor, Speedtest and Paytm Astro.
 
@@ -178,7 +182,7 @@ Personally this was the most fun phase of the project for me; where we did a lot
 
 Once we had a sizable numbers of merchant mini apps across categories and a lot of internal verticals on the platform, I consider us reaching the **Maturity** phase of the product. We were now focusing on questions about handling scale and platformising this SDK and overall making the whole thing better. Few things we did were:
 
--   With the large number of merchant apps we were onboarding a lot of manual processes were just becoming too tedious to manage operationally. To solve this we launched a **[“DIY flow”](https://www.youtube.com/watch?v=W0qN81dujfs)**.
+-   With the large number of merchant apps we were onboarding a lot of manual processes were just becoming too tedious to manage operationally. To solve this we launched a **“DIY flow”**.
     <center>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/W0qN81dujfs?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </center>
