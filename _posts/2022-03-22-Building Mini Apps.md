@@ -133,9 +133,10 @@ We partnered with around 15 merchant for the platform's pilot ( Netmeds, 1mg, Hu
 
 This is how the first version of listing page looked like:
 
-![Design mockup of Mini Apps listing](/images/Mini_Apps_4.png)
-
-Design mockup of Mini Apps listing
+<figure>
+<img src="/images/Mini_Apps_4.png" alt="Design mockup of Mini Apps listing" class="center">
+<figcaption>Design mockup of Mini Apps listing</figcaption>
+</figure>
 
 ### Growth **Phase**
 
