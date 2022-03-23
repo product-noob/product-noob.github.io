@@ -9,7 +9,7 @@ image:
 
 After a stint of nearly 3 years at Paytm, I recently took the tough call to leave Paytm and explore PM’ing in a new industry. During my tenure here, I was lucky to work on few very meaningful and impactful projects most notable being Mini Apps, [Vaccine Finder](https://princejain.me/2021/08/03/Building-Vaccine-Slot-Finder.html) and [Paytm Health](https://princejain.me/2022/01/12/National-Health-Stack.html). I plan to write about my experience and share my learnings from working on these projects. This post is about the journey to build the Mini Apps Platform for Paytm.
 
-_**Disclaimer:** As with most stories in this one too I have tried connecting the dots looking backwards and hence many approaches/ framework I have shared here were not explicitly used but we had a very similar thought process while approaching these problems. Looking back it’s very interesting to see how these framework match the natural thought process.
+_**Disclaimer:** As with most stories in this one too I have tried connecting the dots looking backwards and hence many approaches/ framework I have shared here were not explicitly used but we had a very similar thought process while approaching these problems. Looking back it’s very interesting to see how these framework match the natural thought process. <br>
 Also I have tried sharing a very broad view of how we did things: its 3 years of works condensed into a single article plus a lot of internal data and decisions omitted for obvious reasons._
 
 * * *
@@ -28,7 +28,7 @@ While the terminology of Mini Apps or Mini Programs is a borrowed one (super pop
 
 In the simplest sense mini apps are hybrid apps (typically webapps) which have a deep integration with a host app (in which they are opened) to make them powerful and feature rich. Being based on web frameworks allows the host app to serve different flows and services dynamically.
 
-These mini apps can be managed either by a different entity than the host app like in the case of Zynga games in Facebook or by the host platform itself to serve some non critical and more dynamic flows.
+These mini apps can be managed either by a different entity than the host app like in the case of Zynga games in Facebook or by the host platform itself to serve some non critical and more dynamic flows. <br>
 _In Paytm we enable both kinds of mini apps: one’s built by the 2nd party ( internal Paytm verticals) and 3rd party apps (external merchants) as we will explore later._
 
 ## **What did we needed Mini Apps?**
