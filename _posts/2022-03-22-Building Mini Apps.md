@@ -30,7 +30,7 @@ In the simplest sense mini apps are hybrid apps (typically webapps) which have a
 These mini apps can be managed either by a different entity than the host app like in the case of Zynga games in Facebook or by the host platform itself to serve some non critical and more dynamic flows. <br>
 _In Paytm we enable both kinds of mini apps: one’s built by the 2nd party ( internal Paytm verticals) and 3rd party apps (external merchants) as we will explore later._
 
-## What we needed Mini Apps?
+## Why we needed Mini Apps?
 
 In our journey to become a **[Superapp](https://princejain.me/2020/02/15/Apps-and-SuperApps.html)** it was essential for Paytm to develop a technology solution which allowed us to de-bundle non-core flows and serve them in real-time only when needed. The idea was that most users don’t need or use all our offerings at all times and it makes sense to serve some non-core flows dynamically via a hybrid approach. Also for many flows there are no visible advantages of increasing the app size for non essential flows when not all users would be using those extra features and increasing bundle size might negatively affect **[app install conversion](https://medium.com/googleplaydev/shrinking-apks-growing-installs-5d3fcba23ce2).**
 
