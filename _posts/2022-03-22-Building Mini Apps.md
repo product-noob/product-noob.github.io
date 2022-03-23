@@ -15,7 +15,7 @@ Also I have tried sharing a very broad view of how we did things, its 3 years of
 
 Before we start, some current stats about the Mini Apps platform:
 
--   **Mini Apps** platform now enables a lot of things in the Paytm app: more than **80%** of all Paytm users having a a touchpoint of Mini Apps.
+-   **Mini Apps** platform now enables a lot of things in the Paytm app: with more than **80%** of all Paytm users having a touchpoint of Mini Apps.
 -   Core Paytm verticals ranging from Paytm Bank, Recharges, Movies, CST, Gold, Fasttag, Stocks, Lending, Paytm Health etc. now are in some form or fashion “Mini Apps”.
 -   It also has a full functioning partner app ecosystem hosting more than **2000+ apps** across different categories from food delivery to online shopping to games and healthcare.
 
