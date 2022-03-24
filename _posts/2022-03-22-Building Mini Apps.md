@@ -41,7 +41,7 @@ Serving apps dynamically had many other advantages than just reducing app size:
 -   **Easier Development:** Typically web based apps require significantly lesser development effort: since you have to only develop once for both platforms, technology is relatively more mature, open-source, stable and is cheaper from resourcing POV.
 -   **Cheaper Maintenance:** Being based on web based frameworks allows mini apps’ codebase to be same across iOS and Android. It solves a big pain point of ensuring feature parity and code maintenance.
 
-There was another major angle to why we needed this platform, infact the very reason we built the platform for: **Merchant Mini Apps!** (the benefits for our internal verticals was something we realised eventually!)
+There was another major angle to why we needed this platform, in-fact the very reason we built the platform for: **Merchant Mini Apps!** (the benefits for our internal verticals was something we realised eventually!)
 
 Having this platform allowed us to partner with businesses across the country to bring their flows and offering to our users in the Paytm app. This had immense potential for Paytm to increase the overall usability and stickiness of the app since there were many many businesses we as a company never wanted to venture into ourselves but wanted still wanted to enable for our users by leveraging the rich insights we gathered from their payments behaviour and Mini Apps platform gave us just that.
 
@@ -68,16 +68,19 @@ It all started with answering the questions on: **Why → How → What**
 </figure>
 
 **Why**
+
 -   Why are we building it? Is it worth building for?
 -   Why is it useful for our users, for our merchant partners, for us?
 -   Why build right now? Why not before or later?
 
 **What**
+
 -   What are we trying to achieve?
 -   What does success for the platform look like? What’s our north star?
 -   What are the constraints under which we need to operate (resource, time, cost etc.)?
 
 **How**
+
 -   How will we build it? What does a MVP look like?
 -   How does a steady state in future with “Mini Programs” look like?
 -   How will we launch it and scale it?
@@ -162,7 +165,7 @@ We built a lot more features to meet newer merchant  requirements like integrati
   </center>
 </div>
 
-We also stumbled upon one super interesting usecase with this platform (or was it planned the whole way 😉), using this platform for our internal vertical flows. The benefits we offered to our merchant partners: instant adoption, quicker iterations and easier code maintenance were infact super relevant for a lot of our internal use cases as well. And as it happened the core-platform experience team internally was driving a charter to reduce the app size and **“Mini Apps”** seemed like a great fit! We started exploring using the platform for some of our internal verticals and start migrating few non-core flows like Paytm Gold, Paytm Education, Fastag, Mall etc. as Mini Apps.
+We also thought of one super interesting use-case for this platform, using it for our internal vertical flows. The benefits we offered to our merchant partners: instant adoption, quicker iterations and easier code maintenance were in-fact super relevant for a lot of our internal use cases as well. And as it happened the core-platform experience team internally was driving a charter to reduce the app size and **“Mini Apps”** seemed like a great fit! We started exploring using the platform for some of our internal verticals and start migrating few non-core flows like Paytm Gold, Paytm Education, Fastag, Mall etc. as Mini Apps.
 There were few scaling challenges initially since we never accounted the platform to handle this level of scale so soon but with few optimisation and caching strategies later we were able to handle the scale and migrate many of our verticals as Mini Apps. This allowed any internal Paytm vertical who did not had a DAU use case, to move as a Mini App. It also required us to optimise more heavily on our overall platform: how our webview launched, loaded, performed and optimise a lot of aspects of the SDK (there were many sprints dedicated to just optimisations!). We also had to build support for newer flows to allow some verticals to migrate as Mini Apps. But eventually this enabled us move many of our internal verticals as Mini Apps and helped us reduce the App bundle size of Paytm to just under 30MB (lowest among the top fintech players, despite having the most number of features!)
 
 > For every 10 MB decrease in app install size, the app install conversion rate improves by **[2.5%](https://medium.com/googleplaydev/shrinking-apks-growing-installs-5d3fcba23ce2)**
@@ -180,6 +183,7 @@ Once we had a sizeable numbers of merchant mini apps across categories and a lot
 -   Standardised lot of aspects of the platform : JS API(Bridges) structure, error-codes and handling, Title bar, various UI elements etc. and added more detailed logger and tracking for the platform performance.
 
 -   With the large number of merchant apps we were onboarding a lot of manual processes were just becoming too tedious to manage operationally. To solve this we launched a **“DIY flow”**.
+
     <div class="videoWrapper">
     <center>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/W0qN81dujfs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -189,9 +193,10 @@ Once we had a sizeable numbers of merchant mini apps across categories and a lot
       _In a nutshell we ended up building a smaller version of Google/ Apple Play Console_
 
 -   Launched new UQR Flow: This is one of the feature which remain super close to my heart. Paytm app is the most used QR Scanner in the country and we wanted to leverage this mind frame to serve as an additional touchpoint for Mini Apps. This was a time when a lot of restaurants were moving to a contactless ordering and we felt that this was a good feature for us to enable for our users:  scan the restaurant QR to instantly open their Mini app and order (Remember: login and payments are seamlessly integrated in Mini Apps).
-and many many more things to grow the platform to its current stage.
+    and many many more things to grow the platform to its current stage.
 
-- Bunch on things are in pipeline now to improve overall page load time and performance significantly and to give our merchants more powerful tools to reach their customers.
+-   A lot many things are now in pipeline to improve the core platform: page load time, performance and stability and to give our merchants more powerful tools to reach their customers.
 
-As usual there is so much more to write but I will give it a pause here. I hope you got a good sense of how crazy it was to build this platform. 
+As usual there is so much more to write but I will give it a pause here. I hope you got a good sense of how crazy it was to build this platform.
+
 * * *
