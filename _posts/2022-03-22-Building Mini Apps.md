@@ -192,8 +192,7 @@ Once we had a sizeable numbers of merchant mini apps across categories and a lot
       This allowed any merchant to come onboard as a Mini App without requirement any\_ involvement from Paytm’s end : instant onboarding, easy tools for app development and automated submission and go-live process.
       _In a nutshell we ended up building a smaller version of Google/ Apple Play Console_
 
--   Launched new UQR Flow: This is one of the feature which remain super close to my heart. Paytm app is the most used QR Scanner in the country and we wanted to leverage this mind frame to serve as an additional touchpoint for Mini Apps. This was a time when a lot of restaurants were moving to a contactless ordering and we felt that this was a good feature for us to enable for our users:  scan the restaurant QR to instantly open their Mini app and order (Remember: login and payments are seamlessly integrated in Mini Apps).
-    and many many more things to grow the platform to its current stage.
+-   Launched new UQR Flow: This is one of the feature which remain super close to my heart. Paytm app is the most used QR scanner in the country and we wanted to leverage this mind-recall to serve as an additional touchpoint for Mini Apps. This was built at a time when a lot of restaurants were moving to a contactless ordering (blame Covid!) and we felt that this was a good offering both for our users and our merchant partners: Users could simply scan the restaurant QR from their Paytm app to instantly open merchant's Mini app and order within a few clicks (Remember: login and payments are seamlessly integrated in Mini Apps).
 
 -   A lot many things are now in pipeline to improve the core platform: page load time, performance and stability and to give our merchants more powerful tools to reach their customers.
 
