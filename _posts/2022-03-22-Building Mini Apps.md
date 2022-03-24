@@ -112,7 +112,7 @@ This is how the broad architecture of the platform looks like:
 <img src="/images/Mini_Apps_3.png" alt="Paytm Mini Apps Architecture">
 <figcaption>Paytm Mini Apps Architecture</figcaption>
 </figure>
-
+_We Mini Apps SDK is internally called as "Phoenix" since it was our third attempt at building such a framework and it literally rose from the ashes (learnings) of the last two experiments! Quite Literal_
 This architecture allowed us to render webpages inside our app’s webview which could interact via our custom JS library with Paytm App and Native Layer. This opened so many possibilities of what this platform could enable: seamless data transfer between Paytm app and the website (like login information, payment flows, analytics etc.) & between webapp and the Native device layer (like hardware details: GPS, Bluetooth, Camera etc.).
 
 While the tech team was busy building the core SDK, the Business-Product teams sprung into action and started having discussions with few key merchants to understand their requirements and expectations from such an integration. We narrowed down to solve for few primitives for them to start with: **Discovery, Login and Payments**. We started brainstorming on how each of these would be solved for and started building the first iteration of the platform with these as the MVP requirements.
