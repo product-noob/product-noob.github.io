@@ -106,14 +106,13 @@ Here’s how we actually went about making these tenants possible:
 
 With this broad understanding in place we started brainstorming on the broad architecture of the SDK. At a high level of what I can share publicly, the architecture we ended up with was a native webview rendered in the Paytm app and made feature rich with custom JS injection. This enabled it to interact with the native layer (Paytm app and device layer) and exchange data and information.
 
- <!---
 This is how the broad architecture of the platform looks like:
 
 <figure>
 <img src="/images/Mini_Apps_3.png" alt="Paytm Mini Apps Architecture">
 <figcaption>Paytm Mini Apps Architecture</figcaption>
 </figure>
---->
+
 _Mini Apps SDK is internally called as "Phoenix" since it was our third attempt at building such a framework and it literally rose from the ashes (learnings) of the last two experiments. Good nomenclature no!?_
 This architecture allowed us to render webpages inside our app’s webview which could interact via our custom JS library with Paytm App and Native Layer. This opened so many possibilities of what this platform could enable: seamless data transfer between Paytm app and the website (like login information, payment flows, analytics etc.) & between webapp and the Native device layer (like hardware details: GPS, Bluetooth, Camera etc.).
 
