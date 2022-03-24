@@ -8,7 +8,7 @@ image:
 
 After a stint of nearly 3 years at Paytm, I recently took the tough call to leave Paytm and explore PM’ing in a new industry. During my tenure here I was lucky to work on few very meaningful and impactful projects most notable being Mini Apps, [Vaccine Finder](https://princejain.me/2021/08/03/Building-Vaccine-Slot-Finder.html) and [Paytm Health](https://princejain.me/2022/01/12/National-Health-Stack.html). I plan to write about my experience and share my learnings from working on these projects. This post is about the journey to build the Mini Apps Platform for Paytm.
 
-_**Disclaimer:** As with most stories in this one too I have tried connecting the dots looking backwards and hence many approaches/ framework I have shared here were not explicitly used but we had a very similar thought process while approaching these problems. Looking back it’s very interesting to see how these framework match the natural thought process. <br>
+_**Disclaimer:** As with most stories in this one too I have tried connecting the dots looking backwards and hence many approaches/ frameworks I have shared here were not explicitly used but we had a very similar thought process while approaching these problems. Looking back it’s very interesting to see how these framework match the natural thought process. <br>
 Also I have tried sharing a very broad view of how we did things, its 3 years of works condensed into a single article plus a lot of internal data and decisions omitted for obvious reasons._
 
 * * *
@@ -19,7 +19,7 @@ Before we start, some current stats about the Mini Apps platform:
 -   Core Paytm verticals ranging from Paytm Bank, Recharges, Movies, CST, Gold, Fastag, Stocks, Lending, Paytm Health etc. now are in some form or fashion “Mini Apps”.
 -   It also has a full functioning partner app ecosystem hosting more than **2000+ apps** across different categories from food delivery to online shopping to games and healthcare.
 
-Let’s start going deeper into understanding what are Mini Apps and how we built this platform.
+Let’s now go deeper into understanding what are Mini Apps and how we built this platform.
 
 ## What are Mini Apps?
 
@@ -32,13 +32,13 @@ _In Paytm we enable both kinds of mini apps: one’s built by the 2nd party ( in
 
 ## Why we needed Mini Apps?
 
-In our journey to become a **[Superapp](https://princejain.me/2020/02/15/Apps-and-SuperApps.html)** it was essential for Paytm to develop a technology solution which allowed us to de-bundle non-core flows and serve them in real-time only when needed. The idea was that most users don’t need or use all our offerings at all times and it makes sense to serve some non-core flows dynamically via a hybrid approach. Also for many flows there are no visible advantages of increasing the app size for non essential flows when not all users would be using those extra features and increasing bundle size might negatively affect **[app install conversion](https://medium.com/googleplaydev/shrinking-apks-growing-installs-5d3fcba23ce2).**
+In our journey to become a **[Superapp](https://princejain.me/2020/02/15/Apps-and-SuperApps.html)** it was essential for Paytm to develop a technology solution which allowed us to de-bundle non-core flows and serve them in real-time only when needed. The idea was that most users don’t need or use all our offerings at all times and it makes sense to serve most non-core flows dynamically via a hybrid approach. Also for many flows there are no visible advantages of increasing the app size for non essential flows when not all users would be using those extra features and increasing bundle size might negatively affect **[app install conversion](https://medium.com/googleplaydev/shrinking-apks-growing-installs-5d3fcba23ce2).**
 
 Serving apps dynamically had many other advantages than just reducing app size:
 
 -   **Instant Adoption:** Any new feature launched on the Mini Apps platform is available instantly to all users. By just a config change at backend all our users can use the newer flows in their Paytm app (without requiring an app upgrade).
 -   **Quicker Iterations:** It give businesses the flexibility to iterate quickly since any required change could be rolled out directly on the web app.
--   **Easier Development:** Typically web based apps require significantly lesser development effort: since you have to only develop once for both platforms, technology is relatively more mature and stable and its cheaper from resourcing POV.
+-   **Easier Development:** Typically web based apps require significantly lesser development effort: since you have to only develop once for both platforms, technology is relatively more mature, open-source, stable and is cheaper from resourcing POV.
 -   **Cheaper Maintenance:** Being based on web based frameworks allows mini apps’ codebase to be same across iOS and Android. It solves a big pain point of ensuring feature parity and code maintenance.
 
 There was another major angle to why we needed this platform, infact the very reason we built the platform for: **Merchant Mini Apps!** (the benefits for our internal verticals was something we realised eventually!)
@@ -144,17 +144,14 @@ We got tremendous developer response from this conference with more than 10,000 
 </center>
 </div>
 
-While onboarding payment led apps we wondered if non-transactional apps (one’s which didn’t had any payment flows) would make sense for us to onboard as a mini app, mainly since we were chasing the north star of engagement. But before we formed any partnership, we wanted to do a POC (Proof of Concept) to validate the market-fit and ended up building few mini apps of our own.
+While onboarding payment led apps we wanted to also explore if non-transactional apps (one’s which didn’t had any payment flows) would make sense for us to onboard as a mini app, mainly since we were chasing the north star of engagement. But before we formed any partnership we wanted to do a POC (Proof of Concept) to validate the market-fit and ended up building few mini apps of our own.
 
-The first one to hit the shelf was **[e-Newspaper](https://twitter.com/nightfury_19/status/1247862351467958272)** : due to covid induced lockdown, delivery of physical newspapers had stopped and people were trying to find a easy way to access them digitally. We could the mini apps offering serving this use case pretty well and we launched this mini app **within 2 days** serving our users with various options of various national and local newspapers (It was technically like a simple storefront with newspaper pdf deployed on CDN and updated daily). This app instantly took off and we at one point served copies from ~30 different publishers to 100s of thousands of readers daily.
-
+The first one to hit the shelf was **[e-Newspaper](https://twitter.com/nightfury_19/status/1247862351467958272)** : due to covid induced lockdown delivery of physical newspapers had stopped and people were trying to find an easy way to access them digitally. We could see the mini apps offering serving this use case pretty well and we decided to launch a e-newspaper Mini App. It was launched **within 2 days** and it served our users with various options of national and local newspapers (It was technically like a simple storefront with newspaper pdf deployed on CDN and updated daily). This app instantly took off and we at one point served copies from ~30 different publishers to 100s of thousands of readers daily.
 With the mini apps platform allowing us to quickly build, iterate and test our ideas we ended up launching few more in-house mini apps: AQI Monitor, Speedtest and Paytm Astro.
+_Think of these like side projects done by different members of our team to improve their understanding of the product and to get a chance to learn more about the platform._
+This also improved our understanding on how is experience of developing a mini app as a developer and gave us very useful insights to improve some of our flows, documentation and SOPs (Yes, it helps to eat your own dogfood!)
 
-_Think of these like internship projects but was done by different members of our team to improve their understanding of the product._
-
-This also gave us a very good insights on how the experience of developing a mini app is as a developer and this gave very useful insights to improve some of our flows, documentation and SOPs (Yes, it helps to eat our own dogfood!)
-
-**This in hindsight, looking back was a pre-cursor leading us to launch the [Vaccine Finder](https://paytm.com/blog/engineering/journey-to-build-the-vaccine-slot-finder-tool-on-paytm/) tool and DigiLocker Mini app.**
+**This in hindsight, looking back now was also a pre-cursor leading us to launch the [Vaccine Finder](https://paytm.com/blog/engineering/journey-to-build-the-vaccine-slot-finder-tool-on-paytm/) tool and DigiLocker Mini app.**
 
 Surprisingly enough these  got really great response and are available on the platform till date! With this confidence we started onboarding experimenting a bit more on non-transactional use cases and onboarded few content and gaming apps.
 We built a lot more features to meet newer merchant  requirements like integration with Paytm notification service, building support for subscription and pre-authorised payments, integration with Paytm’s promo engine, building a user customised app listing to enhance the app discovery, adding more analytics tracking etc. and onboarded apps from different categories and overall experimented a lot!
@@ -165,19 +162,22 @@ We built a lot more features to meet newer merchant  requirements like integrati
   </center>
 </div>
 
-We also stumbled upon a super interesting thing with this platform (or was it planned the whole way 😉): using this platform for our internal usecases. The benefits we offered to our merchant partners: instant adoption, quicker iterations and easier code maintenance were infact super relevant for a lot of our internal use cases as well. And as it happened, the core-platform experience team internally was driving a charter to reduce the app size and **“Mini Apps”** seemed like a great fit! We started exploring using the platform for some of our internal verticals and start migrating few non-core flows like Paytm Gold, Paytm Education, Fastag, Mall etc. as Mini Apps.
-
-There were few scaling challenges initially since we never accounted the platform to handle this level of scale so soon but with few optimisation and caching strategies later we were able to handle it. This allowed any internal Paytm vertical who did not had a DAU use case, to move as a Mini App. It also required us to optimise more heavily on our overall platform: how our webview launched, loaded, performed and optimise a lot of aspects of the SDK (there were many sprints dedicated to just optimisations!). We also had to build support for newer flows to enable verticals to migrate as Mini Apps. But eventually this helped us move more and more verticals as Mini Apps and helped us reduce the App bundle size of Paytm to just under 30MB (lowest among the top fintech players, despite having the most number of features!)
+We also stumbled upon one super interesting usecase with this platform (or was it planned the whole way 😉), using this platform for our internal vertical flows. The benefits we offered to our merchant partners: instant adoption, quicker iterations and easier code maintenance were infact super relevant for a lot of our internal use cases as well. And as it happened the core-platform experience team internally was driving a charter to reduce the app size and **“Mini Apps”** seemed like a great fit! We started exploring using the platform for some of our internal verticals and start migrating few non-core flows like Paytm Gold, Paytm Education, Fastag, Mall etc. as Mini Apps.
+There were few scaling challenges initially since we never accounted the platform to handle this level of scale so soon but with few optimisation and caching strategies later we were able to handle the scale and migrate many of our verticals as Mini Apps. This allowed any internal Paytm vertical who did not had a DAU use case, to move as a Mini App. It also required us to optimise more heavily on our overall platform: how our webview launched, loaded, performed and optimise a lot of aspects of the SDK (there were many sprints dedicated to just optimisations!). We also had to build support for newer flows to allow some verticals to migrate as Mini Apps. But eventually this enabled us move many of our internal verticals as Mini Apps and helped us reduce the App bundle size of Paytm to just under 30MB (lowest among the top fintech players, despite having the most number of features!)
 
 > For every 10 MB decrease in app install size, the app install conversion rate improves by **[2.5%](https://medium.com/googleplaydev/shrinking-apks-growing-installs-5d3fcba23ce2)**
 
-This is essentially is what I see as the **Growth** phase for the platform, where we took our learnings from the pilot and made the platform better and grew it.
+This is essentially is what I see as the **Growth** phase for the platform, where we took our learnings from the pilot, made the platform better and grew it.
 
 Personally this was the most fun phase of the project for me; where we did a lot of brainstorming, experiments, launches, had a few failures and many successes to boast about :)
 
 ### Maturity Phase
 
-Once we had a sizeable numbers of merchant mini apps across categories and a lot of internal verticals on the platform what I consider as reaching the **Maturity** phase, we then started focusing on questions about handling scale, stability and standardisation of the SDK and the platform. Few things we did were:
+Once we had a sizeable numbers of merchant mini apps across categories and a lot of internal verticals on the platform what I consider as reaching the **Maturity** phase, we then started focusing more deeply on questions about handling scale, stability and standardisation of the SDK and the platform, afterall a lot of Paytm app depended on this platform. Few things we did were:
+
+-   As our confidence with the platform grew and more internal teams started using it, we felt its important for us to leverage this SDK in other app properties for Paytm: Paytm For Business app, Paytm Money app, Paytm Insider etc. and hence we worked towards making our SDK **multi-tenant.** This took us a good amount of effort to separate out every dependency and make it work independently in any app just by integrating few hooks. This has now led to the “Phoenix” SDK being part of almost all Paytm App properties and any mini app (internal or external) which goes live on Paytm main app technically can be made available on all other Paytm properties with just a single click.
+
+-   Standardised lot of aspects of the platform : JS API(Bridges) structure, error-codes and handling, Title bar, various UI elements etc. and added more detailed logger and tracking for the platform performance.
 
 -   With the large number of merchant apps we were onboarding a lot of manual processes were just becoming too tedious to manage operationally. To solve this we launched a **“DIY flow”**.
     <div class="videoWrapper">
@@ -188,11 +188,10 @@ Once we had a sizeable numbers of merchant mini apps across categories and a lot
       This allowed any merchant to come onboard as a Mini App without requirement any\_ involvement from Paytm’s end : instant onboarding, easy tools for app development and automated submission and go-live process.
       _In a nutshell we ended up building a smaller version of Google/ Apple Play Console_
 
--   As more and more internal verticals were using the platform, we felt it important for us to leverage this SDK in other Paytm app properties: Paytm For Business app, Paytm Money app, Paytm Insider etc. and hence we worked towards making our SDK **multi-tenant.** This took us a good amount of effort to separate out every dependency and make the SDK work independently in any app just by integrating few hooks. This led to the “Phoenix” SDK being part of almost all Paytm App properties and any mini app (internal or external) which goes live technically can be made available on all other Paytm properties with just a single click.
--   Standardised lot of aspects of the platform : JS APIs (Bridges) structure, error codes and their handling, Title bar, various UI elements etc.
 -   Launched new UQR Flow: This is one of the feature which remain super close to my heart. Paytm app is the most used QR Scanner in the country and we wanted to leverage this mind frame to serve as an additional touchpoint for Mini Apps. This was a time when a lot of restaurants were moving to a contactless ordering and we felt that this was a good feature for us to enable for our users:  scan the restaurant QR to instantly open their Mini app and order (Remember: login and payments are seamlessly integrated in Mini Apps).
 and many many more things to grow the platform to its current stage.
 
+- Bunch on things are in pipeline now to improve overall page load time and performance significantly and to give our merchants more powerful tools to reach their customers.
 
-
+As usual there is so much more to write but I will give it a pause here. I hope you got a good sense of how crazy it was to build this platform. 
 * * *
