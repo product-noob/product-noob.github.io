@@ -8,11 +8,11 @@ permalink: /worksummary/
 
 **March 2022 - Now** *Product Manager, Growth Hacking - User Acquisition & Retention.*
 
-- Work on the model of data backed - rapid experimentation as a means to drive optimisation across the shopping funnel with end goal of increasing platform GMV and Monthly Active Customers
-- Conducted 50+ experiments in a year and launched complex user-first features to enable easier shortlisting, improve value communication, reduce shopping friction, promote reordering and journey initiations, continuation and resumptions
-- Lead a team of 20 and collaborate with 15+ teams to drive impact cross-functionally across shopping funnel
-- Contributed **1.5+ million** incremental monthly transacting customers and **4000+ Cr** Top line impact for Flipkart through product-led A/B experimentation to improve purchase journeys (pre and post order)
-- Lead multiple forums for brainstorming between different stake holders to ideate on customer pain points, user psychologies and design and tech led optimisations
+- Work on the model of data backed - rapid experimentation as a means to drive optimisation across the shopping funnel with end goal of increasing platform GMV and Monthly Active Customers.
+- Conducted 50+ experiments in a year and launched complex user-first features to enable easier shortlisting, improve value communication, reduce shopping friction, promote reordering and journey initiations, continuation and resumptions.
+- Lead a team of 20 and collaborate with 15+ teams to drive impact cross-functionally across shopping funnel.
+- Contributed **1.5+ million** incremental monthly transacting customers and **4000+ Cr** Top line impact for Flipkart through product-led A/B experimentation to improve purchase journeys (pre and post order).
+- Lead multiple forums for brainstorming between different stake holders to ideate on customer pain points, user psychologies and design and tech led optimisations.
 
 #### Paytm (~3 years) ####
 
