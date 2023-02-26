@@ -6,7 +6,7 @@ permalink: /worksummary/
 
 #### Flipkart (~1 years) ####
 
-**May 2022 - Now** *Product Manager 2, Growth Hacking - User Acquisition & Retention.*
+**May 2022 - Now** *Product Manager, Growth Hacking - User Acquisition & Retention.*
 
 - Work on the model of data backed - rapid experimentation as a means to drive optimisation across the shopping funnel with end goal of increasing platform GMV and Monthly Active Customers
 - Conducted 50+ experiments in a year and launched complex user-first features to enable easier shortlisting, improve value communication, reduce shopping friction, promote reordering and journey initiations, continuation and resumptions
