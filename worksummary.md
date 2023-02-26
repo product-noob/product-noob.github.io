@@ -6,7 +6,7 @@ permalink: /worksummary/
 
 #### Flipkart (~1 years) ####
 
-**May 2022 - Now** *Product Manager, Growth Hacking - User Acquisition & Retention.*
+**March 2022 - Now** *Product Manager, Growth Hacking - User Acquisition & Retention.*
 
 - Work on the model of data backed - rapid experimentation as a means to drive optimisation across the shopping funnel with end goal of increasing platform GMV and Monthly Active Customers
 - Conducted 50+ experiments in a year and launched complex user-first features to enable easier shortlisting, improve value communication, reduce shopping friction, promote reordering and journey initiations, continuation and resumptions
@@ -16,7 +16,7 @@ permalink: /worksummary/
 
 #### Paytm (~3 years) ####
 
- **Sept 2021 - April 2022** *Senior Product Manager, Paytm Health and Mini Apps.*
+ **Sept 2021 - March 2022** *Senior Product Manager, Paytm Health and Mini Apps.*
 
 -   Took on additional responsibility to launch the [Paytm Health vertical](https://twitter.com/Paytm/status/1479712862746517506)
 -   Envisioned to be one stop shop for all their healthcare usecases: _Medicine Ordering, Teleconsult, Digital Health Identity, Blood banks repository_
