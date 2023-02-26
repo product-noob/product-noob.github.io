@@ -13,6 +13,8 @@ I also tried my hands in a bunch of corporate competitions during my MBA tenure,
 
 Thankfully I circled back on technology and chose Product Management as the choice of career and joined Paytm as a PM post my graduation. There I got a chance of work on a bunch on super interesting 0 to 1 problems including building the ["Paytm Mini Apps Store"](https://www.youtube.com/watch?v=nuK7Ct59Vyk&t=3161s), bringing the crazy idea of a [Vaccine Slot Finder](https://princejain.me/2021/08/03/Building-Vaccine-Slot-Finder.html) to life and laying the foundation of Paytm Health vertical.
 
+After spending almost 3 years in Paytm, I decided to explore PMing in a different industry and joined Flipkart (India's leading e-commerce company) as a Product Manager. Now I work in Growth Hacking charter, running rapid cross-funnel experiments to optimise on user funnel and improve platform GMV.
+
 When I am not working on solving product problems, I love to spend my time reading, dissecting product flows, occasionally writing for this blog and binging on Netflix. I find cooking as a good escape from the daily hustle and bustle of life.
 
 **Reach me at:**
