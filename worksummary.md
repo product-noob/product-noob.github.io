@@ -4,9 +4,15 @@ title:  Work Summary
 permalink: /worksummary/
 ---
 
+#### Flipkart (~1 years) ####
+
+**May 2022 - Now ** *Product Manager 2, Growth Hacking - User Acquisition & Retention.*
+
+-
+- 
 #### Paytm (~3 years) ####
 
- **Sept 2021 - Now** *Senior Product Manager, Paytm Health and Mini Apps.*
+ **Sept 2021 - April 2022 ** *Senior Product Manager, Paytm Health and Mini Apps.*
 
 -   Took on additional responsibility to launch the [Paytm Health vertical](https://twitter.com/Paytm/status/1479712862746517506)
 -   Envisioned to be one stop shop for all their healthcare usecases: _Medicine Ordering, Teleconsult, Digital Health Identity, Blood banks repository_
