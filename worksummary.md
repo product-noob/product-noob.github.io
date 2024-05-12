@@ -10,19 +10,17 @@ permalink: /worksummary/
 
 - Driving the product discovery, adoption and engagement initiatives for the end-to-end shopping assistant powered via Large Large Models
 - Leading the pod for building 10X experiences for existing platform capabilities (Discovery, Product, Offer)
-- Building central platform to enable chatbots to be built on top of Gen AI stack; 3 use cases for Seller, Post Order and Fintech already live in MVP.
-
+- Building the central platform to enable other LLM-powered chatbots to be built on top of Gen AI stack; 3 use cases with K-BOT (RAG) for Seller, Post Order and Fintech already live in MVP.
 
 **March 2022 - Dec 2023** *Product Manager 2, Growth Hack - User Acquisition & Retention.*
 
-- Team runs rapid product-led experimentations across the shopping funnel with the end goal of driving incremental platform GMV and Monthly Active Customers.
-- Designed and ran **70+** A/B experiments focused on solving for trust, reducing friction, value comm. & repeats.
-- Led a team of 20 engineers & designers and collaborated with 15+ internal product-tech teams to drive impact cross-functionally across the shopping funnel.
+- Team runs rapid product-led experimentations across the shopping funnel to drive incremental platform GMV and Monthly Active Customers
+- Designed and ran **70+** A/B experiments focused on solving for trust, reducing friction, value communication & repeats
+- Led a team of 20 engineers & designers and collaborated with 15+ internal product-tech teams to drive impact cross-functionally across the shopping funnel
 - Contributed **1.5+ million** incremental monthly transacting customers and **4000+ Cr** Top line impact for Flipkart through product-led A/B experimentation to improve purchase journeys (pre and post order).
 - Optimized Flipkart Ads conversion rates by 20 bps through innovative UI/UX solutions &  launched new ad formats, resulting in a bottom line impact of over **100 Cr+**
-- Lead multiple forums for brainstorming between different stakeholders to ideate on customer pain points, user psychologies and design and tech led optimizations.
 - The team won the coveted **"Business Excellence"** award (given to 1 Product team in the entire org) for 2023 for driving the highest GMV impact in the company via product-led initaitives.
--  Rated as **"Exceeds expectations"** consistently on all appraisals.
+- Rated as **"Exceeds expectations"** consistently on all appraisals.
 
 #### Paytm (~3 years) ####
 
