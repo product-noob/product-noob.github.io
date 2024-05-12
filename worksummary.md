@@ -22,6 +22,7 @@ permalink: /worksummary/
 - Optimized Flipkart Ads conversion rates by 20 bps through innovative UI/UX solutions &  launched new ad formats, resulting in a bottom line impact of over **100 Cr+**
 - Lead multiple forums for brainstorming between different stakeholders to ideate on customer pain points, user psychologies and design and tech led optimizations.
 - The team won the coveted **"Business Excellence"** award (given to 1 Product team in the entire org) for 2023 for driving the highest GMV impact in the company via product-led initaitives.
+-  Rated as **"Exceeds expectations"** consistently on all appraisals.
 
 #### Paytm (~3 years) ####
 
