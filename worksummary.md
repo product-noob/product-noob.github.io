@@ -6,7 +6,14 @@ permalink: /worksummary/
 
 #### Flipkart (~1 years) ####
 
-**March 2022 - Now** *Product Manager, Growth Hacking - User Acquisition & Retention.*
+**Jan 2024 - Now** *Senior Product Manager, Flippi - Gen AI*
+
+- Driving the product discovery, adoption and engagement initiatives for the end-to-end shopping assistant powered via Large Large Models
+- Leading the pod for building 10X experiences for existing platform capabilities (Discovery, Product, Offer)
+- Building central platform to enable chatbots to be built on top of Gen AI stack; 3 use cases for Seller, Post Order and Fintech already live in MVP.
+
+
+**March 2022 - Dec 2023** *Product Manager 2, Growth Hack - User Acquisition & Retention.*
 
 - Work on the model of data backed - rapid experimentation as a means to drive optimisation across the shopping funnel with end goal of increasing platform GMV and Monthly Active Customers.
 - Conducted 50+ experiments in a year and launched complex user-first features to enable easier shortlisting, improve value communication, reduce shopping friction, promote reordering and journey initiations, continuation and resumptions.
