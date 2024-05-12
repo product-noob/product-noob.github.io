@@ -15,12 +15,13 @@ permalink: /worksummary/
 
 **March 2022 - Dec 2023** *Product Manager 2, Growth Hack - User Acquisition & Retention.*
 
-- Work on the model of data backed - rapid experimentation as a means to drive optimisation across the shopping funnel with end goal of increasing platform GMV and Monthly Active Customers.
-- Conducted 50+ experiments in a year and launched complex user-first features to enable easier shortlisting, improve value communication, reduce shopping friction, promote reordering and journey initiations, continuation and resumptions.
-- Lead a team of 20 and collaborate with 15+ teams to drive impact cross-functionally across shopping funnel.
+- Team runs rapid product-led experimentations across the shopping funnel with the end goal of driving incremental platform GMV and Monthly Active Customers.
+- Designed and ran **70+** A/B experiments focused on solving for trust, reducing friction, value comm. & repeats.
+- Led a team of 20 engineers & designers and collaborated with 15+ internal product-tech teams to drive impact cross-functionally across the shopping funnel.
 - Contributed **1.5+ million** incremental monthly transacting customers and **4000+ Cr** Top line impact for Flipkart through product-led A/B experimentation to improve purchase journeys (pre and post order).
+- Optimized Flipkart Ads conversion rates by 20 bps through innovative UI/UX solutions &  launched new ad formats, resulting in a bottom line impact of over **100 Cr+**
 - Lead multiple forums for brainstorming between different stakeholders to ideate on customer pain points, user psychologies and design and tech led optimizations.
-- The team won the coveted "Business Excellence" award (given to 1 Product team in the entire org) for 2023 for driving the highest GMV impact in the company via product-led initaitives.
+- The team won the coveted **"Business Excellence"** award (given to 1 Product team in the entire org) for 2023 for driving the highest GMV impact in the company via product-led initaitives.
 
 #### Paytm (~3 years) ####
 
