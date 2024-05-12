@@ -19,7 +19,8 @@ permalink: /worksummary/
 - Conducted 50+ experiments in a year and launched complex user-first features to enable easier shortlisting, improve value communication, reduce shopping friction, promote reordering and journey initiations, continuation and resumptions.
 - Lead a team of 20 and collaborate with 15+ teams to drive impact cross-functionally across shopping funnel.
 - Contributed **1.5+ million** incremental monthly transacting customers and **4000+ Cr** Top line impact for Flipkart through product-led A/B experimentation to improve purchase journeys (pre and post order).
-- Lead multiple forums for brainstorming between different stake holders to ideate on customer pain points, user psychologies and design and tech led optimisations.
+- Lead multiple forums for brainstorming between different stakeholders to ideate on customer pain points, user psychologies and design and tech led optimizations.
+- The team won the coveted "Business Excellence" award (given to 1 Product team in the entire org) for 2023 for driving the highest GMV impact in the company via product-led initaitives.
 
 #### Paytm (~3 years) ####
 
