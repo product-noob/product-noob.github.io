@@ -4,7 +4,7 @@ title:  Work Summary
 permalink: /worksummary/
 ---
 
-#### Flipkart (~1 years) ####
+#### Flipkart (~2.5 years) ####
 
 **Jan 2024 - Now** *Senior Product Manager, Flippi - Gen AI*
 
