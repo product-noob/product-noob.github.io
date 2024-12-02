@@ -1,5 +1,3 @@
-# Privacy Policy for Exponent Content Downloader
-
 ## Introduction
 
 Welcome to the Exponent Content Downloader extension designed for users of TryExponent's subdomains. We are committed to protecting your privacy and ensuring transparency in how we handle your data. This Privacy Policy outlines our practices regarding any data collected by this extension.
