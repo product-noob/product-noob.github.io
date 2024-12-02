@@ -34,10 +34,6 @@ Our extension requests the following permissions solely to accomplish its intend
 
 Any updates to this Privacy Policy will be reflected promptly, ensuring users are informed of any changes in how we handle your privacy and data.
 
-## Contact Us
-
-For any questions about this Privacy Policy or the Exponent Content Downloader, please contact us at [your-email@example.com].
-
 ## Conclusion
 
 Your privacy is of utmost importance to us. We have designed this extension to respect your personal data by ensuring no information is collected, processed, or distributed beyond what is necessary for its core functionality.
