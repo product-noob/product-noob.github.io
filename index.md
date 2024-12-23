@@ -2,12 +2,14 @@
 layout: page
 ---
 
-👋, Hey there stranger, Welcome to my online home :)
+👋 Hey there, welcome to my online home!
 
-I am Prince Jain. I currently work as a Product Manager at [Flipkart](https://www.flipkart.com/)- India's leading e-Commerce company! I work in the Growth Hack charter, running low cost rapid experiments across the shopping to increase platform GMV and Monthly Active Customers. Prior to this I have worked as a Product Manager in [Paytm](https://www.paytm.com/) working on Mini Apps and Paytm Health charters.
+I am Prince Jain, a passionate Product Manager currently working at [Flipkart](https://www.flipkart.com/), India's leading e-commerce company. At Flipkart, I am part of the Growth Hack charter, where I run low-cost, rapid experiments to boost platform GMV (Gross Merchandise Value) and increase Monthly Active Customers. 
 
-You can learn more <a href="{{ site.baseurl }}/about" aria-label="If you want to learn more about me"> about me here </a>.
+Before joining Flipkart, I honed my skills as a Product Manager at [Paytm](https://www.paytm.com/), where I worked on innovative projects like Mini Apps and Paytm Health charters. My journey in product management has been driven by a deep curiosity and a desire to create impactful solutions that meet user needs.
 
-Some of the posts I’ve written on this <a href="{{ site.baseurl }}/blogs" aria-label="These are collection of my personal blogs"> blog are here. </a> <br>
+If you want to learn more about my professional journey and interests, you can visit the [About Me]({{ site.baseurl }}/about) page.
 
-Thanks for checking out my blog. Have a great day 🤗
+Feel free to explore some of the posts I've written on this blog [here]({{ site.baseurl }}/blogs). I share insights on product management, technology trends, and personal experiences.
+
+Thank you for visiting my blog. I hope you find the content valuable and engaging. Have a great day! 🤗
