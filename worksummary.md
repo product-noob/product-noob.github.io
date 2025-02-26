@@ -4,12 +4,15 @@ title:  Work Summary
 permalink: /worksummary/
 ---
 
-#### Flipkart (~2.5 years) ####
+#### Flipkart (~3 years) ####
 
-**Jan 2024 - Now** *Senior Product Manager, Flippi - Gen AI*
+**Jan 2024 - Now** *Senior Product Manager, Flippi - Gen AI Assistance*
 
-- Driving the product discovery, adoption and engagement initiatives for the end-to-end shopping assistant powered via Large Large Models
-- Leading the pod for building 10X experiences for existing platform capabilities (Discovery, Product, Offer)
+- Product Lead for Assistance Charter in Flipkart, leading Flippi, AI powered end-to-end shopping assistant.
+- Spearheading the vision, strategy, and development of Flippi, a GenAI-powered shopping assistant, leveraging cutting-edge in-house fine-tuned LLMs, machine learning models, and agentic workflows.
+- Leading the development of an advanced Retrieval Augmented Generation (RAG) platform to handle contextual queries across pre-purchase research, platform policies, post-purchase support, and seller assistance.
+- Collaborating with US R&D data science teams to build in-house FK-GPT fine-tuned LLMs, integrating GenAI capabilities into Flipkart’s stack for review summarization, image generation, and query augmentation.
+- Partnering with the Post-Order team to implement the CX agent, driving ₹100+ Cr in cost savings.
 - Building the central platform to enable other LLM-powered chatbots to be built on top of Gen AI stack; 3 use cases with K-BOT (RAG) for Seller, Post Order and Fintech already live in MVP.
 
 **March 2022 - Dec 2023** *Product Manager 2, Growth Hack - User Acquisition & Retention.*
