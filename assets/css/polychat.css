@@ -258,9 +258,17 @@ select optgroup {
   border-top: 1px solid #e0e0e0;
   padding: 15px 20px;
   margin-top: auto;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
 }
 
-#chat-input {
+#user-input {
   flex: 1;
   padding: 12px;
   border-radius: 8px;
@@ -269,6 +277,8 @@ select optgroup {
   font-family: inherit;
   font-size: 14px;
   line-height: 1.5;
+  min-height: 44px;
+  height: 44px;
 }
 
 #chat-input:focus {
@@ -277,7 +287,6 @@ select optgroup {
 }
 
 /* Button styling */
-#send-button,
 #save-keys,
 #save-prompt-button,
 #reset-button {
@@ -287,9 +296,26 @@ select optgroup {
   gap: 6px;
 }
 
+/* Send button styling */
+#send-button {
+  border: none;
+  padding: 0;
+  border-radius: 8px;
+  background-color: #4285f4;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  width: 70px;
+}
+
 #send-button svg {
-  height: 16px;
-  width: 16px;
+  height: 24px;
+  width: 24px;
 }
 
 #save-keys,
@@ -350,46 +376,298 @@ select optgroup {
   color: #4183c4;
 }
 
-/* Responsive adjustments */
+/* Mobile menu button */
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  padding: 5px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Chat header containing title and toggle button */
+.chat-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #f9f9f9;
+}
+
+/* Mobile reset button */
+.mobile-reset-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.2s;
+}
+
+.mobile-reset-button:hover {
+  color: #4285f4;
+}
+
+.mobile-menu-button:focus {
+  outline: none;
+}
+
+/* Close button for mobile */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  display: none;
+  z-index: 1001;
+}
+
+.close-btn:focus {
+  outline: none;
+}
+
+/* Responsive adjustments for mobile */
 @media (max-width: 768px) {
   .polychat-container {
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    height: calc(100vh - 80px);
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
   }
   
-  .polychat-models-panel {
-    border-right: none;
-    border-bottom: 1px solid #e0e0e0;
+  /* Show mobile menu button */
+  .mobile-menu-button {
+    display: block;
+  }
+  
+  /* Mobile two-panel layout */
+  .polychat-container {
+    display: block;
+    overflow: hidden;
+  }
+  
+  /* Sidebar fills entire screen on mobile */
+  .polychat-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
     padding: 15px;
+    overflow-y: auto;
+    background-color: #f1f1f1;
+    transition: transform 0.3s ease;
   }
   
-  .model-toggles {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+  /* By default, don't show the sidebar on mobile */
+  .polychat-sidebar:not(.active) {
+    display: none;
+  }
+
+  /* Show sidebar when active */
+  .polychat-sidebar.active {
+    display: block;
   }
   
-  .model-provider {
-    display: none; /* Hide provider text on mobile to save space */
+  /* Show close button when sidebar is active */
+  .polychat-sidebar.active .close-btn {
+    display: block;
   }
   
-  .settings-container,
-  .api-keys-container .settings-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+  /* Chat area takes full screen when sidebar is not active */
+  .polychat-chat {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
   }
   
-  #save-keys {
-    grid-column: span 2;
+  /* Optimize space in mobile view */
+  #chat-window {
+    padding: 10px;
   }
   
-  .key-note {
-    grid-column: span 2;
+  /* Header for LLM Chatbot on mobile */
+  .chat-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
   }
   
-  .chat-container {
+  .chat-header h2 {
+    margin: 0;
+    flex: 1;
+    text-align: left;
+    font-size: 18px;
+    padding: 5px 0;
+  }
+  
+  .mobile-menu-button, .mobile-reset-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .mobile-menu-button {
+    margin-right: 10px;
+  }
+  
+  /* Make chat window take up available space */
+  #chat-window {
+    flex: 1;
+    overflow-y: auto;
     padding: 15px;
+    -webkit-overflow-scrolling: touch;
+    background-color: #fff;
   }
+  
+  /* Make chat input area sticky at bottom in mobile view */
+  .chat-input-container {
+    border-top: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+    padding: 10px 15px;
+    margin-top: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 101;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Improve message bubbles for mobile */
+  .message {
+    max-width: 90%;
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 12px;
+  }
+  
+  /* Input field and send button styling for mobile */
+  #user-input {
+    flex: 1;
+    min-height: 44px;
+    height: 44px;
+    max-height: 80px;
+    font-size: 16px;
+    border-radius: 4px;
+    padding: 8px 12px;
+  }
+  
+  #send-button {
+    width: 60px;
+    min-width: 60px;
+    height: 44px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: #4285f4;
+  }
+  
+  #send-button svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+  }
+  
+  /* Improve form inputs for mobile */
+  input[type="range"] {
+    width: 100%;
+  }
+  
+  select, input {
+    font-size: 16px;
+    padding: 8px;
+    width: 100%;
+  }
+  
+  /* LLM Configuration header */
+  .sidebar-header h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 18px;
+  }
+  
+  /* Config sections in mobile */
+  .config-section {
+    margin-bottom: 20px;
+    background-color: #f1f1f1;
+  }
+  
+  .config-section h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  /* Make buttons more touch-friendly */
+  .action-button {
+    min-height: 44px;
+    padding: 10px 15px;
+    width: 100%;
+  }
+  
+  /* Position back to tools link at bottom of sidebar */
+  .config-link {
+    margin-top: 30px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 15px;
+  }
+}
+
+/* Toast notification styling */
+.toast-container {
+  position: fixed;
+  bottom: 70px;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.toast {
+  background-color: rgba(33, 33, 33, 0.9);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  max-width: 80%;
+  text-align: center;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
 }

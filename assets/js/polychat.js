@@ -54,6 +54,54 @@ document.addEventListener('DOMContentLoaded', function() {
   // Load custom prompts from localStorage
   loadCustomPrompts();
   
+  // Mobile menu functionality
+  const toggleMenuBtn = document.getElementById('toggle-menu');
+  const closeSidebarBtn = document.getElementById('close-sidebar');
+  const sidebar = document.querySelector('.polychat-sidebar');
+  const chatArea = document.querySelector('.polychat-chat');
+  
+  // Function to show the sidebar/configuration panel
+  function showSidebar() {
+    sidebar.classList.add('active');
+    // If we're on mobile, hide the chat area for a full-screen sidebar effect
+    if (window.innerWidth <= 768) {
+      chatArea.style.display = 'none';
+    }
+  }
+  
+  // Function to hide the sidebar and show the chat area
+  function hideSidebar() {
+    sidebar.classList.remove('active');
+    chatArea.style.display = 'flex';
+  }
+  
+  // Event listeners for mobile menu toggle
+  if (toggleMenuBtn) {
+    toggleMenuBtn.addEventListener('click', showSidebar);
+  }
+  
+  if (closeSidebarBtn) {
+    closeSidebarBtn.addEventListener('click', hideSidebar);
+  }
+  
+  // Initialize mobile view - hide sidebar by default on small screens
+  function initMobileView() {
+    if (window.innerWidth <= 768) {
+      // Start with sidebar hidden on mobile
+      hideSidebar();
+    } else {
+      // On desktop, ensure both are visible and properly laid out
+      sidebar.classList.remove('active');
+      chatArea.style.display = 'flex';
+    }
+  }
+  
+  // Run on page load
+  initMobileView();
+  
+  // Also handle window resize
+  window.addEventListener('resize', initMobileView);
+  
   // DOM elements
   const providerSelect = document.getElementById('provider-select');
   const modelSelect = document.getElementById('model-select');
@@ -167,13 +215,47 @@ document.addEventListener('DOMContentLoaded', function() {
     maxTokensValueSpan.textContent = maxTokensSlider.value;
   });
   
-  // Reset conversation
-  resetButton.addEventListener('click', () => {
+  // Function to show toast notification
+  function showToast(message, duration = 2000) {
+    const toastContainer = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    
+    toastContainer.appendChild(toast);
+    
+    // Trigger reflow and add show class for animation
+    setTimeout(() => {
+      toast.classList.add('show');
+    }, 10);
+    
+    // Remove toast after duration
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => {
+        toastContainer.removeChild(toast);
+      }, 300); // Wait for fade out animation
+    }, duration);
+  }
+  
+  // Function to reset conversation context
+  function resetConversation() {
     conversationMessages = [];
     chatWindow.innerHTML = ''; // Clear chat window
     // Add a default assistant message after reset
     addMessageToChat('assistant', "Hello! How can I assist you today?");
-  });
+    // Show toast notification
+    showToast("Context Reset");
+  }
+  
+  // Reset button event listeners
+  resetButton.addEventListener('click', resetConversation);
+  
+  // Mobile reset button in header
+  const mobileResetButton = document.getElementById('mobile-reset');
+  if (mobileResetButton) {
+    mobileResetButton.addEventListener('click', resetConversation);
+  }
   
   // Send message function
   function sendMessage() {
