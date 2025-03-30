@@ -235,14 +235,10 @@ nav {
     font-weight: 400;
   }
   
-  /* Remove the :after animation for better performance */
+  /* Single hover effect for better performance */
   nav a:hover {
     color: #4183c4;
     text-decoration: underline;
-  }
-  
-  nav a:hover {
-    color: #4183c4;
   }
   
   /* Sticky-specific mobile styles */
