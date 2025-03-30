@@ -1,9 +1,22 @@
 <div class="wrapper-masthead">
+  <div class="header-background"></div>
   <div class="container">
     <header class="masthead clearfix">
-      <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" alt="Profile Photo"></a>
-      <div class="site-info">
-        <h1 class="site-name"> <a href="{{ site.baseurl }}/">{{ site.name }}</a> </h1>
+      <!-- Wrap avatar and site info in a mobile-friendly container -->
+      <div class="header-identity">
+        <a href="{{ site.baseurl }}/" class="site-avatar">
+          <!-- Use a smaller, optimized version of the avatar with width/height attributes to prevent layout shift -->
+          <img 
+            src="/images/my-image.webp" 
+            alt="Profile Photo" 
+            width="70" 
+            height="70" 
+            loading="eager" 
+            fetchpriority="high">
+        </a>
+        <div class="site-info">
+          <h1 class="site-name"> <a href="{{ site.baseurl }}/">{{ site.name }}</a> </h1>
+        </div>
       </div>
       <nav>
         <a href="{{ site.baseurl }}/blogs" aria-label="These are collection of my personal blogs">Blogs</a>

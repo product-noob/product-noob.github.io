@@ -6,12 +6,19 @@
 <body>
 
   {% include header.html %}
+  <div id="header-spacer"></div>
   <div id="progress-bar"></div>
-  <div id="main" role="main" class="container">
+  <div id="main" role="main" class="container transition-fade">
     {{ content }}
   </div>
 
   {% include footer.html %}
+  
+  <!-- Performance optimization scripts -->
+  <script src="{{ site.baseurl }}/assets/js/lazy-load.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/sw-register.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/swup-cdn.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/sticky-header.js"></script>
 </body>
 
 </html>

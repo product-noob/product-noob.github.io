@@ -1,0 +1,40 @@
+/* Header opacity fix - standalone CSS file */
+.wrapper-masthead {
+  background-color: #fff !important;
+  position: relative;
+  z-index: 9999;
+  width: 100%;
+}
+
+.wrapper-masthead.sticky {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  background-color: #fff !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.masthead {
+  background-color: #fff !important;
+}
+
+.header-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff !important;
+  z-index: -1;
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 640px) {
+  .wrapper-masthead,
+  .wrapper-masthead.sticky,
+  .masthead,
+  .header-background {
+    background-color: #fff !important;
+  }
+}
