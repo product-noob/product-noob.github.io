@@ -271,37 +271,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
 
   
-  // API key save functionality
-  const saveKeysButton = document.getElementById('save-keys');
-  saveKeysButton.addEventListener('click', function() {
-    // Get values from inputs
-    const openaiKey = document.getElementById('openai-key').value.trim();
-    const groqKey = document.getElementById('groq-key').value.trim();
-    const googleKey = document.getElementById('google-key').value.trim();
-    
-    // Save to localStorage and update config
-    if (openaiKey) {
-      localStorage.setItem('polychat_openai_key', openaiKey);
-      config.openaiApiKey = openaiKey;
-      window.openaiApiKey = openaiKey;
-    }
-    
-    if (groqKey) {
-      localStorage.setItem('polychat_groq_key', groqKey);
-      config.groqApiKey = groqKey;
-      window.groqApiKey = groqKey;
-    }
-    
-    if (googleKey) {
-      localStorage.setItem('polychat_google_key', googleKey);
-      config.googleApiKey = googleKey;
-      window.googleApiKey = googleKey;
-    }
-    
-    // Show confirmation message
-    addMessageToChat('system', "✅ API keys saved successfully. You can now use the selected model.");
-  });
-
   // API Call Functions
   async function callOpenAIApi(systemPrompt, messages, model, temperature, maxTokens) {
     if (!config.openaiApiKey) {
