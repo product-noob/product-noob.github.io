@@ -28,7 +28,8 @@
 	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/transitions.css" media="print" onload="this.media='all'" />
 	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/typography-fix.css" media="print" onload="this.media='all'" />
 	<link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
-	<link rel="canonical" href="{{ site.url }}{{page.url}}">
+	{% assign canonical_url = site.url | append: page.url | replace: '/index.html', '/' %}
+	<link rel="canonical" href="{{ canonical_url }}">
 	<link rel="shortcut icon" type="image/png" href="/images/site-icon.webp" />
 	<link rel="apple-touch-icon" href="/images/site-icon.webp">
 
