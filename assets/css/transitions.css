@@ -1,32 +1,36 @@
-/* Page Transition Styles */
+/* Page Transition Styles - Optimized for Mobile */
 html.is-animating .transition-fade {
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(5px); /* Reduced movement for less jank */
 }
 
 .transition-fade {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+  transition: opacity 250ms ease-out, transform 250ms ease-out; /* Faster, simpler animation */
+  will-change: opacity, transform; /* Optimize for animation */
 }
 
-/* Apply transition to the main content area */
+/* Optimized transitions for main content area */
 #main {
-  will-change: opacity, transform;
+  /* Using will-change only on actual transition */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
-/* Loading indicator */
+/* Loading indicator - Simplified for better performance */
 .page-loader {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 3px;
+  height: 2px; /* Smaller height */
   background: transparent;
   z-index: 9999;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 200ms ease-in-out;
+  transition: opacity 150ms ease-out; /* Faster transition */
 }
 
 .page-loader.is-active {
@@ -39,17 +43,18 @@ html.is-animating .transition-fade {
   position: absolute;
   top: 0;
   left: 0;
-  width: 25%;
+  width: 20%; /* Smaller width for less GPU work */
   height: 100%;
   background-color: #4183c4;
-  animation: loading 1s infinite ease-in-out;
+  animation: loading 800ms infinite ease-in-out; /* Faster animation */
+  will-change: transform; /* Only what's needed */
 }
 
 @keyframes loading {
   0% {
-    left: -25%;
+    transform: translateX(-100%);
   }
   100% {
-    left: 100%;
+    transform: translateX(500%);
   }
 }
