@@ -163,6 +163,7 @@ nav {
     align-items: center;
     justify-content: center;
     margin-bottom: 6px;
+    column-gap: 16px !important; /* Force space between items */
     /* Removed transition to reduce animation complexity */
   }
   
@@ -173,7 +174,7 @@ nav {
     vertical-align: middle;
     width: 34px;
     height: 34px;
-    margin-right: 8px;
+    margin-right: 16px !important; /* Force right margin with !important */
     margin-bottom: 0;
     border-radius: 50%;
     overflow: hidden;
@@ -184,11 +185,19 @@ nav {
   }
   
   .site-avatar img {
-    width: 34px;
-    height: 34px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     /* No transition needed here */
     will-change: transform;
     transform: translateZ(0);
+  }
+  
+  /* Explicit spacer between avatar and title */
+  .avatar-title-spacer {
+    display: inline-block;
+    width: 12px;
+    min-width: 12px;
   }
   
   .site-info {
@@ -196,6 +205,8 @@ nav {
     display: inline-block;
     vertical-align: middle;
     margin-bottom: 0;
+    padding-left: 8px !important; /* Force left padding with !important */
+    margin-left: 8px !important; /* Add left margin with !important */
     /* No transition needed */
   }
   
@@ -265,20 +276,27 @@ nav {
   /* Ultra-compact layout for sticky header */
   .sticky .header-identity {
     margin-bottom: 2px;
+    column-gap: 12px !important; /* Force space in sticky mode */
     /* No transform needed here */
+  }
+  
+  /* Make spacer smaller in sticky mode */
+  .sticky .avatar-title-spacer {
+    width: 8px;
+    min-width: 8px;
   }
   
   .sticky .site-avatar {
     width: 26px;
     height: 26px;
-    margin-right: 6px;
+    margin-right: 12px !important; /* Force right margin with !important */
     /* Remove shadow in sticky state for better performance */
     box-shadow: none;
   }
   
   .sticky .site-avatar img {
-    width: 26px;
-    height: 26px;
+    width: 100%;
+    height: 100%;
     /* No transform needed */
   }
   
