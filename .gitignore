@@ -3,3 +3,9 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+
+# API configuration with sensitive keys
+assets/js/api-config.js
+
+# Local environment files
+.env

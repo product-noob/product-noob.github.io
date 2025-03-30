@@ -5,11 +5,27 @@
  * such as OpenAI's ChatGPT, Groq, and Google's Gemini.
  */
 
-// API key configuration is now loaded from config.js
+// API key configuration is now loaded from api-config.js which is auto-generated during build
+let apiKeys = {};
+
+// Try to load API keys from the auto-generated file
+try {
+  apiKeys = API_KEYS || {};
+} catch (e) {
+  console.error("API keys not available:", e);
+  apiKeys = { openai: "", groq: "", google: "" };
+}
+
+// Function to check if API key is available
+function hasValidApiKey(provider) {
+  return apiKeys[provider] && apiKeys[provider].length > 10 && apiKeys[provider] !== "YOUR_" + provider.toUpperCase() + "_KEY_HERE";
+}
+
+// API key configuration
 const config = {
-  openaiApiKey: window.openaiApiKey || '',
-  groqApiKey: window.groqApiKey || '',
-  googleApiKey: window.googleApiKey || ''
+  openaiApiKey: apiKeys.openai || '',
+  groqApiKey: apiKeys.groq || '',
+  googleApiKey: apiKeys.google || ''
 };
 
 // Default System Prompts
@@ -355,8 +371,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // API Call Functions
   async function callOpenAIApi(systemPrompt, messages, model, temperature, maxTokens) {
-    if (!config.openaiApiKey) {
-      return "⚠️ OpenAI API key error. Contact the administrator.";
+    if (!hasValidApiKey('openai')) {
+      return "⚠️ OpenAI API key not configured. Please add your API key in GitHub Secrets.";
     }
     
     const apiUrl = "https://api.openai.com/v1/chat/completions";
@@ -411,8 +427,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   async function callGroqApi(systemPrompt, messages, model, temperature, maxTokens) {
-    if (!config.groqApiKey) {
-      return "⚠️ Groq API key error. Contact the administrator.";
+    if (!hasValidApiKey('groq')) {
+      return "⚠️ Groq API key not configured. Please add your API key in GitHub Secrets.";
     }
     
     const apiUrl = "https://api.groq.com/openai/v1/chat/completions";
@@ -447,8 +463,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   async function callGoogleApi(systemPrompt, messages, model, temperature, maxTokens) {
-    if (!config.googleApiKey) {
-      return "⚠️ Google API key error. Contact the administrator.";
+    if (!hasValidApiKey('google')) {
+      return "⚠️ Google API key not configured. Please add your API key in GitHub Secrets.";
     }
     
     // Updated endpoint and model naming for Gemini API

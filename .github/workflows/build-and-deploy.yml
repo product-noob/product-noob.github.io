@@ -1,0 +1,47 @@
+name: Build and Deploy with API Keys
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+
+      - name: Install Dependencies
+        run: bundle install
+
+      - name: Create API Configuration
+        shell: bash
+        run: |
+          echo "// This file is auto-generated during build - do not edit manually" > assets/js/api-config.js
+          echo "const API_KEYS = {" >> assets/js/api-config.js
+          echo "  openai: \"${{ secrets.OPENAI_API_KEY }}\"," >> assets/js/api-config.js
+          echo "  groq: \"${{ secrets.GROQ_API_KEY }}\"," >> assets/js/api-config.js
+          echo "  google: \"${{ secrets.GOOGLE_API_KEY }}\"" >> assets/js/api-config.js
+          echo "};" >> assets/js/api-config.js
+          echo "" >> assets/js/api-config.js
+          echo "// Export API keys for use in other modules" >> assets/js/api-config.js
+          echo "if (typeof exports !== 'undefined') {" >> assets/js/api-config.js
+          echo "  exports.API_KEYS = API_KEYS;" >> assets/js/api-config.js
+          echo "}" >> assets/js/api-config.js
+
+      - name: Build Site
+        run: bundle exec jekyll build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages # The branch the action should deploy to
+          folder: _site # The folder the action should deploy
+          clean: true # Automatically remove deleted files
