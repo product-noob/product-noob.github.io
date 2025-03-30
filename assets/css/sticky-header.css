@@ -163,7 +163,7 @@ nav {
     align-items: center;
     justify-content: center;
     margin-bottom: 6px;
-    column-gap: 16px !important; /* Force space between items */
+    column-gap: 2px !important; /* Force space between items */
     /* Removed transition to reduce animation complexity */
   }
   
@@ -174,7 +174,7 @@ nav {
     vertical-align: middle;
     width: 34px;
     height: 34px;
-    margin-right: 16px !important; /* Force right margin with !important */
+    margin-right: 2px !important; /* Force right margin with !important */
     margin-bottom: 0;
     border-radius: 50%;
     overflow: hidden;

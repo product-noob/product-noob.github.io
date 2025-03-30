@@ -1,5 +1,3 @@
-# My Jekyll-Based Personal Blog/Portfolio  
-
 ## Core Architecture  
 This is a classic Jekyll static site with the following key components:  
 
