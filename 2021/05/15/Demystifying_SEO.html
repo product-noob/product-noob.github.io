@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<!-- Preload critical avatar styles to prevent layout shift -->
+	<style>
+/* Preload avatar image styles to prevent layout shift */
+.site-avatar {
+  float: left;
+  width: 70px;
+  height: 70px;
+  margin-right: 15px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #f0f0f0; /* Light gray placeholder */
+  /* Define a placeholder gradient background */
+  background-image: linear-gradient(to bottom right, #f0f0f0, #d8d8d8);
+}
+
+.site-avatar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+.site-avatar img {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  transform: translateZ(0); /* Force hardware acceleration */
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Avatar image loading state */
+.site-avatar img.loading {
+  opacity: 0;
+}
+
+@media (max-width: 640px) {
+  .site-avatar {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+}
+</style>
+
+	<!-- This goes in Head.html -->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZLF9K3MJB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-WZLF9K3MJB');
+</script>
+
+
+	<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta property="og:locale" content="en_US">
+
+<!-- Basic META -->
+<meta name="author" content="Prince Jain">
+<meta name="robots" content="index, follow">
+
+<!-- OpenGraph META -->
+<meta property="og:site_name" content="Prince Jain">
+<meta property="og:url" content="https://princejain.me/2021/05/15/Demystifying_SEO.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Demystifying SEO">
+<meta property="og:description" content="A quick summary of what SEO is and step by step guide on how you can start with SEO for your app/ blog">
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter META -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Prince_Jain17">
+<meta name="twitter:creator" content="@Prince_Jain17">
+<meta name="twitter:title" content="Demystifying SEO">
+<meta name="twitter:description" content="A quick summary of what SEO is and step by step guide on how you can start with SEO for your app/ blog">
+<meta name="twitter:image" content="https://princejain.me/images/my-image.webp">
+
+<!-- Standard META -->
+<meta name="title" content="Demystifying SEO">
+<meta name="description" content="A quick summary of what SEO is and step by step guide on how you can start with SEO for your app/ blog">
+
+<!-- Article specific META (only for blog posts) -->
+
+<meta property="article:published_time" content="2021-05-15T00:00:00+00:00">
+
+<meta property="article:section" content="">
+
+
+
+
+
+
+<!-- image -->
+
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+
+
+<!-- url -->
+<meta property="og:url" content="/">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+
+	
+<!-- Blog Post Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Demystifying SEO",
+  "datePublished": "2021-05-15T00:00:00+00:00",
+  "dateModified": "2021-05-15T00:00:00+00:00",
+  "author": {
+    "@type": "Person",
+    "name": "Prince Jain",
+    "url": "https://princejain.me"
+  },
+  "description": "A quick summary of what SEO is and step by step guide on how you can start with SEO for your app/ blog",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://princejain.me/2021/05/15/Demystifying_SEO.html"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Prince Jain",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://princejain.me/images/my-image.webp"
+    }
+  },
+  "image": [
+    "https://princejain.me/images/my-image.webp"
+  ]
+}
+</script>
+
+
+	<title> Demystifying SEO | Prince Jain </title>
+	
+	<!-- Preconnect to Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!-- Load font with display=swap for better performance -->
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+	<!-- Fallback in case JS is disabled -->
+	<noscript>
+		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	</noscript>
+	
+	<!-- Inline critical CSS for faster rendering -->
+	<style>
+/* Critical CSS for above-the-fold content */
+body{font-family:sans-serif;font-weight:400;font-size:15px;line-height:1.5;padding:0;background:#fff;color:#333;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3,h4,h5,h6{font-family:sans-serif;color:#333;font-weight:400;line-height:1.4;margin:.7em 0 10px;padding:0}
+h1{font-size:30px;font-weight:400}
+h1 a{color:inherit;margin:1em 0 10px}
+a{color:#4183c4;text-decoration:none;cursor:pointer}
+.container{margin:0 auto;max-width:740px;padding:0 10px;width:100%;display:flex;flex-direction:column;flex-grow:1;justify-content:space-around}
+nav{float:right;margin-top:23px;font-family:"Lato",sans-serif;font-size:18px;font-weight:400}
+nav a{margin-left:20px;color:#666;text-align:right;font-weight:400;letter-spacing:1px}
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:#4183c4;z-index:9999;width:0;transition:width .2s ease-in-out}
+.site-avatar{float:left;width:70px;height:70px;margin-right:15px}
+.site-avatar img{border-radius:5px}
+.site-info{float:left}
+.site-name{color:#333;cursor:pointer;font-family:"Lato",sans-serif;font-weight:700;font-size:28px;letter-spacing:1px}
+@media (max-width:640px){nav{float:none;margin-top:9px;display:block;font-size:16px}nav a{margin:0 10px;color:#4183c4}.site-avatar{float:none;display:block;margin:0 auto}}
+</style>
+
+	
+	<!-- Critical CSS loaded synchronously -->
+	<link rel="stylesheet" type="text/css" href="/assets/css/sticky-header.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/header-fix.css" />
+	
+	<!-- Non-critical CSS loaded asynchronously -->
+	<link rel="stylesheet" type="text/css" href="/css/style.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/transitions.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/typography-fix.css" media="print" onload="this.media='all'" />
+	<link rel="alternate" type="application/rss+xml" title="Prince Jain - My personal blog where I document my learnings and Product Management journey." href="/feed.xml" />
+	
+	<link rel="canonical" href="https://princejain.me/2021/05/15/Demystifying_SEO.html">
+	<link rel="shortcut icon" type="image/png" href="/images/site-icon.webp" />
+	<link rel="apple-touch-icon" href="/images/site-icon.webp">
+
+</head>
+
+
+<body>
+
+  <div class="wrapper-masthead">
+  <div class="header-background"></div>
+  <div class="container">
+    <header class="masthead clearfix">
+      <!-- Wrap avatar and site info in a mobile-friendly container -->
+      <div class="header-identity">
+        <a href="/" class="site-avatar">
+          <!-- Use a smaller, optimized version of the avatar with width/height attributes to prevent layout shift -->
+          <img 
+            src="/images/my-image.webp" 
+            alt="Profile Photo" 
+            width="100%" 
+            height="100%" 
+            loading="eager" 
+            fetchpriority="high">
+        </a>
+        <!-- Explicit spacer for mobile view -->
+        <span class="avatar-title-spacer"></span>
+        <div class="site-info">
+          <h1 class="site-name"> <a href="/">Prince Jain</a> </h1>
+        </div>
+      </div>
+      <nav>
+        <a href="/blogs" aria-label="These are collection of my personal blogs">Blogs</a>
+        <a href="/links/" aria-label="These are collection of links on Product Management I find useful">Links</a>
+        <a href="/tools/" aria-label="Interactive tools for everyday tasks">Tools</a>
+        <a href="/worksummary" aria-label="Summary of my professional work so far">Work-ex</a>
+        <a href="/about" aria-label="If you want to learn more about me">About Me</a>
+      </nav>
+    </header>
+  </div>
+</div>
+
+  <div id="header-spacer"></div>
+  <div id="progress-bar"></div>
+  <div id="main" role="main" class="container transition-fade">
+    <article class="post">
+
+  <h2>Demystifying SEO</h2>
+
+  <div class="date">
+    Published on May 15, 2021
+  </div>
+
+  <div class="entry">
+    <p>As a product manager who builds digital products, the list of things you should know about is <em>long</em> to say the least and it only ever seems to get <em>longer</em>!</p>
+
+<p>SEO is one such term I have seen many of my product peers knowing just vaguely enough to leave it to the marketeers <em>(I had the same stance until I had to understand it for a product feature I was working on).</em>
+These are my personal notes from the initial research on the topic.</p>
+
+<h3 id="what-is-seo">What is SEO?</h3>
+
+<p>SEO or Search Engine Optimisation is the process of optimising your content so that it can be discovered through search results “organically”.  Simply put SEO decides how does your website ranks in search results for keywords relevant to your business: the higher the better.</p>
+
+<blockquote>
+<p> One of the companies I find really excelling in their SEO game is Cleartax. Think of any keyword related to Personal Income tax and they will almost always be the first result “organically”, even before the Gov’s Income tax website! Just think of the organic users they acquire due to this and this in my opinion is a very BIG moat for them! </p>
+</blockquote>
+
+<p><img src="/images/SEO_Cleartax.png" alt="SEO_Cleartax" /></p>
+
+<h3 id="why-is-seo-important"><strong>Why is SEO important?</strong></h3>
+
+<p>There are two main advantages of SEO over advertising:</p>
+
+<ul>
+  <li>Unlike paying for Ads, search traffic is free!</li>
+  <li>Organic Traffic is pretty consistent once you are ranking high.</li>
+  <li><strong>Bonus</strong>: Ad blockers won’t block your result from getting displayed 😉</li>
+</ul>
+
+<p>For most practical purposes, Google is the single most important place for your SEO.
+<em>Google Search has more than 1B MAUs with 93% market share in search engine traffic!</em></p>
+
+<p><strong>Some Stats on Google Search:</strong></p>
+
+<ul>
+  <li>More than 50% of trackable traffic comes via <a href="https://videos.brightedge.com/research-report/BrightEdge_ChannelReport2019_FINAL.pdf">Organic Search</a></li>
+  <li>More than 95% users visit on the results from the <a href="https://www.brafton.com/news/95-percent-of-web-traffic-goes-to-sites-on-page-1-of-google-serps-study/">first results page</a></li>
+  <li>The higher you rank in search result, higher is your CTR (kind of obvious!)</li>
+</ul>
+
+<p><img src="/images/SEO_GoogleSearchTrend.png" alt="SEO_Google Search Trend" /></p>
+
+<h3 id="starting-with-setting-up-seo-for-your-business">Starting with setting up SEO for your business:</h3>
+
+<p><strong>Keywords</strong>: Keywords are the words or phrases users type into search engines to find what they are looking for. In a nutshell, SEO is all about finding keywords people are putting into search engines and linking those with your business.</p>
+
+<p><em>For instance say if you are Domino’s, you would want to occupy topmost spot for the keyword “<strong>Pizza</strong>” : as is interestingly the case currently!</em>
+<img src="/images/SEO_Dominos.png" alt="SEO_Dominos" /></p>
+
+<p>To start with setting up SEO with your business, start by putting up a list of keywords user’s associate with your business / you want to target for your business. (like the Pizza keyword for Dominos). For keywords relevant to your business offering, try finding two metrics:</p>
+
+<ul>
+  <li><strong>Search Demand for the keyword :</strong> This simply means the total searches for the keywords in a given period. The more the demand, more are your chances for reaching customers.</li>
+  <li><strong>Traffic potential for the keyword :</strong> This means total traffic you would get if you were to rank at the top of search result for your keyword. Thanks to Google’s showing relevant info upfront in widgets (try searching for usd to inr), many search results have a very poor CTR.</li>
+</ul>
+
+<p>There are tools you can use to get the keywords and metrics like <a href="https://ads.google.com/intl/en_en/home/tools/keyword-planner/">Keyword planner</a>, <a href="https://trends.google.com/trends/?geo=IN">Google Trends</a> and third party tools like <a href="https://ahrefs.com/keyword-generator">Ahref</a>, <a href="https://neilpatel.com/ubersuggest/">UberSuggest</a> etc.</p>
+
+<p>Once you are done choosing the relevant keywords, next step is to add those keywords to your app/ website. These can/ should be added at various places depending on the site structure and content. <br />
+There are complex algorithm running at Google’s end to determine ranking of results for each keywords with more than 500 odd parameters in consideration (most of which are blackbox).
+These are some of the commonly known parameters where you can add your keyword to improve your SEO ranking:</p>
+
+<ul>
+  <li>Body of the text</li>
+  <li>Title</li>
+  <li>Meta Tags</li>
+  <li>Alt links for images/ videos</li>
+  <li>Anchor text</li>
+  <li>XML Sitemap</li>
+</ul>
+
+<p>Once you have added relevant keywords to your website content, next step is for that content to be indexed by the search engines. The way this happens is Google keep running web crawlers (commonly known as spiders) to collect these keywords and index them for their search engine. It typically takes 2-4 days for new content to be indexed (in my experience) and then voila your site is available on the search results for those keywords.</p>
+
+<p>The real work starts from here: you need to convince Google’s algorigthms that your content is the most relevant for those keywords. There are a bunch of useful strategies like getting quality backlinks, ad driven intital push, optimisation in keywords &amp; content, improving on the site load time &amp; performance etc. Its a process constant iteration and learning to keep on optimising your SEO.</p>
+
+<p>While there is a whole lot to write about SEO, infact there are companies and people who made their career in SEO. For now I’ll end here and share few links I found useful during my research:</p>
+
+<h5 id="some-blogs-links-to-learn-more-about-seo">Some blogs/ links to learn more about SEO:</h5>
+
+<ul>
+  <li><a href="https://developers.google.com/search/docs/beginner/seo-starter-guide">Google’s SEO Starter Guide</a></li>
+  <li><a href="https://www.reddit.com/r/SEO/comments/2y1r8z/rseo_sucks_lately_i_want_to_make_it_better_here/">Reddit Gyaan</a></li>
+  <li><a href="https://www.youtube.com/playlist?list=PLvJ_dXFSpd2vk6rQ4Rta5MhDIRmakFbp6">Ahref Tutorials on SEO</a></li>
+  <li><a href="https://developers.google.com/search/docs/basics/optimize-your-site">Google Search SEO Basics</a></li>
+  <li><a href="https://neilpatel.com/blog/">https://neilpatel.com/blog/</a></li>
+</ul>
+
+<p><em>If you see the head HTML element of this blog, you’ll find I have added few meta tags to improve the SEO so that the next time you search for SEO, this article might “one day” come up in your google search result🤞</em></p>
+
+  </div>
+
+</article>
+<script src="https://princejain.me/scrollbar.js"></script>
+
+  </div>
+
+  <!-- This goes in default.html under layout -->
+
+<data class="u-url" href="/"></data>
+<div class="wrapper-footer">
+  <div class="container">
+    <footer class="footer">
+      <a href="mailto:prince.j19@fms.edu" aria-label="Gmail" ><i class="svg-icon email"></i></a>
+      <a href="https://www.linkedin.com/in/princejain17" aria-label="LinkedIn" ><i class="svg-icon linkedin"></i></a>
+      <a href="https://www.twitter.com/Prince_Jain17" aria-label="Twitter" ><i class="svg-icon twitter"></i></a>
+      <p> Forever Curious © Prince Jain. </p>
+    </footer>
+  </div>
+</div>
+
+  
+  <!-- Performance optimization scripts -->
+  <script src="/assets/js/lazy-load.js"></script>
+  <script src="/assets/js/sw-register.js"></script>
+  <script src="/assets/js/swup-cdn.js"></script>
+  <script src="/assets/js/sticky-header.js"></script>
+</body>
+
+</html>

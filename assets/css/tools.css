@@ -1,0 +1,154 @@
+/* 
+ * Tools Section - Shared Styling
+ * Common styles for the tools section and individual tool pages
+ */
+
+/* Common Container */
+.tools-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Styles */
+.tools-header, .tool-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.tool-description {
+  max-width: 800px;
+  margin: 0 auto 20px;
+  color: #666;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Back to Tools Link */
+.back-to-tools {
+  display: inline-block;
+  margin-top: 15px;
+  color: #4183c4;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.back-to-tools:hover {
+  color: #2c5d99;
+  text-decoration: underline;
+}
+
+/* Tool Cards */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.tool-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.tool-card:active {
+  transform: translateY(0);
+}
+
+.tool-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  background-color: #f5f7fa;
+  color: #4183c4;
+}
+
+.tool-title {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.tool-description {
+  margin: 0;
+  font-size: 14px;
+  text-align: center;
+  color: #666;
+}
+
+/* Common Button Styles */
+.action-button {
+  background-color: #4183c4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.action-button:hover {
+  background-color: #3a76b0;
+}
+
+.action-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(65, 131, 196, 0.3);
+}
+
+.action-button:active {
+  transform: translateY(1px);
+}
+
+/* Placeholder Styles */
+.tool-placeholder {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.tool-placeholder:hover {
+  transform: none;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .tools-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .tools-container {
+    padding: 0 10px;
+  }
+  
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tool-card {
+    padding: 24px 16px;
+  }
+}

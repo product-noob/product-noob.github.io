@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<!-- Preload critical avatar styles to prevent layout shift -->
+	<style>
+/* Preload avatar image styles to prevent layout shift */
+.site-avatar {
+  float: left;
+  width: 70px;
+  height: 70px;
+  margin-right: 15px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #f0f0f0; /* Light gray placeholder */
+  /* Define a placeholder gradient background */
+  background-image: linear-gradient(to bottom right, #f0f0f0, #d8d8d8);
+}
+
+.site-avatar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+.site-avatar img {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  transform: translateZ(0); /* Force hardware acceleration */
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Avatar image loading state */
+.site-avatar img.loading {
+  opacity: 0;
+}
+
+@media (max-width: 640px) {
+  .site-avatar {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+}
+</style>
+
+	<!-- This goes in Head.html -->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZLF9K3MJB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-WZLF9K3MJB');
+</script>
+
+
+	<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta property="og:locale" content="en_US">
+
+<!-- Basic META -->
+<meta name="author" content="Prince Jain">
+<meta name="robots" content="index, follow">
+
+<!-- OpenGraph META -->
+<meta property="og:site_name" content="Prince Jain">
+<meta property="og:url" content="https://princejain.me/tools/polychat/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Prince Jain - I share my product journey through this blog">
+<meta property="og:description" content="My personal blog where I document my learnings and Product Management journey.">
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter META -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Prince_Jain17">
+<meta name="twitter:creator" content="@Prince_Jain17">
+<meta name="twitter:title" content="Prince Jain - I share my product journey through this blog">
+<meta name="twitter:description" content="My personal blog where I document my learnings and Product Management journey.">
+<meta name="twitter:image" content="https://princejain.me/images/my-image.webp">
+
+<!-- Standard META -->
+<meta name="title" content="Prince Jain - I share my product journey through this blog">
+<meta name="description" content="My personal blog where I document my learnings and Product Management journey.">
+
+<!-- Article specific META (only for blog posts) -->
+
+
+<!-- image -->
+
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+
+
+<!-- url -->
+<meta property="og:url" content="/">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+
+	
+<!-- Tool Page Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "",
+  "applicationCategory": "WebApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Prince Jain",
+    "url": "https://princejain.me"
+  },
+  "description": "My personal blog where I document my learnings and Product Management journey."
+}
+</script>
+
+
+	<title> Prince Jain </title>
+	
+	<!-- Preconnect to Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!-- Load font with display=swap for better performance -->
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+	<!-- Fallback in case JS is disabled -->
+	<noscript>
+		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	</noscript>
+	
+	<!-- Inline critical CSS for faster rendering -->
+	<style>
+/* Critical CSS for above-the-fold content */
+body{font-family:sans-serif;font-weight:400;font-size:15px;line-height:1.5;padding:0;background:#fff;color:#333;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3,h4,h5,h6{font-family:sans-serif;color:#333;font-weight:400;line-height:1.4;margin:.7em 0 10px;padding:0}
+h1{font-size:30px;font-weight:400}
+h1 a{color:inherit;margin:1em 0 10px}
+a{color:#4183c4;text-decoration:none;cursor:pointer}
+.container{margin:0 auto;max-width:740px;padding:0 10px;width:100%;display:flex;flex-direction:column;flex-grow:1;justify-content:space-around}
+nav{float:right;margin-top:23px;font-family:"Lato",sans-serif;font-size:18px;font-weight:400}
+nav a{margin-left:20px;color:#666;text-align:right;font-weight:400;letter-spacing:1px}
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:#4183c4;z-index:9999;width:0;transition:width .2s ease-in-out}
+.site-avatar{float:left;width:70px;height:70px;margin-right:15px}
+.site-avatar img{border-radius:5px}
+.site-info{float:left}
+.site-name{color:#333;cursor:pointer;font-family:"Lato",sans-serif;font-weight:700;font-size:28px;letter-spacing:1px}
+@media (max-width:640px){nav{float:none;margin-top:9px;display:block;font-size:16px}nav a{margin:0 10px;color:#4183c4}.site-avatar{float:none;display:block;margin:0 auto}}
+</style>
+
+	
+	<!-- Critical CSS loaded synchronously -->
+	<link rel="stylesheet" type="text/css" href="/assets/css/sticky-header.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/header-fix.css" />
+	
+	<!-- Non-critical CSS loaded asynchronously -->
+	<link rel="stylesheet" type="text/css" href="/css/style.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/transitions.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/typography-fix.css" media="print" onload="this.media='all'" />
+	<link rel="alternate" type="application/rss+xml" title="Prince Jain - My personal blog where I document my learnings and Product Management journey." href="/feed.xml" />
+	
+	<link rel="canonical" href="https://princejain.me/tools/polychat/">
+	<link rel="shortcut icon" type="image/png" href="/images/site-icon.webp" />
+	<link rel="apple-touch-icon" href="/images/site-icon.webp">
+
+</head>
+
+
+<body>
+
+  <div class="wrapper-masthead">
+  <div class="header-background"></div>
+  <div class="container">
+    <header class="masthead clearfix">
+      <!-- Wrap avatar and site info in a mobile-friendly container -->
+      <div class="header-identity">
+        <a href="/" class="site-avatar">
+          <!-- Use a smaller, optimized version of the avatar with width/height attributes to prevent layout shift -->
+          <img 
+            src="/images/my-image.webp" 
+            alt="Profile Photo" 
+            width="100%" 
+            height="100%" 
+            loading="eager" 
+            fetchpriority="high">
+        </a>
+        <!-- Explicit spacer for mobile view -->
+        <span class="avatar-title-spacer"></span>
+        <div class="site-info">
+          <h1 class="site-name"> <a href="/">Prince Jain</a> </h1>
+        </div>
+      </div>
+      <nav>
+        <a href="/blogs" aria-label="These are collection of my personal blogs">Blogs</a>
+        <a href="/links/" aria-label="These are collection of links on Product Management I find useful">Links</a>
+        <a href="/tools/" aria-label="Interactive tools for everyday tasks">Tools</a>
+        <a href="/worksummary" aria-label="Summary of my professional work so far">Work-ex</a>
+        <a href="/about" aria-label="If you want to learn more about me">About Me</a>
+      </nav>
+    </header>
+  </div>
+</div>
+
+  <div id="header-spacer"></div>
+  <div id="progress-bar"></div>
+  <div id="main" role="main" class="container transition-fade">
+    <article class="page">
+
+  <h2></h2>
+
+  <div class="entry">
+    <link rel="stylesheet" href="/assets/css/tools.css">
+<link rel="stylesheet" href="/assets/css/polychat.css">
+
+<div class="tools-container">
+  <div class="tool-header">
+    <h1>PolyChat</h1>
+    <p class="tool-description">Chat with multiple large language models in one interface. Compare responses, save conversations, and explore different AI capabilities.</p>
+    <a href="/tools/" class="back-to-tools">← Back to Tools</a>
+  </div>
+
+  <div class="polychat-container">
+    <!-- Sidebar with LLM Configuration -->
+    <div class="polychat-sidebar">
+      <!-- Mobile Close Button -->
+      <button id="close-sidebar" class="close-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      
+      <h2>LLM Configuration</h2>
+      
+      <!-- Provider Selection -->
+      <div class="config-section">
+        <h3>LLM API Provider</h3>
+        <div class="settings-group">
+          <select id="provider-select" class="full-width">
+            <option value="ChatGPT">ChatGPT</option>
+            <option value="Groq">Groq</option>
+            <option value="Google">Google</option>
+          </select>
+        </div>
+      </div>
+      
+      <!-- Model Selection -->
+      <div class="config-section">
+        <h3>Choose Model</h3>
+        <div class="settings-group">
+          <select id="model-select" class="full-width">
+            <!-- Groq Models -->
+            <optgroup label="Groq" data-provider="Groq">
+              <option value="llama-3.1-8b-instant">llama-3.1-8b-instant</option>
+              <option value="llama-3.1-70b-versatile">llama-3.1-70b-versatile</option>
+              <option value="deepseek-r1-distill-llama-70b">deepseek-r1-distill-llama-70b</option>
+              <option value="mixtral-8x7b-32768">mixtral-8x7b-32768</option>
+            </optgroup>
+            
+            <!-- ChatGPT Models -->
+            <optgroup label="ChatGPT" data-provider="ChatGPT">
+              <option value="gpt-4o-mini">gpt-4o-mini</option>
+              <option value="gpt-4o">gpt-4o</option>
+            </optgroup>
+            
+            <!-- Google Models -->
+            <optgroup label="Google" data-provider="Google">
+              <option value="gemini-1.5-flash">gemini-1.5-flash</option>
+              <option value="gemini-2.0-flash-thinking-exp-01-21">gemini-2.0-flash-thinking-exp-01-21</option>
+              <option value="gemini-2.0-pro-exp-02-05">gemini-2.0-pro-exp-02-05</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+      
+      <!-- System Prompt Selection -->
+      <div class="config-section">
+        <h3>System Prompt</h3>
+        <div class="settings-group">
+          <select id="prompt-select" class="full-width">
+            <option value="Helpful AI">Helpful AI</option>
+            <option value="Proofreader">Proofreader</option>
+            <option value="Instructor">Instructor</option>
+            <option value="add-new-prompt">Add New System Prompt</option>
+          </select>
+        </div>
+        
+        <!-- New Prompt Creation (hidden by default) -->
+        <div id="new-prompt-area" class="new-prompt-area" style="display: none;">
+          <div class="settings-group">
+            <label for="new-prompt-name">Prompt Name</label>
+            <input type="text" id="new-prompt-name" placeholder="Enter a name for your prompt">
+          </div>
+          <div class="settings-group">
+            <label for="new-prompt-text">Prompt Text</label>
+            <textarea id="new-prompt-text" rows="6" placeholder="Enter your system prompt here..."></textarea>
+          </div>
+          <button id="save-prompt-button" class="action-button">Save New Prompt</button>
+        </div>
+      </div>
+      
+      <!-- Parameters Section -->
+      <div class="config-section">
+        <h3>Parameters</h3>
+        <div class="settings-group">
+          <label for="temperature-slider">Temperature: <span id="temperature-value">0.7</span></label>
+          <input type="range" id="temperature-slider" min="0" max="1" step="0.1" value="0.7">
+        </div>
+        <div class="settings-group">
+          <label for="max-tokens-slider">Max Tokens: <span id="max-tokens-value">128</span></label>
+          <input type="range" id="max-tokens-slider" min="1" max="2048" step="1" value="128">
+        </div>
+        <button id="reset-button" class="action-button secondary">Reset Context</button>
+      </div>
+      
+      <div class="config-section config-link">
+        <a href="/tools/" class="back-to-tools">← Back to Tools</a>
+      </div>
+    </div>
+    
+    <!-- Chat Interface -->
+    <div class="polychat-chat">
+      <!-- Header with menu toggle and title -->
+      <div class="chat-header">
+        <!-- Mobile menu toggle for sidebar -->
+        <button id="toggle-menu" class="mobile-menu-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <h2>LLM Chatbot</h2>
+        <!-- Reset context button with cleaner icon -->
+        <button id="mobile-reset" class="mobile-reset-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 10h7V3l-2.35 3.35z" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+      <div id="chat-window" class="chat-window">
+        <!-- Initial assistant message -->
+        <div class="message assistant-message">
+          <div class="message-content">
+            <p>Hello! How can I assist you today?</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Input area -->
+      <div class="chat-input-container">
+        <textarea 
+          id="user-input" 
+          placeholder="Type your message here..."
+          rows="2"
+        ></textarea>
+        <button id="send-button" class="action-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast notification container -->
+<div id="toast-container" class="toast-container"></div>
+
+<!-- Load API configuration first, then main script -->
+<script src="/assets/js/api-config.js"></script>
+<script src="/assets/js/polychat.js"></script>
+
+  </div>
+</article>
+
+  </div>
+
+  <!-- This goes in default.html under layout -->
+
+<data class="u-url" href="/"></data>
+<div class="wrapper-footer">
+  <div class="container">
+    <footer class="footer">
+      <a href="mailto:prince.j19@fms.edu" aria-label="Gmail" ><i class="svg-icon email"></i></a>
+      <a href="https://www.linkedin.com/in/princejain17" aria-label="LinkedIn" ><i class="svg-icon linkedin"></i></a>
+      <a href="https://www.twitter.com/Prince_Jain17" aria-label="Twitter" ><i class="svg-icon twitter"></i></a>
+      <p> Forever Curious © Prince Jain. </p>
+    </footer>
+  </div>
+</div>
+
+  
+  <!-- Performance optimization scripts -->
+  <script src="/assets/js/lazy-load.js"></script>
+  <script src="/assets/js/sw-register.js"></script>
+  <script src="/assets/js/swup-cdn.js"></script>
+  <script src="/assets/js/sticky-header.js"></script>
+</body>
+
+</html>

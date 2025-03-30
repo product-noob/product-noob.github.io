@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<!-- Preload critical avatar styles to prevent layout shift -->
+	<style>
+/* Preload avatar image styles to prevent layout shift */
+.site-avatar {
+  float: left;
+  width: 70px;
+  height: 70px;
+  margin-right: 15px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #f0f0f0; /* Light gray placeholder */
+  /* Define a placeholder gradient background */
+  background-image: linear-gradient(to bottom right, #f0f0f0, #d8d8d8);
+}
+
+.site-avatar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+.site-avatar img {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  transform: translateZ(0); /* Force hardware acceleration */
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Avatar image loading state */
+.site-avatar img.loading {
+  opacity: 0;
+}
+
+@media (max-width: 640px) {
+  .site-avatar {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+}
+</style>
+
+	<!-- This goes in Head.html -->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZLF9K3MJB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-WZLF9K3MJB');
+</script>
+
+
+	<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta property="og:locale" content="en_US">
+
+<!-- Basic META -->
+<meta name="author" content="Prince Jain">
+<meta name="robots" content="index, follow">
+
+<!-- OpenGraph META -->
+<meta property="og:site_name" content="Prince Jain">
+<meta property="og:url" content="https://princejain.me/tools/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Prince Jain - I share my product journey through this blog">
+<meta property="og:description" content="My personal blog where I document my learnings and Product Management journey.">
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter META -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Prince_Jain17">
+<meta name="twitter:creator" content="@Prince_Jain17">
+<meta name="twitter:title" content="Prince Jain - I share my product journey through this blog">
+<meta name="twitter:description" content="My personal blog where I document my learnings and Product Management journey.">
+<meta name="twitter:image" content="https://princejain.me/images/my-image.webp">
+
+<!-- Standard META -->
+<meta name="title" content="Prince Jain - I share my product journey through this blog">
+<meta name="description" content="My personal blog where I document my learnings and Product Management journey.">
+
+<!-- Article specific META (only for blog posts) -->
+
+
+<!-- image -->
+
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+
+
+<!-- url -->
+<meta property="og:url" content="/">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+
+	
+<!-- Tool Page Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "",
+  "applicationCategory": "WebApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Prince Jain",
+    "url": "https://princejain.me"
+  },
+  "description": "My personal blog where I document my learnings and Product Management journey."
+}
+</script>
+
+
+	<title> Prince Jain </title>
+	
+	<!-- Preconnect to Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!-- Load font with display=swap for better performance -->
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+	<!-- Fallback in case JS is disabled -->
+	<noscript>
+		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	</noscript>
+	
+	<!-- Inline critical CSS for faster rendering -->
+	<style>
+/* Critical CSS for above-the-fold content */
+body{font-family:sans-serif;font-weight:400;font-size:15px;line-height:1.5;padding:0;background:#fff;color:#333;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3,h4,h5,h6{font-family:sans-serif;color:#333;font-weight:400;line-height:1.4;margin:.7em 0 10px;padding:0}
+h1{font-size:30px;font-weight:400}
+h1 a{color:inherit;margin:1em 0 10px}
+a{color:#4183c4;text-decoration:none;cursor:pointer}
+.container{margin:0 auto;max-width:740px;padding:0 10px;width:100%;display:flex;flex-direction:column;flex-grow:1;justify-content:space-around}
+nav{float:right;margin-top:23px;font-family:"Lato",sans-serif;font-size:18px;font-weight:400}
+nav a{margin-left:20px;color:#666;text-align:right;font-weight:400;letter-spacing:1px}
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:#4183c4;z-index:9999;width:0;transition:width .2s ease-in-out}
+.site-avatar{float:left;width:70px;height:70px;margin-right:15px}
+.site-avatar img{border-radius:5px}
+.site-info{float:left}
+.site-name{color:#333;cursor:pointer;font-family:"Lato",sans-serif;font-weight:700;font-size:28px;letter-spacing:1px}
+@media (max-width:640px){nav{float:none;margin-top:9px;display:block;font-size:16px}nav a{margin:0 10px;color:#4183c4}.site-avatar{float:none;display:block;margin:0 auto}}
+</style>
+
+	
+	<!-- Critical CSS loaded synchronously -->
+	<link rel="stylesheet" type="text/css" href="/assets/css/sticky-header.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/header-fix.css" />
+	
+	<!-- Non-critical CSS loaded asynchronously -->
+	<link rel="stylesheet" type="text/css" href="/css/style.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/transitions.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/typography-fix.css" media="print" onload="this.media='all'" />
+	<link rel="alternate" type="application/rss+xml" title="Prince Jain - My personal blog where I document my learnings and Product Management journey." href="/feed.xml" />
+	
+	<link rel="canonical" href="https://princejain.me/tools/">
+	<link rel="shortcut icon" type="image/png" href="/images/site-icon.webp" />
+	<link rel="apple-touch-icon" href="/images/site-icon.webp">
+
+</head>
+
+
+<body>
+
+  <div class="wrapper-masthead">
+  <div class="header-background"></div>
+  <div class="container">
+    <header class="masthead clearfix">
+      <!-- Wrap avatar and site info in a mobile-friendly container -->
+      <div class="header-identity">
+        <a href="/" class="site-avatar">
+          <!-- Use a smaller, optimized version of the avatar with width/height attributes to prevent layout shift -->
+          <img 
+            src="/images/my-image.webp" 
+            alt="Profile Photo" 
+            width="100%" 
+            height="100%" 
+            loading="eager" 
+            fetchpriority="high">
+        </a>
+        <!-- Explicit spacer for mobile view -->
+        <span class="avatar-title-spacer"></span>
+        <div class="site-info">
+          <h1 class="site-name"> <a href="/">Prince Jain</a> </h1>
+        </div>
+      </div>
+      <nav>
+        <a href="/blogs" aria-label="These are collection of my personal blogs">Blogs</a>
+        <a href="/links/" aria-label="These are collection of links on Product Management I find useful">Links</a>
+        <a href="/tools/" aria-label="Interactive tools for everyday tasks">Tools</a>
+        <a href="/worksummary" aria-label="Summary of my professional work so far">Work-ex</a>
+        <a href="/about" aria-label="If you want to learn more about me">About Me</a>
+      </nav>
+    </header>
+  </div>
+</div>
+
+  <div id="header-spacer"></div>
+  <div id="progress-bar"></div>
+  <div id="main" role="main" class="container transition-fade">
+    <article class="page">
+
+  <h2></h2>
+
+  <div class="entry">
+    <link rel="stylesheet" href="/assets/css/tools.css">
+
+<div class="tools-container">
+  <div class="tools-header">
+    <h1>Interactive Tools</h1>
+    <p class="tools-description">A collection of handy web-based tools to assist with everyday tasks. All tools are free to use and work directly in your browser, created using LLMs :)</p>
+  </div>
+
+  <div class="tools-grid">
+    <!-- Calculator Tool Card -->
+    <a href="/tools/calculator/" class="tool-card">
+      <div class="tool-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+          <line x1="8" y1="6" x2="16" y2="6"></line>
+          <line x1="8" y1="10" x2="10" y2="10"></line>
+          <line x1="12" y1="10" x2="14" y2="10"></line>
+          <line x1="16" y1="10" x2="16" y2="10"></line>
+          <line x1="8" y1="14" x2="10" y2="14"></line>
+          <line x1="12" y1="14" x2="14" y2="14"></line>
+          <line x1="16" y1="14" x2="16" y2="14"></line>
+          <line x1="8" y1="18" x2="10" y2="18"></line>
+          <line x1="12" y1="18" x2="14" y2="18"></line>
+          <line x1="16" y1="18" x2="16" y2="18"></line>
+        </svg>
+      </div>
+      <h2 class="tool-title">Calculator</h2>
+      <p class="tool-description">A versatile calculator with standard and scientific functions, history tracking, and memory operations.</p>
+    </a>
+
+    <!-- QR Code Generator Tool Card -->
+    <a href="/tools/qr-code-generator/" class="tool-card">
+      <div class="tool-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+      </div>
+      <h2 class="tool-title">QR Code Generator</h2>
+      <p class="tool-description">Generate custom QR codes for URLs, contact information, or any text. Download in multiple formats.</p>
+    </a>
+    
+    <!-- PolyChat Tool Card -->
+    <a href="/tools/polychat/" class="tool-card">
+      <div class="tool-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          <circle cx="12" cy="10" r="1"></circle>
+          <circle cx="8" cy="10" r="1"></circle>
+          <circle cx="16" cy="10" r="1"></circle>
+        </svg>
+      </div>
+      <h2 class="tool-title">PolyChat</h2>
+      <p class="tool-description">Chat with multiple AI models simultaneously. Compare responses and capabilities across different large language models.</p>
+    </a>
+
+    <!-- Placeholder for future tools -->
+    <div class="tool-card tool-placeholder">
+      <div class="tool-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="16"></line>
+          <line x1="8" y1="12" x2="16" y2="12"></line>
+        </svg>
+      </div>
+      <h2 class="tool-title">More Coming Soon</h2>
+      <p class="tool-description">Additional tools are in development and will be added to this collection soon.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Using shared styles from tools.css -->
+
+  </div>
+</article>
+
+  </div>
+
+  <!-- This goes in default.html under layout -->
+
+<data class="u-url" href="/"></data>
+<div class="wrapper-footer">
+  <div class="container">
+    <footer class="footer">
+      <a href="mailto:prince.j19@fms.edu" aria-label="Gmail" ><i class="svg-icon email"></i></a>
+      <a href="https://www.linkedin.com/in/princejain17" aria-label="LinkedIn" ><i class="svg-icon linkedin"></i></a>
+      <a href="https://www.twitter.com/Prince_Jain17" aria-label="Twitter" ><i class="svg-icon twitter"></i></a>
+      <p> Forever Curious © Prince Jain. </p>
+    </footer>
+  </div>
+</div>
+
+  
+  <!-- Performance optimization scripts -->
+  <script src="/assets/js/lazy-load.js"></script>
+  <script src="/assets/js/sw-register.js"></script>
+  <script src="/assets/js/swup-cdn.js"></script>
+  <script src="/assets/js/sticky-header.js"></script>
+</body>
+
+</html>

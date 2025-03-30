@@ -1,0 +1,157 @@
+/* 
+ * Typography Refinement
+ * A streamlined, consistent typography system with smaller text sizes
+ * Following a modular scale for visual harmony (1.2 ratio)
+ */
+
+/* Base Typography */
+html {
+  font-size: 100%; /* Keep the reference size */
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px; /* Reduced from 15px */
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Heading Typography - Using a modular scale of 1.2 */
+h1, h2, h3, h4, h5, h6 {
+  margin: 1em 0 0.5em;
+  line-height: 1.3;
+  font-weight: 500;
+  color: #222;
+}
+
+h1 {
+  font-size: 24px; /* Reduced from 30px */
+  margin-top: 0.8em;
+}
+
+h2 {
+  font-size: 21px; /* Reduced from 26px */
+}
+
+h3 {
+  font-size: 18px; /* Reduced from 24px */
+}
+
+h4 {
+  font-size: 16px; /* Reduced from 20px */
+}
+
+h5 {
+  font-size: 15px; /* Reduced from 18px */
+}
+
+h6 {
+  font-size: 14px; /* Reduced from 16px */
+}
+
+/* Body Text */
+p, ul, ol, dl, blockquote {
+  font-size: 14px; /* Reduced from 15px */
+  margin: 0 0 1em;
+}
+
+ul, ol {
+  padding-left: 1.5em;
+}
+
+li {
+  margin-bottom: 0.3em;
+}
+
+/* Inline Text */
+a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+strong, b {
+  font-weight: 600;
+}
+
+em, i {
+  font-style: italic;
+}
+
+small {
+  font-size: 13px;
+}
+
+/* Blog Post Specific */
+.post .date {
+  font-size: 13px;
+  color: #777;
+}
+
+.post .entry {
+  font-size: 14px;
+}
+
+.post h1 {
+  font-size: 22px;
+  margin-bottom: 0.5em;
+}
+
+.posts .post {
+  padding-bottom: 1.5em;
+}
+
+/* Links Page Typography */
+.site-description {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Post Listings */
+.blogheader {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.blogsubtext {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 640px) {
+  body {
+    font-size: 13px;
+  }
+  
+  h1 {
+    font-size: 20px;
+  }
+  
+  h2 {
+    font-size: 18px;
+  }
+  
+  h3 {
+    font-size: 16px;
+  }
+  
+  h4, h5, h6 {
+    font-size: 14px;
+  }
+  
+  p, ul, ol, dl, blockquote {
+    font-size: 13px;
+  }
+  
+  .post .entry, .post blockquote {
+    font-size: 13px;
+  }
+  
+  .post h1 {
+    font-size: 20px;
+  }
+}

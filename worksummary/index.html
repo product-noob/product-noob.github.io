@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<!-- Preload critical avatar styles to prevent layout shift -->
+	<style>
+/* Preload avatar image styles to prevent layout shift */
+.site-avatar {
+  float: left;
+  width: 70px;
+  height: 70px;
+  margin-right: 15px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #f0f0f0; /* Light gray placeholder */
+  /* Define a placeholder gradient background */
+  background-image: linear-gradient(to bottom right, #f0f0f0, #d8d8d8);
+}
+
+.site-avatar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+.site-avatar img {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  transform: translateZ(0); /* Force hardware acceleration */
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Avatar image loading state */
+.site-avatar img.loading {
+  opacity: 0;
+}
+
+@media (max-width: 640px) {
+  .site-avatar {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+}
+</style>
+
+	<!-- This goes in Head.html -->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZLF9K3MJB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-WZLF9K3MJB');
+</script>
+
+
+	<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta property="og:locale" content="en_US">
+
+<!-- Basic META -->
+<meta name="author" content="Prince Jain">
+<meta name="robots" content="index, follow">
+
+<!-- OpenGraph META -->
+<meta property="og:site_name" content="Prince Jain">
+<meta property="og:url" content="https://princejain.me/worksummary/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Work Summary">
+<meta property="og:description" content="My personal blog where I document my learnings and Product Management journey.">
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter META -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Prince_Jain17">
+<meta name="twitter:creator" content="@Prince_Jain17">
+<meta name="twitter:title" content="Work Summary">
+<meta name="twitter:description" content="My personal blog where I document my learnings and Product Management journey.">
+<meta name="twitter:image" content="https://princejain.me/images/my-image.webp">
+
+<!-- Standard META -->
+<meta name="title" content="Work Summary">
+<meta name="description" content="My personal blog where I document my learnings and Product Management journey.">
+
+<!-- Article specific META (only for blog posts) -->
+
+
+<!-- image -->
+
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+
+
+<!-- url -->
+<meta property="og:url" content="/">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+
+	
+<!-- Website Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Prince Jain",
+  "url": "https://princejain.me",
+  "description": "My personal blog where I document my learnings and Product Management journey.",
+  "author": {
+    "@type": "Person",
+    "name": "Prince Jain"
+  }
+}
+</script>
+
+
+	<title> Work Summary | Prince Jain </title>
+	
+	<!-- Preconnect to Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!-- Load font with display=swap for better performance -->
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+	<!-- Fallback in case JS is disabled -->
+	<noscript>
+		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	</noscript>
+	
+	<!-- Inline critical CSS for faster rendering -->
+	<style>
+/* Critical CSS for above-the-fold content */
+body{font-family:sans-serif;font-weight:400;font-size:15px;line-height:1.5;padding:0;background:#fff;color:#333;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3,h4,h5,h6{font-family:sans-serif;color:#333;font-weight:400;line-height:1.4;margin:.7em 0 10px;padding:0}
+h1{font-size:30px;font-weight:400}
+h1 a{color:inherit;margin:1em 0 10px}
+a{color:#4183c4;text-decoration:none;cursor:pointer}
+.container{margin:0 auto;max-width:740px;padding:0 10px;width:100%;display:flex;flex-direction:column;flex-grow:1;justify-content:space-around}
+nav{float:right;margin-top:23px;font-family:"Lato",sans-serif;font-size:18px;font-weight:400}
+nav a{margin-left:20px;color:#666;text-align:right;font-weight:400;letter-spacing:1px}
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:#4183c4;z-index:9999;width:0;transition:width .2s ease-in-out}
+.site-avatar{float:left;width:70px;height:70px;margin-right:15px}
+.site-avatar img{border-radius:5px}
+.site-info{float:left}
+.site-name{color:#333;cursor:pointer;font-family:"Lato",sans-serif;font-weight:700;font-size:28px;letter-spacing:1px}
+@media (max-width:640px){nav{float:none;margin-top:9px;display:block;font-size:16px}nav a{margin:0 10px;color:#4183c4}.site-avatar{float:none;display:block;margin:0 auto}}
+</style>
+
+	
+	<!-- Critical CSS loaded synchronously -->
+	<link rel="stylesheet" type="text/css" href="/assets/css/sticky-header.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/header-fix.css" />
+	
+	<!-- Non-critical CSS loaded asynchronously -->
+	<link rel="stylesheet" type="text/css" href="/css/style.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/transitions.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/typography-fix.css" media="print" onload="this.media='all'" />
+	<link rel="alternate" type="application/rss+xml" title="Prince Jain - My personal blog where I document my learnings and Product Management journey." href="/feed.xml" />
+	
+	<link rel="canonical" href="https://princejain.me/worksummary/">
+	<link rel="shortcut icon" type="image/png" href="/images/site-icon.webp" />
+	<link rel="apple-touch-icon" href="/images/site-icon.webp">
+
+</head>
+
+
+<body>
+
+  <div class="wrapper-masthead">
+  <div class="header-background"></div>
+  <div class="container">
+    <header class="masthead clearfix">
+      <!-- Wrap avatar and site info in a mobile-friendly container -->
+      <div class="header-identity">
+        <a href="/" class="site-avatar">
+          <!-- Use a smaller, optimized version of the avatar with width/height attributes to prevent layout shift -->
+          <img 
+            src="/images/my-image.webp" 
+            alt="Profile Photo" 
+            width="100%" 
+            height="100%" 
+            loading="eager" 
+            fetchpriority="high">
+        </a>
+        <!-- Explicit spacer for mobile view -->
+        <span class="avatar-title-spacer"></span>
+        <div class="site-info">
+          <h1 class="site-name"> <a href="/">Prince Jain</a> </h1>
+        </div>
+      </div>
+      <nav>
+        <a href="/blogs" aria-label="These are collection of my personal blogs">Blogs</a>
+        <a href="/links/" aria-label="These are collection of links on Product Management I find useful">Links</a>
+        <a href="/tools/" aria-label="Interactive tools for everyday tasks">Tools</a>
+        <a href="/worksummary" aria-label="Summary of my professional work so far">Work-ex</a>
+        <a href="/about" aria-label="If you want to learn more about me">About Me</a>
+      </nav>
+    </header>
+  </div>
+</div>
+
+  <div id="header-spacer"></div>
+  <div id="progress-bar"></div>
+  <div id="main" role="main" class="container transition-fade">
+    <article class="page">
+
+  <h2>Work Summary</h2>
+
+  <div class="entry">
+    <h4 id="flipkart-3-years">Flipkart (~3 years)</h4>
+
+<p><strong>Jan 2024 - Now</strong> <em>Senior Product Manager, Flippi - Gen AI Assistance</em></p>
+
+<ul>
+  <li>Product Lead for Assistance Charter in Flipkart, leading Flippi, AI powered end-to-end shopping assistant.</li>
+  <li>Spearheading the vision, strategy, and development of Flippi, a GenAI-powered shopping assistant, leveraging cutting-edge in-house fine-tuned LLMs, machine learning models, and agentic workflows.</li>
+  <li>Leading the development of an advanced Retrieval Augmented Generation (RAG) platform to handle contextual queries across pre-purchase research, platform policies, post-purchase support, and seller assistance.</li>
+  <li>Collaborating with US R&amp;D data science teams to build in-house FK-GPT fine-tuned LLMs, integrating GenAI capabilities into Flipkart’s stack for review summarization, image generation, and query augmentation.</li>
+  <li>Partnering with the Post-Order team to implement the CX agent, driving ₹100+ Cr in cost savings.</li>
+  <li>Building the central platform to enable other LLM-powered chatbots to be built on top of Gen AI stack; 3 use cases with K-BOT (RAG) for Seller, Post Order and Fintech already live in MVP.</li>
+</ul>
+
+<p><strong>March 2022 - Dec 2023</strong> <em>Product Manager 2, Growth Hack - User Acquisition &amp; Retention.</em></p>
+
+<ul>
+  <li>Team runs rapid product-led experimentations across the shopping funnel to drive incremental platform GMV and Monthly Active Customers</li>
+  <li>Designed and ran <strong>70+</strong> A/B experiments focused on solving for trust, reducing friction, value communication &amp; repeats</li>
+  <li>Led a team of 20 engineers &amp; designers and collaborated with 15+ internal product-tech teams to drive impact cross-functionally across the shopping funnel</li>
+  <li>Contributed <strong>1.5+ million</strong> incremental monthly transacting customers and <strong>4000+ Cr</strong> Top line impact for Flipkart through product-led A/B experimentation to improve purchase journeys (pre and post order).</li>
+  <li>Optimized Flipkart Ads conversion rates by 20 bps through innovative UI/UX solutions &amp;  launched new ad formats, resulting in a bottom line impact of over <strong>100 Cr+</strong></li>
+  <li>The team won the coveted <strong>“Business Excellence”</strong> award (given to 1 Product team in the entire org) for 2023 for driving the highest GMV impact in the company via product-led initaitives.</li>
+  <li>Rated as <strong>“Exceeds expectations”</strong> consistently on all appraisals.</li>
+</ul>
+
+<h4 id="paytm-3-years">Paytm (~3 years)</h4>
+
+<p><strong>Sept 2021 - March 2022</strong> <em>Senior Product Manager, Paytm Health and Mini Apps.</em></p>
+
+<ul>
+  <li>Took on additional responsibility to launch the <a href="https://twitter.com/Paytm/status/1479712862746517506">Paytm Health vertical</a></li>
+  <li>Envisioned to be one stop shop for all their healthcare usecases: <em>Medicine Ordering, Teleconsult, Digital Health Identity, Blood banks repository</em></li>
+  <li>Launched the first iteration of Paytm Health as a PHR(Public Health Records) app, integrated with National Health Stack. <a href="https://www.livemint.com/technology/paytm-users-can-now-create-their-health-id-know-its-benefits-11640596211499.html">PR</a></li>
+  <li>Launched e-Raktkosh Mini App to help users to find and donate blood on nearby blood banks</li>
+  <li>Launched a dedicated Health storefront to enable users to discover all health related services on Paytm App</li>
+  <li>Worked closely with Government stakeholders to help in suggesting improvements to the UHI stack.</li>
+  <li>Laid down next 12 months roadmap for Paytm Health and Mini Apps.</li>
+</ul>
+
+<p><strong>May 2019 - Sept 2021</strong> <em>Product Manager, Paytm Mini Apps.</em></p>
+
+<ul>
+  <li>Product owner for the Mini Apps platform (Android &amp; iOS app, merchant integrations and platform growth); managed a team of 20+ developers and 1 APM.</li>
+  <li>Led the development of the App SDK to enable “Mini Apps”; grew the platform to over 2000+ apps across 10+ categories</li>
+  <li>Planned and hosted a <a href="https://www.youtube.com/watch?v=nuK7Ct59Vyk&amp;t=3162s">developer conference</a> to formally launch the platform. <a href="https://www.livemint.com/technology/apps/paytm-announces-mini-apps-developers-conference-on-8-october-11601965880559.html">PR</a></li>
+  <li>Established internal processes, SOPs for merchant apps. Wrote the first version of <a href="https://business.paytm.com/docs/miniprograms/overview/">developer documentation</a></li>
+  <li>Launched <a href="https://www.youtube.com/watch?v=W0qN81dujfs">DIY</a> (Do-It-Yourself) flow to reduce onboarding timelines and integration friction</li>
+  <li>Launched Universal QR reader functionality to allow merchants to link any QR with their Mini Apps; driving O2O (Offline to Online) conversion.</li>
+  <li>Launched five in-house Mini-apps ( <a href="https://www.hindustantimes.com/business/paytm-integrates-digilocker-brings-access-to-documents-on-its-app-101634105338544.html">DigiLocker</a>, <a href="https://www.livemint.com/technology/apps/want-to-book-covid-19-vaccination-slots-on-paytm-here-s-how-11624093960278.html">Vaccine Finder</a>, AQI, Speedtest, Astro) on the platform.</li>
+  <li>Launched OLA’s Mini App by integrating with their booking APIs, enabling 100k+ rides monthly.</li>
+  <li>Ideated and launched the <a href="https://product-noob.github.io/Journey-to-create-the-Covid-Slot-Finder-Tool/">Vaccine Finder tool</a>, which become the second most used vaccine booking tool in the country enabling more than <strong>3 Million</strong> vaccine slot bookings.</li>
+  <li>Rated as <strong>“Significantly exceeds expectations”</strong> (5/5 rating) consistently on all appraisals.</li>
+</ul>
+
+<h4 id="oracle-2-years">Oracle (~2 years)</h4>
+
+<p><strong>Aug 2015 - May 2015</strong> <em>Associate Applications Developer</em></p>
+
+<ul>
+  <li>Worked in Oracle’s Financial Software Services(OFSS) entity which builds technology solutions for banking clients.</li>
+  <li>Joined the platform team of data governance studio as one of the first developers and contributed in the launch of first two iterations <a href="https://www.oracle.com/a/ocom/docs/industries/financial-services/ds-ofs-dgrr-3714726.pdf">link</a></li>
+  <li>Ideated &amp; built few core features of the platform including variance indicators &amp; data quality controls</li>
+  <li>Worked on the reporting dashboard which helped banks in monitoring their reporting data quality.</li>
+  <li>Conceptualised and built Java utility to automate data ingestion which significantly sped up new report generation</li>
+  <li>Rated as <strong>“Best Performer”</strong> (Top 10%) in the organisation in the appraisal cycle.</li>
+</ul>
+
+  </div>
+</article>
+
+  </div>
+
+  <!-- This goes in default.html under layout -->
+
+<data class="u-url" href="/"></data>
+<div class="wrapper-footer">
+  <div class="container">
+    <footer class="footer">
+      <a href="mailto:prince.j19@fms.edu" aria-label="Gmail" ><i class="svg-icon email"></i></a>
+      <a href="https://www.linkedin.com/in/princejain17" aria-label="LinkedIn" ><i class="svg-icon linkedin"></i></a>
+      <a href="https://www.twitter.com/Prince_Jain17" aria-label="Twitter" ><i class="svg-icon twitter"></i></a>
+      <p> Forever Curious © Prince Jain. </p>
+    </footer>
+  </div>
+</div>
+
+  
+  <!-- Performance optimization scripts -->
+  <script src="/assets/js/lazy-load.js"></script>
+  <script src="/assets/js/sw-register.js"></script>
+  <script src="/assets/js/swup-cdn.js"></script>
+  <script src="/assets/js/sticky-header.js"></script>
+</body>
+
+</html>

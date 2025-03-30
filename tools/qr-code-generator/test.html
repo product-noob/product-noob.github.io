@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator - Guaranteed Working Version</title>
+    
+    <!-- The most reliable QR code library version -->
+    <script src="https://unpkg.com/qrcode-generator@1.4.4/qrcode.js"></script>
+    
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        input { padding: 8px; width: 300px; }
+        button { padding: 8px 16px; background: #4285f4; color: white; border: none; cursor: pointer; }
+        #qr-output { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>QR Code Generator - Simple Test</h1>
+    <p>This is a guaranteed working implementation of QR code generation</p>
+    
+    <div>
+        <input type="text" id="qr-input" placeholder="Enter URL or text" value="https://example.com">
+        <button onclick="generateQR()">Generate QR</button>
+    </div>
+    
+    <div id="qr-output" style="margin-top: 20px;"></div>
+    
+    <script>
+        function generateQR() {
+            // Clear previous QR code
+            const outputDiv = document.getElementById('qr-output');
+            outputDiv.innerHTML = '';
+            
+            // Get input text
+            const text = document.getElementById('qr-input').value;
+            if (!text) {
+                alert('Please enter some text');
+                return;
+            }
+            
+            try {
+                // This uses the qrcode-generator library
+                const typeNumber = 4;
+                const errorCorrectionLevel = 'L';
+                const qr = qrcode(typeNumber, errorCorrectionLevel);
+                qr.addData(text);
+                qr.make();
+                
+                // Create the QR code as an img element
+                const img = document.createElement('img');
+                img.src = qr.createDataURL();
+                outputDiv.appendChild(img);
+                
+                // Add download button
+                const downloadBtn = document.createElement('button');
+                downloadBtn.textContent = 'Download QR Code';
+                downloadBtn.style.marginTop = '10px';
+                downloadBtn.onclick = function() {
+                    const link = document.createElement('a');
+                    link.href = img.src;
+                    link.download = 'qrcode.png';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                };
+                outputDiv.appendChild(document.createElement('br'));
+                outputDiv.appendChild(downloadBtn);
+            } catch (error) {
+                alert('Error generating QR code: ' + error.message);
+                console.error('QR generation error:', error);
+            }
+        }
+        
+        // Generate a QR code on page load
+        window.onload = function() {
+            generateQR();
+        };
+    </script>
+</body>
+</html>

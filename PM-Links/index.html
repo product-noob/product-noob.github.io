@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<!-- Preload critical avatar styles to prevent layout shift -->
+	<style>
+/* Preload avatar image styles to prevent layout shift */
+.site-avatar {
+  float: left;
+  width: 70px;
+  height: 70px;
+  margin-right: 15px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #f0f0f0; /* Light gray placeholder */
+  /* Define a placeholder gradient background */
+  background-image: linear-gradient(to bottom right, #f0f0f0, #d8d8d8);
+}
+
+.site-avatar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+.site-avatar img {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  transform: translateZ(0); /* Force hardware acceleration */
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Avatar image loading state */
+.site-avatar img.loading {
+  opacity: 0;
+}
+
+@media (max-width: 640px) {
+  .site-avatar {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+}
+</style>
+
+	<!-- This goes in Head.html -->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZLF9K3MJB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-WZLF9K3MJB');
+</script>
+
+
+	<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta property="og:locale" content="en_US">
+
+<!-- Basic META -->
+<meta name="author" content="Prince Jain">
+<meta name="robots" content="index, follow">
+
+<!-- OpenGraph META -->
+<meta property="og:site_name" content="Prince Jain">
+<meta property="og:url" content="https://princejain.me/PM-Links/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Product Management Resources">
+<meta property="og:description" content="My personal blog where I document my learnings and Product Management journey.">
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter META -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Prince_Jain17">
+<meta name="twitter:creator" content="@Prince_Jain17">
+<meta name="twitter:title" content="Product Management Resources">
+<meta name="twitter:description" content="My personal blog where I document my learnings and Product Management journey.">
+<meta name="twitter:image" content="https://princejain.me/images/my-image.webp">
+
+<!-- Standard META -->
+<meta name="title" content="Product Management Resources">
+<meta name="description" content="My personal blog where I document my learnings and Product Management journey.">
+
+<!-- Article specific META (only for blog posts) -->
+
+
+<!-- image -->
+
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+
+
+<!-- url -->
+<meta property="og:url" content="/">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+
+	
+<!-- Website Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Prince Jain",
+  "url": "https://princejain.me",
+  "description": "My personal blog where I document my learnings and Product Management journey.",
+  "author": {
+    "@type": "Person",
+    "name": "Prince Jain"
+  }
+}
+</script>
+
+
+	<title> Product Management Resources | Prince Jain </title>
+	
+	<!-- Preconnect to Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!-- Load font with display=swap for better performance -->
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+	<!-- Fallback in case JS is disabled -->
+	<noscript>
+		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	</noscript>
+	
+	<!-- Inline critical CSS for faster rendering -->
+	<style>
+/* Critical CSS for above-the-fold content */
+body{font-family:sans-serif;font-weight:400;font-size:15px;line-height:1.5;padding:0;background:#fff;color:#333;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3,h4,h5,h6{font-family:sans-serif;color:#333;font-weight:400;line-height:1.4;margin:.7em 0 10px;padding:0}
+h1{font-size:30px;font-weight:400}
+h1 a{color:inherit;margin:1em 0 10px}
+a{color:#4183c4;text-decoration:none;cursor:pointer}
+.container{margin:0 auto;max-width:740px;padding:0 10px;width:100%;display:flex;flex-direction:column;flex-grow:1;justify-content:space-around}
+nav{float:right;margin-top:23px;font-family:"Lato",sans-serif;font-size:18px;font-weight:400}
+nav a{margin-left:20px;color:#666;text-align:right;font-weight:400;letter-spacing:1px}
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:#4183c4;z-index:9999;width:0;transition:width .2s ease-in-out}
+.site-avatar{float:left;width:70px;height:70px;margin-right:15px}
+.site-avatar img{border-radius:5px}
+.site-info{float:left}
+.site-name{color:#333;cursor:pointer;font-family:"Lato",sans-serif;font-weight:700;font-size:28px;letter-spacing:1px}
+@media (max-width:640px){nav{float:none;margin-top:9px;display:block;font-size:16px}nav a{margin:0 10px;color:#4183c4}.site-avatar{float:none;display:block;margin:0 auto}}
+</style>
+
+	
+	<!-- Critical CSS loaded synchronously -->
+	<link rel="stylesheet" type="text/css" href="/assets/css/sticky-header.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/header-fix.css" />
+	
+	<!-- Non-critical CSS loaded asynchronously -->
+	<link rel="stylesheet" type="text/css" href="/css/style.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/transitions.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/typography-fix.css" media="print" onload="this.media='all'" />
+	<link rel="alternate" type="application/rss+xml" title="Prince Jain - My personal blog where I document my learnings and Product Management journey." href="/feed.xml" />
+	
+	<link rel="canonical" href="https://princejain.me/PM-Links/">
+	<link rel="shortcut icon" type="image/png" href="/images/site-icon.webp" />
+	<link rel="apple-touch-icon" href="/images/site-icon.webp">
+
+</head>
+
+
+<body>
+
+  <div class="wrapper-masthead">
+  <div class="header-background"></div>
+  <div class="container">
+    <header class="masthead clearfix">
+      <!-- Wrap avatar and site info in a mobile-friendly container -->
+      <div class="header-identity">
+        <a href="/" class="site-avatar">
+          <!-- Use a smaller, optimized version of the avatar with width/height attributes to prevent layout shift -->
+          <img 
+            src="/images/my-image.webp" 
+            alt="Profile Photo" 
+            width="100%" 
+            height="100%" 
+            loading="eager" 
+            fetchpriority="high">
+        </a>
+        <!-- Explicit spacer for mobile view -->
+        <span class="avatar-title-spacer"></span>
+        <div class="site-info">
+          <h1 class="site-name"> <a href="/">Prince Jain</a> </h1>
+        </div>
+      </div>
+      <nav>
+        <a href="/blogs" aria-label="These are collection of my personal blogs">Blogs</a>
+        <a href="/links/" aria-label="These are collection of links on Product Management I find useful">Links</a>
+        <a href="/tools/" aria-label="Interactive tools for everyday tasks">Tools</a>
+        <a href="/worksummary" aria-label="Summary of my professional work so far">Work-ex</a>
+        <a href="/about" aria-label="If you want to learn more about me">About Me</a>
+      </nav>
+    </header>
+  </div>
+</div>
+
+  <div id="header-spacer"></div>
+  <div id="progress-bar"></div>
+  <div id="main" role="main" class="container transition-fade">
+    <article class="page">
+
+  <h2>Product Management Resources</h2>
+
+  <div class="entry">
+    <p>This is a curated list of product management resources including frameworks, interviews, books, products, career preps, etc. I collated from few popular sources (<a href="https://github.com/ProductHired/open-product-management">Open Product</a> being the main inspiration) and have added few of my own favourites.</p>
+
+<h2 id="core-1-product-management">Core 1: Product Management</h2>
+
+<h3 id="what-is-product-management">What Is Product Management?</h3>
+
+<ul>
+  <li><a href="https://www.leaninberlin.de/2019/03/what-is-product-management.html">What is product management?</a> - Bogdan Sturza</li>
+  <li><a href="https://medium.com/@joshelman/a-product-managers-job-63c09a43d0ec">A Product Manager’s Job</a> - Josh Elman</li>
+  <li><a href="http://thenextweb.com/insider/2013/10/12/product-managers-mini-ceos/">Product Managers: Who are these ‘mini-CEOs’ and what do they do?</a> - Ken Yeung</li>
+  <li><a href="http://www.mindtheproduct.com/2011/10/what-exactly-is-a-product-manager/">What exactly is a Product Manager? </a> - Martin Eriksonn</li>
+  <li><a href="http://www.sachinrekhi.com/blog/2013/01/28/what-is-product-management">What is Product Management?</a> - Sachin Rekhi</li>
+  <li><a href="https://medium.com/@matbalez/product-manager-you-are-664d83ee702e">Product Manager You Are…</a> - Mat Balez</li>
+  <li><a href="http://www.svpg.com/what-product-management-is-not/">What Product Management is Not</a> - Marty Cagan</li>
+  <li><a href="http://www.svproduct.com/product-management-vs-product-marketing/">Product Management vs. Product Marketing</a> - Marty Cagan</li>
+  <li><a href="http://queue.acm.org/detail.cfm?id=2683579">Evolution of the Product Manager</a> - Ellen Chisa</li>
+  <li><a href="http://www.productpowers.com/blog/use-your-product-powers-for-good.html">Use your Product Powers for Good</a> - Bruce McCarthy</li>
+  <li><a href="https://product.careers/presentation/">Product Management: An introduction for undergraduates and graduates</a> - Thor Mitchell (Student presentation)</li>
+  <li><a href="http://hbr.org/2017/12/what-it-takes-to-become-a-great-product-manager">What It Takes to Become a Great Product Manager</a> - Julia Austin</li>
+  <li><a href="https://blog.tryexponent.com/day-in-life-pm/">A Day in the Life of a Product Manager: Consumer and Enterprise</a> - Kevin Wei</li>
+</ul>
+
+<h3 id="is-it-really-for-you">Is It Really For You?</h3>
+
+<ul>
+  <li><a href="https://www.kennethnorton.com/essays/productmanager.html">How to hire a Product Manager?</a> - Kenneth Norton</li>
+  <li><a href="https://www.linkedin.com/pulse/20121102003945-7298-the-dna-of-product-management/">The DNA of Product Management</a> - Hunter Walk</li>
+  <li><a href="http://blog.ellenchisa.com/2014/02/20/the-dark-side-of-pm/">The Dark Side of PM</a> - Ellen Chisa</li>
+  <li><a href="http://blog.ellenchisa.com/2014/10/04/need-technical-pm/">Do I need to be technical to be a PM</a> - Ellen Chisa</li>
+  <li><a href="https://medium.com/@hunterwalk/ode-to-a-non-technical-product-manager-7776efb98acd">Ode to a Non Technical Product Manager</a> - Hunter Walk</li>
+  <li><a href="http://blog.kentonkivestu.com/3-skillsets-for-PM-success">3 Skillsets for PM Success</a> - Kenton Kivetsu</li>
+</ul>
+
+<h3 id="building-great-products">Building Great Products</h3>
+
+<ul>
+  <li><a href="http://www.defmacro.org/2013/09/26/products.html">How to build great products</a> - Slava Akhmechet</li>
+  <li><a href="http://blog.adamnash.com/2013/09/25/make-things-as-simple-as-possible-but-not-simpler/">Make things as simple as possible but not simpler</a> - Adam Nash</li>
+  <li><a href="http://welovelean.wordpress.com/2013/07/06/10-essential-steps-to-create-products-that-customers-love/">10 essential steps to create products that customer love</a> - Laurence McCahill</li>
+  <li><a href="http://www.mindtheproduct.com/2013/03/the-power-of-the-perfect-slice/">The power of the perfect slice</a> - Alastair Lee</li>
+  <li><a href="http://www.forbes.com/sites/avidlarizadeh/2014/05/23/ten-principles-on-the-journey-to-building-great-products/">Ten principles on the journey to building great products</a> - Avid Larizadeh</li>
+  <li><a href="https://medium.com/the-year-of-the-looking-glass/quality-is-not-a-tradeoff-bcddf7c85553">Quality is not a tradeoff</a> - Julie Zhuo</li>
+  <li><a href="http://startupclass.samaltman.com/courses/lec07/">How to build products users love</a> - Kevin Hale</li>
+</ul>
+
+<h3 id="get-out-of-the-building">Get Out Of The Building</h3>
+
+<ul>
+  <li><a href="https://www.kennorton.com/essays/how-to-listen-to-customers.html">How to Listen to Customers</a> - Kenneth Norton</li>
+  <li><a href="http://www.cindyalvarez.com/lean/how-do-customer-development-and-product-management-fit-together-2014">How do Customer Development and Product Management fit together</a> - Cindy Alvarez</li>
+  <li><a href="http://jasonevanish.com/2012/01/18/how-to-structure-and-get-the-most-out-of-customer-development-interviews/">How to structure and get the most out of customer development interviews</a> - Jason Evanish</li>
+  <li><a href="http://wadefoster.net/post/57403834478/the-customer-is-always-right-except-when-they-arent">The customer is always right. Except when they aren’t</a> - Wade Foster</li>
+  <li><a href="http://web.archive.org/web/20170112085359/http://kevindewalt.com/2013/07/14/your-mvp-is-about-discovery-not-product/">Your MVP is about discovery not product</a> - Kevin Dewalt</li>
+</ul>
+
+<h3 id="all-about-those-requirements">All About Those Requirements</h3>
+
+<ul>
+  <li><a href="http://www.joelonsoftware.com/articles/fog0000000036.html">Painless functional specifications</a> - Joel Spolsky</li>
+  <li><a href="http://www.svpg.com/requirements-are-not/">Requirements are not</a> - Marty Cagan</li>
+  <li><a href="http://www.svpg.com/feed-the-beast/">Feed the beast</a> - Marty Cagan</li>
+  <li><a href="http://www.svpg.com/the-end-of-requirements/">The end of requirements</a> - Marty Cagan</li>
+</ul>
+
+<h3 id="roadmaps-planning-and-prioritization">Roadmaps, Planning, and Prioritization</h3>
+
+<ul>
+  <li><a href="http://www.svpg.com/the-seven-deadly-sins-of-product-planning/">The seven deadly sins of product planning</a> - Marty Cagan</li>
+  <li><a href="http://blog.intercom.io/product-strategy-means-saying-no/">Product strategy means saying no</a> - Des Traynor</li>
+  <li><a href="http://www.productpowers.com/blog/product-priorities-start-with-strategic-goals.html">Product priorities start with strategic goals</a> - Bruce McCarthy</li>
+  <li><a href="http://www.svpg.com/the-inconvenient-truth-about-product/">The inconvenient truth about product</a> - Marty</li>
+  <li><a href="http://svpg.com/the-opportunity-backlog">The opportunity backlog</a> - Marty Cagan</li>
+  <li><a href="http://www.productpowers.com/blog/the-dirty-dozen-roadmap-roadblocks.html">The dirty dozen roadmap roadblocks</a> - Bruce McCarthy</li>
+  <li><a href="http://blog.kentonkivestu.com/product-focus">The pyramid model &amp; what it means for PM focus</a> - Kenton Kivetsu</li>
+  <li><a href="http://www.sachinrekhi.com/blog/2013/03/04/how-am-i-going-to-move-my-product-forward-today">How am I going to move my product forward today</a> - Sachin Rekhi</li>
+  <li><a href="https://colinrand.com/post/51810660125/dont-publish-a-product-roadmap">Don’t publish a product roadmap</a> - Colin Rand</li>
+  <li><a href="http://www.joelonsoftware.com/items/2012/07/09.html">Software Inventory</a> - Joel Spolsky</li>
+  <li><a href="https://medium.com/bringing-the-donuts/babe-ruth-and-feature-lists-1818bb8c6ca8">Babe Ruth and feature lists</a> - Kenneth Norton</li>
+  <li><a href="http://blog.intercom.io/before-you-plan-your-product-roadmap/">Before you plan your product roadmap</a> - Des Traynor</li>
+  <li><a href="http://www.productpowers.com/blog/roadmaps-focus-on-vision-benefits-not-features.html">Rodmaps focus on vision benefits, not features</a> - Bruce McCarthy</li>
+  <li><a href="http://firstround.com/article/The-one-cost-engineers-and-product-managers-dont-consider">The one cost engineers and Product Managers don’t consider</a> - Kris Gale</li>
+  <li><a href="http://blog.adamnash.com/2009/07/22/guide-to-product-planning-three-feature-buckets/">Guide to Product Planning: Three Feature Buckets</a> - Adam Nash</li>
+  <li>(invalid link) Product hierarchy of needs (<a href="http://www.salesforceiq.com/blog/product-hierarchy-needs">http://www.salesforceiq.com/blog/product-hierarchy-needs</a>) - Tim Fletcher</li>
+  <li><a href="http://www.mironov.com/magical_thinking/">Magical thinking and the zero-sum roadmap</a> - Rich Mironov</li>
+  <li><a href="https://signalvnoise.com/posts/694-you-dont-need-a-product-road-map">You don’t need a product roadmap</a> - David Heinemeier Hansson</li>
+  <li><a href="http://www.producttalk.org/2014/04/drop-feature-based-product-roadmaps/">Drop feature-based product roadmaps</a> - Teresa Torres</li>
+  <li><a href="https://medium.com/@dreasaez/how-to-build-a-product-roadmap-everyone-understands-522b36270e5#.e8gcmylg0">How to build a roadmap everyone understands</a> - Andrea Saez</li>
+  <li><a href="https://medium.com/@mstephan/making-a-product-map-4fbf6d440a19#.bpmtqfotk">Making a Product Map</a> - Mark Stephan</li>
+  <li><a href="https://taprun.com/articles/product-managers-visual-guide-to-feature-selection">The Product Manager’s Visual Guide to Feature Selection</a> - Adam Juda</li>
+</ul>
+
+<h3 id="how-to-work-with-x">How To Work With X</h3>
+
+<ul>
+  <li><a href="http://www.nczonline.net/blog/2012/06/12/the-care-and-feeding-of-software-engineers-or-why-engineers-are-grumpy/">The care and feeding of software engineers</a> - Nicholas C. Zakas</li>
+  <li><a href="http://www.defmacro.org/2013/06/03/engineering-commandments.html">The ten project management commandments</a> - Slava Akhmechet</li>
+  <li><a href="https://medium.com/the-year-of-the-looking-glass/how-to-work-with-pms-3e852d5eccf5">How to work with PMs</a> - Julie Zhuo</li>
+  <li><a href="https://medium.com/the-year-of-the-looking-glass/how-to-work-with-engineers-a3163ff1eced">How to work with engineers</a> - Julie Zhuo</li>
+  <li><a href="https://www.kennethnorton.com/essays/how-to-work-with-software-engineers.html">How to work with software engineers</a> - Kenneth Norton</li>
+  <li><a href="http://www.joelonsoftware.com/articles/fog0000000356.html">The Iceberg Secret, revealed</a> - Joel Spolsky</li>
+  <li><a href="https://www.kennethnorton.com/essays/leading-cross-functional-teams.html">Leading cross-functional teams</a> - Kenneth Norton</li>
+  <li><a href="http://blog.ellenchisa.com/2014/07/20/engineers-pm-sucks-heres-fix/">Engineers: So your PM sucks? Here’s how to fix it.</a> - Ellen Chisa</li>
+  <li><a href="https://medium.com/@jeff7091/nerds-get-the-product-management-you-deserve-3bcf849394c2">Nerds, get the Product Management you deserve</a> - Jeff Enderwick</li>
+  <li><a href="http://www.startuplessonslearned.com/2008/10/product-managers-lament.html">The product manager’s lament</a> - Eric Ries</li>
+  <li><a href="https://medium.com/@mstephan/top-5-ways-product-managers-can-help-developers-love-them-4660ef7711d5">Top 5 Ways Product Managers can help Developer’s Love them</a> - Mark Stephan</li>
+  <li><a href="https://medium.com/the-year-of-the-looking-glass/how-to-work-with-designers-6c975dede146">How to work with designers</a> - Julie Zhuo</li>
+</ul>
+
+<h3 id="user-experience">User Experience</h3>
+
+<ul>
+  <li><a href="https://medium.com/@mstephan/lean-ux-canvas-5f1fdd378077#.et3az0712">Lean UX Canvas</a> - Mark Stephan</li>
+  <li><a href="https://medium.com/@vijaysundaram/user-experience-debt-c9bd265d521b">User Experience Debt</a> - Vijay Sundaram</li>
+</ul>
+
+<h3 id="give-and-receive-feedback">Give and Receive Feedback</h3>
+
+<ul>
+  <li><a href="http://zachholman.com/posts/positive-feedback/">You won’t regret positive feedback</a> - Zack Holman</li>
+  <li><a href="https://42floors.com/blog/startups/thirty-percent-feedback">Thirty percent feedback</a> - Jason Freedman</li>
+  <li><a href="http://scottberkun.com/essays/23-how-to-run-a-design-critique/">How to run a design critique</a> - Scott Berkun</li>
+</ul>
+
+<h3 id="shipping-and-measuring-products">Shipping and Measuring Products</h3>
+
+<ul>
+  <li><a href="http://a16z.com/2014/04/16/shipping-is-a-feature-some-guiding-principals-for-people-that-build-things/">Shipping is a feature</a> - Steven Sinofsky</li>
+  <li><a href="http://blog.adamnash.com/2012/02/29/great-product-leaders-win-games/">Great product leaders win games</a> - Adam Nash</li>
+  <li><a href="http://www.inc.com/mark-suster/how-to-deliver-more-software-projects-on-time.html">How to deliver more software projects on time</a> - Mark Suster</li>
+  <li><a href="https://pmblog.quora.com/Always-Be-Defining-Success">Always be defining success</a> - Jackie Bavaro</li>
+  <li><a href="https://medium.com/@joshelman/the-only-metric-that-matters-ab24a585b5ea">The only metric that matters</a> - Josh Elman</li>
+  <li><a href="http://blog.intercom.io/the-blind-product-manager/">The blind Product Manager</a> - Paul Adams</li>
+  <li><a href="http://bjk5.com/post/60760280107/shipping-beats-perfection-explained">Shipping beats perfection explained</a> - Ben Kamens</li>
+  <li><a href="https://medium.com/@rklau/measure-twice-cut-once-e86c2f08b4c">Measure twice, cut once</a> - Rick Klau</li>
+  <li><a href="http://wadefoster.net/post/70145296769/the-lost-art-of-the-soft-launch">The lost art of the soft launch</a> - Wade Foster</li>
+  <li><a href="https://www.quora.com/What-are-the-most-important-metrics-for-developing-and-managing-a-mobile-product/answer/Drew-Dillon">What are the most important metrics for developing and managing a mobile product?</a> - Drew Dillon</li>
+  <li><a href="https://www.interaction-design.org/literature/article/google-s-heart-framework-for-measuring-ux">Google’s HEART Framework for Measuring UX</a> - Kenny Lee</li>
+</ul>
+
+<h3 id="organizing-your-team">Organizing Your Team</h3>
+
+<ul>
+  <li><a href="https://www.braintreepayments.com/braintrust/Enter-the-Matrix-Organizing-Product-Management">Enter the Matrix - Organizing Product Management</a> - Mark Tattersall</li>
+  <li><a href="http://www.svpg.com/product-organizational-structure/">Product organizational structure</a> - Marty Cagan</li>
+  <li><a href="http://www.svpg.com/good-product-team-bad-product-team/">Good product team, bad product team</a> - Marty Cagan</li>
+  <li><a href="http://svpg.com/the-best-product-management-model/">The best Product Management model</a> - Marty Cagan</li>
+  <li><a href="http://www.paulgraham.com/makersschedule.html">Maker’s Schedule, Manager’s Schedule</a> - Paul Graham</li>
+  <li><a href="https://pmblog.quora.com/Take-back-your-day-Time-Management-for-PMs">Take back your day: Time Management for PMs</a> - Jackie Bavaro</li>
+</ul>
+
+<h3 id="become-the-best-in-the-field">Become The Best In The Field</h3>
+
+<ul>
+  <li><a href="https://review.firstround.com/Top-Hacks-from-a-PM-Behind-Two-of-Techs-Hottest-Products">Top hacks from a PM behind two of tech’s hottest products</a> - Todd Jackson</li>
+  <li><a href="http://www.svproduct.com/stakeholder-management/">Stakeholder Management</a> - Marty Cagan</li>
+  <li><a href="http://www.productpowers.com/blog/court-scribe-or-hand-of-the-king.html">Court scribe or Hand of the King</a> - Bruce McCarthy</li>
+  <li><a href="http://www.sachinrekhi.com/blog/2013/02/19/the-most-underrated-product-management-skill-influence-without-authority">Influence without authority</a> - Sachin Rekhi</li>
+  <li><a href="http://blog.learningbyshipping.com/2014/10/23/management-cliches-that-work/">Management clichés that work</a> - Steven Sinofsky</li>
+  <li><a href="http://blog.idonethis.com/managers-write/">Bad Managers Talk, Good Managers Write</a> - Walter Chen</li>
+  <li><a href="http://benhorowitz.files.wordpress.com/2010/05/good-product-manager.pdf">Good Product Manager, Bad Product Manager</a> - Ben Horowitz</li>
+  <li><a href="http://blog.adamnash.com/2011/12/16/be-a-great-product-leader/">Be a great product leader</a> - Adam Nash</li>
+  <li><a href="http://blog.adamnash.com/2012/03/06/top-10-product-leadership-lessons/">Top 10 product leadership lessons</a> - Adam Nash</li>
+  <li><a href="https://www.quora.com/What-distinguishes-the-Top-1-of-Product-Managers-from-the-Top-10/answer/Ian-McAllister?srid=3wR&amp;st=ns">What distinguishes the top 1% of Product Managers from the top 10%?</a> - Ian McAllister</li>
+  <li><a href="https://www.quora.com/What-makes-someone-a-great-product-manager-at-Google?">What makes someone a great Product Manager at Google?</a> - Edward Ho</li>
+  <li><a href="https://www.quora.com/What-innate-traits-do-great-Internet-product-leaders-share">What innate traits do great internet product leaders share?</a> - Chris Wetherell</li>
+  <li><a href="http://blog.parsely.com/post/907/musings-on-product-management/">Musings on Product Management</a> - Mike Sukmanowsky</li>
+  <li><a href="https://medium.com/@suthakamal/hiring-a-great-product-leader-12365570c974">Hiring a great product leader</a> - Sutha Kamal</li>
+  <li><a href="http://hatchery.vc/what-makes-a-great-product-manager/">What makes a great Product Manager?</a> - Erik Torenberg</li>
+  <li><a href="https://medium.com/@biggiesu/how-a-football-coach-taught-me-to-product-manage-like-a-boss-926ab5c39156">How a football coach taught me to product manage like a boss</a> - Mike Su</li>
+</ul>
+
+<h3 id="minimum-viable-product-manager-mvpm">Minimum Viable Product Manager (MVPM)</h3>
+
+<ul>
+  <li><a href="https://blackboxofpm.com/mvpm-minimum-viable-product-manager-e1aeb8dd421">MVPM: Minimum Viable Product Manager</a> - Brandon Chu</li>
+</ul>
+
+<h2 id="core-2-resources">Core 2: Resources</h2>
+
+<h3 id="resource-repositories">Resource Repositories</h3>
+
+<ul>
+  <li><a href="http://bit.ly/2LF34CO">Product Management Toolkit</a> - Curated directory of tools and resources for Product Managers by Product Managers</li>
+  <li><a href="http://softwareproductmanagement.co/">Software Product Management Stack</a> - A curated list of Product Manager articles and resources</li>
+  <li><a href="http://attackwithnumbers.com/i-love-product-management">End-End Product Management Lifecycle</a> - A list of articles from what is it to becoming a great Product Manager</li>
+  <li>(invalid link) The One-Stop Product Management Guide (<a href="http://www.digitalfriday.co/productmanagementguide/">http://www.digitalfriday.co/productmanagementguide/</a>) - A framework and list of articles to help product managers build, grow and manage digital products</li>
+  <li><a href="https://sites.google.com/site/hbspm101/home">Harvard Business School PM 101</a> - Online resource repository from Harvard Business School PM 101 course (old site)</li>
+  <li><a href="https://www.hbspm101.com/">Harvard Business School PM 101/102</a> - Online resource repository from Harvard Business School Product Management 101 &amp; 102 (PM 101/102).</li>
+  <li><a href="https://www.productprocesses.co">Product Management Processes</a> - A knowledge base of product management processes, tools and templates.</li>
+  <li><a href="https://productnotion.co/?ref=open-productmanagement/">ProductNotion</a> - Loads of ready-made Product Management templates for Notion.so</li>
+</ul>
+
+<h3 id="design">Design</h3>
+
+<ul>
+  <li><a href="https://www.kindlingapp.com/">Kindling</a> - Idea management tool</li>
+  <li>(invalid link) Designer News Market(<a href="https://www.designernews.co/stories/74282-designer-news-market-is-coming-to-a-close">https://www.designernews.co/stories/74282-designer-news-market-is-coming-to-a-close</a>) - The best design resources for your next project</li>
+  <li><a href="https://www.designermill.com/">Designer Mill</a> - Collection of free design resources</li>
+  <li><a href="https://muz.li/">Muz.li</a> - Designers’ Secret Source</li>
+  <li><a href="http://designresearchtechniques.com/#/">Design Research Technique</a> - Huge repository of design techniques for every project stage</li>
+  <li><a href="https://designingfortheweb.co.uk/">Design for the Web</a> - Guide to web design by Mark Boulton.</li>
+  <li><a href="https://visage.co/">Visage 3.0</a> - The design tool for content marketers. Template System for Brand Design</li>
+  <li><a href="https://www.figma.com/">Figma</a> - The collaborative interface design tool. Design, prototype, and gather feedback all in one place</li>
+  <li><a href="https://relativewave.com/form/">Form</a> - Interaction &amp; prototyping design tool for iOS apps.</li>
+  <li><a href="https://facebook.design/">Facebook Design Resources</a> - A collection of free resources made by designers at Facebook</li>
+  <li><a href="http://www.coverr.co/">Coverr</a> - Beautiful, free videos for your homepage background.</li>
+  <li><a href="https://better-error-pages.statuspage.io/">Better Error Pages</a> - Build free 404, 503 and maintenance pages in 60 seconds</li>
+  <li><a href="https://www.adobe.com/tr/products/xd.html">Adobe XD</a> - An end-to-end free solution for designing &amp; prototyping</li>
+  <li><a href="https://uimovement.com/">UI Movement</a> - The best UI design inspiration, daily</li>
+  <li><a href="http://iconstore.co/">IconStore</a> - Free icon packs by first-class designers</li>
+</ul>
+
+<h3 id="development">Development</h3>
+
+<ul>
+  <li><a href="https://craft.io">Craft - Collaborative Place for Product Managers</a> - Agile Product &amp; Project Management Software</li>
+  <li><a href="https://www.meteor.com/">Meteor - The Fastest way to build Javascript Apps</a> - open source platform for web, mobile, and desktop.</li>
+  <li><a href="https://designcode.io/">Design+code</a> - Learn design with courses</li>
+  <li><a href="https://swifteducation.github.io/teaching_app_development_with_swift/">Teaching App Development with Swift</a> - A Github-hosted curriculum on Swift for teachers by Apple (These materials are out of date and are no longer maintained.)</li>
+  <li><a href="https://developer.android.com/studio/intro/">Android Studio</a> - The official IDE for Android application development</li>
+  <li><a href="https://itunes.apple.com/us/app/xcode/id497799835?mt=12">Xcode 7.0 - iOS Development</a> - Swift 2 and SDKs for iOS 9, watchOS 2, and OS X 10.11</li>
+  <li><a href="https://developers.google.com/web/tools/starter-kit/">Web Starter Kit by Google</a> - Boilerplate &amp; Tooling for Multi-Device Development (Web Starter Kit is no longer supported.)</li>
+  <li><a href="https://www.appcoda.com/">Beginning iOS Programming</a> - Books and courses, learn to build an iOS app from scratch.</li>
+  <li><a href="http://haskellformac.com/">Haskell for Mac</a> - Functional programming without the hassle.</li>
+  <li><a href="https://code4startup.com/">Code4Startup 2.0</a> - Learn to code by cloning real-life startups (PRO version)</li>
+  <li><a href="https://onemonth.com/">One Month Rails</a> - The easiest way ever developed to Learn to Code in just one month</li>
+  <li><a href="http://teachyourselftocode.com/">Teach Yourself To Code</a> - Learn to code with tutorials recommended by programmers</li>
+  <li><a href="https://itunes.apple.com/us/app/codecademy-go/id1376029326?mt=8">Codecademy App</a> - Learn to code on your iPhone anywhere.</li>
+  <li><a href="https://designers.how/">Designers How</a> - learn the latest design techniques in tools like Sketch, Framer, Swift, and more</li>
+  <li><a href="https://www.codecademy.com/learn/learn-the-command-line">Codecademy’s Learn the Command Line</a> - Learn how to control your computer with the command line!</li>
+  <li>(invalid link) Your First Web App(<a href="https://yourfirst.io/">https://yourfirst.io/</a>) - Pulling your hair out trying to learn how to code?</li>
+  <li><a href="https://medium.com/@yaelg/product-manager-pm-step-by-step-tutorial-building-machine-learning-products-ffa7817aa8ab">The Step-By-Step PM Guide to Building Machine Learning Based Products</a> - 6 step guide to get started in achieving business goals with machine learning.</li>
+  <li><a href="https://github.com/intuit/AnimationEngine">AnimationEngine</a> - Easily build advanced custom animations on iOS.</li>
+</ul>
+
+<h3 id="mockups-and-marketing">Mockups and Marketing</h3>
+
+<ul>
+  <li><a href="https://moqups.com/">moqups</a> - A streamlined web app that helps you create and collaborate on
+wireframes, mockups, diagrams and prototypes.</li>
+  <li><a href="https://www.typeform.com/">Typeform</a> - Generate surveys in seconds.</li>
+  <li><a href="https://balsamiq.com/">Balsamiq</a> - Rapid wireframing tool.</li>
+  <li><a href="https://tweetdeck.twitter.com/">Tweetdeck</a> - Power-user interface for Twitter.</li>
+  <li><a href="https://www.flinto.com/">Flinto for Mac</a> - The prototyping tool designers have been waiting for.</li>
+  <li><a href="https://www.edisonplan.com/">EdisonPlan</a> - The ultimate tool to plan &amp; launch your product.</li>
+  <li><a href="https://precursorapp.com">Precursor</a> - A real-time collaborative prototyping tool</li>
+  <li><a href="https://github.com/launchkit/launchkit/">LaunchKit</a> - A set of web-based tools for mobile app developers, now open source!</li>
+  <li><a href="https://startupresources.io/">StartupResources.io</a> - Tightly curated lists of the best startup tools</li>
+</ul>
+
+<h3 id="team-management">Team Management</h3>
+
+<ul>
+  <li><a href="https://airtable.com">Airtable</a> - Spreadsheet, meet database.</li>
+  <li><a href="https://trello.com/">Trello</a> - Trello makes it easy to organize anything with anyone</li>
+  <li><a href="https://drive.google.com/">Google Drive, Docs, sheets etc.</a> - Create and share your work online and collaborate on literally any type of content</li>
+  <li><a href="https://slack.com">Slack</a> - Team communication for the 21st century</li>
+  <li><a href="https://ramen.is/">Ramen</a> - Ask your users questions while they’re on your website. The best way for SaaS product teams to learn from customers</li>
+  <li><a href="https://evernote.com/">Evernote</a> - Note taking made easy</li>
+  <li><a href="https://www.apple.com/keynote/">Keynote</a> - Make awesome presentations quickly</li>
+  <li><a href="https://quip.com/">Quip</a> - The productivity suite for the mobile generation</li>
+  <li>(invalid link) Do (<a href="http://do.com/">http://do.com/</a>) - Run Productive Meetings.</li>
+  <li><a href="https://www.box.com/en-gb/notes">Box Notes</a> - Create documents, take notes and share ideas in real-time.</li>
+  <li><a href="https://realtimeboard.com/">Realtime Board</a> - Web-based whiteboarding &amp; team collaboration tool</li>
+  <li><a href="https://www.smartsheet.com/">Smartsheet</a> - Microsoft Project alternative, best used for scheduling and resource management</li>
+  <li><a href="https://zenkit.com/">Zenkit</a> - Better Trello, with Mindmaps</li>
+</ul>
+
+<h3 id="analytics">Analytics</h3>
+
+<ul>
+  <li><a href="https://github.com/matomo-org">Matomo</a> - Number 1 all-in-one free web analytics platform (Piwik is now matomo)</li>
+  <li><a href="https://www.kissmetricshq.com/">KISSmetrics</a> - Understand what people are doing on your website and products,
+and deliver behavior-based engagement every step of the way.</li>
+  <li>(invalid link) Analytics for Optimizely (<a href="http://www.optimizeapp.co/">http://www.optimizeapp.co/</a>) - Your Optimizely A/B tests on your iPhone.</li>
+  <li><a href="https://sumo.com/app/google-analytics">Google Analytics by SumoMe</a> - The easiest way to see your Google Analytics.</li>
+  <li><a href="https://marketingplatform.google.com/about/enterprise/">Google Analytics 360 Suite</a> - Enterprise analytics for your marketing.</li>
+  <li><a href="https://www.gosquared.com/">People Analytics</a> - One place to understand your users.</li>
+  <li><a href="https://blog.appfigures.com/new-usage-reports-with-itunes-google-analytics/">Usage Analytics in appFigures</a> - Track usage for your app along side downloads, ranks &amp; more.</li>
+  <li><a href="https://baremetrics.com/features/slack-tools">Baremetrics for Slack</a> - Subscription analytics, insights &amp; notifications in Slack.</li>
+  <li><a href="https://beam.venngage.com">Beam</a> - Tell your stories with beautiful charts.</li>
+  <li><a href="https://fabric.io/blog/introducing-the-fabric-mobile-app">Fabric mobile app by Twitter</a> - Real-time analytics and stability alerts for your app.</li>
+  <li><a href="https://getstream.io/">Stream</a> - Analytics for feeds.</li>
+  <li><a href="https://itunes.apple.com/us/app/mixpanel/id1032086092?mt=8">Mobile Dashboards by Mixpanel</a> - Monitor your key metrics, everywhere you go on your iOS device</li>
+  <li><a href="https://blog.intercom.io/why-ab-tests-should-yield-more-than-results/">The golden rule of A/B testing: look beyond validation</a> - Run successful, statistically accurate A/B tests.</li>
+  <li><a href="https://heapanalytics.com/">Heap Analytics</a> - Heap lets you automatically capture every user interaction from web, mobile, and cloud services.</li>
+  <li><a href="https://snowplowanalytics.com/">Snowplow Analytics</a> - Open source web, mobile and event analytics platform.</li>
+</ul>
+
+<h3 id="podcasts">Podcasts</h3>
+
+<ul>
+  <li><a href="https://www.producthunt.com/r/f0a61978d9/12920">Design Details Podcast</a> - A show about the people who design our favorite products.</li>
+  <li><a href="https://www.producthunt.com/podcasts/angellist-radio-kirill-makharinsky">AngelList Radio - Kirill Makharinsky</a> - What factors can predict a company’s future success</li>
+  <li><a href="https://www.producthunt.com/podcasts/exponent-get-off-my-lawn">Exponent - Get Off My Lawn!</a> - How Snapchat has built it’s product effectively</li>
+  <li><a href="https://www.producthunt.com/podcasts/how-to-make-sure-you-achieve-your-goals">HOW TO MAKE SURE YOU ACHIEVE YOUR GOALS</a> - 6 practical ways we can make sure you achieve your goals</li>
+  <li><a href="https://www.producthunt.com/podcasts/what-i-know-best-catherine-pao-growth-product-manager-at-blue-apron">What I Know Best - Catherine Pao - Growth Product Manager At Blue Apron</a> - Product &amp; growth lessons from DigitalOcean, Fab &amp; BlueApron</li>
+  <li><a href="https://www.producthunt.com/podcasts/femgineertv-episode-2-how-to-make-smart-tradeoffs-when-developing-software-products">FemgineerTV: Episode 2 - How to Make Smart Tradeoffs When Developing Software Products</a> - Interview with former Director of Engineering at Facebook</li>
+  <li><a href="https://www.producthunt.com/podcasts/the-james-altucher-show-160-ashlee-vance">The James Altucher Show #160: Ashlee Vance</a> - Elon Musk and the quest to save mankind</li>
+  <li><a href="https://www.producthunt.com/podcasts/product-hunt-maker-stories-matt-mazzeo-2">Product Hunt Maker Stories - Matt Mazzeo</a> - Future of VC, breaking into tech/VC, &amp; more</li>
+  <li><a href="https://www.producthunt.com/podcasts/growth-everywhere-the-strategy-that-skyrocketed-hotjar-to-1-million-arr-in-6-months">Growth Everywhere - The Strategy That Skyrocketed Hotjar to $1 Million ARR in 6 Months</a> - How David Darmanin Grew Hotjar To $1 Million ARR in 6 months</li>
+  <li><a href="http://yoursproductly.com/shardulmehta/">Yours Productly - Shardul Mehta, VP Products at Diamond Mind</a> - Shardul Mehta on Product Canvas, Why Products Fail, His Upcoming Book and a Lot More</li>
+  <li><a href="https://itunes.apple.com/us/podcast/products-that-count-podcast/id1038890550?mt=2">Products That Count - By Sophie-Charlotte Moatti</a> - A podcast for product makers, data-minded thinkers and innovators.</li>
+  <li><a href="https://www.thisisproductmanagement.com/">This is Product Management - By AlphaUX</a> - The podcast for product teams.</li>
+  <li><a href="http://podcast.agileuprising.com/">Agile Uprising Podcast</a> - They cover all topics associated with Agile. From the Manifesto, to the frameworks, to the values and principles.</li>
+  <li><a href="https://www.mindtheproduct.com/tag/podcast/">mindtheproduct.com Podcasts</a> - Podcasts by mindtheproduct.com</li>
+  <li><a href="https://podcasts.apple.com/us/podcast/masters-of-scale-with-reid-hoffman/id1227971746?mt=2">Masters of Scale with Reid Hoffman</a> - How do companies grow from zero to a gazillion? Legendary Silicon Valley investor / entrepreneur Reid Hoffman tests his theories with famous founders.</li>
+</ul>
+
+<h2 id="core-3-real-life-product-management">Core 3: Real Life Product Management</h2>
+
+<h3 id="interviews">Interviews</h3>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=p9Ubfv5v2i8">Janna Bastow on “How to Get into Product Management”</a> - A conversation between Janna Bastow, founder of ProdPad and previously a product manager / consultant</li>
+  <li><a href="https://www.youtube.com/watch?v=tIQLhdMrK2Y">Eva Andreasson on “How to Get into Product Management”</a> - A conversation between Eva Andreasson, Senior Product Manager at Cloudera, and Jason Shah, Product Manager at Yammer</li>
+  <li><a href="https://www.youtube.com/watch?v=VuSfqm1dr7Y">Teresa Torres on “How to Get into Product Management”</a> - A conversation between Teresa Torres, Vice President, Products at AfterCollege and a product consultant</li>
+  <li><a href="https://www.youtube.com/watch?v=-CMip6mUT5I">Wil Keenan on “How to Get Into Product Management”</a> - A conversation between Wil Keenan, Senior Product Manager at Change.org and Jason Shah</li>
+  <li><a href="https://www.youtube.com/watch?v=EoncOT67ImI">Chris Lee on “How to Get into Product Management”</a> - A conversation between Chris Lee, Product Manager at Dropbox, and Jason Shah</li>
+  <li><a href="https://www.youtube.com/watch?v=fqJo_UkMMxM">Raj Ramachandran on “How to Get into Product Management”</a> - A conversation between Raj Ramachandran, Director of Product at Kidaptive and former Product Manager at Zynga</li>
+  <li><a href="https://www.youtube.com/watch?v=g48swcdEqFE">Pascal Carole on “How to Get into Product Management”</a> - A conversation between Pascal Carole, Product Manager at Microsoft / Yammer and former engineer at Microsoft, and Jason Shah</li>
+  <li><a href="https://www.youtube.com/watch?v=tSx8V8Y5LW8">Jackie Bavaro on “How to Get into Product Management”</a> - A conversation between Jackie Bavaro, Product Manager at Asana, and Jason Shah</li>
+  <li><a href="https://www.youtube.com/watch?v=9pqBBEkSfdU">Jason Evanish on “How to Get into Product Management”</a> - A conversation between Jason Evanish, Product Manager at KISSMetrics, and Jason Shah</li>
+  <li><a href="https://www.youtube.com/watch?v=gIJNfQZCY0s">Ryan Hoover on “How to Get Into Product Management”</a> - A conversation between Ryan Hoover, Director of Product, PlayHaven and Jason Shah</li>
+  <li><a href="https://product.careers/stories/">Marty Cagan and others on why they love the role, what they look for when hiring graduates, and the advice they offer prospective Product Managers</a></li>
+</ul>
+
+<h3 id="product-case-studies">Product Case Studies</h3>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=N8wdRZDv0ks">Building an Enterprise Product: Yammer’s Development Methodology</a> - Jason Shah, product manager at Yammer, shares aspects of Yammer’s product development methodology.</li>
+  <li><a href="https://medium.com/@theunixbeard/product-hunt-s-rise-d49249a1a2c0#.bpns2qcg3">Product Hunt’s Rise - Case Study</a> - Product Hunt’s Rise</li>
+  <li><a href="http://www.slideshare.net/misteroo/facebook-analysis-and-study/17-Facebook_is_offering_new_advertisingproducts">Facebook Case Study</a> - Facebook Analysis and Study</li>
+  <li><a href="http://www.thetwittercasestudy.com/the-case-study.html">Twitter Case Study</a> - The Twitter Case Study from the Dimensions of Strategy Series</li>
+  <li><a href="http://www.slideshare.net/ashwin_sharma/google-case-study">Early Google Case Study</a> - Google Case Study</li>
+  <li><a href="http://www.ecommerce-digest.com/amazon-case-study.html">Amazon Case Study</a> - Amazon Case Study</li>
+  <li><a href="http://www.ecommerce-digest.com/apple-ipod-case-study.html">Apple iPod Case Study</a> - Apple Case Study</li>
+  <li><a href="http://www.ecommerce-digest.com/netflix-case-study.html">Netflix Case Study</a> - Netflix Case Study</li>
+  <li><a href="https://www.youtube.com/watch?v=qeY2BRaS11g">Box Case Study</a> - Box Case Study</li>
+</ul>
+
+<h3 id="sample-product-documentation">Sample Product Documentation</h3>
+
+<ul>
+  <li><a href="https://medium.com/@ivanTr0n/how-i-would-grow-thumbtack-s-customer-side-of-the-marketplace-product-spec-edc5c0521d08#.o9octd4pa">How I would grow Thumbtack’s Customer Side of the Marketplace — Product Spec</a> - Sample Product Spec about Thumbtack</li>
+  <li><a href="http://leenau.bitbucket.io/lynda/product-requirements-document/">Global Lynda</a> - Sample Product Requirements Document</li>
+  <li><a href="http://leenau.bitbucket.io/lynda/user-personas/">Global Lynda</a> - Sample Company Context and User Personas</li>
+  <li><a href="http://leenau.bitbucket.io/lynda/metrics-case-study/">Global Lynda</a> - Sample Metrics Case Study</li>
+  <li><a href="http://leenau.bitbucket.io/lynda/language-rollout-phases/">Global Lynda</a> - Sample Language Rollout Phases</li>
+  <li><a href="http://leenau.bitbucket.io/lynda/go-to-market/">Global Lynda</a> - Sample Go-to-Market Plan</li>
+  <li><a href="https://github.com/intuit/AnimationEngine">Product Hunt</a> -  Sample Early Product Spec from Ryan Hoover, Product Hunt</li>
+  <li><a href="https://medium.com/@mstephan/a-usability-test-with-recommendations-for-improvement-of-skyscanner-s-mobile-flight-search-56b6e598b8a2#.1ve6qzn2e">A Usability Test, with Recommendations for Improvement of Skyscanner’s Mobile Flight Search &amp; Booking App</a> - Sample product break-down with usability testing by Mark Stephan</li>
+  <li><a href="https://medium.com/open-product-management/yahoo-building-bots-for-the-messenger-app-2b43175ae2eb">Yahoo! Let’s put some Bots in that beautiful Messenger App - Product Spec</a> - Sample Product Spec about Yahoo</li>
+  <li><a href="https://medium.com/@ericjlee/usability-test-on-product-hunt-for-iphone-ba208a440175#.4i6960u4k">Usability Test on Product Hunt for iPhone</a> - Sample Usability Test on Product Hunt</li>
+  <li><a href="https://medium.com/@ivanTr0n/a-usability-test-for-yelp-s-ios-application-13c7f3fea84c#.hih9hvh18">A Usability Test for Yelp’s iOS Application</a> - Sample Usability Test for Yelp</li>
+  <li><a href="https://medium.com/@mstephan/a-usability-test-with-recommendations-for-improvement-of-skyscanner-s-mobile-flight-search-56b6e598b8a2#.ibh610rne">A Usability Test, with Recommendations for Improvement of Skyscanner’s Mobile Flight Search &amp; Booking App: Part I</a> - Sample Usability Test on Skyscanner</li>
+  <li><a href="https://medium.com/@ivanTr0n/designing-linkedins-next-killer-feature-to-awake-the-other-300m-users-product-spec-de00305ba13e#.e6df7kcxo">LinkedIn Groups Product Spec</a> - Designing LinkedIn’s Next Killer Feature to awake the other 300M users</li>
+</ul>
+
+<h3 id="groups">Groups</h3>
+
+<ul>
+  <li><a href="https://summit.productled.com/?ac=9Vdhr2PIm">Product Led Institute</a> - Product-Led Growth is a go-to-market strategy that relies on using your product as the main vehicle to acquire, activate, and retain customers</li>
+  <li><a href="http://www.mindtheproduct.com">Mind the Product</a> - Mind the Product Community Website and Blog</li>
+  <li><a href="http://www.productschool.com">Product School</a> - Product School Company Website</li>
+  <li><a href="https://www.producthunt.com/r/85601ad255/3697">Designer Chat</a> - The Designer News community in a private Slack chat</li>
+  <li><a href="https://www.productmanagerhq.com/join-the-community/">Product Manager HQ</a> - Product Manager HQ - Slack group</li>
+  <li><a href="http://www.productcamp.org">Product Camp</a> - Product Camp Community Website and Blog</li>
+</ul>
+
+<h2 id="core-4-get-the-job">Core 4: Get the Job</h2>
+
+<h3 id="career-prep-the-interview">Career Prep: The Interview</h3>
+
+<ul>
+  <li><a href="https://producthired.com/coaches?types=interview-prep">Get Product Management Interview Prep Coaching</a> - Book an interview prep session with a product expert for your upcoming interviews</li>
+  <li><a href="https://medium.com/pminsider/preparing-for-pm-interviews-how-to-get-there-in-15-20-hours-193f6fcbf606">Preparing for PM interviews: how to get there in 15–20 hours</a> - Preparing for PM interviews</li>
+  <li><a href="https://course.productalliance.com/a/33299/spNMFmjD">Product Alliance’s Hacking the PM Interview Course</a> - 16hrs of video lessons and 62 pages of strategy guides on how to answer ANY question thrown your way.</li>
+  <li><a href="https://fernandodelgado.com/blog/how-to-prepare-for-product-management-interviews">How to Prepare for PM interviews</a> - How to Prepare for PM interviews</li>
+  <li><a href="https://fernandodelgado.com/blog/how-to-become-a-product-manager">How to become a Product Manager (for college students)</a> - How to become a Product Manager (for college students)</li>
+  <li><a href="http://www.amazon.in/gp/product/0984782818/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0984782818&amp;linkCode=as2&amp;tag=httpstwit071f-20">Cracking the PM Interview</a> - Book based on getting a PM career</li>
+  <li><a href="http://www.venturegrit.com/how-to-interview-a-product-manager-the-ultimate-guide/">The Ultimate Guide to Product Manager Interview Questions</a> - PM Questions to Practice</li>
+  <li><a href="http://thepminterview.com">The PM Interview</a> - Set of Questions + Timer to practice your PM skills.</li>
+  <li><a href="https://www.quora.com/What-are-frequently-asked-questions-in-product-manager-interviews">The Ultimate Guide to Product Manager Interview Questions</a> - Quora PM Questions</li>
+  <li><a href="http://www.producttalk.org/2012/06/4-questions-i-always-ask-when-interviewing-product-managers/">4 Questions I Always Ask When Interviewing Product Managers</a> - 4 Questions to ask a PM</li>
+  <li><a href="https://docs.google.com/document/d/1ZXwg8LFLEi-HmN9BoCoifqEM1NggxNjex4Tx-5ALa9I/edit">Interview Question Prep for PM Interviews</a> - Prep Questions from Rafi Lurie, APM at Uber.</li>
+  <li><a href="https://medium.com/product-man/how-to-get-a-pm-job-with-the-yammer-mafia-ec2c43c775fb#.viuymdset">How To Get A PM Job With The Yammer Mafia - In-person</a> - How to Join The Yammer PM Mafia</li>
+  <li><a href="https://pmblog.quora.com/The-Best-Student-Activity-for-Product-Managers">The Best Student Activity for Product Managers By Jackie Bavaro</a> - The Best Student Activity for Product Managers</li>
+  <li><a href="https://www.linkedin.com/pulse/20141020034027-1533734-acing-the-product-management-interview?trk=hp-feed-article-title-like">Acing the Product Management Interview</a> - Allan Hui</li>
+  <li><a href="https://www.linkedin.com/pulse/what-your-product-management-interview-strategy-7-steps-mohammad">7 Steps: Interview Strategy to Get into Product Management With No Experience</a> - Afroz Mohammad</li>
+  <li><a href="https://productmanagementexercises.com/">Product Management Job Interview Exercises</a> - Free repository of PM job interview questions and answers</li>
+  <li><a href="http://www.tryexponent.com">Exponent</a> - Exponent offers online courses, a free interview questions database, and a Slack community for mock interviews.</li>
+</ul>
+
+  </div>
+</article>
+
+  </div>
+
+  <!-- This goes in default.html under layout -->
+
+<data class="u-url" href="/"></data>
+<div class="wrapper-footer">
+  <div class="container">
+    <footer class="footer">
+      <a href="mailto:prince.j19@fms.edu" aria-label="Gmail" ><i class="svg-icon email"></i></a>
+      <a href="https://www.linkedin.com/in/princejain17" aria-label="LinkedIn" ><i class="svg-icon linkedin"></i></a>
+      <a href="https://www.twitter.com/Prince_Jain17" aria-label="Twitter" ><i class="svg-icon twitter"></i></a>
+      <p> Forever Curious © Prince Jain. </p>
+    </footer>
+  </div>
+</div>
+
+  
+  <!-- Performance optimization scripts -->
+  <script src="/assets/js/lazy-load.js"></script>
+  <script src="/assets/js/sw-register.js"></script>
+  <script src="/assets/js/swup-cdn.js"></script>
+  <script src="/assets/js/sticky-header.js"></script>
+</body>
+
+</html>

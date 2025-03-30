@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<!-- Preload critical avatar styles to prevent layout shift -->
+	<style>
+/* Preload avatar image styles to prevent layout shift */
+.site-avatar {
+  float: left;
+  width: 70px;
+  height: 70px;
+  margin-right: 15px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #f0f0f0; /* Light gray placeholder */
+  /* Define a placeholder gradient background */
+  background-image: linear-gradient(to bottom right, #f0f0f0, #d8d8d8);
+}
+
+.site-avatar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+.site-avatar img {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  transform: translateZ(0); /* Force hardware acceleration */
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Avatar image loading state */
+.site-avatar img.loading {
+  opacity: 0;
+}
+
+@media (max-width: 640px) {
+  .site-avatar {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+}
+</style>
+
+	<!-- This goes in Head.html -->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZLF9K3MJB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-WZLF9K3MJB');
+</script>
+
+
+	<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta property="og:locale" content="en_US">
+
+<!-- Basic META -->
+<meta name="author" content="Prince Jain">
+<meta name="robots" content="index, follow">
+
+<!-- OpenGraph META -->
+<meta property="og:site_name" content="Prince Jain">
+<meta property="og:url" content="https://princejain.me/links/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Links">
+<meta property="og:description" content="My personal blog where I document my learnings and Product Management journey.">
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter META -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Prince_Jain17">
+<meta name="twitter:creator" content="@Prince_Jain17">
+<meta name="twitter:title" content="Links">
+<meta name="twitter:description" content="My personal blog where I document my learnings and Product Management journey.">
+<meta name="twitter:image" content="https://princejain.me/images/my-image.webp">
+
+<!-- Standard META -->
+<meta name="title" content="Links">
+<meta name="description" content="My personal blog where I document my learnings and Product Management journey.">
+
+<!-- Article specific META (only for blog posts) -->
+
+
+<!-- image -->
+
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+
+
+<!-- url -->
+<meta property="og:url" content="/">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+
+	
+<!-- Website Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Prince Jain",
+  "url": "https://princejain.me",
+  "description": "My personal blog where I document my learnings and Product Management journey.",
+  "author": {
+    "@type": "Person",
+    "name": "Prince Jain"
+  }
+}
+</script>
+
+
+	<title> Links | Prince Jain </title>
+	
+	<!-- Preconnect to Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!-- Load font with display=swap for better performance -->
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+	<!-- Fallback in case JS is disabled -->
+	<noscript>
+		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	</noscript>
+	
+	<!-- Inline critical CSS for faster rendering -->
+	<style>
+/* Critical CSS for above-the-fold content */
+body{font-family:sans-serif;font-weight:400;font-size:15px;line-height:1.5;padding:0;background:#fff;color:#333;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3,h4,h5,h6{font-family:sans-serif;color:#333;font-weight:400;line-height:1.4;margin:.7em 0 10px;padding:0}
+h1{font-size:30px;font-weight:400}
+h1 a{color:inherit;margin:1em 0 10px}
+a{color:#4183c4;text-decoration:none;cursor:pointer}
+.container{margin:0 auto;max-width:740px;padding:0 10px;width:100%;display:flex;flex-direction:column;flex-grow:1;justify-content:space-around}
+nav{float:right;margin-top:23px;font-family:"Lato",sans-serif;font-size:18px;font-weight:400}
+nav a{margin-left:20px;color:#666;text-align:right;font-weight:400;letter-spacing:1px}
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:#4183c4;z-index:9999;width:0;transition:width .2s ease-in-out}
+.site-avatar{float:left;width:70px;height:70px;margin-right:15px}
+.site-avatar img{border-radius:5px}
+.site-info{float:left}
+.site-name{color:#333;cursor:pointer;font-family:"Lato",sans-serif;font-weight:700;font-size:28px;letter-spacing:1px}
+@media (max-width:640px){nav{float:none;margin-top:9px;display:block;font-size:16px}nav a{margin:0 10px;color:#4183c4}.site-avatar{float:none;display:block;margin:0 auto}}
+</style>
+
+	
+	<!-- Critical CSS loaded synchronously -->
+	<link rel="stylesheet" type="text/css" href="/assets/css/sticky-header.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/header-fix.css" />
+	
+	<!-- Non-critical CSS loaded asynchronously -->
+	<link rel="stylesheet" type="text/css" href="/css/style.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/transitions.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/typography-fix.css" media="print" onload="this.media='all'" />
+	<link rel="alternate" type="application/rss+xml" title="Prince Jain - My personal blog where I document my learnings and Product Management journey." href="/feed.xml" />
+	
+	<link rel="canonical" href="https://princejain.me/links/">
+	<link rel="shortcut icon" type="image/png" href="/images/site-icon.webp" />
+	<link rel="apple-touch-icon" href="/images/site-icon.webp">
+
+</head>
+
+
+<body>
+
+  <div class="wrapper-masthead">
+  <div class="header-background"></div>
+  <div class="container">
+    <header class="masthead clearfix">
+      <!-- Wrap avatar and site info in a mobile-friendly container -->
+      <div class="header-identity">
+        <a href="/" class="site-avatar">
+          <!-- Use a smaller, optimized version of the avatar with width/height attributes to prevent layout shift -->
+          <img 
+            src="/images/my-image.webp" 
+            alt="Profile Photo" 
+            width="100%" 
+            height="100%" 
+            loading="eager" 
+            fetchpriority="high">
+        </a>
+        <!-- Explicit spacer for mobile view -->
+        <span class="avatar-title-spacer"></span>
+        <div class="site-info">
+          <h1 class="site-name"> <a href="/">Prince Jain</a> </h1>
+        </div>
+      </div>
+      <nav>
+        <a href="/blogs" aria-label="These are collection of my personal blogs">Blogs</a>
+        <a href="/links/" aria-label="These are collection of links on Product Management I find useful">Links</a>
+        <a href="/tools/" aria-label="Interactive tools for everyday tasks">Tools</a>
+        <a href="/worksummary" aria-label="Summary of my professional work so far">Work-ex</a>
+        <a href="/about" aria-label="If you want to learn more about me">About Me</a>
+      </nav>
+    </header>
+  </div>
+</div>
+
+  <div id="header-spacer"></div>
+  <div id="progress-bar"></div>
+  <div id="main" role="main" class="container transition-fade">
+    <article class="page">
+
+  <h2>Links</h2>
+
+  <div class="entry">
+    <p>This is a curated list of product management resources : people,blogs and books I follow.
+This list should be useful for product managers from beginner to mid level (since that’s my experience level).</p>
+
+<p>The idea is to know and learn from the best people and communities in PM.</p>
+
+<!--
+### List of contents:
+
+-   [Top Product Managers](#product-leaders-on-twitter)
+-   [Websites to follow ](#websites-I-follow)
+-   [Good Blogs on Product](#product-blogs)
+-->
+<h3 id="product-leaders-on-twitter">Product Leaders on Twitter</h3>
+
+<ul>
+  <li><a href="https://twitter.com/shreyas">Shreyas Doshi</a> - ex-PM at Stripe, Twitter, Google, Yahoo.</li>
+  <li><a href="https://twitter.com/lennysan">Lenny Rachitsky.</a> - runs the famous newsletter at <a href="https://www.lennysnewsletter.com/">Lennysnewsletter</a></li>
+  <li><a href="https://twitter.com/jackiebo">Jackie Bavaro</a> - Asana PM. Co-Author of Cracking the PM Interview. Previously @ Google &amp; Microsoft</li>
+  <li><a href="https://twitter.com/joulee">Julie Zhuo</a> - Product design VP @ Facebook.</li>
+  <li><a href="https://twitter.com/sachinrekhi">Sachin Rekhi</a> - Entrepreneur, Product Guy, and Software Engineer.</li>
+  <li><a href="https://twitter.com/kennethn">Ken Norton</a> - Partner @GVTeam. Formerly PM @Google.</li>
+  <li><a href="https://twitter.com/joshelman">Josh Elman</a> - Partner, @GreylockVC: @Medium, @discordapp @Nextdoor.</li>
+  <li><a href="https://twitter.com/hunterwalk">Hunter Walk</a> - @homebrew. Made products at YouTube, Google</li>
+  <li><a href="https://twitter.com/ianmcall">Ian McAllister</a> - Director of Product at Airbnb. Former Amazon and founder of @AmazonSmile.</li>
+  <li><a href="https://twitter.com/cagan">Marty Cagan</a> - Partner at SVPG, specialising in product teams and product strategy</li>
+  <li><a href="https://twitter.com/ericries">Eric Ries</a> - Trying to change how startups are built.</li>
+  <li><a href="https://twitter.com/stevesi">Steven Sinofsky</a> - Board Partner @a16z • Adviser @BoxHQ • Writings @ Learning by Shipping</li>
+</ul>
+
+<h3 id="websites-i-follow">Websites I follow</h3>
+
+<ul>
+  <li><a href="https://techcrunch.com/">Techcrunch</a></li>
+  <li><a href="https://www.producthunt.com/">Product Hunt</a></li>
+  <li><a href="https://yourstory.com/">Yourstory</a></li>
+  <li><a href="https://entrackr.com/">Entrackr</a></li>
+  <li><a href="https://the-ken.com/sea/">The Ken</a></li>
+</ul>
+
+<h3 id="product-blogs">Product Blogs</h3>
+
+<ul>
+  <li><a href="http://svpg.com/articles/">Silicon Valley Product Group</a> - Shares lessons learned and knowledge of product management.</li>
+  <li><a href="http://www.mindtheproduct.com/">Mind the Product</a> - Product Management Blog and events.</li>
+  <li><a href="https://tigerfeathers.substack.com/">Tigerfeathers Substack</a> - Detailed explanations on complex topics ranging from crypto to fintech to India Stack</li>
+  <li><a href="https://manassaloi.com/posts/">Manas Saloi</a> - Shit posts sometime but mainly you can expect distilled and unfiltered product learnings</li>
+  <li><a href="https://www.goodproductmanager.com/">Good Product Manager</a> - How To Be A Good Product Manager</li>
+  <li><a href="https://medium.com/@johnpcutler/15-things-you-should-know-about-product-managers-f488513d246">15 Things You Should Know About Product Managers</a> - John Cutler</li>
+  <li><a href="http://thecleverpm.com/">The Clever PM</a> - Tips, tricks, and hacks that help you to be a better, more clever Product Manager.</li>
+  <li><a href="https://www.goodproductmanager.com/">Good Product Manager</a> - How To Be A Good Product Manager</li>
+  <li><a href="https://blackboxofpm.com/">The Black Box of Product Management</a> - Shining light on the PM discipline</li>
+</ul>
+
+<h3 id="books">Books</h3>
+<p>List of books I have either personally read or purchased to read in the coming future.</p>
+
+<h5 id="product-design">Product Design</h5>
+
+<ul>
+  <li><a href="http://www.amazon.in/gp/product/B001AQ95UY?btkr=1">Inspired - How to Create Products Customers Love</a> - Marty Cagan</li>
+  <li><a href="https://en.wikipedia.org/wiki/The_Design_of_Everyday_Things">The Design of Everyday Things</a> - Donald Norman</li>
+  <li><a href="https://www.amazon.in/Elements-User-Experience-User-Centered-Design/dp/0321683684">The Elements of User Experience</a> - Jesse James Garrett</li>
+  <li><a href="http://www.amazon.in/Hooked-How-Build-Habit-Forming-Products-ebook/dp/B00HJ4A43S">Hooked: How to build habit forming products</a> - Nir Eyal</li>
+</ul>
+
+<h4 id="product-development">Product Development</h4>
+
+<ul>
+  <li><a href="https://www.amazon.in/Decode-Conquer-Answers-Management-Interviews/dp/0615930417">Decode and Conquer</a> - Lewis Lin</li>
+  <li><a href="https://www.amazon.in/INSPIRED-Create-Tech-Products-Customers-ebook/dp/B077NRB36N/">Inspired</a> - Marty Cagan</li>
+  <li><a href="https://www.amazon.in/Thinking-Bets-Making-Smarter-Decisions-ebook/dp/B074DG9LQF">Thinking in Bets</a> - Annie Duke</li>
+  <li><a href="http://www.amazon.in/Cracking-PM-Interview-Product-Technology/dp/0984782818">Cracking the PM Interview</a> - Jackie Bavaro</li>
+  <li><a href="https://www.amazon.in/Escaping-Build-Trap-Melissa-Perri/dp/149197379X">Escaping the Build Trap</a> - Melissa Perri</li>
+</ul>
+
+<h4 id="startups">Startups</h4>
+
+<ul>
+  <li><a href="https://www.amazon.in/Zero-One-Start-Build-Future/dp/0753555190">Zero to One</a> - Peter Thiel</li>
+  <li><a href="https://www.amazon.in/Lean-Startup-Innovation-Successful-Businesses/dp/0670921602/">Lean Startup</a> - Eric Ries</li>
+  <li><a href="http://www.amazon.in/Hard-Thing-About-Things-Building/dp/0062273205/">The Hard Thing About Hard Things</a> - Ben Horowitz</li>
+  <li><a href="http://www.amazon.in/Crossing-Chasm-Marketing-High-Tech-Mainstream/dp/0060517123">Crossing the Chasm</a> - Geoffrey A. Moore</li>
+  <li><a href="http://www.amazon.in/The-Lean-Product-Playbook-Innovate/dp/1118960874">The Lean Product Playbook</a> - Dan Olsen</li>
+  <li><a href="https://www.amazon.in/Xiaomi-Startup-Disrupted-Created-Following/dp/9390327040">Xiaomi</a> - JPK</li>
+</ul>
+
+<h4 id="leadership">Leadership</h4>
+
+<ul>
+  <li><a href="https://www.amazon.in/Measure-What-Matters-John-Doerr/dp/024134848X">Measure What Matters</a> - John Doerr</li>
+  <li><a href="http://www.amazon.in/gp/product/0316219266/">The Everything Store: Jeff Bezos and the Age of Amazon</a> - Brad Stone</li>
+  <li><a href="http://www.amazon.in/Freakonomics-Economist-Explores-Hidden-Everything/dp/0060731338/">Freakonomics</a> - Steven Levitt and Stephen J. Dubner</li>
+  <li><a href="http://www.amazon.in/Habits-Highly-Effective-People-Powerful/dp/1451639619">The 7 Habits of Highly Effective People</a> - Stephen R. Covey</li>
+  <li><a href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow">Thinking, Fast and Slow</a> - Daniel Kahneman</li>
+</ul>
+
+<p>List of good links on Product Management I have collated can be found <a href="/PM-Links">here</a></p>
+
+<p>Please send me something good to read if you have recommendations, would love to check them out as well.</p>
+
+  </div>
+</article>
+
+  </div>
+
+  <!-- This goes in default.html under layout -->
+
+<data class="u-url" href="/"></data>
+<div class="wrapper-footer">
+  <div class="container">
+    <footer class="footer">
+      <a href="mailto:prince.j19@fms.edu" aria-label="Gmail" ><i class="svg-icon email"></i></a>
+      <a href="https://www.linkedin.com/in/princejain17" aria-label="LinkedIn" ><i class="svg-icon linkedin"></i></a>
+      <a href="https://www.twitter.com/Prince_Jain17" aria-label="Twitter" ><i class="svg-icon twitter"></i></a>
+      <p> Forever Curious © Prince Jain. </p>
+    </footer>
+  </div>
+</div>
+
+  
+  <!-- Performance optimization scripts -->
+  <script src="/assets/js/lazy-load.js"></script>
+  <script src="/assets/js/sw-register.js"></script>
+  <script src="/assets/js/swup-cdn.js"></script>
+  <script src="/assets/js/sticky-header.js"></script>
+</body>
+
+</html>

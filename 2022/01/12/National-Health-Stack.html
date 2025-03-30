@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<!-- Preload critical avatar styles to prevent layout shift -->
+	<style>
+/* Preload avatar image styles to prevent layout shift */
+.site-avatar {
+  float: left;
+  width: 70px;
+  height: 70px;
+  margin-right: 15px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #f0f0f0; /* Light gray placeholder */
+  /* Define a placeholder gradient background */
+  background-image: linear-gradient(to bottom right, #f0f0f0, #d8d8d8);
+}
+
+.site-avatar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+.site-avatar img {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  transform: translateZ(0); /* Force hardware acceleration */
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Avatar image loading state */
+.site-avatar img.loading {
+  opacity: 0;
+}
+
+@media (max-width: 640px) {
+  .site-avatar {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+}
+</style>
+
+	<!-- This goes in Head.html -->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZLF9K3MJB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-WZLF9K3MJB');
+</script>
+
+
+	<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta property="og:locale" content="en_US">
+
+<!-- Basic META -->
+<meta name="author" content="Prince Jain">
+<meta name="robots" content="index, follow">
+
+<!-- OpenGraph META -->
+<meta property="og:site_name" content="Prince Jain">
+<meta property="og:url" content="https://princejain.me/2022/01/12/National-Health-Stack.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Explaining the National Health Stack">
+<meta property="og:description" content="National Health Stack is an upcoming government initiative which might end up revolutionising healthcare in India">
+<meta property="og:image" content="https://princejain.me{"path"=>"/assets/blog_images/healthstackblog.png"}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter META -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Prince_Jain17">
+<meta name="twitter:creator" content="@Prince_Jain17">
+<meta name="twitter:title" content="Explaining the National Health Stack">
+<meta name="twitter:description" content="National Health Stack is an upcoming government initiative which might end up revolutionising healthcare in India">
+<meta name="twitter:image" content="https://princejain.me{"path"=>"/assets/blog_images/healthstackblog.png"}">
+
+<!-- Standard META -->
+<meta name="title" content="Explaining the National Health Stack">
+<meta name="description" content="National Health Stack is an upcoming government initiative which might end up revolutionising healthcare in India">
+
+<!-- Article specific META (only for blog posts) -->
+
+<meta property="article:published_time" content="2022-01-12T00:00:00+00:00">
+
+<meta property="article:section" content="">
+
+
+
+
+
+
+<!-- image -->
+
+<meta name="twitter:image" content="https://princejain.me/assets/blog_images/healthstackblog.png" />
+<meta name="og:image" content="https://princejain.me/assets/blog_images/healthstackblog.png" />
+
+
+<!-- url -->
+<meta property="og:url" content="/">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+
+	
+<!-- Blog Post Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Explaining the National Health Stack",
+  "datePublished": "2022-01-12T00:00:00+00:00",
+  "dateModified": "2022-01-12T00:00:00+00:00",
+  "author": {
+    "@type": "Person",
+    "name": "Prince Jain",
+    "url": "https://princejain.me"
+  },
+  "description": "National Health Stack is an upcoming government initiative which might end up revolutionising healthcare in India",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://princejain.me/2022/01/12/National-Health-Stack.html"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Prince Jain",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://princejain.me/images/my-image.webp"
+    }
+  },
+  "image": [
+    "https://princejain.me{"path"=>"/assets/blog_images/healthstackblog.png"}"
+  ]
+}
+</script>
+
+
+	<title> Explaining the National Health Stack | Prince Jain </title>
+	
+	<!-- Preconnect to Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!-- Load font with display=swap for better performance -->
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+	<!-- Fallback in case JS is disabled -->
+	<noscript>
+		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	</noscript>
+	
+	<!-- Inline critical CSS for faster rendering -->
+	<style>
+/* Critical CSS for above-the-fold content */
+body{font-family:sans-serif;font-weight:400;font-size:15px;line-height:1.5;padding:0;background:#fff;color:#333;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3,h4,h5,h6{font-family:sans-serif;color:#333;font-weight:400;line-height:1.4;margin:.7em 0 10px;padding:0}
+h1{font-size:30px;font-weight:400}
+h1 a{color:inherit;margin:1em 0 10px}
+a{color:#4183c4;text-decoration:none;cursor:pointer}
+.container{margin:0 auto;max-width:740px;padding:0 10px;width:100%;display:flex;flex-direction:column;flex-grow:1;justify-content:space-around}
+nav{float:right;margin-top:23px;font-family:"Lato",sans-serif;font-size:18px;font-weight:400}
+nav a{margin-left:20px;color:#666;text-align:right;font-weight:400;letter-spacing:1px}
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:#4183c4;z-index:9999;width:0;transition:width .2s ease-in-out}
+.site-avatar{float:left;width:70px;height:70px;margin-right:15px}
+.site-avatar img{border-radius:5px}
+.site-info{float:left}
+.site-name{color:#333;cursor:pointer;font-family:"Lato",sans-serif;font-weight:700;font-size:28px;letter-spacing:1px}
+@media (max-width:640px){nav{float:none;margin-top:9px;display:block;font-size:16px}nav a{margin:0 10px;color:#4183c4}.site-avatar{float:none;display:block;margin:0 auto}}
+</style>
+
+	
+	<!-- Critical CSS loaded synchronously -->
+	<link rel="stylesheet" type="text/css" href="/assets/css/sticky-header.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/header-fix.css" />
+	
+	<!-- Non-critical CSS loaded asynchronously -->
+	<link rel="stylesheet" type="text/css" href="/css/style.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/transitions.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/typography-fix.css" media="print" onload="this.media='all'" />
+	<link rel="alternate" type="application/rss+xml" title="Prince Jain - My personal blog where I document my learnings and Product Management journey." href="/feed.xml" />
+	
+	<link rel="canonical" href="https://princejain.me/2022/01/12/National-Health-Stack.html">
+	<link rel="shortcut icon" type="image/png" href="/images/site-icon.webp" />
+	<link rel="apple-touch-icon" href="/images/site-icon.webp">
+
+</head>
+
+
+<body>
+
+  <div class="wrapper-masthead">
+  <div class="header-background"></div>
+  <div class="container">
+    <header class="masthead clearfix">
+      <!-- Wrap avatar and site info in a mobile-friendly container -->
+      <div class="header-identity">
+        <a href="/" class="site-avatar">
+          <!-- Use a smaller, optimized version of the avatar with width/height attributes to prevent layout shift -->
+          <img 
+            src="/images/my-image.webp" 
+            alt="Profile Photo" 
+            width="100%" 
+            height="100%" 
+            loading="eager" 
+            fetchpriority="high">
+        </a>
+        <!-- Explicit spacer for mobile view -->
+        <span class="avatar-title-spacer"></span>
+        <div class="site-info">
+          <h1 class="site-name"> <a href="/">Prince Jain</a> </h1>
+        </div>
+      </div>
+      <nav>
+        <a href="/blogs" aria-label="These are collection of my personal blogs">Blogs</a>
+        <a href="/links/" aria-label="These are collection of links on Product Management I find useful">Links</a>
+        <a href="/tools/" aria-label="Interactive tools for everyday tasks">Tools</a>
+        <a href="/worksummary" aria-label="Summary of my professional work so far">Work-ex</a>
+        <a href="/about" aria-label="If you want to learn more about me">About Me</a>
+      </nav>
+    </header>
+  </div>
+</div>
+
+  <div id="header-spacer"></div>
+  <div id="progress-bar"></div>
+  <div id="main" role="main" class="container transition-fade">
+    <article class="post">
+
+  <h2>Explaining the National Health Stack</h2>
+
+  <div class="date">
+    Published on January 12, 2022
+  </div>
+
+  <div class="entry">
+    <p>The National Health Stack is a new digital health infrastructure launched by the National Health Authority of India, envisioned to serve as the building block for digitising the healthcare sector in the country.</p>
+
+<p>It’s essentially set of APIs to any which entity (public/ private) can hook into and enable complex solutions in the health space, the same way any fintech player these days can enable UPI payments with simple API integrations. The basics of the NHS are very similar to India stack and the way India Stack revolutionised Payments in the country (among other things), NHS is envisioned to revolutionise the healthcare ecosystem in India.</p>
+
+<p>Before I start with detailing the National Health Stack, I believe it’s important to mention <strong>India Stack</strong>: it’s imperative to understand how we reached here and what the future for healthcare may look like. Okay with that said, let’s start with a crash course on <strong>India Stack</strong>.</p>
+
+<p>India Stack is the comprehensive digital identity, payment, and data-management system we as a nation have been working towards for a little more than 10 years. Under it, we are trying to solve for the three economic primitives of identity, payments, and data.</p>
+
+<p><strong>Stage 1: Digital Identity</strong></p>
+
+<p>It all started with building the digital identity for all citizens under the Aadhaar initiative ( literally meaning “foundation” in Hindi). This gave everyone a unique 12-digit identification number that could be used to access a wide range of services.
+More than 90% of the country’s population, 1.2 Bn of them have enrolled for a Aadhaar, about half of them linked it to their bank accounts.</p>
+
+<p><img src="/images/Health_Stack.png" alt="Aadhaar Trend" class="center" /></p>
+
+<p>Prior to Aadhaar, lack of a central identity meant nearly half of the country’s population lacked a nationally accepted identity. This meant complex processes for banks to verify identity, ultimately driving up the cost for banking. All other popular modes of identity (PAN, Passport, Driving License, Ration Card) are fragmented in their adoption and many lacks digitisation.</p>
+
+<p>The Reserve Bank of India grasped this opportunity to transform banking. It created an electronic way for banks to verify customer’s identity using Aadhaar’s biometrics (e-KYC) and significantly brought down the cost of account opening. This coupled with the ambitious <em>Pradhan Mantri Jan Dhan Yojana</em> enabled more than 350 million new account openings.</p>
+
+<p><strong>Stage 2: Interoperable Payments</strong></p>
+
+<p>While the government was widening access to bank accounts, RBI under the NPCI arm launched a new layer of retail payments called as UPI (Unified Payments Interface). This enabled banks and non banks to talk and exchange payments inter-operably amongst one other.</p>
+<blockquote>
+  <p>“<em>Since its launch in April 2016, UPI has been nothing short of a runaway success story, with few parallels in the history of global payments. In just 4 years, the second layer of India Stack grew from an ambitious idea to the world’s 5th largest payment network by volume, behind only Visa, Alipay, WeChat Pay, and MasterCard.</em>” - Tigerfeathers substack.</p>
+
+</blockquote>
+
+<p>In simple sense, the way UPI works is that all banks are connected to a central server operated by NPCI (National Payments Corporation of India) and NPCI acts as a middlemen and a custodian of all the information exchange between banks.</p>
+
+<p><img src="/images/Health_Stack_1.png" alt="UPI Trend" class="center" /></p>
+
+<p>Banks can expose hooks (UPI handles like okhdfcbank, okicici) to private fintech players which allows them to extend seamless payments functionality to their users without having to implement a complex maze of banking flows.</p>
+
+<p>From an end-user aspect, everyone is free to choose the app of their choice and transfer money (send/request) from one VPA handle to other. This has led unprecedented innovation and growth in the payments space in the country in the last 5 years.</p>
+
+<p><strong>Stage 3: Data Empowerment through DEPA</strong></p>
+
+<p>Solving for the primitives of identity and payments, led to India becoming data-rich. People from organised to semi and un-organised sectors including small shopkeepers, MSMEs, entrepreneurs and gig economy workers started generating digital payments footprint. This digital footprint could be used, for the first time, to provide evidence that builds trust with institutions. This could also enable better access to services that could meaningfully improve people’s lives and all this eventually creates a need to solve for <strong>data ownership</strong>.</p>
+
+<p>The third and the final piece of India Stack focuses on establishing a new model for data governance in India. This is somewhat similar to what <strong><a href="https://gdpr.eu/what-is-gdpr/">GPDR</a></strong> is for EU citizens.</p>
+
+<p><em>To understand why this is needed, think of a practical situation where you apply for a loan and the loan provider asks for your last 3 month bank statements. Like me, have you also felt uncomfortable sharing these? After all, they just need to verify your income to ensure you are capable to pay back your EMIs. Another problem in this regard is what if you receive income in multiple bank accounts, how do you prove your credit worthiness?</em></p>
+
+<p>This is what the DEPA aims to solve by putting users in control and ownership of their data. This is done by freeing up data from the ownership of those who generate it and putting the actual owners on that data in control. It solves to ensure that users should not struggle to access or share their data from institutions</p>
+
+<blockquote>
+  <p><em>DEPA replaces costly and cumbersome data
+access and sharing practices that disempower individuals, such as bulk printout notarisation and physical submission, screen scraping, username/password sharing, and terms and conditions forms providing blanket consent.</em> - DEPA Consultation Paper</p>
+
+</blockquote>
+
+<p>There is still a lot happening on this layer with an impending legislation under <strong><a href="https://www.meity.gov.in/writereaddata/files/Personal_Data_Protection_Bill,2018.pdf">PDP Bill</a></strong> (Personal Data Protection) and many things are currently being build and enabled. The one which is most striking is the <a href="https://setu.co/data/account-aggregator">Account Aggregator Framework</a> which is meant to solve for how we share our financial data.</p>
+
+<figure>
+<img src="/images/Health_Stack_7.png" alt="The three layers of India Stack. Source: iSPIRT" />
+<figcaption>The three layers of India Stack. Source: iSPIRT</figcaption>
+</figure>
+
+<p>In a nutshell, the India Stack enabled us widen access to financial services, dramatically lower the cost of confirming people’s identities and allowed control on access to people’s personal data  through consent:</p>
+<ul>
+  <li>Identity: Aadhaar</li>
+  <li>Payments: UPI</li>
+  <li>Data: DEPA</li>
+</ul>
+
+<p><em>If you want to learn more about the India Stack, read <strong><a href="https://tigerfeathers.substack.com/p/the-internet-country">this</a></strong> amazing blog on India Stack by Aaryaman Vir.</em></p>
+
+<hr />
+
+<h4 id="introduction"><strong>Introduction</strong></h4>
+
+<p>Now that you know about India Stack, before we dig deeper into the National Health Stack, I want to help you imagine a worldview where this infrastructure has come to life.</p>
+
+<p>Lets take the case of a normal doctor consultation:</p>
+
+<ol>
+  <li>You visit a Hospital and find a QR on the registration desk. You pull out your smartphone, launch the app of your choice and scan it. The hospital instantly gets accurate information about you and you are instantly registered – <em>Profile Sharing</em></li>
+  <li>The health facility then sends you a request, asking you to share relevant documents from your previous medical visits. You use your smartphone to relevant documents. -  <em>Health data sharing &amp; consent</em></li>
+  <li>When you walk into the doctor’s room, she has your full medical history open on her computer. She uses that to aid in your assessment and and writes you a new prescription. You instantly get a notification on your mobile and can view the recent prescription digitally - <em>Digital Health Records</em></li>
+  <li>Doctor’s treatment plan and prescription shows up on your mobile and you can schedule a follow up visit or have a tele-consult or order medicines directly from your phone. - <em>Value added services like tele-consult, medicine ordering</em></li>
+  <li>You can then use all these documents to get instant and seamless digital claims processed for your health insurance - <em>e-Insurance claims</em></li>
+</ol>
+
+<p><em>These are some of the actual flows being enabled by the National Health Stack, currently being built piece by piece!</em></p>
+
+<h4 id="okay-so-what-is-india-health-stack">Okay, so what is India Health Stack</h4>
+
+<p>Now that we have done a crash course on <strong>India Stack</strong> and understood what the future with NHS may look like, let’s actually try to understand it. NHS takes learnings from the best of what India stack has to offer:</p>
+
+<p><strong><em>Identity layer from Aadhaar, Interoperability from UPI and data ownership from DEPA</em></strong></p>
+
+<p>All the key traits of India stack are well utilised in National Health stack as well:</p>
+
+<ul>
+  <li><strong>Presence-less layer</strong> : Remove barrier for participation by giving digital identities and authentication mechanisms</li>
+  <li><strong>Paper-less layer:</strong> Enables digital records to be moved seamlessly linked with an individual’s identity</li>
+  <li><strong>Consent layer:</strong> Give users control over their data and allow them to share it in a safe and secure manner</li>
+</ul>
+
+<p>India health stack is the infrastructure which aims to provide the foundational components for health programs in India. It aims to bring a holistic view across multiple health entities and enable interoperability between the various public and private players.</p>
+<blockquote>
+  <p>“<em>Built as a Common Public Good by the Centre for adoption by all states, it will eliminate any repetitive efforts on part of, yet retain autonomy for, the states—paving way for rapid rollout of various health initiatives, achieve convergence and accelerate the momentum to achieve the goal of Universal Health Coverage</em>” - NHA</p>
+
+</blockquote>
+
+<h4 id="health-stack-building-blocks">Health Stack Building Blocks</h4>
+
+<figure>
+<img src="/images/Health_Stack_2.png" alt="National Health Stack. Source: UHI Consultation Paper" />
+<figcaption>National Health Stack. Source: UHI Consultation Paper</figcaption>
+</figure>
+
+<p>There are four broad layers or stack to the National Health Stack Architecture:</p>
+
+<ol>
+  <li>
+    <p><strong>JAM and Existing Digital Public Goods</strong>: This is like the base layer which form the foundational layer in digital health services and sets foundations for interoperability by leveraging existing digital public goods (remember India Stack!). NDHM has been designed to operate effectively with and leverage Aadhaar, Jan Dhan Bank Accounts and Mobile (JAM), UPI, eSign, Digilocker, etc.
+These integrations provide key functionalities in the NDHM architecture. For example, the creation of a Health ID for patients using Aadhaar authentication service to verify identity, and doctors can pull in their digitally issued certificates through DigiLocker when enrolling in the Healthcare Professionals Registry. NDHM is built with other such integrations in mind in a modular, scalable manner.</p>
+  </li>
+  <li><strong>Health Data Exchange Layer:</strong> This layer encompasses the core digital infrastructure
+modules needed to ensure the interoperability of various kinds of health data. These
+building blocks include core participant registries, Health Information Exchange and Consent
+Manager, Health Data Standards (based on FHIR), coding terminology and data
+aggregation specifications that drive trust and shareability of health data between
+patients and healthcare providers. Some of the key components of this layer are:
+    <ul>
+      <li><strong>Digital</strong> <strong>Registries:</strong> This is aimed to serve as a reliable and easily accessible master data about all the players in the health ecosystem. It plans to include consolidated e-registries for healthcare providers (hospitals, clinics, labs etc), beneficiaries, doctors, insurers and ASHAs etc. Similar to how every citizen has a digital identity with Aadhaar, every health participant will have a digital identity:
+        <ol>
+          <li><strong>Health Id :</strong> Each user in the system will be issued an unique 14-digit Health ID</li>
+          <li><strong>Doctor Id:</strong> Each doctor in the ecosystem will be issued a unique 14-digit Doctor ID.</li>
+          <li><strong>Facility Registry:</strong> Each participating healthcare facility (clinic/hospital/lab etc) will be issued a unique facility ID.</li>
+        </ol>
+      </li>
+      <li>
+        <p><strong>Health Information Exchange:</strong> This lays down the principles of how health data is to be shared inter-operably between patients and health care providers. It lays down the FHIR so that health data is encoded in a machine readable and globally accepted format for it to be processed universally.
+ Another key aspect of this layer is <strong>“Consent”.</strong> It lays down the details of a consent manager which details how users consent is managed, maintained and taken into account while sharing any health data. It also gives user the control or rather the ownership of their health data</p>
+      </li>
+      <li><strong>Health Claims Standards:</strong> This component aims to provide building blocks for implementing a large scale health insurance program, with the vision of allowing private and public players to implement insurance schemes in a data driven manner through open APIs. It is meant to do enable of wide-impacting use cases in the Insurance space:
+        <ol>
+          <li>Enable a policy engine to allow for defining and storing a machine readable insurance policies</li>
+          <li>Instant digital activation of policy on verification of premium transfer</li>
+          <li>Setting up a Claim Engine for auto adjudication of claims<strong>.</strong> Scope for a smart contract (shoutout to cryto bois’ reading this) to auto execute insurance payments on meetings conditions of the claim process</li>
+          <li>Data modelling backed fraud detection, better visibility of past claims history and deeper analysis of suspicious claims</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Health Services Interface:</strong> Building blocks in this layer are envisioned to enable interoperable and seamless interactions between the patients and providers of digital health services. It lays down the foundation of “open networks”</p>
+
+    <p><img src="/images/Health_Stack_3.png" alt="Health Services Interface" /></p>
+
+    <p>Open Networks are set of shared technical standards, accessible to everyone. Being a non proprietary protocol means no one is locked into using any particular entity’s product and makes the ecosystem interoperable.</p>
+
+    <p>This is akin to UPI and the role of NPCI in Payments layer of India Stack. The way NPCI controls the central server and lays out protocol for banks to talk to each other (maybe now you realise why I had to cover India Stack before!), this layer lays down open protocols for various participating health care entities to talk and exchange data with each other by a introducing the concept of <strong>Unified Health Interface</strong> (India Stack parallel: UPI 😉)</p>
+
+    <p>UHI is envisioned as an open protocol for digital health services and aims to allow interactions between end-user applications (EUAs) and Health Service Providers (HSPs). This has the potential to bring a lot of benefits to the entire health ecosytem, ultimately bringing down the cost of delivery health care services: Interoperability, easy discoverability, trust and network effects.</p>
+
+    <p>As a small snippet assume the current scenario where every health-tech player from Apollo to Practo to EkaCare needs to have their own onboarding flows for users and doctors, incur a significant cost for verification and data accuracy. These platform operators have put in place their own doctor credential verification systems to reassure end users but the standards used by these operators are not scrutinized by any regulatory body. In the UHI scheme of things, they can simply plugin to the NDHM stack and get the list of all users and doctors which are already onboarded and can choose to build value added services on top of the stack.</p>
+
+    <figure>
+ <img src="/images/Health_Stack_4.png" alt="Digital Health Services possible on UHI. Source: NHA " />
+ <figcaption>Digital Health Services possible on UHI. Source: NHA </figcaption>
+ </figure>
+  </li>
+  <li><strong>User Applications:</strong> This is the final end-user layer of the NDHM ecosystem. It comprises the
+applications and platforms developed by the government or private sector through which
+patients, healthcare providers, insurers, researchers, policy makers, etc. access health services. The application layer will interact with the health services layer
+and the health data layer to enable a wide range of digital health services and health data
+interchange.UHI defines various entities with regards to their participation in the health information flow:
+    <ul>
+      <li><strong>Health Information Provider (HIP):</strong> Any entity which generates Health information ( <em>Includes Hospitals, diagnostic centres, clinics, public health programs, telemedicine players, etc. )</em></li>
+      <li><strong>Health Information User (HIU):</strong> Any entity that would like to access health records of an individual ( <em>Includes doctors, hospitals or 3rd party app)</em></li>
+      <li><strong>Health Repository Provider (HRP):</strong> Software service providers who offer NDHM compliant software and long-term record storage to HIP/HIUs</li>
+      <li><strong>Public Health Record (PHR):</strong> User facing app which facilitates HealthId creation, consent management and health record viewing. (by that definition most PHRs would be HIUs as well</li>
+      <li>
+        <p><strong>Health Locker:</strong> Think of this as a Google Drive for your health documents. The way you have all your identity documents available in Digilocker, the same way users have an option to store all their health documents in a health locker.</p>
+
+        <figure>
+  <img src="/images/Health_Stack_5.png" alt="High level information flow in UHI" />
+  <figcaption>High level information flow in UHI </figcaption>
+  </figure>
+      </li>
+    </ul>
+
+    <p>It is crucial to note that this layer is envisioned as the hotbed for market innovation. NDHM as an entity doesn’t aim to directly participate in user interactions and expects private and public sector participants to take a lead in building use cases and innovative solutions on top of this stack.</p>
+  </li>
+</ol>
+
+<h3 id="why-do-we-need-a-national-health-stack">Why do we need a National Health Stack?</h3>
+
+<p>A bunch of reasons. The broad idea is that a National Health Stack will enable us to digitise and standardise health service by getting all entities to talk to a single central system. This has a bunch of potential benefits:</p>
+
+<ul>
+  <li>
+    <p><strong>Consolidate Digital Health</strong>: A lot of our health documents these days are already in some form or other digital: be it the Covid Vaccination certificate or a Blood test report. The problem today is of consolidation since all these health data lie under various fragmented data systems and as a user we don’t have a single place to store/view them. The health stack is supposed to solve this problem by bringing all your health documents under a single infrastructure.</p>
+  </li>
+  <li>
+    <p><strong>Standardise Digital Health records</strong>: Currently there is no standardisation on how different health entities generate/ consume health records. While there exists few globally accepted Health document standards, India lacks adoption and NHS plans to solve that by adopting the <a href="https://www.hl7.org/fhir/">FHIR</a>  standardisation. So that all entities generate and recognise health reports in the same format and it can be made machine readable</p>
+  </li>
+  <li>
+    <p><strong>Build longitudinal Health records</strong>: A longitudinal health record is a collection of electronic medical record (EMR) of patient health information generated by one or more healthcare providers. Having your longitudinal health history available helps health professionals to quickly learn about your previous health history, allergies, medications and take quick remedial actions when urgently needed.</p>
+  </li>
+  <li>
+    <p><strong>Derive analytical insights from data</strong>: Once health data is standardised, consolidated and made machine readable there are many powerful use cases which can be build of top of it. One of the powerful one’s is to enable big data analytics to determine the health scenario in the country, complex study of diseases and pandemics for medical research purposes.</p>
+  </li>
+</ul>
+
+<p>Okay, so now that you understand the basic construct and why we may need the NHS for; lets look at some of key tenants on which this stack is based on:</p>
+
+<h3 id="key-tenants-of-the-health-stack">Key tenants of the Health Stack</h3>
+
+<ul>
+  <li>
+    <p><strong>Inter-Operablility</strong>
+UHI is designed to be a truly inter-operable model. You can have your health records from various different providers (Labs, clinics, private &amp; government health facilities, self uploaded medical records) and all of it will be consolidated for the user linked to their Health ID and available to the entire ecosystem for access <strong><em>post an explicit end user consent.</em></strong>
+This ensures that health data is easily accessible by everyone in the ecosystem and large players do not build a closed wall around user data using their proprietary protocol.</p>
+  </li>
+  <li>
+    <p><strong>Consent</strong>
+Another core tenant of UHI is that any user data flows only upon explicit user consent. No health data for the user flows There are even granular controls to choose the health document type and time validity for which the documents are shared. No entity can ever access your health documents without explicit consent.</p>
+  </li>
+  <li>
+    <p><strong>Choice</strong>
+Another key fundamental of the UHI network is that it is <strong>optional</strong> and only users who wishes to participate in this network do. No one by default gets a Health Id or gets their data shared with anyone in the ecosystem<br />
+<em>(<strong>Note</strong>: There was a known deviation to this where Health IDs were created for millions of users during their Covid Vaccination and has been rolled back since then)</em></p>
+  </li>
+  <li>
+    <p><strong>Ownership</strong>
+While the construct of ownership is still loosely defined, probably due to impeding PDP bill. The idea here is that user owns their health care data and are free to fetch their data from all healthcare entities in the ecosystem and store it permanently* for themselves in a separate health locker of their choice. (* depending on the capabilities of the Health Locker)</p>
+  </li>
+  <li>
+    <p><strong>Privacy</strong>
+All user data is stored and is exchanged in an encrypted manner and only the relevant parties authorised (with a valid private key) can decrypt and view the health care data.</p>
+  </li>
+</ul>
+
+<h3 id="market-opportunities">Market Opportunities</h3>
+
+<p>While the Health Stack is still currently being worked upon and many opportunities will be unlocked once this ecosystem is fully developed, these are some of the more immediate opportunities for private players:</p>
+
+<ul>
+  <li>
+    <p><strong>PHR App</strong>: Any private entity which has a good understanding and capability to build user side flows can become a PHR App. It is essentially the app which users will use to interact with the UHI stack (like the fintech apps incase of UPI).
+There are significant potential to integrate and enable a lot of value added services like payments, doctor ratings/reviews, health records storage, upselling services like insurance, lab tests, hardware devices etc.</p>
+  </li>
+  <li>
+    <p><strong>Health Locker:</strong> This is another user facing functionality enabled by NDHM. This is Google Drive equivalent of Health where users can store their longitudinal health data from all health providers, digitise existing health documents (uploading them) and ensuring its accessible and stored perenially.
+This is the data layer of UHI stack and a lot of interesting use cases from insurance to analytics can be build on top of the health locker layer.</p>
+  </li>
+  <li>
+    <p><strong>HIMS/ LIMS:</strong> Most labs and hospitals currently use outdated HIMS systems, which barely serves the purpose of digitising their information flow. In order for them to integrate with the NDHM ecosystem, they would need to upgrade their information management systems to make it FHIR and UHI compliant and also invest considerably in hardware to digitise the data collection and viewing flow.
+There is significant business potential for hardware and software players in hospital-tech.</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p>NDHM can spur a fundamental transformation in India’s healthcare system and unlock economic value worth over $200 billion by 2030- Niti Aayog</p>
+
+</blockquote>
+<figure>
+   <img src="/images/Health_Stack_6.png" alt="Various Entities participating in UHI. Source: The Ken" />
+    <figcaption>Various Entities participating in UHI. Source: The Ken </figcaption>
+</figure>
+
+<h3 id="critics-to-uhi">Critics to UHI</h3>
+
+<p>There are some of the critics I have come across while researching and discussing about the UHI stack, detailing some of those here:</p>
+
+<ul>
+  <li>
+    <p><strong>Its meant to INDIA and not for BHARAT</strong>
+While most of what I discussed about for the stack assumes the user has a smartphone (blame my privilege), most part of the UHI functions even without one! Users can create a HealthID account at health centres by showing physical documents and get a physical Health ID Card, and avail most of these services offline. The fundamental utlity of the documents available digitally still is valid. However, some intricate aspects like health data sharing and consent flow for non-smartphone users though are something yet to be detailed out further.</p>
+  </li>
+  <li>
+    <p><strong>Health IDs were created without consent during Vaccination drive</strong>
+While there is some merit to this critic since the government did create HealthIDs for users without any explicit consent or education and most of them got to know about this when opening their vaccination certificate, there was no leakage or miss-use of user’s health data in my opinion.</p>
+
+    <blockquote>
+      <p>Of 165 million health IDs that have been generated, Co-WIN alone aided in generation of 127 million of them</p>
+
+    </blockquote>
+
+    <p>Looking back this certainly was an oversight on behalf of policy makers but considering that no other document was added to this,  I don’t see this as any harm done. <em><strong>Note</strong>: It has been rolled backed since then and new cowin certificates don’t have a HID.</em></p>
+  </li>
+  <li>
+    <p><strong>Loose definition on encryption for Health Lockers/ PHR apps</strong>
+Currently there is not enough regulations/ policies around how health lockers/ PHR apps need to handle or store user’s health data. While NDHM lays out broad principles and guidelines, there are no well defined requirements on data encryption and storage for these entities.
+In my opinion, as the ecosystem evolves, this will eventualy become more clearer.</p>
+  </li>
+  <li>
+    <p><strong>Opposition from the incumbents</strong>
+This ecosystem in a lot of ways is a direct threat to the current business models of the incumbents.  Let’s take Practo for example: it has invested considerable money and resources in getting tens of thousands of doctors onboarded and verified on their platform, which is the hook they use to get users onto their platform.
+In the UHI scheme of things all health professional will be onboarded by NDHM and are available for all players to leverage. The moat Practo had (the closed wall) might be made irrelevant. But this is also why a lot of innovations might happen in health-tech space and new and interesting business models will arrive.</p>
+  </li>
+</ul>
+
+<p><strong>The end.</strong></p>
+
+<p>Thank you for bearing with me all the way till the end, I hope you got to learn something about the National Health Stack. <br />
+<em><strong>Disclaimer:</strong> As of writing this article, I am associated with Paytm working on their Health Initiative.</em></p>
+
+<h4 id="references">References:</h4>
+
+<ul>
+  <li><strong><a href="https://abdm.gov.in/assets/uploads/consultation_papersDocs/UHI_Consultation_Paper.pdf">UHI Consultation Paper</a></strong></li>
+  <li><strong><a href="https://abdm.gov.in/publications/NHS_Strategy_and_Approach">National Health Stack Consultation Paper</a></strong></li>
+  <li><strong><a href="https://www.niti.gov.in/sites/default/files/2020-09/DEPA-Book.pdf">DEPA Consultation Paper</a></strong></li>
+  <li><strong><a href="https://itihaasa.com/public/pdf/History_and_Future_of_Digital_Health_in_the_World_and_India.pdf">iSpirt Working Paper</a></strong></li>
+  <li><strong><a href="https://the-ken.com/story/behind-the-rush-and-hush-of-indias-digital-health-mission/">The Ken - Article on UHI</a></strong></li>
+</ul>
+
+<hr />
+
+  </div>
+
+</article>
+<script src="https://princejain.me/scrollbar.js"></script>
+
+  </div>
+
+  <!-- This goes in default.html under layout -->
+
+<data class="u-url" href="/"></data>
+<div class="wrapper-footer">
+  <div class="container">
+    <footer class="footer">
+      <a href="mailto:prince.j19@fms.edu" aria-label="Gmail" ><i class="svg-icon email"></i></a>
+      <a href="https://www.linkedin.com/in/princejain17" aria-label="LinkedIn" ><i class="svg-icon linkedin"></i></a>
+      <a href="https://www.twitter.com/Prince_Jain17" aria-label="Twitter" ><i class="svg-icon twitter"></i></a>
+      <p> Forever Curious © Prince Jain. </p>
+    </footer>
+  </div>
+</div>
+
+  
+  <!-- Performance optimization scripts -->
+  <script src="/assets/js/lazy-load.js"></script>
+  <script src="/assets/js/sw-register.js"></script>
+  <script src="/assets/js/swup-cdn.js"></script>
+  <script src="/assets/js/sticky-header.js"></script>
+</body>
+
+</html>

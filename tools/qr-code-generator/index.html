@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<!-- Preload critical avatar styles to prevent layout shift -->
+	<style>
+/* Preload avatar image styles to prevent layout shift */
+.site-avatar {
+  float: left;
+  width: 70px;
+  height: 70px;
+  margin-right: 15px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #f0f0f0; /* Light gray placeholder */
+  /* Define a placeholder gradient background */
+  background-image: linear-gradient(to bottom right, #f0f0f0, #d8d8d8);
+}
+
+.site-avatar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+.site-avatar img {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  transform: translateZ(0); /* Force hardware acceleration */
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Avatar image loading state */
+.site-avatar img.loading {
+  opacity: 0;
+}
+
+@media (max-width: 640px) {
+  .site-avatar {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+}
+</style>
+
+	<!-- This goes in Head.html -->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZLF9K3MJB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-WZLF9K3MJB');
+</script>
+
+
+	<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta property="og:locale" content="en_US">
+
+<!-- Basic META -->
+<meta name="author" content="Prince Jain">
+<meta name="robots" content="index, follow">
+
+<!-- OpenGraph META -->
+<meta property="og:site_name" content="Prince Jain">
+<meta property="og:url" content="https://princejain.me/tools/qr-code-generator/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="QR Code Generator">
+<meta property="og:description" content="My personal blog where I document my learnings and Product Management journey.">
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter META -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Prince_Jain17">
+<meta name="twitter:creator" content="@Prince_Jain17">
+<meta name="twitter:title" content="QR Code Generator">
+<meta name="twitter:description" content="My personal blog where I document my learnings and Product Management journey.">
+<meta name="twitter:image" content="https://princejain.me/images/my-image.webp">
+
+<!-- Standard META -->
+<meta name="title" content="QR Code Generator">
+<meta name="description" content="My personal blog where I document my learnings and Product Management journey.">
+
+<!-- Article specific META (only for blog posts) -->
+
+
+<!-- image -->
+
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+
+
+<!-- url -->
+<meta property="og:url" content="/">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+
+	
+<!-- Tool Page Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "QR Code Generator",
+  "applicationCategory": "WebApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Prince Jain",
+    "url": "https://princejain.me"
+  },
+  "description": "My personal blog where I document my learnings and Product Management journey."
+}
+</script>
+
+
+	<title> QR Code Generator | Prince Jain </title>
+	
+	<!-- Preconnect to Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!-- Load font with display=swap for better performance -->
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+	<!-- Fallback in case JS is disabled -->
+	<noscript>
+		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	</noscript>
+	
+	<!-- Inline critical CSS for faster rendering -->
+	<style>
+/* Critical CSS for above-the-fold content */
+body{font-family:sans-serif;font-weight:400;font-size:15px;line-height:1.5;padding:0;background:#fff;color:#333;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3,h4,h5,h6{font-family:sans-serif;color:#333;font-weight:400;line-height:1.4;margin:.7em 0 10px;padding:0}
+h1{font-size:30px;font-weight:400}
+h1 a{color:inherit;margin:1em 0 10px}
+a{color:#4183c4;text-decoration:none;cursor:pointer}
+.container{margin:0 auto;max-width:740px;padding:0 10px;width:100%;display:flex;flex-direction:column;flex-grow:1;justify-content:space-around}
+nav{float:right;margin-top:23px;font-family:"Lato",sans-serif;font-size:18px;font-weight:400}
+nav a{margin-left:20px;color:#666;text-align:right;font-weight:400;letter-spacing:1px}
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:#4183c4;z-index:9999;width:0;transition:width .2s ease-in-out}
+.site-avatar{float:left;width:70px;height:70px;margin-right:15px}
+.site-avatar img{border-radius:5px}
+.site-info{float:left}
+.site-name{color:#333;cursor:pointer;font-family:"Lato",sans-serif;font-weight:700;font-size:28px;letter-spacing:1px}
+@media (max-width:640px){nav{float:none;margin-top:9px;display:block;font-size:16px}nav a{margin:0 10px;color:#4183c4}.site-avatar{float:none;display:block;margin:0 auto}}
+</style>
+
+	
+	<!-- Critical CSS loaded synchronously -->
+	<link rel="stylesheet" type="text/css" href="/assets/css/sticky-header.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/header-fix.css" />
+	
+	<!-- Non-critical CSS loaded asynchronously -->
+	<link rel="stylesheet" type="text/css" href="/css/style.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/transitions.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/typography-fix.css" media="print" onload="this.media='all'" />
+	<link rel="alternate" type="application/rss+xml" title="Prince Jain - My personal blog where I document my learnings and Product Management journey." href="/feed.xml" />
+	
+	<link rel="canonical" href="https://princejain.me/tools/qr-code-generator/">
+	<link rel="shortcut icon" type="image/png" href="/images/site-icon.webp" />
+	<link rel="apple-touch-icon" href="/images/site-icon.webp">
+
+</head>
+
+
+<body>
+
+  <div class="wrapper-masthead">
+  <div class="header-background"></div>
+  <div class="container">
+    <header class="masthead clearfix">
+      <!-- Wrap avatar and site info in a mobile-friendly container -->
+      <div class="header-identity">
+        <a href="/" class="site-avatar">
+          <!-- Use a smaller, optimized version of the avatar with width/height attributes to prevent layout shift -->
+          <img 
+            src="/images/my-image.webp" 
+            alt="Profile Photo" 
+            width="100%" 
+            height="100%" 
+            loading="eager" 
+            fetchpriority="high">
+        </a>
+        <!-- Explicit spacer for mobile view -->
+        <span class="avatar-title-spacer"></span>
+        <div class="site-info">
+          <h1 class="site-name"> <a href="/">Prince Jain</a> </h1>
+        </div>
+      </div>
+      <nav>
+        <a href="/blogs" aria-label="These are collection of my personal blogs">Blogs</a>
+        <a href="/links/" aria-label="These are collection of links on Product Management I find useful">Links</a>
+        <a href="/tools/" aria-label="Interactive tools for everyday tasks">Tools</a>
+        <a href="/worksummary" aria-label="Summary of my professional work so far">Work-ex</a>
+        <a href="/about" aria-label="If you want to learn more about me">About Me</a>
+      </nav>
+    </header>
+  </div>
+</div>
+
+  <div id="header-spacer"></div>
+  <div id="progress-bar"></div>
+  <div id="main" role="main" class="container transition-fade">
+    <article class="page">
+
+  <h2>QR Code Generator</h2>
+
+  <div class="entry">
+    <link rel="stylesheet" href="/assets/css/tools.css">
+<!-- Use a different QR Code library that's guaranteed to work -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+<div class="tools-container">
+  <div class="tool-header">
+    <h1>QR Code Generator</h1>
+    <p class="tool-description">Generate QR codes for URLs, text, contact information, and more.</p>
+    <a href="/tools/" class="back-to-tools">← Back to Tools</a>
+  </div>
+
+  <div class="qr-generator">
+    <div class="qr-container">
+      <div class="input-group">
+        <label for="qr-input">Enter URL or text</label>
+        <input type="text" id="qr-input" placeholder="Enter URL or text">
+      </div>
+      <button onclick="generateQR()" class="action-button">Generate QR</button>
+      <div class="qr-preview">
+        <div id="qr-output"></div>
+      </div>
+      <button id="download-qr" onclick="downloadQR()" class="action-button" style="display: none;">Download QR Code</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let qr = null;
+  
+  // Check if QRious library is loaded properly
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof QRious === 'undefined') {
+      console.error('QRious library not loaded!');
+      alert('QR Code library failed to load. Please refresh the page.');
+      return;
+    }
+    console.log('QRious library loaded successfully!');
+  });
+  
+  function generateQR() {
+    const text = document.getElementById('qr-input').value;
+    if (!text) {
+      alert('Please enter some text or URL');
+      return;
+    }
+    
+    // Check if QRious library is available
+    if (typeof QRious === 'undefined') {
+      console.error('QRious library not loaded!');
+      alert('QR Code library is not available. Please refresh the page.');
+      return;
+    }
+    
+    const qrOutput = document.getElementById('qr-output');
+    qrOutput.innerHTML = '';
+    
+    try {
+      // Create a canvas element for the QR code
+      const canvas = document.createElement('canvas');
+      canvas.id = 'qr-canvas';
+      qrOutput.appendChild(canvas);
+      
+      // Generate QR code using QRious
+      qr = new QRious({
+        element: canvas,
+        value: text,
+        size: 256,
+        background: '#ffffff',
+        foreground: '#000000',
+        level: 'H' // Error correction level
+      });
+      
+      document.getElementById('download-qr').style.display = 'block';
+    } catch (error) {
+      console.error('Error generating QR code:', error);
+      alert('Error generating QR code: ' + error.message);
+    }
+  }
+  
+  function downloadQR() {
+    if (!qr) {
+      alert('No QR code to download');
+      return;
+    }
+    
+    try {
+      const link = document.createElement('a');
+      link.download = 'qrcode.png';
+      link.href = qr.toDataURL('image/png');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error('Error downloading QR code:', error);
+      alert('Error downloading QR code: ' + error.message);
+    }
+  }
+</script>
+
+<style>
+  /* QR Code Generator Styles */
+  .qr-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .qr-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    min-height: 260px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+  }
+  
+  .back-to-tools {
+    display: inline-block;
+    margin-top: 15px;
+    color: #4183c4;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .back-to-tools:hover {
+    text-decoration: underline;
+  }
+  
+  #qr-input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    width: 100%;
+    font-family: inherit;
+    font-size: 16px;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .input-group label {
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .action-button {
+    padding: 12px 20px;
+    background-color: #4183c4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .action-button:hover {
+    background-color: #366eaa;
+  }
+  
+  /* Make QR code display nicer */
+  #qr-output img {
+    display: block;
+    margin: 0 auto;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .qr-container {
+      padding: 15px;
+      margin: 0 10px;
+    }
+    
+    .qr-preview {
+      min-height: 200px;
+    }
+    
+    .action-button {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 16px;
+    }
+  }
+  
+  .qr-generator {
+    max-width: 800px;
+    margin: 0 auto 40px;
+  }
+  
+  .qr-generator-input-panel {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+  }
+  
+  .qr-generator-preview-panel {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .qr-preview {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    min-height: 256px;
+  }
+  
+  #qr-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    text-align: center;
+  }
+  
+  #qr-placeholder svg {
+    margin-bottom: 16px;
+    color: #ccc;
+  }
+  
+  .qr-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  textarea, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+  }
+  
+  textarea:focus, select:focus {
+    outline: none;
+    border-color: #4183c4;
+  }
+  
+  .color-inputs {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .color-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .color-option span {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  input[type="color"] {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .size-slider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  input[type="range"] {
+    flex: 1;
+  }
+  
+  #size-value {
+    font-size: 14px;
+    color: #666;
+    min-width: 70px;
+  }
+  
+  .action-button {
+    background-color: #4183c4;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .action-button:hover {
+    background-color: #3a76b0;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .qr-generator {
+      grid-template-columns: 1fr;
+    }
+    
+    .qr-generator-preview-panel {
+      min-height: 350px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .qr-generator-container {
+      padding: 0 10px;
+    }
+    
+    .input-group {
+      margin-bottom: 16px;
+    }
+    
+    .color-inputs {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Load the QR code library from CDN
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js';
+    script.async = true;
+    script.onload = initQRGenerator;
+    document.head.appendChild(script);
+    
+    function initQRGenerator() {
+      // DOM elements
+      const qrText = document.getElementById('qr-text');
+      const qrSize = document.getElementById('qr-size');
+      const sizeValue = document.getElementById('size-value');
+      const foregroundColor = document.getElementById('foreground-color');
+      const backgroundColor = document.getElementById('background-color');
+      const errorCorrection = document.getElementById('error-correction');
+      const generateBtn = document.getElementById('generate-btn');
+      const qrPlaceholder = document.getElementById('qr-placeholder');
+      const qrCode = document.getElementById('qr-code');
+      const qrActions = document.getElementById('qr-actions');
+      const downloadPng = document.getElementById('download-png');
+      const downloadSvg = document.getElementById('download-svg');
+      
+      // Show size value
+      qrSize.addEventListener('input', function() {
+        sizeValue.textContent = `${this.value} x ${this.value}`;
+      });
+      
+      // Generate QR code
+      generateBtn.addEventListener('click', generateQRCode);
+      
+      function generateQRCode() {
+        const text = qrText.value.trim();
+        if (!text) {
+          alert('Please enter some text or URL to generate a QR code');
+          return;
+        }
+        
+        // Clear previous QR code
+        qrCode.innerHTML = '';
+        
+        // Get options
+        const options = {
+          text: text,
+          width: parseInt(qrSize.value),
+          height: parseInt(qrSize.value),
+          colorDark: foregroundColor.value,
+          colorLight: backgroundColor.value,
+          correctLevel: QRCode.CorrectLevel[errorCorrection.value]
+        };
+        
+        // Generate QR code
+        try {
+          new QRCode(qrCode, options);
+          
+          // Show QR code and actions
+          qrPlaceholder.style.display = 'none';
+          qrCode.style.display = 'block';
+          qrActions.style.display = 'flex';
+        } catch (error) {
+          console.error('Error generating QR code:', error);
+          alert('Error generating QR code. Please try again with different settings.');
+        }
+      }
+      
+      // Download as PNG
+      downloadPng.addEventListener('click', function() {
+        const canvas = qrCode.querySelector('canvas');
+        if (!canvas) return;
+        
+        // Create a temporary link element
+        const link = document.createElement('a');
+        link.download = 'qrcode.png';
+        link.href = canvas.toDataURL('image/png');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+      
+      // Download as SVG
+      downloadSvg.addEventListener('click', function() {
+        const canvas = qrCode.querySelector('canvas');
+        if (!canvas) return;
+        
+        // Convert canvas to SVG
+        const size = parseInt(qrSize.value);
+        const ctx = canvas.getContext('2d');
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const pixelData = imageData.data;
+        
+        // Create SVG string
+        let svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${canvas.width} ${canvas.height}">
+          <rect width="100%" height="100%" fill="${backgroundColor.value}"/>`;
+        
+        // Add rectangles for each black pixel
+        for (let y = 0; y < canvas.height; y++) {
+          for (let x = 0; x < canvas.width; x++) {
+            const idx = (y * canvas.width + x) * 4;
+            // If pixel is dark (not white)
+            if (pixelData[idx] < 128) {
+              svgString += `<rect x="${x}" y="${y}" width="1" height="1" fill="${foregroundColor.value}"/>`;
+            }
+          }
+        }
+        
+        svgString += '</svg>';
+        
+        // Create a Blob with the SVG data
+        const blob = new Blob([svgString], { type: 'image/svg+xml' });
+        const url = URL.createObjectURL(blob);
+        
+        // Create a temporary link element
+        const link = document.createElement('a');
+        link.download = 'qrcode.svg';
+        link.href = url;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      });
+      
+      // Process URL parameters if any (for sharing)
+      function processURLParameters() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const text = urlParams.get('text');
+        if (text) {
+          qrText.value = text;
+          generateQRCode();
+        }
+      }
+      
+      // Initial setup
+      processURLParameters();
+    }
+  });
+</script>
+
+  </div>
+</article>
+
+  </div>
+
+  <!-- This goes in default.html under layout -->
+
+<data class="u-url" href="/"></data>
+<div class="wrapper-footer">
+  <div class="container">
+    <footer class="footer">
+      <a href="mailto:prince.j19@fms.edu" aria-label="Gmail" ><i class="svg-icon email"></i></a>
+      <a href="https://www.linkedin.com/in/princejain17" aria-label="LinkedIn" ><i class="svg-icon linkedin"></i></a>
+      <a href="https://www.twitter.com/Prince_Jain17" aria-label="Twitter" ><i class="svg-icon twitter"></i></a>
+      <p> Forever Curious © Prince Jain. </p>
+    </footer>
+  </div>
+</div>
+
+  
+  <!-- Performance optimization scripts -->
+  <script src="/assets/js/lazy-load.js"></script>
+  <script src="/assets/js/sw-register.js"></script>
+  <script src="/assets/js/swup-cdn.js"></script>
+  <script src="/assets/js/sticky-header.js"></script>
+</body>
+
+</html>

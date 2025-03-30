@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<!-- Preload critical avatar styles to prevent layout shift -->
+	<style>
+/* Preload avatar image styles to prevent layout shift */
+.site-avatar {
+  float: left;
+  width: 70px;
+  height: 70px;
+  margin-right: 15px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #f0f0f0; /* Light gray placeholder */
+  /* Define a placeholder gradient background */
+  background-image: linear-gradient(to bottom right, #f0f0f0, #d8d8d8);
+}
+
+.site-avatar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+.site-avatar img {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  transform: translateZ(0); /* Force hardware acceleration */
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Avatar image loading state */
+.site-avatar img.loading {
+  opacity: 0;
+}
+
+@media (max-width: 640px) {
+  .site-avatar {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+}
+</style>
+
+	<!-- This goes in Head.html -->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZLF9K3MJB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-WZLF9K3MJB');
+</script>
+
+
+	<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta property="og:locale" content="en_US">
+
+<!-- Basic META -->
+<meta name="author" content="Prince Jain">
+<meta name="robots" content="index, follow">
+
+<!-- OpenGraph META -->
+<meta property="og:site_name" content="Prince Jain">
+<meta property="og:url" content="https://princejain.me/2020/02/15/Apps-and-SuperApps.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="There are Apps and then there are SuperApps">
+<meta property="og:description" content="I have shared a quick note of what are superapps, some of their benefits and how is the superapp situation in India evolving.">
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter META -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Prince_Jain17">
+<meta name="twitter:creator" content="@Prince_Jain17">
+<meta name="twitter:title" content="There are Apps and then there are SuperApps">
+<meta name="twitter:description" content="I have shared a quick note of what are superapps, some of their benefits and how is the superapp situation in India evolving.">
+<meta name="twitter:image" content="https://princejain.me/images/my-image.webp">
+
+<!-- Standard META -->
+<meta name="title" content="There are Apps and then there are SuperApps">
+<meta name="description" content="I have shared a quick note of what are superapps, some of their benefits and how is the superapp situation in India evolving.">
+
+<!-- Article specific META (only for blog posts) -->
+
+<meta property="article:published_time" content="2020-02-15T00:00:00+00:00">
+
+<meta property="article:section" content="">
+
+
+
+
+
+
+<!-- image -->
+
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+
+
+<!-- url -->
+<meta property="og:url" content="/">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+
+	
+<!-- Blog Post Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "There are Apps and then there are SuperApps",
+  "datePublished": "2020-02-15T00:00:00+00:00",
+  "dateModified": "2020-02-15T00:00:00+00:00",
+  "author": {
+    "@type": "Person",
+    "name": "Prince Jain",
+    "url": "https://princejain.me"
+  },
+  "description": "I have shared a quick note of what are superapps, some of their benefits and how is the superapp situation in India evolving.",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://princejain.me/2020/02/15/Apps-and-SuperApps.html"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Prince Jain",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://princejain.me/images/my-image.webp"
+    }
+  },
+  "image": [
+    "https://princejain.me/images/my-image.webp"
+  ]
+}
+</script>
+
+
+	<title> There are Apps and then there are SuperApps | Prince Jain </title>
+	
+	<!-- Preconnect to Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!-- Load font with display=swap for better performance -->
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+	<!-- Fallback in case JS is disabled -->
+	<noscript>
+		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	</noscript>
+	
+	<!-- Inline critical CSS for faster rendering -->
+	<style>
+/* Critical CSS for above-the-fold content */
+body{font-family:sans-serif;font-weight:400;font-size:15px;line-height:1.5;padding:0;background:#fff;color:#333;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3,h4,h5,h6{font-family:sans-serif;color:#333;font-weight:400;line-height:1.4;margin:.7em 0 10px;padding:0}
+h1{font-size:30px;font-weight:400}
+h1 a{color:inherit;margin:1em 0 10px}
+a{color:#4183c4;text-decoration:none;cursor:pointer}
+.container{margin:0 auto;max-width:740px;padding:0 10px;width:100%;display:flex;flex-direction:column;flex-grow:1;justify-content:space-around}
+nav{float:right;margin-top:23px;font-family:"Lato",sans-serif;font-size:18px;font-weight:400}
+nav a{margin-left:20px;color:#666;text-align:right;font-weight:400;letter-spacing:1px}
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:#4183c4;z-index:9999;width:0;transition:width .2s ease-in-out}
+.site-avatar{float:left;width:70px;height:70px;margin-right:15px}
+.site-avatar img{border-radius:5px}
+.site-info{float:left}
+.site-name{color:#333;cursor:pointer;font-family:"Lato",sans-serif;font-weight:700;font-size:28px;letter-spacing:1px}
+@media (max-width:640px){nav{float:none;margin-top:9px;display:block;font-size:16px}nav a{margin:0 10px;color:#4183c4}.site-avatar{float:none;display:block;margin:0 auto}}
+</style>
+
+	
+	<!-- Critical CSS loaded synchronously -->
+	<link rel="stylesheet" type="text/css" href="/assets/css/sticky-header.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/header-fix.css" />
+	
+	<!-- Non-critical CSS loaded asynchronously -->
+	<link rel="stylesheet" type="text/css" href="/css/style.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/transitions.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/typography-fix.css" media="print" onload="this.media='all'" />
+	<link rel="alternate" type="application/rss+xml" title="Prince Jain - My personal blog where I document my learnings and Product Management journey." href="/feed.xml" />
+	
+	<link rel="canonical" href="https://princejain.me/2020/02/15/Apps-and-SuperApps.html">
+	<link rel="shortcut icon" type="image/png" href="/images/site-icon.webp" />
+	<link rel="apple-touch-icon" href="/images/site-icon.webp">
+
+</head>
+
+
+<body>
+
+  <div class="wrapper-masthead">
+  <div class="header-background"></div>
+  <div class="container">
+    <header class="masthead clearfix">
+      <!-- Wrap avatar and site info in a mobile-friendly container -->
+      <div class="header-identity">
+        <a href="/" class="site-avatar">
+          <!-- Use a smaller, optimized version of the avatar with width/height attributes to prevent layout shift -->
+          <img 
+            src="/images/my-image.webp" 
+            alt="Profile Photo" 
+            width="100%" 
+            height="100%" 
+            loading="eager" 
+            fetchpriority="high">
+        </a>
+        <!-- Explicit spacer for mobile view -->
+        <span class="avatar-title-spacer"></span>
+        <div class="site-info">
+          <h1 class="site-name"> <a href="/">Prince Jain</a> </h1>
+        </div>
+      </div>
+      <nav>
+        <a href="/blogs" aria-label="These are collection of my personal blogs">Blogs</a>
+        <a href="/links/" aria-label="These are collection of links on Product Management I find useful">Links</a>
+        <a href="/tools/" aria-label="Interactive tools for everyday tasks">Tools</a>
+        <a href="/worksummary" aria-label="Summary of my professional work so far">Work-ex</a>
+        <a href="/about" aria-label="If you want to learn more about me">About Me</a>
+      </nav>
+    </header>
+  </div>
+</div>
+
+  <div id="header-spacer"></div>
+  <div id="progress-bar"></div>
+  <div id="main" role="main" class="container transition-fade">
+    <article class="post">
+
+  <h2>There are Apps and then there are SuperApps</h2>
+
+  <div class="date">
+    Published on February 15, 2020
+  </div>
+
+  <div class="entry">
+    <p>As more and more businesses around the world transition to a mobile-led discovery, there has been an exponential rise in the number of apps available in the App Stores.</p>
+
+<p>Just for context the chart below shows the number of apps released on Google play store per month/ week as of last year’s figures:</p>
+
+<p><img src="/images/apps_superapps_stats.png" alt="Image of App Release Figures" /></p>
+
+<blockquote>
+<p>“There are more than 2.87 Million apps listed on the Play store as of latest available figures. 3739 apps are added to the Play Store every single day!” </p>
+</blockquote>
+
+<p>This has led to an unprecedented clutter in our phones. The pace with which the apps are increasing, its getting difficult for even the most tech-savvy of us to manage these. Literally for every use case you can think of there are gazillions of apps out there available:</p>
+
+<ul>
+  <li>
+    <p>Want to watch your favourite shows? Netflix or PrimeVideo or Hotstar or Apple TV or SonyLiv or Voot or among the various other OTT players</p>
+  </li>
+  <li>
+    <p>Want to recharge your phone, DTH or pay your bills? Try Paytm or PhonePe or GooglePay or Mobikwik or AmazonPay or Freecharge or Airtel Money…</p>
+  </li>
+  <li>
+    <p>Want to book a holiday trip? Again the options are endless… Choose from MakeMyTrip/ Goibibo/ Cleartrip/ Yatra/ ixigo or Paytm!</p>
+  </li>
+  <li>
+    <p>Want to post something on social media? Choose from Facebook, Twitter, Instagram, Snapchat and yeah why not TikTok!</p>
+  </li>
+  <li>
+    <p>Thankfully there is only one ubiquitous app for messaging. Think of how messy it would have been else!</p>
+  </li>
+</ul>
+
+<p>I hope you get my point here, there are endless choices for the customers and it really gets messy when you have to remember which app was it you used last and keep all these installed on your phone!</p>
+
+<p>So the next logical question coming out of all this you may ask is “Is there a better way??”
+Well, folks from China seems to have figured this out! Their solution is called “WeChat”</p>
+
+<p>It really is a Super-App in the sense that from a single app, you can serve a multitude of use cases: from buying tickets for shows, to paying bills and making calls to investing in mutual funds and making payments to online shopping and ordering a taxi to playing games. Literally the list of use cases you can fulfil from this app seems to be endless. The magic here is achieved through what they call “Mini Programs”</p>
+
+<h2 id="what-are-mini-programs">What are Mini Programs?</h2>
+
+<p>Mini Programs in the simplest sense are sub-applications within the Host App, serving a multitude of use-cases achieved through functionalities enabled by the host app. Typically Mini Programs offers most frequently used features of any app. Say in Ola Mini Program on Paytm, you can book a Cab from point-to-point, which is enough for majority of the users! How many of us, have a use case for an Outstation or a Ola Pass? (Yes, you can book Ola cabs from Paytm!)
+In simple words, it can either be seen as a mobile website on steroids or native app’s lite version. It offers like 80% of the features you would typically get in any Native App which is enough to serve most customer’s use cases.</p>
+
+<h4 id="key-benefits-of-mini-programs-for-the-user">Key benefits of Mini Programs for the user:</h4>
+
+<ul>
+  <li>
+    <p>Instant access to any Mini Program, no download required</p>
+  </li>
+  <li>
+    <p>No need to remember any logins! Single touch seamless sign-up / sign-in</p>
+  </li>
+  <li>
+    <p>No need to add any payment methods. Your host app payment method works</p>
+  </li>
+  <li>
+    <p>Clutter free, seamless and consistent user experience across all apps</p>
+  </li>
+</ul>
+
+<h4 id="key-benefits-of-mini-programs-for-the-app-developers">Key benefits of Mini Programs for the app developers:</h4>
+
+<ul>
+  <li>
+    <p>Access to large captive- transacting user base in host app</p>
+  </li>
+  <li>
+    <p>Single codebase for iOS and Android (solves a big pain point for budding startups)</p>
+  </li>
+  <li>
+    <p>Significantly lesser development effort and much faster iterations possible due to no app release requirement</p>
+  </li>
+  <li>
+    <p>Much lesser regulations than the walled garden of App Stores (though they do have their own set of rules but those are much less stringent )</p>
+  </li>
+</ul>
+
+<h2 id="wechat-mini-programs-key-highlights">WeChat Mini Programs: Key Highlights</h2>
+
+<p>Tencent has re-engineered the WeChat messaging app in a way that Mini Programs can run instantly on WeChat’s interface.</p>
+
+<p><img src="/images/wechat_Miniapps.png" alt="WeChat Mini Program Highlights" /></p>
+
+<blockquote>
+  <p>There are more than a million Mini Programs on WeChat with more than 200 Mn Active users.</p>
+</blockquote>
+
+<p>They are tightly integrated with WeChat’s platform with discovery via Subscription/Official Account ( more like Facebook Pages), Chats ( like Facebook Messenger), QR Codes and other possible discovery sources.</p>
+
+<p><em>More details on this in a possible next article!</em></p>
+
+<h2 id="key-value-proposition-of-mini-programs">Key Value Proposition of Mini Programs</h2>
+
+<p>Mini Programs has primarily three important value proposition for the merchants:</p>
+
+<ol>
+  <li>
+    <p><strong>Aggregate Low Frequency services:</strong> Majority of apps are used very infrequently by the users and thus a Mini Program offering makes much more sense ( Say ordering medicines once a month!). They offer seamless “In-Out” experience to the user with no hassle of remembering or entering any passwords or payment details.</p>
+  </li>
+  <li>
+    <p><strong>New customer acquisition Channel:</strong> Most users in Tier 2/3 cities typically have only a very limited number of apps installed on their phone due to less capable device hardware, poor data reach (though Jio has changed this paradigm) and lack of awareness about the various apps out there. Typically for all these cases, Mini Programs serves as very effective customer Acquisition Channel.</p>
+  </li>
+  <li>
+    <p><strong>Cost Effective Marketing Tool:</strong> Payment apps with their rich user transactional data can effectively help marketeers target their ideal audience. Also due to the seamless user journey post clicking on Ads in a Mini Program ( Remember no need of download or signup!) the funnel conversions are also much better!</p>
+  </li>
+</ol>
+
+<h3 id="whats-happening-in-india">What’s happening in India?</h3>
+
+<p>India’s Mini Program ecosystem is still in early days with leading payment apps still in the phase of exploring how customers react and what they want. It is in some form or other, being pursued by all the major payment players. Brief snapshot of the program for the major players:</p>
+
+<ul>
+  <li>
+    <p><strong>Paytm:</strong> Paytm was already a superapp in lot of ways but recently it has launched a full fledged “Mini Programs” offering for its users. Ola, Netmeds, 1mg, McDelivery, Coolwinks and many other leading players are part of the initial offering.</p>
+  </li>
+  <li>
+    <p><strong>PhonePe:</strong> Under the branding of “PhonePe Switch”, it currently has the largest number of Mini Programs being offered. It was one of the first player to start with a integration of merchant web apps onto its platform.</p>
+  </li>
+  <li>
+    <p><strong>GooglePay:</strong> Google also jumped into the SuperApp bandwagon by launching “Google Spot” last year. It still has very limited discovery and very few merchants as part of its offering.</p>
+  </li>
+  <li>
+    <p><strong>Flipkart:</strong> Flipkart (parent company of PhonePe) have also launched their own Mini Programs platform under the branding of “Partner Apps” leveraging PhonePe Switch’s reach. It has also deeply integrated the platform with its SuperCoins offering</p>
+  </li>
+  <li>
+    <p><strong>Amazon:</strong> Amazon is yet to launch a full fledged Mini Program offering on its app but there are many hints pointing towards an eventual release: from its acquisition of Tapzo to revamping of Amazon Pay’s landing page to show Merchant App Icons and redirecting to merchants webpages (which could then be changed to a Mini Program re-direction!)</p>
+  </li>
+  <li>
+    <p><strong>JioMart</strong> (Reliance + Facebook): This is a latest entrant in this space with clear cut agenda to become the “WeChat of India”.
+More detailed analytics on these apps and the current landscape in a possible next article!</p>
+  </li>
+</ul>
+
+  </div>
+
+</article>
+<script src="https://princejain.me/scrollbar.js"></script>
+
+  </div>
+
+  <!-- This goes in default.html under layout -->
+
+<data class="u-url" href="/"></data>
+<div class="wrapper-footer">
+  <div class="container">
+    <footer class="footer">
+      <a href="mailto:prince.j19@fms.edu" aria-label="Gmail" ><i class="svg-icon email"></i></a>
+      <a href="https://www.linkedin.com/in/princejain17" aria-label="LinkedIn" ><i class="svg-icon linkedin"></i></a>
+      <a href="https://www.twitter.com/Prince_Jain17" aria-label="Twitter" ><i class="svg-icon twitter"></i></a>
+      <p> Forever Curious © Prince Jain. </p>
+    </footer>
+  </div>
+</div>
+
+  
+  <!-- Performance optimization scripts -->
+  <script src="/assets/js/lazy-load.js"></script>
+  <script src="/assets/js/sw-register.js"></script>
+  <script src="/assets/js/swup-cdn.js"></script>
+  <script src="/assets/js/sticky-header.js"></script>
+</body>
+
+</html>

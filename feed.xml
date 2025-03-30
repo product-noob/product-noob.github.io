@@ -1,0 +1,1173 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://princejain.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://princejain.me/" rel="alternate" type="text/html" /><updated>2025-03-30T13:06:48+00:00</updated><id>https://princejain.me/feed.xml</id><title type="html">Prince Jain - I share my product journey through this blog</title><subtitle>My personal blog where I document my learnings and Product Management journey.</subtitle><entry><title type="html">Building the Mini Apps Platform</title><link href="https://princejain.me/2022/03/22/Building-Mini-Apps.html" rel="alternate" type="text/html" title="Building the Mini Apps Platform" /><published>2022-03-22T00:00:00+00:00</published><updated>2022-03-22T00:00:00+00:00</updated><id>https://princejain.me/2022/03/22/Building%20Mini%20Apps</id><content type="html" xml:base="https://princejain.me/2022/03/22/Building-Mini-Apps.html">&lt;p&gt;After a stint of nearly 3 years at Paytm, I recently took the tough call to leave Paytm and explore PM’ing in a new industry. During my tenure here I was lucky to work on few very meaningful and impactful projects most notable being Mini Apps, &lt;a href=&quot;https://princejain.me/2021/08/03/Building-Vaccine-Slot-Finder.html&quot;&gt;Vaccine Finder&lt;/a&gt; and &lt;a href=&quot;https://princejain.me/2022/01/12/National-Health-Stack.html&quot;&gt;Paytm Health&lt;/a&gt;. I plan to write about my experience and share my learnings from working on these projects. This post is about the journey to build the Mini Apps Platform for Paytm.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; As with most stories in this one too I have tried connecting the dots looking backwards and hence many approaches/ frameworks I have shared here were not explicitly used but we had a very similar thought process while approaching these problems. Looking back it’s very interesting to see how these framework match the natural thought process. &lt;br /&gt;
+Also I have tried sharing a very broad view of how we did things, its 3 years of works condensed into a single article plus a lot of internal data and decisions omitted for obvious reasons.&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Before we start, some current stats about the Mini Apps platform:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Mini Apps&lt;/strong&gt; platform now enables a lot of things in the Paytm app: with more than &lt;strong&gt;80%&lt;/strong&gt; of all Paytm users having a a touchpoint of Mini Apps.&lt;/li&gt;
+  &lt;li&gt;Core Paytm verticals ranging from Paytm Bank, Recharges, Movies, CST, Gold, Fastag, Stocks, Lending, Paytm Health etc. now are in some form or fashion “Mini Apps”.&lt;/li&gt;
+  &lt;li&gt;It also has a full functioning partner app ecosystem hosting more than &lt;strong&gt;2000+ apps&lt;/strong&gt; across different categories from food delivery to online shopping to games and healthcare.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s now go deeper into understanding what are Mini Apps and how we built this platform.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-are-mini-apps&quot;&gt;What are Mini Apps?&lt;/h2&gt;
+
+&lt;p&gt;While the terminology of Mini Apps or Mini Programs is a borrowed one (super popular in &lt;strong&gt;&lt;a href=&quot;https://www.ft.com/content/d00fb4ee-d645-11e6-944b-e7eb37a6aa8e&quot;&gt;China&lt;/a&gt;&lt;/strong&gt;), the concept as such has been present in some form or fashion in many apps before.&lt;/p&gt;
+
+&lt;p&gt;In the simplest sense mini apps are hybrid apps (typically webapps) which have a deep integration with a host app (in which they are opened) to make them powerful and feature rich. Being based on web frameworks allows the host app to serve different flows and services dynamically.&lt;/p&gt;
+
+&lt;p&gt;These mini apps can be managed either by a different entity than the host app like in the case of Zynga games in Facebook or by the host platform itself to serve some non critical and more dynamic flows. &lt;br /&gt;
+&lt;em&gt;In Paytm we enable both kinds of mini apps: one’s built by the 2nd party ( internal Paytm verticals) and 3rd party apps (external merchants) as we will explore later.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;why-we-needed-mini-apps&quot;&gt;Why we needed Mini Apps?&lt;/h2&gt;
+
+&lt;p&gt;In our journey to become a &lt;strong&gt;&lt;a href=&quot;https://princejain.me/2020/02/15/Apps-and-SuperApps.html&quot;&gt;Superapp&lt;/a&gt;&lt;/strong&gt; it was essential for Paytm to develop a technology solution which allowed us to de-bundle non-core flows and serve them in real-time only when needed. The idea was that most users don’t need or use all our offerings at all times and it makes sense to serve most non-core flows dynamically via a hybrid approach. Also for many flows there are no visible advantages of increasing the app size for non essential flows when not all users would be using those extra features and increasing bundle size might negatively affect &lt;strong&gt;&lt;a href=&quot;https://medium.com/googleplaydev/shrinking-apks-growing-installs-5d3fcba23ce2&quot;&gt;app install conversion&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Serving apps dynamically had many other advantages than just reducing app size:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Instant Adoption:&lt;/strong&gt; Any new feature launched on the Mini Apps platform is available instantly to all users. By just a config change at backend all our users can use the newer flows in their Paytm app (without requiring an app upgrade).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Quicker Iterations:&lt;/strong&gt; It give businesses the flexibility to iterate quickly since any required change could be rolled out directly on the web app.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Easier Development:&lt;/strong&gt; Typically web based apps require significantly lesser development effort: since you have to only develop once for both platforms, technology is relatively more mature, open-source, stable and is cheaper from resourcing POV.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Cheaper Maintenance:&lt;/strong&gt; Being based on web based frameworks allows mini apps’ codebase to be same across iOS and Android. It solves a big pain point of ensuring feature parity and code maintenance.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There was another major angle to why we needed this platform, in-fact the very reason we built the platform for: &lt;strong&gt;Merchant Mini Apps!&lt;/strong&gt; (the benefits for our internal verticals was something we realised eventually!)&lt;/p&gt;
+
+&lt;p&gt;Having this platform allowed us to partner with businesses across the country to bring their flows and offering to our users in the Paytm app. This had immense potential for Paytm to increase the overall usability and stickiness of the app since there were many many businesses we as a company never wanted to venture into ourselves but wanted still wanted to enable for our users by leveraging the rich insights we gathered from their payments behaviour and Mini Apps platform gave us just that.&lt;/p&gt;
+
+&lt;p&gt;All in all, there were a lot of benefits we had envisioned and thought through which helped us get the leadership alignment, resourcing and ultimately led us to build the mini apps platform. With this context set, let me now venture deeper into how we actually built this platform&lt;/p&gt;
+
+&lt;h2 id=&quot;how-we-actually-built-the-mini-apps-platform&quot;&gt;How we actually built the Mini Apps platform?&lt;/h2&gt;
+
+&lt;p&gt;If I talk about the product journey for the platform till now, it has been through three broad stages in the last 3 years: Introduction, Growth and the Maturity stage (typical of a PLC).&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/images/Mini_Apps_1.png&quot; alt=&quot;Product Life Cycle Curve&quot; /&gt;
+&lt;figcaption&gt;Product Life Cycle Curve&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;introduction-phase&quot;&gt;Introduction Phase&lt;/h3&gt;
+
+&lt;p&gt;In the introduction phase as typically is the case it was more about figuring out what we needed to build by answering what needed, what the market needed, how others were doing it and then actually building an MVP.&lt;/p&gt;
+
+&lt;p&gt;It all started with answering the questions on: &lt;strong&gt;Why → How → What&lt;/strong&gt;&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/images/Mini_Apps_2.png&quot; alt=&quot;Golden Circle Model&quot; class=&quot;center&quot; /&gt;
+&lt;figcaption&gt;Golden Circle Model&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;Why&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Why are we building it? Is it worth building for?&lt;/li&gt;
+  &lt;li&gt;Why is it useful for our users, for our merchant partners, for us?&lt;/li&gt;
+  &lt;li&gt;Why build right now? Why not before or later?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;What&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What are we trying to achieve?&lt;/li&gt;
+  &lt;li&gt;What does success for the platform look like? What’s our north star?&lt;/li&gt;
+  &lt;li&gt;What are the constraints under which we need to operate (resource, time, cost etc.)?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;How&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How will we build it? What does a MVP look like?&lt;/li&gt;
+  &lt;li&gt;How does a steady state in future with “Mini Programs” look like?&lt;/li&gt;
+  &lt;li&gt;How will we launch it and scale it?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;By the end of this thought exercise (which took many weeks), we were ready with a broad idea of what we needed and how we wanted to build it.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Core tenants for the Mini Apps:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Offer seamless experience for our end users&lt;/li&gt;
+  &lt;li&gt;Easier for merchants/verticals to integrate&lt;/li&gt;
+  &lt;li&gt;Scalable platform for Paytm&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here’s how we actually went about making these tenants possible:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Paytm had earlier experimented with an app in app approach which failed. &lt;strong&gt;&lt;a href=&quot;https://www.livemint.com/Companies/Eyo2sLq5Q36vzre26kMNbP/Zomato-partners-Paytm-online-food-delivery-business.html&quot;&gt;Zomato&lt;/a&gt;&lt;/strong&gt; and Bigbasket were a part of the initial pilot and both these received decent user traction, where it failed was the lack of flexibility and heavy dependency on Paytm↔Merchant teams to work together (since it was a SDK integration) to make any updates. Also due to it being a SDK integration, it increased the Paytm app size and had to go through the adoption curve. Overall meaning it was not a scalable solution and hence a more deeper SDK approach was ruled out.&lt;/li&gt;
+  &lt;li&gt;There were different approaches in which the other players, mainly the Chinese apps had built their superapp platforms: broadly they were based on their custom language (DSL) and every merchant had to build an app from scratch in their proprietory frameworks. This had a significant adoption and development cost for merchants.
+We were sure that such a high effort rework would never work in an Indian context and we wanted our platform to be based on existing open source technologies and ended up choosing up building the platform on HTML/ JS, since more merchants had a well functioning mobile compatible website!. This choice allowed us to enable any merchant with an existing website to come onboard as a Mini App with few simple integrations, which played a key role in the platform’s growth so far.&lt;/li&gt;
+  &lt;li&gt;As to the question of why a merchant would be willing to partner with us for such a integration, there were few benefits we believed they could leverage as part of their integration with us:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Customer acquisition channel:&lt;/strong&gt; Most users in Tier 2/3 cities typically had a very limited number of apps installed on their phone due to less capable device hardware, poor data reach (though Jio has changed this paradigm) and lack of awareness about the various apps out there. Typically for all these cases, Mini Apps was envisioned to serve as very effective customer acquisition channel.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Cost effective marketing tool:&lt;/strong&gt; Payment apps with their rich user transactional data could effectively help marketeers target their ideal audience. Also due to the seamless user journey post clicking on Ads ( Remember no need of download or signup!) the funnel conversions are also much better.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Suitable for low frequency services:&lt;/strong&gt; Majority of apps are used very infrequently by the users and thus a Mini App kind of offering makes much more sense (say ordering medicines or Pizza once a month!). They offer seamless “In-Out” experience to the user with no hassle of remembering or entering any passwords or payment details.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Allow experimentation on a limited audience:&lt;/strong&gt; The dynamic nature of mini apps allow merchants to experiment with newer flows to a limited audience base with controlled rollout and lesser risk to their core app business.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;With this broad understanding in place we started brainstorming on the broad architecture of the SDK. At a high level of what I can share publicly, the architecture we ended up with was a native webview rendered in the Paytm app and made feature rich with custom JS injection. This enabled it to interact with the native layer (Paytm app and device layer) and exchange data and information.&lt;/p&gt;
+
+&lt;p&gt;This is how the broad architecture of the platform looks like:&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/images/Mini_Apps_3.png&quot; alt=&quot;Paytm Mini Apps Architecture&quot; /&gt;
+&lt;figcaption&gt;Paytm Mini Apps Architecture&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;em&gt;Mini Apps SDK is internally called as “Phoenix” since it was our third attempt at building such a framework and it literally rose from the ashes (learnings) of the last two experiments. Good nomenclature no!?&lt;/em&gt;
+This architecture allowed us to render webpages inside our app’s webview which could interact via our custom JS library with Paytm App and Native Layer. This opened so many possibilities of what this platform could enable: seamless data transfer between Paytm app and the website (like login information, payment flows, analytics etc.) &amp;amp; between webapp and the Native device layer (like hardware details: GPS, Bluetooth, Camera etc.).&lt;/p&gt;
+
+&lt;p&gt;While the tech team was busy building the core SDK, the Business-Product teams sprung into action and started having discussions with few key merchants to understand their requirements and expectations from such an integration. We narrowed down to solve for few primitives for them to start with: &lt;strong&gt;Discovery, Login and Payments&lt;/strong&gt;. We started brainstorming on how each of these would be solved for and started building the first iteration of the platform with these as the MVP requirements.&lt;/p&gt;
+
+&lt;p&gt;Apart from the integration aspects we also started solving for analytics and logging we need to have in place to enable easier monitoring and to later allow us to take data backed decisions, setting up basic SOPs, infrastructure, operations and legal processes to allow us to host merchant apps in the Paytm app. Many mails, follow ups and approvals later we were all set to launch the platform.&lt;/p&gt;
+
+&lt;p&gt;We partnered with around 15 merchant for the platform’s pilot ( Netmeds, 1mg, Hungerbox, Coolwinks, Box8, being few of them) and worked closely with their tech-product teams to help them onboard and integrate and launched the platform within the first 6 months mark.&lt;/p&gt;
+
+&lt;p&gt;This is how the first version of listing page looked like:&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/images/Mini_Apps_4.png&quot; alt=&quot;Design mockup of Mini Apps listing&quot; class=&quot;center40&quot; /&gt;
+&lt;figcaption&gt;Design mockup of Mini Apps listing&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;growth-phase&quot;&gt;Growth Phase&lt;/h3&gt;
+
+&lt;p&gt;Once the basic setup was in place and we had market tested our platform, we then wanted to grow our platform by onboarding more and more merchant apps. For this we built new flows, improved on the existing ones, wrote richer documentations and automated various manual processes. This took us another 6-8 months.&lt;/p&gt;
+
+&lt;p&gt;We also started brainstorming on various app categories which made sense as “Mini Apps” and started reaching out to some of the key players in each of those to explore partnership with them. Few key categories we circled on were Online Shopping, Food Delivery, Casual Gaming, Healthcare and Tools &amp;amp; Utilities. We onboarded large names like Domino’s, Decathlon, Box8, Gaming aggregators and announced a formal launch of the &lt;strong&gt;Mini Apps platform.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/images/Mini_Apps_5.png&quot; alt=&quot;Mini Apps Store Launch&quot; class=&quot;center&quot; /&gt;
+&lt;figcaption&gt;Mini Apps Store Launch&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;We got tremendous developer response from this conference with more than 10,000 registrations. This gave us a good pipeline of merchants to partner with and onboard as Mini Apps.&lt;/p&gt;
+
+&lt;div class=&quot;videoWrapper&quot;&gt;
+&lt;center&gt;
+  &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/nuK7Ct59Vyk?start=3161&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+
+&lt;p&gt;While onboarding payment led apps we wanted to also explore if non-transactional apps (one’s which didn’t had any payment flows) would make sense for us to onboard as a mini app, mainly since we were chasing the north star of engagement. But before we formed any partnership we wanted to do a POC (Proof of Concept) to validate the market-fit and ended up building few mini apps of our own.&lt;/p&gt;
+
+&lt;p&gt;The first one to hit the shelf was &lt;strong&gt;&lt;a href=&quot;https://twitter.com/nightfury_19/status/1247862351467958272&quot;&gt;e-Newspaper&lt;/a&gt;&lt;/strong&gt; : due to covid induced lockdown delivery of physical newspapers had stopped and people were trying to find an easy way to access them digitally. We could see the mini apps offering serving this use case pretty well and we decided to launch a e-newspaper Mini App. It was launched &lt;strong&gt;within 2 days&lt;/strong&gt; and it served our users with various options of national and local newspapers (It was technically like a simple storefront with newspaper pdf deployed on CDN and updated daily). This app instantly took off and we at one point served copies from ~30 different publishers to 100s of thousands of readers daily.
+With the mini apps platform allowing us to quickly build, iterate and test our ideas we ended up launching few more in-house mini apps: AQI Monitor, Speedtest and Paytm Astro.
+&lt;em&gt;Think of these like side projects done by different members of our team to improve their understanding of the product and to get a chance to learn more about the platform.&lt;/em&gt;
+This also improved our understanding on how is experience of developing a mini app as a developer and gave us very useful insights to improve some of our flows, documentation and SOPs (Yes, it helps to eat your own dogfood!)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This in hindsight, looking back now was also a pre-cursor leading us to launch the &lt;a href=&quot;https://paytm.com/blog/engineering/journey-to-build-the-vaccine-slot-finder-tool-on-paytm/&quot;&gt;Vaccine Finder&lt;/a&gt; tool and DigiLocker Mini app.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Surprisingly enough these  got really great response and are available on the platform till date! With this confidence we started onboarding experimenting a bit more on non-transactional use cases and onboarded few content and gaming apps.
+We built a lot more features to meet newer merchant  requirements like integration with Paytm notification service, building support for subscription and pre-authorised payments, integration with Paytm’s promo engine, building a user customised app listing to enhance the app discovery, adding more analytics tracking etc. and onboarded apps from different categories and overall experimented a lot!&lt;/p&gt;
+
+&lt;div class=&quot;videoWrapper&quot;&gt;
+  &lt;center&gt;
+    &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Qxa3kd4yw3o&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+  &lt;/center&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We also thought of one super interesting use-case for this platform, using it for our internal vertical flows. The benefits we offered to our merchant partners: instant adoption, quicker iterations and easier code maintenance were in-fact super relevant for a lot of our internal use cases as well. And as it happened the core-platform experience team internally was driving a charter to reduce the app size and &lt;strong&gt;“Mini Apps”&lt;/strong&gt; seemed like a great fit! We started exploring using the platform for some of our internal verticals and start migrating few non-core flows like Paytm Gold, Paytm Education, Fastag, Mall etc. as Mini Apps.
+There were few scaling challenges initially since we never accounted the platform to handle this level of scale so soon but with few optimisation and caching strategies later we were able to handle the scale and migrate many of our verticals as Mini Apps. This allowed any internal Paytm vertical who did not had a DAU use case, to move as a Mini App. It also required us to optimise more heavily on our overall platform: how our webview launched, loaded, performed and optimise a lot of aspects of the SDK (there were many sprints dedicated to just optimisations!). We also had to build support for newer flows to allow some verticals to migrate as Mini Apps. But eventually this enabled us move many of our internal verticals as Mini Apps and helped us reduce the App bundle size of Paytm to just under 30MB (lowest among the top fintech players, despite having the most number of features!)&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;For every 10 MB decrease in app install size, the app install conversion rate improves by &lt;strong&gt;&lt;a href=&quot;https://medium.com/googleplaydev/shrinking-apks-growing-installs-5d3fcba23ce2&quot;&gt;2.5%&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is essentially is what I see as the &lt;strong&gt;Growth&lt;/strong&gt; phase for the platform, where we took our learnings from the pilot, made the platform better and grew it.&lt;/p&gt;
+
+&lt;p&gt;Personally this was the most fun phase of the project for me; where we did a lot of brainstorming, experiments, launches, had a few failures and many successes to boast about :)&lt;/p&gt;
+
+&lt;h3 id=&quot;maturity-phase&quot;&gt;Maturity Phase&lt;/h3&gt;
+
+&lt;p&gt;Once we had a sizeable numbers of merchant mini apps across categories and a lot of internal verticals on the platform what I consider as reaching the &lt;strong&gt;Maturity&lt;/strong&gt; phase, we then started focusing more deeply on questions about handling scale, stability and standardisation of the SDK and the platform, afterall a lot of Paytm app depended on this platform. Few things we did were:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;As our confidence with the platform grew and more internal teams started using it, we felt its important for us to leverage this SDK in other app properties for Paytm: Paytm For Business app, Paytm Money app, Paytm Insider etc. and hence we worked towards making our SDK &lt;strong&gt;multi-tenant.&lt;/strong&gt; This took us a good amount of effort to separate out every dependency and make it work independently in any app just by integrating few hooks. This has now led to the “Phoenix” SDK being part of almost all Paytm App properties and any mini app (internal or external) which goes live on Paytm main app technically can be made available on all other Paytm properties with just a single click.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Standardised lot of aspects of the platform : JS API(Bridges) structure, error-codes and handling, Title bar, various UI elements etc. and added more detailed logger and tracking for the platform performance.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;With the large number of merchant apps we were onboarding a lot of manual processes were just becoming too tedious to manage operationally. To solve this we launched a &lt;strong&gt;“DIY flow”&lt;/strong&gt;.&lt;/p&gt;
+
+    &lt;div class=&quot;videoWrapper&quot;&gt;
+&lt;center&gt;
+  &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/W0qN81dujfs&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/center&gt;&lt;/div&gt;
+
+    &lt;p&gt;This allowed any merchant to come onboard as a Mini App without requirement any_ involvement from Paytm’s end : instant onboarding, easy tools for app development and automated submission and go-live process.
+  &lt;em&gt;In a nutshell we ended up building a smaller version of Google/ Apple Play Console&lt;/em&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Launched new UQR Flow: This is one of the feature which remain super close to my heart. Paytm app is the most used QR scanner in the country and we wanted to leverage this mind-recall to serve as an additional touchpoint for Mini Apps. This was built at a time when a lot of restaurants were moving to a contactless ordering (blame Covid!) and we felt that this was a good offering both for our users and our merchant partners: Users could simply scan the restaurant QR from their Paytm app to instantly open merchant’s Mini app and order within a few clicks (Remember: login and payments are seamlessly integrated in Mini Apps).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A lot many things are now in pipeline to improve the core platform: page load time, performance and stability and to give our merchants more powerful tools to reach their customers.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As usual there is so much more to write but I will give it a pause here. I hope you got a good sense of how crazy it was to build this platform.&lt;/p&gt;
+
+&lt;hr /&gt;</content><author><name></name></author><summary type="html">After a stint of nearly 3 years at Paytm, I recently took the tough call to leave Paytm and explore PM’ing in a new industry. During my tenure here I was lucky to work on few very meaningful and impactful projects most notable being Mini Apps, Vaccine Finder and Paytm Health. I plan to write about my experience and share my learnings from working on these projects. This post is about the journey to build the Mini Apps Platform for Paytm.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://princejain.me/assets/blog_images/miniappsblog.png" /><media:content medium="image" url="https://princejain.me/assets/blog_images/miniappsblog.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Explaining the National Health Stack</title><link href="https://princejain.me/2022/01/12/National-Health-Stack.html" rel="alternate" type="text/html" title="Explaining the National Health Stack" /><published>2022-01-12T00:00:00+00:00</published><updated>2022-01-12T00:00:00+00:00</updated><id>https://princejain.me/2022/01/12/National%20Health%20Stack</id><content type="html" xml:base="https://princejain.me/2022/01/12/National-Health-Stack.html">&lt;p&gt;The National Health Stack is a new digital health infrastructure launched by the National Health Authority of India, envisioned to serve as the building block for digitising the healthcare sector in the country.&lt;/p&gt;
+
+&lt;p&gt;It’s essentially set of APIs to any which entity (public/ private) can hook into and enable complex solutions in the health space, the same way any fintech player these days can enable UPI payments with simple API integrations. The basics of the NHS are very similar to India stack and the way India Stack revolutionised Payments in the country (among other things), NHS is envisioned to revolutionise the healthcare ecosystem in India.&lt;/p&gt;
+
+&lt;p&gt;Before I start with detailing the National Health Stack, I believe it’s important to mention &lt;strong&gt;India Stack&lt;/strong&gt;: it’s imperative to understand how we reached here and what the future for healthcare may look like. Okay with that said, let’s start with a crash course on &lt;strong&gt;India Stack&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;India Stack is the comprehensive digital identity, payment, and data-management system we as a nation have been working towards for a little more than 10 years. Under it, we are trying to solve for the three economic primitives of identity, payments, and data.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Stage 1: Digital Identity&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;It all started with building the digital identity for all citizens under the Aadhaar initiative ( literally meaning “foundation” in Hindi). This gave everyone a unique 12-digit identification number that could be used to access a wide range of services.
+More than 90% of the country’s population, 1.2 Bn of them have enrolled for a Aadhaar, about half of them linked it to their bank accounts.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Health_Stack.png&quot; alt=&quot;Aadhaar Trend&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Prior to Aadhaar, lack of a central identity meant nearly half of the country’s population lacked a nationally accepted identity. This meant complex processes for banks to verify identity, ultimately driving up the cost for banking. All other popular modes of identity (PAN, Passport, Driving License, Ration Card) are fragmented in their adoption and many lacks digitisation.&lt;/p&gt;
+
+&lt;p&gt;The Reserve Bank of India grasped this opportunity to transform banking. It created an electronic way for banks to verify customer’s identity using Aadhaar’s biometrics (e-KYC) and significantly brought down the cost of account opening. This coupled with the ambitious &lt;em&gt;Pradhan Mantri Jan Dhan Yojana&lt;/em&gt; enabled more than 350 million new account openings.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Stage 2: Interoperable Payments&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;While the government was widening access to bank accounts, RBI under the NPCI arm launched a new layer of retail payments called as UPI (Unified Payments Interface). This enabled banks and non banks to talk and exchange payments inter-operably amongst one other.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;“&lt;em&gt;Since its launch in April 2016, UPI has been nothing short of a runaway success story, with few parallels in the history of global payments. In just 4 years, the second layer of India Stack grew from an ambitious idea to the world’s 5th largest payment network by volume, behind only Visa, Alipay, WeChat Pay, and MasterCard.&lt;/em&gt;” - Tigerfeathers substack.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;In simple sense, the way UPI works is that all banks are connected to a central server operated by NPCI (National Payments Corporation of India) and NPCI acts as a middlemen and a custodian of all the information exchange between banks.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Health_Stack_1.png&quot; alt=&quot;UPI Trend&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Banks can expose hooks (UPI handles like okhdfcbank, okicici) to private fintech players which allows them to extend seamless payments functionality to their users without having to implement a complex maze of banking flows.&lt;/p&gt;
+
+&lt;p&gt;From an end-user aspect, everyone is free to choose the app of their choice and transfer money (send/request) from one VPA handle to other. This has led unprecedented innovation and growth in the payments space in the country in the last 5 years.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Stage 3: Data Empowerment through DEPA&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Solving for the primitives of identity and payments, led to India becoming data-rich. People from organised to semi and un-organised sectors including small shopkeepers, MSMEs, entrepreneurs and gig economy workers started generating digital payments footprint. This digital footprint could be used, for the first time, to provide evidence that builds trust with institutions. This could also enable better access to services that could meaningfully improve people’s lives and all this eventually creates a need to solve for &lt;strong&gt;data ownership&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The third and the final piece of India Stack focuses on establishing a new model for data governance in India. This is somewhat similar to what &lt;strong&gt;&lt;a href=&quot;https://gdpr.eu/what-is-gdpr/&quot;&gt;GPDR&lt;/a&gt;&lt;/strong&gt; is for EU citizens.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;To understand why this is needed, think of a practical situation where you apply for a loan and the loan provider asks for your last 3 month bank statements. Like me, have you also felt uncomfortable sharing these? After all, they just need to verify your income to ensure you are capable to pay back your EMIs. Another problem in this regard is what if you receive income in multiple bank accounts, how do you prove your credit worthiness?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This is what the DEPA aims to solve by putting users in control and ownership of their data. This is done by freeing up data from the ownership of those who generate it and putting the actual owners on that data in control. It solves to ensure that users should not struggle to access or share their data from institutions&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;DEPA replaces costly and cumbersome data
+access and sharing practices that disempower individuals, such as bulk printout notarisation and physical submission, screen scraping, username/password sharing, and terms and conditions forms providing blanket consent.&lt;/em&gt; - DEPA Consultation Paper&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;There is still a lot happening on this layer with an impending legislation under &lt;strong&gt;&lt;a href=&quot;https://www.meity.gov.in/writereaddata/files/Personal_Data_Protection_Bill,2018.pdf&quot;&gt;PDP Bill&lt;/a&gt;&lt;/strong&gt; (Personal Data Protection) and many things are currently being build and enabled. The one which is most striking is the &lt;a href=&quot;https://setu.co/data/account-aggregator&quot;&gt;Account Aggregator Framework&lt;/a&gt; which is meant to solve for how we share our financial data.&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/images/Health_Stack_7.png&quot; alt=&quot;The three layers of India Stack. Source: iSPIRT&quot; /&gt;
+&lt;figcaption&gt;The three layers of India Stack. Source: iSPIRT&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;In a nutshell, the India Stack enabled us widen access to financial services, dramatically lower the cost of confirming people’s identities and allowed control on access to people’s personal data  through consent:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Identity: Aadhaar&lt;/li&gt;
+  &lt;li&gt;Payments: UPI&lt;/li&gt;
+  &lt;li&gt;Data: DEPA&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;If you want to learn more about the India Stack, read &lt;strong&gt;&lt;a href=&quot;https://tigerfeathers.substack.com/p/the-internet-country&quot;&gt;this&lt;/a&gt;&lt;/strong&gt; amazing blog on India Stack by Aaryaman Vir.&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;introduction&quot;&gt;&lt;strong&gt;Introduction&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;Now that you know about India Stack, before we dig deeper into the National Health Stack, I want to help you imagine a worldview where this infrastructure has come to life.&lt;/p&gt;
+
+&lt;p&gt;Lets take the case of a normal doctor consultation:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;You visit a Hospital and find a QR on the registration desk. You pull out your smartphone, launch the app of your choice and scan it. The hospital instantly gets accurate information about you and you are instantly registered – &lt;em&gt;Profile Sharing&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;The health facility then sends you a request, asking you to share relevant documents from your previous medical visits. You use your smartphone to relevant documents. -  &lt;em&gt;Health data sharing &amp;amp; consent&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;When you walk into the doctor’s room, she has your full medical history open on her computer. She uses that to aid in your assessment and and writes you a new prescription. You instantly get a notification on your mobile and can view the recent prescription digitally - &lt;em&gt;Digital Health Records&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Doctor’s treatment plan and prescription shows up on your mobile and you can schedule a follow up visit or have a tele-consult or order medicines directly from your phone. - &lt;em&gt;Value added services like tele-consult, medicine ordering&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;You can then use all these documents to get instant and seamless digital claims processed for your health insurance - &lt;em&gt;e-Insurance claims&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;These are some of the actual flows being enabled by the National Health Stack, currently being built piece by piece!&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;okay-so-what-is-india-health-stack&quot;&gt;Okay, so what is India Health Stack&lt;/h4&gt;
+
+&lt;p&gt;Now that we have done a crash course on &lt;strong&gt;India Stack&lt;/strong&gt; and understood what the future with NHS may look like, let’s actually try to understand it. NHS takes learnings from the best of what India stack has to offer:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Identity layer from Aadhaar, Interoperability from UPI and data ownership from DEPA&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;All the key traits of India stack are well utilised in National Health stack as well:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Presence-less layer&lt;/strong&gt; : Remove barrier for participation by giving digital identities and authentication mechanisms&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Paper-less layer:&lt;/strong&gt; Enables digital records to be moved seamlessly linked with an individual’s identity&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Consent layer:&lt;/strong&gt; Give users control over their data and allow them to share it in a safe and secure manner&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;India health stack is the infrastructure which aims to provide the foundational components for health programs in India. It aims to bring a holistic view across multiple health entities and enable interoperability between the various public and private players.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;“&lt;em&gt;Built as a Common Public Good by the Centre for adoption by all states, it will eliminate any repetitive efforts on part of, yet retain autonomy for, the states—paving way for rapid rollout of various health initiatives, achieve convergence and accelerate the momentum to achieve the goal of Universal Health Coverage&lt;/em&gt;” - NHA&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;health-stack-building-blocks&quot;&gt;Health Stack Building Blocks&lt;/h4&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/images/Health_Stack_2.png&quot; alt=&quot;National Health Stack. Source: UHI Consultation Paper&quot; /&gt;
+&lt;figcaption&gt;National Health Stack. Source: UHI Consultation Paper&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;There are four broad layers or stack to the National Health Stack Architecture:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;JAM and Existing Digital Public Goods&lt;/strong&gt;: This is like the base layer which form the foundational layer in digital health services and sets foundations for interoperability by leveraging existing digital public goods (remember India Stack!). NDHM has been designed to operate effectively with and leverage Aadhaar, Jan Dhan Bank Accounts and Mobile (JAM), UPI, eSign, Digilocker, etc.
+These integrations provide key functionalities in the NDHM architecture. For example, the creation of a Health ID for patients using Aadhaar authentication service to verify identity, and doctors can pull in their digitally issued certificates through DigiLocker when enrolling in the Healthcare Professionals Registry. NDHM is built with other such integrations in mind in a modular, scalable manner.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Health Data Exchange Layer:&lt;/strong&gt; This layer encompasses the core digital infrastructure
+modules needed to ensure the interoperability of various kinds of health data. These
+building blocks include core participant registries, Health Information Exchange and Consent
+Manager, Health Data Standards (based on FHIR), coding terminology and data
+aggregation specifications that drive trust and shareability of health data between
+patients and healthcare providers. Some of the key components of this layer are:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Digital&lt;/strong&gt; &lt;strong&gt;Registries:&lt;/strong&gt; This is aimed to serve as a reliable and easily accessible master data about all the players in the health ecosystem. It plans to include consolidated e-registries for healthcare providers (hospitals, clinics, labs etc), beneficiaries, doctors, insurers and ASHAs etc. Similar to how every citizen has a digital identity with Aadhaar, every health participant will have a digital identity:
+        &lt;ol&gt;
+          &lt;li&gt;&lt;strong&gt;Health Id :&lt;/strong&gt; Each user in the system will be issued an unique 14-digit Health ID&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Doctor Id:&lt;/strong&gt; Each doctor in the ecosystem will be issued a unique 14-digit Doctor ID.&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Facility Registry:&lt;/strong&gt; Each participating healthcare facility (clinic/hospital/lab etc) will be issued a unique facility ID.&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Health Information Exchange:&lt;/strong&gt; This lays down the principles of how health data is to be shared inter-operably between patients and health care providers. It lays down the FHIR so that health data is encoded in a machine readable and globally accepted format for it to be processed universally.
+ Another key aspect of this layer is &lt;strong&gt;“Consent”.&lt;/strong&gt; It lays down the details of a consent manager which details how users consent is managed, maintained and taken into account while sharing any health data. It also gives user the control or rather the ownership of their health data&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Health Claims Standards:&lt;/strong&gt; This component aims to provide building blocks for implementing a large scale health insurance program, with the vision of allowing private and public players to implement insurance schemes in a data driven manner through open APIs. It is meant to do enable of wide-impacting use cases in the Insurance space:
+        &lt;ol&gt;
+          &lt;li&gt;Enable a policy engine to allow for defining and storing a machine readable insurance policies&lt;/li&gt;
+          &lt;li&gt;Instant digital activation of policy on verification of premium transfer&lt;/li&gt;
+          &lt;li&gt;Setting up a Claim Engine for auto adjudication of claims&lt;strong&gt;.&lt;/strong&gt; Scope for a smart contract (shoutout to cryto bois’ reading this) to auto execute insurance payments on meetings conditions of the claim process&lt;/li&gt;
+          &lt;li&gt;Data modelling backed fraud detection, better visibility of past claims history and deeper analysis of suspicious claims&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Health Services Interface:&lt;/strong&gt; Building blocks in this layer are envisioned to enable interoperable and seamless interactions between the patients and providers of digital health services. It lays down the foundation of “open networks”&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/Health_Stack_3.png&quot; alt=&quot;Health Services Interface&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;Open Networks are set of shared technical standards, accessible to everyone. Being a non proprietary protocol means no one is locked into using any particular entity’s product and makes the ecosystem interoperable.&lt;/p&gt;
+
+    &lt;p&gt;This is akin to UPI and the role of NPCI in Payments layer of India Stack. The way NPCI controls the central server and lays out protocol for banks to talk to each other (maybe now you realise why I had to cover India Stack before!), this layer lays down open protocols for various participating health care entities to talk and exchange data with each other by a introducing the concept of &lt;strong&gt;Unified Health Interface&lt;/strong&gt; (India Stack parallel: UPI 😉)&lt;/p&gt;
+
+    &lt;p&gt;UHI is envisioned as an open protocol for digital health services and aims to allow interactions between end-user applications (EUAs) and Health Service Providers (HSPs). This has the potential to bring a lot of benefits to the entire health ecosytem, ultimately bringing down the cost of delivery health care services: Interoperability, easy discoverability, trust and network effects.&lt;/p&gt;
+
+    &lt;p&gt;As a small snippet assume the current scenario where every health-tech player from Apollo to Practo to EkaCare needs to have their own onboarding flows for users and doctors, incur a significant cost for verification and data accuracy. These platform operators have put in place their own doctor credential verification systems to reassure end users but the standards used by these operators are not scrutinized by any regulatory body. In the UHI scheme of things, they can simply plugin to the NDHM stack and get the list of all users and doctors which are already onboarded and can choose to build value added services on top of the stack.&lt;/p&gt;
+
+    &lt;figure&gt;
+ &lt;img src=&quot;/images/Health_Stack_4.png&quot; alt=&quot;Digital Health Services possible on UHI. Source: NHA &quot; /&gt;
+ &lt;figcaption&gt;Digital Health Services possible on UHI. Source: NHA &lt;/figcaption&gt;
+ &lt;/figure&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;User Applications:&lt;/strong&gt; This is the final end-user layer of the NDHM ecosystem. It comprises the
+applications and platforms developed by the government or private sector through which
+patients, healthcare providers, insurers, researchers, policy makers, etc. access health services. The application layer will interact with the health services layer
+and the health data layer to enable a wide range of digital health services and health data
+interchange.UHI defines various entities with regards to their participation in the health information flow:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Health Information Provider (HIP):&lt;/strong&gt; Any entity which generates Health information ( &lt;em&gt;Includes Hospitals, diagnostic centres, clinics, public health programs, telemedicine players, etc. )&lt;/em&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Health Information User (HIU):&lt;/strong&gt; Any entity that would like to access health records of an individual ( &lt;em&gt;Includes doctors, hospitals or 3rd party app)&lt;/em&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Health Repository Provider (HRP):&lt;/strong&gt; Software service providers who offer NDHM compliant software and long-term record storage to HIP/HIUs&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Public Health Record (PHR):&lt;/strong&gt; User facing app which facilitates HealthId creation, consent management and health record viewing. (by that definition most PHRs would be HIUs as well&lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Health Locker:&lt;/strong&gt; Think of this as a Google Drive for your health documents. The way you have all your identity documents available in Digilocker, the same way users have an option to store all their health documents in a health locker.&lt;/p&gt;
+
+        &lt;figure&gt;
+  &lt;img src=&quot;/images/Health_Stack_5.png&quot; alt=&quot;High level information flow in UHI&quot; /&gt;
+  &lt;figcaption&gt;High level information flow in UHI &lt;/figcaption&gt;
+  &lt;/figure&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;It is crucial to note that this layer is envisioned as the hotbed for market innovation. NDHM as an entity doesn’t aim to directly participate in user interactions and expects private and public sector participants to take a lead in building use cases and innovative solutions on top of this stack.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;why-do-we-need-a-national-health-stack&quot;&gt;Why do we need a National Health Stack?&lt;/h3&gt;
+
+&lt;p&gt;A bunch of reasons. The broad idea is that a National Health Stack will enable us to digitise and standardise health service by getting all entities to talk to a single central system. This has a bunch of potential benefits:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Consolidate Digital Health&lt;/strong&gt;: A lot of our health documents these days are already in some form or other digital: be it the Covid Vaccination certificate or a Blood test report. The problem today is of consolidation since all these health data lie under various fragmented data systems and as a user we don’t have a single place to store/view them. The health stack is supposed to solve this problem by bringing all your health documents under a single infrastructure.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Standardise Digital Health records&lt;/strong&gt;: Currently there is no standardisation on how different health entities generate/ consume health records. While there exists few globally accepted Health document standards, India lacks adoption and NHS plans to solve that by adopting the &lt;a href=&quot;https://www.hl7.org/fhir/&quot;&gt;FHIR&lt;/a&gt;  standardisation. So that all entities generate and recognise health reports in the same format and it can be made machine readable&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Build longitudinal Health records&lt;/strong&gt;: A longitudinal health record is a collection of electronic medical record (EMR) of patient health information generated by one or more healthcare providers. Having your longitudinal health history available helps health professionals to quickly learn about your previous health history, allergies, medications and take quick remedial actions when urgently needed.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Derive analytical insights from data&lt;/strong&gt;: Once health data is standardised, consolidated and made machine readable there are many powerful use cases which can be build of top of it. One of the powerful one’s is to enable big data analytics to determine the health scenario in the country, complex study of diseases and pandemics for medical research purposes.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Okay, so now that you understand the basic construct and why we may need the NHS for; lets look at some of key tenants on which this stack is based on:&lt;/p&gt;
+
+&lt;h3 id=&quot;key-tenants-of-the-health-stack&quot;&gt;Key tenants of the Health Stack&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Inter-Operablility&lt;/strong&gt;
+UHI is designed to be a truly inter-operable model. You can have your health records from various different providers (Labs, clinics, private &amp;amp; government health facilities, self uploaded medical records) and all of it will be consolidated for the user linked to their Health ID and available to the entire ecosystem for access &lt;strong&gt;&lt;em&gt;post an explicit end user consent.&lt;/em&gt;&lt;/strong&gt;
+This ensures that health data is easily accessible by everyone in the ecosystem and large players do not build a closed wall around user data using their proprietary protocol.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Consent&lt;/strong&gt;
+Another core tenant of UHI is that any user data flows only upon explicit user consent. No health data for the user flows There are even granular controls to choose the health document type and time validity for which the documents are shared. No entity can ever access your health documents without explicit consent.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Choice&lt;/strong&gt;
+Another key fundamental of the UHI network is that it is &lt;strong&gt;optional&lt;/strong&gt; and only users who wishes to participate in this network do. No one by default gets a Health Id or gets their data shared with anyone in the ecosystem&lt;br /&gt;
+&lt;em&gt;(&lt;strong&gt;Note&lt;/strong&gt;: There was a known deviation to this where Health IDs were created for millions of users during their Covid Vaccination and has been rolled back since then)&lt;/em&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Ownership&lt;/strong&gt;
+While the construct of ownership is still loosely defined, probably due to impeding PDP bill. The idea here is that user owns their health care data and are free to fetch their data from all healthcare entities in the ecosystem and store it permanently* for themselves in a separate health locker of their choice. (* depending on the capabilities of the Health Locker)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Privacy&lt;/strong&gt;
+All user data is stored and is exchanged in an encrypted manner and only the relevant parties authorised (with a valid private key) can decrypt and view the health care data.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;market-opportunities&quot;&gt;Market Opportunities&lt;/h3&gt;
+
+&lt;p&gt;While the Health Stack is still currently being worked upon and many opportunities will be unlocked once this ecosystem is fully developed, these are some of the more immediate opportunities for private players:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;PHR App&lt;/strong&gt;: Any private entity which has a good understanding and capability to build user side flows can become a PHR App. It is essentially the app which users will use to interact with the UHI stack (like the fintech apps incase of UPI).
+There are significant potential to integrate and enable a lot of value added services like payments, doctor ratings/reviews, health records storage, upselling services like insurance, lab tests, hardware devices etc.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Health Locker:&lt;/strong&gt; This is another user facing functionality enabled by NDHM. This is Google Drive equivalent of Health where users can store their longitudinal health data from all health providers, digitise existing health documents (uploading them) and ensuring its accessible and stored perenially.
+This is the data layer of UHI stack and a lot of interesting use cases from insurance to analytics can be build on top of the health locker layer.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;HIMS/ LIMS:&lt;/strong&gt; Most labs and hospitals currently use outdated HIMS systems, which barely serves the purpose of digitising their information flow. In order for them to integrate with the NDHM ecosystem, they would need to upgrade their information management systems to make it FHIR and UHI compliant and also invest considerably in hardware to digitise the data collection and viewing flow.
+There is significant business potential for hardware and software players in hospital-tech.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;NDHM can spur a fundamental transformation in India’s healthcare system and unlock economic value worth over $200 billion by 2030- Niti Aayog&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;figure&gt;
+   &lt;img src=&quot;/images/Health_Stack_6.png&quot; alt=&quot;Various Entities participating in UHI. Source: The Ken&quot; /&gt;
+    &lt;figcaption&gt;Various Entities participating in UHI. Source: The Ken &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;critics-to-uhi&quot;&gt;Critics to UHI&lt;/h3&gt;
+
+&lt;p&gt;There are some of the critics I have come across while researching and discussing about the UHI stack, detailing some of those here:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Its meant to INDIA and not for BHARAT&lt;/strong&gt;
+While most of what I discussed about for the stack assumes the user has a smartphone (blame my privilege), most part of the UHI functions even without one! Users can create a HealthID account at health centres by showing physical documents and get a physical Health ID Card, and avail most of these services offline. The fundamental utlity of the documents available digitally still is valid. However, some intricate aspects like health data sharing and consent flow for non-smartphone users though are something yet to be detailed out further.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Health IDs were created without consent during Vaccination drive&lt;/strong&gt;
+While there is some merit to this critic since the government did create HealthIDs for users without any explicit consent or education and most of them got to know about this when opening their vaccination certificate, there was no leakage or miss-use of user’s health data in my opinion.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;Of 165 million health IDs that have been generated, Co-WIN alone aided in generation of 127 million of them&lt;/p&gt;
+
+    &lt;/blockquote&gt;
+
+    &lt;p&gt;Looking back this certainly was an oversight on behalf of policy makers but considering that no other document was added to this,  I don’t see this as any harm done. &lt;em&gt;&lt;strong&gt;Note&lt;/strong&gt;: It has been rolled backed since then and new cowin certificates don’t have a HID.&lt;/em&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Loose definition on encryption for Health Lockers/ PHR apps&lt;/strong&gt;
+Currently there is not enough regulations/ policies around how health lockers/ PHR apps need to handle or store user’s health data. While NDHM lays out broad principles and guidelines, there are no well defined requirements on data encryption and storage for these entities.
+In my opinion, as the ecosystem evolves, this will eventualy become more clearer.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Opposition from the incumbents&lt;/strong&gt;
+This ecosystem in a lot of ways is a direct threat to the current business models of the incumbents.  Let’s take Practo for example: it has invested considerable money and resources in getting tens of thousands of doctors onboarded and verified on their platform, which is the hook they use to get users onto their platform.
+In the UHI scheme of things all health professional will be onboarded by NDHM and are available for all players to leverage. The moat Practo had (the closed wall) might be made irrelevant. But this is also why a lot of innovations might happen in health-tech space and new and interesting business models will arrive.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;The end.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Thank you for bearing with me all the way till the end, I hope you got to learn something about the National Health Stack. &lt;br /&gt;
+&lt;em&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; As of writing this article, I am associated with Paytm working on their Health Initiative.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;references&quot;&gt;References:&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://abdm.gov.in/assets/uploads/consultation_papersDocs/UHI_Consultation_Paper.pdf&quot;&gt;UHI Consultation Paper&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://abdm.gov.in/publications/NHS_Strategy_and_Approach&quot;&gt;National Health Stack Consultation Paper&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://www.niti.gov.in/sites/default/files/2020-09/DEPA-Book.pdf&quot;&gt;DEPA Consultation Paper&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://itihaasa.com/public/pdf/History_and_Future_of_Digital_Health_in_the_World_and_India.pdf&quot;&gt;iSpirt Working Paper&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://the-ken.com/story/behind-the-rush-and-hush-of-indias-digital-health-mission/&quot;&gt;The Ken - Article on UHI&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;</content><author><name></name></author><summary type="html">The National Health Stack is a new digital health infrastructure launched by the National Health Authority of India, envisioned to serve as the building block for digitising the healthcare sector in the country.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://princejain.me/assets/blog_images/healthstackblog.png" /><media:content medium="image" url="https://princejain.me/assets/blog_images/healthstackblog.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Building the Vaccine Slot Finder tool</title><link href="https://princejain.me/2021/08/03/Building-Vaccine-Slot-Finder.html" rel="alternate" type="text/html" title="Building the Vaccine Slot Finder tool" /><published>2021-08-03T00:00:00+00:00</published><updated>2021-08-03T00:00:00+00:00</updated><id>https://princejain.me/2021/08/03/Building%20Vaccine%20Slot%20Finder</id><content type="html" xml:base="https://princejain.me/2021/08/03/Building-Vaccine-Slot-Finder.html">&lt;p&gt;What started as a weekend project ended up becoming one of the most popular vaccination tool for millions of people in the country! This is behind the scenes story of how the Paytm Vaccine Finder tool came to life. I shared the inside story of how I built the Paytm Vaccine Finder tool.. &lt;br /&gt;
+Hope you enjoy this read.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Some stats on the tool:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The tool helped more than &lt;strong&gt;15 million&lt;/strong&gt; users from over 750 districts and 19,000+ PIN codes in the country by sending more than &lt;strong&gt;1 billion&lt;/strong&gt; vaccine availability alerts, and achieved &lt;strong&gt;3 million+&lt;/strong&gt; vaccine slot booking on the Paytm app.&lt;/p&gt;
+
+&lt;p&gt;In the details that follow, I have tried sharing the story of how we built this tool.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-we-started&quot;&gt;How we started&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Background:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;It’s necessary to set the context first. The tool was ideated at a time when the Government had just launched the Co-WIN portal for vaccine bookings and almost everyone in the country wanted to get their vaccine shots as quickly as they could!&lt;/p&gt;
+
+&lt;p&gt;With a population of over 1.3 billion this was a task of massive proportions for the country and there was already a huge demand-supply mismatch for the vaccine doses. People had to desperately keep refreshing the Co-WIN portal to check when new slots opened. The slots opened erratically, were booked in a matter of a couple of minutes and it ended up becoming a game of fastest finger first!&lt;/p&gt;
+
+&lt;p&gt;There were a lot of tools which sprung up to serve this need: Telegram Channels, Twitter bots, Chrome extensions and sites which claimed to book slots for you (for a small fee!)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ideation:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This all started during a casual mid-day twitter browsing on a Wednesday (blame WFH!). On Apr 28, Dr. RS Sharma (CEO, National Health Authority) tweeted announcing the launch of Public APIs to fetch real-time slot availability and encouraged third-party applications to integrate them and help spread awareness about the vaccination drive.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Today, we have opened Co-Win APIs for vacancies search and downloading certificates of vaccinations for third party applications. API specs can be found at &lt;a href=&quot;https://t.co/2t0Ac8Ftmi&quot;&gt;https://t.co/2t0Ac8Ftmi&lt;/a&gt;.&lt;/p&gt;&amp;mdash; Dr. RS Sharma (@rssharma3) &lt;a href=&quot;https://twitter.com/rssharma3/status/1387252842667208704?ref_src=twsrc%5Etfw&quot;&gt;April 28, 2021&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Reading this tweet I immediately pinged my manager to discuss with him my crazy idea of something we could on this initiative. After all, I was also struggling to book a vaccine slot for my family and understood the need very well and could see the immediate benefit millions of people would get from such a tool and was confident we could build a value prop on top of the exposed APIs. After a brief discussion, he asked me to go running with the idea.With the alignment set, I started pinging folks I knew who’d be willing to work over a weekend for a side project and to my amusement, everyone I pinged was interested to be a part!&lt;/p&gt;
+
+&lt;p&gt;With the team in place we started studying the &lt;a href=&quot;https://apisetu.gov.in/public/marketplace/api/cowin/cowin-public-v2&quot;&gt;Co-WIN APIs&lt;/a&gt; almost immediately. Sadly, the initial APIs were behind an authorization layer and couldn’t be used publicly. We wrote to the folks at Co-WIN and to my surprise, the Government machinery worked round the clock on it (even during the weekend) and around Saturday evening on 30th April launched a public version of the APIs. This allowed anyone to hit the API to fetch real-time data on slot availability.&lt;/p&gt;
+
+&lt;p&gt;We started analysing the APIs around the evening, ideated and hashed out an MVP that had a meaningful value proposition for the end-user by the late night. The idea was to launch the tool within the next few days (to ensure we are the first one’s to the market.)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;questions-we-had-while-starting-the-project&quot;&gt;Questions we had while starting the project:&lt;/h3&gt;
+
+&lt;p&gt;Before we went ahead and started working on the project in full steam, there were a couple of WHYs and HOWs we thought to answer for ourselves and the team to have the right intensions and the idea of what we wanted to build.&lt;/p&gt;
+
+&lt;h4 id=&quot;i-why-should-we-do-this&quot;&gt;I. Why should we do this?&lt;/h4&gt;
+
+&lt;p&gt;This one was probably the easiest one to answer:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Social Cause:&lt;/strong&gt; &lt;br /&gt;
+Getting people vaccinated was our best bet to overcome this pandemic! In our role as the technology leaders in the country it was our duty if I may say to help our users and fellow citizens in the best way we can to overcome this pandemic.&lt;/p&gt;
+
+    &lt;p&gt;Creating this utility was our next small bit in making sure that information about the vaccination drive is widely available to users from all sections and strata of society and we are able to help them with relevant info to get them vaccinated sooner.&lt;/p&gt;
+
+    &lt;p&gt;This motivation was meaningful enough to keep us motivated to burn the midnight oil for the next many days to create a “simple” tool to help our users.&lt;/p&gt;
+
+    &lt;p&gt;“&lt;em&gt;simple” because we wanted to solve a complex problem at our end to make it simpler for the users to find and book slots.&lt;/em&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Business Sense:&lt;/strong&gt; &lt;br /&gt;
+NONE, we thought of or wanted. We never had any discussion on if it makes any business sense for us or how we can earn money on this.&lt;/p&gt;
+
+    &lt;p&gt;Till date, we have not added any promotions/ adverts or any have made use of any user generated data from this tool and kept this openly available to all users of our app. This was our humble offering to do a very small bit in the fight against this pandemic.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;ii-why-is-it-better-than-the-existing-solutions&quot;&gt;II. Why is it better than the existing solutions:&lt;/h4&gt;
+
+&lt;p&gt;I have been asked this question multiple times by many friends and colleagues in the days following the launch of this tool. Couple of reasons we thought of then:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Reach&lt;/strong&gt;: Paytm has a wide user base (500+ Mn users!) spread across the country and with such a tool we might be able to help a much larger base and help in a widespread awareness for vaccination.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Technological Barrier:&lt;/strong&gt; Not many people are tech-savvy to be able to run bots/ utilities to find and book as and when new slots come. We wanted to bridge on this technology divide and make info about new slots accessible to anyone and everyone.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;User Trust/ Data Privacy:&lt;/strong&gt; A lot of bots/ tools which cropped up were just data gathering dumps with no surety if they would ever work or if the user data was safe! With Paytm already being a trusted brand and us not requiring any details from the user (they were already in the Paytm app), ours was a much safer way for them to get vaccine availability related information.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Personalised Alerts:&lt;/strong&gt; The Telegram / Twitter bots served only for a handful of major cities (around 160 at the time of writing this article) and they were sending generalised alerts for slot availability. Our tool allowed us to go much deeper into user specific personalisation: basis PIN Code, vaccine type, dose count etc., which effectively meant every alert we sent to the user was highly relevant and instantly actionable. This became more and more useful as the vaccination drive progressed.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Enable users to directly book on Paytm:&lt;/strong&gt; We had an opportunity to improve on the overall vaccine booking experience for the users and wanted to finally build an integrated slot booking on our app (thankfully we were able to do so within a few weeks of launching the tool)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;iii-can-we-handle-scale&quot;&gt;III. Can we handle scale?&lt;/h4&gt;
+
+&lt;p&gt;Short Answer : Yes.&lt;/p&gt;
+
+&lt;p&gt;Long Answer: Yes, but we had to make the right architectural and design decisions and iterate quickly various times in order to do so.!
+While designing the initial architecture, we designed the system with a target of 1 million users (we were happy to be proven wrong later!)&lt;/p&gt;
+
+&lt;p&gt;The tech folks did most of the magic here. We wanted the system to be cheap and scalable for us to allow us to run it for the many months to come until the vaccination drive finishes and be able to handle the scale this tool can potentially have. What we used is a combination of Mongo-DB and Lambda and created essentially a Stateless system to avoid storing/ processing too much data. Over the many weeks, we did multiple iterations to improve almost each and every aspect of the tool: the alerting logic, the UX, the frequency with which we sent out alerts, the customisation options and adding new functionalities to the tool.&lt;/p&gt;
+
+&lt;h4 id=&quot;iv-how-quickly-can-we-launch-this&quot;&gt;IV. How quickly can we launch this?&lt;/h4&gt;
+
+&lt;p&gt;Ideally we wanted to launch this as quickly as we could! This was an urgent requirement for millions of our users and launching this as fast as we possibly could was the need of the hour.&lt;/p&gt;
+
+&lt;p&gt;We set ourselves an insane timeline of &lt;strong&gt;4 days&lt;/strong&gt; to launch the first version of this tool, since we didn’t want it to delay our day work much or risk this project getting de-prioritised.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;heres-how-we-actually-did-it&quot;&gt;Here’s how we actually did it……&lt;/h3&gt;
+
+&lt;p&gt;What we started with is to narrow down a use-case for the tool which was important enough for us to build for. In Product Manager’s lingo the user-story for it read like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;“As a user I want the tool to help me find and book vaccine slots as easily as possible!”&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;i-creating-a-strong-value-proposition-for-our-tool&quot;&gt;I. Creating a strong value proposition for our tool&lt;/h3&gt;
+
+&lt;p&gt;To figure out value prop, I analysed the existing options in the market to find a use-case we can excel at: the Co-WIN website, Aarogya Setu app and the Telegram and Twitter bots. We tried finding use-cases which were unserved.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Problems with Co-WIN App :&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Searching through the portal was really painful! When we launched they didn’t even have basic filters to sort through results ( like Age/ Vaccine Type/ Fee) and showed the complete non-filtered results for the PIN Code. This was a nightmare especially when you tried playing fastest fingers first fighting for the elusive 100 slots wanted by the millions in your district. We wanted our tool to allow for &lt;strong&gt;easy filtering of results and to show only relevant results for the user.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;There was no mechanism on when new slots came up and most users kept on endlessly refreshing the portal in hope of finding new slots. This was &lt;strong&gt;a major pain point we wanted to solve for.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Problems with the Telegram/ Twitter bots:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;As I mentioned earlier, these tools were not personalised. These tools sent alerts for all possible slot openings for a district: most users had requirement of only alerts for a specific criterion: basis Dose count (1/2), Vaccine Type (Covishield/ Covaxin), Fee Type (Free/Paid) or sometimes even just for a specific PIN Code. We wanted to &lt;strong&gt;support personalised alerting.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;They only covered a handful of districts : starting with just Bangalore when we launched this tool and expanding to around 400 odd by the time of writing this article! Clearly the majority of INDIA lived outside these major districts and our aim was &lt;strong&gt;to serve the entire Indian populace&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Establishing our value-prop:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The tool should allow users to search for slot availability basis pin code or district , age group, Vaccine and Dose type.&lt;/li&gt;
+  &lt;li&gt;To only show vaccination centres which had slots available for the user’s criteria and to allow users to filter through the search results.&lt;/li&gt;
+  &lt;li&gt;If slots are not available, to allow users to set availability alerts. We will keep on checking when new slots open up and alert the users in real-time when slots open up for their locality. &lt;em&gt;Just to give a sense of the magnitude of supply-demand deficit, for a city like Delhi we have more than 1 Million users who wanted to be alerted for the elusive 300 odd vaccine slots which opened every day.&lt;/em&gt; &lt;strong&gt;This became the “Hero feature” of our product in the days to come.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Other considerations we had in mind:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;To keep the tool similar to Co-WIN: Since a lot of users would be juggling between Co-WIN and our tool we wanted the tool to mimic the overall user flow of Co-WIN as closely as possible so that user’s don’t feel alienated while switching from one tool to another.&lt;/li&gt;
+  &lt;li&gt;To ensure we can easily enable booking flow in future: We wanted our tool to enable direct vaccine bookings in the future &lt;em&gt;(the government had already announced their plans to open the booking APIs for public)&lt;/em&gt; and hence took conscious design decisions to ensure we can accommodate the booking flow quickly when needed&lt;/li&gt;
+  &lt;li&gt;Faster to build: Since we were chasing insane timelines and this tool was largely utilitarian and was to be used by different sections of the society, we kept the overall UI/UX decisions with these aspects in mind.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;ii-launching-an-mvp-quickly&quot;&gt;II. Launching an MVP Quickly&lt;/h4&gt;
+
+&lt;p&gt;It was essential for us to launch an MVP quickly to validate our hypothesis if the market really had a need for such a tool and gather crucial user feedback. Since the APIs were launched over a weekend, it was not possible to get a designer aligned to get the UI of the app designed.&lt;/p&gt;
+
+&lt;p&gt;Thankfully in Paytm we have a &lt;a href=&quot;https://thehardcopy.co/under-paytms-design-hood/&quot;&gt;standard design library&lt;/a&gt; and we used that to our advantage. I opened Figma Design PODS, combined various existing UI elements based on our needs and created a workable UI flow. Also, since our focus was to not make the flow too different from the Co-WIN’s UI, it helped in making design decisions.&lt;/p&gt;
+
+&lt;p&gt;This is how our first cut (without any design inputs) looked like:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/VaccineFinder_Screenshot.png&quot; alt=&quot;First cut for Vaccine Finder Tool&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The broad UI thankfully to my satisfaction (and my developer’s happiness) has remained the same even after the many iterations.&lt;/p&gt;
+
+&lt;p&gt;In case you don’t know, I was also managing the &lt;strong&gt;Mini Apps&lt;/strong&gt; Product and the &lt;a href=&quot;https://business.paytm.com/miniapps&quot;&gt;benefits&lt;/a&gt; we offer to our merchants via this platform also helped us immensely in this tool! Few I can share here were:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;To not have to worry about the UI we shipped with during launch since we could iterate on the UI pretty easily and not worry about releases due to it being a web-based framework&lt;/li&gt;
+  &lt;li&gt;The most important benefit was &lt;strong&gt;instant adoption&lt;/strong&gt; for our tool since we could launch this in all older versions of the Paytm app with the Mini Apps SDK (&lt;em&gt;which effectively meant reaching almost 70-80% of the entire user base of Paytm instantly on launch!)&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;We were able to get user details like PIN Code/ Phone Number from the Native app and auto-fill that to add user delight&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;One other thing which helped us was the presence of &lt;strong&gt;Paytm Chats&lt;/strong&gt;. (&lt;em&gt;As they say most successful things happen because of being at the right place at the right time!)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Paytm had launched Chats a couple of months ago and having the Chat system enabled us to send real-time updates to millions of users at scale. We leveraged their architecture fully to design our alerting system around it.&lt;/p&gt;
+
+&lt;p&gt;With all this in place, we get on to work and built the MVP in the next 2 days: allowing users to search for vaccine slots, set availability alerts and get notified in real time when slots opened up for their locality.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Broad System Design:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We created a simple Front-end page which fetched data from Co-WIN’s APIs directly and displayed it in a clean way on our app. Users could find slots, filter through availability results and set availability alerts for specific locations, when slots became available they would get an alert on their Paytm app.&lt;/p&gt;
+
+&lt;p&gt;To enable the alerting flow, we created a single API to allow users to subscribe to alerts and periodically fetch new data from Co-WIN APIs at our backend for those locations and alert users on Paytm Chats when any new slot opens up.&lt;/p&gt;
+
+&lt;h4 id=&quot;iii-first-launch&quot;&gt;III. First Launch:&lt;/h4&gt;
+
+&lt;p&gt;With all these decisions in place, we worked round the clock and launched this tool internally on 2nd  May (in under 48 hours!). We couldn’t make the app live for the entire Paytm user base initially due to rate limitations of Co-WIN APIs. We iterated and worked our way around that for the next few days and launched the tool officially on 6th May.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Happy to have done my small part in help India Vaccinate sooner :)&lt;br /&gt;Paytm is tracking all the available vaccine slots across the country in real-time. Find available slots &amp;amp; get instant alerts if a new vaccine slot opens up using : &lt;a href=&quot;https://t.co/ctNq7PCYDr&quot;&gt;https://t.co/ctNq7PCYDr&lt;/a&gt; &lt;a href=&quot;https://t.co/kvjj1DcLma&quot;&gt;pic.twitter.com/kvjj1DcLma&lt;/a&gt;&lt;/p&gt;&amp;mdash; Prince Jain (@Prince_Jain17) &lt;a href=&quot;https://twitter.com/Prince_Jain17/status/1390172849072001027?ref_src=twsrc%5Etfw&quot;&gt;May 6, 2021&lt;/a&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;The response immediately after launch was phenomenal making all our efforts worthwhile! This is how the users trend looked like day over day:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/VaccineFinder_Usergraph.png&quot; alt=&quot;Vaccine Finder New User Trend&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We were adding thousands of new users to the tool every hour and people started sharing on social media how they benefitted by these alerts and were able to book slots!&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;The Notification update related to the vaccine available slots are awesome!&lt;br /&gt;Thank you &lt;a href=&quot;https://twitter.com/Paytm?ref_src=twsrc%5Etfw&quot;&gt;@Paytm&lt;/a&gt; for the remainders. Appreciate your efforts. &lt;a href=&quot;https://twitter.com/vijayshekhar?ref_src=twsrc%5Etfw&quot;&gt;@vijayshekhar&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/gratitude?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#gratitude&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/cowin?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#cowin&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/CovidIndia?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#CovidIndia&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/Paytm?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#Paytm&lt;/a&gt;&lt;/p&gt;&amp;mdash; Afreed Patan (@afreedUX) &lt;a href=&quot;https://twitter.com/afreedUX/status/1391729370956406786?ref_src=twsrc%5Etfw&quot;&gt;May 10, 2021&lt;/a&gt;&lt;/blockquote&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Vaccine slot notifier by &lt;a href=&quot;https://twitter.com/Paytm?ref_src=twsrc%5Etfw&quot;&gt;@Paytm&lt;/a&gt; actually works, unlike many other such tools. &lt;a href=&quot;https://twitter.com/vijayshekhar?ref_src=twsrc%5Etfw&quot;&gt;@vijayshekhar&lt;/a&gt; definitely knows how to help Indians at large scale, given the current scale of paytm app, even in tier 2 &amp;amp; 3 towns, it was just perfect to launch vaccine slot notifier. 👍 &lt;a href=&quot;https://t.co/OcuH6dfHhI&quot;&gt;https://t.co/OcuH6dfHhI&lt;/a&gt;&lt;/p&gt;&amp;mdash; ak47_iitm (@ajhaamit39) &lt;a href=&quot;https://twitter.com/ajhaamit39/status/1391008391410057220?ref_src=twsrc%5Etfw&quot;&gt;May 8, 2021&lt;/a&gt;&lt;/blockquote&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;I was trying to schedule a vaccine appointment for the last 10 days but all slots were showing booked. &lt;br /&gt;&lt;br /&gt;Thanks to &lt;a href=&quot;https://twitter.com/Paytm?ref_src=twsrc%5Etfw&quot;&gt;@Paytm&lt;/a&gt; for simplifying the process. Got the availability alert when the slots open, booked my slot and got the confirmation.&lt;br /&gt;&lt;br /&gt;Thanks, &lt;a href=&quot;https://twitter.com/vijayshekhar?ref_src=twsrc%5Etfw&quot;&gt;@vijayshekhar&lt;/a&gt; &amp;amp; Team.&lt;/p&gt;&amp;mdash; Adarsh (@ada10rsh) &lt;a href=&quot;https://twitter.com/ada10rsh/status/1391024868435533827?ref_src=twsrc%5Etfw&quot;&gt;May 8, 2021&lt;/a&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;These messages (and many of the personal one’s on WhatsApp) literally helped boost the entire team’s motivation to keep on iterating and making this tool as useful as we could.&lt;/p&gt;
+
+&lt;h4 id=&quot;iv-major-milestones&quot;&gt;IV. Major Milestones:&lt;/h4&gt;
+
+&lt;p&gt;While we did the first launch in under 5 days, it took us almost the next 2 months to perfect the tool. With each version we were improving specific aspects of the tool, be it adding new features, improving alerting speed or accuracy, adding more customisation options and working on user feedback and suggestions.&lt;/p&gt;
+
+&lt;p&gt;I have tried summarising the major versions we had for the tool:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Version 1- MVP Launch:&lt;/strong&gt; Enable users to find available slots and set availability alerts, launched on 6th May.&lt;/p&gt;
+
+    &lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;🚨 BREAKING: Now track &amp;amp; get real-time alerts about COVID vaccination slots in your city on the Paytm App! 📱&lt;br /&gt;&lt;br /&gt;Get Started: &lt;a href=&quot;https://t.co/tcYY5cbXKq&quot;&gt;https://t.co/tcYY5cbXKq&lt;/a&gt; &lt;a href=&quot;https://t.co/LHMyocZ8Jg&quot;&gt;pic.twitter.com/LHMyocZ8Jg&lt;/a&gt;&lt;/p&gt;&amp;mdash; Paytm (@Paytm) &lt;a href=&quot;https://twitter.com/Paytm/status/1390205121389154309?ref_src=twsrc%5Etfw&quot;&gt;May 6, 2021&lt;/a&gt;&lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Version 2 -&lt;/strong&gt; &lt;strong&gt;Improving the accuracy and speed of alerts:&lt;/strong&gt; We integrated directly with Co-WIN’s web-hook to receive real-time availability information and tweaked a lot of backend logic to make our alerts as fast as we could and added some UI feature basis user feedback.&lt;/p&gt;
+
+    &lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;🚨 [Update] Basis your feedback, we&amp;#39;ve added more enhancements to our COVID Vaccine Slot Finder tool.&lt;br /&gt;&lt;br /&gt;Try here: &lt;a href=&quot;https://t.co/tcYY5cbXKq&quot;&gt;https://t.co/tcYY5cbXKq&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;Please RT and help India fight COVID-19. 🙏🏼 &lt;a href=&quot;https://t.co/1JMuadkLMQ&quot;&gt;pic.twitter.com/1JMuadkLMQ&lt;/a&gt;&lt;/p&gt;&amp;mdash; Paytm (@Paytm) &lt;a href=&quot;https://twitter.com/Paytm/status/1391630208621416448?ref_src=twsrc%5Etfw&quot;&gt;May 10, 2021&lt;/a&gt;&lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Version 3 - Enabled Booking Flow:&lt;/strong&gt; We finally got approval to enable vaccine booking directly on our app and enabled the booking flow on our app on 11th June.&lt;/p&gt;
+
+    &lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;From instant alerts to now directly booking on your Paytm app – the new &amp;amp; improved Vaccine Slot Finder tool is here.&lt;br /&gt;&lt;br /&gt;Give it a go! 📱 💉&lt;/p&gt;&amp;mdash; Paytm (@Paytm) &lt;a href=&quot;https://twitter.com/Paytm/status/1404375332354887680?ref_src=twsrc%5Etfw&quot;&gt;June 14, 2021&lt;/a&gt;&lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Version&lt;/strong&gt; &lt;strong&gt;4,5,6,…n:&lt;/strong&gt; During the course of the next many weeks, we iterated multiple times to improve our tool: adding new functionalities, supporting new vaccines types and even enabling users to download their International Travel Certificate. We even launched a (now viral) social media campaign to educate users&lt;/p&gt;
+
+    &lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Ready, on your marks – &lt;a href=&quot;https://twitter.com/hashtag/GetShotGo?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#GetShotGo&lt;/a&gt; 💉 &lt;a href=&quot;https://t.co/Em9nsWnJ9p&quot;&gt;pic.twitter.com/Em9nsWnJ9p&lt;/a&gt;&lt;/p&gt;&amp;mdash; Paytm (@Paytm) &lt;a href=&quot;https://twitter.com/Paytm/status/1405744353310433288?ref_src=twsrc%5Etfw&quot;&gt;June 18, 2021&lt;/a&gt;&lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;OK, I know, it’s time to wrap this up (although there is still so much more to write on this.. ;) )&lt;/p&gt;
+
+&lt;p&gt;Thanks for reaching this far to the end. If want to try the tool for your self you can still do so by visiting &lt;a href=&quot;https://m.paytm.me/vaccineslotfinder&quot;&gt;https://m.paytm.me/vaccineslotfinder&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Let me conclude by sharing that this has been the single most satisfying project I have undertaken in my professional career. The ability to impact millions of people around me and see people getting benefitted from something I build is the utmost gratification for a Product Manager. ✌️&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/onto_the_next.gif&quot; alt=&quot;Onto the Next challenge&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Back to drawing boards.&lt;/p&gt;
+
+&lt;p&gt;#GetShotGo!&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; I wrote this article for a &lt;a href=&quot;https://paytm.com/blog/engineering/journey-to-build-the-vaccine-slot-finder-tool-on-paytm/&quot;&gt;blog post&lt;/a&gt; for Paytm.&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">What started as a weekend project ended up becoming one of the most popular vaccination tool for millions of people in the country! This is behind the scenes story of how the Paytm Vaccine Finder tool came to life. I shared the inside story of how I built the Paytm Vaccine Finder tool.. Hope you enjoy this read.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://princejain.me/assets/blog_images/Vaccinefinderblog.png" /><media:content medium="image" url="https://princejain.me/assets/blog_images/Vaccinefinderblog.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Approaching a System Design Interview</title><link href="https://princejain.me/2021/07/23/Cracking-System-Design-Interview.html" rel="alternate" type="text/html" title="Approaching a System Design Interview" /><published>2021-07-23T00:00:00+00:00</published><updated>2021-07-23T00:00:00+00:00</updated><id>https://princejain.me/2021/07/23/Cracking%20System%20Design%20Interview</id><content type="html" xml:base="https://princejain.me/2021/07/23/Cracking-System-Design-Interview.html">&lt;p&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; While a system design question is generally asked for engineering roles, some companies for their Technical PM roles do assess the systems knowledge of candidates. These are just some of my personal notes I wrote from memory to serve as a quick refresher.
+If you are also expecting to interview for a TPM role, this should be a useful read.&lt;/p&gt;
+
+&lt;h4 id=&quot;before-we-see-the-structure-here-are-some-keywords-commonly-used-in-system-design&quot;&gt;Before we see the structure here are some keywords commonly used in system design:&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;API:&lt;/strong&gt; Application Programming Interface. Think of this as the way a software system interacts with other systems/ people. For instance, an ATM’s “API” includes adding money, withdrawing money, and a few other functions.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Back-end:&lt;/strong&gt; The back-end often refers to the server-side of a system (mostly where the logic of what to happen if certain data is passed resides. For eg: If credentials are correct login the user.).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Cache&lt;/strong&gt;: A cache is like a storage of information or content so that requests can be quicker. Many times you would want to cache requests at different nodes to serve fast (Eg: CDN )&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;CDN:&lt;/strong&gt; Content delivery network. To ensure data (mostly web assets) is served quickly for different geographies, generally for high-traffic use cases. (For eg: Netflix puts their popular content on CDNs near you to serve you faster and save their bandwidth)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Client:&lt;/strong&gt; Clients are one part of the client-server model, where clients (e.g. a local computer) initiates a communication session with a server (e.g. a company server hosted on Amazon EC2).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Cookie:&lt;/strong&gt; A cookie is a piece of data stored on a client’s browser from sites a client visits. This data includes volunteered information including visited pages. A common function of a cookie is to help users not have to log in every time they visit a site.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;DNS:&lt;/strong&gt; Domain name system. This is a naming system to help map domain names to IP Addresses and other pieces of information across the internet. (For eg: DNS of this blog is &lt;a href=&quot;http://princejain.me&quot;&gt;princejain.me&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Front-end:&lt;/strong&gt; The front-end often refers to the client-side of development (e.g. the page you’re reading right now and how it’s formatted).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Latency:&lt;/strong&gt; This refers to the load time of an experience. For instance, the latency would be considered high if it takes a long time to download large image files to load a page.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Load Balancer:&lt;/strong&gt; Load balancers help to distribute a task over a series of databases/servers as opposed to overloading a single one. This is generally helpful when there’s high-traffic.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Redis&lt;/strong&gt;: Redis is used to do database cache at the server side. Used when your server is serving a same set of data again and again, you can use redis to cache it so that the db hit is avoided and overall operation latency is reduced.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Server:&lt;/strong&gt; Servers provide functions to one or many clients. For instance, a web server serves web pages to clients (e.g. local computers, like the one you’re reading this on!)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Sharding:&lt;/strong&gt; Sharding is the act of partitioning databases into smaller data shards, to optimize for database speed. For eg: address book from A-Z can be sharded into smaller chunks of A-D, E-H, etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;structure-i-tend-to-follow-in-system-design&quot;&gt;Structure I tend to follow in System Design:&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Scoping&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;Clarify the question
+ For eg. If the question is design a clock for blind, clarify with questions like severity of blindness: partial or complete, any other disability, potential users eg. family members, care takers.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Scope the requirement &lt;br /&gt;
+ Some of the sample questions for scoping:&lt;/p&gt;
+        &lt;ol&gt;
+          &lt;li&gt;Questions like why are we doing this? Are we chasing a specific goal (revenue/ engagement etc.)&lt;/li&gt;
+          &lt;li&gt;Company’s history/ previous portfolio/ strengths.&lt;/li&gt;
+          &lt;li&gt;Is the solution for a specific geography?&lt;/li&gt;
+          &lt;li&gt;If there are any limitations to what we can do: bandwidth, cost, time, capability?
+&lt;br /&gt;Other question as relevant depending on the case.&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;User Segmentation.&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Think of user personas/segments and their pain points&lt;/li&gt;
+      &lt;li&gt;Think of various use cases and solutions you can come up with&lt;/li&gt;
+      &lt;li&gt;Try to evaluate the solutions and pick the one’s which makes most sense&lt;/li&gt;
+      &lt;li&gt;Think of the high level design, you will need to build this system. Talk through it with your interviewer(s)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;System Design&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Lay down any assumptions you make, detail out all you need to build this system&lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Think of the design considerations for the solution. Some of the common ones are:&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;High Availability:&lt;/strong&gt; This means ability of the system to serve the user at all times.
+ Eg: live streaming, messaging&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Low Latency:&lt;/strong&gt; Latency in laymanish term is the time taken for a page/ app to load. Certain use cases require to optimise on the latency primarily.
+ Eg: Online Gaming, Stock Trading, Conference calls&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Consistency:&lt;/strong&gt; This means how critical is it for everyone to have the same data. Most Systems are okay with an eventual consistency.
+ Eg: A user’s tweet doesn’t necessarily need to be available for all users immediately whereas banking system need to ensure high consistency for funds related data.&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Redundancy:&lt;/strong&gt; This tells how critical is the data. If there is a super critical data, multiple redundancies are put in place. Eg: Banking&lt;/li&gt;
+          &lt;li&gt;
+            &lt;p&gt;&lt;strong&gt;Scalability&lt;/strong&gt;: This is simply the scale the system can handle. Most systems these days are fairly scalable (thank AWS) and can be scaled up as read. However potential scale may end up deciding the system architecture in many cases.
+     Eg: Cloud Storage like Google Drive, OTT platforms like Netflix, YouTube&lt;/p&gt;
+
+            &lt;p&gt;&lt;em&gt;Remember to keep practical constraints in mind: you can never aim for the best of everything. If you go for improving a particular aspect, it may inherently hamper the other&lt;/em&gt;&lt;/p&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Designing the system&lt;/strong&gt; (Most cases interviewers won’t need this but this definitely serve as a good brownie point)&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;p&gt;Start with laying down a broad block diagram connecting interactions b/w the systems.&lt;/p&gt;
+
+            &lt;p&gt;&lt;img src=&quot;/images/System_design.png&quot; alt=&quot;Untitled&quot; /&gt;&lt;/p&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;p&gt;Then lay down the end points of the APIs which might be required.&lt;/p&gt;
+
+            &lt;p&gt;&lt;img src=&quot;/images/System_design_1.png&quot; alt=&quot;Untitled&quot; /&gt;&lt;/p&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;p&gt;Ask if they want &lt;strong&gt;data schema&lt;/strong&gt; to be designed. Data schema is the basic db structure with field name and data type. Common data types:&lt;/p&gt;
+
+            &lt;ul&gt;
+              &lt;li&gt;int (Integer)&lt;/li&gt;
+              &lt;li&gt;timestamp (To store time)&lt;/li&gt;
+              &lt;li&gt;bool (T/F)&lt;/li&gt;
+              &lt;li&gt;string (Any string of text)&lt;/li&gt;
+              &lt;li&gt;decimal&lt;/li&gt;
+              &lt;li&gt;
+                &lt;p&gt;enum (pre-defined constants like size :s/m/l)&lt;/p&gt;
+
+                &lt;p&gt;&lt;img src=&quot;/images/System_design_2.png&quot; alt=&quot;Untitled&quot; /&gt;&lt;/p&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Mostly you are done with the system design aspect of the interview. Try to then bring into other considerations like constraints: cost, timeframe, team size, complexity, risks etc. and then accordingly prioritise among the solutions discussed.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Tracking and Success Metric:&lt;/strong&gt; This is often missed during an interview since around reaching this part of the interview you have already invested ~30 mins and want to end it. But this is a good identifier of your product+business sense in the aspect that if you know what success metrics would look like and what all would you want to track and monitor.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;💡 &lt;strong&gt;Disclaimer:&lt;/strong&gt; I tend not to follow any set structure in interviews and prefer solving free hand, it’s something which has worked the best for me : to each his own.
+However, having a broad sense of what all you should cover helps in ensuring you cover all scenarios.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tools to use:&lt;/strong&gt; I personally use &lt;strong&gt;&lt;a href=&quot;https://lucid.app/documents#/dashboard&quot;&gt;LucidChart&lt;/a&gt;&lt;/strong&gt; for drawing the designs during the interviews, some other tools like &lt;a href=&quot;http://draw.io&quot;&gt;draw.io&lt;/a&gt; and &lt;a href=&quot;http://excalidraw.com&quot;&gt;excalidraw.com&lt;/a&gt; are decent as well.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A system design architecture I designed during an interview:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/System_design_3.png&quot; alt=&quot;Untitled&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;good-links-to-read-about-architecture-design&quot;&gt;Good Links to read about architecture design:&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.linkedin.com/pulse/systems-design-fundamentals-technical-product-managers-pruthi/&quot;&gt;System design fundamentals for technical product managers&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Disclaimer: While a system design question is generally asked for engineering roles, some companies for their Technical PM roles do assess the systems knowledge of candidates. These are just some of my personal notes I wrote from memory to serve as a quick refresher. If you are also expecting to interview for a TPM role, this should be a useful read.</summary></entry><entry><title type="html">Demystifying SEO</title><link href="https://princejain.me/2021/05/15/Demystifying_SEO.html" rel="alternate" type="text/html" title="Demystifying SEO" /><published>2021-05-15T00:00:00+00:00</published><updated>2021-05-15T00:00:00+00:00</updated><id>https://princejain.me/2021/05/15/Demystifying_SEO</id><content type="html" xml:base="https://princejain.me/2021/05/15/Demystifying_SEO.html">&lt;p&gt;As a product manager who builds digital products, the list of things you should know about is &lt;em&gt;long&lt;/em&gt; to say the least and it only ever seems to get &lt;em&gt;longer&lt;/em&gt;!&lt;/p&gt;
+
+&lt;p&gt;SEO is one such term I have seen many of my product peers knowing just vaguely enough to leave it to the marketeers &lt;em&gt;(I had the same stance until I had to understand it for a product feature I was working on).&lt;/em&gt;
+These are my personal notes from the initial research on the topic.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-seo&quot;&gt;What is SEO?&lt;/h3&gt;
+
+&lt;p&gt;SEO or Search Engine Optimisation is the process of optimising your content so that it can be discovered through search results “organically”.  Simply put SEO decides how does your website ranks in search results for keywords relevant to your business: the higher the better.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt; One of the companies I find really excelling in their SEO game is Cleartax. Think of any keyword related to Personal Income tax and they will almost always be the first result “organically”, even before the Gov’s Income tax website! Just think of the organic users they acquire due to this and this in my opinion is a very BIG moat for them! &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/SEO_Cleartax.png&quot; alt=&quot;SEO_Cleartax&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;why-is-seo-important&quot;&gt;&lt;strong&gt;Why is SEO important?&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;There are two main advantages of SEO over advertising:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Unlike paying for Ads, search traffic is free!&lt;/li&gt;
+  &lt;li&gt;Organic Traffic is pretty consistent once you are ranking high.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Bonus&lt;/strong&gt;: Ad blockers won’t block your result from getting displayed 😉&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For most practical purposes, Google is the single most important place for your SEO.
+&lt;em&gt;Google Search has more than 1B MAUs with 93% market share in search engine traffic!&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Some Stats on Google Search:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;More than 50% of trackable traffic comes via &lt;a href=&quot;https://videos.brightedge.com/research-report/BrightEdge_ChannelReport2019_FINAL.pdf&quot;&gt;Organic Search&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;More than 95% users visit on the results from the &lt;a href=&quot;https://www.brafton.com/news/95-percent-of-web-traffic-goes-to-sites-on-page-1-of-google-serps-study/&quot;&gt;first results page&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;The higher you rank in search result, higher is your CTR (kind of obvious!)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/SEO_GoogleSearchTrend.png&quot; alt=&quot;SEO_Google Search Trend&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;starting-with-setting-up-seo-for-your-business&quot;&gt;Starting with setting up SEO for your business:&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Keywords&lt;/strong&gt;: Keywords are the words or phrases users type into search engines to find what they are looking for. In a nutshell, SEO is all about finding keywords people are putting into search engines and linking those with your business.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;For instance say if you are Domino’s, you would want to occupy topmost spot for the keyword “&lt;strong&gt;Pizza&lt;/strong&gt;” : as is interestingly the case currently!&lt;/em&gt;
+&lt;img src=&quot;/images/SEO_Dominos.png&quot; alt=&quot;SEO_Dominos&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To start with setting up SEO with your business, start by putting up a list of keywords user’s associate with your business / you want to target for your business. (like the Pizza keyword for Dominos). For keywords relevant to your business offering, try finding two metrics:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Search Demand for the keyword :&lt;/strong&gt; This simply means the total searches for the keywords in a given period. The more the demand, more are your chances for reaching customers.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Traffic potential for the keyword :&lt;/strong&gt; This means total traffic you would get if you were to rank at the top of search result for your keyword. Thanks to Google’s showing relevant info upfront in widgets (try searching for usd to inr), many search results have a very poor CTR.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are tools you can use to get the keywords and metrics like &lt;a href=&quot;https://ads.google.com/intl/en_en/home/tools/keyword-planner/&quot;&gt;Keyword planner&lt;/a&gt;, &lt;a href=&quot;https://trends.google.com/trends/?geo=IN&quot;&gt;Google Trends&lt;/a&gt; and third party tools like &lt;a href=&quot;https://ahrefs.com/keyword-generator&quot;&gt;Ahref&lt;/a&gt;, &lt;a href=&quot;https://neilpatel.com/ubersuggest/&quot;&gt;UberSuggest&lt;/a&gt; etc.&lt;/p&gt;
+
+&lt;p&gt;Once you are done choosing the relevant keywords, next step is to add those keywords to your app/ website. These can/ should be added at various places depending on the site structure and content. &lt;br /&gt;
+There are complex algorithm running at Google’s end to determine ranking of results for each keywords with more than 500 odd parameters in consideration (most of which are blackbox).
+These are some of the commonly known parameters where you can add your keyword to improve your SEO ranking:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Body of the text&lt;/li&gt;
+  &lt;li&gt;Title&lt;/li&gt;
+  &lt;li&gt;Meta Tags&lt;/li&gt;
+  &lt;li&gt;Alt links for images/ videos&lt;/li&gt;
+  &lt;li&gt;Anchor text&lt;/li&gt;
+  &lt;li&gt;XML Sitemap&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Once you have added relevant keywords to your website content, next step is for that content to be indexed by the search engines. The way this happens is Google keep running web crawlers (commonly known as spiders) to collect these keywords and index them for their search engine. It typically takes 2-4 days for new content to be indexed (in my experience) and then voila your site is available on the search results for those keywords.&lt;/p&gt;
+
+&lt;p&gt;The real work starts from here: you need to convince Google’s algorigthms that your content is the most relevant for those keywords. There are a bunch of useful strategies like getting quality backlinks, ad driven intital push, optimisation in keywords &amp;amp; content, improving on the site load time &amp;amp; performance etc. Its a process constant iteration and learning to keep on optimising your SEO.&lt;/p&gt;
+
+&lt;p&gt;While there is a whole lot to write about SEO, infact there are companies and people who made their career in SEO. For now I’ll end here and share few links I found useful during my research:&lt;/p&gt;
+
+&lt;h5 id=&quot;some-blogs-links-to-learn-more-about-seo&quot;&gt;Some blogs/ links to learn more about SEO:&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developers.google.com/search/docs/beginner/seo-starter-guide&quot;&gt;Google’s SEO Starter Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/SEO/comments/2y1r8z/rseo_sucks_lately_i_want_to_make_it_better_here/&quot;&gt;Reddit Gyaan&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/playlist?list=PLvJ_dXFSpd2vk6rQ4Rta5MhDIRmakFbp6&quot;&gt;Ahref Tutorials on SEO&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developers.google.com/search/docs/basics/optimize-your-site&quot;&gt;Google Search SEO Basics&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://neilpatel.com/blog/&quot;&gt;https://neilpatel.com/blog/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;If you see the head HTML element of this blog, you’ll find I have added few meta tags to improve the SEO so that the next time you search for SEO, this article might “one day” come up in your google search result🤞&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">As a product manager who builds digital products, the list of things you should know about is long to say the least and it only ever seems to get longer!</summary></entry><entry><title type="html">There are Apps and then there are SuperApps</title><link href="https://princejain.me/2020/02/15/Apps-and-SuperApps.html" rel="alternate" type="text/html" title="There are Apps and then there are SuperApps" /><published>2020-02-15T00:00:00+00:00</published><updated>2020-02-15T00:00:00+00:00</updated><id>https://princejain.me/2020/02/15/Apps%20and%20SuperApps</id><content type="html" xml:base="https://princejain.me/2020/02/15/Apps-and-SuperApps.html">&lt;p&gt;As more and more businesses around the world transition to a mobile-led discovery, there has been an exponential rise in the number of apps available in the App Stores.&lt;/p&gt;
+
+&lt;p&gt;Just for context the chart below shows the number of apps released on Google play store per month/ week as of last year’s figures:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/apps_superapps_stats.png&quot; alt=&quot;Image of App Release Figures&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“There are more than 2.87 Million apps listed on the Play store as of latest available figures. 3739 apps are added to the Play Store every single day!” &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This has led to an unprecedented clutter in our phones. The pace with which the apps are increasing, its getting difficult for even the most tech-savvy of us to manage these. Literally for every use case you can think of there are gazillions of apps out there available:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Want to watch your favourite shows? Netflix or PrimeVideo or Hotstar or Apple TV or SonyLiv or Voot or among the various other OTT players&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Want to recharge your phone, DTH or pay your bills? Try Paytm or PhonePe or GooglePay or Mobikwik or AmazonPay or Freecharge or Airtel Money…&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Want to book a holiday trip? Again the options are endless… Choose from MakeMyTrip/ Goibibo/ Cleartrip/ Yatra/ ixigo or Paytm!&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Want to post something on social media? Choose from Facebook, Twitter, Instagram, Snapchat and yeah why not TikTok!&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Thankfully there is only one ubiquitous app for messaging. Think of how messy it would have been else!&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I hope you get my point here, there are endless choices for the customers and it really gets messy when you have to remember which app was it you used last and keep all these installed on your phone!&lt;/p&gt;
+
+&lt;p&gt;So the next logical question coming out of all this you may ask is “Is there a better way??”
+Well, folks from China seems to have figured this out! Their solution is called “WeChat”&lt;/p&gt;
+
+&lt;p&gt;It really is a Super-App in the sense that from a single app, you can serve a multitude of use cases: from buying tickets for shows, to paying bills and making calls to investing in mutual funds and making payments to online shopping and ordering a taxi to playing games. Literally the list of use cases you can fulfil from this app seems to be endless. The magic here is achieved through what they call “Mini Programs”&lt;/p&gt;
+
+&lt;h2 id=&quot;what-are-mini-programs&quot;&gt;What are Mini Programs?&lt;/h2&gt;
+
+&lt;p&gt;Mini Programs in the simplest sense are sub-applications within the Host App, serving a multitude of use-cases achieved through functionalities enabled by the host app. Typically Mini Programs offers most frequently used features of any app. Say in Ola Mini Program on Paytm, you can book a Cab from point-to-point, which is enough for majority of the users! How many of us, have a use case for an Outstation or a Ola Pass? (Yes, you can book Ola cabs from Paytm!)
+In simple words, it can either be seen as a mobile website on steroids or native app’s lite version. It offers like 80% of the features you would typically get in any Native App which is enough to serve most customer’s use cases.&lt;/p&gt;
+
+&lt;h4 id=&quot;key-benefits-of-mini-programs-for-the-user&quot;&gt;Key benefits of Mini Programs for the user:&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Instant access to any Mini Program, no download required&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;No need to remember any logins! Single touch seamless sign-up / sign-in&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;No need to add any payment methods. Your host app payment method works&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Clutter free, seamless and consistent user experience across all apps&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;key-benefits-of-mini-programs-for-the-app-developers&quot;&gt;Key benefits of Mini Programs for the app developers:&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Access to large captive- transacting user base in host app&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Single codebase for iOS and Android (solves a big pain point for budding startups)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Significantly lesser development effort and much faster iterations possible due to no app release requirement&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Much lesser regulations than the walled garden of App Stores (though they do have their own set of rules but those are much less stringent )&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;wechat-mini-programs-key-highlights&quot;&gt;WeChat Mini Programs: Key Highlights&lt;/h2&gt;
+
+&lt;p&gt;Tencent has re-engineered the WeChat messaging app in a way that Mini Programs can run instantly on WeChat’s interface.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wechat_Miniapps.png&quot; alt=&quot;WeChat Mini Program Highlights&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;There are more than a million Mini Programs on WeChat with more than 200 Mn Active users.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;They are tightly integrated with WeChat’s platform with discovery via Subscription/Official Account ( more like Facebook Pages), Chats ( like Facebook Messenger), QR Codes and other possible discovery sources.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;More details on this in a possible next article!&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;key-value-proposition-of-mini-programs&quot;&gt;Key Value Proposition of Mini Programs&lt;/h2&gt;
+
+&lt;p&gt;Mini Programs has primarily three important value proposition for the merchants:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Aggregate Low Frequency services:&lt;/strong&gt; Majority of apps are used very infrequently by the users and thus a Mini Program offering makes much more sense ( Say ordering medicines once a month!). They offer seamless “In-Out” experience to the user with no hassle of remembering or entering any passwords or payment details.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;New customer acquisition Channel:&lt;/strong&gt; Most users in Tier 2/3 cities typically have only a very limited number of apps installed on their phone due to less capable device hardware, poor data reach (though Jio has changed this paradigm) and lack of awareness about the various apps out there. Typically for all these cases, Mini Programs serves as very effective customer Acquisition Channel.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Cost Effective Marketing Tool:&lt;/strong&gt; Payment apps with their rich user transactional data can effectively help marketeers target their ideal audience. Also due to the seamless user journey post clicking on Ads in a Mini Program ( Remember no need of download or signup!) the funnel conversions are also much better!&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;whats-happening-in-india&quot;&gt;What’s happening in India?&lt;/h3&gt;
+
+&lt;p&gt;India’s Mini Program ecosystem is still in early days with leading payment apps still in the phase of exploring how customers react and what they want. It is in some form or other, being pursued by all the major payment players. Brief snapshot of the program for the major players:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Paytm:&lt;/strong&gt; Paytm was already a superapp in lot of ways but recently it has launched a full fledged “Mini Programs” offering for its users. Ola, Netmeds, 1mg, McDelivery, Coolwinks and many other leading players are part of the initial offering.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;PhonePe:&lt;/strong&gt; Under the branding of “PhonePe Switch”, it currently has the largest number of Mini Programs being offered. It was one of the first player to start with a integration of merchant web apps onto its platform.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;GooglePay:&lt;/strong&gt; Google also jumped into the SuperApp bandwagon by launching “Google Spot” last year. It still has very limited discovery and very few merchants as part of its offering.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Flipkart:&lt;/strong&gt; Flipkart (parent company of PhonePe) have also launched their own Mini Programs platform under the branding of “Partner Apps” leveraging PhonePe Switch’s reach. It has also deeply integrated the platform with its SuperCoins offering&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Amazon:&lt;/strong&gt; Amazon is yet to launch a full fledged Mini Program offering on its app but there are many hints pointing towards an eventual release: from its acquisition of Tapzo to revamping of Amazon Pay’s landing page to show Merchant App Icons and redirecting to merchants webpages (which could then be changed to a Mini Program re-direction!)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;JioMart&lt;/strong&gt; (Reliance + Facebook): This is a latest entrant in this space with clear cut agenda to become the “WeChat of India”.
+More detailed analytics on these apps and the current landscape in a possible next article!&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">As more and more businesses around the world transition to a mobile-led discovery, there has been an exponential rise in the number of apps available in the App Stores.</summary></entry><entry><title type="html">Setting up Github Pages</title><link href="https://princejain.me/2020/02/02/Hello-World.html" rel="alternate" type="text/html" title="Setting up Github Pages" /><published>2020-02-02T00:00:00+00:00</published><updated>2020-02-02T00:00:00+00:00</updated><id>https://princejain.me/2020/02/02/Hello-World</id><content type="html" xml:base="https://princejain.me/2020/02/02/Hello-World.html">&lt;p&gt;This is just the typesetting for my blog, keeping it here for quick reference. &lt;strong&gt;Please ignore this.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a sample text.&lt;/p&gt;
+
+&lt;h1&gt; This is a sample header H1 &lt;/h1&gt;
+&lt;h2&gt; This is a sample header H2 &lt;/h2&gt;
+&lt;h3&gt; This is a sample header H3 &lt;/h3&gt;
+&lt;h4&gt; This is a sample header H4 &lt;/h4&gt;
+&lt;h5&gt; This is a sample header H5 &lt;/h5&gt;
+&lt;h6&gt; This is a sample header H6 &lt;/h6&gt;
+&lt;p&gt;&lt;strong&gt; This is sample bold &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;i&gt; This is sample italics &lt;/i&gt;&lt;/p&gt;
+&lt;p&gt; This is sample text &lt;p&gt;
+&lt;ul&gt;
+&lt;li&gt;This is Unordered List &lt;/li&gt;
+&lt;li&gt;This is Unordered List &lt;/li&gt;
+&lt;li&gt;This is Unordered List &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+&lt;li&gt;This is Ordered List &lt;/li&gt;
+&lt;li&gt;This is Ordered List &lt;/li&gt;
+&lt;li&gt;This is Ordered List &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt; This is sample img tag &lt;/p&gt;
+&lt;figure&gt;
+   &lt;img src=&quot;/images/my-image.png&quot; alt=&quot;Prince Jain&quot; class=&quot;center&quot; /&gt;
+    &lt;figcaption&gt;This is imagecaption &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt; This is sample I-frame tag &lt;/p&gt;
+Linking here some of the good sources to visit later for Markdown or HTML tutorials
+
+&lt;!--
+### Basic Site Structure
+
+Listing down some of the basic structure/ to-do&apos;s for the website:
+
+- **_layouts:** This includes how to structure of each of the sections is decided:
+    - **Default.html** : This is the base structure for all the pages across the site. Includes header and bosy and use this **to make changes across ALL pages &amp; header/ footer of the site.**
+    - **Page.html** : This is the default structure for most pages; like readme, work summary, index etc.
+    - **Blog.html** : This is the layout for the /blog list of the site. Used to customise a gist of all the blogs written so far; including title for each blog, a snippet and Read more
+    - **Post.html**: This is the layout for individual posts in the blog.
+- **Includes :** This contains the header html for individual components:
+    - **Analytics.html**:  ****This includes G-Tag Id and used to push GA events for the site. **IGNORE**
+    -
+- **Images :** This is the repository of all the images in the site. You can then include them anywhere in the site.
+- **_sass:** This is the additional CSS file to do custom styling. **IGNORE**
+- **config.yml:** This is the basic structure of the website. **IGNORE**
+- **Style.scss:** Use this to change any of the CSS params for the site. If you want to customise the styling for a specific section anywhere, do so by creating a class (eg: blogheader, blogsubtext).
+
+### **Writing a new blog post:**
+
+Step by step process to make a new entry in the blog:
+
+1. Create a new file in _posts with [2020-02-02-Hello-World.md](http://2020-02-02-hello-world.md/) YYYY-MM-DD-{Post Title.md}
+2. Define the page structure to be used:
+
+    ```jsx
+    ---
+    layout: post
+    title:  &quot;&quot;
+    ---
+    ```
+
+3. Start writing the blog post either in HTML or Markdown or a combination.
+    1. Basics of Markdown : [https://www.markdownguide.org/cheat-sheet/](https://www.markdownguide.org/cheat-sheet/)
+    2. As a hack write the full post in Notion and export that as Markdown
+    3. To include a image just add image in the Images folder and in the file add a image tag:
+    ![](&quot;/images/image_name.png&quot;)
+    4. To add a hyperlink to the document:
+4. Safe and Refresh to see the latest blog post published!
+
+--&gt;
+&lt;/p&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">This is just the typesetting for my blog, keeping it here for quick reference. Please ignore this.</summary></entry></feed>

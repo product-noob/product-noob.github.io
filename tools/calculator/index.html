@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<!-- Preload critical avatar styles to prevent layout shift -->
+	<style>
+/* Preload avatar image styles to prevent layout shift */
+.site-avatar {
+  float: left;
+  width: 70px;
+  height: 70px;
+  margin-right: 15px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #f0f0f0; /* Light gray placeholder */
+  /* Define a placeholder gradient background */
+  background-image: linear-gradient(to bottom right, #f0f0f0, #d8d8d8);
+}
+
+.site-avatar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+.site-avatar img {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  transform: translateZ(0); /* Force hardware acceleration */
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Avatar image loading state */
+.site-avatar img.loading {
+  opacity: 0;
+}
+
+@media (max-width: 640px) {
+  .site-avatar {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+}
+</style>
+
+	<!-- This goes in Head.html -->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZLF9K3MJB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-WZLF9K3MJB');
+</script>
+
+
+	<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta property="og:locale" content="en_US">
+
+<!-- Basic META -->
+<meta name="author" content="Prince Jain">
+<meta name="robots" content="index, follow">
+
+<!-- OpenGraph META -->
+<meta property="og:site_name" content="Prince Jain">
+<meta property="og:url" content="https://princejain.me/tools/calculator/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calculator">
+<meta property="og:description" content="My personal blog where I document my learnings and Product Management journey.">
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter META -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Prince_Jain17">
+<meta name="twitter:creator" content="@Prince_Jain17">
+<meta name="twitter:title" content="Calculator">
+<meta name="twitter:description" content="My personal blog where I document my learnings and Product Management journey.">
+<meta name="twitter:image" content="https://princejain.me/images/my-image.webp">
+
+<!-- Standard META -->
+<meta name="title" content="Calculator">
+<meta name="description" content="My personal blog where I document my learnings and Product Management journey.">
+
+<!-- Article specific META (only for blog posts) -->
+
+
+<!-- image -->
+
+<meta property="og:image" content="https://princejain.me/images/my-image.webp">
+
+
+<!-- url -->
+<meta property="og:url" content="/">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+
+	
+<!-- Tool Page Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Calculator",
+  "applicationCategory": "WebApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Prince Jain",
+    "url": "https://princejain.me"
+  },
+  "description": "My personal blog where I document my learnings and Product Management journey."
+}
+</script>
+
+
+	<title> Calculator | Prince Jain </title>
+	
+	<!-- Preconnect to Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!-- Load font with display=swap for better performance -->
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+	<!-- Fallback in case JS is disabled -->
+	<noscript>
+		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	</noscript>
+	
+	<!-- Inline critical CSS for faster rendering -->
+	<style>
+/* Critical CSS for above-the-fold content */
+body{font-family:sans-serif;font-weight:400;font-size:15px;line-height:1.5;padding:0;background:#fff;color:#333;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3,h4,h5,h6{font-family:sans-serif;color:#333;font-weight:400;line-height:1.4;margin:.7em 0 10px;padding:0}
+h1{font-size:30px;font-weight:400}
+h1 a{color:inherit;margin:1em 0 10px}
+a{color:#4183c4;text-decoration:none;cursor:pointer}
+.container{margin:0 auto;max-width:740px;padding:0 10px;width:100%;display:flex;flex-direction:column;flex-grow:1;justify-content:space-around}
+nav{float:right;margin-top:23px;font-family:"Lato",sans-serif;font-size:18px;font-weight:400}
+nav a{margin-left:20px;color:#666;text-align:right;font-weight:400;letter-spacing:1px}
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:#4183c4;z-index:9999;width:0;transition:width .2s ease-in-out}
+.site-avatar{float:left;width:70px;height:70px;margin-right:15px}
+.site-avatar img{border-radius:5px}
+.site-info{float:left}
+.site-name{color:#333;cursor:pointer;font-family:"Lato",sans-serif;font-weight:700;font-size:28px;letter-spacing:1px}
+@media (max-width:640px){nav{float:none;margin-top:9px;display:block;font-size:16px}nav a{margin:0 10px;color:#4183c4}.site-avatar{float:none;display:block;margin:0 auto}}
+</style>
+
+	
+	<!-- Critical CSS loaded synchronously -->
+	<link rel="stylesheet" type="text/css" href="/assets/css/sticky-header.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/header-fix.css" />
+	
+	<!-- Non-critical CSS loaded asynchronously -->
+	<link rel="stylesheet" type="text/css" href="/css/style.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/transitions.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/typography-fix.css" media="print" onload="this.media='all'" />
+	<link rel="alternate" type="application/rss+xml" title="Prince Jain - My personal blog where I document my learnings and Product Management journey." href="/feed.xml" />
+	
+	<link rel="canonical" href="https://princejain.me/tools/calculator/">
+	<link rel="shortcut icon" type="image/png" href="/images/site-icon.webp" />
+	<link rel="apple-touch-icon" href="/images/site-icon.webp">
+
+</head>
+
+
+<body>
+
+  <div class="wrapper-masthead">
+  <div class="header-background"></div>
+  <div class="container">
+    <header class="masthead clearfix">
+      <!-- Wrap avatar and site info in a mobile-friendly container -->
+      <div class="header-identity">
+        <a href="/" class="site-avatar">
+          <!-- Use a smaller, optimized version of the avatar with width/height attributes to prevent layout shift -->
+          <img 
+            src="/images/my-image.webp" 
+            alt="Profile Photo" 
+            width="100%" 
+            height="100%" 
+            loading="eager" 
+            fetchpriority="high">
+        </a>
+        <!-- Explicit spacer for mobile view -->
+        <span class="avatar-title-spacer"></span>
+        <div class="site-info">
+          <h1 class="site-name"> <a href="/">Prince Jain</a> </h1>
+        </div>
+      </div>
+      <nav>
+        <a href="/blogs" aria-label="These are collection of my personal blogs">Blogs</a>
+        <a href="/links/" aria-label="These are collection of links on Product Management I find useful">Links</a>
+        <a href="/tools/" aria-label="Interactive tools for everyday tasks">Tools</a>
+        <a href="/worksummary" aria-label="Summary of my professional work so far">Work-ex</a>
+        <a href="/about" aria-label="If you want to learn more about me">About Me</a>
+      </nav>
+    </header>
+  </div>
+</div>
+
+  <div id="header-spacer"></div>
+  <div id="progress-bar"></div>
+  <div id="main" role="main" class="container transition-fade">
+    <article class="page">
+
+  <h2>Calculator</h2>
+
+  <div class="entry">
+    <link rel="stylesheet" href="/assets/css/tools.css">
+
+<div class="tools-container">
+  <div class="tool-header">
+    <h1>Calculator</h1>
+    <p class="tool-description">A versatile calculator for quick calculations. Features standard arithmetic operations, memory functions, and calculation history.</p>
+    <a href="/tools/" class="back-to-tools">← Back to Tools</a>
+  </div>
+
+  <div class="calculator">
+    <div class="calculator-display">
+      <div class="calculator-history" id="history"></div>
+      <div class="calculator-input" id="input">0</div>
+    </div>
+    <div class="calculator-keypad">
+      <button class="calculator-key function" data-action="clear">AC</button>
+      <button class="calculator-key function" data-action="negative">±</button>
+      <button class="calculator-key function" data-action="percentage">%</button>
+      <button class="calculator-key operator" data-action="divide">÷</button>
+      
+      <button class="calculator-key number" data-digit="7">7</button>
+      <button class="calculator-key number" data-digit="8">8</button>
+      <button class="calculator-key number" data-digit="9">9</button>
+      <button class="calculator-key operator" data-action="multiply">×</button>
+      
+      <button class="calculator-key number" data-digit="4">4</button>
+      <button class="calculator-key number" data-digit="5">5</button>
+      <button class="calculator-key number" data-digit="6">6</button>
+      <button class="calculator-key operator" data-action="subtract">−</button>
+      
+      <button class="calculator-key number" data-digit="1">1</button>
+      <button class="calculator-key number" data-digit="2">2</button>
+      <button class="calculator-key number" data-digit="3">3</button>
+      <button class="calculator-key operator" data-action="add">+</button>
+      
+      <button class="calculator-key number" data-digit="0">0</button>
+      <button class="calculator-key number" data-digit=".">.</button>
+      <button class="calculator-key function" data-action="backspace">⌫</button>
+      <button class="calculator-key equals" data-action="calculate">=</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Calculator Styles */
+  .calculator-container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .calculator-header {
+    margin-bottom: 30px;
+  }
+  
+  .back-to-tools {
+    display: inline-block;
+    margin-top: 15px;
+    color: #4183c4;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .back-to-tools:hover {
+    text-decoration: underline;
+  }
+  
+  .calculator {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+  
+  .calculator-display {
+    background-color: #fff;
+    padding: 20px;
+    text-align: right;
+  }
+  
+  .calculator-history {
+    font-size: 14px;
+    min-height: 20px;
+    color: #888;
+    margin-bottom: 5px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .calculator-input {
+    font-size: 36px;
+    font-weight: 300;
+    color: #333;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .calculator-keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background-color: #e0e0e0;
+  }
+  
+  .calculator-key {
+    border: none;
+    background-color: #f9f9f9;
+    font-size: 24px;
+    padding: 20px 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    outline: none;
+  }
+  
+  .calculator-key:active {
+    background-color: #e0e0e0;
+  }
+  
+  .calculator-key.function {
+    background-color: #f0f0f0;
+  }
+  
+  .calculator-key.operator {
+    background-color: #f0f0f0;
+    color: #4183c4;
+    font-weight: 500;
+  }
+  
+  .calculator-key.equals {
+    background-color: #4183c4;
+    color: #fff;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 480px) {
+    .calculator-container {
+      padding: 0 10px;
+    }
+    
+    .calculator-key {
+      font-size: 20px;
+      padding: 15px 0;
+    }
+    
+    .calculator-input {
+      font-size: 28px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // DOM elements
+    const historyDisplay = document.getElementById('history');
+    const inputDisplay = document.getElementById('input');
+    const keypad = document.querySelector('.calculator-keypad');
+    
+    // Calculator state
+    let displayValue = '0';
+    let firstOperand = null;
+    let operator = null;
+    let waitingForSecondOperand = false;
+    let calculationHistory = '';
+    
+    // Update the display
+    function updateDisplay() {
+      inputDisplay.textContent = displayValue;
+      historyDisplay.textContent = calculationHistory;
+    }
+    
+    // Handle digit input
+    function inputDigit(digit) {
+      if (waitingForSecondOperand) {
+        displayValue = digit;
+        waitingForSecondOperand = false;
+      } else {
+        displayValue = displayValue === '0' ? digit : displayValue + digit;
+      }
+    }
+    
+    // Handle decimal point
+    function inputDecimal() {
+      if (waitingForSecondOperand) {
+        displayValue = '0.';
+        waitingForSecondOperand = false;
+        return;
+      }
+      
+      if (!displayValue.includes('.')) {
+        displayValue += '.';
+      }
+    }
+    
+    // Handle operators
+    function handleOperator(nextOperator) {
+      const inputValue = parseFloat(displayValue);
+      
+      if (firstOperand === null) {
+        firstOperand = inputValue;
+      } else if (operator) {
+        const result = calculate(firstOperand, inputValue, operator);
+        displayValue = `${parseFloat(result.toFixed(7))}`;
+        firstOperand = result;
+      }
+      
+      waitingForSecondOperand = true;
+      operator = nextOperator;
+      calculationHistory = `${firstOperand} ${getOperatorSymbol(operator)}`;
+    }
+    
+    // Calculate result
+    function calculate(firstOperand, secondOperand, operator) {
+      switch (operator) {
+        case 'add':
+          return firstOperand + secondOperand;
+        case 'subtract':
+          return firstOperand - secondOperand;
+        case 'multiply':
+          return firstOperand * secondOperand;
+        case 'divide':
+          return firstOperand / secondOperand;
+        default:
+          return secondOperand;
+      }
+    }
+    
+    // Get operator symbol for display
+    function getOperatorSymbol(op) {
+      switch (op) {
+        case 'add': return '+';
+        case 'subtract': return '−';
+        case 'multiply': return '×';
+        case 'divide': return '÷';
+        default: return '';
+      }
+    }
+    
+    // Reset calculator
+    function resetCalculator() {
+      displayValue = '0';
+      firstOperand = null;
+      operator = null;
+      waitingForSecondOperand = false;
+      calculationHistory = '';
+    }
+    
+    // Toggle negative value
+    function toggleNegative() {
+      displayValue = parseFloat(displayValue) * -1;
+      displayValue = displayValue.toString();
+    }
+    
+    // Calculate percentage
+    function percentage() {
+      displayValue = (parseFloat(displayValue) / 100).toString();
+    }
+    
+    // Handle backspace
+    function backspace() {
+      if (displayValue.length > 1) {
+        displayValue = displayValue.slice(0, -1);
+      } else {
+        displayValue = '0';
+      }
+    }
+    
+    // Event listener for keypad
+    keypad.addEventListener('click', (event) => {
+      const target = event.target;
+      
+      // Handle number keys
+      if (target.classList.contains('number')) {
+        if (target.dataset.digit === '.') {
+          inputDecimal();
+        } else {
+          inputDigit(target.dataset.digit);
+        }
+        updateDisplay();
+      }
+      
+      // Handle operator keys
+      if (target.classList.contains('operator')) {
+        handleOperator(target.dataset.action);
+        updateDisplay();
+      }
+      
+      // Handle equals key
+      if (target.dataset.action === 'calculate') {
+        if (operator && !waitingForSecondOperand) {
+          calculationHistory += ` ${displayValue} =`;
+          const secondOperand = parseFloat(displayValue);
+          const result = calculate(firstOperand, secondOperand, operator);
+          displayValue = `${parseFloat(result.toFixed(7))}`;
+          firstOperand = result;
+          operator = null;
+        }
+        updateDisplay();
+      }
+      
+      // Handle clear key
+      if (target.dataset.action === 'clear') {
+        resetCalculator();
+        updateDisplay();
+      }
+      
+      // Handle negative toggle
+      if (target.dataset.action === 'negative') {
+        toggleNegative();
+        updateDisplay();
+      }
+      
+      // Handle percentage
+      if (target.dataset.action === 'percentage') {
+        percentage();
+        updateDisplay();
+      }
+      
+      // Handle backspace
+      if (target.dataset.action === 'backspace') {
+        backspace();
+        updateDisplay();
+      }
+    });
+    
+    // Initialize display
+    updateDisplay();
+    
+    // Add keyboard support
+    document.addEventListener('keydown', (event) => {
+      const key = event.key;
+      
+      // Number keys
+      if (/^[0-9]$/.test(key)) {
+        inputDigit(key);
+        updateDisplay();
+      }
+      
+      // Decimal key
+      if (key === '.') {
+        inputDecimal();
+        updateDisplay();
+      }
+      
+      // Operator keys
+      if (key === '+') {
+        handleOperator('add');
+        updateDisplay();
+      }
+      if (key === '-') {
+        handleOperator('subtract');
+        updateDisplay();
+      }
+      if (key === '*') {
+        handleOperator('multiply');
+        updateDisplay();
+      }
+      if (key === '/') {
+        event.preventDefault(); // Prevent browser search
+        handleOperator('divide');
+        updateDisplay();
+      }
+      
+      // Enter/equals key
+      if (key === 'Enter' || key === '=') {
+        if (operator && !waitingForSecondOperand) {
+          calculationHistory += ` ${displayValue} =`;
+          const secondOperand = parseFloat(displayValue);
+          const result = calculate(firstOperand, secondOperand, operator);
+          displayValue = `${parseFloat(result.toFixed(7))}`;
+          firstOperand = result;
+          operator = null;
+        }
+        updateDisplay();
+      }
+      
+      // Backspace key
+      if (key === 'Backspace') {
+        backspace();
+        updateDisplay();
+      }
+      
+      // Escape/clear key
+      if (key === 'Escape') {
+        resetCalculator();
+        updateDisplay();
+      }
+    });
+  });
+</script>
+
+  </div>
+</article>
+
+  </div>
+
+  <!-- This goes in default.html under layout -->
+
+<data class="u-url" href="/"></data>
+<div class="wrapper-footer">
+  <div class="container">
+    <footer class="footer">
+      <a href="mailto:prince.j19@fms.edu" aria-label="Gmail" ><i class="svg-icon email"></i></a>
+      <a href="https://www.linkedin.com/in/princejain17" aria-label="LinkedIn" ><i class="svg-icon linkedin"></i></a>
+      <a href="https://www.twitter.com/Prince_Jain17" aria-label="Twitter" ><i class="svg-icon twitter"></i></a>
+      <p> Forever Curious © Prince Jain. </p>
+    </footer>
+  </div>
+</div>
+
+  
+  <!-- Performance optimization scripts -->
+  <script src="/assets/js/lazy-load.js"></script>
+  <script src="/assets/js/sw-register.js"></script>
+  <script src="/assets/js/swup-cdn.js"></script>
+  <script src="/assets/js/sticky-header.js"></script>
+</body>
+
+</html>
