@@ -18,7 +18,8 @@ try {
 
 // Function to check if API key is available
 function hasValidApiKey(provider) {
-  return apiKeys[provider] && apiKeys[provider].length > 10 && apiKeys[provider] !== "YOUR_" + provider.toUpperCase() + "_KEY_HERE";
+  // Simpler validation - just check if key exists and has reasonable length
+  return apiKeys[provider] && apiKeys[provider].length > 8;
 }
 
 // API key configuration
