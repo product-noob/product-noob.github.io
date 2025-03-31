@@ -2,8 +2,6 @@
 layout: post
 title: Building the Vaccine Slot Finder tool
 description: "Shared the inside story of what went behind the scenes of building the Paytm Vaccine Finder tool and how it became the second most popular vaccine booking tool in the country"
-image:
- path: /assets/blog_images/Vaccinefinderblog.png
 ---
 
 What started as a weekend project ended up becoming one of the most popular vaccination tool for millions of people in the country! This is behind the scenes story of how the Paytm Vaccine Finder tool came to life. I shared the inside story of how I built the Paytm Vaccine Finder tool.. <br>
