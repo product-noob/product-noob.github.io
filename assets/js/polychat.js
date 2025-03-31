@@ -5,16 +5,8 @@
  * such as OpenAI's ChatGPT, Groq, and Google's Gemini.
  */
 
-// API key configuration is now loaded from api-config.js which is auto-generated during build
-let apiKeys = {};
-
-// Try to load API keys from the auto-generated file
-try {
-  apiKeys = API_KEYS || {};
-} catch (e) {
-  console.error("API keys not available:", e);
-  apiKeys = { openai: "", groq: "", google: "" };
-}
+// Get API keys from PolyChatConfig (config.js)
+let apiKeys = PolyChatConfig.getApiKeys();
 
 // Function to check if API key is available
 function hasValidApiKey(provider) {
@@ -28,6 +20,19 @@ const config = {
   groqApiKey: apiKeys.groq || '',
   googleApiKey: apiKeys.google || ''
 };
+
+// Function to update API key in both memory and localStorage
+function updateApiKey(provider, key) {
+  // Update in memory
+  apiKeys[provider] = key;
+  config[`${provider}ApiKey`] = key;
+  
+  // Save to localStorage
+  PolyChatConfig.saveApiKey(provider, key);
+  
+  // Update UI
+  updateApiKeyStatus();
+}
 
 // Default System Prompts
 const defaultSystemPrompts = {
@@ -67,9 +72,62 @@ function loadCustomPrompts() {
   }
 }
 
+// Update API key status indicators in the UI
+function updateApiKeyStatus() {
+  const providers = ['openai', 'groq', 'google'];
+  
+  providers.forEach(provider => {
+    const statusElement = document.getElementById(`${provider}-key-status`);
+    if (!statusElement) return;
+    
+    if (hasValidApiKey(provider)) {
+      statusElement.textContent = 'Key Set';
+      statusElement.className = 'key-status key-status-valid';
+      
+      // Auto-fill the input field with a placeholder to show it's set
+      const inputElement = document.getElementById(`${provider}-key-input`);
+      if (inputElement && !inputElement.value) {
+        inputElement.placeholder = '••••••••••••••••••••••••••';
+      }
+    } else {
+      if (provider === 'groq' && DEFAULT_GROQ_API_KEY) {
+        statusElement.textContent = 'Default Key';
+        statusElement.className = 'key-status';
+      } else {
+        statusElement.textContent = 'Not Set';
+        statusElement.className = 'key-status key-status-invalid';
+      }
+    }
+  });
+  
+  // Update provider selector based on available keys
+  const providerSelect = document.getElementById('provider-select');
+  if (providerSelect) {
+    // First verify if the current selected provider has a valid key
+    const currentProvider = providerSelect.value.toLowerCase();
+    const currentProviderKey = currentProvider === 'chatgpt' ? 'openai' : currentProvider;
+    
+    if (!hasValidApiKey(currentProviderKey)) {
+      // If current provider doesn't have a valid key, switch to Groq (which has default key)
+      providerSelect.value = 'Groq';
+      // Trigger the change event to update models
+      providerSelect.dispatchEvent(new Event('change'));
+    }
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   // Load custom prompts from localStorage
   loadCustomPrompts();
+  
+  // Initialize API key status UI
+  updateApiKeyStatus();
+  
+  // Set up API key button event handlers
+  setupApiKeyHandlers();
+  
+  // Set up collapsible sections
+  setupCollapsibleSections();
   
   // Mobile menu functionality
   const toggleMenuBtn = document.getElementById('toggle-menu');
@@ -95,6 +153,103 @@ document.addEventListener('DOMContentLoaded', function() {
   // Event listeners for mobile menu toggle
   if (toggleMenuBtn) {
     toggleMenuBtn.addEventListener('click', showSidebar);
+  }
+  
+  // Function to set up API key button handlers
+  // Function to handle collapsible sections
+  function setupCollapsibleSections() {
+    const apiKeysHeader = document.getElementById('api-keys-header');
+    const apiKeysContent = document.getElementById('api-keys-content');
+    
+    if (apiKeysHeader && apiKeysContent) {
+      const toggleButton = apiKeysHeader.querySelector('.toggle-section');
+      
+      // Initialize the dropdown (closed by default)
+      toggleButton.setAttribute('aria-expanded', 'false');
+      apiKeysContent.style.display = 'none';
+      
+      apiKeysHeader.addEventListener('click', function(e) {
+        e.preventDefault();
+        const expanded = toggleButton.getAttribute('aria-expanded') === 'true';
+        toggleButton.setAttribute('aria-expanded', !expanded);
+        
+        if (expanded) {
+          apiKeysContent.style.display = 'none';
+        } else {
+          apiKeysContent.style.display = 'flex';
+        }
+        
+        console.log('API Keys dropdown toggled:', !expanded ? 'open' : 'closed');
+      });
+    }
+  }
+  
+  function setupApiKeyHandlers() {
+    // OpenAI/ChatGPT key
+    const saveOpenAIBtn = document.getElementById('save-openai-key');
+    if (saveOpenAIBtn) {
+      saveOpenAIBtn.addEventListener('click', function() {
+        const keyInput = document.getElementById('openai-key-input');
+        if (keyInput && keyInput.value) {
+          updateApiKey('openai', keyInput.value);
+          showToast('OpenAI API key saved');
+          keyInput.value = '';
+        } else {
+          showToast('Please enter an API key');
+        }
+      });
+    }
+    
+    // Groq key
+    const saveGroqBtn = document.getElementById('save-groq-key');
+    if (saveGroqBtn) {
+      saveGroqBtn.addEventListener('click', function() {
+        const keyInput = document.getElementById('groq-key-input');
+        if (keyInput && keyInput.value) {
+          updateApiKey('groq', keyInput.value);
+          showToast('Groq API key saved');
+          keyInput.value = '';
+        } else {
+          showToast('Please enter an API key');
+        }
+      });
+    }
+    
+    // Reset Groq key to default
+    const resetGroqBtn = document.getElementById('reset-groq-key');
+    if (resetGroqBtn) {
+      resetGroqBtn.addEventListener('click', function() {
+        const defaultKey = PolyChatConfig.resetApiKey('groq');
+        updateApiKey('groq', defaultKey);
+        showToast('Groq API key reset to default');
+      });
+    }
+    
+    // Google key
+    const saveGoogleBtn = document.getElementById('save-google-key');
+    if (saveGoogleBtn) {
+      saveGoogleBtn.addEventListener('click', function() {
+        const keyInput = document.getElementById('google-key-input');
+        if (keyInput && keyInput.value) {
+          updateApiKey('google', keyInput.value);
+          showToast('Google API key saved');
+          keyInput.value = '';
+        } else {
+          showToast('Please enter an API key');
+        }
+      });
+    }
+    
+    // Allow pressing Enter to save API keys
+    const keyInputs = document.querySelectorAll('.api-key-input');
+    keyInputs.forEach(input => {
+      input.addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+          const providerId = input.id.split('-')[0];
+          document.getElementById(`save-${providerId}-key`).click();
+        }
+      });
+    });
   }
   
   if (closeSidebarBtn) {
@@ -131,7 +286,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const temperatureValueSpan = document.getElementById('temperature-value');
   const maxTokensSlider = document.getElementById('max-tokens-slider');
   const maxTokensValueSpan = document.getElementById('max-tokens-value');
-  const resetButton = document.getElementById('reset-button');
+  // We no longer need resetButton since we removed it from sidebar
+  // const resetButton = document.getElementById('reset-button');
   const userInput = document.getElementById('user-input');
   const sendButton = document.getElementById('send-button');
   const chatWindow = document.getElementById('chat-window');
@@ -179,17 +335,57 @@ document.addEventListener('DOMContentLoaded', function() {
   // Event listeners for configuration elements
   providerSelect.addEventListener('change', updateModelOptions);
   
+  // Modal elements
+  const promptModal = document.getElementById('prompt-modal');
+  const closeModalBtn = document.querySelector('.close-modal');
+  const cancelPromptBtn = document.getElementById('cancel-prompt-button');
+
+  // Function to open the modal
+  function openPromptModal() {
+    promptModal.style.display = 'flex';
+    document.getElementById('new-prompt-name').value = '';
+    document.getElementById('new-prompt-text').value = '';
+    document.getElementById('new-prompt-name').focus();
+  }
+
+  // Function to close the modal
+  function closePromptModal() {
+    promptModal.style.display = 'none';
+    // Reset the prompt select to the previously selected value
+    if (promptSelect.value === 'add-new-prompt') {
+      // If no previous selection, set to default
+      promptSelect.value = 'Helpful AI';
+    }
+  }
+
   // Handle prompt selection
   promptSelect.addEventListener('change', () => {
     if (promptSelect.value === 'add-new-prompt') {
-      newPromptArea.style.display = 'block';
+      // Open the modal instead of showing inline form
+      openPromptModal();
     } else {
-      newPromptArea.style.display = 'none';
       if (defaultSystemPrompts[promptSelect.value]) {
         systemPromptText = defaultSystemPrompts[promptSelect.value];
       } else if (customSystemPrompts[promptSelect.value]) {
         systemPromptText = customSystemPrompts[promptSelect.value];
       }
+    }
+  });
+
+  // Close modal when clicking the X
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', closePromptModal);
+  }
+
+  // Close modal when clicking cancel
+  if (cancelPromptBtn) {
+    cancelPromptBtn.addEventListener('click', closePromptModal);
+  }
+
+  // Close modal when clicking outside
+  window.addEventListener('click', (e) => {
+    if (e.target === promptModal) {
+      closePromptModal();
     }
   });
   
@@ -210,16 +406,13 @@ document.addEventListener('DOMContentLoaded', function() {
       promptSelect.value = newName;
       systemPromptText = newText;
       
-      // Hide the new prompt area
-      newPromptArea.style.display = 'none';
+      // Close the modal
+      closePromptModal();
       
-      // Clear inputs
-      newPromptNameInput.value = '';
-      newPromptTextInput.value = '';
-      
-      addMessageToChat('system', `Custom prompt "${newName}" saved and selected.`);
+      // Show success message
+      showToast(`Custom prompt "${newName}" saved and selected.`);
     } else {
-      alert('Please enter both prompt name and text.');
+      showToast('Please enter both prompt name and text.', 3000);
     }
   });
   
@@ -265,8 +458,8 @@ document.addEventListener('DOMContentLoaded', function() {
     showToast("Context Reset");
   }
   
-  // Reset button event listeners
-  resetButton.addEventListener('click', resetConversation);
+  // We don't need to add event listener for sidebar reset button anymore
+  // as it has been removed from the UI
   
   // Mobile reset button in header
   const mobileResetButton = document.getElementById('mobile-reset');
@@ -275,7 +468,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // Send message function
-  function sendMessage() {
+  // Make sendMessage available globally
+  window.sendMessage = function() {
+    console.log('Send message function called');
     const messageText = userInput.value.trim();
     if (!messageText) return;
     
@@ -577,13 +772,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
   
   // Event listeners for chat
-  sendButton.addEventListener('click', sendMessage);
-  
-  userInput.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
+  if (sendButton) {
+    console.log('Setting up send button event listener');
+    sendButton.addEventListener('click', function() {
+      console.log('Send button clicked');
       sendMessage();
-    }
-  });
+    });
+  } else {
+    console.warn('Send button not found in DOM');
+  }
+  
+  if (userInput) {
+    userInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        console.log('Enter key pressed');
+        sendMessage();
+      }
+    });
+  } else {
+    console.warn('User input not found in DOM');
+  }
 
 });

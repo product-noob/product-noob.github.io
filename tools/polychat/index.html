@@ -5,6 +5,10 @@ permalink: /tools/polychat/
 
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/tools.css">
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/polychat.css">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/polychat-additional.css">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/polychat-fixes.css">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/polychat-fixes-extra.css">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/sidebar-opacity-fix.css">
 
 <div class="tools-container">
   <div class="tool-header">
@@ -25,6 +29,51 @@ permalink: /tools/polychat/
       </button>
       
       <h2>LLM Configuration</h2>
+
+      <!-- API Key Management -->
+      <div class="config-section">
+        <div class="section-header-collapsible" id="api-keys-header">
+          <h3>API Keys</h3>
+          <button class="toggle-section" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+        </div>
+        <div class="key-management-panel collapsible-content" id="api-keys-content" style="display: none;">
+          <div class="api-key-section">
+            <div class="provider-key-header">
+              <span><strong>ChatGPT</strong></span>
+              <span id="openai-key-status" class="key-status">Not Set</span>
+            </div>
+            <div class="key-input-group">
+              <input type="password" id="openai-key-input" placeholder="Enter OpenAI API Key" class="api-key-input">
+              <button id="save-openai-key" class="small-button">Save</button>
+            </div>
+          </div>
+
+          <div class="api-key-section">
+            <div class="provider-key-header">
+              <span><strong>Groq</strong></span>
+              <span id="groq-key-status" class="key-status">Default Key Set</span>
+            </div>
+            <div class="key-input-group">
+              <input type="password" id="groq-key-input" placeholder="Enter Groq API Key (Optional)" class="api-key-input">
+              <button id="save-groq-key" class="small-button">Save</button>
+              <button id="reset-groq-key" class="small-button reset-key">Reset</button>
+            </div>
+          </div>
+
+          <div class="api-key-section">
+            <div class="provider-key-header">
+              <span><strong>Google</strong></span>
+              <span id="google-key-status" class="key-status">Not Set</span>
+            </div>
+            <div class="key-input-group">
+              <input type="password" id="google-key-input" placeholder="Enter Google API Key" class="api-key-input">
+              <button id="save-google-key" class="small-button">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
       
       <!-- Provider Selection -->
       <div class="config-section">
@@ -32,7 +81,7 @@ permalink: /tools/polychat/
         <div class="settings-group">
           <select id="provider-select" class="full-width">
             <option value="ChatGPT">ChatGPT</option>
-            <option value="Groq">Groq</option>
+            <option value="Groq" selected>Groq</option>
             <option value="Google">Google</option>
           </select>
         </div>
@@ -79,18 +128,8 @@ permalink: /tools/polychat/
           </select>
         </div>
         
-        <!-- New Prompt Creation (hidden by default) -->
-        <div id="new-prompt-area" class="new-prompt-area" style="display: none;">
-          <div class="settings-group">
-            <label for="new-prompt-name">Prompt Name</label>
-            <input type="text" id="new-prompt-name" placeholder="Enter a name for your prompt">
-          </div>
-          <div class="settings-group">
-            <label for="new-prompt-text">Prompt Text</label>
-            <textarea id="new-prompt-text" rows="6" placeholder="Enter your system prompt here..."></textarea>
-          </div>
-          <button id="save-prompt-button" class="action-button">Save New Prompt</button>
-        </div>
+        <!-- We'll use a modal instead of inline form -->
+        <div id="new-prompt-area" class="new-prompt-area" style="display: none;"></div>
       </div>
       
       <!-- Parameters Section -->
@@ -104,7 +143,6 @@ permalink: /tools/polychat/
           <label for="max-tokens-slider">Max Tokens: <span id="max-tokens-value">128</span></label>
           <input type="range" id="max-tokens-slider" min="1" max="2048" step="1" value="128">
         </div>
-        <button id="reset-button" class="action-button secondary">Reset Context</button>
       </div>
       
       <div class="config-section config-link">
@@ -124,7 +162,7 @@ permalink: /tools/polychat/
             <line x1="3" y1="18" x2="21" y2="18"></line>
           </svg>
         </button>
-        <h2>LLM Chatbot</h2>
+        <h2><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg> AI Assistant</h2>
         <!-- Reset context button with cleaner icon -->
         <button id="mobile-reset" class="mobile-reset-button">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -148,12 +186,44 @@ permalink: /tools/polychat/
           placeholder="Type your message here..."
           rows="2"
         ></textarea>
-        <button id="send-button" class="action-button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Replaced with a simpler, more reliable button implementation -->
+        <a href="javascript:void(0)" id="send-button" class="send-button" onclick="window.sendMessage(); return false;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="22" y1="2" x2="11" y2="13"></line>
             <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
           </svg>
-        </button>
+        </a>
+        
+        <script>
+          // Direct send button setup
+          document.addEventListener('DOMContentLoaded', function() {
+            // Make absolutely sure the send button works
+            document.getElementById('send-button').onclick = function(e) {
+              e.preventDefault();
+              console.log('Send button clicked');
+              if (typeof window.sendMessage === 'function') {
+                window.sendMessage();
+              } else {
+                console.error('sendMessage function not found');
+                // Fallback to manually getting input and adding to chat
+                const userInput = document.getElementById('user-input');
+                if (userInput && userInput.value.trim()) {
+                  const message = userInput.value.trim();
+                  const chatWindow = document.getElementById('chat-window');
+                  if (chatWindow) {
+                    const msgDiv = document.createElement('div');
+                    msgDiv.className = 'message user-message';
+                    msgDiv.innerHTML = `<div class="message-content">${message}</div>`;
+                    chatWindow.appendChild(msgDiv);
+                    chatWindow.scrollTop = chatWindow.scrollHeight;
+                    userInput.value = '';
+                  }
+                }
+              }
+              return false;
+            };
+          });
+        </script>
       </div>
     </div>
   </div>
@@ -162,6 +232,30 @@ permalink: /tools/polychat/
 <!-- Toast notification container -->
 <div id="toast-container" class="toast-container"></div>
 
+<!-- Modal for adding new system prompts -->
+<div id="prompt-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Add New System Prompt</h3>
+      <span class="close-modal">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="new-prompt-name">Prompt Name</label>
+        <input type="text" id="new-prompt-name" class="full-width" placeholder="Enter a name for your prompt">
+      </div>
+      <div class="form-group">
+        <label for="new-prompt-text">Prompt Text</label>
+        <textarea id="new-prompt-text" class="full-width" rows="8" placeholder="Enter your system prompt here..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="save-prompt-button" class="small-button">Save Prompt</button>
+      <button id="cancel-prompt-button" class="small-button reset-key">Cancel</button>
+    </div>
+  </div>
+</div>
+
 <!-- Load API configuration first, then main script -->
-<script src="{{ site.baseurl }}/assets/js/api-config.js"></script>
+<script src="{{ site.baseurl }}/assets/js/config.js"></script>
 <script src="{{ site.baseurl }}/assets/js/polychat.js"></script>

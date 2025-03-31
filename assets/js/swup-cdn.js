@@ -28,8 +28,8 @@ function initSwup() {
       plugins: []
     });
     
-    // Show loader on page transition start
-    swup.hooks.on('content:replace', function() {
+    // In Swup v3, the event registration is directly on swup instance, not on hooks
+    swup.on('content:replace', function() {
       document.querySelector('.page-loader').classList.remove('is-active');
       
       // Reinitialize scripts
@@ -37,7 +37,7 @@ function initSwup() {
     });
     
     // Show loader on page transition start
-    swup.hooks.on('visit:start', function() {
+    swup.on('visit:start', function() {
       document.querySelector('.page-loader').classList.add('is-active');
       
       // Scroll to top on page change
@@ -49,7 +49,7 @@ function initSwup() {
     
     // Set active nav item
     updateActiveNavItem();
-    swup.hooks.on('content:replace', updateActiveNavItem);
+    swup.on('content:replace', updateActiveNavItem);
   }
 }
 
