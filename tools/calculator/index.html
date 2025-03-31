@@ -155,241 +155,284 @@ permalink: /tools/calculator/
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // DOM elements
-    const historyDisplay = document.getElementById('history');
-    const inputDisplay = document.getElementById('input');
-    const keypad = document.querySelector('.calculator-keypad');
+  // Initialize calculator when DOM is loaded
+  document.addEventListener('DOMContentLoaded', initCalculator);
+
+  // Also re-initialize on page transitions if using Swup
+  document.addEventListener('swup:contentReplaced', initCalculator);
+
+  // Calculator state variables
+  let displayValue = '0';
+  let firstOperand = null;
+  let operator = null;
+  let waitingForSecondOperand = false;
+  let calculationHistory = '';
+  let historyDisplay, inputDisplay, keypad;
+
+  /**
+   * Initialize the calculator
+   */
+  function initCalculator() {
+    console.log('Initializing calculator');
     
-    // Calculator state
-    let displayValue = '0';
-    let firstOperand = null;
-    let operator = null;
-    let waitingForSecondOperand = false;
-    let calculationHistory = '';
+    // Get DOM elements
+    historyDisplay = document.getElementById('history');
+    inputDisplay = document.getElementById('input');
+    keypad = document.querySelector('.calculator-keypad');
     
-    // Update the display
-    function updateDisplay() {
-      inputDisplay.textContent = displayValue;
-      historyDisplay.textContent = calculationHistory;
+    if (!historyDisplay || !inputDisplay || !keypad) {
+      console.error('Calculator elements not found!');
+      return;
     }
     
-    // Handle digit input
-    function inputDigit(digit) {
-      if (waitingForSecondOperand) {
-        displayValue = digit;
-        waitingForSecondOperand = false;
-      } else {
-        displayValue = displayValue === '0' ? digit : displayValue + digit;
-      }
-    }
+    // Reset calculator state
+    resetCalculator();
     
-    // Handle decimal point
-    function inputDecimal() {
-      if (waitingForSecondOperand) {
-        displayValue = '0.';
-        waitingForSecondOperand = false;
-        return;
-      }
+    // Set up direct click handlers on all buttons for better reliability
+    const keys = document.querySelectorAll('.calculator-key');
+    keys.forEach(key => {
+      // Remove any existing listeners first to prevent duplicates
+      const newKey = key.cloneNode(true);
+      key.parentNode.replaceChild(newKey, key);
       
-      if (!displayValue.includes('.')) {
-        displayValue += '.';
-      }
-    }
-    
-    // Handle operators
-    function handleOperator(nextOperator) {
-      const inputValue = parseFloat(displayValue);
-      
-      if (firstOperand === null) {
-        firstOperand = inputValue;
-      } else if (operator) {
-        const result = calculate(firstOperand, inputValue, operator);
-        displayValue = `${parseFloat(result.toFixed(7))}`;
-        firstOperand = result;
-      }
-      
-      waitingForSecondOperand = true;
-      operator = nextOperator;
-      calculationHistory = `${firstOperand} ${getOperatorSymbol(operator)}`;
-    }
-    
-    // Calculate result
-    function calculate(firstOperand, secondOperand, operator) {
-      switch (operator) {
-        case 'add':
-          return firstOperand + secondOperand;
-        case 'subtract':
-          return firstOperand - secondOperand;
-        case 'multiply':
-          return firstOperand * secondOperand;
-        case 'divide':
-          return firstOperand / secondOperand;
-        default:
-          return secondOperand;
-      }
-    }
-    
-    // Get operator symbol for display
-    function getOperatorSymbol(op) {
-      switch (op) {
-        case 'add': return '+';
-        case 'subtract': return '−';
-        case 'multiply': return '×';
-        case 'divide': return '÷';
-        default: return '';
-      }
-    }
-    
-    // Reset calculator
-    function resetCalculator() {
-      displayValue = '0';
-      firstOperand = null;
-      operator = null;
-      waitingForSecondOperand = false;
-      calculationHistory = '';
-    }
-    
-    // Toggle negative value
-    function toggleNegative() {
-      displayValue = parseFloat(displayValue) * -1;
-      displayValue = displayValue.toString();
-    }
-    
-    // Calculate percentage
-    function percentage() {
-      displayValue = (parseFloat(displayValue) / 100).toString();
-    }
-    
-    // Handle backspace
-    function backspace() {
-      if (displayValue.length > 1) {
-        displayValue = displayValue.slice(0, -1);
-      } else {
-        displayValue = '0';
-      }
-    }
-    
-    // Event listener for keypad
-    keypad.addEventListener('click', (event) => {
-      const target = event.target;
-      
-      // Handle number keys
-      if (target.classList.contains('number')) {
-        if (target.dataset.digit === '.') {
-          inputDecimal();
-        } else {
-          inputDigit(target.dataset.digit);
-        }
-        updateDisplay();
-      }
-      
-      // Handle operator keys
-      if (target.classList.contains('operator')) {
-        handleOperator(target.dataset.action);
-        updateDisplay();
-      }
-      
-      // Handle equals key
-      if (target.dataset.action === 'calculate') {
-        if (operator && !waitingForSecondOperand) {
-          calculationHistory += ` ${displayValue} =`;
-          const secondOperand = parseFloat(displayValue);
-          const result = calculate(firstOperand, secondOperand, operator);
-          displayValue = `${parseFloat(result.toFixed(7))}`;
-          firstOperand = result;
-          operator = null;
-        }
-        updateDisplay();
-      }
-      
-      // Handle clear key
-      if (target.dataset.action === 'clear') {
-        resetCalculator();
-        updateDisplay();
-      }
-      
-      // Handle negative toggle
-      if (target.dataset.action === 'negative') {
-        toggleNegative();
-        updateDisplay();
-      }
-      
-      // Handle percentage
-      if (target.dataset.action === 'percentage') {
-        percentage();
-        updateDisplay();
-      }
-      
-      // Handle backspace
-      if (target.dataset.action === 'backspace') {
-        backspace();
-        updateDisplay();
-      }
+      // Add a fresh click event listener
+      newKey.addEventListener('click', handleButtonClick);
     });
-    
-    // Initialize display
-    updateDisplay();
     
     // Add keyboard support
-    document.addEventListener('keydown', (event) => {
-      const key = event.key;
-      
-      // Number keys
-      if (/^[0-9]$/.test(key)) {
-        inputDigit(key);
-        updateDisplay();
-      }
-      
-      // Decimal key
-      if (key === '.') {
+    document.addEventListener('keydown', handleKeyPress);
+    
+    // Initialize the display
+    updateDisplay();
+    console.log('Calculator initialized successfully');
+  }
+
+  /**
+   * Update the calculator display
+   */
+  function updateDisplay() {
+    inputDisplay.textContent = displayValue;
+    historyDisplay.textContent = calculationHistory;
+  }
+
+  /**
+   * Handle button clicks
+   */
+  function handleButtonClick(event) {
+    const key = event.currentTarget;
+    console.log('Button clicked:', key.textContent);
+    
+    // Number buttons
+    if (key.classList.contains('number')) {
+      if (key.dataset.digit === '.') {
         inputDecimal();
-        updateDisplay();
+      } else {
+        inputDigit(key.dataset.digit);
       }
-      
-      // Operator keys
-      if (key === '+') {
+      updateDisplay();
+      return;
+    }
+    
+    // Operator buttons
+    if (key.classList.contains('operator')) {
+      handleOperator(key.dataset.action);
+      updateDisplay();
+      return;
+    }
+    
+    // Function buttons
+    switch (key.dataset.action) {
+      case 'calculate':
+        performCalculation();
+        break;
+      case 'clear':
+        resetCalculator();
+        break;
+      case 'negative':
+        toggleNegative();
+        break;
+      case 'percentage':
+        percentage();
+        break;
+      case 'backspace':
+        backspace();
+        break;
+    }
+    
+    updateDisplay();
+  }
+
+  /**
+   * Handle keyboard input
+   */
+  function handleKeyPress(event) {
+    const key = event.key;
+    
+    // Numbers 0-9
+    if (/^[0-9]$/.test(key)) {
+      inputDigit(key);
+      updateDisplay();
+      return;
+    }
+    
+    // Decimal point
+    if (key === '.') {
+      inputDecimal();
+      updateDisplay();
+      return;
+    }
+    
+    // Operators
+    switch (key) {
+      case '+':
         handleOperator('add');
-        updateDisplay();
-      }
-      if (key === '-') {
+        break;
+      case '-':
         handleOperator('subtract');
-        updateDisplay();
-      }
-      if (key === '*') {
+        break;
+      case '*':
         handleOperator('multiply');
-        updateDisplay();
-      }
-      if (key === '/') {
+        break;
+      case '/':
         event.preventDefault(); // Prevent browser search
         handleOperator('divide');
-        updateDisplay();
-      }
-      
-      // Enter/equals key
-      if (key === 'Enter' || key === '=') {
-        if (operator && !waitingForSecondOperand) {
-          calculationHistory += ` ${displayValue} =`;
-          const secondOperand = parseFloat(displayValue);
-          const result = calculate(firstOperand, secondOperand, operator);
-          displayValue = `${parseFloat(result.toFixed(7))}`;
-          firstOperand = result;
-          operator = null;
-        }
-        updateDisplay();
-      }
-      
-      // Backspace key
-      if (key === 'Backspace') {
+        break;
+      case 'Enter':
+      case '=':
+        performCalculation();
+        break;
+      case 'Backspace':
         backspace();
-        updateDisplay();
-      }
-      
-      // Escape/clear key
-      if (key === 'Escape') {
+        break;
+      case 'Escape':
         resetCalculator();
-        updateDisplay();
-      }
-    });
-  });
+        break;
+      default:
+        return; // Exit if no matching key
+    }
+    
+    updateDisplay();
+  }
+
+  /**
+   * Input a digit
+   */
+  function inputDigit(digit) {
+    if (waitingForSecondOperand) {
+      displayValue = digit;
+      waitingForSecondOperand = false;
+    } else {
+      displayValue = displayValue === '0' ? digit : displayValue + digit;
+    }
+  }
+
+  /**
+   * Input decimal point
+   */
+  function inputDecimal() {
+    if (waitingForSecondOperand) {
+      displayValue = '0.';
+      waitingForSecondOperand = false;
+      return;
+    }
+    
+    if (!displayValue.includes('.')) {
+      displayValue += '.';
+    }
+  }
+
+  /**
+   * Handle operator input
+   */
+  function handleOperator(nextOperator) {
+    const inputValue = parseFloat(displayValue);
+    
+    if (firstOperand === null) {
+      firstOperand = inputValue;
+    } else if (operator) {
+      const result = calculate(firstOperand, inputValue, operator);
+      displayValue = `${parseFloat(result.toFixed(7))}`;
+      firstOperand = result;
+    }
+    
+    waitingForSecondOperand = true;
+    operator = nextOperator;
+    calculationHistory = `${firstOperand} ${getOperatorSymbol(operator)}`;
+  }
+
+  /**
+   * Perform the calculation
+   */
+  function performCalculation() {
+    if (!operator || waitingForSecondOperand) return;
+    
+    const secondOperand = parseFloat(displayValue);
+    calculationHistory += ` ${displayValue} =`;
+    
+    const result = calculate(firstOperand, secondOperand, operator);
+    displayValue = `${parseFloat(result.toFixed(7))}`;
+    firstOperand = result;
+    operator = null;
+  }
+
+  /**
+   * Calculate the result
+   */
+  function calculate(firstOperand, secondOperand, operator) {
+    switch (operator) {
+      case 'add': return firstOperand + secondOperand;
+      case 'subtract': return firstOperand - secondOperand;
+      case 'multiply': return firstOperand * secondOperand;
+      case 'divide': return firstOperand / secondOperand;
+      default: return secondOperand;
+    }
+  }
+
+  /**
+   * Get the operator symbol for display
+   */
+  function getOperatorSymbol(op) {
+    switch (op) {
+      case 'add': return '+';
+      case 'subtract': return '−';
+      case 'multiply': return '×';
+      case 'divide': return '÷';
+      default: return '';
+    }
+  }
+
+  /**
+   * Reset the calculator
+   */
+  function resetCalculator() {
+    displayValue = '0';
+    firstOperand = null;
+    operator = null;
+    waitingForSecondOperand = false;
+    calculationHistory = '';
+    if (inputDisplay && historyDisplay) {
+      updateDisplay();
+    }
+  }
+
+  /**
+   * Toggle between positive and negative
+   */
+  function toggleNegative() {
+    displayValue = (parseFloat(displayValue) * -1).toString();
+  }
+
+  /**
+   * Calculate percentage
+   */
+  function percentage() {
+    displayValue = (parseFloat(displayValue) / 100).toString();
+  }
+
+  /**
+   * Handle backspace
+   */
+  function backspace() {
+    displayValue = displayValue.length > 1 ? displayValue.slice(0, -1) : '0';
+  }
 </script>
