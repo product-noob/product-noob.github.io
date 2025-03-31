@@ -21,16 +21,17 @@ permalink: /tools/qr-code-generator/
         <label for="qr-input">Enter URL or text</label>
         <input type="text" id="qr-input" placeholder="Enter URL or text">
       </div>
-      <button onclick="generateQR()" class="action-button">Generate QR</button>
+      <button class="action-button">Generate QR</button>
       <div class="qr-preview">
         <div id="qr-output"></div>
       </div>
-      <button id="download-qr" onclick="downloadQR()" class="action-button" style="display: none;">Download QR Code</button>
+      <button id="download-qr" class="action-button" style="display: none;">Download QR Code</button>
     </div>
   </div>
 </div>
 
 <script>
+  // Make sure generateQR is defined in the global window scope
   let qr = null;
   
   // Check if QRious library is loaded properly
@@ -41,9 +42,14 @@ permalink: /tools/qr-code-generator/
       return;
     }
     console.log('QRious library loaded successfully!');
+    
+    // Set up event handlers programmatically instead of using inline onclick
+    document.querySelector('button.action-button').addEventListener('click', generateQR);
+    document.getElementById('download-qr').addEventListener('click', downloadQR);
   });
   
-  function generateQR() {
+  // Define generateQR in global scope
+  window.generateQR = function() {
     const text = document.getElementById('qr-input').value;
     if (!text) {
       alert('Please enter some text or URL');
@@ -83,7 +89,8 @@ permalink: /tools/qr-code-generator/
     }
   }
   
-  function downloadQR() {
+  // Define downloadQR in global scope
+  window.downloadQR = function() {
     if (!qr) {
       alert('No QR code to download');
       return;
