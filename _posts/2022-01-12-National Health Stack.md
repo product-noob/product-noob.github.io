@@ -2,9 +2,6 @@
 layout: post
 title:  "Explaining the National Health Stack"
 description: "National Health Stack is an upcoming government initiative which might end up revolutionising healthcare in India"
-image:
- path: /assets/blog_images/healthstackblog.png
-
 ---
 
 The National Health Stack is a new digital health infrastructure launched by the National Health Authority of India, envisioned to serve as the building block for digitising the healthcare sector in the country.
