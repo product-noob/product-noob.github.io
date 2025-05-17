@@ -103,12 +103,19 @@ nav {
 
 #header-spacer {
   display: block;
-  height: 0;
+  height: 80px; /* Increased height to account for header */
   transition: height 0.3s ease;
 }
 
 body.has-sticky-header {
   padding-top: 0;
+}
+
+/* Main container spacing */
+#main {
+  padding-top: 20px; /* Add some padding at the top */
+  min-height: calc(100vh - 80px); /* Ensure minimum height accounting for header */
+  position: relative; /* For proper stacking context */
 }
 
 /* Heading Typography - Using a modular scale of 1.2 */
@@ -218,6 +225,15 @@ small {
 
 /* Mobile Adjustments */
 @media (max-width: 640px) {
+  #header-spacer {
+    height: 80px; /* Increased height for mobile to prevent content overlap */
+  }
+
+  #main {
+    padding-top: 30px; /* More padding on mobile */
+    min-height: calc(100vh - 100px); /* Adjust min-height to match new header spacer */
+  }
+
   body {
     font-size: 13px;
   }
