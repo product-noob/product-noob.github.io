@@ -22,34 +22,53 @@ function initSwup() {
   if (typeof Swup !== 'undefined') {
     const swup = new Swup({
       containers: ['#main'],
-      animateHistoryBrowsing: true,
-      animationSelector: '[class*="transition-"]',
       cache: true,
-      plugins: []
+      plugins: [],
+      linkSelector: 'a[href^="' + window.location.origin + '"]:not([target="_blank"]):not([href^="' + window.location.origin + '/tools/calculator"])',
+      skipPopStateHandling: function(event) {
+        return event.state === null;
+      }
     });
     
-    // In Swup v3, the event registration is directly on swup instance, not on hooks
-    swup.on('content:replace', function() {
-      document.querySelector('.page-loader').classList.remove('is-active');
+    // Handle page transitions
+    swup.on('contentReplaced', function() {
+      // Re-initialize any page-specific functionality
+      if (typeof initCalculator === 'function') {
+        initCalculator();
+      }
       
-      // Reinitialize scripts
-      reinitializeScripts();
-    });
-    
-    // Show loader on page transition start
-    swup.on('visit:start', function() {
-      document.querySelector('.page-loader').classList.add('is-active');
-      
-      // Scroll to top on page change
-      window.scrollTo({
-        top: 0,
-        behavior: 'auto'
+      // Update any other page elements that need refreshing
+      document.querySelectorAll('img[data-src]').forEach(img => {
+        if (typeof lazyLoad === 'function') {
+          lazyLoad(img);
+        }
       });
     });
     
-    // Set active nav item
-    updateActiveNavItem();
-    swup.on('content:replace', updateActiveNavItem);
+    // Handle navigation start
+    swup.on('visitStart', function() {
+      // Show loading indicator if needed
+      const progressBar = document.getElementById('progress-bar');
+      if (progressBar) {
+        progressBar.style.width = '0%';
+        progressBar.style.opacity = '1';
+      }
+    });
+    
+    // Handle navigation end
+    swup.on('visitEnd', function() {
+      // Hide loading indicator
+      const progressBar = document.getElementById('progress-bar');
+      if (progressBar) {
+        progressBar.style.width = '100%';
+        setTimeout(() => {
+          progressBar.style.opacity = '0';
+        }, 200);
+      }
+    });
+    
+    // Store swup instance globally
+    window.swup = swup;
   }
 }
 

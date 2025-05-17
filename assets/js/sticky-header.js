@@ -1,26 +1,51 @@
 // Performance-optimized Sticky Header Implementation
 document.addEventListener('DOMContentLoaded', function() {
   // Get DOM elements
-  const header = document.querySelector('.wrapper-masthead');
-  const spacer = document.getElementById('header-spacer');
+  const header = document.querySelector('header');
+  const headerSpacer = document.getElementById('header-spacer');
+  const progressBar = document.getElementById('progress-bar');
   
-  if (!header) return;
+  if (!header || !headerSpacer) return;
   
   // Store original header height
   let headerHeight = header.offsetHeight;
-  let lastScrollY = 0;
+  let lastScrollTop = 0;
   let ticking = false;
   let isSticky = false;
   
   // Set spacer height
-  if (spacer) {
-    spacer.style.height = headerHeight + 'px';
-    spacer.style.display = 'none';
-  }
+  headerSpacer.style.height = headerHeight + 'px';
+  headerSpacer.style.display = 'none';
   
   // Performance-optimized scroll handler
   function handleScroll() {
-    lastScrollY = window.pageYOffset;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Update progress bar
+    if (progressBar) {
+      const winHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+      progressBar.style.width = scrollPercent + '%';
+    }
+
+    // Handle header visibility
+    if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
+      // Scrolling down
+      header.classList.add('header-hidden');
+    } else {
+      // Scrolling up
+      header.classList.remove('header-hidden');
+    }
+
+    // Update header background
+    if (scrollTop > 50) {
+      header.classList.add('header-scrolled');
+    } else {
+      header.classList.remove('header-scrolled');
+    }
+
+    lastScrollTop = scrollTop;
     requestTick();
   }
   
@@ -35,18 +60,18 @@ document.addEventListener('DOMContentLoaded', function() {
   // Update sticky header state
   function updateStickyState() {
     // Check if scroll position requires sticky state change
-    if (lastScrollY > 10) {
+    if (lastScrollTop > 10) {
       if (!isSticky) {
         header.classList.add('sticky');
         document.body.classList.add('has-sticky-header');
-        if (spacer) spacer.style.display = 'block';
+        if (headerSpacer) headerSpacer.style.display = 'block';
         isSticky = true;
       }
     } else {
       if (isSticky) {
         header.classList.remove('sticky');
         document.body.classList.remove('has-sticky-header');
-        if (spacer) spacer.style.display = 'none';
+        if (headerSpacer) headerSpacer.style.display = 'none';
         isSticky = false;
       }
     }
@@ -69,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Only recalculate if not in sticky state
       if (!isSticky) {
         headerHeight = header.offsetHeight;
-        if (spacer) spacer.style.height = headerHeight + 'px';
+        if (headerSpacer) headerSpacer.style.height = headerHeight + 'px';
       }
       updateStickyState();
     }, 100);
@@ -78,6 +103,17 @@ document.addEventListener('DOMContentLoaded', function() {
   // Optimized touch handling for mobile
   if ('ontouchstart' in window) {
     document.addEventListener('touchmove', handleScroll, { passive: true });
+  }
+
+  // Handle Swup page transitions
+  if (typeof window.swup !== 'undefined') {
+    window.swup.on('contentReplaced', function() {
+      // Update header height after page transition
+      headerSpacer.style.height = header.offsetHeight + 'px';
+      
+      // Reset scroll position
+      window.scrollTo(0, 0);
+    });
   }
 });
 
