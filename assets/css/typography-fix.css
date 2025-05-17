@@ -113,7 +113,7 @@ body.has-sticky-header {
 
 /* Main container spacing */
 #main {
-  padding-top: 20px; /* Add some padding at the top */
+  /* padding-top: 20px; */ /* Add some padding at the top */
   min-height: calc(100vh - 80px); /* Ensure minimum height accounting for header */
   position: relative; /* For proper stacking context */
 }
