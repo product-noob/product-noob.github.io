@@ -16,7 +16,9 @@ This repository contains the source code for my personal website, built using Je
 └── tools/             # Interactive web tools
     ├── calculator/    # Advanced calculator with scientific functions
     ├── qr-code-generator/ # QR code generation tool
-    └── polychat/      # Multi-AI chat comparison tool
+    ├── polychat/      # Multi-AI chat comparison tool
+    ├── base64/        # Base64 encoding/decoding tool
+    └── json-formatter/ # JSON formatting and validation tool
 ```
 
 ## 🏛️ Core Architecture
@@ -89,6 +91,18 @@ This is a Jekyll static site with the following key components:
    - Multi-AI model interface
    - Response comparison
    - Real-time interaction
+
+4. **Base64 Encoder/Decoder**
+   - Text to Base64 encoding
+   - Base64 to text decoding
+   - Support for binary data and URLs
+
+5. **JSON Formatter & Validator**
+   - JSON beautification
+   - Syntax validation
+   - Error reporting
+   - Minification support
+   - Syntax highlighting
 
 ## 🛠️ Technical Stack
 
