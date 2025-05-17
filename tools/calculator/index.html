@@ -1,6 +1,5 @@
 ---
 layout: page
-title: Calculator
 permalink: /tools/calculator/
 ---
 
@@ -73,14 +72,11 @@ permalink: /tools/calculator/
    * Initialize the calculator
    */
   function initCalculator() {
-    console.log('Initializing calculator');
-    
     // Get DOM elements
     historyDisplay = document.getElementById('history');
     inputDisplay = document.getElementById('input');
     
     if (!historyDisplay || !inputDisplay) {
-      console.error('Calculator elements not found!');
       return;
     }
     
@@ -97,8 +93,8 @@ permalink: /tools/calculator/
     // Set up click handlers on all buttons
     const keys = document.querySelectorAll('.calculator-key');
     keys.forEach(key => {
-      key.addEventListener('click', handleButtonClick, { passive: true });
-      key.addEventListener('touchstart', handleButtonClick, { passive: true });
+      key.addEventListener('click', handleButtonClick);
+      key.addEventListener('touchstart', handleButtonClick);
     });
     
     // Add keyboard support
@@ -106,7 +102,6 @@ permalink: /tools/calculator/
     
     // Initialize the display
     updateDisplay();
-    console.log('Calculator initialized successfully');
   }
 
   /**
@@ -121,9 +116,12 @@ permalink: /tools/calculator/
    * Handle button clicks
    */
   function handleButtonClick(event) {
-    event.preventDefault();
+    // Only prevent default for touch events
+    if (event.type === 'touchstart') {
+      event.preventDefault();
+    }
+    
     const key = event.currentTarget;
-    console.log('Button clicked:', key.textContent);
     
     // Number buttons
     if (key.classList.contains('number')) {
@@ -146,7 +144,9 @@ permalink: /tools/calculator/
     // Function buttons
     switch (key.dataset.action) {
       case 'calculate':
-        performCalculation();
+        if (operator && firstOperand !== null) {
+          performCalculation();
+        }
         break;
       case 'clear':
         resetCalculator();
@@ -215,18 +215,28 @@ permalink: /tools/calculator/
    */
   function performCalculation() {
     const inputValue = parseFloat(displayValue);
+    let result;
 
     if (operator === 'add') {
-      return firstOperand + inputValue;
+      result = firstOperand + inputValue;
     } else if (operator === 'subtract') {
-      return firstOperand - inputValue;
+      result = firstOperand - inputValue;
     } else if (operator === 'multiply') {
-      return firstOperand * inputValue;
+      result = firstOperand * inputValue;
     } else if (operator === 'divide') {
-      return firstOperand / inputValue;
+      result = firstOperand / inputValue;
+    } else {
+      result = inputValue;
     }
 
-    return inputValue;
+    // Update display and reset calculator state
+    displayValue = `${parseFloat(result.toFixed(7))}`;
+    firstOperand = null;
+    operator = null;
+    waitingForSecondOperand = false;
+    calculationHistory = '';
+
+    return result;
   }
 
   /**
