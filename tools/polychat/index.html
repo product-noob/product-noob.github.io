@@ -4,119 +4,125 @@ permalink: /tools/polychat/
 ---
 
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/tools.css">
-<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/polychat.css">
 
-<div class="tools-container">
-  <div id="tool-header"></div>
-
-  <div class="polychat-container">
-    <!-- Sidebar -->
-    <div class="polychat-sidebar">
-      <div class="sidebar-header">
-        <h2>Configuration</h2>
-      </div>
-      
-      <div class="config-section">
-        <h3>Model Selection</h3>
-        <div class="settings-group">
-          <select id="provider-select" class="full-width">
-            <option value="openai">OpenAI</option>
-            <option value="anthropic">Anthropic</option>
-            <option value="google">Google</option>
-          </select>
-        </div>
-        <div class="settings-group">
-          <select id="model-select" class="full-width">
-            <option value="gpt-4">GPT-4</option>
-            <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
-            <option value="claude-3-opus">Claude 3 Opus</option>
-            <option value="claude-3-sonnet">Claude 3 Sonnet</option>
-            <option value="gemini-pro">Gemini Pro</option>
-          </select>
-        </div>
-      </div>
-      
-      <div class="config-section">
-        <h3>System Prompt</h3>
-        <div class="settings-group">
-          <select id="prompt-select" class="full-width">
-            <option value="Helpful AI">Helpful AI</option>
-            <option value="Proofreader">Proofreader</option>
-            <option value="Instructor">Instructor</option>
-            <option value="add-new-prompt">Add New System Prompt</option>
-          </select>
-        </div>
-        
-        <div id="new-prompt-area" class="new-prompt-area" style="display: none;"></div>
-      </div>
-      
-      <div class="config-section">
-        <h3>Parameters</h3>
-        <div class="settings-group">
-          <label for="temperature-slider">Temperature: <span id="temperature-value">0.7</span></label>
-          <input type="range" id="temperature-slider" min="0" max="1" step="0.1" value="0.7">
-        </div>
-        <div class="settings-group">
-          <label for="max-tokens-slider">Max Tokens: <span id="max-tokens-value">128</span></label>
-          <input type="range" id="max-tokens-slider" min="1" max="2048" step="1" value="128">
-        </div>
-      </div>
-      
-      <div class="config-section config-link">
-        <a href="{{ site.baseurl }}/tools/" class="back-to-tools">← Back to Tools</a>
-      </div>
-    </div>
+<div class="polychat-container">
+  <div class="polychat-sidebar">
+    <h2>PolyChat Settings</h2>
     
-    <!-- Chat Interface -->
-    <div class="polychat-chat">
-      <!-- Header with menu toggle and title -->
-      <div class="chat-header">
-        <button id="toggle-menu" class="mobile-menu-button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-        <h2><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg> AI Assistant</h2>
-        <button id="mobile-reset" class="mobile-reset-button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 10h7V3l-2.35 3.35z" fill="currentColor"/>
-          </svg>
+    <div class="config-section">
+      <div class="section-header-collapsible">
+        <h3>API Keys</h3>
+        <button class="toggle-section" aria-expanded="true">
+          <span class="chevron-down">▼</span>
         </button>
       </div>
-      <div id="chat-window" class="chat-window">
-        <!-- Initial assistant message -->
-        <div class="message assistant-message">
-          <div class="message-content">
-            <p>Hello! How can I assist you today?</p>
+      
+      <div class="key-management-panel">
+        <div class="api-key-section">
+          <div class="provider-key-header">
+            <strong>OpenAI</strong>
+            <span class="key-status">Not Set</span>
+          </div>
+          <div class="key-input-group">
+            <input type="password" class="api-key-input" id="openai-key" placeholder="Enter OpenAI API Key">
+            <button class="small-button" onclick="saveKey('openai')">Save</button>
+            <button class="small-button reset-key" onclick="resetKey('openai')">Reset</button>
+          </div>
+        </div>
+
+        <div class="api-key-section">
+          <div class="provider-key-header">
+            <strong>Anthropic</strong>
+            <span class="key-status">Not Set</span>
+          </div>
+          <div class="key-input-group">
+            <input type="password" class="api-key-input" id="anthropic-key" placeholder="Enter Anthropic API Key">
+            <button class="small-button" onclick="saveKey('anthropic')">Save</button>
+            <button class="small-button reset-key" onclick="resetKey('anthropic')">Reset</button>
           </div>
         </div>
       </div>
-      
-      <!-- Input area -->
-      <div class="chat-input-container">
-        <textarea id="user-input" placeholder="Type your message..." rows="1"></textarea>
-        <button id="send-button" class="action-button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="22" y1="2" x2="11" y2="13"></line>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-          </svg>
+    </div>
+
+    <div class="config-section">
+      <div class="section-header-collapsible">
+        <h3>Model Settings</h3>
+        <button class="toggle-section" aria-expanded="true">
+          <span class="chevron-down">▼</span>
         </button>
       </div>
+      
+      <select class="full-width" id="model-select">
+        <optgroup label="OpenAI Models" data-provider="openai">
+          <option value="gpt-4">GPT-4</option>
+          <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+        </optgroup>
+        <optgroup label="Anthropic Models" data-provider="anthropic">
+          <option value="claude-3-opus">Claude 3 Opus</option>
+          <option value="claude-3-sonnet">Claude 3 Sonnet</option>
+          <option value="claude-3-haiku">Claude 3 Haiku</option>
+        </optgroup>
+        <optgroup label="Groq Models" data-provider="groq">
+          <option value="llama2-70b-4096">Llama 2 70B</option>
+          <option value="mixtral-8x7b-32768">Mixtral 8x7B</option>
+          <option value="gemma-7b-it">Gemma 7B IT</option>
+        </optgroup>
+        <optgroup label="Google Gemini Models" data-provider="google">
+          <option value="gemini-pro">Gemini Pro</option>
+          <option value="gemini-pro-vision">Gemini Pro Vision</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <div class="config-section">
+      <div class="section-header-collapsible">
+        <h3>Temperature</h3>
+        <button class="toggle-section" aria-expanded="true">
+          <span class="chevron-down">▼</span>
+        </button>
+      </div>
+      
+      <input type="range" class="full-width" id="temperature" min="0" max="1" step="0.1" value="0.7">
+      <div class="range-value">0.7</div>
+    </div>
+  </div>
+
+  <div class="polychat-chat">
+    <div class="chat-header">
+      <button class="mobile-menu-button" aria-label="Toggle settings">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12h18M3 6h18M3 18h18"></path>
+        </svg>
+      </button>
+      <h3>PolyChat</h3>
+      <button class="mobile-reset-button" onclick="resetContext()" aria-label="Reset conversation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+          <path d="M3 3v5h5"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="chat-window" id="chat-window">
+      <div class="message assistant-message">
+        <div class="message-content">
+          <p>Hello! I'm your AI assistant. How can I help you today?</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-input-container">
+      <textarea id="user-input" placeholder="Type your message here..." rows="1"></textarea>
+      <button id="send-button" aria-label="Send message">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 2L11 13"></path>
+          <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+        </svg>
+      </button>
     </div>
   </div>
 </div>
 
-<script>
-  // Initialize tool header using common component
-  document.addEventListener('DOMContentLoaded', function() {
-    const header = ToolsUI.createToolHeader({
-      title: 'PolyChat',
-      description: 'Chat with multiple large language models in one interface. Compare responses, save conversations, and explore different AI capabilities.'
-    });
-    document.getElementById('tool-header').appendChild(header);
-  });
+<div class="toast-container" id="toast-container"></div>
 
-  // ... rest of the PolyChat code remains the same ...
-</script>
+<script src="{{ site.baseurl }}/assets/js/polychat.js"></script>
