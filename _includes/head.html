@@ -4,19 +4,118 @@
 	{% include schema.html %}
 	<title> {% if page.title %}{{ page.title }} | {% endif %}{{ site.name }} </title>
 	
-	<!-- Preconnect to Google Fonts -->
+	<!-- Preconnect to external resources -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<!-- Load font with display=swap for better performance -->
-	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	
-	<!-- Load all CSS synchronously -->
-	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/header.css" />
-	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/style.css" />
+	<!-- Inline critical CSS -->
+	<style>
+		/* Critical CSS for above-the-fold content */
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			line-height: 1.5;
+			background: #fff;
+			color: #333;
+		}
+		
+		.wrapper-masthead {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			width: 100%;
+			z-index: 1000;
+			background: #fff;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+		}
+		
+		.masthead {
+			padding: 15px 0;
+			background-color: #fff;
+			border-bottom: 1px solid #eee;
+		}
+		
+		.header-identity {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+		}
+		
+		.site-avatar {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			overflow: hidden;
+		}
+		
+		.site-avatar img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		
+		.site-name {
+			font-size: 19px;
+			font-weight: 500;
+			margin: 0;
+		}
+		
+		nav {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 8px;
+		}
+		
+		nav a {
+			font-size: 13px;
+			color: #666;
+			text-decoration: none;
+		}
+		
+		#header-spacer {
+			height: 80px;
+		}
+		
+		/* Add any other critical styles needed for above-the-fold content */
+	</style>
+	
+	<!-- Defer non-critical CSS -->
+	<link rel="preload" href="{{ site.baseurl }}/assets/css/header.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<link rel="preload" href="{{ site.baseurl }}/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript>
+		<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/header.css">
+		<link rel="stylesheet" href="{{ site.baseurl }}/css/style.css">
+	</noscript>
+	
+	<!-- Defer Google Fonts -->
+	<link rel="preload" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript>
+		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	</noscript>
+	
+	<!-- Fallback for browsers that don't support preload -->
+	<script>
+		/* Inline script to handle CSS loading */
+		(function() {
+			var css = document.createElement('style');
+			css.innerHTML = 'body{opacity:0}';
+			var ref = document.getElementsByTagName('head')[0];
+			ref.parentNode.insertBefore(css, ref);
+			window.onload = function() {
+				setTimeout(function() {
+					css.innerHTML = 'body{opacity:1}';
+				}, 0);
+			}
+		})();
+	</script>
+	
+	<!-- Meta tags and other non-blocking resources -->
 	<link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
 	{% assign canonical_url = site.url | append: page.url | replace: '/index.html', '/' %}
 	<link rel="canonical" href="{{ canonical_url }}">
 	<link rel="shortcut icon" type="image/png" href="/images/site-icon.webp" />
 	<link rel="apple-touch-icon" href="/images/site-icon.webp">
-
 </head>
