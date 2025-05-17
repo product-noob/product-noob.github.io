@@ -1,0 +1,281 @@
+/* Base styles */
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* Wrapper for the masthead */
+.wrapper-masthead {
+  width: 100%;
+  background-color: #fff !important;
+  position: relative;
+  z-index: 9999;
+  transition: box-shadow 0.2s ease;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Sticky header styles */
+.wrapper-masthead.sticky {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  background-color: #fff !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Header background layer for opacity */
+.header-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff !important;
+  z-index: -1;
+}
+
+/* Container and masthead styles */
+.wrapper-masthead .container {
+  position: relative;
+  z-index: 9500 !important;
+  background-color: #fff !important;
+}
+
+.masthead {
+  background-color: #fff !important;
+  padding: 20px 0;
+  position: relative;
+  z-index: 9500 !important;
+  transition: padding 0.3s ease;
+}
+
+/* Header identity container */
+.header-identity {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  position: relative;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+/* Site avatar styles */
+.site-avatar {
+  width: 70px;
+  height: 70px;
+  margin-right: 15px;
+  transition: all 0.3s ease;
+}
+
+.site-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+/* Site name styles */
+.site-name {
+  font-size: 28px;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+/* Navigation styles */
+nav {
+  position: relative;
+  z-index: 9500 !important;
+  background-color: transparent !important;
+  transition: margin 0.3s ease;
+}
+
+/* Header spacer */
+#header-spacer {
+  display: block;
+  height: 80px;
+  transition: height 0.3s ease;
+}
+
+/* Sticky state transitions */
+.sticky .masthead {
+  padding: 10px 0;
+  background-color: #fff;
+}
+
+.sticky .site-avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.sticky .site-avatar img {
+  width: 40px;
+  height: 40px;
+}
+
+.sticky .site-name {
+  font-size: 22px;
+  margin-top: 0;
+}
+
+.sticky nav {
+  margin-top: 15px;
+}
+
+/* Desktop styles */
+@media (min-width: 641px) {
+  .header-identity {
+    float: left;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 640px) {
+  .wrapper-masthead,
+  .wrapper-masthead.sticky,
+  .masthead,
+  .header-background {
+    background-color: #fff !important;
+  }
+
+  .masthead {
+    padding: 10px 0 8px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: padding 0.2s ease-out;
+  }
+
+  .header-identity {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+    column-gap: 2px !important;
+  }
+
+  .site-avatar {
+    width: 34px;
+    height: 34px;
+    margin-right: 2px !important;
+    margin-bottom: 0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    transition: width 0.2s ease, height 0.2s ease;
+  }
+
+  .site-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  .avatar-title-spacer {
+    display: inline-block;
+    width: 12px;
+    min-width: 12px;
+  }
+
+  .site-info {
+    float: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0;
+    padding-left: 8px !important;
+    margin-left: 8px !important;
+  }
+
+  .site-name {
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #333;
+    transition: font-size 0.2s ease;
+  }
+
+  .site-name a {
+    color: #333;
+    text-decoration: none;
+  }
+
+  nav {
+    margin-top: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    transition: margin-top 0.2s ease;
+  }
+
+  nav a {
+    font-size: 13px;
+    margin: 0 8px;
+    padding: 3px 0;
+    color: #666;
+    position: relative;
+    transition: color 0.2s ease;
+    font-weight: 400;
+  }
+
+  nav a:hover {
+    color: #333;
+  }
+
+  /* Mobile sticky state specific styles */
+  .sticky .header-identity {
+    margin-bottom: 2px;
+    column-gap: 12px !important;
+  }
+
+  .sticky .avatar-title-spacer {
+    width: 8px;
+    min-width: 8px;
+  }
+
+  .sticky .site-avatar {
+    width: 26px;
+    height: 26px;
+    margin-right: 12px !important;
+    box-shadow: none;
+  }
+
+  .sticky .site-avatar img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .sticky .site-name {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .sticky nav {
+    margin-top: 1px;
+  }
+
+  .sticky nav a {
+    font-size: 12px;
+    margin: 0 5px;
+    padding: 1px 0;
+    color: #777;
+    letter-spacing: 0.02em;
+  }
+
+  .sticky nav a:after {
+    height: 1px;
+  }
+
+  body.has-sticky-header #main {
+    padding-top: 10px;
+    transition: padding-top 0.3s ease;
+  }
+}
+
+/* Main content adjustment for sticky header */
+body.has-sticky-header #main {
+  padding-top: 80px;
+} 
