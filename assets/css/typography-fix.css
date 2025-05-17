@@ -16,6 +16,42 @@ body {
   color: #333;
 }
 
+/* Sticky Header Styles */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #fff;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+header.sticky {
+  position: fixed;
+  transform: translateY(0);
+}
+
+header.header-hidden {
+  transform: translateY(-100%);
+}
+
+header.header-scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#header-spacer {
+  display: none;
+  height: 0;
+  transition: height 0.3s ease;
+}
+
+body.has-sticky-header {
+  padding-top: 0;
+}
+
 /* Heading Typography - Using a modular scale of 1.2 */
 h1, h2, h3, h4, h5, h6 {
   margin: 1em 0 0.5em;
