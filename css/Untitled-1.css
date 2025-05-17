@@ -1,3 +1,4 @@
+
 ---
 ---
 @import "reset";
@@ -5,18 +6,21 @@
 @import "highlights";
 @import "svg-icons";
 
+// Typography System
+// Using a more refined system with smaller text sizes
 html {
-  font-size: 100%; /* Maintain the reference size */
+  font-size: 100%;
 }
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-weight: normal;
-  font-size: 14px; /* Reduced from 15px */
+  font-size: 14px;
+  /* Reduced from 15px */
   line-height: 1.5;
   padding: 0;
-  background: $white;
-  color: $darkerGray;
+  background: var(--white);
+  color: var(--darkerGray);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,71 +32,67 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: $darkerGray;
-  font-weight: 500; /* Slightly increased weight for better visual hierarchy */
+  color: var(--darkerGray);
+  font-weight: 500;
+  /* Slightly increased weight for better visual hierarchy */
   line-height: 1.3;
   margin: 1em 0 0.5em;
   padding: 0;
   @include mobile {
     line-height: 1.3;
-  }
+}
+
 }
 
 h1 {
-  font-size: 24px; /* Reduced from 30px */
+  font-size: 24px;
+  /* Reduced from 30px */
   margin-top: 0.8em;
-
   a {
     color: inherit;
-    text-decoration: none;
-  }
+  text-decoration: none;
+}
+
 }
 
 h2 {
-  font-size: 21px; /* Reduced from 26px */
+  font-size: 21px;
 }
 
 h3 {
-  font-size: 18px; /* Reduced from 24px */
+  font-size: 18px;
 }
 
 h4 {
-  font-size: 16px; /* Reduced from 20px */
+  font-size: 16px;
 }
 
 h5 {
-  font-size: 15px; /* Reduced from 18px */
-}
-
-h6 {
-  font-size: 14px; /* Reduced from 16px */
+  font-size: 15px;
 }
 
 p {
   margin: 0 0 1em;
-  font-size: 14px; /* Reduced from 15px */
 }
 
 a {
-  color: $blue;
+  color: var(--blue);
   text-decoration: none;
   cursor: pointer;
+  &: hover {
+    color: var(--blue);
+}
 
-  &:hover {
-    color: $blue;
-  }
+&:active {
+  color: #f01;
+}
 
-  &:active {
-    color: #f01;
-  }
 }
 
 ol,
 ul {
   margin: 0 0 1em;
   padding-left: 1.5em;
-  font-size: 14px; /* Reduced from 15px */
 }
 
 ul {
@@ -123,16 +123,16 @@ em,
 i {
   font-style: italic;
 }
+
 b,
 strong {
-  font-weight: 600; /* Using 600 instead of bold for a more balanced appearance */
+  font-weight: 600;
 }
 
 img {
   max-width: 100%;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
 figure {
@@ -141,9 +141,9 @@ figure {
 
 figcaption {
   color: var(--print_secondary, #757575);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   text-align: center;
-  font-size: 13px; /* Reduced from 14px */
+  font-size: 13px;
+  /* Reduced from 14px */
   font-weight: 300;
   line-height: 1.4em;
   margin-top: 8px;
@@ -151,88 +151,78 @@ figcaption {
   padding-right: 15%;
 }
 
-
-
 nav {
   float: right;
-  margin-top: 23px;
-  display: flex;
-  align-items: center;
-  transition: margin 0.3s ease;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 15px; // Reduced from 18px
+  margin-top: 9px;
+  /* Reduced from 18px */
   font-weight: 400;
-
   @include mobile {
     float: none;
-    margin-top: 9px;
-    display: flex;
-    font-size: 14px; // Reduced from 16px
-  }
+  display: block;
+}
 
-  a {
-    margin-left: 20px;
-    color: $darkGray;
-    text-align: right;
-    font-weight: 400;
-    letter-spacing: 0.5px; // Reduced from 1px
+a {
+  margin-left: 20px;
+  color: var(--darkGray);
+  text-align: right;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  /* Reduced from 1px */
     transition: color 0.2s ease;
+  &: hover {
+      color: var(--blue);
+}
 
-    &:hover {
-      color: $blue;
-    }
+@include mobile {
+  margin: 0 10px;
+  color: var(--darkGray);
+  &: hover {
+        color: var(--blue);
+}
 
-    @include mobile {
-      margin: 0 10px;
-      color: $darkGray;
-
-      &:hover {
-        color: $blue;
-      }
-    }
+}
   }
 }
 
 footer {
-  padding: 18px 0; /* Reduced from 20px */
+  padding: 18px 0;
+  /* Reduced from 20px */
   text-align: center;
   font-size: 13px;
 }
+
 //Defining Classes for customisation of the look and feel for various components
 
 /* Mobile Typography Adjustments */
 @include mobile {
   body {
     font-size: 13px;
-  }
-  
-  h1 {
-    font-size: 20px;
-  }
-  
-  h2 {
-    font-size: 18px;
-  }
-  
-  h3 {
-    font-size: 16px;
-  }
-  
-  h4, h5, h6 {
-    font-size: 14px;
-  }
-  
-  p, ul, ol, dl, blockquote {
-    font-size: 13px;
-  }
-  
-  .post .entry, .post blockquote {
-    font-size: 13px;
-  }
-  
-  .post h1 {
-    font-size: 20px;
-  }
+}
+
+h1 {
+  font-size: 20px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+p, ul, ol, dl, blockquote {
+  font-size: 13px;
+}
+
+.post .entry, .post blockquote {
+  font-size: 13px;
+}
+
+.post h1 {
+  font-size: 20px;
+}
+
 }
 
 .container {
@@ -264,26 +254,25 @@ footer {
 }
 
 ::-moz-selection {
-  color: $black;
-  background: $lightGray;
+  color: var(--black);
+  background: var(--lightGray);
 }
 
 ::selection {
-  color: $black;
-  background: $lightGray;
+  color: var(--black);
+  background: var(--lightGray);
 }
 
 .center {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
   width: 60%;
+  margin: 0 auto;
 }
+
 .center40 {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
   width: 40%;
+  margin: 0 auto;
 }
 
 .clearfix:after,
@@ -295,49 +284,89 @@ footer {
 .clearfix:after {
   clear: both;
 }
+
+.wrapper-masthead {
+  margin-bottom: 10px;
+}
+
+.masthead {
+  padding: 15px 0;
+  border-bottom: 1px solid var(--lightGray);
+  font-weight: bold;
+  @include mobile {
+    text-align: center;
+}
+
+}
+
 .blogsubtext {
-  font: size 13px;
-  line-height: 1.4;
+  //max-height: 45px;
   overflow: hidden;
   margin-bottom: 8px;
 }
 
 .blogheader {
   color: #222;
-  font-size: 20px;
+}
+
+.site-avatar {
+  float: left;
+  width: 70px;
+  height: 70px;
+  margin-right: 15px;
+  @include mobile {
+    float: none;
+  display: block;
+  margin: 0 auto;
+}
+
+img {
+  border-radius: 50%;
+}
+
 }
 
 .site-info {
   float: left;
   font-weight: bold;
+  @include mobile {
+    float: none;
+  display: block;
+  margin: 0 auto;
+}
+
 }
 
 .site-name {
   margin-top: 0px;
-  margin-bottom: 16px; /* Reduced from 20px */
-  color: $darkGray;
+  margin-bottom: 16px;
+  /* Reduced from 20px */
+  color: var(--darkGray);
   cursor: pointer;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-weight: 500;
-  font-size: 22px; /* Reduced from 28px */
-  letter-spacing: 0.5px; /* Reduced from 1px */
+  font-size: 22px;
+  /* Reduced from 28px */
+  letter-spacing: 0.5px;
+  /* Reduced from 1px */
   position: relative;
   top: 10px;
 }
 
 .site-description {
   margin: -5px 0 0;
-  color: $gray;
-  font-size: 14px; /* Reduced from 16px */
+  color: var(--gray);
+  font-size: 13px;
+  /* Reduced from 16px */
   line-height: 1.4;
   @include mobile {
     margin: 3px 0;
-    font-size: 13px;
-  }
+}
+
 }
 
 .post-single__title {
-  font-size: 24px; /* Converted from 2rem */
+  font-size: 24px;
+  /* Converted from 2rem */
   max-width: 40rem;
   font-weight: 600;
   text-align: center;
@@ -347,11 +376,11 @@ footer {
 
 .posts > .post {
   padding-bottom: 1em;
-  border-bottom: 1px solid $mediumGray;
-
+  border-bottom: 1px solid var(--mediumGray);
   h4 {
     margin: 1em 0 10px;
-  }
+}
+
 }
 
 .posts > .post:last-child {
@@ -362,39 +391,40 @@ footer {
 .post {
   blockquote {
     margin: 1.5em 0.8em;
-    border-left: 2px solid $gray;
-    padding: 0.1em 1em;
-    color: $gray;
-    font-size: 15px; /* Reduced from 22px */
+  border-left: 2px solid var(--gray);
+  padding: 0.1em 1em;
+  color: var(--gray);
+  font-size: 15px;
+  /* Reduced from 22px */
     font-style: italic;
-  }
+}
 
-  .read-more {
-    text-transform: capitalize;
-    font-size: 15px;
-    color:#4183c4;
-  }
+.read-more {
+  text-transform: capitalize;
+  font-size: 15px;
+}
+
 }
 
 .wrapper-footer {
   margin-top: 50px;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  background-color: $lightGray;
+  background-color: var(--lightGray);
   padding-bottom: 0;
 }
 
 #progress-bar {
   --scrollAmount: 0;
+  // background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  background-color: #3eb0ef;
   width: var(--scrollAmount);
-  height: 3px;
-  background: #4183c4; /* Used more consistent color */
+  height: 7px;
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  transition: width 0.2s ease-in-out;
+  bottom: 0;
 }
+
+// Adding a twitter tweet Class
 
 blockquote.twitter-tweet {
   display: inline-block;
@@ -407,11 +437,9 @@ blockquote.twitter-tweet {
   border-style: solid;
   border-width: 1px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-  margin: 10px 5px;
+  margin: 0 auto;
   padding: 0 16px 16px;
   max-width: 468px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 blockquote.twitter-tweet p {
@@ -434,9 +462,11 @@ blockquote.twitter-tweet a:hover {
 
 .videoWrapper {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
+  padding-bottom: 56.25%;
+  /* 16: 9 */
   height: 0;
 }
+
 .videoWrapper iframe {
   position: absolute;
   top: 0;

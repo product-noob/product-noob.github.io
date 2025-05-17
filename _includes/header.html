@@ -1,31 +1,34 @@
 <div class="wrapper-masthead">
-  <div class="header-background"></div>
+  <!-- <div class="header-background"></div> -->
   <div class="container">
-    <header class="masthead clearfix">
-      <!-- Wrap avatar and site info in a mobile-friendly container -->
+    <header class="masthead clearfix" role="banner">
+      <!-- Site Identity Container -->
       <div class="header-identity">
-        <a href="{{ site.baseurl }}/" class="site-avatar">
-          <!-- Use a smaller, optimized version of the avatar with width/height attributes to prevent layout shift -->
+        <a href="{{ site.baseurl }}/" class="site-avatar" aria-label="Go to homepage">
+          <!-- Optimized avatar image with fixed dimensions to prevent layout shift -->
           <img 
             src="/images/my-image.webp" 
-            alt="Profile Photo" 
-            width="100%" 
-            height="100%" 
+            alt="Prince Jain profile photo" 
+            width="64" 
+            height="64" 
             loading="eager" 
-            fetchpriority="high">
+            fetchpriority="high" 
+            decoding="async">
         </a>
-        <!-- Explicit spacer for mobile view -->
-        <span class="avatar-title-spacer"></span>
         <div class="site-info">
-          <h1 class="site-name"> <a href="{{ site.baseurl }}/">{{ site.name }}</a> </h1>
+          <h1 class="site-name">
+            <a href="{{ site.baseurl }}/" aria-label="Homepage - {{ site.name }}">{{ site.name }}</a>
+          </h1>
         </div>
       </div>
-      <nav>
-        <a href="{{ site.baseurl }}/blogs" aria-label="These are collection of my personal blogs">Blogs</a>
-        <a href="{{ site.baseurl }}/links/" aria-label="These are collection of links on Product Management I find useful">Links</a>
-        <a href="{{ site.baseurl }}/tools/" aria-label="Interactive tools for everyday tasks">Tools</a>
-        <a href="{{ site.baseurl }}/worksummary" aria-label="Summary of my professional work so far">Work-ex</a>
-        <a href="{{ site.baseurl }}/about" aria-label="If you want to learn more about me">About Me</a>
+
+      <!-- Navigation -->
+      <nav role="navigation" aria-label="Main site navigation">
+        <a href="{{ site.baseurl }}/blogs" aria-label="Personal blog posts by Prince Jain">Blogs</a>
+        <a href="{{ site.baseurl }}/links/" aria-label="Curated Product Management resources">Links</a>
+        <a href="{{ site.baseurl }}/tools/" aria-label="Interactive productivity tools">Tools</a>
+        <a href="{{ site.baseurl }}/worksummary" aria-label="Professional experience and highlights">Work-ex</a>
+        <a href="{{ site.baseurl }}/about" aria-label="Learn more about Prince Jain">About Me</a>
       </nav>
     </header>
   </div>

@@ -17,6 +17,27 @@
   <!-- Performance optimization scripts -->
   <script src="{{ site.baseurl }}/assets/js/tools.js"></script>
   <script src="{{ site.baseurl }}/assets/js/page-transitions.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const links = document.querySelectorAll("a[href]:not([href^='#']):not([target='_blank'])");
+  
+      links.forEach(link => {
+        link.addEventListener("click", function (e) {
+          const transitionElement = document.querySelector(".transition-fade");
+  
+          if (!transitionElement) return;
+  
+          e.preventDefault(); // Stop default navigation
+  
+          document.documentElement.classList.add("is-animating");
+  
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 400); // Matches your CSS transition duration
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>

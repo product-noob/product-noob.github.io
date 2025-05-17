@@ -1,4 +1,12 @@
-{% if page.layout == 'post' %}
+{% assign author_name = "Prince Jain" %}
+{% assign author_url = site.url %}
+{% assign logo_url = site.url | append: "/images/my-image.webp" %}
+{% assign default_image = "/images/my-image.webp" %}
+{% assign page_image = page.image | default: default_image %}
+{% assign page_desc = page.description | default: site.description %}
+{% assign date_modified = page.last_modified_at | default: page.date %}
+
+{% if page.layout == "post" %}
 <!-- Blog Post Schema -->
 <script type="application/ld+json">
 {
@@ -6,31 +14,32 @@
   "@type": "BlogPosting",
   "headline": "{{ page.title | escape }}",
   "datePublished": "{{ page.date | date_to_xmlschema }}",
-  "dateModified": "{% if page.last_modified_at %}{{ page.last_modified_at | date_to_xmlschema }}{% else %}{{ page.date | date_to_xmlschema }}{% endif %}",
+  "dateModified": "{{ date_modified | date_to_xmlschema }}",
   "author": {
     "@type": "Person",
-    "name": "Prince Jain",
-    "url": "{{ site.url }}"
+    "name": "{{ author_name }}",
+    "url": "{{ author_url }}"
   },
-  "description": "{% if page.description %}{{ page.description | escape }}{% else %}{{ site.description | escape }}{% endif %}",
+  "description": "{{ page_desc | escape }}",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "{{ site.url }}{{ page.url }}"
   },
   "publisher": {
     "@type": "Person",
-    "name": "Prince Jain",
+    "name": "{{ author_name }}",
     "logo": {
       "@type": "ImageObject",
-      "url": "{{ site.url }}/images/my-image.webp"
+      "url": "{{ logo_url }}"
     }
   },
   "image": [
-    "{{ site.url }}{% if page.image %}{{ page.image }}{% else %}/images/my-image.webp{% endif %}"
+    "{{ site.url }}{{ page_image }}"
   ]
 }
 </script>
-{% elsif page.layout == 'page' and page.url contains '/tools/' %}
+
+{% elsif page.layout == "page" and page.url contains "/tools/" %}
 <!-- Tool Page Schema -->
 <script type="application/ld+json">
 {
@@ -46,12 +55,13 @@
   },
   "author": {
     "@type": "Person",
-    "name": "Prince Jain",
-    "url": "{{ site.url }}"
+    "name": "{{ author_name }}",
+    "url": "{{ author_url }}"
   },
-  "description": "{% if page.description %}{{ page.description | escape }}{% else %}{{ site.description | escape }}{% endif %}"
+  "description": "{{ page_desc | escape }}"
 }
 </script>
+
 {% else %}
 <!-- Website Schema -->
 <script type="application/ld+json">
@@ -63,7 +73,7 @@
   "description": "{{ site.description }}",
   "author": {
     "@type": "Person",
-    "name": "Prince Jain"
+    "name": "{{ author_name }}"
   }
 }
 </script>

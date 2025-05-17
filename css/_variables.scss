@@ -24,7 +24,7 @@ $helvetica: Helvetica, Arial, sans-serif;
 $helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $georgia: Georgia, serif;
 @mixin mobile {
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 640px) {
     //Earlier 640px
     @content;
   }

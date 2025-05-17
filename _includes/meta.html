@@ -1,58 +1,52 @@
+{% assign author_name = "Prince Jain" %}
+{% assign default_image = "/images/my-image.webp" %}
+{% assign full_image = site.url | append: (page.image | default: default_image) %}
+{% assign meta_title = page.title | default: site.title | truncate: 70 %}
+{% assign meta_description = page.description | default: site.description | truncate: 155 %}
+{% assign is_post = page.layout == "post" %}
+{% assign twitter_handle = "@Prince_Jain17" %}
+
+<!-- Charset and Compatibility -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta property="og:locale" content="en_US">
 
 <!-- Basic META -->
-<meta name="author" content="Prince Jain">
+<meta name="author" content="{{ author_name }}">
 <meta name="robots" content="index, follow">
 
 <!-- OpenGraph META -->
-<meta property="og:site_name" content="Prince Jain">
+<meta property="og:site_name" content="{{ author_name }}">
 <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
-<meta property="og:title" content="{% if page.title %}{{ page.title | truncate: 70 }}{% else %}{{ site.title }}{% endif %}">
-<meta property="og:description" content="{% if page.description %}{{ page.description | truncate: 155 }}{% else %}{{ site.description }}{% endif %}">
-<meta property="og:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/images/my-image.webp{% endif %}">
+<meta property="og:type" content="{% if is_post %}article{% else %}website{% endif %}">
+<meta property="og:title" content="{{ meta_title }}">
+<meta property="og:description" content="{{ meta_description }}">
+<meta property="og:image" content="{{ full_image }}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
 <!-- Twitter META -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@Prince_Jain17">
-<meta name="twitter:creator" content="@Prince_Jain17">
-<meta name="twitter:title" content="{% if page.title %}{{ page.title | truncate: 70 }}{% else %}{{ site.title }}{% endif %}">
-<meta name="twitter:description" content="{% if page.description %}{{ page.description | truncate: 155 }}{% else %}{{ site.description }}{% endif %}">
-<meta name="twitter:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/images/my-image.webp{% endif %}">
+<meta name="twitter:site" content="{{ twitter_handle }}">
+<meta name="twitter:creator" content="{{ twitter_handle }}">
+<meta name="twitter:title" content="{{ meta_title }}">
+<meta name="twitter:description" content="{{ meta_description }}">
+<meta name="twitter:image" content="{{ full_image }}">
 
 <!-- Standard META -->
-<meta name="title" content="{% if page.title %}{{ page.title | truncate: 70 }}{% else %}{{ site.title }}{% endif %}">
-<meta name="description" content="{% if page.description %}{{ page.description | truncate: 155 }}{% else %}{{ site.description }}{% endif %}">
+<meta name="title" content="{{ meta_title }}">
+<meta name="description" content="{{ meta_description }}">
 
 <!-- Article specific META (only for blog posts) -->
-{% if page.layout == 'post' %}
+{% if is_post %}
 <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
 {% if page.categories %}
 <meta property="article:section" content="{{ page.categories[0] }}">
 {% endif %}
-{% if page.tags %}
 {% for tag in page.tags %}
 <meta property="article:tag" content="{{ tag }}">
 {% endfor %}
 {% endif %}
-{% endif %}
-
-<!-- image -->
-{% if page.image %}
-<meta name="twitter:image" content="https://princejain.me{{ page.image.path }}" />
-<meta name="og:image" content="https://princejain.me{{ page.image.path }}" />
-{% else %}
-<meta property="og:image" content="https://princejain.me/images/my-image.webp">
-{% endif %}
-
-<!-- url -->
 <meta property="og:url" content="/">
-
-<!-- Twitter Meta Tags -->
-<meta name="twitter:card" content="summary_large_image">

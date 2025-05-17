@@ -1,6 +1,4 @@
 <head>
-	<!-- Preload critical avatar styles to prevent layout shift -->
-	{% include avatar-preload.html %}
 	{% include analytics.html %}
 	{% include meta.html %}
 	{% include schema.html %}
@@ -10,22 +8,12 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<!-- Load font with display=swap for better performance -->
-	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-	<!-- Fallback in case JS is disabled -->
-	<noscript>
-		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-	</noscript>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	
-	<!-- Inline critical CSS for faster rendering -->
-	{% include critical-css.html %}
-	
-	<!-- Critical CSS loaded synchronously -->
+	<!-- Load all CSS synchronously -->
 	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/header.css" />
-	
-	<!-- Non-critical CSS loaded asynchronously -->
-	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/style.css" media="print" onload="this.media='all'" />
-	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/transitions.css" media="print" onload="this.media='all'" />
-	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/typography-fix.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/typography-fix.css" />
 	<link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
 	{% assign canonical_url = site.url | append: page.url | replace: '/index.html', '/' %}
 	<link rel="canonical" href="{{ canonical_url }}">
