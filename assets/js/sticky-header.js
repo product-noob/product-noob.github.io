@@ -1,7 +1,7 @@
 // Performance-optimized Sticky Header Implementation
 document.addEventListener('DOMContentLoaded', function() {
   // Get DOM elements
-  const header = document.querySelector('header');
+  const header = document.querySelector('.wrapper-masthead');
   const headerSpacer = document.getElementById('header-spacer');
   const progressBar = document.getElementById('progress-bar');
   
@@ -62,14 +62,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check if scroll position requires sticky state change
     if (lastScrollTop > 10) {
       if (!isSticky) {
-        header.classList.add('sticky');
         document.body.classList.add('has-sticky-header');
         if (headerSpacer) headerSpacer.style.display = 'block';
         isSticky = true;
       }
     } else {
       if (isSticky) {
-        header.classList.remove('sticky');
         document.body.classList.remove('has-sticky-header');
         if (headerSpacer) headerSpacer.style.display = 'none';
         isSticky = false;
