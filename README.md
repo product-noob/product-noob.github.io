@@ -70,7 +70,7 @@ Reusable HTML components:
 - **`/images/`**: Image assets including profile pictures and blog post images
 - **`/assets/`**: Additional assets and resources
   - **scrollbar.js**: JavaScript for custom scrollbar behavior
-  - **site-icon1.webp**: Site favicon/icon
+  - **favicon.png**: Site favicon/icon
 
 ### Generated Site
 - **`/_site/`**: The generated static site (created when Jekyll builds)
