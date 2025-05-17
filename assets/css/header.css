@@ -21,19 +21,6 @@ body {
   transform: translateZ(0);
 }
 
-/* Sticky header styles */
-.wrapper-masthead.sticky {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
-  background-color: #fff !important;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-
 /* Container and masthead styles */
 .wrapper-masthead .container {
   position: relative;
@@ -105,8 +92,7 @@ nav {
 /* Mobile styles */
 @media (max-width: 640px) {
   .wrapper-masthead,
-  .wrapper-masthead.sticky,
-  .header-background {
+  .wrapper-masthead.sticky{
     background-color: #fff !important;
   }
 
@@ -185,56 +171,7 @@ nav {
   nav a:hover {
     color: #333;
   }
-
-  /* Mobile sticky state specific styles */
-  .sticky .header-identity {
-    margin-bottom: 2px;
-  }
-
-  .sticky .site-avatar {
-    width: 26px;
-    height: 26px;
-    margin: 0 8px 0 0;
-    box-shadow: none;
-  }
-
-  .sticky .site-avatar img {
-    width: 26px;
-    height: 26px;
-  }
-
-  .sticky .site-name {
-    font-size: 16px;
-    line-height: 1;
-  }
-
-  .sticky nav {
-    margin-top: 1px;
-  }
-
-  .sticky nav a {
-    font-size: 12px;
-    margin: 0 5px;
-    padding: 1px 0;
-    color: #777;
-    letter-spacing: 0.02em;
-  }
-
-  .sticky nav a:after {
-    height: 1px;
-  }
-
-  body.has-sticky-header #main {
-    padding-top: 10px;
-    transition: padding-top 0.3s ease;
-  }
 }
-
-/* Main content adjustment for sticky header */
-body.has-sticky-header #main {
-  padding-top: 80px;
-} 
-
 /* Header spacer */
 #header-spacer {
   display: block;
