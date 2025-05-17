@@ -35,6 +35,7 @@ This is a classic Jekyll static site with the following key components:
 Root-level markdown files that become main site pages:
 - **index.md**: Homepage with my introduction and welcome message
 - **about.md**: My detailed bio and professional background
+- **blog.md**: Blog listing page
 - **links.md**: Collection of useful product management resources
 - **worksummary.md**: Summary of my professional experience
 - **privacy.md**: Privacy policy page
