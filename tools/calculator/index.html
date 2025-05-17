@@ -8,11 +8,7 @@ permalink: /tools/calculator/
 <script src="{{ site.baseurl }}/assets/js/page-transitions.js" defer></script>
 
 <div class="tools-container">
-  <div class="tool-header">
-    <h1>Calculator</h1>
-    <p class="tool-description">A versatile calculator for quick calculations. Features standard arithmetic operations, memory functions, and calculation history.</p>
-    <a href="{{ site.baseurl }}/tools/" class="back-to-tools">← Back to Tools</a>
-  </div>
+  <div id="tool-header"></div>
 
   <div class="calculator">
     <div class="calculator-display">
@@ -48,98 +44,16 @@ permalink: /tools/calculator/
   </div>
 </div>
 
-<style>
-  /* Calculator Styles */
-  .calculator {
-    max-width: 480px;
-    margin: 0 auto;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
-    touch-action: manipulation;
-  }
-  
-  .calculator-display {
-    background-color: #fff;
-    padding: 20px;
-    text-align: right;
-  }
-  
-  .calculator-history {
-    font-size: 14px;
-    min-height: 20px;
-    color: #888;
-    margin-bottom: 5px;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-  
-  .calculator-input {
-    font-size: 36px;
-    font-weight: 300;
-    color: #333;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-  
-  .calculator-keypad {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background-color: #e0e0e0;
-  }
-  
-  .calculator-key {
-    border: none;
-    background-color: #f9f9f9;
-    font-size: 24px;
-    padding: 20px 0;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-  }
-  
-  .calculator-key:active,
-  .calculator-key:focus {
-    background-color: #e0e0e0;
-  }
-  
-  .calculator-key.function {
-    background-color: #f0f0f0;
-  }
-  
-  .calculator-key.operator {
-    background-color: #f0f0f0;
-    color: #4183c4;
-    font-weight: 500;
-  }
-  
-  .calculator-key.equals {
-    background-color: #4183c4;
-    color: #fff;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 480px) {
-    .calculator-key {
-      font-size: 20px;
-      padding: 15px 0;
-    }
-    
-    .calculator-input {
-      font-size: 28px;
-    }
-  }
-</style>
-
 <script>
+  // Initialize tool header using common component
+  document.addEventListener('DOMContentLoaded', function() {
+    const header = ToolsUI.createToolHeader({
+      title: 'Calculator',
+      description: 'A versatile calculator for quick calculations. Features standard arithmetic operations, memory functions, and calculation history.'
+    });
+    document.getElementById('tool-header').appendChild(header);
+  });
+
   // Calculator state variables
   let displayValue = '0';
   let firstOperand = null;
@@ -380,3 +294,94 @@ permalink: /tools/calculator/
     updateDisplay();
   }
 </script>
+
+<style>
+  /* Calculator Styles */
+  .calculator {
+    max-width: 480px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    touch-action: manipulation;
+  }
+  
+  .calculator-display {
+    background-color: #fff;
+    padding: 20px;
+    text-align: right;
+  }
+  
+  .calculator-history {
+    font-size: 14px;
+    min-height: 20px;
+    color: #888;
+    margin-bottom: 5px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .calculator-input {
+    font-size: 36px;
+    font-weight: 300;
+    color: #333;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .calculator-keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background-color: #e0e0e0;
+  }
+  
+  .calculator-key {
+    border: none;
+    background-color: #f9f9f9;
+    font-size: 24px;
+    padding: 20px 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  
+  .calculator-key:active,
+  .calculator-key:focus {
+    background-color: #e0e0e0;
+  }
+  
+  .calculator-key.function {
+    background-color: #f0f0f0;
+  }
+  
+  .calculator-key.operator {
+    background-color: #f0f0f0;
+    color: #4183c4;
+    font-weight: 500;
+  }
+  
+  .calculator-key.equals {
+    background-color: #4183c4;
+    color: #fff;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 480px) {
+    .calculator-key {
+      font-size: 20px;
+      padding: 15px 0;
+    }
+    
+    .calculator-input {
+      font-size: 28px;
+    }
+  }
+</style>

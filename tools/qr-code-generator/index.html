@@ -5,15 +5,10 @@ permalink: /tools/qr-code-generator/
 ---
 
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/tools.css">
-<!-- Use a different QR Code library that's guaranteed to work -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 
 <div class="tools-container">
-  <div class="tool-header">
-    <h1>QR Code Generator</h1>
-    <p class="tool-description">Generate QR codes for URLs, text, contact information, and more.</p>
-    <a href="{{ site.baseurl }}/tools/" class="back-to-tools">← Back to Tools</a>
-  </div>
+  <div id="tool-header"></div>
 
   <div class="qr-generator">
     <div class="qr-container">
@@ -21,16 +16,40 @@ permalink: /tools/qr-code-generator/
         <label for="qr-input">Enter URL or text</label>
         <input type="text" id="qr-input" placeholder="Enter URL or text">
       </div>
-      <button class="action-button">Generate QR</button>
+      <div id="action-buttons"></div>
       <div class="qr-preview">
         <div id="qr-output"></div>
       </div>
-      <button id="download-qr" class="action-button" style="display: none;">Download QR Code</button>
     </div>
   </div>
 </div>
 
 <script>
+  // Initialize tool header using common component
+  document.addEventListener('DOMContentLoaded', function() {
+    const header = ToolsUI.createToolHeader({
+      title: 'QR Code Generator',
+      description: 'Generate QR codes for URLs, text, contact information, and more.'
+    });
+    document.getElementById('tool-header').appendChild(header);
+
+    // Create action buttons using common component
+    const generateButton = ToolsUI.createActionButton({
+      text: 'Generate QR',
+      onClick: generateQR
+    });
+    const downloadButton = ToolsUI.createActionButton({
+      text: 'Download QR Code',
+      onClick: downloadQR
+    });
+    downloadButton.style.display = 'none';
+    downloadButton.id = 'download-qr';
+
+    const actionButtons = document.getElementById('action-buttons');
+    actionButtons.appendChild(generateButton);
+    actionButtons.appendChild(downloadButton);
+  });
+
   // Make sure generateQR is defined in the global window scope
   let qr = null;
   
@@ -38,28 +57,24 @@ permalink: /tools/qr-code-generator/
   document.addEventListener('DOMContentLoaded', function() {
     if (typeof QRious === 'undefined') {
       console.error('QRious library not loaded!');
-      alert('QR Code library failed to load. Please refresh the page.');
+      ToolsUtils.showToast('QR Code library failed to load. Please refresh the page.', 5000);
       return;
     }
     console.log('QRious library loaded successfully!');
-    
-    // Set up event handlers programmatically instead of using inline onclick
-    document.querySelector('button.action-button').addEventListener('click', generateQR);
-    document.getElementById('download-qr').addEventListener('click', downloadQR);
   });
   
   // Define generateQR in global scope
   window.generateQR = function() {
     const text = document.getElementById('qr-input').value;
     if (!text) {
-      alert('Please enter some text or URL');
+      ToolsUtils.showToast('Please enter some text or URL');
       return;
     }
     
     // Check if QRious library is available
     if (typeof QRious === 'undefined') {
       console.error('QRious library not loaded!');
-      alert('QR Code library is not available. Please refresh the page.');
+      ToolsUtils.showToast('QR Code library is not available. Please refresh the page.', 5000);
       return;
     }
     
@@ -85,27 +100,26 @@ permalink: /tools/qr-code-generator/
       document.getElementById('download-qr').style.display = 'block';
     } catch (error) {
       console.error('Error generating QR code:', error);
-      alert('Error generating QR code: ' + error.message);
+      ToolsUtils.showToast('Error generating QR code: ' + error.message);
     }
   }
   
   // Define downloadQR in global scope
   window.downloadQR = function() {
     if (!qr) {
-      alert('No QR code to download');
+      ToolsUtils.showToast('No QR code to download');
       return;
     }
     
     try {
-      const link = document.createElement('a');
-      link.download = 'qrcode.png';
-      link.href = qr.toDataURL('image/png');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      ToolsUtils.downloadFile(
+        qr.toDataURL('image/png'),
+        'qrcode.png',
+        'image/png'
+      );
     } catch (error) {
       console.error('Error downloading QR code:', error);
-      alert('Error downloading QR code: ' + error.message);
+      ToolsUtils.showToast('Error downloading QR code: ' + error.message);
     }
   }
 </script>
@@ -135,18 +149,6 @@ permalink: /tools/qr-code-generator/
     border-radius: 8px;
   }
   
-  .back-to-tools {
-    display: inline-block;
-    margin-top: 15px;
-    color: #4183c4;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  
-  .back-to-tools:hover {
-    text-decoration: underline;
-  }
-  
   #qr-input {
     padding: 12px;
     border-radius: 8px;
@@ -167,19 +169,9 @@ permalink: /tools/qr-code-generator/
     color: #333;
   }
   
-  .action-button {
-    padding: 12px 20px;
-    background-color: #4183c4;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .action-button:hover {
-    background-color: #366eaa;
+  #action-buttons {
+    display: flex;
+    gap: 10px;
   }
   
   /* Make QR code display nicer */
@@ -187,318 +179,4 @@ permalink: /tools/qr-code-generator/
     display: block;
     margin: 0 auto;
   }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .qr-container {
-      padding: 15px;
-      margin: 0 10px;
-    }
-    
-    .qr-preview {
-      min-height: 200px;
-    }
-    
-    .action-button {
-      width: 100%;
-      padding: 14px 20px;
-      font-size: 16px;
-    }
-  }
-  
-  .qr-generator {
-    max-width: 800px;
-    margin: 0 auto 40px;
-  }
-  
-  .qr-generator-input-panel {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    padding: 24px;
-  }
-  
-  .qr-generator-preview-panel {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .qr-preview {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    min-height: 256px;
-  }
-  
-  #qr-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #888;
-    text-align: center;
-  }
-  
-  #qr-placeholder svg {
-    margin-bottom: 16px;
-    color: #ccc;
-  }
-  
-  .qr-actions {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-  }
-  
-  .input-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #333;
-  }
-  
-  textarea, select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
-    font-family: inherit;
-  }
-  
-  textarea:focus, select:focus {
-    outline: none;
-    border-color: #4183c4;
-  }
-  
-  .color-inputs {
-    display: flex;
-    gap: 16px;
-  }
-  
-  .color-option {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .color-option span {
-    font-size: 14px;
-    color: #666;
-  }
-  
-  input[type="color"] {
-    width: 36px;
-    height: 36px;
-    padding: 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .size-slider {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  
-  input[type="range"] {
-    flex: 1;
-  }
-  
-  #size-value {
-    font-size: 14px;
-    color: #666;
-    min-width: 70px;
-  }
-  
-  .action-button {
-    background-color: #4183c4;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 12px 20px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .action-button:hover {
-    background-color: #3a76b0;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .qr-generator {
-      grid-template-columns: 1fr;
-    }
-    
-    .qr-generator-preview-panel {
-      min-height: 350px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .qr-generator-container {
-      padding: 0 10px;
-    }
-    
-    .input-group {
-      margin-bottom: 16px;
-    }
-    
-    .color-inputs {
-      flex-direction: column;
-      gap: 8px;
-    }
-  }
 </style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Load the QR code library from CDN
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js';
-    script.async = true;
-    script.onload = initQRGenerator;
-    document.head.appendChild(script);
-    
-    function initQRGenerator() {
-      // DOM elements
-      const qrText = document.getElementById('qr-text');
-      const qrSize = document.getElementById('qr-size');
-      const sizeValue = document.getElementById('size-value');
-      const foregroundColor = document.getElementById('foreground-color');
-      const backgroundColor = document.getElementById('background-color');
-      const errorCorrection = document.getElementById('error-correction');
-      const generateBtn = document.getElementById('generate-btn');
-      const qrPlaceholder = document.getElementById('qr-placeholder');
-      const qrCode = document.getElementById('qr-code');
-      const qrActions = document.getElementById('qr-actions');
-      const downloadPng = document.getElementById('download-png');
-      const downloadSvg = document.getElementById('download-svg');
-      
-      // Show size value
-      qrSize.addEventListener('input', function() {
-        sizeValue.textContent = `${this.value} x ${this.value}`;
-      });
-      
-      // Generate QR code
-      generateBtn.addEventListener('click', generateQRCode);
-      
-      function generateQRCode() {
-        const text = qrText.value.trim();
-        if (!text) {
-          alert('Please enter some text or URL to generate a QR code');
-          return;
-        }
-        
-        // Clear previous QR code
-        qrCode.innerHTML = '';
-        
-        // Get options
-        const options = {
-          text: text,
-          width: parseInt(qrSize.value),
-          height: parseInt(qrSize.value),
-          colorDark: foregroundColor.value,
-          colorLight: backgroundColor.value,
-          correctLevel: QRCode.CorrectLevel[errorCorrection.value]
-        };
-        
-        // Generate QR code
-        try {
-          new QRCode(qrCode, options);
-          
-          // Show QR code and actions
-          qrPlaceholder.style.display = 'none';
-          qrCode.style.display = 'block';
-          qrActions.style.display = 'flex';
-        } catch (error) {
-          console.error('Error generating QR code:', error);
-          alert('Error generating QR code. Please try again with different settings.');
-        }
-      }
-      
-      // Download as PNG
-      downloadPng.addEventListener('click', function() {
-        const canvas = qrCode.querySelector('canvas');
-        if (!canvas) return;
-        
-        // Create a temporary link element
-        const link = document.createElement('a');
-        link.download = 'qrcode.png';
-        link.href = canvas.toDataURL('image/png');
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      });
-      
-      // Download as SVG
-      downloadSvg.addEventListener('click', function() {
-        const canvas = qrCode.querySelector('canvas');
-        if (!canvas) return;
-        
-        // Convert canvas to SVG
-        const size = parseInt(qrSize.value);
-        const ctx = canvas.getContext('2d');
-        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        const pixelData = imageData.data;
-        
-        // Create SVG string
-        let svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${canvas.width} ${canvas.height}">
-          <rect width="100%" height="100%" fill="${backgroundColor.value}"/>`;
-        
-        // Add rectangles for each black pixel
-        for (let y = 0; y < canvas.height; y++) {
-          for (let x = 0; x < canvas.width; x++) {
-            const idx = (y * canvas.width + x) * 4;
-            // If pixel is dark (not white)
-            if (pixelData[idx] < 128) {
-              svgString += `<rect x="${x}" y="${y}" width="1" height="1" fill="${foregroundColor.value}"/>`;
-            }
-          }
-        }
-        
-        svgString += '</svg>';
-        
-        // Create a Blob with the SVG data
-        const blob = new Blob([svgString], { type: 'image/svg+xml' });
-        const url = URL.createObjectURL(blob);
-        
-        // Create a temporary link element
-        const link = document.createElement('a');
-        link.download = 'qrcode.svg';
-        link.href = url;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-      });
-      
-      // Process URL parameters if any (for sharing)
-      function processURLParameters() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const text = urlParams.get('text');
-        if (text) {
-          qrText.value = text;
-          generateQRCode();
-        }
-      }
-      
-      // Initial setup
-      processURLParameters();
-    }
-  });
-</script>
