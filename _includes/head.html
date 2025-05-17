@@ -8,79 +8,8 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	
-	<!-- Inline critical CSS -->
-	<style>
-		/* Critical CSS for above-the-fold content */
-		body {
-			margin: 0;
-			padding: 0;
-			font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-			line-height: 1.5;
-			background: #fff;
-			color: #333;
-		}
-		
-		.wrapper-masthead {
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			width: 100%;
-			z-index: 1000;
-			background: #fff;
-			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-		}
-		
-		.masthead {
-			padding: 15px 0;
-			background-color: #fff;
-			border-bottom: 1px solid #eee;
-		}
-		
-		.header-identity {
-			display: flex;
-			align-items: center;
-			gap: 15px;
-		}
-		
-		.site-avatar {
-			width: 50px;
-			height: 50px;
-			border-radius: 50%;
-			overflow: hidden;
-		}
-		
-		.site-avatar img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
-		
-		.site-name {
-			font-size: 19px;
-			font-weight: 500;
-			margin: 0;
-		}
-		
-		nav {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			gap: 8px;
-		}
-		
-		nav a {
-			font-size: 13px;
-			color: #666;
-			text-decoration: none;
-		}
-		
-		#header-spacer {
-			height: 80px;
-		}
-		
-		/* Add any other critical styles needed for above-the-fold content */
-	</style>
+	<!-- Load critical CSS first -->
+	<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/critical.css">
 	
 	<!-- Defer non-critical CSS -->
 	<link rel="preload" href="{{ site.baseurl }}/assets/css/header.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
