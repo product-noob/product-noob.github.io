@@ -16,7 +16,7 @@ After spending almost 3 years in Paytm, I decided to explore PMing in a differen
 
 As a product manager, I am passionate about understanding user needs, defining product vision, and working closely with cross-functional teams to bring innovative solutions to life. I excel in data-driven decision-making, user experience design, and agile methodologies. I am always keen on learning about the latest trends in technology, product management, and business strategy. (latest one being Gen AI!)
 
-When I am not working on solving product problems, I love to spend my time reading, browsing through X (Twitter) and these days: reading, learning and tinkering with various Gen-AI tools and occasionally coding something borderline useful like these: [ChatGPT Google Meet Summarizer](https://chromewebstore.google.com/detail/chatgpt-google-meet-summa/kofkiemddfpekcadmaeheonbbkhnclhj), [ChatLLM replica](https://princejain.me/chatgpt/), [Office Tools](https://princejain.me/mytools/). Beyond this I find cooking as a good escape from the daily hustle and bustle of life.
+When I am not working on solving product problems, I love to spend my time reading, browsing through X (Twitter) and these days: reading, learning and tinkering with various Gen-AI tools and occasionally coding something borderline useful like these: [ChatGPT Google Meet Summarizer](https://chromewebstore.google.com/detail/chatgpt-google-meet-summa/kofkiemddfpekcadmaeheonbbkhnclhj), [ChatLLM replica](https://mycustomchatgpt.streamlit.app/), [Office Tools](https://princejain.me/tools/). Beyond this I find cooking as a good escape from the daily hustle and bustle of life.
 
 **Reach me at:**
 

@@ -8,8 +8,6 @@ Welcome! 👋  This is a curated list of resources I've found super helpful in m
 
 ---
 
-## 🧠 AI for Product Managers
-
 ### 📚 Prompting & LLM Resources
 - [Prompt Engineering Guide](https://www.promptingguide.ai/) – Best practices and techniques
 - [Learn Prompting](https://learnprompting.org/) – Open-source, beginner-friendly course

@@ -8,7 +8,7 @@ I’m Prince Jain, a Product Manager at [Flipkart](https://www.flipkart.com/), I
 
 Prior to Flipkart, I spent nearly three years at [Paytm](https://www.paytm.com/), working on Mini Apps and Paytm Health.
 
-My journey in PMing has been driven by a deep curiosity and a desire to create impactful solutions that meet user needs. I’m passionate about understanding user needs, defining product vision, and lately leveraging AI to build impactful solutions and optimise workflows and Product Management. Outside of work, I enjoy reading, exploring AI tools, and occasionally coding things like the [ChatGPT Google Meet Summarizer](https://chromewebstore.google.com/detail/chatgpt-google-meet-summa/kofkiemddfpekcadmaeheonbbkhnclhj)
+My journey in PMing has been driven by a deep curiosity and a desire to create impactful solutions that meet user needs. I’m passionate about understanding user needs, defining product vision, and lately leveraging AI to build impactful solutions and optimise workflows and Product Management. Outside of work, I enjoy reading, exploring AI tools, and occasionally coding things like the [ChatGPT Google Meet Summarizer](https://chromewebstore.google.com/detail/chatgpt-google-meet-summa/kofkiemddfpekcadmaeheonbbkhnclhj) and these [tools.]({{ site.baseurl }}/tools)
 
 If you want to learn more about my professional journey and interests, you can visit the [About Me]({{ site.baseurl }}/about) page.
 
