@@ -30,21 +30,6 @@
           // Add target="_blank" and rel="noopener noreferrer" for external links
           link.setAttribute('target', '_blank');
           link.setAttribute('rel', 'noopener noreferrer');
-        } else {
-          // Handle internal links with page transitions
-          link.addEventListener("click", function (e) {
-            const transitionElement = document.querySelector(".transition-fade");
-    
-            if (!transitionElement) return;
-    
-            e.preventDefault(); // Stop default navigation
-    
-            document.documentElement.classList.add("is-animating");
-    
-            setTimeout(() => {
-              window.location.href = this.href;
-            }, 400); // Matches your CSS transition duration
-          });
         }
       });
     });

@@ -13,6 +13,7 @@ function debounce(func, wait) {
 }
 
 let scrollInitialized = false;
+let swup = null;
 
 // Initialize page transitions and navigation
 document.addEventListener('DOMContentLoaded', () => {
@@ -46,7 +47,7 @@ function initScrollProgress() {
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const scrolled = (winScroll / height) * 100;
     progressBar.style.width = scrolled + '%';
-  }, 50); // Reasonable debounce to reduce overhead
+  }, 50);
 
   window.addEventListener('scroll', updateProgress, { passive: true });
 }
@@ -54,7 +55,7 @@ function initScrollProgress() {
 function initSwup() {
   if (typeof Swup === 'undefined') return;
 
-  const swup = new Swup({
+  swup = new Swup({
     containers: ['#main'],
     cache: true,
     plugins: [],
@@ -64,18 +65,21 @@ function initSwup() {
     }
   });
 
+  // Handle page transitions
   swup.on('willReplaceContent', () => {
     const progressBar = document.getElementById('progress-bar');
     if (progressBar) {
       progressBar.style.width = '0%';
       progressBar.style.opacity = '1';
     }
+    document.documentElement.classList.add('is-animating');
   });
 
   swup.on('contentReplaced', () => {
     requestAnimationFrame(() => {
       initializePageComponents();
       updateActiveNavItem();
+      document.documentElement.classList.remove('is-animating');
 
       const progressBar = document.getElementById('progress-bar');
       if (progressBar) {
@@ -87,7 +91,14 @@ function initSwup() {
     });
   });
 
-  window.swup = swup; // Store globally
+  // Handle browser back/forward navigation
+  window.addEventListener('popstate', (event) => {
+    if (event.state && swup) {
+      swup.loadPage(event.state.url, { popState: true });
+    }
+  });
+
+  window.swup = swup;
 }
 
 // Initialize only necessary page components
@@ -170,7 +181,3 @@ function updateActiveNavItem() {
     }
   });
 }
-
-// Handle browser back/forward navigation with debouncing
-const debouncedInit = debounce(initializePageComponents, 100);
-window.addEventListener('popstate', debouncedInit, { passive: true });
