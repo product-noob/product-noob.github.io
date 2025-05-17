@@ -10,12 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
   // Store original header height
   let headerHeight = header.offsetHeight;
   let lastScrollTop = 0;
-  let ticking = false;
-  let isSticky = false;
+  let scrollThreshold = 100; // Adjust this value to control when header collapses
   
-  // Set spacer height
+  // Set spacer height and make it visible
   headerSpacer.style.height = headerHeight + 'px';
-  headerSpacer.style.display = 'none';
+  headerSpacer.style.display = 'block';
+  
+  // Add sticky header class to body
+  document.body.classList.add('has-sticky-header');
   
   // Performance-optimized scroll handler
   function handleScroll() {
@@ -29,59 +31,24 @@ document.addEventListener('DOMContentLoaded', function() {
       progressBar.style.width = scrollPercent + '%';
     }
 
-    // Handle header visibility
-    if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
-      // Scrolling down
-      header.classList.add('header-hidden');
-    } else {
-      // Scrolling up
-      header.classList.remove('header-hidden');
-    }
-
-    // Update header background
-    if (scrollTop > 50) {
+    // Handle header collapsing
+    if (scrollTop > scrollThreshold) {
+      header.classList.add('header-collapsed');
       header.classList.add('header-scrolled');
     } else {
-      header.classList.remove('header-scrolled');
+      header.classList.remove('header-collapsed');
+      if (scrollTop > 50) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
     }
 
     lastScrollTop = scrollTop;
-    requestTick();
-  }
-  
-  // Use requestAnimationFrame for better performance
-  function requestTick() {
-    if (!ticking) {
-      requestAnimationFrame(updateStickyState);
-      ticking = true;
-    }
-  }
-  
-  // Update sticky header state
-  function updateStickyState() {
-    // Check if scroll position requires sticky state change
-    if (lastScrollTop > 10) {
-      if (!isSticky) {
-        document.body.classList.add('has-sticky-header');
-        if (headerSpacer) headerSpacer.style.display = 'block';
-        isSticky = true;
-      }
-    } else {
-      if (isSticky) {
-        document.body.classList.remove('has-sticky-header');
-        if (headerSpacer) headerSpacer.style.display = 'none';
-        isSticky = false;
-      }
-    }
-    
-    ticking = false;
   }
   
   // Add passive scroll listeners for better performance
   window.addEventListener('scroll', handleScroll, { passive: true });
-  
-  // Check initial state on page load
-  updateStickyState();
   
   // Optimized resize handler
   let resizeTimeout;
@@ -89,12 +56,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Debounce resize operations
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(function() {
-      // Only recalculate if not in sticky state
-      if (!isSticky) {
-        headerHeight = header.offsetHeight;
-        if (headerSpacer) headerSpacer.style.height = headerHeight + 'px';
-      }
-      updateStickyState();
+      headerHeight = header.offsetHeight;
+      headerSpacer.style.height = headerHeight + 'px';
     }, 100);
   }, { passive: true });
   
