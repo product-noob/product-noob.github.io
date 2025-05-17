@@ -49,33 +49,14 @@ permalink: /tools/calculator/
 
 <style>
   /* Calculator Styles */
-  .calculator-container {
+  .calculator {
     max-width: 480px;
     margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  .calculator-header {
-    margin-bottom: 30px;
-  }
-  
-  .back-to-tools {
-    display: inline-block;
-    margin-top: 15px;
-    color: #4183c4;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  
-  .back-to-tools:hover {
-    text-decoration: underline;
-  }
-  
-  .calculator {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
+    touch-action: manipulation;
   }
   
   .calculator-display {
@@ -116,9 +97,16 @@ permalink: /tools/calculator/
     cursor: pointer;
     transition: background-color 0.2s;
     outline: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
   }
   
-  .calculator-key:active {
+  .calculator-key:active,
+  .calculator-key:focus {
     background-color: #e0e0e0;
   }
   
@@ -139,10 +127,6 @@ permalink: /tools/calculator/
   
   /* Responsive adjustments */
   @media (max-width: 480px) {
-    .calculator-container {
-      padding: 0 10px;
-    }
-    
     .calculator-key {
       font-size: 20px;
       padding: 15px 0;
@@ -155,19 +139,16 @@ permalink: /tools/calculator/
 </style>
 
 <script>
-  // Initialize calculator when DOM is loaded
-  document.addEventListener('DOMContentLoaded', initCalculator);
-
-  // Also re-initialize on page transitions if using Swup
-  document.addEventListener('swup:contentReplaced', initCalculator);
-
   // Calculator state variables
   let displayValue = '0';
   let firstOperand = null;
   let operator = null;
   let waitingForSecondOperand = false;
   let calculationHistory = '';
-  let historyDisplay, inputDisplay, keypad;
+  let historyDisplay, inputDisplay;
+
+  // Initialize calculator immediately
+  initCalculator();
 
   /**
    * Initialize the calculator
@@ -178,9 +159,8 @@ permalink: /tools/calculator/
     // Get DOM elements
     historyDisplay = document.getElementById('history');
     inputDisplay = document.getElementById('input');
-    keypad = document.querySelector('.calculator-keypad');
     
-    if (!historyDisplay || !inputDisplay || !keypad) {
+    if (!historyDisplay || !inputDisplay) {
       console.error('Calculator elements not found!');
       return;
     }
@@ -188,15 +168,18 @@ permalink: /tools/calculator/
     // Reset calculator state
     resetCalculator();
     
-    // Set up direct click handlers on all buttons for better reliability
+    // Remove any existing event listeners
+    const oldKeypad = document.querySelector('.calculator-keypad');
+    if (oldKeypad) {
+      const newKeypad = oldKeypad.cloneNode(true);
+      oldKeypad.parentNode.replaceChild(newKeypad, oldKeypad);
+    }
+    
+    // Set up click handlers on all buttons
     const keys = document.querySelectorAll('.calculator-key');
     keys.forEach(key => {
-      // Remove any existing listeners first to prevent duplicates
-      const newKey = key.cloneNode(true);
-      key.parentNode.replaceChild(newKey, key);
-      
-      // Add a fresh click event listener
-      newKey.addEventListener('click', handleButtonClick);
+      key.addEventListener('click', handleButtonClick, { passive: true });
+      key.addEventListener('touchstart', handleButtonClick, { passive: true });
     });
     
     // Add keyboard support
@@ -211,14 +194,15 @@ permalink: /tools/calculator/
    * Update the calculator display
    */
   function updateDisplay() {
-    inputDisplay.textContent = displayValue;
-    historyDisplay.textContent = calculationHistory;
+    if (inputDisplay) inputDisplay.textContent = displayValue;
+    if (historyDisplay) historyDisplay.textContent = calculationHistory;
   }
 
   /**
    * Handle button clicks
    */
   function handleButtonClick(event) {
+    event.preventDefault();
     const key = event.currentTarget;
     console.log('Button clicked:', key.textContent);
     
@@ -252,65 +236,12 @@ permalink: /tools/calculator/
         toggleNegative();
         break;
       case 'percentage':
-        percentage();
+        calculatePercentage();
         break;
       case 'backspace':
-        backspace();
+        handleBackspace();
         break;
     }
-    
-    updateDisplay();
-  }
-
-  /**
-   * Handle keyboard input
-   */
-  function handleKeyPress(event) {
-    const key = event.key;
-    
-    // Numbers 0-9
-    if (/^[0-9]$/.test(key)) {
-      inputDigit(key);
-      updateDisplay();
-      return;
-    }
-    
-    // Decimal point
-    if (key === '.') {
-      inputDecimal();
-      updateDisplay();
-      return;
-    }
-    
-    // Operators
-    switch (key) {
-      case '+':
-        handleOperator('add');
-        break;
-      case '-':
-        handleOperator('subtract');
-        break;
-      case '*':
-        handleOperator('multiply');
-        break;
-      case '/':
-        event.preventDefault(); // Prevent browser search
-        handleOperator('divide');
-        break;
-      case 'Enter':
-      case '=':
-        performCalculation();
-        break;
-      case 'Backspace':
-        backspace();
-        break;
-      case 'Escape':
-        resetCalculator();
-        break;
-      default:
-        return; // Exit if no matching key
-    }
-    
     updateDisplay();
   }
 
@@ -327,7 +258,7 @@ permalink: /tools/calculator/
   }
 
   /**
-   * Input decimal point
+   * Input a decimal point
    */
   function inputDecimal() {
     if (waitingForSecondOperand) {
@@ -335,7 +266,7 @@ permalink: /tools/calculator/
       waitingForSecondOperand = false;
       return;
     }
-    
+
     if (!displayValue.includes('.')) {
       displayValue += '.';
     }
@@ -346,63 +277,41 @@ permalink: /tools/calculator/
    */
   function handleOperator(nextOperator) {
     const inputValue = parseFloat(displayValue);
-    
+
     if (firstOperand === null) {
       firstOperand = inputValue;
     } else if (operator) {
-      const result = calculate(firstOperand, inputValue, operator);
+      const result = performCalculation();
       displayValue = `${parseFloat(result.toFixed(7))}`;
       firstOperand = result;
     }
-    
+
     waitingForSecondOperand = true;
     operator = nextOperator;
-    calculationHistory = `${firstOperand} ${getOperatorSymbol(operator)}`;
+    calculationHistory = `${firstOperand} ${operator} `;
   }
 
   /**
-   * Perform the calculation
+   * Perform calculation
    */
   function performCalculation() {
-    if (!operator || waitingForSecondOperand) return;
-    
-    const secondOperand = parseFloat(displayValue);
-    calculationHistory += ` ${displayValue} =`;
-    
-    const result = calculate(firstOperand, secondOperand, operator);
-    displayValue = `${parseFloat(result.toFixed(7))}`;
-    firstOperand = result;
-    operator = null;
-  }
+    const inputValue = parseFloat(displayValue);
 
-  /**
-   * Calculate the result
-   */
-  function calculate(firstOperand, secondOperand, operator) {
-    switch (operator) {
-      case 'add': return firstOperand + secondOperand;
-      case 'subtract': return firstOperand - secondOperand;
-      case 'multiply': return firstOperand * secondOperand;
-      case 'divide': return firstOperand / secondOperand;
-      default: return secondOperand;
+    if (operator === 'add') {
+      return firstOperand + inputValue;
+    } else if (operator === 'subtract') {
+      return firstOperand - inputValue;
+    } else if (operator === 'multiply') {
+      return firstOperand * inputValue;
+    } else if (operator === 'divide') {
+      return firstOperand / inputValue;
     }
+
+    return inputValue;
   }
 
   /**
-   * Get the operator symbol for display
-   */
-  function getOperatorSymbol(op) {
-    switch (op) {
-      case 'add': return '+';
-      case 'subtract': return '−';
-      case 'multiply': return '×';
-      case 'divide': return '÷';
-      default: return '';
-    }
-  }
-
-  /**
-   * Reset the calculator
+   * Reset calculator
    */
   function resetCalculator() {
     displayValue = '0';
@@ -410,29 +319,59 @@ permalink: /tools/calculator/
     operator = null;
     waitingForSecondOperand = false;
     calculationHistory = '';
-    if (inputDisplay && historyDisplay) {
-      updateDisplay();
-    }
   }
 
   /**
-   * Toggle between positive and negative
+   * Toggle negative/positive
    */
   function toggleNegative() {
-    displayValue = (parseFloat(displayValue) * -1).toString();
+    displayValue = (-parseFloat(displayValue)).toString();
   }
 
   /**
    * Calculate percentage
    */
-  function percentage() {
+  function calculatePercentage() {
     displayValue = (parseFloat(displayValue) / 100).toString();
   }
 
   /**
    * Handle backspace
    */
-  function backspace() {
-    displayValue = displayValue.length > 1 ? displayValue.slice(0, -1) : '0';
+  function handleBackspace() {
+    if (displayValue.length > 1) {
+      displayValue = displayValue.slice(0, -1);
+    } else {
+      displayValue = '0';
+    }
+  }
+
+  /**
+   * Handle keyboard input
+   */
+  function handleKeyPress(event) {
+    const key = event.key;
+    
+    if (/[0-9]/.test(key)) {
+      inputDigit(key);
+    } else if (key === '.') {
+      inputDecimal();
+    } else if (key === '+') {
+      handleOperator('add');
+    } else if (key === '-') {
+      handleOperator('subtract');
+    } else if (key === '*') {
+      handleOperator('multiply');
+    } else if (key === '/') {
+      handleOperator('divide');
+    } else if (key === 'Enter' || key === '=') {
+      performCalculation();
+    } else if (key === 'Escape') {
+      resetCalculator();
+    } else if (key === 'Backspace') {
+      handleBackspace();
+    }
+    
+    updateDisplay();
   }
 </script>
