@@ -19,22 +19,33 @@
   <script src="{{ site.baseurl }}/assets/js/page-transitions.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const links = document.querySelectorAll("a[href]:not([href^='#']):not([target='_blank'])");
+      const links = document.querySelectorAll("a[href]:not([href^='#'])");
+      const currentHost = window.location.hostname;
   
       links.forEach(link => {
-        link.addEventListener("click", function (e) {
-          const transitionElement = document.querySelector(".transition-fade");
-  
-          if (!transitionElement) return;
-  
-          e.preventDefault(); // Stop default navigation
-  
-          document.documentElement.classList.add("is-animating");
-  
-          setTimeout(() => {
-            window.location.href = this.href;
-          }, 400); // Matches your CSS transition duration
-        });
+        // Check if the link is external
+        const isExternal = !link.hostname || link.hostname !== currentHost;
+        
+        if (isExternal) {
+          // Add target="_blank" and rel="noopener noreferrer" for external links
+          link.setAttribute('target', '_blank');
+          link.setAttribute('rel', 'noopener noreferrer');
+        } else {
+          // Handle internal links with page transitions
+          link.addEventListener("click", function (e) {
+            const transitionElement = document.querySelector(".transition-fade");
+    
+            if (!transitionElement) return;
+    
+            e.preventDefault(); // Stop default navigation
+    
+            document.documentElement.classList.add("is-animating");
+    
+            setTimeout(() => {
+              window.location.href = this.href;
+            }, 400); // Matches your CSS transition duration
+          });
+        }
       });
     });
   </script>
