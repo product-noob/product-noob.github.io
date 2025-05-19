@@ -7,10 +7,34 @@ This repository contains the source code for my personal website, built using Je
 ```
 .
 ├── _includes/         # Reusable components and templates
+│   ├── head.html      # <head> section with meta tags and CSS includes
+│   ├── header.html    # Site navigation and header
+│   ├── footer.html    # Footer with social links
+│   ├── meta.html      # SEO meta tags
+│   ├── schema.html    # Structured data for rich snippets
+│   └── analytics.html # Google Analytics integration
 ├── _layouts/          # Page layout templates
+│   ├── default.html   # Base template with common elements
+│   ├── page.html      # Standard page template
+│   ├── post.html      # Blog post template
+│   └── blog.html      # Blog listing template
 ├── _posts/            # Blog posts in markdown format
 ├── _sass/             # SCSS stylesheets
+│   ├── _transitions.scss  # Page transition animations
+│   ├── _variables.scss    # Color and size variables
+│   ├── _svg-icons.scss    # Social icons styling
+│   ├── _reset.scss        # CSS reset
+│   └── _highlights.scss   # Code syntax highlighting
 ├── assets/            # Static assets
+│   ├── css/           # CSS files
+│   │   ├── critical.css   # Core styles for above-the-fold content
+│   │   ├── tools.css      # Styles for interactive tools
+│   │   └── header.css     # Header-specific styles
+│   ├── js/            # JavaScript files
+│   │   ├── page-transitions.js  # Smooth page transitions
+│   │   ├── polychat.js          # Multi-AI chat comparison tool
+│   │   └── tools.js             # Scripts for interactive tools
+│   └── blog_images/    # Blog post images
 ├── css/               # Compiled CSS files
 ├── images/            # Image assets
 └── tools/             # Interactive web tools
@@ -29,6 +53,7 @@ This is a Jekyll static site with the following key components:
 - **_config.yml**: Site-wide configuration including metadata, plugins, and build settings
 - **Gemfile**: Ruby dependencies including Jekyll and required plugins
 - **CNAME**: Custom domain configuration for GitHub Pages
+- **.cursorrules**: Coding standards and style guide for the project
 
 ### Content Structure
 
@@ -42,14 +67,26 @@ This is a Jekyll static site with the following key components:
 - **404.md**: Custom error page
 
 #### Blog System
-- Posts in `/_posts/` following Jekyll's date-based naming
-- Topics include product management, technology, and projects
-- Markdown format with YAML front matter
+- Posts in `/_posts/` following Jekyll's date-based naming convention
+- Current blog posts:
+  - **2025-05-19**: Automating Google Chat: Solving the 'Mark as Read' Problem
+  - **2025-03-31**: Generative AI Revolution
+  - **2024-03-20**: PM Links
+  - **2022-03-22**: Building Mini Apps
+  - **2022-01-12**: Explaining the National Health Stack
+  - **2021-08-03**: Building Vaccine Slot Finder
+  - **2021-07-23**: Cracking System Design Interview
+  - **2021-05-15**: Demystifying SEO
+  - **2020-02-15**: There are Apps and then there are SuperApps
+  - **2020-02-02**: Setting up Github Pages
 
 ### Template System
 
 #### Layouts (`/_layouts/`)
 - **default.html**: Base template with common elements
+  - Handles page transitions
+  - Manages external link behavior
+  - Includes header and footer
 - **page.html**: Standard page template
 - **post.html**: Blog post template
 - **blog.html**: Blog listing template
@@ -59,22 +96,36 @@ This is a Jekyll static site with the following key components:
 - **footer.html**: Site footer with social links
 - **head.html**: Meta tags and CSS includes
 - **meta.html**: SEO meta tags
+- **schema.html**: Structured data for rich results in search
 - **analytics.html**: Google Analytics integration
 
 ### Styling and Assets
 - **`/_sass/`**: SCSS partials for styling
-- **`/css/`**: Compiled CSS files
-- **`/images/`**: Image assets
-- **`/assets/`**: Additional resources
+  - **_transitions.scss**: Page transition animations and effects
+  - **_variables.scss**: Global color and sizing variables
+  - **_svg-icons.scss**: Social media and UI icons
+  - **_reset.scss**: CSS reset for consistent rendering
+  - **_highlights.scss**: Code syntax highlighting styles
+- **`/assets/css/`**: CSS files
+  - **critical.css**: Core styles loaded first for performance
+  - **tools.css**: Styles for interactive tools section
+  - **header.css**: Header-specific styles
+- **`/assets/js/`**: JavaScript files
+  - **page-transitions.js**: Smooth page transition handling
+  - **polychat.js**: Multi-AI chat comparison functionality
+  - **tools.js**: General utilities for interactive tools
+- **`/images/`**: Image assets for the main site
+- **`/assets/blog_images/`**: Images used in blog posts
 
 ## 🚀 Features
 
 ### Core Features
-- Responsive design using Minima theme
-- SEO optimization with sitemap and meta tags
-- Google Analytics integration
+- Responsive design optimized for mobile and desktop
+- SEO optimization with sitemap, meta tags, and structured data
+- Google Analytics integration for visitor tracking
 - Social media integration
 - Blog system with markdown support
+- Page transitions and animations for better UX
 
 ### Interactive Tools
 1. **Calculator**
@@ -88,9 +139,9 @@ This is a Jekyll static site with the following key components:
    - Download functionality
 
 3. **PolyChat**
-   - Multi-AI model interface
-   - Response comparison
-   - Real-time interaction
+   - Multi-AI model interface (OpenAI, Anthropic, Google)
+   - Response comparison across different AI models
+   - Real-time interaction with configurable settings
 
 4. **Base64 Encoder/Decoder**
    - Text to Base64 encoding
@@ -106,13 +157,17 @@ This is a Jekyll static site with the following key components:
 
 ## 🛠️ Technical Stack
 
-- **Framework**: Jekyll
-- **Theme**: Minima
+- **Framework**: Jekyll (static site generator)
 - **Hosting**: GitHub Pages
 - **Analytics**: Google Analytics
 - **Syntax Highlighting**: Rouge
-- **Markdown**: Kramdown with GFM
-- **Tools**: Vanilla JavaScript, HTML5, CSS3
+- **Markdown**: Kramdown with GitHub Flavored Markdown
+- **Frontend**: Vanilla JavaScript, HTML5, CSS3
+- **Performance Optimizations**:
+  - Critical CSS loading
+  - Deferred JavaScript loading
+  - Image optimization
+  - Page transition animations
 
 ## 🚀 Development
 
@@ -138,22 +193,22 @@ bundle exec jekyll serve --livereload
 ## 📝 Content Management
 
 ### Adding Content
-- **Blog Posts**: Create markdown files in `_posts/`
+- **Blog Posts**: Create markdown files in `_posts/` with format `YYYY-MM-DD-title.md`
 - **Pages**: Add markdown files in root directory
 - **Assets**: Store in appropriate directories
 - **Components**: Add to `_includes/`
 
 ### SEO & Performance
-- Sitemap generation
-- Meta tags optimization
-- Responsive images
-- Service worker support
+- Sitemap generation via jekyll-sitemap
+- Meta tags optimization in head.html and meta.html
+- Responsive images with loading="lazy" attribute
+- Critical CSS loading for above-the-fold content
 
 ## 📦 Dependencies
 
-- jekyll-sitemap
-- jekyll-feed
-- jekyll-seo-tag
+- jekyll-sitemap: Generates a sitemap.xml file
+- jekyll-feed: Generates an Atom feed
+- jekyll-seo-tag: Adds metadata tags for search engines
 
 ## 📄 License
 
@@ -166,15 +221,7 @@ Contributions are welcome! Please feel free to submit issues and enhancement req
 ## 🙏 Acknowledgments
 
 - Built with [Jekyll](https://jekyllrb.com/)
-- Using [Minima](https://github.com/jekyll/minima) theme
 - Hosted on [GitHub Pages](https://pages.github.com/)
-
-## Attributes
-
-I am using Minima, the default theme that comes with Jekyll.
-Learn how to set up Jekyll from this amazing post:
-[Building a static website with Jekyll and GitHub](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages). 
-
 
 <!-- Comments on using Github Pages using Visual Studio Code: -->
 <!--  bundle exec jekyll serve --livereload -->
