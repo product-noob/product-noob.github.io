@@ -4,11 +4,11 @@ title:  "Automating Google Chat: Solving the 'Mark as Read' Problem"
 description: "A practical guide to auto-reading Google Chat messages using browser scripts for improved productivity and workflow management."
 ---
 
-We all know that feeling of dread when returning from a vacation or a break - opening up Google Chat only to find your inbox flooded with dozens or even hundreds of unread messages. Despite being mentally prepared to catch up, the sheer volume can be overwhelming. Most of these messages are likely irrelevant, outdated, or already addressed by others.
+We’ve all been there — returning from a vacation, or just navigating the chaos of being in multiple teams and groups over time. You open Google Chat, and suddenly you're staring at an inbox filled with dozens, maybe even hundreds, of unread messages. Even if you're mentally prepared to catch up, the sheer volume can feel overwhelming. And the reality is, most of those messages are either outdated, no longer relevant, or already addressed by someone else. Still, the unread count lingers — and that clutter just bothers you (if you are anything like me).
 
 If you're like me and prefer a clean, zero-notification environment, this becomes especially frustrating. Unlike Gmail, **Google Chat doesn't provide a simple "Mark All as Read" feature** for rooms under the Home tab. There are no batch controls, and manually clicking into each conversation is painfully inefficient.
 
-So I did what any product-minded person would do - I created a script to solve this problem.
+So I did what any product-minded person would do - used a little AI (blame my rusty coding skills at this point), I created a script to automatically read all messages to solve this problem.
 
 ## The Problem with Google Chat's Unread Messages
 
@@ -102,12 +102,18 @@ To use this script:
 4. Adjust the parameters as needed (number of threads to process, delay between actions) and run clickUnreadThreadsWithLimitAndDelay.
 5. Just wait and watch! :)
 
+<figure style="text-align: center;">
+  <img src="/images/googlechatnounread.png"
+       alt="No Unread view on Google Chat"
+       style="width: 80%; max-width: 800px; border: 1px solid #eee; border-radius: 6px; padding: 4px;">
+  <figcaption style="font-size: 0.9em; color: #555;">Bliss when you see this on your Unreads tabs in Google Chat.</figcaption>
+</figure>
 
 ## Potential Enhancements
 
 There's room to expand this solution further, maybe someday I'll create those as well:
 
-- Add AI generated summary of what all threads were auto-read to avoid missing out on anything. (leveraging basics of Google Meet Summary)
+- Add AI generated summary of what all threads were auto-read to avoid missing out on anything. (leveraging basics of [Google Meet Summary extension](https://chromewebstore.google.com/detail/chatgpt-google-meet-summa/kofkiemddfpekcadmaeheonbbkhnclhj))
 - Filter threads by specific sender before clicking so that DMs are not auto-read and only groups are.
 - Create a browser extension for one-click access
 
