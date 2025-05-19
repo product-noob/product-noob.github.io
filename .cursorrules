@@ -1,0 +1,122 @@
+# Cursor Coding Standards – product-noob.github.io
+
+## 1. General Best Practices
+
+- Use meaningful names for variables, classes, and IDs.
+- Write clean, readable code with comments for complex logic.
+- Avoid hardcoding; use variables/mixins (SCSS).
+- Minimize DOM manipulation and optimize assets (images, fonts).
+- Ensure responsive, accessible code (WCAG 2.1).
+- Follow HTML5, CSS3, ES6+ standards.
+- Ensure cross-browser compatibility.
+- Do not ever create a new file for JS, CSS without my explict permission, as much as possible use existing ones to avoid bloating of the file structure.
+
+## 2. Formatting Rules
+
+- 2 spaces for indentation (no tabs).
+- Max line length: 80 characters.
+- Use camelCase (JavaScript), kebab-case (CSS classes).
+- Proper spacing around operators.
+- Keep functions short and single-purpose.
+- Group related code blocks; use blank lines for clarity.
+
+## 3. Git Workflow
+
+- Write clear, descriptive commit messages.
+- One logical change per commit.
+- Pull before push to avoid conflicts.
+
+## 4. HTML/CSS Guidelines
+
+- Use semantic HTML and close all tags properly.
+- Use CSS classes over inline styles.
+- Follow mobile-first responsive design.
+- Keep markup clean and readable.
+- Maintain consistent CSS style formatting.
+
+## 5. Jekyll/Markdown Rules
+
+- Use consistent front matter.
+- Maintain heading structure (h1 > h2 > h3…).
+- Use relative links for navigation.
+- Follow Jekyll folder conventions:  
+  `_layouts/`, `_includes/`, `_sass/`, `assets/`, `_data/`
+- Use Liquid effectively; avoid inline scripts/styles.
+- Use `_includes` for reusable components.
+- Do **not** modify theme files directly — override via `_sass`.
+
+## 6. SCSS Rules
+
+- Current SCSS structure: `_sass/*.scss` files
+  - `_transitions.scss`
+  - `_variables.scss`
+  - `_svg-icons.scss`
+  - `_reset.scss`
+  - `_highlights.scss`
+- Use variables for colors, spacing, etc. as defined in `_variables.scss`
+- Create mixins for reusable patterns (e.g., media queries).
+- BEM naming convention: `.block__element--modifier`
+- Avoid `!important` and deep selector nesting.
+- Design mobile-first with SCSS mixins.
+
+## 7. CSS Structure & Hierarchy
+
+- **CSS files**: 
+  - `assets/css/critical.css` - Core styles loaded first
+  - `assets/css/tools.css` - Tools-specific styles
+  - `assets/css/header.css` - Header-specific styles
+- **Debugging tips**:
+  - Check base files for conflicts
+  - Consider specificity when overriding styles
+  - Use browser dev tools to inspect computed styles
+
+## 8. JavaScript Rules
+
+- Current JS structure:
+  - `assets/js/page-transitions.js`
+  - `assets/js/polychat.js`
+  - `assets/js/tools.js`
+- Use modern syntax: `let/const`, arrow functions, template literals.
+- Avoid `var`; prefer modules.
+- Efficient DOM selection; minimize reflows.
+- Use event delegation.
+- Avoid inline event handlers.
+- Load scripts with `async`/`defer` where needed.
+- Modular, performant JS preferred.
+- Avoid global variables.
+- Use strict equality (`===`), handle errors properly.
+
+## 9. Theme Customization
+
+- Use `_sass/*.scss` for style overrides.
+- Add styles/scripts in `assets/`.
+- Use `{% include %}` for headers, footers, modals.
+- Follow Jekyll paths using `{{ site.baseurl }}`.
+
+## 10. Performance Optimization
+
+- Minify CSS/JS before deployment.
+- Use lazy loading for images (`loading="lazy"`).
+- Apply cache-busting to asset URLs.
+- Minimize external dependencies.
+- Use CDN for static asset delivery when appropriate.
+
+## 11. Mobile vs Desktop Style Rules
+
+- **Separation**: NEVER modify desktop styles for mobile fixes.
+- **Mobile fixes** must be inside appropriate media query blocks.
+- Use SCSS variables consistently.
+- Test across mobile and desktop.
+
+### Code Review Checklist (Mobile Changes)
+
+- Are all mobile styles inside appropriate media queries?
+- No desktop styles were changed?
+- No global changes from mobile fixes?
+- Both views tested and working?
+
+### Common Pitfalls
+
+- Avoid changes to base classes (e.g., `box-sizing`, `width`).
+- Do not modify shared variables for mobile-only fixes.
+- Never apply mobile fixes globally.
