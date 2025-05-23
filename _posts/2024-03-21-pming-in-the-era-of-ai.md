@@ -191,4 +191,7 @@ Just because it's fast doesn't mean it's safe. As PMs, we can't treat LLMs like 
 
 ## So… is the PM role really changing?
 
-Absolutely – **upwards**. Less ticket-tetris, more strategy & storytelling. Every PM will be an "AI PM" sooner than later. So **🚀 What Will *You* Build Next?**
+Absolutely – **upwards**. Less ticket-tetris, more strategy & storytelling. Every PM will be an "AI PM" sooner than later. 
+
+
+**So, What are *You* Building Next? 🚀🚀**
