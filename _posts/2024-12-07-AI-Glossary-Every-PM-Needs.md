@@ -3,8 +3,6 @@ layout: post
 title: "The AI Glossary Every PM Needs"
 description: "A field-tested cheat-sheet to decode AI jargon when you're building the next ML-powered feature."
 date: 2025-05-23
-categories: [product-management, artificial-intelligence]
-tags: [AI, machine-learning, LLM, glossary, product-management]
 ---
 
 > _If you've sat in a meeting where the data-science team casually drops phrases like "LoRA adapters" or "beam search" and you're secretly Googling under the table – this one's for you._

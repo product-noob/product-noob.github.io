@@ -2,6 +2,7 @@
 layout: post
 title:  "Automating Google Chat: Solving the 'Mark as Read' Problem"
 description: "An JavaScript I wrote to auto-read Google Chat messages to keep a clean inbox."
+date: 2024-11-23
 ---
 
 We’ve all been there — returning from a vacation, or just navigating the chaos of being in multiple teams and groups over time. You open Google Chat, and suddenly you're staring at an inbox filled with dozens, maybe even hundreds, of unread messages. Even if you're mentally prepared to catch up, the sheer volume can feel overwhelming. And the reality is, most of those messages are either outdated, no longer relevant, or already addressed by someone else. Still, the unread count lingers — and that clutter just bothers you (if you are anything like me).

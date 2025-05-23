@@ -1,9 +1,8 @@
 ---
 layout: post
 title: "PMing in the era of AI | How I use AI to supercharge my work"
-date: 2024-03-21 12:00:00 +0530
-categories: [Product Management, AI]
-tags: [product management, artificial intelligence, productivity, tools]
+description: "My thoughts on how AI is changing PMing"
+date: 2025-03-21 12:00:00 +0530
 ---
 I took a presentation for Flipkart PMs on **"How PMing is changing in the era of AI"** and thought I'll add a similar version of my thoughts here: 
 
