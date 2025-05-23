@@ -263,7 +263,7 @@ Common variables available in posts:
 ## Troubleshooting Common Issues
 
 ### Liquid Syntax Errors
-- Avoid spaces in template variables: `{{post_title}}` not `{{Post Title}}`
+- Avoid spaces in template variables: `{{post_title}}` not `{{Post_Title}}`
 - Escape curly braces in code examples when needed
 
 ### Build Failures
