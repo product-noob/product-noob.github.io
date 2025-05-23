@@ -125,7 +125,6 @@ Think of prompts as the new user interface — it's how we talk to powerful mode
 
 Here's how I've learned to get the best out of AI tools — a playbook for writing prompts that actually work:
 
----
 
 ### ✅ Best Practices for Better Prompts (What I've Learned)
 
@@ -161,31 +160,29 @@ Here's how I've learned to get the best out of AI tools — a playbook for writi
 
 Working with AI can feel magical — until it isn't. These are the key traps to watch out for, and how I keep myself grounded while using LLMs in day-to-day PM work.
 
-#### 🍰 Prompt Craft 101  
+- #### 🍰 Prompt Craft 101  
 A good prompt isn't just a question — it's a **brief**. The golden formula:  
 **Specific context + examples + desired format = chef's-kiss output.**  
-
 Want a crisp summary? Say so. Want markdown bullets? Specify that. Want Gen Z tone? Add a style reference.  
 Also: keep a running prompt library. Seriously. It'll save you time, bring consistency, and *future you will high-five past you*.
 
-#### 🧯 Hallucination Hazards  
+- #### 🧯 Hallucination Hazards  
 LLMs can be *wildly confident* — even when they're flat-out wrong. This matters **a lot** when you're dealing with data, user research, or anything business-critical.  
 Always fact-check, especially if you're using AI for analysis, summaries, or external-facing content. When in doubt, **add grounding** — tools with retrieval-augmented generation (RAG) can help bring source-based answers into the loop.
 
-#### 👫 Human Intuition > Algorithm  
+- #### 👫 Human Intuition > Algorithm  
 AI can crunch, scale, and generate at warp speed — but it doesn't know your customer, your business nuance, or your gut feel. Empathy, creativity, and product taste still live with *you*. Think of AI as a co-pilot, not a replacement. You're the one with the map. 
 Also, don't outsource your intuition to AI—stay in the driver's seat with AI as your co-pilot.
 It's not just a tech problem — **you own the guardrails**. Use responsibly, document decisions, and keep your team (and users) protected.
 
-### 🔐 Security & Ethics – Non-Negotiable  
-
+- #### 🔐 Security & Ethics – Non-Negotiable  
 Just because it's fast doesn't mean it's safe. As PMs, we can't treat LLMs like a black box playground — we're responsible for what goes in, and what comes out. Keep these in mind:
 
-- 🚫 **Don't feed in sensitive data** – Never share internal documents, customer PII, or confidential business info with public LLMs unless explicitly approved. When in doubt, redact or use dummy data.
-- ✅ **Use access controls** – Make sure tools (especially AI copilots or Slackbots) are behind MFA and scoped to the right users.
-- ⚖️ **Check for bias & explainability** – Always question how the model arrived at an answer — especially if it informs decisions or affects users.
-- 🛑 **Know your failure modes** – AI can go off the rails. Define clear fallbacks and escalation paths before deploying anything user-facing.
-- 📢 **Be transparent with users** – If you're using AI in your product, let users know. Clear disclosures build trust.
+    - 🚫 **Don't feed in sensitive data** – Never share internal documents, customer PII, or confidential business info with public LLMs unless explicitly approved. When in doubt, redact or use dummy data.
+    - ✅ **Use access controls** – Make sure tools (especially AI copilots or Slackbots) are behind MFA and scoped to the right users.
+    - ⚖️ **Check for bias & explainability** – Always question how the model arrived at an answer — especially if it informs decisions or affects users.
+    - 🛑 **Know your failure modes** – AI can go off the rails. Define clear fallbacks and escalation paths before deploying anything user-facing.
+    - 📢 **Be transparent with users** – If you're using AI in your product, let users know. Clear disclosures build trust.
 
 ---
 
