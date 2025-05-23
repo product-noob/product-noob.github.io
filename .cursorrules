@@ -9,7 +9,7 @@
 - Ensure responsive, accessible code (WCAG 2.1).
 - Follow HTML5, CSS3, ES6+ standards.
 - Ensure cross-browser compatibility.
-- Do not ever create a new file for JS, CSS without my explict permission, as much as possible use existing ones to avoid bloating of the file structure.
+- Do not ever create a new file for anything without my explict permission, as much as possible use existing ones to avoid bloating of the file structure.
 
 ## 2. Formatting Rules
 
@@ -120,3 +120,17 @@
 - Avoid changes to base classes (e.g., `box-sizing`, `width`).
 - Do not modify shared variables for mobile-only fixes.
 - Never apply mobile fixes globally.
+
+## 12. Blog Writing Style
+
+- Write in a conversational, first-person tone. Speak _to_ the reader ("If you're like me…", "Let's break this down…").
+- Open with a personal anecdote or rhetorical hook that frames the problem before diving into solutions.
+- Use descriptive headings (###) to chunk the narrative logically; keep a clear hierarchy (H1 once, then H2/H3).
+- Prefer short paragraphs (≤ 4 lines) for readability.
+- Leverage lists for crisp take-aways: unordered lists for ideas, ordered lists for step-by-step guides.
+- Emphasise key terms with **bold**; use *italics* for asides, clarifications, or subtle emphasis.
+- Sprinkle light humour/parenthetical asides to keep the tone friendly and authentic.
+- Include code blocks, images, and figures where they add value; always add alt text and optional <figcaption>.
+- Use blockquotes for memorable quotes or standout insights.
+- End posts with actionable tips, next steps, or a call-to-action inviting reader feedback.
+- Glossary/definition sections should keep each entry to ~2-6 concise lines.

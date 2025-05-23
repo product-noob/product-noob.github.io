@@ -37,12 +37,21 @@ This repository contains the source code for my personal website, built using Je
 │   └── blog_images/    # Blog post images
 ├── css/               # Compiled CSS files
 ├── images/            # Image assets
-└── tools/             # Interactive web tools
-    ├── calculator/    # Advanced calculator with scientific functions
-    ├── qr-code-generator/ # QR code generation tool
-    ├── polychat/      # Multi-AI chat comparison tool
-    ├── base64/        # Base64 encoding/decoding tool
-    └── json-formatter/ # JSON formatting and validation tool
+├── tools/             # Interactive web tools
+│   ├── index.html     # Tools listing page
+│   ├── calculator/    # Advanced calculator with scientific functions
+│   ├── qr-code-generator/ # QR code generation tool
+│   ├── polychat/      # Multi-AI chat comparison tool
+│   ├── base64/        # Base64 encoding/decoding tool
+│   └── json-formatter/ # JSON formatting and validation tool
+├── _site/             # Generated site (not in repo)
+├── _config.yml        # Jekyll configuration
+├── .cursorrules       # Coding standards and guidelines
+├── .gitignore         # Git ignore file
+├── CNAME              # Custom domain configuration
+├── Gemfile            # Ruby dependencies
+├── Gemfile.lock       # Locked dependency versions
+└── sitemap.xml        # Site map for search engines
 ```
 
 ## 🏛️ Core Architecture
@@ -54,6 +63,7 @@ This is a Jekyll static site with the following key components:
 - **Gemfile**: Ruby dependencies including Jekyll and required plugins
 - **CNAME**: Custom domain configuration for GitHub Pages
 - **.cursorrules**: Coding standards and style guide for the project
+- **.gitignore**: Specifies files to exclude from version control
 
 ### Content Structure
 
@@ -65,6 +75,7 @@ This is a Jekyll static site with the following key components:
 - **worksummary.md**: Professional experience summary
 - **privacy.md**: Privacy policy
 - **404.md**: Custom error page
+- **sitemap.xml**: XML sitemap for search engine optimization
 
 #### Blog System
 - Posts in `/_posts/` following Jekyll's date-based naming convention
@@ -78,7 +89,7 @@ This is a Jekyll static site with the following key components:
   - **2021-07-23**: Cracking System Design Interview
   - **2021-05-15**: Demystifying SEO
   - **2020-02-15**: There are Apps and then there are SuperApps
-  - **2020-02-02**: Setting up Github Pages
+  - **2020-02-02**: Setting up Github Pages (Hello World)
 
 ### Template System
 
@@ -131,6 +142,22 @@ This is a Jekyll static site with the following key components:
   - Image optimization
   - Page transition animations
 
+### Jekyll Plugins
+- **jekyll-sitemap**: Automatically generates sitemap.xml for SEO
+- **jekyll-feed**: Creates RSS/Atom feed for blog subscribers
+- **jekyll-seo-tag**: Adds meta tags for search engine optimization
+- **Rouge**: Provides syntax highlighting for code blocks
+
+### Interactive Tools
+The site includes several interactive tools built with vanilla JavaScript:
+- **Calculator**: Scientific calculator with advanced mathematical functions
+- **QR Code Generator**: Create QR codes for URLs, text, or other data
+- **PolyChat**: Multi-AI chat interface for comparing responses across different AI models
+- **Base64 Encoder/Decoder**: Convert between text and Base64 encoding
+- **JSON Formatter**: Pretty-print and validate JSON data
+
+These tools are self-contained and follow the site's performance and design standards.
+
 ## 🚀 Development
 
 ### Prerequisites
@@ -145,6 +172,21 @@ bundle install
 # Start development server
 bundle exec jekyll serve --livereload
 ```
+
+The site will be available at `http://127.0.0.1:4000/`
+
+### Build Process
+When Jekyll builds the site, it:
+1. Processes all markdown files into HTML
+2. Compiles SCSS files into CSS
+3. Applies layouts and includes to generate complete pages
+4. Copies static assets to the output directory
+5. Generates the following additional files:
+   - `feed.xml`: RSS/Atom feed for blog posts
+   - Blog post permalinks following the pattern: `/YYYY/MM/DD/post-title/`
+   - Directory indexes for categories and dates
+
+The built site is output to the `_site/` directory (ignored by Git).
 
 ### Configuration
 - Edit `_config.yml` for site settings

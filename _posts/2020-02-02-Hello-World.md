@@ -5,7 +5,6 @@ description: "This is the sample description of posts trying to test out a new w
 
 ---
 
-
 This is just the typesetting for my blog, keeping it here for quick reference. **Please ignore this.**
 
 This is a sample text.
@@ -42,43 +41,241 @@ This is a sample text.
 Linking here some of the good sources to visit later for Markdown or HTML tutorials
 
 <!--
-### Basic Site Structure
+### Complete Site Structure Guide
 
-Listing down some of the basic structure/ to-do's for the website:
+This Jekyll site follows a specific structure for optimal organization and performance:
 
-- **_layouts:** This includes how to structure of each of the sections is decided:
-    - **Default.html** : This is the base structure for all the pages across the site. Includes header and bosy and use this **to make changes across ALL pages & header/ footer of the site.**
-    - **Page.html** : This is the default structure for most pages; like readme, work summary, index etc.
-    - **Blog.html** : This is the layout for the /blog list of the site. Used to customise a gist of all the blogs written so far; including title for each blog, a snippet and Read more
-    - **Post.html**: This is the layout for individual posts in the blog.
-- **Includes :** This contains the header html for individual components:
-    - **Analytics.html**:  ****This includes G-Tag Id and used to push GA events for the site. **IGNORE**
-    -
-- **Images :** This is the repository of all the images in the site. You can then include them anywhere in the site.
-- **_sass:** This is the additional CSS file to do custom styling. **IGNORE**
-- **config.yml:** This is the basic structure of the website. **IGNORE**
-- **Style.scss:** Use this to change any of the CSS params for the site. If you want to customise the styling for a specific section anywhere, do so by creating a class (eg: blogheader, blogsubtext).
+## Core Project Structure
 
-### **Writing a new blog post:**
+```
+.
+├── _includes/         # Reusable components and templates
+│   ├── head.html      # <head> section with meta tags and CSS includes
+│   ├── header.html    # Site navigation and header
+│   ├── footer.html    # Footer with social links
+│   ├── meta.html      # SEO meta tags
+│   ├── schema.html    # Structured data for rich snippets
+│   └── analytics.html # Google Analytics integration
+├── _layouts/          # Page layout templates
+│   ├── default.html   # Base template with common elements
+│   ├── page.html      # Standard page template
+│   ├── post.html      # Blog post template
+│   └── blog.html      # Blog listing template
+├── _posts/            # Blog posts in markdown format
+├── _sass/             # SCSS stylesheets
+│   ├── _transitions.scss  # Page transition animations
+│   ├── _variables.scss    # Color and size variables
+│   ├── _svg-icons.scss    # Social icons styling
+│   ├── _reset.scss        # CSS reset
+│   └── _highlights.scss   # Code syntax highlighting
+├── assets/            # Static assets
+│   ├── css/           # CSS files
+│   ├── js/            # JavaScript files
+│   └── blog_images/   # Blog post images
+├── css/               # Compiled CSS files
+├── images/            # Main site image assets
+├── tools/             # Interactive web tools
+├── _config.yml        # Jekyll configuration
+├── .cursorrules       # Coding standards and guidelines
+├── Gemfile            # Ruby dependencies
+└── sitemap.xml        # Site map for search engines
+```
 
-Step by step process to make a new entry in the blog:
+## Layout System Explained
 
-1. Create a new file in _posts with [2020-02-02-Hello-World.md](http://2020-02-02-hello-world.md/) YYYY-MM-DD-{Post Title.md}
-2. Define the page structure to be used:
+### _layouts/ Directory
+- **default.html**: Base template for ALL pages
+  - Includes common elements (header, footer, analytics)
+  - Handles page transitions and external link behavior
+  - Use this template when creating new page types
+- **page.html**: Template for static pages (about, links, work summary)
+  - Extends default.html
+  - Adds page-specific styling and structure
+- **post.html**: Template for individual blog posts
+  - Includes post metadata, reading time, social sharing
+  - Handles structured data for SEO
+- **blog.html**: Template for blog listing page
+  - Shows post excerpts, pagination, categories
 
-    ```jsx
-    ---
-    layout: post
-    title:  "{{Post Title}}"
-    ---
-    ```
+### _includes/ Directory (Reusable Components)
+- **header.html**: Navigation bar and site branding
+- **footer.html**: Footer with social links and site info
+- **head.html**: Meta tags, CSS includes, and performance optimizations
+- **meta.html**: SEO meta tags for social sharing
+- **schema.html**: Structured data markup for rich search results
+- **analytics.html**: Google Analytics tracking code
 
-3. Start writing the blog post either in HTML or Markdown or a combination.
-    1. Basics of Markdown : [https://www.markdownguide.org/cheat-sheet/](https://www.markdownguide.org/cheat-sheet/)
-    2. As a hack write the full post in Notion and export that as Markdown
-    3. To include a image just add image in the Images folder and in the file add a image tag:
-    ![{{Image Title}}]("/images/image_name.png")
-    4. To add a hyperlink to the document:
-4. Safe and Refresh to see the latest blog post published!
+### Styling System
+
+#### _sass/ Directory (SCSS Partials)
+- **_variables.scss**: Global color, font, and spacing variables
+- **_reset.scss**: CSS reset for consistent cross-browser rendering
+- **_transitions.scss**: Page transition animations and effects
+- **_svg-icons.scss**: Social media and UI icon styles
+- **_highlights.scss**: Code syntax highlighting themes
+
+#### assets/css/ Directory
+- **critical.css**: Above-the-fold styles loaded first for performance
+- **tools.css**: Styles specific to interactive tools section
+- **header.css**: Header component specific styles
+
+## Writing a New Blog Post: Complete Guide
+
+### Step 1: Create the Post File
+Create a new file in `_posts/` following the naming convention:
+```
+YYYY-MM-DD-Post-Title.md
+```
+Example: `2024-12-07-My-New-Blog-Post.md`
+
+### Step 2: Set Up Front Matter
+Every post must start with YAML front matter:
+
+```yaml
+---
+layout: post
+title: "Your Compelling Post Title"
+description: "A brief description that appears in social shares and search results"
+date: 2024-12-07
+categories: [product-management, technology]  # Optional
+tags: [startup, innovation, AI]               # Optional
+---
+```
+
+### Step 3: Content Structure Best Practices
+
+#### Headers
+Use markdown headers for structure:
+```markdown
+# Main Title (H1) - Only use once per post
+## Major Sections (H2)
+### Subsections (H3)
+#### Minor Points (H4)
+```
+
+#### Text Formatting
+```markdown
+**Bold text for emphasis**
+*Italic text for subtle emphasis*
+`Inline code` for technical terms
+> Blockquotes for important quotes or highlights
+```
+
+#### Lists
+```markdown
+Unordered lists:
+- Point one
+- Point two
+- Point three
+
+Ordered lists:
+1. First step
+2. Second step
+3. Third step
+```
+
+#### Code Blocks
+Use fenced code blocks with language specification:
+```markdown
+```javascript
+function example() {
+    console.log("Hello, world!");
+}
+```
+```
+
+#### Images
+Store images in `/images/` or `/assets/blog_images/` and reference them:
+```markdown
+![Alt text description](/images/image-name.png)
+
+Or with figure caption:
+<figure>
+   <img src="/images/image-name.png" alt="Descriptive alt text" class="center">
+   <figcaption>Your image caption here</figcaption>
+</figure>
+```
+
+#### Links
+```markdown
+[Link text](https://example.com)
+[Internal link](/about)
+```
+
+### Step 4: SEO and Performance Tips
+
+1. **Optimize Images**: Use compressed images and include alt text
+2. **Meta Description**: Keep descriptions under 160 characters
+3. **Internal Linking**: Link to other relevant posts when appropriate
+4. **Headers**: Use logical header hierarchy (H1 > H2 > H3)
+5. **Loading**: For images below the fold, add `loading="lazy"`
+
+### Step 5: Testing Your Post
+
+1. **Local Development**: Run `bundle exec jekyll serve --livereload`
+2. **Preview**: Check at `http://127.0.0.1:4000/`
+3. **Verify**: Test on mobile and desktop
+4. **Check**: Ensure all links work and images load
+
+## Jekyll Liquid Template Variables
+
+Common variables available in posts:
+- `{{ page.title }}` - Post title
+- `{{ page.date }}` - Post date
+- `{{ page.description }}` - Post description
+- `{{ content }}` - Post content
+- `{{ site.title }}` - Site title
+- `{{ site.url }}` - Site URL
+
+## Content Guidelines
+
+### Writing Style
+- Write in clear, conversational tone
+- Break up long paragraphs
+- Use subheadings to organize content
+- Include practical examples
+- End with actionable takeaways
+
+### Technical Posts
+- Include code examples where relevant
+- Explain technical concepts clearly
+- Provide working examples when possible
+- Link to relevant documentation
+
+### Performance Considerations
+- Optimize images before uploading
+- Use lazy loading for images below the fold
+- Keep JavaScript minimal
+- Test load times on mobile connections
+
+## Deployment Process
+
+1. **Local Testing**: Always test locally first
+2. **Git Workflow**: 
+   ```bash
+   git add .
+   git commit -m "Add new blog post: [Post Title]"
+   git push origin master
+   ```
+3. **GitHub Pages**: Site automatically builds and deploys
+4. **Verification**: Check live site after deployment
+
+## Troubleshooting Common Issues
+
+### Liquid Syntax Errors
+- Avoid spaces in template variables: `{{post_title}}` not `{{Post Title}}`
+- Escape curly braces in code examples when needed
+
+### Build Failures
+- Check YAML front matter syntax
+- Verify all images exist
+- Ensure proper markdown formatting
+
+### Styling Issues
+- Follow the coding standards in `.cursorrules`
+- Use existing CSS classes when possible
+- Test responsive design on multiple devices
+
+Remember: Follow the coding standards defined in `.cursorrules` and maintain consistency with existing posts!
 
 -->
