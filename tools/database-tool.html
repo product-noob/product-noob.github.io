@@ -148,7 +148,13 @@ permalink: /tools/database-tool/
       fetchBtn.disabled = true;
       fetchBtn.textContent = 'Fetching...';
 
-      const response = await fetch(`${FETCH_API}?id=${encodeURIComponent(searchName)}`);
+      const response = await fetch(FETCH_API, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name: searchName })
+      });
       
       if (response.ok) {
         const data = await response.json();
