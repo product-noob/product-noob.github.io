@@ -172,9 +172,251 @@ const ToolsUtils = {
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
+  },
+
+  /**
+   * Escape HTML
+   * @param {string} text - Text to escape
+   * @returns {string} Escaped text
+   */
+  escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+};
+
+// Database Tool Functions
+const DatabaseTool = {
+  // API endpoints
+  STORE_API: 'https://store-user-data-942186759114.europe-west1.run.app',
+  FETCH_API: 'https://workspace-user-data-942186759114.europe-west1.run.app',
+
+  /**
+   * Initialize database tool
+   */
+  init() {
+    // Get DOM elements
+    this.userNameInput = document.getElementById('user-name');
+    this.userEmailInput = document.getElementById('user-email');
+    this.searchNameInput = document.getElementById('search-name');
+    this.storeBtn = document.getElementById('store-btn');
+    this.fetchBtn = document.getElementById('fetch-btn');
+    this.clearStoreBtn = document.getElementById('clear-store-form');
+    this.clearSearchBtn = document.getElementById('clear-search-form');
+    this.clearResultsBtn = document.getElementById('clear-results');
+    this.resultsSection = document.getElementById('results-section');
+    this.resultsContainer = document.getElementById('results-container');
+
+    // Add event listeners
+    if (this.storeBtn) this.storeBtn.addEventListener('click', () => this.storeUserData());
+    if (this.fetchBtn) this.fetchBtn.addEventListener('click', () => this.fetchUserData());
+    if (this.clearStoreBtn) this.clearStoreBtn.addEventListener('click', () => this.clearStoreForm());
+    if (this.clearSearchBtn) this.clearSearchBtn.addEventListener('click', () => this.clearSearchForm());
+    if (this.clearResultsBtn) this.clearResultsBtn.addEventListener('click', () => this.clearResults());
+
+    // Add keyboard shortcuts
+    document.addEventListener('keydown', (event) => {
+      // Enter key in store form
+      if ((this.userNameInput === document.activeElement || this.userEmailInput === document.activeElement) && event.key === 'Enter') {
+        this.storeUserData();
+      }
+      // Enter key in search form
+      if (this.searchNameInput === document.activeElement && event.key === 'Enter') {
+        this.fetchUserData();
+      }
+    });
+  },
+
+  /**
+   * Store user data
+   */
+  async storeUserData() {
+    const name = this.userNameInput.value.trim();
+    const email = this.userEmailInput.value.trim();
+
+    if (!name || !email) {
+      ToolsUtils.showToast('Please enter both name and email');
+      return;
+    }
+
+    try {
+      // Disable button during request
+      this.storeBtn.disabled = true;
+      this.storeBtn.textContent = 'Storing...';
+
+      const response = await fetch(this.STORE_API, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email })
+      });
+
+      if (response.ok) {
+        ToolsUtils.showToast('Data stored successfully!');
+        this.clearStoreForm();
+        this.showSuccessResult('Data Stored', `Successfully stored data for ${name} (${email})`);
+      } else {
+        throw new Error(`HTTP ${response.status}: Failed to store data`);
+      }
+    } catch (error) {
+      console.error('Store error:', error);
+      ToolsUtils.showToast('Error storing data: ' + error.message);
+      this.showErrorResult('Store Error', error.message);
+    } finally {
+      // Re-enable button
+      this.storeBtn.disabled = false;
+      this.storeBtn.textContent = 'Store Data';
+    }
+  },
+
+  /**
+   * Fetch user data
+   */
+  async fetchUserData() {
+    const searchName = this.searchNameInput.value.trim();
+
+    if (!searchName) {
+      ToolsUtils.showToast('Please enter a name to search');
+      return;
+    }
+
+    try {
+      // Disable button during request
+      this.fetchBtn.disabled = true;
+      this.fetchBtn.textContent = 'Fetching...';
+
+      const response = await fetch(this.FETCH_API, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name: searchName })
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        if (Array.isArray(data) && data.length > 0) {
+          ToolsUtils.showToast('Data fetched successfully!');
+          this.showUserData(data);
+        } else {
+          ToolsUtils.showToast('No users found with that name');
+          this.showErrorResult('No Results', 'No users found with that name');
+        }
+      } else if (response.status === 404) {
+        throw new Error('User not found');
+      } else {
+        throw new Error(`HTTP ${response.status}: Failed to fetch data`);
+      }
+    } catch (error) {
+      console.error('Fetch error:', error);
+      ToolsUtils.showToast('Error fetching data: ' + error.message);
+      this.showErrorResult('Fetch Error', error.message);
+    } finally {
+      // Re-enable button
+      this.fetchBtn.disabled = false;
+      this.fetchBtn.textContent = 'Fetch Data';
+    }
+  },
+
+  /**
+   * Show user data in results
+   */
+  showUserData(dataArray) {
+    let resultHtml = '<div class="user-data-result">';
+    
+    if (dataArray.length === 1) {
+      resultHtml += '<h4>User Details</h4>';
+    } else {
+      resultHtml += `<h4>Found ${dataArray.length} Users</h4>`;
+    }
+    
+    dataArray.forEach((user, index) => {
+      if (dataArray.length > 1) {
+        resultHtml += `<div class="user-entry"><h5>User ${index + 1}</h5>`;
+      } else {
+        resultHtml += '<div class="user-entry">';
+      }
+      
+      resultHtml += `
+        <div class="data-row">
+          <span class="data-label">Name:</span>
+          <span class="data-value">${ToolsUtils.escapeHtml(user.name)}</span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Email:</span>
+          <span class="data-value">${ToolsUtils.escapeHtml(user.email)}</span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">ID:</span>
+          <span class="data-value">${ToolsUtils.escapeHtml(user.id)}</span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Created:</span>
+          <span class="data-value">${ToolsUtils.escapeHtml(new Date(user.createdAt).toLocaleString())}</span>
+        </div>
+      </div>`;
+    });
+    
+    resultHtml += '</div>';
+    this.resultsContainer.innerHTML = resultHtml;
+    this.resultsSection.style.display = 'block';
+  },
+
+  /**
+   * Show success result
+   */
+  showSuccessResult(title, message) {
+    this.resultsContainer.innerHTML = `
+      <div class="success-result">
+        <h4>${ToolsUtils.escapeHtml(title)}</h4>
+        <p>${ToolsUtils.escapeHtml(message)}</p>
+      </div>
+    `;
+    this.resultsSection.style.display = 'block';
+  },
+
+  /**
+   * Show error result
+   */
+  showErrorResult(title, message) {
+    this.resultsContainer.innerHTML = `
+      <div class="error-result">
+        <h4>${ToolsUtils.escapeHtml(title)}</h4>
+        <p>${ToolsUtils.escapeHtml(message)}</p>
+      </div>
+    `;
+    this.resultsSection.style.display = 'block';
+  },
+
+  /**
+   * Clear store form
+   */
+  clearStoreForm() {
+    this.userNameInput.value = '';
+    this.userEmailInput.value = '';
+    this.userNameInput.focus();
+  },
+
+  /**
+   * Clear search form
+   */
+  clearSearchForm() {
+    this.searchNameInput.value = '';
+    this.searchNameInput.focus();
+  },
+
+  /**
+   * Clear results
+   */
+  clearResults() {
+    this.resultsContainer.innerHTML = '';
+    this.resultsSection.style.display = 'none';
   }
 };
 
 // Export the modules
 window.ToolsUI = ToolsUI;
-window.ToolsUtils = ToolsUtils; 
+window.ToolsUtils = ToolsUtils;
+window.DatabaseTool = DatabaseTool; 
