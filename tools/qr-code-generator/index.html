@@ -5,6 +5,8 @@ permalink: /tools/qr-code-generator/
 
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/tools.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<script src="{{ site.baseurl }}/assets/js/tools.js"></script>
+<script src="{{ site.baseurl }}/assets/js/page-transitions.js" defer></script>
 
 <div class="tools-container">
   <div id="tool-header"></div>
@@ -32,150 +34,7 @@ permalink: /tools/qr-code-generator/
     });
     document.getElementById('tool-header').appendChild(header);
 
-    // Create action buttons using common component
-    const generateButton = ToolsUI.createActionButton({
-      text: 'Generate QR',
-      onClick: generateQR
-    });
-    const downloadButton = ToolsUI.createActionButton({
-      text: 'Download QR Code',
-      onClick: downloadQR
-    });
-    downloadButton.style.display = 'none';
-    downloadButton.id = 'download-qr';
-
-    const actionButtons = document.getElementById('action-buttons');
-    actionButtons.appendChild(generateButton);
-    actionButtons.appendChild(downloadButton);
+    // Initialize QR code tool
+    QRCodeTool.init();
   });
-
-  // Make sure generateQR is defined in the global window scope
-  let qr = null;
-  
-  // Check if QRious library is loaded properly
-  document.addEventListener('DOMContentLoaded', function() {
-    if (typeof QRious === 'undefined') {
-      console.error('QRious library not loaded!');
-      ToolsUtils.showToast('QR Code library failed to load. Please refresh the page.', 5000);
-      return;
-    }
-    console.log('QRious library loaded successfully!');
-  });
-  
-  // Define generateQR in global scope
-  window.generateQR = function() {
-    const text = document.getElementById('qr-input').value;
-    if (!text) {
-      ToolsUtils.showToast('Please enter some text or URL');
-      return;
-    }
-    
-    // Check if QRious library is available
-    if (typeof QRious === 'undefined') {
-      console.error('QRious library not loaded!');
-      ToolsUtils.showToast('QR Code library is not available. Please refresh the page.', 5000);
-      return;
-    }
-    
-    const qrOutput = document.getElementById('qr-output');
-    qrOutput.innerHTML = '';
-    
-    try {
-      // Create a canvas element for the QR code
-      const canvas = document.createElement('canvas');
-      canvas.id = 'qr-canvas';
-      qrOutput.appendChild(canvas);
-      
-      // Generate QR code using QRious
-      qr = new QRious({
-        element: canvas,
-        value: text,
-        size: 256,
-        background: '#ffffff',
-        foreground: '#000000',
-        level: 'H' // Error correction level
-      });
-      
-      document.getElementById('download-qr').style.display = 'block';
-    } catch (error) {
-      console.error('Error generating QR code:', error);
-      ToolsUtils.showToast('Error generating QR code: ' + error.message);
-    }
-  }
-  
-  // Define downloadQR in global scope
-  window.downloadQR = function() {
-    if (!qr) {
-      ToolsUtils.showToast('No QR code to download');
-      return;
-    }
-    
-    try {
-      ToolsUtils.downloadFile(
-        qr.toDataURL('image/png'),
-        'qrcode.png',
-        'image/png'
-      );
-    } catch (error) {
-      console.error('Error downloading QR code:', error);
-      ToolsUtils.showToast('Error downloading QR code: ' + error.message);
-    }
-  }
 </script>
-
-<style>
-  /* QR Code Generator Styles */
-  .qr-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    padding: 24px;
-    max-width: 640px;
-    margin: 0 auto;
-  }
-  
-  .qr-preview {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-    min-height: 260px;
-    padding: 10px;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-  }
-  
-  #qr-input {
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #e0e0e0;
-    width: 100%;
-    font-family: inherit;
-    font-size: 16px;
-  }
-  
-  .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .input-group label {
-    font-weight: 500;
-    color: #333;
-  }
-  
-  #action-buttons {
-    display: flex;
-    gap: 10px;
-  }
-  
-  /* Make QR code display nicer */
-  #qr-output img {
-    display: block;
-    margin: 0 auto;
-  }
-</style>

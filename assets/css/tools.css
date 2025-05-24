@@ -962,3 +962,478 @@ select optgroup {
   margin: 0;
   font-size: 14px;
 }
+
+/* Base64 Tool Specific Styles */
+.base64-tool {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+}
+
+.base64-textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: vertical;
+  background-color: #f9f9f9;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.base64-textarea:focus {
+  outline: none;
+  border-color: #4183c4;
+  box-shadow: 0 0 0 2px rgba(65, 131, 196, 0.2);
+  background-color: white;
+}
+
+/* JSON Formatter Tool Specific Styles */
+.json-formatter {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+}
+
+.json-textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: vertical;
+  background-color: #f9f9f9;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.json-textarea:focus {
+  outline: none;
+  border-color: #4183c4;
+  box-shadow: 0 0 0 2px rgba(65, 131, 196, 0.2);
+  background-color: white;
+}
+
+.json-output {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.json-output pre {
+  margin: 0;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 12px;
+  font-size: 14px;
+  display: none;
+}
+
+/* Calculator Tool Specific Styles */
+.calculator {
+  max-width: 400px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.calculator-display {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 24px;
+  text-align: right;
+}
+
+.calculator-history {
+  font-size: 14px;
+  opacity: 0.8;
+  min-height: 20px;
+  margin-bottom: 8px;
+}
+
+.calculator-input {
+  font-size: 48px;
+  font-weight: 300;
+  word-wrap: break-word;
+  word-break: break-all;
+  max-width: 100%;
+}
+
+.calculator-keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background-color: #e0e0e0;
+}
+
+.calculator-key {
+  background: #f5f5f5;
+  border: none;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+}
+
+.calculator-key:hover {
+  background: #e8e8e8;
+}
+
+.calculator-key:active {
+  background: #d0d0d0;
+  transform: scale(0.95);
+}
+
+.calculator-key.function {
+  background: #ff9500;
+  color: white;
+}
+
+.calculator-key.function:hover {
+  background: #e6860a;
+}
+
+.calculator-key.operator {
+  background: #ff9500;
+  color: white;
+}
+
+.calculator-key.operator:hover {
+  background: #e6860a;
+}
+
+.calculator-key.equals {
+  background: #ff9500;
+  color: white;
+}
+
+.calculator-key.equals:hover {
+  background: #e6860a;
+}
+
+.calculator-key.number {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.calculator-key.number:hover {
+  background: #e8e8e8;
+}
+
+/* QR Code Generator Tool Specific Styles */
+.qr-generator {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.qr-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.qr-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  min-height: 260px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+#qr-input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  width: 100%;
+  font-family: inherit;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  font-weight: 500;
+  color: #333;
+}
+
+#action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Make QR code display nicer */
+#qr-output img {
+  display: block;
+  margin: 0 auto;
+}
+
+/* PolyChat Tool Specific Styles */
+.polychat-container {
+  display: flex;
+  height: calc(100vh - 200px);
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.polychat-sidebar {
+  width: 300px;
+  background: #f8f9fa;
+  padding: 20px;
+  overflow-y: auto;
+  border-right: 1px solid #e0e0e0;
+}
+
+.polychat-chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-window {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chat-input-container {
+  padding: 20px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  gap: 12px;
+}
+
+.config-section {
+  margin-bottom: 24px;
+}
+
+.section-header-collapsible {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.toggle-section {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.key-management-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.api-key-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.provider-key-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.key-status {
+  font-size: 12px;
+  color: #666;
+}
+
+.key-input-group {
+  display: flex;
+  gap: 8px;
+}
+
+.api-key-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.small-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  background: #f0f0f0;
+  color: #333;
+}
+
+.small-button:hover {
+  background: #e0e0e0;
+}
+
+.reset-key {
+  background: #ff6b6b;
+  color: white;
+}
+
+.reset-key:hover {
+  background: #ff5252;
+}
+
+.full-width {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.range-value {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin-top: 8px;
+}
+
+.message {
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.assistant-message {
+  background: #f1f3f4;
+}
+
+.user-message {
+  background: #e3f2fd;
+  margin-left: auto;
+  max-width: 70%;
+}
+
+.message-content {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#user-input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  resize: none;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+#send-button {
+  padding: 12px;
+  background: #4183c4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#send-button:hover {
+  background: #3a76b0;
+}
+
+.mobile-menu-button,
+.mobile-reset-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .polychat-container {
+    flex-direction: column;
+    height: calc(100vh - 100px);
+  }
+  
+  .polychat-sidebar {
+    width: 100%;
+    height: auto;
+    display: none;
+  }
+  
+  .mobile-menu-button,
+  .mobile-reset-button {
+    display: block;
+  }
+  
+  .polychat-sidebar.mobile-open {
+    display: block;
+  }
+}

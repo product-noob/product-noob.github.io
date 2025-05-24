@@ -416,7 +416,668 @@ const DatabaseTool = {
   }
 };
 
+// Base64 Tool Functions
+const Base64Tool = {
+  /**
+   * Initialize base64 tool
+   */
+  init() {
+    // Get DOM elements
+    this.inputText = document.getElementById('input-text');
+    this.outputText = document.getElementById('output-text');
+    this.encodeBtn = document.getElementById('encode-btn');
+    this.decodeBtn = document.getElementById('decode-btn');
+    this.clearInputBtn = document.getElementById('clear-input');
+    this.clearOutputBtn = document.getElementById('clear-output');
+    this.copyInputBtn = document.getElementById('copy-input');
+    this.copyOutputBtn = document.getElementById('copy-output');
+
+    // Add event listeners
+    if (this.encodeBtn) this.encodeBtn.addEventListener('click', () => this.encodeBase64());
+    if (this.decodeBtn) this.decodeBtn.addEventListener('click', () => this.decodeBase64());
+    if (this.clearInputBtn) this.clearInputBtn.addEventListener('click', () => this.clearInput());
+    if (this.clearOutputBtn) this.clearOutputBtn.addEventListener('click', () => this.clearOutput());
+    if (this.copyInputBtn) this.copyInputBtn.addEventListener('click', () => this.copyInput());
+    if (this.copyOutputBtn) this.copyOutputBtn.addEventListener('click', () => this.copyOutput());
+
+    // Add keyboard shortcuts
+    document.addEventListener('keydown', (event) => {
+      // Ctrl/Cmd + Enter to encode
+      if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+        this.encodeBase64();
+      }
+      // Ctrl/Cmd + Shift + Enter to decode
+      if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key === 'Enter') {
+        this.decodeBase64();
+      }
+    });
+  },
+
+  /**
+   * Encode text to Base64
+   */
+  encodeBase64() {
+    try {
+      const text = this.inputText.value;
+      if (!text) {
+        ToolsUtils.showToast('Please enter text to encode');
+        return;
+      }
+      const encoded = btoa(unescape(encodeURIComponent(text)));
+      this.outputText.value = encoded;
+      ToolsUtils.showToast('Text encoded successfully');
+    } catch (error) {
+      ToolsUtils.showToast('Error encoding text');
+      console.error('Encoding error:', error);
+    }
+  },
+
+  /**
+   * Decode Base64 to text
+   */
+  decodeBase64() {
+    try {
+      const text = this.inputText.value;
+      if (!text) {
+        ToolsUtils.showToast('Please enter text to decode');
+        return;
+      }
+      const decoded = decodeURIComponent(escape(atob(text)));
+      this.outputText.value = decoded;
+      ToolsUtils.showToast('Text decoded successfully');
+    } catch (error) {
+      ToolsUtils.showToast('Error decoding text. Make sure the input is valid Base64');
+      console.error('Decoding error:', error);
+    }
+  },
+
+  /**
+   * Clear input
+   */
+  clearInput() {
+    this.inputText.value = '';
+    this.inputText.focus();
+  },
+
+  /**
+   * Clear output
+   */
+  clearOutput() {
+    this.outputText.value = '';
+  },
+
+  /**
+   * Copy input to clipboard
+   */
+  async copyInput() {
+    if (!this.inputText.value) {
+      ToolsUtils.showToast('Nothing to copy');
+      return;
+    }
+    await ToolsUtils.copyToClipboard(this.inputText.value);
+  },
+
+  /**
+   * Copy output to clipboard
+   */
+  async copyOutput() {
+    if (!this.outputText.value) {
+      ToolsUtils.showToast('Nothing to copy');
+      return;
+    }
+    await ToolsUtils.copyToClipboard(this.outputText.value);
+  }
+};
+
+// JSON Formatter Tool Functions
+const JSONFormatterTool = {
+  /**
+   * Initialize JSON formatter tool
+   */
+  init() {
+    // Get DOM elements
+    this.inputText = document.getElementById('input-text');
+    this.outputText = document.getElementById('output-text');
+    this.errorMessage = document.getElementById('error-message');
+    this.formatBtn = document.getElementById('format-btn');
+    this.minifyBtn = document.getElementById('minify-btn');
+    this.clearInputBtn = document.getElementById('clear-input');
+    this.clearOutputBtn = document.getElementById('clear-output');
+    this.copyInputBtn = document.getElementById('copy-input');
+    this.copyOutputBtn = document.getElementById('copy-output');
+
+    // Add event listeners
+    if (this.formatBtn) this.formatBtn.addEventListener('click', () => this.formatJSON());
+    if (this.minifyBtn) this.minifyBtn.addEventListener('click', () => this.minifyJSON());
+    if (this.clearInputBtn) this.clearInputBtn.addEventListener('click', () => this.clearInput());
+    if (this.clearOutputBtn) this.clearOutputBtn.addEventListener('click', () => this.clearOutput());
+    if (this.copyInputBtn) this.copyInputBtn.addEventListener('click', () => this.copyInput());
+    if (this.copyOutputBtn) this.copyOutputBtn.addEventListener('click', () => this.copyOutput());
+
+    // Add keyboard shortcuts
+    document.addEventListener('keydown', (event) => {
+      // Ctrl/Cmd + Enter to format
+      if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+        this.formatJSON();
+      }
+    });
+  },
+
+  /**
+   * Format JSON with proper indentation
+   */
+  formatJSON() {
+    try {
+      const input = this.inputText.value.trim();
+      if (!input) {
+        ToolsUtils.showToast('Please enter JSON to format');
+        return;
+      }
+
+      // Parse and stringify with indentation
+      const parsed = JSON.parse(input);
+      const formatted = JSON.stringify(parsed, null, 2);
+      
+      // Update output with syntax highlighting
+      this.outputText.textContent = formatted;
+      if (typeof hljs !== 'undefined') {
+        hljs.highlightElement(this.outputText);
+      }
+      
+      // Clear any previous error
+      if (this.errorMessage) {
+        this.errorMessage.textContent = '';
+        this.errorMessage.style.display = 'none';
+      }
+      
+      ToolsUtils.showToast('JSON formatted successfully');
+    } catch (error) {
+      // Show error message
+      if (this.errorMessage) {
+        this.errorMessage.textContent = `Error: ${error.message}`;
+        this.errorMessage.style.display = 'block';
+      }
+      this.outputText.textContent = '';
+      ToolsUtils.showToast('Invalid JSON');
+    }
+  },
+
+  /**
+   * Minify JSON
+   */
+  minifyJSON() {
+    try {
+      const input = this.inputText.value.trim();
+      if (!input) {
+        ToolsUtils.showToast('Please enter JSON to minify');
+        return;
+      }
+
+      // Parse and stringify without spaces
+      const parsed = JSON.parse(input);
+      const minified = JSON.stringify(parsed);
+      
+      // Update input with minified version
+      this.inputText.value = minified;
+      
+      // Clear any previous error
+      if (this.errorMessage) {
+        this.errorMessage.textContent = '';
+        this.errorMessage.style.display = 'none';
+      }
+      
+      ToolsUtils.showToast('JSON minified successfully');
+    } catch (error) {
+      if (this.errorMessage) {
+        this.errorMessage.textContent = `Error: ${error.message}`;
+        this.errorMessage.style.display = 'block';
+      }
+      ToolsUtils.showToast('Invalid JSON');
+    }
+  },
+
+  /**
+   * Clear input
+   */
+  clearInput() {
+    this.inputText.value = '';
+    this.inputText.focus();
+  },
+
+  /**
+   * Clear output
+   */
+  clearOutput() {
+    this.outputText.textContent = '';
+    if (this.errorMessage) {
+      this.errorMessage.textContent = '';
+      this.errorMessage.style.display = 'none';
+    }
+  },
+
+  /**
+   * Copy input to clipboard
+   */
+  async copyInput() {
+    if (!this.inputText.value) {
+      ToolsUtils.showToast('Nothing to copy');
+      return;
+    }
+    await ToolsUtils.copyToClipboard(this.inputText.value);
+  },
+
+  /**
+   * Copy output to clipboard
+   */
+  async copyOutput() {
+    if (!this.outputText.textContent) {
+      ToolsUtils.showToast('Nothing to copy');
+      return;
+    }
+    await ToolsUtils.copyToClipboard(this.outputText.textContent);
+  }
+};
+
+// Calculator Tool Functions
+const CalculatorTool = {
+  displayValue: '0',
+  firstOperand: null,
+  operator: null,
+  waitingForSecondOperand: false,
+  calculationHistory: '',
+  historyDisplay: null,
+  inputDisplay: null,
+
+  /**
+   * Initialize calculator tool
+   */
+  init() {
+    // Get DOM elements
+    this.historyDisplay = document.getElementById('history');
+    this.inputDisplay = document.getElementById('input');
+    
+    if (!this.historyDisplay || !this.inputDisplay) {
+      return;
+    }
+    
+    // Reset calculator state
+    this.resetCalculator();
+    
+    // Remove any existing event listeners
+    const oldKeypad = document.querySelector('.calculator-keypad');
+    if (oldKeypad) {
+      const newKeypad = oldKeypad.cloneNode(true);
+      oldKeypad.parentNode.replaceChild(newKeypad, oldKeypad);
+    }
+    
+    // Set up click handlers on all buttons
+    const keys = document.querySelectorAll('.calculator-key');
+    keys.forEach(key => {
+      key.addEventListener('click', (event) => this.handleButtonClick(event));
+      key.addEventListener('touchstart', (event) => this.handleButtonClick(event));
+    });
+    
+    // Add keyboard support
+    document.addEventListener('keydown', (event) => this.handleKeyPress(event));
+    
+    // Initialize the display
+    this.updateDisplay();
+  },
+
+  /**
+   * Reset calculator state
+   */
+  resetCalculator() {
+    this.displayValue = '0';
+    this.firstOperand = null;
+    this.operator = null;
+    this.waitingForSecondOperand = false;
+    this.calculationHistory = '';
+    this.updateDisplay();
+  },
+
+  /**
+   * Update the calculator display
+   */
+  updateDisplay() {
+    if (this.inputDisplay) this.inputDisplay.textContent = this.displayValue;
+    if (this.historyDisplay) this.historyDisplay.textContent = this.calculationHistory;
+  },
+
+  /**
+   * Handle button clicks
+   */
+  handleButtonClick(event) {
+    // Only prevent default for touch events
+    if (event.type === 'touchstart') {
+      event.preventDefault();
+    }
+    
+    const key = event.currentTarget;
+    
+    // Number buttons
+    if (key.classList.contains('number')) {
+      if (key.dataset.digit === '.') {
+        this.inputDecimal();
+      } else {
+        this.inputDigit(key.dataset.digit);
+      }
+      this.updateDisplay();
+      return;
+    }
+    
+    // Operator buttons
+    if (key.classList.contains('operator')) {
+      this.handleOperator(key.dataset.action);
+      this.updateDisplay();
+      return;
+    }
+    
+    // Function buttons
+    switch (key.dataset.action) {
+      case 'calculate':
+        if (this.operator && this.firstOperand !== null) {
+          this.performCalculation();
+        }
+        break;
+      case 'clear':
+        this.resetCalculator();
+        break;
+      case 'negative':
+        this.toggleNegative();
+        break;
+      case 'percentage':
+        this.calculatePercentage();
+        break;
+      case 'backspace':
+        this.handleBackspace();
+        break;
+    }
+    this.updateDisplay();
+  },
+
+  /**
+   * Input a digit
+   */
+  inputDigit(digit) {
+    if (this.waitingForSecondOperand) {
+      this.displayValue = digit;
+      this.waitingForSecondOperand = false;
+    } else {
+      this.displayValue = this.displayValue === '0' ? digit : this.displayValue + digit;
+    }
+  },
+
+  /**
+   * Input a decimal point
+   */
+  inputDecimal() {
+    if (this.waitingForSecondOperand) {
+      this.displayValue = '0.';
+      this.waitingForSecondOperand = false;
+      return;
+    }
+
+    if (!this.displayValue.includes('.')) {
+      this.displayValue += '.';
+    }
+  },
+
+  /**
+   * Handle operator input
+   */
+  handleOperator(nextOperator) {
+    const inputValue = parseFloat(this.displayValue);
+
+    if (this.firstOperand === null) {
+      this.firstOperand = inputValue;
+    } else if (this.operator) {
+      const result = this.calculate();
+
+      this.displayValue = `${parseFloat(result.toFixed(7))}`;
+      this.firstOperand = result;
+    }
+
+    this.waitingForSecondOperand = true;
+    this.operator = nextOperator;
+  },
+
+  /**
+   * Calculate result
+   */
+  calculate() {
+    const prev = this.firstOperand;
+    const next = parseFloat(this.displayValue);
+
+    if (prev === null || next === null) return next;
+
+    switch (this.operator) {
+      case 'add':
+        return prev + next;
+      case 'subtract':
+        return prev - next;
+      case 'multiply':
+        return prev * next;
+      case 'divide':
+        return next !== 0 ? prev / next : 0;
+      default:
+        return next;
+    }
+  },
+
+  /**
+   * Perform calculation and update history
+   */
+  performCalculation() {
+    const result = this.calculate();
+    const operatorSymbols = {
+      'add': '+',
+      'subtract': '−',
+      'multiply': '×',
+      'divide': '÷'
+    };
+    
+    this.calculationHistory = `${this.firstOperand} ${operatorSymbols[this.operator]} ${this.displayValue} =`;
+    this.displayValue = `${parseFloat(result.toFixed(7))}`;
+    this.firstOperand = null;
+    this.operator = null;
+    this.waitingForSecondOperand = true;
+  },
+
+  /**
+   * Toggle negative
+   */
+  toggleNegative() {
+    if (this.displayValue === '0') return;
+    
+    if (this.displayValue.charAt(0) === '-') {
+      this.displayValue = this.displayValue.slice(1);
+    } else {
+      this.displayValue = '-' + this.displayValue;
+    }
+  },
+
+  /**
+   * Calculate percentage
+   */
+  calculatePercentage() {
+    const value = parseFloat(this.displayValue);
+    this.displayValue = `${value / 100}`;
+  },
+
+  /**
+   * Handle backspace
+   */
+  handleBackspace() {
+    if (this.displayValue.length > 1) {
+      this.displayValue = this.displayValue.slice(0, -1);
+    } else {
+      this.displayValue = '0';
+    }
+  },
+
+  /**
+   * Handle keyboard input
+   */
+  handleKeyPress(event) {
+    const key = event.key;
+    
+    if ('0123456789'.includes(key)) {
+      this.inputDigit(key);
+      this.updateDisplay();
+    } else if (key === '.') {
+      this.inputDecimal();
+      this.updateDisplay();
+    } else if (key === 'Enter' || key === '=') {
+      if (this.operator && this.firstOperand !== null) {
+        this.performCalculation();
+        this.updateDisplay();
+      }
+    } else if (key === 'Escape' || key.toLowerCase() === 'c') {
+      this.resetCalculator();
+    } else if (key === 'Backspace') {
+      this.handleBackspace();
+      this.updateDisplay();
+    } else if (key === '+') {
+      this.handleOperator('add');
+      this.updateDisplay();
+    } else if (key === '-') {
+      this.handleOperator('subtract');
+      this.updateDisplay();
+    } else if (key === '*') {
+      this.handleOperator('multiply');
+      this.updateDisplay();
+    } else if (key === '/') {
+      event.preventDefault();
+      this.handleOperator('divide');
+      this.updateDisplay();
+    } else if (key === '%') {
+      this.calculatePercentage();
+      this.updateDisplay();
+    }
+  }
+};
+
+// QR Code Generator Tool Functions
+const QRCodeTool = {
+  qr: null,
+
+  /**
+   * Initialize QR code generator tool
+   */
+  init() {
+    // Check if QRious library is loaded
+    if (typeof QRious === 'undefined') {
+      console.error('QRious library not loaded!');
+      ToolsUtils.showToast('QR Code library failed to load. Please refresh the page.', 5000);
+      return;
+    }
+    console.log('QRious library loaded successfully!');
+
+    // Create action buttons using common component
+    const generateButton = ToolsUI.createActionButton({
+      text: 'Generate QR',
+      onClick: () => this.generateQR()
+    });
+    
+    const downloadButton = ToolsUI.createActionButton({
+      text: 'Download QR Code',
+      onClick: () => this.downloadQR()
+    });
+    downloadButton.style.display = 'none';
+    downloadButton.id = 'download-qr';
+
+    const actionButtons = document.getElementById('action-buttons');
+    if (actionButtons) {
+      actionButtons.appendChild(generateButton);
+      actionButtons.appendChild(downloadButton);
+    }
+
+    // Add keyboard shortcut for generating QR
+    document.addEventListener('keydown', (event) => {
+      if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+        this.generateQR();
+      }
+    });
+  },
+
+  /**
+   * Generate QR code
+   */
+  generateQR() {
+    const text = document.getElementById('qr-input').value;
+    if (!text) {
+      ToolsUtils.showToast('Please enter some text or URL');
+      return;
+    }
+    
+    // Check if QRious library is available
+    if (typeof QRious === 'undefined') {
+      console.error('QRious library not loaded!');
+      ToolsUtils.showToast('QR Code library is not available. Please refresh the page.', 5000);
+      return;
+    }
+    
+    const qrOutput = document.getElementById('qr-output');
+    if (!qrOutput) return;
+    
+    qrOutput.innerHTML = '';
+    
+    try {
+      // Create a canvas element for the QR code
+      const canvas = document.createElement('canvas');
+      canvas.id = 'qr-canvas';
+      qrOutput.appendChild(canvas);
+      
+      // Generate QR code using QRious
+      this.qr = new QRious({
+        element: canvas,
+        value: text,
+        size: 256,
+        background: '#ffffff',
+        foreground: '#000000',
+        level: 'H' // Error correction level
+      });
+      
+      const downloadBtn = document.getElementById('download-qr');
+      if (downloadBtn) {
+        downloadBtn.style.display = 'block';
+      }
+
+      ToolsUtils.showToast('QR code generated successfully');
+    } catch (error) {
+      console.error('Error generating QR code:', error);
+      ToolsUtils.showToast('Error generating QR code: ' + error.message);
+    }
+  },
+
+  /**
+   * Download QR code
+   */
+  downloadQR() {
+    if (!this.qr) {
+      ToolsUtils.showToast('No QR code to download');
+      return;
+    }
+    
+    try {
+      ToolsUtils.downloadFile(
+        this.qr.toDataURL('image/png'),
+        'qrcode.png',
+        'image/png'
+      );
+    } catch (error) {
+      console.error('Error downloading QR code:', error);
+      ToolsUtils.showToast('Error downloading QR code: ' + error.message);
+    }
+  }
+};
+
 // Export the modules
 window.ToolsUI = ToolsUI;
 window.ToolsUtils = ToolsUtils;
-window.DatabaseTool = DatabaseTool; 
+window.DatabaseTool = DatabaseTool;
+window.Base64Tool = Base64Tool;
+window.JSONFormatterTool = JSONFormatterTool;
+window.CalculatorTool = CalculatorTool;
+window.QRCodeTool = QRCodeTool; 
