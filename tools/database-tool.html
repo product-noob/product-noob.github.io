@@ -1,0 +1,436 @@
+---
+layout: page
+permalink: /tools/database-tool/
+---
+
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/tools.css">
+<script src="{{ site.baseurl }}/assets/js/page-transitions.js" defer></script>
+
+<div class="tools-container">
+  <div id="tool-header"></div>
+
+  <div class="database-tool">
+    <!-- Store Data Section -->
+    <div class="input-section">
+      <div class="section-header">
+        <h3>Store User Data</h3>
+        <div class="section-actions">
+          <button class="action-button" id="clear-store-form">Clear</button>
+        </div>
+      </div>
+      <div class="form-container">
+        <div class="form-group">
+          <label for="user-name">Name</label>
+          <input type="text" id="user-name" class="form-input" placeholder="Enter user name..." required>
+        </div>
+        <div class="form-group">
+          <label for="user-email">Email</label>
+          <input type="email" id="user-email" class="form-input" placeholder="Enter user email..." required>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <button class="action-button primary" id="store-btn">Store Data</button>
+    </div>
+
+    <!-- Fetch Data Section -->
+    <div class="input-section">
+      <div class="section-header">
+        <h3>Fetch User Data</h3>
+        <div class="section-actions">
+          <button class="action-button" id="clear-search-form">Clear</button>
+        </div>
+      </div>
+      <div class="form-container">
+        <div class="form-group">
+          <label for="search-name">Search by Name</label>
+          <input type="text" id="search-name" class="form-input" placeholder="Enter name to search..." required>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <button class="action-button primary" id="fetch-btn">Fetch Data</button>
+    </div>
+
+    <!-- Results Section -->
+    <div class="output-section" id="results-section" style="display: none;">
+      <div class="section-header">
+        <h3>Results</h3>
+        <div class="section-actions">
+          <button class="action-button" id="clear-results">Clear</button>
+        </div>
+      </div>
+      <div id="results-container" class="results-display"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Initialize tool header using common component
+  document.addEventListener('DOMContentLoaded', function() {
+    const header = ToolsUI.createToolHeader({
+      title: 'Database Tool',
+      description: 'Used Google Cloud Run to store and retrieve user data with a simple interface to learn about Cloud and API calls. Perfect for managing user information and quick data lookups. Try adding your entry and test it out!'
+    });
+    document.getElementById('tool-header').appendChild(header);
+  });
+
+  // Get DOM elements
+  const userNameInput = document.getElementById('user-name');
+  const userEmailInput = document.getElementById('user-email');
+  const searchNameInput = document.getElementById('search-name');
+  const storeBtn = document.getElementById('store-btn');
+  const fetchBtn = document.getElementById('fetch-btn');
+  const clearStoreBtn = document.getElementById('clear-store-form');
+  const clearSearchBtn = document.getElementById('clear-search-form');
+  const clearResultsBtn = document.getElementById('clear-results');
+  const resultsSection = document.getElementById('results-section');
+  const resultsContainer = document.getElementById('results-container');
+
+  // API endpoints
+  const STORE_API = 'https://store-user-data-942186759114.europe-west1.run.app';
+  const FETCH_API = 'https://workspace-user-data-942186759114.europe-west1.run.app';
+
+  // Store user data
+  async function storeUserData() {
+    const name = userNameInput.value.trim();
+    const email = userEmailInput.value.trim();
+
+    if (!name || !email) {
+      ToolsUtils.showToast('Please enter both name and email');
+      return;
+    }
+
+    try {
+      // Disable button during request
+      storeBtn.disabled = true;
+      storeBtn.textContent = 'Storing...';
+
+      const response = await fetch(STORE_API, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email })
+      });
+
+      if (response.ok) {
+        ToolsUtils.showToast('Data stored successfully!');
+        clearStoreForm();
+        showSuccessResult('Data Stored', `Successfully stored data for ${name} (${email})`);
+      } else {
+        throw new Error(`HTTP ${response.status}: Failed to store data`);
+      }
+    } catch (error) {
+      console.error('Store error:', error);
+      ToolsUtils.showToast('Error storing data: ' + error.message);
+      showErrorResult('Store Error', error.message);
+    } finally {
+      // Re-enable button
+      storeBtn.disabled = false;
+      storeBtn.textContent = 'Store Data';
+    }
+  }
+
+  // Fetch user data
+  async function fetchUserData() {
+    const searchName = searchNameInput.value.trim();
+
+    if (!searchName) {
+      ToolsUtils.showToast('Please enter a name to search');
+      return;
+    }
+
+    try {
+      // Disable button during request
+      fetchBtn.disabled = true;
+      fetchBtn.textContent = 'Fetching...';
+
+      const response = await fetch(`${FETCH_API}?id=${encodeURIComponent(searchName)}`);
+      
+      if (response.ok) {
+        const data = await response.json();
+        ToolsUtils.showToast('Data fetched successfully!');
+        showUserData(data);
+      } else if (response.status === 404) {
+        throw new Error('User not found');
+      } else {
+        throw new Error(`HTTP ${response.status}: Failed to fetch data`);
+      }
+    } catch (error) {
+      console.error('Fetch error:', error);
+      ToolsUtils.showToast('Error fetching data: ' + error.message);
+      showErrorResult('Fetch Error', error.message);
+    } finally {
+      // Re-enable button
+      fetchBtn.disabled = false;
+      fetchBtn.textContent = 'Fetch Data';
+    }
+  }
+
+  // Show user data in results
+  function showUserData(data) {
+    resultsContainer.innerHTML = `
+      <div class="user-data-result">
+        <h4>User Details</h4>
+        <div class="data-row">
+          <span class="data-label">Name:</span>
+          <span class="data-value">${escapeHtml(data.name)}</span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Email:</span>
+          <span class="data-value">${escapeHtml(data.email)}</span>
+        </div>
+      </div>
+    `;
+    resultsSection.style.display = 'block';
+  }
+
+  // Show success result
+  function showSuccessResult(title, message) {
+    resultsContainer.innerHTML = `
+      <div class="success-result">
+        <h4>${escapeHtml(title)}</h4>
+        <p>${escapeHtml(message)}</p>
+      </div>
+    `;
+    resultsSection.style.display = 'block';
+  }
+
+  // Show error result
+  function showErrorResult(title, message) {
+    resultsContainer.innerHTML = `
+      <div class="error-result">
+        <h4>${escapeHtml(title)}</h4>
+        <p>${escapeHtml(message)}</p>
+      </div>
+    `;
+    resultsSection.style.display = 'block';
+  }
+
+  // Clear store form
+  function clearStoreForm() {
+    userNameInput.value = '';
+    userEmailInput.value = '';
+    userNameInput.focus();
+  }
+
+  // Clear search form
+  function clearSearchForm() {
+    searchNameInput.value = '';
+    searchNameInput.focus();
+  }
+
+  // Clear results
+  function clearResults() {
+    resultsContainer.innerHTML = '';
+    resultsSection.style.display = 'none';
+  }
+
+  // Escape HTML to prevent XSS
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // Add event listeners
+  storeBtn.addEventListener('click', storeUserData);
+  fetchBtn.addEventListener('click', fetchUserData);
+  clearStoreBtn.addEventListener('click', clearStoreForm);
+  clearSearchBtn.addEventListener('click', clearSearchForm);
+  clearResultsBtn.addEventListener('click', clearResults);
+
+  // Add keyboard shortcuts
+  document.addEventListener('keydown', function(event) {
+    // Enter key in store form
+    if ((userNameInput === document.activeElement || userEmailInput === document.activeElement) && event.key === 'Enter') {
+      storeUserData();
+    }
+    // Enter key in search form
+    if (searchNameInput === document.activeElement && event.key === 'Enter') {
+      fetchUserData();
+    }
+  });
+</script>
+
+<style>
+  .database-tool {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+  }
+
+  .input-section,
+  .output-section {
+    margin-bottom: 24px;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .section-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+  }
+
+  .section-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .form-container {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    background-color: white;
+    box-sizing: border-box;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: #4183c4;
+    box-shadow: 0 0 0 2px rgba(65, 131, 196, 0.2);
+  }
+
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 24px 0;
+  }
+
+  .action-button.primary {
+    background-color: #4183c4;
+    font-size: 16px;
+    padding: 12px 24px;
+    min-width: 120px;
+  }
+
+  .action-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .results-display {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+  }
+
+  .user-data-result h4,
+  .success-result h4,
+  .error-result h4 {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .user-data-result h4 {
+    color: #333;
+  }
+
+  .success-result {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+  }
+
+  .success-result h4 {
+    color: #155724;
+  }
+
+  .error-result {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+  }
+
+  .error-result h4 {
+    color: #721c24;
+  }
+
+  .data-row {
+    display: flex;
+    margin-bottom: 8px;
+    align-items: center;
+  }
+
+  .data-row:last-child {
+    margin-bottom: 0;
+  }
+
+  .data-label {
+    font-weight: 600;
+    color: #555;
+    min-width: 80px;
+    margin-right: 12px;
+  }
+
+  .data-value {
+    color: #333;
+    word-break: break-all;
+  }
+
+  .success-result p,
+  .error-result p {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    .database-tool {
+      padding: 16px;
+    }
+    
+    .form-container {
+      padding: 16px;
+    }
+    
+    .section-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    
+    .section-actions {
+      align-self: flex-end;
+    }
+  }
+</style> 
