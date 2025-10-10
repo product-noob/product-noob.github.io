@@ -3,7 +3,6 @@
 
 *October 10, 2025*
 
-Being a Marwari, I’ve always gravitated toward finding hacks to do something avilable as PAID for FREE! Be it hosting this website for FREE perenially on Github Pages, creating a free backend DB with Supabase and now this. That always had a special intrigue for me. Also, thanks to AI, I am learning new, complex(for me : the noob) stuff almost daily and one of thestrongly prefer owning my own infra when the trade‑offs make sense. This is one of those setups.
 Being a Marwari, I’ve always had this itch to find hacks that let me do things others pay for — **for free**. There’s a strange thrill in that. From hosting this website forever free on GitHub Pages, to spinning up a no-cost backend on Supabase, to now running my own N8N automation stack for ₹0 (who pays $30 a month! :P) — it’s a bit of a sport at this point.  
 
 Thanks to AI, I’m picking up new (and often *painfully complex-for-me*) tech almost daily. But I’ve come to love it — the tinkering, the small wins, the feeling of owning my setup end to end. I strongly prefer building and running on my own infra when the trade-offs make sense — and this is one of those setups.  
@@ -22,7 +21,6 @@ A few reasons that matter to me:
 
 If any of these resonate, read on.
 
----
 
 ## What we’ll build
 
@@ -34,9 +32,6 @@ A minimal yet production‑grade stack:
 - **Storage:** Docker volume for n8n data + optional “local files” folder for file nodes
 - **Domain:** `n8n.yourdomain.com` pointing to the VM
 
-This pattern has proven reliable for me: small blast radius, easy to reason about, easy to maintain.
-
----
 
 ## Prerequisites
 
@@ -44,10 +39,8 @@ Before we spin up our free automation empire, make sure you’ve got a few basic
 
 - A **domain or subdomain** you can tweak — for me, it’s `n8n.princejain.me` (yep, this one works!).
 - A **Google Cloud account** with billing enabled — yes, even for the “free” tier, Google still needs a billing added for the project.
-- A bit of **terminal comfort** (SSH, copy/paste commands, etc.) — or, worst case, surrender yourself to the GPT gods and hope LLMs are kind today.
+- A bit of **terminal comfort** (SSH, copy/paste commands, etc.) — or, worst case, surrender yourself to the GPT gods.
 
-
----
 
 ## Step 1 — Create a free VM on Google Cloud
 
@@ -63,7 +56,6 @@ Before we spin up our free automation empire, make sure you’ve got a few basic
 
 > Tip: The free tier is time‑based for all `e2‑micro` instances across supported regions in a month. Stick to the eligible regions to avoid surprise charges.
 
----
 
 ## Step 2 — Point your domain (DNS)
 
@@ -74,9 +66,7 @@ Create an **A record** for your subdomain pointing to the VM IP.
 - **Value:** `YOUR.VM.IP.ADDRESS`
 - **TTL:** 5 min (or default)
 
-Propagation is usually fast but can take longer depending on your registrar.
-
----
+Propagation is usually fast but can take longer depending on your registrar. You can check if the propogation happened at DNS Checker sites like https://dnschecker.org and add your complete URL (n8n.princejain.me in my case) and you will get back the external IP of your VM.
 
 ## Step 3 — Install Docker + Docker Compose on the VM
 
