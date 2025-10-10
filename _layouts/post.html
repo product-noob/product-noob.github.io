@@ -17,7 +17,7 @@ layout: default
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    {{ content }}
+    {{ content | highlight: "bash" }}
   </div>
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
