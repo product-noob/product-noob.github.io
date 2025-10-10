@@ -16,9 +16,13 @@ layout: default
       {%- endif -%}</p>
   </header>
 
-  <div class="post-content e-content" itemprop="articleBody">
+  <!-- <div class="post-content e-content" itemprop="articleBody">
     {{ content | highlight: "bash" }}
-  </div>
+  </div> -->
+
+  <div class="code-block">
+  {{ content | highlight: "bash" }}
+</div>
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
