@@ -95,7 +95,6 @@ docker --version
 docker compose version
 ```
 
----
 
 ## Step 4 — Project layout & environment
 
@@ -130,7 +129,6 @@ SSL_EMAIL=you@yourdomain.com
 
 Save and exit (Ctrl+O, Enter, Ctrl+X).
 
----
 
 ## Step 5 — Docker Compose (Traefik + n8n)
 
@@ -208,7 +206,6 @@ A couple of notes from experience:
 - Keep n8n bound to localhost; let Traefik handle TLS/ports.
 - If you don’t need the Traefik dashboard, **remove it** or protect it with auth.
 
----
 
 ## Step 6 — Boot and set up the owner account
 
@@ -227,7 +224,10 @@ https://n8n.yourdomain.com
 
 You should see n8n’s **owner account** screen. Create your account and you’re in.
 
+**Its Done!**
+
 ---
+# Some Tips and Tricks 
 
 ## Troubleshooting SSL quickly
 
@@ -244,17 +244,9 @@ Also re‑check the DNS `A` record and that it has propagated.
 
 ---
 
-## Backups that don’t suck
-
-Use **Compute Engine → Snapshots** and attach a **snapshot schedule** to your disk. This gives you click‑rollback for upgrades or broken config. For n8n’s internal data, the `n8n_data` volume holds credentials/workflows—snapshots cover that at the disk level.
-
-If you want app‑level backups too, you can periodically `docker run --rm` a tar of `/home/node/.n8n` and upload it to object storage. I’ve rarely needed that with snapshots in place.
-
----
-
 ## Upgrading n8n safely
 
-I keep upgrades boring:
+Periodically run these commands to keep your docker instance up-to-date:
 
 ```bash
 cd ~/n8n-compose
@@ -262,16 +254,6 @@ sudo docker compose pull
 sudo docker compose down
 sudo docker compose up -d
 ```
-
-This is a short downtime window. Avoid running critical webhooks at that exact minute.
-
----
-
-## Hardening (optional but recommended)
-
-- Remove or protect the Traefik dashboard.
-- Add `ufw` rules on the host if you want defense‑in‑depth.
-- Keep the OS updated and rotate credentials periodically.
 
 ---
 
