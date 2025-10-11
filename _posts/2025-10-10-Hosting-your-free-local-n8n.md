@@ -242,7 +242,7 @@ You should see n8n’s **owner account** screen. Create your account and you’r
 **Its Done!**
 
 ---
-# Some Tips and Tricks 
+## Some Tips and Tricks 
 
 ### Troubleshooting SSL quickly
 
