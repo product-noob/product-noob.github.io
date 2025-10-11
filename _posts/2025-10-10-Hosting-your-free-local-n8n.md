@@ -1,7 +1,8 @@
-
-# Self‑Hosting n8n on Google Cloud (Free) with Docker Compose — A Pragmatic Guide
-
-*October 10, 2025*
+---
+layout: post
+title:  "Hosting your own N8N Instance for FREE!"
+description: "Sharing a step by step tutorial on how you can host a free n8n server on Google Cloud."
+---
 
 Being a Marwari, I’ve always had this itch to find hacks that let me do things others pay for — **for free**. There’s a strange thrill in that. From hosting this website forever free on GitHub Pages, to spinning up a no-cost backend on Supabase, to now running my own N8N automation stack for ₹0 (who pays $30 a month! :P) — it’s a bit of a sport at this point.  
 
