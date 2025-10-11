@@ -4,9 +4,9 @@ title:  "Hosting your own N8N Instance for FREE!"
 description: "Sharing a step by step tutorial on how you can host a free n8n server on Google Cloud."
 ---
 
-Being a Marwari, I’ve always had this itch to find hacks that let me do things others pay for — **for free**. There’s a strange thrill in that. From hosting this website forever free on GitHub Pages, to spinning up a no-cost backend on Supabase, to now running my own N8N automation stack for ₹0 (who pays $30 a month! :P) — it’s a bit of a sport at this point.  
+I’ve always had this itch to find hacks that let me do things others pay for — **for free**. There’s a strange thrill in that. From hosting this website forever free on GitHub Pages, to spinning up a no-cost backend on Supabase, to now running my own N8N automation stack for ₹0 (who pays $30 a month! :P) — it’s a bit of a sport at this point.  
 
-Thanks to AI, I’m picking up new (and often *painfully complex-for-me*) tech almost daily. But I’ve come to love it — the tinkering, the small wins, the feeling of owning my setup end to end. I strongly prefer building and running on my own infra when the trade-offs make sense — and this is one of those setups.  
+Thanks to AI, I’m trying and learning with new things in tech almost daily and to be honest I’ve come to love it — the tinkering, the small wins, the feeling of owning my setup end to end. This is one of those journeys.
 
 In this article, I’ll walk you through how I self-host **n8n** — a reasonably good workflow automation tool — on **Google Cloud**, using **Docker Compose** and **Traefik** with automatic HTTPS. If you stay within Google’s free-tier limits, it runs at **₹0/month**, and you end up with a clean, reproducible setup you can scale or shut down anytime.
 
