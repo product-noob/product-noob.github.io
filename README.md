@@ -35,10 +35,11 @@ This repository contains the source code for my personal website, built using Je
 │   │   ├── polychat.js          # Multi-AI chat comparison tool
 │   │   └── tools.js             # Scripts for interactive tools
 │   └── blog_images/    # Blog post images
-├── css/               # Compiled CSS files
+├── css/               # SCSS sources and site stylesheet
 ├── images/            # Image assets
 ├── tools/             # Interactive web tools
 │   ├── index.html     # Tools listing page
+│   ├── database-tool.html # Database tool demo page
 │   ├── calculator/    # Advanced calculator with scientific functions
 │   ├── qr-code-generator/ # QR code generation tool
 │   ├── polychat/      # Multi-AI chat comparison tool
@@ -46,8 +47,6 @@ This repository contains the source code for my personal website, built using Je
 │   └── json-formatter/ # JSON formatting and validation tool
 ├── _site/             # Generated site (not in repo)
 ├── _config.yml        # Jekyll configuration
-├── .cursorrules       # Coding standards and guidelines
-├── .gitignore         # Git ignore file
 ├── CNAME              # Custom domain configuration
 ├── Gemfile            # Ruby dependencies
 ├── Gemfile.lock       # Locked dependency versions
@@ -62,8 +61,7 @@ This is a Jekyll static site with the following key components:
 - **_config.yml**: Site-wide configuration including metadata, plugins, and build settings
 - **Gemfile**: Ruby dependencies including Jekyll and required plugins
 - **CNAME**: Custom domain configuration for GitHub Pages
-- **.cursorrules**: Coding standards and style guide for the project
-- **.gitignore**: Specifies files to exclude from version control
+
 
 ### Content Structure
 
@@ -80,16 +78,19 @@ This is a Jekyll static site with the following key components:
 #### Blog System
 - Posts in `/_posts/` following Jekyll's date-based naming convention
 - Current blog posts:
-  - **2025-05-19**: Automating Google Chat: Solving the 'Mark as Read' Problem
-  - **2025-03-31**: Generative AI Revolution
-  - **2024-03-20**: PM Links
-  - **2022-03-22**: Building Mini Apps
+  - **2025-10-10**: Hosting your own N8N Instance for FREE!
+  - **2025-05-24**: Creating Your First API with Database for Free
+  - **2025-05-23**: The AI Glossary Every PM Needs
+  - **2025-04-21**: PMing in the era of AI | How I use AI to supercharge my work
+  - **2024-11-19**: Automating Google Chat: Solving the 'Mark as Read' Problem
+  - **2024-03-20**: Product Management Resources
+  - **2022-03-22**: Building the Mini Apps Platform
   - **2022-01-12**: Explaining the National Health Stack
-  - **2021-08-03**: Building Vaccine Slot Finder
-  - **2021-07-23**: Cracking System Design Interview
+  - **2021-08-03**: Building the Vaccine Slot Finder tool
+  - **2021-07-23**: Approaching a System Design Interview
   - **2021-05-15**: Demystifying SEO
   - **2020-02-15**: There are Apps and then there are SuperApps
-  - **2020-02-02**: Setting up Github Pages (Hello World)
+  - **2020-02-02**: Setting up Github Pages
 
 ### Template System
 
@@ -155,6 +156,7 @@ The site includes several interactive tools built with vanilla JavaScript:
 - **PolyChat**: Multi-AI chat interface for comparing responses across different AI models
 - **Base64 Encoder/Decoder**: Convert between text and Base64 encoding
 - **JSON Formatter**: Pretty-print and validate JSON data
+- **Database Tool**: Demo showcasing simple DB-backed APIs used on the site
 
 These tools are self-contained and follow the site's performance and design standards.
 
@@ -204,6 +206,7 @@ The built site is output to the `_site/` directory (ignored by Git).
 
 ### SEO & Performance
 - Sitemap generation via jekyll-sitemap
+- Note: A static `sitemap.xml` exists in the repository; the `jekyll-sitemap` plugin also generates one during build. Prefer the plugin-generated file.
 - Meta tags optimization in head.html and meta.html
 - Responsive images with loading="lazy" attribute
 - Critical CSS loading for above-the-fold content
