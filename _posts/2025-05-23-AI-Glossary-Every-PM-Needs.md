@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The AI Glossary Every PM Needs"
-description: "A field-tested cheat-sheet to decode AI jargon when you're building the next ML-powered feature."
+description: "My personal, field-tested cheat-sheet to decode AI jargon, built from my own experience shipping ML-powered features"
 date: 2025-05-23
 ---
 
