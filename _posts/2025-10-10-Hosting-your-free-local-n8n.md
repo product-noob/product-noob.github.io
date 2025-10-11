@@ -115,7 +115,7 @@ sudo nano .env
 
 Paste and edit:
 
-```env
+```
 # Where your n8n will be available:
 DOMAIN_NAME=yourdomain.com
 SUBDOMAIN=n8n
