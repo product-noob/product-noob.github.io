@@ -14,7 +14,8 @@ Post-MBA, I joined **Paytm** as a Product Manager, diving into several 0-to-1 jo
 
 After nearly three years at Paytm, I moved to **Flipkart**, India’s leading e-commerce platform, to explore product building at scale. Over the past four years, I’ve worked across two distinctly exciting charters:  
 - **Growth Initiatives:** Driving rapid, low-cost experiments across the funnel to boost acquisition, retention, and GMV.  
-- **GenAI :** I now lead all major conversational Gen-AI product initatives across Flipkart, currently working on building an Agentic GenAI conversational shopping experience which has evolved from our earlier learnings of building *[Flippi](https://inc42.com/buzz/flipkart-launches-chatgpt-powered-shopping-assistant-flippi/)* — Flipkart’s conversational AI shopping assistant — where we’re blending e-commerce and generative AI to redefine how millions of Indians discover and shop online.
+- **Flippi:** I built India's first conversational shopping assistant: *[Flippi](https://inc42.com/buzz/flipkart-launches-chatgpt-powered-shopping-assistant-flippi/) where we blend e-commerce and generative AI to redefine how millions of Indians discover and shop online.
+- **Agentic Commerce:** I now lead all major conversational Gen-AI product initatives across Flipkart, currently working on building an Agentic GenAI conversational shopping experience which has evolved from our earlier learnings of building Flippi
 
 As a product manager, I thrive on connecting the dots between user intent, business goals, and technical possibilities — crafting products that not only solve real problems but also shape how users experience technology. I thrive at the intersection of data, design, and strategy — and lately, I’ve been especially drawn to the potential of **Generative AI** in transforming how users interact with technology.
 
