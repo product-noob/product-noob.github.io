@@ -36,7 +36,6 @@ For me, it boiled down to these reasons:
 
 If any of these resonate, read on.
 
----
 ### What we’ll build
 
 A minimal yet production‑grade stack:
@@ -59,7 +58,7 @@ Before we spin up our free automation empire, make sure you’ve got a few basic
 ---
 ## Here’s how I actually did it
 
-## Step 1 — Create a Free VM on Google Cloud
+### Step 1 — Create a Free VM on Google Cloud
 
 1. Create orselect an existing **Project** in the Google Cloud Console.
 2. Enable **Compute Engine**.
@@ -73,7 +72,7 @@ Before we spin up our free automation empire, make sure you’ve got a few basic
 
 > Tip: The free tier is time‑based for all `e2‑micro` instances across supported regions in a month. Stick to the eligible regions to avoid surprise charges.
 
-## Step 2 — Pointing the Domain (DNS)
+### Step 2 — Pointing the Domain (DNS)
 
 Create an **A record** for your subdomain pointing to the VM IP.
 
@@ -84,7 +83,7 @@ Create an **A record** for your subdomain pointing to the VM IP.
 
 Propagation is usually fast but can take longer depending on your registrar. You can check if the propogation happened at DNS Checker sites like https://dnschecker.org and add your complete URL (n8n.princejain.me in my case) and you will get back the external IP of your VM.
 
-## Step 3 — Installing the Building Blocks: Docker + Docker Compose
+### Step 3 — Installing the Building Blocks: Docker + Docker Compose
 
 Next, SSH'd into the VM and installed Docker, which lets us run n8n in a container.
 
@@ -112,7 +111,7 @@ docker compose version
 ```
 
 
-## Step 4 — Project layout & environment
+### Step 4 — Project layout & environment
 
 Create a working directory and a shared files folder (very handy for n8n’s file nodes):
 
@@ -146,7 +145,7 @@ SSL_EMAIL=you@yourdomain.com
 Save and exit (Ctrl+O, Enter, Ctrl+X).
 
 
-## Step 5 — Docker Compose (Traefik + n8n)
+### Step 5 — Docker Compose (Traefik + n8n)
 
 Create `docker-compose.yml`:
 
@@ -223,7 +222,7 @@ A couple of notes from experience:
 - If you don’t need the Traefik dashboard, **remove it** or protect it with auth.
 
 
-## Step 6 — Boot and set up the owner account
+### Step 6 — Boot and set up the owner account
 
 Bring the stack up:
 
@@ -245,7 +244,7 @@ You should see n8n’s **owner account** screen. Create your account and you’r
 ---
 # Some Tips and Tricks 
 
-## Troubleshooting SSL quickly
+### Troubleshooting SSL quickly
 
 If you get a certificate error on first boot:
 
@@ -258,9 +257,7 @@ sudo docker compose up -d
 
 Also re‑check the DNS `A` record and that it has propagated.
 
----
-
-## Upgrading n8n safely
+### Upgrading n8n safely
 
 Periodically run these commands to keep your docker instance up-to-date:
 
@@ -271,17 +268,15 @@ sudo docker compose down
 sudo docker compose up -d
 ```
 
----
 
-## What next?
+### What next?
 
 - Start wiring workflows. The mounted `/files` path is handy for import/export nodes.
 - Add OAuth creds in n8n (they live in the volume).
 - If you outgrow `e2‑micro`, just resize the machine or move the stack—Docker Compose makes it painless.
 
----
 
-## TL;DR
+### TL;DR
 
 - One free `e2‑micro` VM in an eligible region + Traefik + n8n
 - Automatic HTTPS, persistent volumes, clean upgrade path
