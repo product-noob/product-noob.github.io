@@ -15,7 +15,7 @@ In this article, I’ll walk you through how I self-host **n8n** —a fantastic 
 ## Questions I had while starting this project:
 Before diving headfirst into the Google Cloud console, I had to answer a few "Whys" to make sure this was a rabbit hole worth going down.
 
-### I. Why self-host n8n in the first place?
+### Why self-host n8n in the first place?
 This one was easy to answer, and it came down to a few key things:
 
 - **Control & Privacy:** My automations and credentials stay in my own virtual box. I wanted to give it access to my Gmail, WhatsApp, Contacts, and more, and I just wasn't comfortable doing that on a public hosted site where I didn't have full control.
@@ -23,9 +23,8 @@ This one was easy to answer, and it came down to a few key things:
 - **Predictable Costs:** It’s free if you stick to the e2-micro free tier. Even if you scale up slightly, the costs are incredibly low (maybe ₹100-200 a month at most!). This beats a $30/month subscription any day.
 
 - **Flexibility:** Using Docker makes it trivial to back up, move, or upgrade the entire stack. No vendor lock-in, just pure, unadulterated control.
-- 
 
-### II. Why is this better than the paid options?
+### Why is this better than the paid options?
 For me, it boiled down to these reasons:
 
 - **No Limits on Workflows:** Most paid plans have tiers based on the number of workflows or execution steps. With a self-hosted instance, the only limit is your VM's capacity.
@@ -35,6 +34,8 @@ For me, it boiled down to these reasons:
 - **It's Just More Fun!** There's a certain satisfaction that comes from building and owning your own tools.
 
 If any of these resonate, read on.
+
+---
 
 ### What we’ll build
 
@@ -56,11 +57,11 @@ Before we spin up our free automation empire, make sure you’ve got a few basic
 - A bit of **terminal comfort** (SSH, copy/paste commands, etc.) — or, worst case, surrender yourself to the GPT gods.
 
 ---
-## Here’s how I actually did it
+## Here’s how I actually did it...
 
 ### Step 1 — Create a Free VM on Google Cloud
 
-1. Create orselect an existing **Project** in the Google Cloud Console.
+1. Create or select an existing **Project** in the Google Cloud Console.
 2. Enable **Compute Engine**.
 3. **Create a VM** with these exact specs:
    - **Machine type:** `e2‑micro` (Always Free where eligible)
@@ -74,34 +75,104 @@ Before we spin up our free automation empire, make sure you’ve got a few basic
 
 ### Step 2 — Pointing the Domain (DNS)
 
-Create an **A record** for your subdomain pointing to the VM IP.
+With the server up, I needed a public URL to access the instance. For that I created an **A record** for my subdomain, `n8n.princejain.me` pointing to the VM IP address we noted in previous step.
 
 - **Host/Name:** `n8n` (or your choice)
 - **Type:** A
 - **Value:** `YOUR.VM.IP.ADDRESS`
 - **TTL:** 5 min (or default)
 
-Propagation is usually fast but can take longer depending on your registrar. You can check if the propogation happened at DNS Checker sites like https://dnschecker.org and add your complete URL (n8n.princejain.me in my case) and you will get back the external IP of your VM.
+Propagation is usually fast but can take longer depending on your registrar.Of course. I've analyzed the writing style of your "Building the Vaccine Slot Finder tool" blog post and will use it to rewrite your four latest blog posts. The style is personal, narrative-driven, and effectively breaks down a technical journey into an engaging story.
+
+Here is the rewritten version of your first blog post, "Hosting your own N8N Instance for FREE!".
+
+Hosting your own N8N Instance for FREE!
+layout: post title: "Hosting your own N8N Instance for FREE!" description: "Sharing the step-by-step story of how you can host a free n8n server on Google Cloud, inspired by my own weekend project."
+I’ve always had this itch to find hacks that let me do things others pay for — for free. What started as a small weekend project to automate a few personal tasks ended up becoming a full-blown mission: to build my own powerful automation stack without paying a dime. This is the behind-the-scenes story of how my n8n setup came to life. I hope you enjoy the read.
+
+From hosting this website forever free on GitHub Pages, to spinning up a no-cost backend on Supabase, it’s a bit of a sport at this point. Thanks to AI, I’m tinkering with new tech almost daily, and I’ve come to love the small wins and the feeling of owning my setup end-to-end. This is one of those journeys.
+
+In this article, I’ll walk you through how I self-host n8n—a fantastic workflow automation tool—on Google Cloud, using Docker Compose and Traefik for automatic HTTPS. If you stay within Google’s free-tier limits, it runs at ₹0/month, and you end up with a clean, reproducible setup you can scale or shut down anytime.
+
+Questions I had while starting this project:
+Before diving headfirst into the Google Cloud console, I had to answer a few "whys" to make sure this was a rabbit hole worth going down.
+
+I. Why self-host n8n in the first place?
+This one was easy to answer, and it came down to a few key things:
+
+Control & Privacy: My automations and credentials stay in my own virtual box. I wanted to give it access to my Gmail, WhatsApp, Contacts, and more, and I just wasn't comfortable doing that on a public hosted site where I didn't have full control.
+
+Predictable Costs: It’s free if you stick to the e2-micro free tier. Even if you scale up slightly, the costs are incredibly low (maybe ₹100-200 a month at most!). This beats a $30/month subscription any day.
+
+Flexibility: Using Docker makes it trivial to back up, move, or upgrade the entire stack. No vendor lock-in, just pure, unadulterated control.
+
+II. Why is this better than the paid options?
+I've been asked this a few times. For me, it boiled down to these reasons:
+
+No Limits on Workflows: Most paid plans have tiers based on the number of workflows or execution steps. With a self-hosted instance, the only limit is your VM's capacity.
+
+Learning Opportunity: Setting this up forces you to learn about Docker, reverse proxies, and cloud infrastructure—skills that are incredibly valuable.
+
+It's Just More Fun! There's a certain satisfaction that comes from building and owning your own tools.
+
+Here’s how I actually did it...
+What I started with was a simple goal: create a production-grade stack that was minimal, secure, and free. Here’s the story of how it came together.
+
+I. The Foundation: Creating a Free VM on Google Cloud
+First, I needed a home for my n8n instance. Google Cloud's "Always Free" tier was the perfect solution.
+
+Create or select a Project in the Google Cloud Console.
+
+Enable Compute Engine.
+
+Create a VM with these exact specs to stay in the free tier:
+
+Machine type: e2-micro
+
+Region: An eligible free-tier region (like us-west1, us-central1, or us-east1)
+
+OS: Ubuntu 22.04 LTS
+
+Disk: 30 GB Standard Persistent Disk
+
+Firewall: Allow HTTP and HTTPS
+
+Once it's created, note down the external IP. This is where we'll point our domain.
+
+My first roadblock: I learned that the free tier is time-based across all e2-micro instances. Sticking to one of the eligible US regions is key to avoiding surprise charges!
+
+II. Pointing the Domain (DNS)
+With the server up, I needed a friendly URL. I created an A record for my subdomain, n8n.princejain.me, pointing to the VM's IP address.
+
+Host/Name: n8n
+
+Type: A
+
+Value: YOUR.VM.IP.ADDRESS
+
+You can check if the change has propagated using a tool like [DNS Checker](https://dnschecker.org).and you will get back the external IP of your VM.
 
 ### Step 3 — Installing the Building Blocks: Docker + Docker Compose
 
-Next, SSH'd into the VM and installed Docker, which lets us run n8n in a container.
+Next, SSH'd into the VM and install Docker, which lets us run n8n in a container.
 
 ```bash
 # System updates
 sudo apt-get update
 sudo apt-get upgrade -y
 
-# Prereqs
+# Install prerequisites
 sudo apt-get install -y ca-certificates curl nano
 
-# Docker official repo
+# Add Docker's official GPG key
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 
+# Set up the repository
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
+# Install Docker Engine
 sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
@@ -127,7 +198,7 @@ Create a `.env` file:
 sudo nano .env
 ```
 
-Paste and edit:
+Paste and edit details based on your config:
 
 ```
 # Where your n8n will be available:
@@ -145,9 +216,7 @@ SSL_EMAIL=you@yourdomain.com
 Save and exit (Ctrl+O, Enter, Ctrl+X).
 
 
-### Step 5 — Docker Compose (Traefik + n8n)
-
-Create `docker-compose.yml`:
+Finally, create a `docker-compose.yml` file:
 
 ```bash
 sudo nano docker-compose.yml
@@ -217,14 +286,9 @@ volumes:
   traefik_data:
 ```
 
-A couple of notes from experience:
-- Keep n8n bound to localhost; let Traefik handle TLS/ports.
-- If you don’t need the Traefik dashboard, **remove it** or protect it with auth.
+### Almost done!
 
-
-### Step 6 — Boot and set up the owner account
-
-Bring the stack up:
+With everything in place, it was time to launch.
 
 ```bash
 cd ~/n8n-compose
@@ -237,16 +301,14 @@ Give it a minute for certificates to issue. Then open:
 https://n8n.yourdomain.com
 ```
 
-You should see n8n’s **owner account** screen. Create your account and you’re in.
+You should see n8n’s **owner account** screen. Create your account and you’re in. Your very own, free, and private automation server is live.
 
 **Its Done!**
 
 ---
 ## Some Tips and Tricks 
 
-### Troubleshooting SSL quickly
-
-If you get a certificate error on first boot:
+- **Troubleshooting SSL**: If you get a certificate error, the quickest fix is to stop the containers, remove the old certificate, and restart.
 
 ```bash
 sudo docker compose down
@@ -255,9 +317,7 @@ sudo rm -rf ./letsencrypt/acme.json || true
 sudo docker compose up -d
 ```
 
-Also re‑check the DNS `A` record and that it has propagated.
-
-### Upgrading n8n safely
+- **Upgrading n8n safely**
 
 Periodically run these commands to keep your docker instance up-to-date:
 
@@ -268,15 +328,14 @@ sudo docker compose down
 sudo docker compose up -d
 ```
 
-
 ### What next?
 
-- Start wiring workflows. The mounted `/files` path is handy for import/export nodes.
-- Add OAuth creds in n8n (they live in the volume).
-- If you outgrow `e2‑micro`, just resize the machine or move the stack—Docker Compose makes it painless.
+- Start wiring up workflows. The mounted `/files` path is super handy for import/export nodes.
+- Add your OAuth credentials in n8n (they live securely in the volume).
+- If you ever outgrow the `e2-micro` VM, you can just resize it or move the stack—Docker Compose makes it painless.
 
 
-### TL;DR
+## TL;DR
 
 - One free `e2‑micro` VM in an eligible region + Traefik + n8n
 - Automatic HTTPS, persistent volumes, clean upgrade path
