@@ -1,29 +1,43 @@
 ---
 layout: post
 title:  "Hosting your own N8N Instance for FREE!"
-description: "Sharing a step by step tutorial on how you can host a free n8n server on Google Cloud."
+description: "Sharing the step-by-step tutorial of how you can host a free n8n server on Google Cloud"
 ---
 
 I’ve always had this itch to find hacks that let me do things others pay for — **for free**. There’s a strange thrill in that. From hosting this website forever free on GitHub Pages, to spinning up a no-cost backend on Supabase, to now running my own N8N automation stack for ₹0 (who pays $30 a month! :P) — it’s a bit of a sport at this point.  
 
-Thanks to AI, I’m trying and learning with new things in tech almost daily and to be honest I’ve come to love it — the tinkering, the small wins, the feeling of owning my setup end to end. This is one of those journeys.
+ Thanks to AI, I’m tinkering with new tech almost daily, and I’ve come to love the small wins and the feeling of owning my setup end-to-end. This is one of those journeys.
 
-In this article, I’ll walk you through how I self-host **n8n** — a reasonably good workflow automation tool — on **Google Cloud**, using **Docker Compose** and **Traefik** with automatic HTTPS. If you stay within Google’s free-tier limits, it runs at **₹0/month**, and you end up with a clean, reproducible setup you can scale or shut down anytime.
+In this article, I’ll walk you through how I self-host **n8n** —a fantastic workflow automation tool on **Google Cloud**, using **Docker Compose** and **Traefik** for automatic HTTPS. If you stay within Google’s free-tier limits, it runs at **₹0/month!**, and you end up with a clean, reproducible setup you can scale or shut down anytime.
 
 ---
 
-## Why self‑host n8n?
+## Questions I had while starting this project:
+Before diving headfirst into the Google Cloud console, I had to answer a few "Whys" to make sure this was a rabbit hole worth going down.
 
-A few reasons that matter to me:
+### I. Why self-host n8n in the first place?
+This one was easy to answer, and it came down to a few key things:
 
-- **Control & privacy.** Your automations and credentials stay in your box. I want to give it access to my Gmail, WhatsApp, Contact and what not and I am not comfortable doing that on a public hosted site.
-- **Predictable costs.** Free if you’re on the `e2‑micro` free tier, otherwise extremely low (max ~100-200 INR a month!).
-- **Flexibility.** Docker makes it trivial to back up, move, or upgrade.
+- **Control & Privacy:** My automations and credentials stay in my own virtual box. I wanted to give it access to my Gmail, WhatsApp, Contacts, and more, and I just wasn't comfortable doing that on a public hosted site where I didn't have full control.
+
+- **Predictable Costs:** It’s free if you stick to the e2-micro free tier. Even if you scale up slightly, the costs are incredibly low (maybe ₹100-200 a month at most!). This beats a $30/month subscription any day.
+
+- **Flexibility:** Using Docker makes it trivial to back up, move, or upgrade the entire stack. No vendor lock-in, just pure, unadulterated control.
+- 
+
+### II. Why is this better than the paid options?
+For me, it boiled down to these reasons:
+
+- **No Limits on Workflows:** Most paid plans have tiers based on the number of workflows or execution steps. With a self-hosted instance, the only limit is your VM's capacity.
+
+- **Learning Opportunity:** Setting this up forces you to learn about Docker, reverse proxies, and cloud infrastructure—skills that are incredibly valuable.
+
+- **It's Just More Fun!** There's a certain satisfaction that comes from building and owning your own tools.
 
 If any of these resonate, read on.
 
-
-## What we’ll build
+---
+### What we’ll build
 
 A minimal yet production‑grade stack:
 
@@ -34,7 +48,7 @@ A minimal yet production‑grade stack:
 - **Domain:** `n8n.yourdomain.com` pointing to the VM
 
 
-## Prerequisites
+### Prerequisites
 
 Before we spin up our free automation empire, make sure you’ve got a few basics in place:
 
@@ -42,23 +56,24 @@ Before we spin up our free automation empire, make sure you’ve got a few basic
 - A **Google Cloud account** with billing enabled — yes, even for the “free” tier, Google still needs a billing added for the project.
 - A bit of **terminal comfort** (SSH, copy/paste commands, etc.) — or, worst case, surrender yourself to the GPT gods.
 
+---
+## Here’s how I actually did it
 
-## Step 1 — Create a free VM on Google Cloud
+## Step 1 — Create a Free VM on Google Cloud
 
-1. Create/select a **Project** in the Google Cloud Console.
+1. Create orselect an existing **Project** in the Google Cloud Console.
 2. Enable **Compute Engine**.
-3. **Create VM** with:
+3. **Create a VM** with these exact specs:
    - **Machine type:** `e2‑micro` (Always Free where eligible)
-   - **Region:** any eligible free‑tier region (for example: `us‑west1`, `us‑central1`, `us‑east1`)
+   - **Region:** Any eligible free‑tier region (choose one of `us‑west1`, `us‑central1`, `us‑east1`)
    - **OS:** Ubuntu 22.04 LTS (or latest LTS)
    - **Disk:** 30 GB Standard Persistent Disk
    - **Firewall:** Allow **HTTP** and **HTTPS**
-4. Note down the **external IP** — we’ll point DNS to this.
+4. Once it's create, note down the **external IP** — this is where we’ll point our domain.
 
 > Tip: The free tier is time‑based for all `e2‑micro` instances across supported regions in a month. Stick to the eligible regions to avoid surprise charges.
 
-
-## Step 2 — Point your domain (DNS)
+## Step 2 — Pointing the Domain (DNS)
 
 Create an **A record** for your subdomain pointing to the VM IP.
 
@@ -69,9 +84,9 @@ Create an **A record** for your subdomain pointing to the VM IP.
 
 Propagation is usually fast but can take longer depending on your registrar. You can check if the propogation happened at DNS Checker sites like https://dnschecker.org and add your complete URL (n8n.princejain.me in my case) and you will get back the external IP of your VM.
 
-## Step 3 — Install Docker + Docker Compose on the VM
+## Step 3 — Installing the Building Blocks: Docker + Docker Compose
 
-SSH into the VM from the Console and run:
+Next, SSH'd into the VM and installed Docker, which lets us run n8n in a container.
 
 ```bash
 # System updates
