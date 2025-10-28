@@ -1,37 +1,83 @@
+# Privacy Policy
+
+_Last updated: 28 Oct 2025
+
 ## Introduction
 
-Welcome to the Exponent Content Downloader extension designed for users of TryExponent's subdomains. We are committed to protecting your privacy and ensuring transparency in how we handle your data. This Privacy Policy outlines our practices regarding any data collected by this extension.
+Thank you for using our services (“we”, “our”, “us”).  
+We respect your privacy and are committed to protecting any personal information you share with us. This Privacy Policy explains how we handle information in connection with our websites, APIs, and other online tools or integrations (collectively referred to as the “Services”).
+
+By using our Services, you agree to this Privacy Policy.
+
+---
 
 ## Information We Collect
 
-- **Data Collection:** The Exponent Content Downloader does not collect, store, or transmit any personal data from users. Our extension operates locally on your browser and processes data in real-time without sending information to external servers.
+### 1. Information You Provide
+We may collect basic information that you voluntarily provide, such as:
+- Contact details (like name or email) when you reach out to us.  
+- Credentials or tokens you grant for API integrations (e.g., via Google OAuth).  
 
-- **Browser Activity:** We do not track your browsing activity. The activation of the extension occurs solely upon your direct interaction, such as clicking the extension icon or toggling settings from the popup interface.
+### 2. Automatically Collected Information
+When you use our Services, we may collect minimal, non-personal data automatically, such as:
+- Basic technical details (browser type, device type, IP address, etc.)  
+- Usage metrics solely for improving reliability or performance.  
 
-## Use of Information
+No sensitive or personally identifying information is collected unless explicitly required and consented to.
 
-- **Local Operations:** The extension operates entirely within the confines of your web browser. Content extraction and file downloads are performed locally, with data stored directly on your device.
+---
 
-- **No External Sharing:** We do not share, sell, or distribute any user data, as no such data is collected through the use of this extension.
+## How We Use Information
 
-## Permissions
+We use the limited information we collect only for:
+- Providing and improving the Services.  
+- Authenticating users securely (e.g., via OAuth).  
+- Debugging or resolving issues.  
+- Complying with legal obligations if required.  
 
-Our extension requests the following permissions solely to accomplish its intended functionality:
+We do **not** sell, rent, or share your personal information with third parties for marketing or advertising purposes.
 
-- **activeTab:** To access and process content on the active tab, only when explicitly activated by the user.
-  
-- **scripting:** To enable required scripts for feature execution on authorized web pages.
-  
-- **downloads:** To facilitate automatic content downloads directly to your local storage.
+---
 
-- **storage:** To save user preferences like toggling the extension on/off across sessions.
+## Data Storage and Security
 
-- **Host Permission:** Limited to subdomains of tryexponent.com for targeted operation.
+- All data is handled using industry-standard security practices.  
+- Any temporary data (like access tokens or session data) is stored securely and retained only as long as needed for the Service to function.  
+- We do not store or retain user data unnecessarily.  
+
+---
+
+## Third-Party Services
+
+Our Services may rely on third-party APIs or infrastructure providers such as:
+- Google Cloud Platform (for hosting, authentication, or data storage).  
+- Meta (WhatsApp Business API).  
+
+These third-party providers may process limited user information according to their own privacy policies. We encourage you to review their respective policies for more details.
+
+---
+
+## Your Choices
+
+- You may revoke API permissions or OAuth access at any time via your Google or Meta account settings.  
+- You may contact us to request deletion of any stored data associated with your use of the Services.  
+
+---
 
 ## Changes to This Policy
 
-Any updates to this Privacy Policy will be reflected promptly, ensuring users are informed of any changes in how we handle your privacy and data.
+We may update this Privacy Policy from time to time. Any updates will be reflected with a new “Last Updated” date at the top. Continued use of our Services after updates indicates acceptance of the revised policy.
 
-## Conclusion
+---
 
-Your privacy is of utmost importance to us. We have designed this extension to respect your personal data by ensuring no information is collected, processed, or distributed beyond what is necessary for its core functionality.
+## Contact Us
+
+If you have any questions, concerns, or requests regarding this Privacy Policy, please contact us at:  
+📧 **[princemnit@gmail.com]**
+
+---
+
+### Summary
+
+We build privacy-first tools and services.  
+We collect the minimum necessary data to make them work — and nothing more.
