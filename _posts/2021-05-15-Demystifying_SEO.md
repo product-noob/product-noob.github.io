@@ -2,6 +2,8 @@
 layout: post
 title: Demystifying SEO
 description: "A quick summary of what SEO is and step by step guide on how you can start with SEO for your app/ blog"
+permalink: /demystifying-seo/
+
 ---
 
 As a product manager who builds digital products, the list of things you should know about is _long_ to say the least and it only ever seems to get _longer_!
