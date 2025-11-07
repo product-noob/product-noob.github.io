@@ -2,7 +2,6 @@
 layout: post
 title:  Setting up Github Pages
 description: This is the sample description of posts trying to test out a new way to show in blogs
-permalink: /hello-world/
 
 ---
 
