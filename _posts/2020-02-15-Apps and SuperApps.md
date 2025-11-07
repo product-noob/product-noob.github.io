@@ -1,7 +1,10 @@
 ---
+
 layout: post
-title:  "There are Apps and then there are SuperApps"
-description: "I have shared a quick note of what are superapps, some of their benefits and how is the superapp situation in India evolving."
+title:  There are Apps and then there are SuperApps
+description: I have shared a quick note of what are superapps, some of their benefits and how is the superapp situation in India evolving.
+permalink: /apps-and-superapps/
+
 ---
 
 As more and more businesses around the world transition to a mobile-led discovery, there has been an exponential rise in the number of apps available in the App Stores.
