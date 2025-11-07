@@ -1,8 +1,7 @@
 ---
 layout: post
 title: Demystifying SEO
-description: "A quick summary of what SEO is and step by step guide on how you can start with SEO for your app/ blog"
-permalink: /demystifying-seo/
+description: A quick summary of what SEO is and step by step guide on how you can start with SEO for your app/ blog
 
 ---
 
