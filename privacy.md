@@ -1,83 +1,45 @@
 # Privacy Policy
 
-_Last updated: 28 Oct 2025_
+Last updated: 28 Oct 2025
 
 ## Introduction
 
-Thank you for using our services (“we”, “our”, “us”).  
-We respect your privacy and are committed to protecting any personal information you share with us. This Privacy Policy explains how we handle information in connection with our websites, APIs, and other online tools or integrations (collectively referred to as the “Services”).
+This website provides product consulting services. These policies are published solely to satisfy general regulatory and informational requirements. The services offered do not involve the sale of physical goods, large scale data processing, or commercial transactions beyond consulting engagements.
 
-By using our Services, you agree to this Privacy Policy.
-
----
+By accessing this website or contacting us for consulting services, you agree to the terms described in this policy.
 
 ## Information We Collect
 
-### 1. Information You Provide
-We may collect basic information that you voluntarily provide, such as:
-- Contact details (like name or email) when you reach out to us.  
-- Credentials or tokens you grant for API integrations (e.g., via Google OAuth).  
+We collect only minimal information that you voluntarily provide, such as your name, email address, or any details you choose to share when contacting us for consulting services or submitting a form.
 
-### 2. Automatically Collected Information
-When you use our Services, we may collect minimal, non-personal data automatically, such as:
-- Basic technical details (browser type, device type, IP address, etc.)  
-- Usage metrics solely for improving reliability or performance.  
-
-No sensitive or personally identifying information is collected unless explicitly required and consented to.
-
----
+We do not actively collect sensitive personal information. We do not profile users or track individual behavior beyond basic, non personal analytics commonly collected by web hosting providers.
 
 ## How We Use Information
 
-We use the limited information we collect only for:
-- Providing and improving the Services.  
-- Authenticating users securely (e.g., via OAuth).  
-- Debugging or resolving issues.  
-- Complying with legal obligations if required.  
+Information you provide is used only for:
+- Responding to your inquiries regarding product consulting.
+- Providing requested consulting services.
+- Basic administrative or legal compliance needs.
 
-We do **not** sell, rent, or share your personal information with third parties for marketing or advertising purposes.
-
----
+We do not sell, rent, or share personal data for advertising or marketing purposes.
 
 ## Data Storage and Security
 
-- All data is handled using industry-standard security practices.  
-- Any temporary data (like access tokens or session data) is stored securely and retained only as long as needed for the Service to function.  
-- We do not store or retain user data unnecessarily.  
+Any information you provide may be stored securely using industry standard practices. Data is retained only for as long as necessary to fulfill the purpose for which it was provided.
 
----
+## Third Party Services
 
-## Third-Party Services
-
-Our Services may rely on third-party APIs or infrastructure providers such as:
-- Google Cloud Platform (for hosting, authentication, or data storage).  
-- Meta (WhatsApp Business API).  
-
-These third-party providers may process limited user information according to their own privacy policies. We encourage you to review their respective policies for more details.
-
----
+This website may use basic third party services such as hosting, analytics, or communication tools. These providers may process limited technical information subject to their own privacy policies. We encourage you to review their policies where applicable.
 
 ## Your Choices
 
-- You may revoke API permissions or OAuth access at any time via your Google or Meta account settings.  
-- You may contact us to request deletion of any stored data associated with your use of the Services.  
-
----
+You may request correction or deletion of any personal information you have shared. You may also choose not to provide any information by simply refraining from submitting forms or contacting us.
 
 ## Changes to This Policy
 
-We may update this Privacy Policy from time to time. Any updates will be reflected with a new “Last Updated” date at the top. Continued use of our Services after updates indicates acceptance of the revised policy.
+This policy may be updated periodically. Continued use of the website after changes are published constitutes acceptance of the revised policy.
 
----
+## Contact
 
-## Contact Us
+For any questions about this policy or your data, contact: princemnit@gmail.com
 
-If you have any questions, concerns, or requests regarding this Privacy Policy, please contact us at:  
-📧 **[princemnit@gmail.com]**
-
----
-
-### Summary
-
-We build privacy-first tools and services.  
-We collect the minimum necessary data to make them work — and nothing more.
