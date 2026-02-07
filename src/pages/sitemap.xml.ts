@@ -72,6 +72,18 @@ export async function GET(context: APIContext) {
       changefreq: 'monthly',
       priority: 0.6,
     },
+    {
+      loc: `${site}/tools/google-meet-summariser/`,
+      lastmod: now,
+      changefreq: 'monthly',
+      priority: 0.6,
+    },
+    {
+      loc: `${site}/privacy-policy/`,
+      lastmod: now,
+      changefreq: 'yearly',
+      priority: 0.3,
+    },
   ];
 
   // ── Blog posts (with real dates from frontmatter) ───────────────
