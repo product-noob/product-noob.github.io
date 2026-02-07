@@ -12,12 +12,12 @@ export interface ToolEntry {
 
 export const tools: ToolEntry[] = [
   {
-    title: 'JSON Formatter',
+    title: 'AutoParse',
     description:
-      'Format, validate, and beautify your JSON. Syntax highlighting included.',
-    icon: '🔧',
-    link: '/tools/json-formatter',
-    tags: ['DevTool', 'JSON'],
+      'Paste any text — JSON, YAML, XML, CSV, Base64, and more. Auto-detects the format and pretty-prints it instantly.',
+    icon: '/icons/autoparse.png',
+    link: '/tools/autoparse',
+    tags: ['DevTool', 'Formatter'],
   },
   {
     title: 'Self-Hosted N8N',
