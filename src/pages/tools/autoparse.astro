@@ -1,0 +1,505 @@
+---
+/**
+ * /tools/autoparse — Intelligent text format detector and formatter.
+ * Paste any text and it auto-detects JSON, YAML, XML, CSV, Base64,
+ * URL-encoded strings, and minified CSS/JS, then pretty-prints it.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import 'highlight.js/styles/atom-one-dark.css';
+---
+
+<BaseLayout
+  title="AutoParse — Smart Text Formatter | Prince Jain"
+  description="Paste any text — JSON, YAML, XML, CSV, Base64, URL-encoded, minified JS/CSS — and AutoParse auto-detects the format and pretty-prints it instantly."
+>
+  <div class="ap-page">
+    <!-- Compact header -->
+    <div class="ap-topbar">
+      <div class="ap-topbar__left">
+        <a href="/tools" class="ap-topbar__back" aria-label="Back to Tools">←</a>
+        <h1 class="ap-topbar__title">AutoParse</h1>
+        <span class="ap-topbar__badge">
+          <span class="ap-topbar__dot"></span>
+          Auto-Detect
+        </span>
+      </div>
+      <div class="ap-topbar__formats">
+        <span class="ap-topbar__tag">JSON</span>
+        <span class="ap-topbar__tag">YAML</span>
+        <span class="ap-topbar__tag">XML</span>
+        <span class="ap-topbar__tag">CSV</span>
+        <span class="ap-topbar__tag">Base64</span>
+        <span class="ap-topbar__tag">URL</span>
+        <span class="ap-topbar__tag">JS</span>
+        <span class="ap-topbar__tag">CSS</span>
+      </div>
+    </div>
+
+    <!-- Detection bar -->
+    <div class="ap-detection">
+      <span class="ap-detection__badge" id="ap-badge" style="display:none;"></span>
+      <div class="ap-detection__pills" id="ap-pills"></div>
+    </div>
+
+    <!-- Two-pane layout -->
+    <div class="ap-panes">
+      <!-- Input pane -->
+      <div class="ap-pane">
+        <div class="ap-pane__header">
+          <span class="ap-pane__label">Input</span>
+          <button class="ap-btn" id="ap-clear">Clear</button>
+        </div>
+        <textarea
+          id="ap-input"
+          class="ap-textarea"
+          placeholder="Paste your text here…"
+          spellcheck="false"
+          autofocus
+        ></textarea>
+      </div>
+
+      <!-- Output pane -->
+      <div class="ap-pane">
+        <div class="ap-pane__header">
+          <span class="ap-pane__label">Output</span>
+          <div class="ap-pane__actions">
+            <button class="ap-btn" id="ap-raw">Raw</button>
+            <button class="ap-btn" id="ap-copy">Copy</button>
+          </div>
+        </div>
+
+        <!-- Empty state -->
+        <div class="ap-empty" id="ap-empty">
+          <span class="ap-empty__icon">✨</span>
+          <p class="ap-empty__text">Formatted output appears here</p>
+        </div>
+
+        <!-- Formatted output -->
+        <div class="ap-output-wrap" id="ap-output-wrap" style="display:none;">
+          <pre class="ap-output"><code id="ap-output"></code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import { init } from '../../scripts/autoparse/autoparse';
+  init();
+</script>
+
+<style>
+  /* ==========================================================
+     Page — full-bleed tool, no narrow container
+     ========================================================== */
+  .ap-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--space-4) var(--space-6) var(--space-8);
+    display: flex;
+    flex-direction: column;
+    /* Fill viewport height minus nav */
+    min-height: calc(100vh - 120px);
+    /* Prevent children (especially <pre>) from blowing out width */
+    overflow-x: hidden;
+  }
+
+  /* ==========================================================
+     Compact top bar
+     ========================================================== */
+  .ap-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-bottom: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .ap-topbar__left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .ap-topbar__back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--gray-200);
+    background: white;
+    color: var(--gray-600);
+    text-decoration: none;
+    font-size: var(--text-base);
+    transition:
+      background var(--transition-fast),
+      border-color var(--transition-fast);
+  }
+
+  .ap-topbar__back:hover {
+    background: var(--gray-50);
+    border-color: var(--gray-300);
+  }
+
+  .ap-topbar__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--gray-900);
+    margin: 0;
+    line-height: 1;
+  }
+
+  .ap-topbar__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 10px;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-full);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .ap-topbar__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-full);
+    background: var(--color-accent);
+    animation: dotPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes dotPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .ap-topbar__formats {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .ap-topbar__tag {
+    padding: 2px 8px;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--gray-400);
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: var(--radius-full);
+  }
+
+  /* ==========================================================
+     Detection bar
+     ========================================================== */
+  .ap-detection {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-3);
+    min-height: 28px;
+  }
+
+  .ap-detection__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px var(--space-3);
+    background: var(--color-accent-glow);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-accent);
+    white-space: nowrap;
+  }
+
+  .ap-detection__pills {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  /* Pill buttons (generated by JS) */
+  :global(.ap-pill) {
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--gray-200);
+    background: white;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--gray-600);
+    cursor: pointer;
+    transition:
+      background var(--transition-fast),
+      border-color var(--transition-fast),
+      color var(--transition-fast);
+  }
+
+  :global(.ap-pill:hover) {
+    background: var(--gray-50);
+    border-color: var(--gray-300);
+  }
+
+  :global(.ap-pill--active) {
+    background: var(--gray-900);
+    color: white;
+    border-color: var(--gray-900);
+  }
+
+  :global(.ap-pill--active:hover) {
+    background: var(--gray-800);
+  }
+
+  /* ==========================================================
+     Two-pane grid (desktop: side-by-side, mobile: stacked)
+     ========================================================== */
+  .ap-panes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    flex: 1;
+    min-height: 0;
+  }
+
+  .ap-pane {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    /* Grid children default to min-width:auto which prevents
+       shrinking below content size — override to allow it */
+    min-width: 0;
+  }
+
+  .ap-pane__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-2);
+  }
+
+  .ap-pane__label {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--gray-700);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .ap-pane__actions {
+    display: flex;
+    gap: 6px;
+  }
+
+  /* ==========================================================
+     Shared button style
+     ========================================================== */
+  .ap-btn {
+    padding: 4px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--gray-200);
+    background: white;
+    color: var(--gray-600);
+    transition:
+      background var(--transition-fast),
+      border-color var(--transition-fast),
+      color var(--transition-fast);
+  }
+
+  .ap-btn:hover {
+    background: var(--gray-50);
+    border-color: var(--gray-300);
+  }
+
+  :global(.ap-btn.active) {
+    background: var(--gray-900);
+    color: white;
+    border-color: var(--gray-900);
+  }
+
+  /* ==========================================================
+     Textarea (input pane)
+     ========================================================== */
+  .ap-textarea {
+    flex: 1;
+    width: 100%;
+    min-height: 300px;
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    border: 1px solid var(--gray-200);
+    background: white;
+    resize: none;
+    box-sizing: border-box;
+    transition:
+      border-color var(--transition-fast),
+      box-shadow var(--transition-fast);
+  }
+
+  .ap-textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-glow);
+  }
+
+  .ap-textarea::placeholder {
+    color: var(--gray-400);
+    font-family: var(--font-body);
+    font-style: italic;
+  }
+
+  /* ==========================================================
+     Empty state (output pane)
+     ========================================================== */
+  .ap-empty {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    border: 2px dashed var(--gray-200);
+    border-radius: var(--radius-md);
+    text-align: center;
+    padding: var(--space-6);
+  }
+
+  .ap-empty__icon {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .ap-empty__text {
+    font-size: var(--text-sm);
+    color: var(--gray-400);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* ==========================================================
+     Output (output pane)
+     ========================================================== */
+  .ap-output-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .ap-output {
+    flex: 1;
+    margin: 0;
+    padding: var(--space-4);
+    background: #282c34;
+    color: #abb2bf;
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    overflow: auto;
+    min-height: 300px;
+    max-height: calc(100vh - 260px);
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .ap-output code {
+    font-family: inherit;
+    background: none;
+    padding: 0;
+    /* Allow long tokens to wrap on narrow screens */
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
+  /* ==========================================================
+     Toast (created by JS)
+     ========================================================== */
+  :global(.ap-toast) {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--gray-800);
+    color: white;
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    transform: translateY(80px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  :global(.ap-toast.show) {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* ==========================================================
+     Responsive — stack on mobile
+     ========================================================== */
+  @media (max-width: 768px) {
+    .ap-page {
+      padding: var(--space-3) var(--space-4) var(--space-6);
+      min-height: auto;
+    }
+
+    .ap-topbar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-2);
+    }
+
+    .ap-topbar__formats {
+      display: none;
+    }
+
+    .ap-panes {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+    }
+
+    .ap-textarea,
+    .ap-empty,
+    .ap-output {
+      min-height: 200px;
+    }
+
+    .ap-output {
+      max-height: 400px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .ap-page {
+      padding: var(--space-2) var(--space-3) var(--space-4);
+    }
+
+    .ap-topbar__title {
+      font-size: var(--text-lg);
+    }
+
+    .ap-textarea,
+    .ap-empty,
+    .ap-output {
+      min-height: 160px;
+      padding: var(--space-3);
+    }
+  }
+</style>
