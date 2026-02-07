@@ -13,6 +13,10 @@
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
     "astro": "^5.17.1",
-    "highlight.js": "^11.11.1"
+    "highlight.js": "^11.11.1",
+    "js-yaml": "^4.1.1"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9"
   }
 }
