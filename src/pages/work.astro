@@ -87,10 +87,44 @@ function highlightMetrics(text: string): string {
               )}
 
               <div class="work-card__inner">
-                {/* Period badge */}
-                <span class="work-card__period">
-                  {work.period}
-                </span>
+                {/* Period badge + optional external link */}
+                <div class="work-card__top-row">
+                  <span class="work-card__period">
+                    {work.period}
+                  </span>
+                  {work.externalLink && (
+                    <a
+                      class="work-card__ext-link"
+                      href={work.externalLink.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {work.externalLink.label}
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M3.5 1.5H10.5V8.5"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M10.5 1.5L1.5 10.5"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </a>
+                  )}
+                </div>
 
                 {/* Heading row: icon + company/role */}
                 <div class="work-card__heading">
@@ -333,6 +367,15 @@ function highlightMetrics(text: string): string {
     padding: var(--space-6) var(--space-8) var(--space-8);
   }
 
+  /* Top row: period badge (left) + external link (right) */
+  .work-card__top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-4);
+    gap: var(--space-3);
+  }
+
   /* Period badge */
   .work-card__period {
     display: inline-block;
@@ -345,7 +388,40 @@ function highlightMetrics(text: string): string {
     border: 1px solid var(--gray-200);
     padding: 3px var(--space-3);
     border-radius: var(--radius-full);
-    margin-bottom: var(--space-4);
+  }
+
+  /* External reference link */
+  .work-card__ext-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--gray-400);
+    text-decoration: none;
+    padding: 3px var(--space-3);
+    border-radius: var(--radius-full);
+    border: 1px solid transparent;
+    transition:
+      color var(--transition-fast),
+      background var(--transition-fast),
+      border-color var(--transition-fast);
+    white-space: nowrap;
+  }
+
+  .work-card__ext-link:hover {
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+    border-color: color-mix(in srgb, var(--accent) 15%, transparent);
+  }
+
+  .work-card__ext-link svg {
+    flex-shrink: 0;
+    transition: transform var(--transition-fast);
+  }
+
+  .work-card__ext-link:hover svg {
+    transform: translate(1px, -1px);
   }
 
   /* Heading row */
@@ -511,6 +587,11 @@ function highlightMetrics(text: string): string {
     .work-card__award {
       padding-left: var(--space-5);
       padding-right: var(--space-5);
+    }
+
+    .work-card__ext-link {
+      font-size: 0.7rem;
+      padding: 2px var(--space-2);
     }
   }
 
