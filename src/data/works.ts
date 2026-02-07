@@ -38,7 +38,7 @@ export const works: WorkEntry[] = [
     ],
     tags: ['AI', 'Strategy', '0→1'],
     accentColor: 'hsl(28, 100%, 50%)',
-    icon: '/icons/slap.png',
+    icon: '/icons/slap.webp',
     link: '/work',
     externalLink: {
       url: 'https://play.google.com/store/apps/details?id=com.slap.android',
@@ -174,7 +174,7 @@ export const workHighlights: WorkHighlight[] = [
   {
     title: '2025 - Present',
     company: 'SLAP (Flipkart)',
-    workIcon: '/icons/slap.png',
+    workIcon: '/icons/slap.webp',
     role: 'Group Product Manager',
     highlight:
       'Building the future of agentic commerce. Leading a 0→1 AI-first app to rethink discovery and shopping paradigms.',
