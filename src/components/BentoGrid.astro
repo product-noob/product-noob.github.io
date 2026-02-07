@@ -1,0 +1,40 @@
+---
+/**
+ * BentoGrid Component
+ * A dense, irregular grid for displaying tools and stack items.
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={['bento-grid', className]}>
+  <slot />
+</div>
+
+<style>
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-4);
+    width: 100%;
+  }
+
+  /* Support for spanning items if we add a 'span-2' utility */
+  :global(.span-2) {
+    grid-column: span 2;
+  }
+
+  @media (max-width: 768px) {
+    .bento-grid {
+      grid-template-columns: 1fr; /* Full width on mobile for better readability */
+      gap: var(--space-3);
+    }
+    
+    :global(.span-2) {
+      grid-column: span 1;
+    }
+  }
+</style>

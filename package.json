@@ -1,0 +1,18 @@
+{
+  "name": "princejain-site",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Personal website of Prince Jain - PM at Flipkart",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
+    "astro": "^5.17.1",
+    "highlight.js": "^11.11.1"
+  }
+}

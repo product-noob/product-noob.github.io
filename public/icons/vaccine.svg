@@ -1,0 +1,14 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="vaccineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981"/>
+      <stop offset="100%" style="stop-color:#34D399"/>
+    </linearGradient>
+  </defs>
+  <rect width="24" height="24" rx="6" fill="url(#vaccineGradient)"/>
+  <path d="M12 5V7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M12 7L12 11" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  <rect x="9" y="11" width="6" height="8" rx="1" fill="white"/>
+  <path d="M11 14H13" stroke="url(#vaccineGradient)" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M11 16H13" stroke="url(#vaccineGradient)" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

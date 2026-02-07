@@ -1,0 +1,393 @@
+# Cursor Coding Standards -- product-noob.github.io (Astro Site)
+#
+# This file is the single source of truth for AI-assisted code generation
+# rules in this repository. It replaces the legacy Jekyll-era rules and
+# reflects the Astro 5 architecture established in the 2026 refactor.
+#
+# See new-site/CURSOR_RULES_DOCUMENTATION.md for rationale, examples,
+# and a full error-analysis appendix.
+#
+# Last updated: 2026-02-06
+# Versioning: bump the date above whenever rules change.
+
+# =========================================================================
+# 1. PROJECT ARCHITECTURE
+# =========================================================================
+#
+# The active site lives in new-site/ and is built with Astro 5.
+# The root directory also contains a legacy Jekyll site -- do NOT modify
+# Jekyll files (Gemfile, _layouts, _posts, _sass, etc.) unless explicitly
+# asked. All work targets new-site/ by default.
+#
+# Directory layout (new-site/src/):
+#
+#   src/
+#   ├── components/          # Reusable Astro components
+#   │   ├── home/            # Homepage section components
+#   │   ├── blog/            # Blog-specific components
+#   │   └── *.astro          # Shared primitives (BlogCard, ProjectCard...)
+#   ├── content/
+#   │   └── blog/            # Markdown blog posts (Content Collections)
+#   │       └── config.ts    # Zod schema for frontmatter validation
+#   ├── data/                # Typed TS data files (single source of truth)
+#   ├── layouts/             # Page layouts (BaseLayout.astro)
+#   ├── pages/               # File-based routing
+#   ├── scripts/             # Client-side TypeScript modules
+#   ├── styles/              # Global CSS (tokens, reset, global, components)
+#   └── utils/               # Pure utility functions (readingTime, etc.)
+#
+# Rules:
+# - Page files (src/pages/) must be thin orchestrators: import data,
+#   import components, pass props, minimal or zero scoped <style>.
+# - Never put reusable markup directly in a page file. Extract it to
+#   src/components/ if it is used (or could be used) in more than one place.
+# - Ask before creating new top-level directories.
+# - Prefer editing existing files over creating new ones. Only create a new
+#   file when the task genuinely requires it (new component, new data module,
+#   new utility). Ask for confirmation if unsure.
+
+# =========================================================================
+# 2. DESIGN TOKEN SYSTEM
+# =========================================================================
+#
+# All visual design values live in src/styles/tokens.css as CSS custom
+# properties on :root. This is the single source of truth for colors,
+# spacing, typography, shadows, radii, transitions, and layout widths.
+#
+# MANDATORY: Every color, shadow, spacing value, font stack, and radius
+# used anywhere in the codebase MUST reference a token via var(--name).
+#
+# BANNED (hardcoded values the AI must NEVER produce):
+#   hsl(340, 80%, 55%)       -> use var(--color-accent-secondary)
+#   #0077B5 / #0077b5        -> use var(--color-linkedin)
+#   #FFF8F5 / #fff8f5        -> use var(--bg-warm)
+#   #F8FAFC / #f8fafc        -> use var(--bg-cool)
+#   0 1px 2px rgba(0,0,0,.02), 0 4px 12px rgba(0,0,0,.04)
+#                             -> use var(--shadow-card)
+#   0 4px 8px rgba(0,0,0,.04), 0 16px 40px rgba(0,0,0,.08)
+#                             -> use var(--shadow-card-hover)
+#   Any raw hsl/rgb/hex that already has a token equivalent
+#                             -> look up tokens.css first
+#
+# HOW TO ADD A NEW TOKEN:
+# 1. Add the variable to the :root block in tokens.css.
+# 2. Add responsive overrides in the @media blocks if needed.
+# 3. Add a comment explaining what it is.
+# 4. Reference it via var(--new-token) everywhere.
+# 5. NEVER define a new :root variable in a component's <style> block.
+
+# =========================================================================
+# 3. CSS RULES
+# =========================================================================
+#
+# Import order in BaseLayout.astro (MUST be maintained exactly):
+#   1. tokens.css    -- custom properties
+#   2. reset.css     -- browser normalization
+#   3. global.css    -- typography, utilities, animations
+#   4. components.css -- shared component styles (buttons, cards, tags, nav)
+#
+# Naming:
+# - Use BEM: .block__element--modifier (e.g., .blog-card__title--featured)
+# - CSS class names are kebab-case: .section-header, .timeline-entry
+# - CSS custom properties use kebab-case with category prefix:
+#   --color-*, --gray-*, --text-*, --space-*, --radius-*, --shadow-*,
+#   --transition-*, --font-*, --bg-*, --gradient-*
+#
+# Scoped styles:
+# - Component-specific styles go inside the component's <style> block.
+# - Astro scopes them automatically. Do NOT add scoping hacks.
+# - Shared styles that are used by multiple components go in components.css.
+#
+# Responsive design:
+# - Mobile-first: base styles are mobile, then use min-width media queries.
+# - NEVER modify desktop styles to fix a mobile issue. Mobile overrides
+#   must be inside their own @media block.
+# - Responsive token overrides (font sizes, spacing) belong in tokens.css.
+# - Component-level responsive tweaks go in the component's <style> block.
+#
+# Avoid:
+# - !important (except in the prefers-reduced-motion reset in reset.css)
+# - Deep nesting (max 3 levels)
+# - Inline styles in markup (use classes or CSS custom properties)
+# - Duplicating shadow/color/gradient values -- always use tokens
+
+# =========================================================================
+# 4. COMPONENT RULES (ASTRO)
+# =========================================================================
+#
+# Every .astro component MUST:
+# 1. Define a Props interface in the frontmatter (even if empty).
+# 2. Include a JSDoc comment at the top of the frontmatter explaining
+#    what the component does and where it is used.
+# 3. Keep total line count under 500 lines. If it exceeds this, split
+#    into sub-components.
+#
+# Component categories:
+# - src/components/*.astro        -- shared primitives (BlogCard, Chip)
+# - src/components/home/*.astro   -- homepage sections (HeroSection, etc.)
+# - src/components/blog/*.astro   -- blog-specific (ReadingProgress, etc.)
+#
+# Props design:
+# - Use TypeScript interfaces, not inline types.
+# - Mark optional props with ? and provide defaults via destructuring.
+# - Never pass raw data arrays longer than ~5 items as inline literals
+#   in page files. Import from src/data/ instead.
+#
+# Slot usage:
+# - Use Astro's <slot /> for layout components.
+# - Named slots (slot="head") for injecting into <head>.
+
+# =========================================================================
+# 5. DATA LAYER
+# =========================================================================
+#
+# All page-level data (work history, side projects, tools, skills, links)
+# lives in src/data/*.ts files with exported typed arrays.
+#
+# RULES:
+# - Each data file MUST export a TypeScript interface for its entries.
+# - Data must NEVER be duplicated across page files. If two pages need
+#   the same data, they import from the same src/data/ file.
+# - Example: works.ts exports both `works` (full detail for /work) and
+#   `workHighlights` (compact view for the homepage). The homepage MUST
+#   NOT maintain its own copy of work data.
+# - Hardcoded arrays of > 3 items in page frontmatter are a code smell.
+#   Extract to src/data/.
+# - Data files are pure TypeScript (no Astro imports, no side effects).
+
+# =========================================================================
+# 6. CLIENT-SIDE SCRIPTS
+# =========================================================================
+#
+# Client-side JavaScript/TypeScript lives in src/scripts/*.ts as named
+# exports. Page/layout files import and call them:
+#
+#   <script>
+#     import { addCopyButtons } from '../scripts/copyCode';
+#     addCopyButtons();
+#   </script>
+#
+# RULES:
+# - NEVER write inline <script> blocks longer than 10 lines in a page file.
+#   Extract the logic to src/scripts/ and import it.
+# - NEVER use <script is:inline> except for truly unavoidable cases (e.g.,
+#   third-party embeds that require global scope). Document the reason.
+# - NEVER load libraries from CDN. Install them via npm and import them
+#   so Astro's bundler can tree-shake and cache-bust.
+# - All client scripts MUST be TypeScript (.ts, not .js).
+# - Every script file MUST have a JSDoc comment explaining its purpose
+#   and which layout/component loads it.
+# - Use requestAnimationFrame or IntersectionObserver for scroll-driven
+#   effects. Never use raw scroll listeners without throttling.
+
+# =========================================================================
+# 7. BLOG CONTENT & FRONTMATTER
+# =========================================================================
+#
+# Blog posts live in src/content/blog/*.md and are validated by the Zod
+# schema in src/content/config.ts.
+#
+# Required frontmatter fields:
+#   title:       string (min 1 char)
+#   description: string (min 10 chars)
+#   pubDate:     ISO date string (e.g., '2025-05-23')
+#   tags:        array of 1-4 strings
+#
+# Optional fields:
+#   featured:    boolean (default false -- only one post should be true)
+#   updatedDate: ISO date string
+#   heroImage:   path to image
+#
+# BANNED legacy fields (NEVER add these):
+#   layout: post          -- Jekyll artifact, Astro ignores it
+#   date: <value>         -- use pubDate instead
+#   categories: [...]     -- use tags instead
+#
+# When creating a new blog post:
+# 1. Add all required frontmatter fields.
+# 2. Choose 1-4 descriptive tags from existing tag vocabulary if possible.
+# 3. Set featured: true only if this should replace the current featured post
+#    (and set the previous featured post to featured: false).
+
+# =========================================================================
+# 8. FORMATTING & NAMING CONVENTIONS
+# =========================================================================
+#
+# Indentation: 2 spaces (no tabs) for all files.
+# Max line length: 80 characters (soft limit; URLs and long strings exempt).
+#
+# Naming:
+#   Files:
+#   - Astro components: PascalCase (HeroSection.astro, BlogCard.astro)
+#   - TypeScript modules: camelCase (copyCode.ts, readingTime.ts)
+#   - Data files: camelCase (works.ts, projects.ts)
+#   - CSS files: kebab-case (tokens.css, global.css)
+#   - Blog posts: kebab-case or Title-Case with hyphens (Hello-World.md)
+#
+#   Code:
+#   - TypeScript variables/functions: camelCase
+#   - TypeScript interfaces/types: PascalCase
+#   - CSS classes: kebab-case with BEM (.blog-card__title--featured)
+#   - CSS custom properties: kebab-case with prefix (--color-accent)
+#   - HTML IDs: kebab-case (reading-progress, image-label)
+#
+# Import ordering in Astro frontmatter:
+#   1. Astro/framework imports (astro:content, etc.)
+#   2. Layout imports
+#   3. Component imports
+#   4. Data imports
+#   5. Utility imports
+#   6. Type-only imports
+
+# =========================================================================
+# 9. GIT WORKFLOW
+# =========================================================================
+#
+# - Write conventional commit messages: type(scope): description
+#   Types: feat, fix, refactor, docs, chore, style, perf, test
+#   Scope: styles, data, components, scripts, content, build, etc.
+# - One logical change per commit.
+# - ALWAYS run `npm run build` and verify zero errors before committing.
+# - Include a brief explanation of WHY the change was made in the commit
+#   body (not just WHAT changed).
+# - Never commit node_modules/, dist/, or .astro/ directories.
+# - Never commit .env files or secrets.
+
+# =========================================================================
+# 10. DEPRECATED PATTERNS (NEVER PRODUCE THESE)
+# =========================================================================
+#
+# Pattern                          | Replacement
+# ---------------------------------|------------------------------------------
+# layout: post (in frontmatter)    | Remove entirely. Astro does not use it.
+# date: <value> (in frontmatter)   | Use pubDate: '<ISO date>'
+# Inline data arrays > 5 items     | Extract to src/data/*.ts
+# <script is:inline>               | Use <script> with imports from src/scripts/
+# CDN <link>/<script> for libs     | npm install + import
+# hsl(340, 80%, 55%)               | var(--color-accent-secondary)
+# #0077B5                          | var(--color-linkedin)
+# Raw shadow value (copy-pasted)   | var(--shadow-card) or var(--shadow-card-hover)
+# Hardcoded #FFF8F5 / #F8FAFC      | var(--bg-warm) / var(--bg-cool)
+# Monolithic page > 300 lines      | Extract sections to src/components/
+# Global <style> in a component    | Use scoped <style> (Astro default)
+# extractTags() at runtime         | Use frontmatter tags field
+# Orphaned files (unused imports)  | Delete them in the same PR
+# Duplicate routes (foo.astro AND  | Keep only one: foo/index.astro
+#   foo/index.astro)               |
+# New :root variables in components| Define tokens in tokens.css only
+# var; (JavaScript)                | Use const or let
+
+# =========================================================================
+# 11. BEHAVIORAL RULES FOR THE AI AGENT
+# =========================================================================
+#
+# Before writing code:
+# 1. READ the relevant files first. Never guess at file contents.
+# 2. CHECK tokens.css before using any color, shadow, or spacing value.
+# 3. CHECK src/data/ before hardcoding any data array in a page file.
+# 4. CHECK if a similar component already exists before creating a new one.
+#
+# When to ask for clarification (do NOT proceed silently):
+# - The task requires creating a new top-level directory.
+# - The task is ambiguous and could be interpreted in multiple valid ways.
+# - The change would modify the design token system (tokens.css).
+# - The change would alter BaseLayout.astro's structure.
+# - The change would modify the blog content schema (config.ts).
+# - You are unsure whether to create a new file or extend an existing one.
+#
+# Verification before proposing changes:
+# 1. Run `npm run build` in new-site/ and confirm zero errors.
+# 2. Check that no new hardcoded values bypass the token system.
+# 3. Verify no data duplication was introduced.
+# 4. Confirm all new/changed files follow naming conventions.
+# 5. Ensure imports are ordered correctly.
+#
+# When committing:
+# - Use conventional commit format (see section 9).
+# - Include a descriptive body in the commit message.
+# - Run build verification before committing.
+# - Never amend someone else's commit.
+# - Never force-push to master.
+
+# =========================================================================
+# 12. ERROR HANDLING & DOCUMENTATION
+# =========================================================================
+#
+# Error handling:
+# - Client-side scripts MUST use try/catch for async operations
+#   (clipboard, fetch, etc.).
+# - Never show raw error objects to users. Log to console, show friendly
+#   message in UI.
+# - Validate all external input (URL params, form data) before use.
+#
+# Documentation:
+# - Every TypeScript function and interface MUST have a JSDoc comment.
+# - Every Astro component MUST have a JSDoc comment in its frontmatter
+#   explaining purpose and usage context.
+# - Data files MUST have a top-level JSDoc explaining what they contain
+#   and which pages consume them.
+# - Complex CSS patterns MUST have a comment explaining the intent.
+# - Use inline comments sparingly: explain WHY, not WHAT.
+
+# =========================================================================
+# 13. SECURITY GUIDELINES
+# =========================================================================
+#
+# - NEVER hardcode API keys, tokens, passwords, or secrets in source files.
+# - NEVER use eval(), new Function(), or document.write().
+# - NEVER disable TypeScript strict checks or use @ts-ignore without
+#   documenting why in a comment.
+# - Use textContent (not innerHTML) when inserting user-controlled text.
+# - Escape HTML when rendering dynamic content in templates.
+# - Validate and sanitize all inputs in tool pages (json-formatter, etc.).
+# - External links MUST use rel="noopener noreferrer" with target="_blank".
+# - Load all dependencies from npm, not from unverified CDNs.
+
+# =========================================================================
+# 14. PERFORMANCE
+# =========================================================================
+#
+# - Use loading="lazy" on all images below the fold.
+# - Import only what you need from libraries (e.g., highlight.js/lib/core
+#   + specific languages, not the full bundle).
+# - Prefer Astro's static rendering. Only add client-side JS when
+#   interactivity is genuinely required.
+# - Keep the total number of client-side JS modules small. Combine related
+#   functionality into one module where sensible.
+# - Minimize external font requests. Current fonts: Fraunces, DM Sans,
+#   JetBrains Mono (loaded via Google Fonts in BaseLayout.astro).
+
+# =========================================================================
+# 15. BLOG WRITING STYLE
+# =========================================================================
+#
+# - Write in a conversational, first-person tone. Speak to the reader
+#   ("If you're like me...", "Let's break this down...").
+# - Open with a personal anecdote or rhetorical hook that frames the
+#   problem before diving into solutions.
+# - Use descriptive headings (###) to chunk the narrative logically.
+#   Keep a clear hierarchy (H1 once, then H2/H3).
+# - Prefer short paragraphs (4 lines max) for readability.
+# - Use unordered lists for ideas, ordered lists for step-by-step guides.
+# - Emphasize key terms with **bold**; use *italics* for asides.
+# - Sprinkle light humor and parenthetical asides.
+# - Include code blocks, images, and figures where they add value.
+#   Always add alt text.
+# - Use blockquotes for memorable quotes or standout insights.
+# - End posts with actionable tips, next steps, or a call-to-action.
+
+# =========================================================================
+# 16. MOBILE vs DESKTOP STYLE RULES
+# =========================================================================
+#
+# - NEVER modify desktop styles to fix a mobile issue.
+# - Mobile-specific overrides MUST be inside @media (max-width: ...) blocks.
+# - Token overrides for mobile live in tokens.css's @media blocks.
+# - Component-level responsive tweaks go in the component's <style>.
+# - Test all changes at 480px, 768px, 1024px, and 1440px widths.
+#
+# Code Review Checklist (Mobile Changes):
+# - Are ALL mobile styles inside appropriate media queries?
+# - Were zero desktop styles changed?
+# - No global changes from mobile-only fixes?
+# - Both mobile and desktop tested and working?

@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { tools } from '../../data/tools';
+---
+
+<BaseLayout title="Tools | Prince Jain" description="Free web-based developer utilities built by Prince Jain — JSON formatter, validators, and more productivity tools.">
+  <section class="tools-header">
+    <div class="container">
+      <h1 class="page-title">Tools</h1>
+      <p class="page-subtitle">A collection of web-based utilities I've built.</p>
+    </div>
+  </section>
+
+  <section class="tools-list">
+    <div class="container">
+      <div class="tools-grid">
+        {tools.map((tool) => (
+          <div class="tool-card-wrapper">
+            <ProjectCard 
+              title={tool.title}
+              description={tool.description}
+              icon={tool.icon}
+              link={tool.link}
+              tags={tool.tags}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .tools-header {
+    padding: var(--space-12) 0 var(--space-8);
+    background-color: var(--gray-50);
+  }
+
+  .page-title {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-2);
+  }
+
+  .page-subtitle {
+    font-size: var(--text-lg);
+    color: var(--gray-600);
+  }
+
+  .tools-list {
+    padding: var(--space-8) 0 var(--space-16);
+  }
+
+  /* Override ProjectCard default behavior if needed, 
+     but keeping it consistent is better */
+  .tool-card-wrapper {
+    height: 100%;
+  }
+</style>

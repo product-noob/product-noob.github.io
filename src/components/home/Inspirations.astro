@@ -1,0 +1,175 @@
+---
+/**
+ * Inspirations — "People Who Inspire Me" card grid.
+ * Self-contained: owns its markup, styles, and client-side script.
+ * Dummy data — swap names, descriptions, images, and URLs later.
+ */
+
+const people = [
+  {
+    name: 'Lenny Rachitsky',
+    description: 'Product, growth, and the mastermind behind the #1 product newsletter.',
+    url: 'https://www.lennysnewsletter.com/',
+    image: 'https://ui-avatars.com/api/?name=LR&size=96&background=6366F1&color=fff&bold=true&rounded=true',
+  },
+  {
+    name: 'Shreyas Doshi',
+    description: 'Former PM at Stripe, Twitter, Google — prolific thinker on product craft.',
+    url: 'https://twitter.com/shreyas',
+    image: 'https://ui-avatars.com/api/?name=SD&size=96&background=0EA5E9&color=fff&bold=true&rounded=true',
+  },
+  {
+    name: 'Paul Graham',
+    description: 'Co-founder of Y Combinator. Essayist on startups, tech, and thinking clearly.',
+    url: 'https://paulgraham.com/',
+    image: 'https://ui-avatars.com/api/?name=PG&size=96&background=F59E0B&color=fff&bold=true&rounded=true',
+  },
+  {
+    name: 'Naval Ravikant',
+    description: 'AngelList founder. Philosopher-investor on wealth, leverage, and judgement.',
+    url: 'https://nav.al/',
+    image: 'https://ui-avatars.com/api/?name=NR&size=96&background=10B981&color=fff&bold=true&rounded=true',
+  },
+  {
+    name: 'Ben Thompson',
+    description: 'Stratechery founder. The sharpest analyst on tech strategy and aggregation.',
+    url: 'https://stratechery.com/',
+    image: 'https://ui-avatars.com/api/?name=BT&size=96&background=14B8A6&color=fff&bold=true&rounded=true',
+  },
+  {
+    name: 'Shrinivas SG',
+    description: 'My former manager and a defining influence on how I think about people leadership.',
+    url: 'https://x.com/shrinivassg',
+    image: 'https://pbs.twimg.com/profile_images/1815019884490727424/h07JBX_N_400x400.jpg',
+  },
+];
+---
+
+<section class="inspirations">
+  <div class="container">
+    <div class="inspirations__header">
+      <h2 class="inspirations__title">People Who Inspire Me</h2>
+    </div>
+
+    <div class="inspirations__grid">
+      {people.map((person, i) => (
+        <a
+          href={person.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inspire-card"
+          style={`animation-delay: ${i * 60}ms`}
+        >
+          <div class="inspire-card__top">
+            <img
+              src={person.image}
+              alt={person.name}
+              class="inspire-card__avatar"
+              loading="lazy"
+            />
+            <p class="inspire-card__name">{person.name}</p>
+          </div>
+          <p class="inspire-card__desc">{person.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .inspirations {
+    padding: var(--space-16) 0 var(--space-24);
+    position: relative;
+  }
+
+  .inspirations__header {
+    margin-bottom: var(--space-8);
+  }
+
+  .inspirations__title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--gray-900);
+  }
+
+  /* Grid: 3 cols desktop, 2 cols mobile */
+  .inspirations__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+
+  /* Card */
+  .inspire-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--gray-200);
+    background: white;
+    text-decoration: none;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+
+  .inspire-card:hover {
+    border-color: var(--gray-300);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    transform: translateY(-3px);
+  }
+
+  /* Avatar + Name row */
+  .inspire-card__top {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .inspire-card__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid var(--gray-100);
+    background: var(--gray-100);
+  }
+
+  .inspire-card__name {
+    font-weight: 700;
+    font-size: var(--text-sm);
+    color: var(--gray-900);
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .inspire-card__desc {
+    font-size: var(--text-xs);
+    color: var(--gray-500);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 767px) {
+    .inspirations {
+      padding: var(--space-12) 0 var(--space-16);
+    }
+
+    .inspirations__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+    }
+
+    .inspire-card {
+      padding: var(--space-4);
+    }
+
+    .inspire-card__avatar {
+      width: 40px;
+      height: 40px;
+    }
+  }
+</style>

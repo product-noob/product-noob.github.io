@@ -1,0 +1,176 @@
+---
+/**
+ * DigitalGarden — Bento grid of side projects + tech stack.
+ * Includes a typographic "pause" divider above the grid.
+ */
+import ProjectCard from '../ProjectCard.astro';
+import BentoGrid from '../BentoGrid.astro';
+import type { SideProject } from '../../data/projects';
+import type { StackItem } from '../../data/skills';
+
+interface Props {
+  projects: SideProject[];
+  stack: StackItem[];
+}
+
+const { projects, stack } = Astro.props;
+---
+
+<!-- Typographic Pause -->
+<section class="section section--pause text-center">
+  <div class="container">
+    <h2 class="pause-statement">
+      AI will not replace <span class="text-accent">you</span>,<br>
+      A person using AI <span class="text-accent-secondary">will</span>.
+    </h2>
+  </div>
+</section>
+
+<!-- Digital Garden (Bento Grid) -->
+<section class="section section-gap-medium section-bg--cool">
+  <div class="container">
+    <div class="section-header section-header--centered mb-8">
+      <h2 class="section__title section__title--serif">Digital Garden</h2>
+      <p class="section__subtitle">Side projects, self-hosted tools, and experiments.</p>
+    </div>
+
+    <BentoGrid class="animate-on-scroll">
+      {projects.map((project) => (
+        <ProjectCard
+          title={project.title}
+          description={project.description}
+          icon={project.icon}
+          tags={project.tags}
+          link={project.link}
+          variant="compact"
+        />
+      ))}
+
+      <!-- Tech Stack mini card -->
+      <div class="stack-bento project-card project-card--compact">
+        <div class="project-card__inner">
+          <h3 class="project-card__title mb-4">Tech Stack</h3>
+          <div class="stack-list stack-list--mini">
+            {stack.map(tool => (
+              <div class="stack-item--mini" title={tool.name}>
+                {tool.icon}
+              </div>
+            ))}
+          </div>
+          <p class="text-xs text-gray-500 mt-4">Tools I use daily to build and ship.</p>
+        </div>
+      </div>
+    </BentoGrid>
+  </div>
+</section>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px',
+    });
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+      observer.observe(el);
+    });
+  });
+</script>
+
+<style>
+  /* Typographic Pause */
+  .text-accent {
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  .text-accent-secondary {
+    color: var(--color-accent-secondary);
+    font-weight: 500;
+  }
+
+  .section--pause {
+    padding: var(--space-32) 0;
+    background: white;
+  }
+
+  .pause-statement {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--gray-900);
+    letter-spacing: -0.02em;
+  }
+
+  /* Section Backgrounds */
+  .section-bg--cool {
+    background: var(--bg-cool);
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-24);
+  }
+
+  /* Section Header Centered */
+  .section-header--centered {
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section__title--serif {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    margin-bottom: var(--space-4);
+    color: var(--gray-900);
+  }
+
+  @media (min-width: 768px) {
+    .section__title--serif {
+      font-size: var(--text-5xl);
+    }
+  }
+
+  /* Stack Styles */
+  .stack-list--mini {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .stack-item--mini {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: var(--radius-md);
+    font-size: 1.2rem;
+    transition: transform var(--transition-bounce),
+      border-color var(--transition-fast);
+  }
+
+  .stack-item--mini:hover {
+    transform: translateY(-2px) scale(1.1);
+    border-color: var(--color-accent);
+    background: white;
+  }
+
+  /* Utility classes used in markup */
+  .mb-4 { margin-bottom: var(--space-4); }
+  .mb-8 { margin-bottom: var(--space-8); }
+  .mt-4 { margin-top: var(--space-4); }
+  .text-xs { font-size: var(--text-xs); }
+  .text-gray-500 { color: var(--gray-500); }
+  .text-center { text-align: center; }
+</style>

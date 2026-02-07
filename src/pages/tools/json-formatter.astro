@@ -1,0 +1,324 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import 'highlight.js/styles/atom-one-dark.css';
+---
+
+<BaseLayout title="JSON Formatter & Validator | Prince Jain" description="Free online JSON formatter, validator, and beautifier with syntax highlighting and detailed error messages. Paste, format, and copy instantly.">
+
+  <div class="tool-page container">
+    <div class="tool-header">
+      <h1 class="page-title">JSON Formatter & Validator</h1>
+      <p class="page-subtitle">Format, validate, and beautify your JSON. Get syntax highlighting and detailed error messages for invalid JSON.</p>
+      <a href="/tools" class="back-link">← Back to Tools</a>
+    </div>
+
+    <div class="json-formatter">
+      <div class="input-section">
+        <div class="section-header">
+          <h3>Input JSON</h3>
+          <div class="section-actions">
+            <button class="action-button secondary" id="clear-input">Clear</button>
+            <button class="action-button secondary" id="copy-input">Copy</button>
+            <button class="action-button secondary" id="minify-btn">Minify</button>
+          </div>
+        </div>
+        <textarea id="input-text" class="json-textarea" placeholder="Paste your JSON here..."></textarea>
+      </div>
+
+      <div class="action-buttons">
+        <button class="action-button primary" id="format-btn">Format JSON</button>
+      </div>
+
+      <div class="output-section">
+        <div class="section-header">
+          <h3>Formatted Output</h3>
+          <div class="section-actions">
+            <button class="action-button secondary" id="clear-output">Clear</button>
+            <button class="action-button secondary" id="copy-output">Copy</button>
+          </div>
+        </div>
+        <div id="output-container" class="json-output">
+          <pre><code id="output-text" class="language-json"></code></pre>
+        </div>
+        <div id="error-message" class="error-message" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import hljs from 'highlight.js/lib/core';
+  import json from 'highlight.js/lib/languages/json';
+  hljs.registerLanguage('json', json);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const inputText = document.getElementById('input-text') as HTMLTextAreaElement;
+    const outputText = document.getElementById('output-text');
+    const errorMessage = document.getElementById('error-message');
+    const formatBtn = document.getElementById('format-btn');
+    const minifyBtn = document.getElementById('minify-btn');
+    const clearInputBtn = document.getElementById('clear-input');
+    const clearOutputBtn = document.getElementById('clear-output');
+    const copyInputBtn = document.getElementById('copy-input');
+    const copyOutputBtn = document.getElementById('copy-output');
+
+    // Helper functions
+    const showToast = (message: string) => {
+      // Basic alert for now, or implement a custom toast
+      // For simplicity in porting, allowing alert or console.
+      // Better: Create a toast element
+      let toast = document.querySelector('.toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'toast';
+        document.body.appendChild(toast);
+      }
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    };
+
+    const copyToClipboard = async (text: string) => {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast('Copied to clipboard!');
+      } catch (err) {
+        console.error('Failed to copy:', err);
+        showToast('Failed to copy');
+      }
+    };
+
+    const formatJSON = () => {
+      try {
+        const input = inputText.value.trim();
+        if (!input) {
+          showToast('Please enter JSON to format');
+          return;
+        }
+
+        const parsed = JSON.parse(input);
+        const formatted = JSON.stringify(parsed, null, 2);
+        
+        if (outputText) {
+          outputText.textContent = formatted;
+          hljs.highlightElement(outputText);
+        }
+
+        if (errorMessage) {
+            errorMessage.textContent = '';
+            errorMessage.style.display = 'none';
+        }
+        showToast('JSON formatted successfully');
+      } catch (error: any) {
+        if (errorMessage) {
+          errorMessage.textContent = `Error: ${error.message}`;
+          errorMessage.style.display = 'block';
+        }
+        if (outputText) outputText.textContent = '';
+        showToast('Invalid JSON');
+      }
+    };
+
+    const minifyJSON = () => {
+      try {
+        const input = inputText.value.trim();
+        if (!input) return;
+
+        const parsed = JSON.parse(input);
+        const minified = JSON.stringify(parsed);
+        
+        inputText.value = minified;
+        
+        if (errorMessage) {
+            errorMessage.textContent = '';
+            errorMessage.style.display = 'none';
+        }
+        showToast('JSON minified successfully');
+      } catch (error: any) {
+        if (errorMessage) {
+            errorMessage.textContent = `Error: ${error.message}`;
+            errorMessage.style.display = 'block';
+        }
+        showToast('Invalid JSON');
+      }
+    };
+
+    // Event Listeners
+    formatBtn?.addEventListener('click', formatJSON);
+    minifyBtn?.addEventListener('click', minifyJSON);
+    
+    clearInputBtn?.addEventListener('click', () => {
+      inputText.value = '';
+      inputText.focus();
+    });
+
+    clearOutputBtn?.addEventListener('click', () => {
+        if (outputText) outputText.textContent = '';
+        if (errorMessage) errorMessage.style.display = 'none';
+    });
+
+    copyInputBtn?.addEventListener('click', () => copyToClipboard(inputText.value));
+    
+    copyOutputBtn?.addEventListener('click', () => {
+        if (outputText) copyToClipboard(outputText.textContent || '');
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (event) => {
+        if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+            formatJSON();
+        }
+    });
+  });
+</script>
+
+<style>
+  .tool-page {
+    padding: var(--space-8) 0 var(--space-16);
+  }
+
+  .tool-header {
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+
+  .page-title {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-2);
+  }
+
+  .page-subtitle {
+    font-size: var(--text-base);
+    color: var(--gray-600);
+    margin-bottom: var(--space-4);
+  }
+
+  .back-link {
+    display: inline-block;
+    color: var(--color-accent);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
+  .back-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Layout */
+  .json-formatter {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-2);
+  }
+
+  .section-header h3 {
+    font-size: var(--text-lg);
+    margin: 0;
+  }
+
+  .section-actions {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  /* Buttons */
+  .action-button {
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all var(--transition-fast);
+  }
+
+  .action-button.primary {
+    background-color: var(--color-accent);
+    color: white;
+    width: 100%;
+    padding: var(--space-3);
+    font-size: var(--text-base);
+  }
+
+  .action-button.primary:hover {
+    background-color: var(--color-accent-light);
+  }
+
+  .action-button.secondary {
+    background-color: var(--gray-200);
+    color: var(--gray-800);
+  }
+
+  .action-button.secondary:hover {
+    background-color: var(--gray-300);
+  }
+
+  /* Input/Output Areas */
+  .json-textarea,
+  .json-output {
+    width: 100%;
+    min-height: 300px;
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    border: 1px solid var(--gray-200);
+    background-color: white;
+  }
+  
+  .json-textarea {
+     resize: vertical;
+  }
+  
+  .json-textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-glow);
+  }
+
+  .json-output {
+    background-color: #282c34; /* Atom One Dark background */
+    color: #abb2bf;
+    overflow: auto;
+  }
+  
+  .json-output pre {
+    margin: 0;
+  }
+
+  .error-message {
+    margin-top: var(--space-2);
+    padding: var(--space-3);
+    background-color: #fef2f2;
+    color: #dc2626;
+    border-radius: var(--radius-md);
+    border: 1px solid #fee2e2;
+  }
+
+  /* Toast */
+  :global(.toast) {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: var(--gray-800);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 100;
+  }
+
+  :global(.toast.show) {
+    transform: translateY(0);
+    opacity: 1;
+  }
+</style>

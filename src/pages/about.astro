@@ -1,0 +1,285 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { skills } from '../data/skills';
+---
+
+<BaseLayout
+  title="About | Prince Jain"
+  description="Product Leader at Flipkart building AI-native commerce experiences."
+  breadcrumbs={[
+    { name: "Home", url: "https://princejain.me" },
+    { name: "About" },
+  ]}
+>
+  <!-- Page Header -->
+  <section class="page-header animate-fade-up">
+    <div class="container">
+      <div class="page-header__content">
+        <span class="page-header__icon">👋</span>
+        <h1 class="page-header__title">About Me</h1>
+        <p class="page-header__subtitle">
+          Product Leader at Flipkart building
+          AI-native commerce experiences.
+        </p>
+        <div class="page-header__stats">
+          <span class="page-header__stat">
+            <strong>7+</strong> years in Product
+          </span>
+          <span class="page-header__separator">·</span>
+          <span class="page-header__stat">
+            <strong>9+</strong> years total
+          </span>
+          <span class="page-header__separator">·</span>
+          <span class="page-header__stat">
+            Based in Bangalore, India
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Content -->
+  <section class="about-section animate-fade-up"
+    style="animation-delay: 100ms;">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <div class="prose">
+            <p class="text-lg mb-6">
+              I'm a Product Leader at
+              <strong>Flipkart</strong>, currently focused
+              on building the next generation of AI-native
+              commerce experiences.
+            </p>
+
+            <p class="mb-6">
+              With over 9 years of experience (7+ as a PM),
+               I've specialized in taking complex
+              ideas from 0 to 1. Whether it's scaling
+              <strong>Paytm Mini Apps</strong> to 10M MAU or
+              leading the build of a fresh app from grounds up: <strong>SLAP</strong>
+              (Flipkart's AI-first app), I thrive in
+              high-uncertainty environments where speed and
+              user-centricity are important. 
+            </p>
+
+            <p>
+              Throughout my career, I have been recognized as a <strong>top performer</strong>, 
+              consistently earning top-tier ratings and individual and team awards  at 
+              <strong>Paytm and Flipkart</strong>. I pride myself on extreme ownership and high agency: whether 
+              it's navigating the ambiguity of a new product launch or scaling platforms 
+              to serve millions.
+            </p>
+
+            <p class="mb-6">
+              My philosophy (more so lately!) is :
+              <strong>Ship fast, learn faster.</strong> I
+              believe the best products are built by teams
+              that are deeply curious about user behavior, go deep and
+              are willing to challenge the status quo.
+            </p>
+
+            <h2 class="about-section__heading">Expertise</h2>
+            <div class="skills-tags">
+              {skills.map(skill => (
+                <span class="tag tag-accent">{skill}</span>
+              ))}
+            </div>
+
+            <h2 class="about-section__heading">
+              Beyond Work
+            </h2>
+            <p>
+              When I'm not building products, you'll find me
+              tinkering with my self-hosted home lab,
+              exploring the latest in open-source AI, or
+              sharing my thoughts on product leadership
+              through my blog.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-image">
+          <div class="image-card">
+            <img
+              src="/profile-photo-1.webp"
+              alt="Prince Jain"
+              class="profile-img"
+              width="400"
+              height="400"
+              loading="lazy"
+            />
+            <div class="image-caption">
+              This is me.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Page Header — mirrors blog-header pattern */
+  .page-header {
+    padding: var(--space-16) 0 var(--space-8);
+    position: relative;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: radial-gradient(
+      ellipse 60% 80% at 50% 0%,
+      hsla(28, 100%, 70%, 0.08),
+      transparent
+    );
+    pointer-events: none;
+  }
+
+  .page-header__content {
+    max-width: 600px;
+  }
+
+  .page-header__icon {
+    display: inline-block;
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-4);
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .page-header__title {
+    font-size: var(--text-5xl);
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+    background: linear-gradient(
+      to bottom right,
+      var(--gray-900),
+      var(--gray-600)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .page-header__subtitle {
+    font-size: var(--text-xl);
+    color: var(--gray-600);
+    line-height: 1.5;
+    margin-bottom: var(--space-4);
+  }
+
+  .page-header__stats {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--gray-500);
+  }
+
+  .page-header__stat strong {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .page-header__separator {
+    color: var(--gray-300);
+  }
+
+  /* About Section */
+  .about-section {
+    padding: var(--space-4) 0 var(--space-24);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .about-grid {
+      grid-template-columns: 1.5fr 1fr;
+    }
+  }
+
+  .about-section__heading {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-top: var(--space-12);
+    margin-bottom: var(--space-6);
+  }
+
+  .prose p {
+    color: var(--gray-600);
+    line-height: 1.8;
+  }
+
+  .skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .image-card {
+    position: sticky;
+    top: var(--space-24);
+    background: white;
+    padding: var(--space-4);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--gray-100);
+    transform: rotate(2deg);
+    transition: transform var(--transition-bounce);
+  }
+
+  .image-card:hover {
+    transform: rotate(0deg);
+  }
+
+  .profile-img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+  }
+
+  .image-caption {
+    text-align: center;
+    font-size: var(--text-sm);
+    color: var(--gray-500);
+    font-weight: 500;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .page-header {
+      padding: var(--space-12) 0 var(--space-6);
+    }
+
+    .page-header__title {
+      font-size: var(--text-4xl);
+    }
+
+    .page-header__subtitle {
+      font-size: var(--text-lg);
+    }
+  }
+
+  /* Float animation for icon */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-8px) rotate(5deg);
+    }
+  }
+</style>

@@ -1,0 +1,475 @@
+---
+/**
+ * HeroSection — Homepage hero with rotating profile images.
+ * Self-contained: owns its markup, styles, and client-side script.
+ */
+---
+
+<section class="hero-v2">
+  <div class="container">
+    <div class="hero-v2__grid">
+      <!-- Left Column - Content -->
+      <div class="hero-v2__content">
+        <h1 class="hero-v2__headline">
+          I build cool<br>
+          <span class="text-accent-primary">AI</span> <span class="text-accent-secondary">Products</span>.
+        </h1>
+
+        <p class="hero-v2__intro">
+          I'm <strong>Prince Jain</strong>, a Product Leader at <strong>Flipkart</strong>.
+          I scale platforms to millions and build 0→1 agentic AI experiences.
+        </p>
+
+        <div class="hero-v2__cta">
+          <a href="/work" class="btn-gradient">
+            <span>View my work</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="/blogs" class="btn-outline">
+            <span>Read my thoughts</span>
+          </a>
+        </div>
+
+        <!-- Companies -->
+        <p class="hero-v2__inline-row">
+          <span>Currently PM at</span>
+          <span class="hero-v2__icon-card">
+            <img src="/icons/flipkart.svg" alt="Flipkart" class="hero-v2__icon-card-logo" width="32" height="32" />
+          </span>
+          <span>previously at</span>
+          <span class="hero-v2__icon-card">
+            <img src="/icons/paytm.svg" alt="Paytm" class="hero-v2__icon-card-logo" width="32" height="32" />
+          </span>
+          <span class="hero-v2__icon-card">
+            <img src="/icons/oracle.svg" alt="Oracle" class="hero-v2__icon-card-logo" width="32" height="32" />
+          </span>
+        </p>
+
+        <!-- Side Projects -->
+        <p class="hero-v2__inline-row">
+          <span>Some recent side projects</span>
+          <span class="hero-v2__cluster">
+            <a href="https://exponent.princejain.me/" class="hero-v2__cluster-item" style="z-index: 3;">
+              <span class="hero-v2__cluster-card">
+                <img src="/icons/exponent.webp" alt="Exponent" width="128" height="128" loading="lazy" />
+              </span>
+              <span class="hero-v2__cluster-tip">PM interview prep tool</span>
+            </a>
+            <a href="https://whispr.princejain.me/" class="hero-v2__cluster-item hero-v2__cluster-item--stacked" style="z-index: 2;">
+              <span class="hero-v2__cluster-card">
+                <img src="/icons/whisprflow.webp" alt="Whisprflow" width="960" height="960" loading="lazy" />
+              </span>
+              <span class="hero-v2__cluster-tip">Voice-to-text Transcription</span>
+            </a>
+            <a href="https://chromewebstore.google.com/detail/chatgpt-google-meet-summa/kofkiemddfpekcadmaeheonbbkhnclhj" class="hero-v2__cluster-item hero-v2__cluster-item--stacked" style="z-index: 1;">
+              <span class="hero-v2__cluster-card">
+                <img src="/icons/gmeet-summariser.svg" alt="G-meet Summariser" width="48" height="48" loading="lazy" />
+              </span>
+              <span class="hero-v2__cluster-tip">AI meeting notes</span>
+            </a>
+          </span>
+        </p>
+
+      </div>
+
+      <!-- Right Column - Profile Image with Rotation Effect -->
+      <div class="hero-v2__image-wrapper">
+        <div class="hero-v2__image-container" id="profile-container">
+          <img src="/profile-photo-1.webp" alt="Prince Jain" class="hero-v2__image hero-v2__image--active" data-index="0" width="640" height="640" fetchpriority="high" />
+          <img src="/profile-photo-2.webp" alt="Prince Jain" class="hero-v2__image" data-index="1" width="640" height="640" loading="lazy" />
+          <img src="/profile-photo-3.webp" alt="Prince Jain" class="hero-v2__image" data-index="2" width="640" height="640" loading="lazy" />
+          <img src="/profile-photo-4.webp" alt="Prince Jain" class="hero-v2__image" data-index="3" width="640" height="640" loading="lazy" />
+
+        </div>
+        <div class="hero-v2__glow hero-v2__glow--1"></div>
+        <div class="hero-v2__glow hero-v2__glow--2"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Profile image rotation effect
+  const images = document.querySelectorAll('.hero-v2__image');
+  let currentIndex = 0;
+
+  function rotateImages() {
+    images.forEach((img, i) => {
+      img.classList.remove('hero-v2__image--active');
+      if (i === currentIndex) {
+        img.classList.add('hero-v2__image--active');
+      }
+    });
+    currentIndex = (currentIndex + 1) % images.length;
+  }
+
+  setInterval(rotateImages, 1500);
+</script>
+
+<style>
+  .hero-v2 {
+    padding: var(--space-24) 0 var(--space-16);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-v2__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .hero-v2__grid {
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--space-16);
+    }
+  }
+
+  .hero-v2__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .hero-v2__headline {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--gray-900);
+  }
+
+  .text-accent-primary {
+    color: var(--color-accent);
+  }
+
+  .text-accent-secondary {
+    color: var(--color-accent-secondary);
+  }
+
+  .hero-v2__intro {
+    font-size: var(--text-lg);
+    line-height: 1.7;
+    color: var(--gray-600);
+    max-width: 520px;
+  }
+
+  .hero-v2__intro strong {
+    color: var(--gray-900);
+    font-weight: 600;
+  }
+
+  /* CTA Buttons */
+  .hero-v2__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-2);
+  }
+
+  .btn-gradient {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 14px 24px;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+    color: white;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: var(--text-base);
+    box-shadow: 0 4px 14px rgba(255, 94, 50, 0.3);
+    transition: all var(--transition-base);
+  }
+
+  .btn-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 94, 50, 0.4);
+  }
+
+  .btn-gradient svg {
+    transition: transform var(--transition-fast);
+  }
+
+  .btn-gradient:hover svg {
+    transform: translateX(4px);
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 14px 24px;
+    background: white;
+    border: 1px solid var(--gray-200);
+    color: var(--gray-900);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: var(--text-base);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+  }
+
+  .btn-outline:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    background: var(--gray-50);
+  }
+
+  .btn-outline svg {
+    color: var(--color-linkedin);
+  }
+
+  /* Image Column */
+  .hero-v2__image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-v2__image-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    border-radius: 2.5rem;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transform: rotate(2deg);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    background: var(--gray-100);
+  }
+
+  .hero-v2__image-container:hover {
+    transform: rotate(0deg);
+  }
+
+  .hero-v2__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .hero-v2__image--active {
+    opacity: 1;
+    z-index: 10;
+  }
+
+  /* Glow Effects */
+  .hero-v2__glow {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .hero-v2__glow--1 {
+    top: -3rem;
+    right: -3rem;
+    background: hsla(28, 100%, 50%, 0.08);
+  }
+
+  .hero-v2__glow--2 {
+    bottom: -3rem;
+    left: -3rem;
+    background: hsla(340, 80%, 55%, 0.08);
+  }
+
+  /* Inline rows — text + icons on one line */
+  .hero-v2__inline-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--text-lg);
+    font-weight: 400;
+    color: var(--gray-400);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* White icon card — company logos */
+  .hero-v2__icon-card {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+
+  .hero-v2__icon-card-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+
+  /* Icon cluster — overlapping group that spreads */
+  .hero-v2__cluster {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+
+  .hero-v2__cluster-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.15);
+  }
+
+  .hero-v2__cluster-item:hover {
+    z-index: 20 !important;
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Stacked items overlap on desktop, spread on hover */
+  .hero-v2__cluster-item--stacked {
+    margin-left: 4px;
+  }
+
+  @media (min-width: 768px) {
+    .hero-v2__cluster-item--stacked {
+      margin-left: -12px;
+    }
+
+    .hero-v2__cluster:hover .hero-v2__cluster-item--stacked {
+      margin-left: 4px;
+    }
+  }
+
+  .hero-v2__cluster-card {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: white;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-v2__cluster-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Tooltip — slides up with playful tilt */
+  .hero-v2__cluster-tip {
+    position: absolute;
+    top: -48px;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    padding: 4px 10px;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    color: var(--gray-900);
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+    z-index: 50;
+  }
+
+  .hero-v2__cluster-item:hover .hero-v2__cluster-tip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) rotate(2deg);
+  }
+
+  @media (max-width: 767px) {
+    .hero-v2 {
+      padding: var(--space-12) 0 var(--space-8);
+    }
+
+    .hero-v2__grid {
+      text-align: center;
+    }
+
+    .hero-v2__content {
+      align-items: center;
+    }
+
+    .hero-v2__intro {
+      text-align: center;
+    }
+
+    .hero-v2__cta {
+      justify-content: center;
+    }
+
+    .hero-v2__image-container {
+      max-width: 280px;
+      transform: rotate(0deg);
+    }
+
+    .hero-v2__headline {
+      font-size: 2.5rem;
+    }
+
+    .hero-v2__inline-row {
+      justify-content: center;
+      font-size: var(--text-base);
+    }
+
+    .hero-v2__icon-card {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+    }
+
+    .hero-v2__icon-card-logo {
+      width: 20px;
+      height: 20px;
+    }
+
+    .hero-v2__cluster-item {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+    }
+
+    .hero-v2__cluster-card {
+      border-radius: 10px;
+    }
+
+    .hero-v2__cluster-tip {
+      top: -40px;
+      font-size: 9px;
+    }
+
+  }
+</style>

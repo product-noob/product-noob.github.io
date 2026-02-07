@@ -1,0 +1,637 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { calculateReadingTime } from '../../utils/readingTime';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+
+const readingTime = calculateReadingTime(post.body ?? '');
+const tags = post.data.tags;
+const wordCount = (post.body ?? '').split(/\s+/).length;
+
+// Get all posts for related posts section
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+// Find related posts by shared tags, excluding current
+const relatedPosts = allPosts
+  .filter(p => p.slug !== post.slug)
+  .map(p => ({
+    ...p,
+    readingTime: calculateReadingTime(p.body ?? ''),
+    tags: p.data.tags,
+    score: p.data.tags.filter(t => tags.includes(t)).length,
+  }))
+  .sort((a, b) => b.score - a.score)
+  .slice(0, 3);
+
+// Share URLs
+const siteUrl = "https://princejain.me";
+const shareUrl = `${siteUrl}/blogs/${post.slug}/`;
+const shareTitle = encodeURIComponent(post.data.title);
+const twitterShareUrl = `https://twitter.com/intent/tweet?text=${shareTitle}&url=${encodeURIComponent(shareUrl)}&via=Prince_Jain17`;
+const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+
+// SEO: Determine OG image (use heroImage if available, else fallback)
+const ogImage = post.data.heroImage
+  ? `${siteUrl}${post.data.heroImage}`
+  : `${siteUrl}/profile-photo-1.webp`;
+
+// SEO: BlogPosting structured data
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  ...(post.data.updatedDate
+    ? { dateModified: post.data.updatedDate.toISOString() }
+    : {}),
+  author: {
+    "@type": "Person",
+    name: "Prince Jain",
+    url: siteUrl,
+  },
+  publisher: {
+    "@type": "Person",
+    name: "Prince Jain",
+    url: siteUrl,
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": shareUrl,
+  },
+  keywords: tags,
+  wordCount,
+  image: ogImage,
+  url: shareUrl,
+};
+
+// SEO: Breadcrumbs
+const breadcrumbs = [
+  { name: "Home", url: siteUrl },
+  { name: "Blog", url: `${siteUrl}/blogs/` },
+  { name: post.data.title },
+];
+---
+
+<BaseLayout
+  title={`${post.data.title} | Prince Jain`}
+  description={post.data.description}
+  ogType="article"
+  ogImage={ogImage}
+  ogImageAlt={`Cover image for ${post.data.title}`}
+  publishedTime={post.data.pubDate.toISOString()}
+  modifiedTime={post.data.updatedDate?.toISOString()}
+  articleTags={tags}
+  breadcrumbs={breadcrumbs}
+  extraSchema={blogPostingSchema}
+>
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress" id="reading-progress"></div>
+
+  <!-- Navigation -->
+  <nav class="blog-nav">
+    <div class="container">
+      <a href="/blogs" class="blog-nav__back">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Blog
+      </a>
+    </div>
+  </nav>
+
+  <article class="blog-post">
+    <!-- Hero Header -->
+    <header class="blog-post__hero">
+      <div class="container">
+        <div class="blog-post__header animate-fade-up">
+          <!-- Meta -->
+          <div class="blog-post__meta">
+            <time datetime={post.data.pubDate?.toISOString()}>
+              {post.data.pubDate?.toLocaleDateString('en-us', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </time>
+            <span class="blog-post__separator">·</span>
+            <span class="blog-post__reading-time">{readingTime} min read</span>
+          </div>
+
+          <!-- Title -->
+          <h1 class="blog-post__title">{post.data.title}</h1>
+
+          <!-- Description -->
+          {post.data.description && (
+            <p class="blog-post__description">{post.data.description}</p>
+          )}
+
+          <!-- Tags -->
+          {tags.length > 0 && (
+            <div class="blog-post__tags">
+              {tags.map((tag) => (
+                <span class="blog-post__tag">{tag}</span>
+              ))}
+            </div>
+          )}
+
+          <!-- Share buttons -->
+          <div class="blog-post__share">
+            <span class="blog-post__share-label">Share:</span>
+            <a href={twitterShareUrl} target="_blank" rel="noopener noreferrer" class="blog-post__share-btn" aria-label="Share on Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a href={linkedInShareUrl} target="_blank" rel="noopener noreferrer" class="blog-post__share-btn" aria-label="Share on LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <div class="blog-post__body">
+      <div class="container prose">
+        <div class="blog-post__content animate-fade-up" style="animation-delay: 100ms;">
+          <Content />
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer with share and related -->
+    <footer class="blog-post__footer">
+      <div class="container">
+        <!-- Share CTA -->
+        <div class="blog-post__share-cta animate-fade-up">
+          <p>Enjoyed this article? Share it with others!</p>
+          <div class="blog-post__share-buttons">
+            <a href={twitterShareUrl} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              Share on X
+            </a>
+            <a href={linkedInShareUrl} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              Share on LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <!-- Related Posts -->
+        {relatedPosts.length > 0 && (
+          <div class="related-posts animate-fade-up" style="animation-delay: 150ms;">
+            <h2 class="related-posts__title">Continue Reading</h2>
+            <div class="related-posts__grid">
+              {relatedPosts.map((relatedPost) => (
+                <BlogCard
+                  title={relatedPost.data.title}
+                  description={relatedPost.data.description}
+                  pubDate={relatedPost.data.pubDate || new Date()}
+                  slug={relatedPost.slug}
+                  readingTime={relatedPost.readingTime}
+                  tags={relatedPost.tags}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  /* Reading Progress Bar */
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-secondary));
+    z-index: 1000;
+    transition: width 0.1s ease-out;
+  }
+
+  /* Navigation */
+  .blog-nav {
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .blog-nav__back {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--gray-600);
+    transition: all var(--transition-fast);
+  }
+
+  .blog-nav__back:hover {
+    color: var(--color-accent);
+  }
+
+  .blog-nav__back svg {
+    transition: transform var(--transition-bounce);
+  }
+
+  .blog-nav__back:hover svg {
+    transform: translateX(-4px);
+  }
+
+  /* Hero Header */
+  .blog-post__hero {
+    padding: var(--space-12) 0 var(--space-8);
+    position: relative;
+    text-align: center; /* Center align all text */
+  }
+
+  .blog-post__hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: radial-gradient(
+      ellipse 60% 100% at 50% 0%,
+      hsla(28, 100%, 70%, 0.06),
+      transparent
+    );
+    pointer-events: none;
+  }
+
+  .blog-post__header {
+    max-width: var(--content-width);
+    margin: 0 auto; /* Center the container */
+  }
+
+  .blog-post__meta {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center flex items */
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--gray-500);
+    font-family: var(--font-mono);
+    margin-bottom: var(--space-4);
+  }
+
+  .blog-post__separator {
+    color: var(--gray-300);
+  }
+
+  .blog-post__reading-time {
+    color: var(--gray-400);
+  }
+
+  .blog-post__title {
+    font-size: var(--text-4xl);
+    line-height: 1.15;
+    margin-bottom: var(--space-4);
+    background: linear-gradient(to bottom right, var(--gray-900), var(--gray-700));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 20ch; /* Prevent lines from being too long */
+  }
+
+  .blog-post__description {
+    font-size: var(--text-xl);
+    color: var(--gray-600);
+    line-height: 1.5;
+    margin-bottom: var(--space-6);
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .blog-post__tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center tags */
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+  }
+
+  .blog-post__tag {
+    display: inline-flex;
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    background: linear-gradient(135deg, var(--color-accent-glow), hsla(340, 80%, 55%, 0.1));
+    color: var(--color-accent);
+    border-radius: var(--radius-full);
+  }
+
+  .blog-post__share {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center share buttons */
+    gap: var(--space-3);
+  }
+
+  .blog-post__share-label {
+    font-size: var(--text-sm);
+    color: var(--gray-500);
+  }
+
+  .blog-post__share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    color: var(--gray-600);
+    transition: all var(--transition-fast);
+  }
+
+  .blog-post__share-btn:hover {
+    background: var(--gray-900);
+    border-color: var(--gray-900);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  /* Content Body */
+  .blog-post__body {
+    padding: var(--space-8) 0;
+  }
+
+  .blog-post__content {
+    max-width: var(--content-width);
+  }
+
+  /* Typography for Markdown Content */
+  .blog-post__content :global(h2) {
+    font-size: var(--text-2xl);
+    margin-top: var(--space-12);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 2px solid var(--gray-100);
+  }
+
+  .blog-post__content :global(h3) {
+    font-size: var(--text-xl);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-3);
+  }
+
+  .blog-post__content :global(h4) {
+    font-size: var(--text-lg);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-2);
+  }
+
+  .blog-post__content :global(p) {
+    margin-bottom: var(--space-5);
+    line-height: 1.75;
+  }
+
+  .blog-post__content :global(ul),
+  .blog-post__content :global(ol) {
+    margin-bottom: var(--space-5);
+    padding-left: var(--space-6);
+  }
+
+  .blog-post__content :global(li) {
+    margin-bottom: var(--space-2);
+    line-height: 1.7;
+  }
+
+  .blog-post__content :global(li > ul),
+  .blog-post__content :global(li > ol) {
+    margin-top: var(--space-2);
+    margin-bottom: 0;
+  }
+
+  .blog-post__content :global(blockquote) {
+    position: relative;
+    padding: var(--space-4) var(--space-6);
+    margin: var(--space-8) 0;
+    background: linear-gradient(to right, var(--color-accent-glow), transparent);
+    border-left: 4px solid var(--color-accent);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    font-style: italic;
+    color: var(--gray-700);
+  }
+
+  .blog-post__content :global(blockquote p) {
+    margin-bottom: 0;
+  }
+
+  .blog-post__content :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background-color: var(--gray-100);
+    padding: 0.2em 0.5em;
+    border-radius: var(--radius-sm);
+    color: var(--gray-800);
+  }
+
+  .blog-post__content :global(pre) {
+    background-color: var(--gray-900);
+    color: var(--gray-100);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    overflow-x: auto;
+    margin: var(--space-6) 0;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .blog-post__content :global(pre code) {
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .blog-post__content :global(img) {
+    border-radius: var(--radius-lg);
+    margin: var(--space-8) auto;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .blog-post__content :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent-glow);
+    text-underline-offset: 3px;
+    transition: all var(--transition-fast);
+  }
+
+  .blog-post__content :global(a:hover) {
+    text-decoration-color: var(--color-accent);
+  }
+
+  .blog-post__content :global(hr) {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gray-200), transparent);
+    margin: var(--space-12) 0;
+  }
+
+  .blog-post__content :global(strong) {
+    font-weight: 600;
+    color: var(--gray-900);
+  }
+
+  .blog-post__content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-6) 0;
+    font-size: var(--text-sm);
+  }
+
+  .blog-post__content :global(th),
+  .blog-post__content :global(td) {
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .blog-post__content :global(th) {
+    font-weight: 600;
+    background-color: var(--gray-50);
+  }
+
+  /* Footer */
+  .blog-post__footer {
+    padding: var(--space-12) 0 var(--space-24);
+    border-top: 1px solid var(--gray-100);
+    margin-top: var(--space-8);
+  }
+
+  .blog-post__share-cta {
+    text-align: center;
+    padding: var(--space-8);
+    background: linear-gradient(180deg, var(--gray-50), transparent);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-12);
+  }
+
+  .blog-post__share-cta p {
+    font-size: var(--text-lg);
+    color: var(--gray-600);
+    margin-bottom: var(--space-4);
+  }
+
+  .blog-post__share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  .blog-post__share-buttons .btn {
+    gap: var(--space-2);
+  }
+
+  .blog-post__share-buttons svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Related Posts */
+  .related-posts {
+    margin-top: var(--space-8);
+  }
+
+  .related-posts__title {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-6);
+    position: relative;
+    display: inline-block;
+  }
+
+  .related-posts__title::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent), transparent);
+    border-radius: 2px;
+  }
+
+  .related-posts__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .related-posts__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .blog-post__hero {
+      padding: var(--space-8) 0 var(--space-6);
+    }
+
+    .blog-post__title {
+      font-size: var(--text-3xl);
+    }
+
+    .blog-post__description {
+      font-size: var(--text-lg);
+    }
+
+    .blog-post__share-buttons {
+      flex-direction: column;
+    }
+
+    .related-posts__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .blog-post__content :global(h2) {
+      font-size: var(--text-xl);
+      margin-top: var(--space-8);
+    }
+
+    .blog-post__content :global(h3) {
+      font-size: var(--text-lg);
+    }
+  }
+</style>
+
+<script>
+  import { initReadingProgress } from '../../scripts/readingProgress';
+  initReadingProgress();
+</script>

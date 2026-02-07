@@ -1,0 +1,30 @@
+---
+/**
+ * Chip Component
+ * Inline badge with optional icon, used in the hero section.
+ */
+
+interface Props {
+  text?: string;
+  icon?: string;
+  href?: string;
+  iconOnly?: boolean;
+  ariaLabel?: string;
+}
+
+const { text, icon, href, iconOnly = false, ariaLabel } = Astro.props;
+const Tag = href ? 'a' : 'span';
+const label = ariaLabel ?? text;
+---
+
+<Tag
+  class:list={['chip', { 'chip--icon': iconOnly }]}
+  href={href}
+  target={href ? "_blank" : undefined}
+  rel={href ? "noopener noreferrer" : undefined}
+  aria-label={iconOnly && label ? label : undefined}
+>
+  {icon && <img src={icon} alt="" class="chip__icon" width="20" height="20" loading="lazy" />}
+  {!iconOnly && text && <span class="chip__text">{text}</span>}
+  {iconOnly && label && <span class="sr-only">{label}</span>}
+</Tag>

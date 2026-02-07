@@ -1,0 +1,214 @@
+/* ==========================================================================
+   Self-hosted Font Faces
+   Eliminates the 1.7s cross-origin dependency chain to Google Fonts.
+   Only Latin subset is included (site is English-only).
+   ========================================================================== */
+
+/* DM Sans — body font (variable: 400-700) */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin-italic.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Fraunces — display font (variable: 400-700) */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/fraunces-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/fraunces-latin-italic.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* JetBrains Mono — code font (variable: 400-500) */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ==========================================================================
+   Design Tokens
+   Single source of truth for all visual design values.
+   Every color, size, shadow, and timing used in the site should be
+   defined here. Components reference these via var(--token-name).
+   ========================================================================== */
+
+:root {
+  /* Colors - Warm Orange Accent (High Contrast) */
+  --color-accent: hsl(28, 100%, 50%);
+  --color-accent-light: hsl(28, 100%, 60%);
+  --color-accent-glow: hsla(28, 100%, 50%, 0.1);
+  --color-accent-gradient: linear-gradient(
+    135deg,
+    hsl(28, 100%, 55%),
+    hsl(340, 80%, 55%)
+  );
+
+  /* Secondary accent (pink/magenta) - previously hardcoded */
+  --color-accent-secondary: hsl(340, 80%, 55%);
+
+  /* Brand / social colors */
+  --color-linkedin: #0077b5;
+
+  /* Gradient Effects */
+  --gradient-hero: linear-gradient(
+    135deg,
+    var(--gray-900),
+    var(--gray-700)
+  );
+  --gradient-subtle: linear-gradient(
+    180deg,
+    var(--gray-50),
+    white
+  );
+  --gradient-glow: radial-gradient(
+    circle at 50% 0%,
+    hsla(28, 100%, 70%, 0.12),
+    transparent 50%
+  );
+
+  /* Section background gradients - previously hardcoded */
+  --bg-warm: linear-gradient(180deg, #fff8f5 0%, #fff5f0 100%);
+  --bg-cool: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+
+  /* Neutral Scale - Warmer Grays */
+  --gray-50: #faf9f6;
+  --gray-100: #f5f5f4;
+  --gray-200: #e7e5e4;
+  --gray-300: #d6d3d1;
+  --gray-400: #a8a29e;
+  --gray-500: #78716c;
+  --gray-600: #57534e;
+  --gray-700: #44403c;
+  --gray-800: #292524;
+  --gray-900: #1c1917;
+  --gray-950: #0c0a09;
+
+  /* Typography */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Font Sizes (Optimized Scale) */
+  --text-xs: 0.8125rem;   /* 13px */
+  --text-sm: 0.9375rem;   /* 15px */
+  --text-base: 1.0625rem; /* 17px */
+  --text-lg: 1.1875rem;   /* 19px */
+  --text-xl: 1.375rem;    /* 22px */
+  --text-2xl: 1.625rem;   /* 26px */
+  --text-3xl: 2.125rem;   /* 34px */
+  --text-4xl: 2.75rem;    /* 44px */
+  --text-5xl: 3.75rem;    /* 60px */
+  --text-6xl: 4.75rem;    /* 76px */
+  --text-hero: 6.5rem;    /* 104px */
+
+  /* Spacing Scale (Relaxed) */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.25rem;  /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+  --space-24: 6rem;    /* 96px */
+  --space-32: 8rem;    /* 128px */
+
+  /* Border Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows (Premium/Soft) */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 12px 24px -6px rgba(0, 0, 0, 0.08),
+    0 6px 12px -4px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 24px 48px -12px rgba(0, 0, 0, 0.12),
+    0 12px 24px -8px rgba(0, 0, 0, 0.04);
+  --shadow-accent: 0 8px 20px var(--color-accent-glow);
+
+  /* Card-specific shadows - previously duplicated across components */
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.02),
+    0 4px 12px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 4px 8px rgba(0, 0, 0, 0.04),
+    0 16px 40px rgba(0, 0, 0, 0.08);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Layout */
+  --max-width: 1100px;
+  --content-width: 680px;
+}
+
+/* ==========================================================================
+   Responsive Token Overrides
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  :root {
+    --text-hero: 5rem;
+    --text-5xl: 3rem;
+    --space-32: 6rem;
+    --space-24: 4.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --text-hero: 3.5rem;
+    --text-5xl: 2.25rem;
+    --text-4xl: 1.875rem;
+    --text-3xl: 1.5rem;
+    --text-2xl: 1.375rem;
+    --space-32: 4rem;
+    --space-24: 3rem;
+    --space-16: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --text-hero: 2.75rem;
+    --text-5xl: 2rem;
+    --text-4xl: 1.625rem;
+    --text-3xl: 1.375rem;
+    --space-32: 3rem;
+    --space-24: 2.5rem;
+  }
+}

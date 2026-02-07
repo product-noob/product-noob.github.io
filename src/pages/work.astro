@@ -1,0 +1,558 @@
+---
+/**
+ * /work — Professional work history page.
+ * Imports work data from src/data/works.ts. Cards animate on scroll
+ * via IntersectionObserver for a polished entrance experience.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { works } from '../data/works';
+
+const uniqueCompanies = [...new Set(works.map(w => w.company))];
+
+/**
+ * Wraps numeric metrics in achievement text with <strong>
+ * tags so they visually stand out when scanned.
+ */
+function highlightMetrics(text: string): string {
+  return text.replace(
+    /(\d[\d,.]*[+%]?(?:\s*(?:Cr|M|K|MAU|MAUs|Lakh)[\+]?)?(?:\s*\+)?)/g,
+    '<strong class="metric">$1</strong>'
+  );
+}
+---
+
+<BaseLayout
+  title="Work | Prince Jain"
+  description="A journey through building platforms, scaling ecosystems, and pioneering AI-first products."
+  breadcrumbs={[
+    { name: "Home", url: "https://princejain.me" },
+    { name: "Work" },
+  ]}
+>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <div class="page-header__content">
+        <div class="page-header__icon-wrap animate-fade-up">
+          <span class="page-header__icon">💼</span>
+        </div>
+        <h1 class="page-header__title animate-fade-up"
+          style="animation-delay: 80ms;">
+          Professional Work
+        </h1>
+        <p class="page-header__subtitle animate-fade-up"
+          style="animation-delay: 140ms;">
+          A journey through building platforms, scaling
+          ecosystems, and pioneering AI-first products.
+        </p>
+        <div class="page-header__stats animate-fade-up"
+          style="animation-delay: 200ms;">
+          <span class="page-header__stat">
+            <strong>{works.length}</strong> roles
+          </span>
+          <span class="page-header__separator">·</span>
+          <span class="page-header__stat">
+            <strong>{uniqueCompanies.length}</strong> companies
+          </span>
+          <span class="page-header__separator">·</span>
+          <span class="page-header__stat">
+            2015 – Present
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Portfolio -->
+  <section class="work-section">
+    <div class="container">
+      <div class="work-portfolio">
+        {works.map((work) => {
+          const isAwardEntry = work.role.includes('Growth Hack');
+          return (
+            <article
+              class="work-card"
+              style={`--accent: ${work.accentColor};`}
+            >
+              {/* Accent top stripe */}
+              <div class="work-card__stripe" aria-hidden="true" />
+
+              {/* Award banner (Growth Hack entry) */}
+              {isAwardEntry && (
+                <div class="work-card__award">
+                  <span>🏆</span>
+                  <span>Business Excellence Award —
+                    Top Product Team</span>
+                </div>
+              )}
+
+              <div class="work-card__inner">
+                {/* Period badge */}
+                <span class="work-card__period">
+                  {work.period}
+                </span>
+
+                {/* Heading row: icon + company/role */}
+                <div class="work-card__heading">
+                  {work.icon && (
+                    <img
+                      src={work.icon}
+                      alt=""
+                      class="work-card__icon"
+                      loading="lazy"
+                    />
+                  )}
+                  <div>
+                    <h2 class="work-card__company">
+                      {work.company}
+                    </h2>
+                    <p class="work-card__role">{work.role}</p>
+                  </div>
+                </div>
+
+                {/* Tags */}
+                <div class="work-card__tags">
+                  {work.tags.map(tag => (
+                    <span class="work-card__tag">{tag}</span>
+                  ))}
+                </div>
+
+                {/* Divider */}
+                <hr class="work-card__divider" />
+
+                {/* Description */}
+                <p class="work-card__desc">
+                  {work.description}
+                </p>
+
+                {/* Achievements */}
+                <ul class="work-card__list">
+                  {work.achievements.map(a => (
+                    <li>
+                      <span
+                        class="work-card__dot"
+                        aria-hidden="true"
+                      />
+                      <span set:html={highlightMetrics(a)} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* =====================================================
+     Page Header
+     ===================================================== */
+  .page-header {
+    padding: var(--space-16) 0 var(--space-12);
+    position: relative;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: radial-gradient(
+      ellipse 60% 80% at 50% 0%,
+      hsla(28, 100%, 70%, 0.08),
+      transparent
+    );
+    pointer-events: none;
+  }
+
+  .page-header__content {
+    max-width: 600px;
+  }
+
+  /* Icon wrapper — decorative circle with animated glow ring */
+  .page-header__icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(
+      135deg,
+      var(--color-accent-glow),
+      hsla(28, 100%, 60%, 0.06)
+    );
+    margin-bottom: var(--space-6);
+    position: relative;
+  }
+
+  .page-header__icon-wrap::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--color-accent-glow);
+    animation: iconRingPulse 3s ease-in-out infinite;
+  }
+
+  .page-header__icon {
+    display: inline-block;
+    font-size: 2.75rem;
+    line-height: 1;
+    animation: iconFloat 4s ease-in-out infinite;
+  }
+
+  .page-header__title {
+    font-size: var(--text-5xl);
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+    background: linear-gradient(
+      to bottom right,
+      var(--gray-900),
+      var(--gray-600)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .page-header__subtitle {
+    font-size: var(--text-xl);
+    color: var(--gray-600);
+    line-height: 1.55;
+    margin-bottom: var(--space-5);
+  }
+
+  .page-header__stats {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--gray-500);
+  }
+
+  .page-header__stat strong {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .page-header__separator {
+    color: var(--gray-300);
+  }
+
+  /* =====================================================
+     Work Section & Card List
+     ===================================================== */
+  .work-section {
+    padding: 0 0 var(--space-24);
+  }
+
+  .work-portfolio {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  /* =====================================================
+     Work Card
+     ===================================================== */
+  .work-card {
+    position: relative;
+    background: white;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+    box-shadow: var(--shadow-card);
+    transition:
+      transform var(--transition-base),
+      box-shadow var(--transition-base),
+      border-color var(--transition-base);
+
+    /* Hidden by default — revealed by IntersectionObserver */
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  /* Scroll-triggered visible state */
+  .work-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow var(--transition-base),
+      border-color var(--transition-base);
+  }
+
+  .work-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--gray-300);
+  }
+
+  .work-card.is-visible:hover {
+    transform: translateY(-3px);
+  }
+
+  /* Accent stripe — thin gradient bar at the top */
+  .work-card__stripe {
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      var(--accent),
+      color-mix(in srgb, var(--accent) 30%, transparent)
+    );
+  }
+
+  /* Award banner */
+  .work-card__award {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-8);
+    background: linear-gradient(
+      135deg,
+      hsla(45, 100%, 50%, 0.1),
+      hsla(28, 100%, 50%, 0.06)
+    );
+    border-bottom: 1px solid hsla(45, 100%, 50%, 0.15);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--gray-700);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  /* Inner padding container */
+  .work-card__inner {
+    padding: var(--space-6) var(--space-8) var(--space-8);
+  }
+
+  /* Period badge */
+  .work-card__period {
+    display: inline-block;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    padding: 3px var(--space-3);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-4);
+  }
+
+  /* Heading row */
+  .work-card__heading {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    margin-bottom: var(--space-3);
+  }
+
+  .work-card__icon {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    background: var(--gray-50);
+    padding: 5px;
+    border: 1px solid var(--gray-100);
+    flex-shrink: 0;
+  }
+
+  .work-card__company {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--gray-900);
+    line-height: 1.25;
+    margin-bottom: 2px;
+  }
+
+  .work-card__role {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  /* Tags */
+  .work-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .work-card__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray-500);
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+  }
+
+  .work-card:hover .work-card__tag {
+    background: white;
+    border-color: var(--gray-200);
+    color: var(--gray-700);
+  }
+
+  /* Divider */
+  .work-card__divider {
+    border: none;
+    height: 1px;
+    background: var(--gray-100);
+    margin: 0 0 var(--space-4);
+  }
+
+  /* Description */
+  .work-card__desc {
+    font-size: var(--text-sm);
+    line-height: 1.7;
+    color: var(--gray-600);
+    margin-bottom: var(--space-4);
+  }
+
+  /* Achievements list */
+  .work-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .work-card__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    color: var(--gray-600);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+  }
+
+  /* Accent dot bullet */
+  .work-card__dot {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    margin-top: 8px;
+    border-radius: var(--radius-full);
+    background: var(--accent);
+    opacity: 0.6;
+  }
+
+  /* Highlighted metrics */
+  .work-card__list :global(.metric) {
+    color: var(--gray-900);
+    font-weight: 700;
+  }
+
+  /* =====================================================
+     Responsive
+     ===================================================== */
+  @media (max-width: 768px) {
+    .page-header {
+      padding: var(--space-12) 0 var(--space-8);
+    }
+
+    .page-header__icon-wrap {
+      width: 64px;
+      height: 64px;
+      margin-bottom: var(--space-4);
+    }
+
+    .page-header__icon {
+      font-size: 2rem;
+    }
+
+    .page-header__title {
+      font-size: var(--text-4xl);
+    }
+
+    .page-header__subtitle {
+      font-size: var(--text-lg);
+    }
+
+    .work-card__inner {
+      padding: var(--space-5) var(--space-5) var(--space-6);
+    }
+
+    .work-card__company {
+      font-size: var(--text-xl);
+    }
+
+    .work-card__heading {
+      gap: var(--space-3);
+    }
+
+    .work-card__icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    .work-card__award {
+      padding-left: var(--space-5);
+      padding-right: var(--space-5);
+    }
+  }
+
+  /* =====================================================
+     Keyframes
+     ===================================================== */
+</style>
+
+<script>
+  /**
+   * Scroll-triggered card entrance animation.
+   * Adds .is-visible with staggered delays as cards enter the viewport.
+   */
+  function initWorkAnimations(): void {
+    const cards = document.querySelectorAll<HTMLElement>('.work-card');
+    if (!cards.length) return;
+
+    let staggerIndex = 0;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const delay = staggerIndex * 100;
+            staggerIndex++;
+            window.setTimeout(() => {
+              el.classList.add('is-visible');
+            }, delay);
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWorkAnimations);
+  } else {
+    initWorkAnimations();
+  }
+</script>
