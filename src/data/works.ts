@@ -5,6 +5,12 @@
  * `workHighlights` is a derived compact view used on the homepage timeline.
  */
 
+/** External reference link shown on a work card (top-right). */
+export interface ExternalLink {
+  url: string;
+  label: string;
+}
+
 export interface WorkEntry {
   company: string;
   role: string;
@@ -15,6 +21,7 @@ export interface WorkEntry {
   accentColor: string;
   icon?: string;
   link?: string;
+  externalLink?: ExternalLink;
 }
 
 export const works: WorkEntry[] = [
@@ -31,8 +38,12 @@ export const works: WorkEntry[] = [
     ],
     tags: ['AI', 'Strategy', '0→1'],
     accentColor: 'hsl(28, 100%, 50%)',
-    icon: '/icons/slap.webp',
+    icon: '/icons/slap.svg',
     link: '/work',
+    externalLink: {
+      url: 'https://play.google.com/store/apps/details?id=com.slap.android',
+      label: 'View on Play Store',
+    },
   },
   {
     company: 'Flipkart',
@@ -47,8 +58,12 @@ export const works: WorkEntry[] = [
     ],
     tags: ['Generative AI', 'LLMs', 'Scale'],
     accentColor: 'hsl(250, 90%, 60%)',
-    icon: '/icons/flippi.webp',
+    icon: '/icons/flippi.svg',
     link: '/work',
+    externalLink: {
+      url: 'https://economictimes.indiatimes.com/tech/artificial-intelligence/flipkart-to-launch-slap-its-conversational-ai-shopping-assistant/articleshow/126548296.cms',
+      label: 'Featured Coverage',
+    },
   },
   {
     company: 'Flipkart',
@@ -63,7 +78,7 @@ export const works: WorkEntry[] = [
     ],
     tags: ['Growth', 'A/B Testing', 'Retention'],
     accentColor: 'hsl(340, 80%, 55%)',
-    icon: '/icons/growth.svg',
+    icon: '/icons/flipkart.svg',
     link: '/work',
   },
   {
@@ -79,7 +94,11 @@ export const works: WorkEntry[] = [
     ],
     tags: ['Healthtech', 'Impact', 'Government'],
     accentColor: 'hsl(150, 80%, 40%)',
-    icon: '/icons/vaccine.svg',
+    icon: '/icons/paytm.svg',
+    externalLink: {
+      url: 'https://paytm.com/blog/investor-relations/paytm-launches-abha-health-locker-to-safely-store-and-access-all-health-documents/',
+      label: 'Announcement Blog Post',
+    },
   },
   {
     company: 'Vaccine Finder',
@@ -94,8 +113,12 @@ export const works: WorkEntry[] = [
     ],
     tags: ['Product-Led', 'Viral', 'Social Change'],
     accentColor: 'hsl(180, 70%, 45%)',
-    icon: '/icons/vaccine.svg',
+    icon: '/icons/paytm-vaccine-finder.svg',
     link: '/blogs/Building%20Vaccine%20Slot%20Finder',
+    externalLink: {
+      url: 'https://paytm.com/blog/engineering/journey-to-build-the-vaccine-slot-finder-tool-on-paytm/',
+      label: 'Read on Paytm Blog',
+    },
   },
   {
     company: 'Paytm Mini Apps',
@@ -110,7 +133,26 @@ export const works: WorkEntry[] = [
     ],
     tags: ['Super-App', 'Ecosystem', 'SDK'],
     accentColor: 'hsl(200, 100%, 45%)',
-    icon: '/icons/paytm-miniapps.webp',
+    icon: '/icons/paytm-miniapps.svg',
+    externalLink: {
+      url: 'https://www.youtube.com/live/nuK7Ct59Vyk?si=zlLejx8j5zpcXTBK&t=3161',
+      label: 'Watch Presentation',
+    },
+  },
+  {
+    company: 'Oracle (OFSAA)',
+    icon: '/icons/oracle.svg',
+    role: 'Application Developer',
+    period: 'Aug 2015 - May 2017',
+    description:
+      'Built enterprise-grade data governance tools for the financial services industry, helping global banks maintain data integrity and stay ahead of evolving regulatory mandates.',
+    achievements: [
+      'Engineered core modules of the Data Governance Studio (DGS), enabling banking clients to automate data quality checks across 50+ regulatory dimensions.',
+      'Designed a custom data generation and validation utility that cut manual testing effort by 20%, accelerating release cycles for the entire team.',
+      'Recognized as a Top 10% performer in FY 2016-17 for consistent contributions to product development and cross-team collaboration.',
+    ],
+    tags: ['Enterprise', 'Data Quality', 'FinTech'],
+    accentColor: 'hsl(0, 85%, 50%)',
   },
 ];
 
@@ -132,7 +174,7 @@ export const workHighlights: WorkHighlight[] = [
   {
     title: '2025 - Present',
     company: 'SLAP (Flipkart)',
-    workIcon: '/icons/slap.webp',
+    workIcon: '/icons/slap.svg',
     role: 'Group Product Manager',
     highlight:
       'Building the future of agentic commerce. Leading a 0→1 AI-first app to rethink discovery and shopping paradigms.',
@@ -142,7 +184,7 @@ export const workHighlights: WorkHighlight[] = [
   {
     title: '2024 - 2025',
     company: 'Flippi (Flipkart)',
-    workIcon: '/icons/flippi.webp',
+    workIcon: '/icons/flippi.svg',
     role: 'Senior Product Manager',
     highlight:
       "Led Flipkart's AI assistant to 3M+ MAU. Built in-house LLMs and RAG platform, saving ₹100 Cr+ annually.",
