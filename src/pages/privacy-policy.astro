@@ -1,0 +1,372 @@
+---
+/**
+ * /privacy-policy — Generic privacy policy covering all tools,
+ * Chrome extensions, and Play Store apps built by Prince Jain.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const lastUpdated = 'February 7, 2026';
+const contactEmail = 'princemnit@gmail.com';
+---
+
+<BaseLayout
+  title="Privacy Policy | Prince Jain"
+  description="Privacy policy for tools, Chrome extensions, and applications built by Prince Jain."
+  breadcrumbs={[
+    { name: "Home", url: "https://princejain.me" },
+    { name: "Privacy Policy" },
+  ]}
+>
+  <section class="pp-header">
+    <div class="container">
+      <div class="pp-header__content">
+        <h1 class="pp-header__title">Privacy Policy</h1>
+        <p class="pp-header__subtitle">
+          Your privacy matters. This policy covers all tools,
+          browser extensions, and mobile applications I build.
+        </p>
+        <p class="pp-header__updated">
+          Last updated: <strong>{lastUpdated}</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pp-body">
+    <div class="container">
+      <div class="pp-content">
+
+        <div class="pp-section">
+          <h2 class="pp-section__title">Overview</h2>
+          <p>
+            This privacy policy applies to all software products,
+            web-based tools, Chrome extensions, and mobile applications
+            (collectively referred to as <strong>"Products"</strong>)
+            developed and published by Prince Jain
+            (<strong>"I"</strong>, <strong>"me"</strong>, or
+            <strong>"my"</strong>).
+          </p>
+          <p>
+            I am committed to protecting your privacy. My Products are
+            designed to be useful while collecting as little data as
+            possible — in most cases, none at all.
+          </p>
+        </div>
+
+        <div class="pp-section">
+          <h2 class="pp-section__title">
+            Information Collection & Use
+          </h2>
+          <p>
+            My Products are designed with a privacy-first approach.
+            Unless explicitly stated on a product's dedicated page:
+          </p>
+          <ul class="pp-list">
+            <li>
+              <strong>No personal data is collected.</strong> I do not
+              collect names, email addresses, phone numbers, or any
+              other personally identifiable information.
+            </li>
+            <li>
+              <strong>No usage data is tracked.</strong> I do not use
+              analytics, telemetry, or tracking pixels within my
+              Products.
+            </li>
+            <li>
+              <strong>No data leaves your device.</strong> All
+              processing happens locally in your browser or on your
+              device. Nothing is sent to external servers unless the
+              product's core functionality requires it (e.g.,
+              communicating with a third-party API you explicitly
+              choose to use).
+            </li>
+          </ul>
+        </div>
+
+        <div class="pp-section">
+          <h2 class="pp-section__title">Third-Party Services</h2>
+          <p>
+            Some Products may interact with third-party services to
+            deliver their core functionality. For example:
+          </p>
+          <ul class="pp-list">
+            <li>
+              A Chrome extension may use the
+              <strong>OpenAI API</strong> or similar services if you
+              provide your own API key. In such cases, data is sent
+              directly from your browser to that service and is
+              governed by <em>their</em> privacy policy.
+            </li>
+            <li>
+              Web-based tools may use
+              <strong>Google Analytics</strong> on my website (not
+              inside extensions) to understand general traffic
+              patterns. This is standard, anonymized web analytics.
+            </li>
+          </ul>
+          <p>
+            I do not sell, rent, or share any user data with third
+            parties for advertising, marketing, or any purpose
+            unrelated to the product's core functionality.
+          </p>
+        </div>
+
+        <div class="pp-section">
+          <h2 class="pp-section__title">Data Storage</h2>
+          <p>
+            Where Products need to remember your preferences or
+            settings (e.g., an API key, a theme choice), this data is
+            stored <strong>locally</strong> on your device using
+            browser storage mechanisms such as
+            <code>localStorage</code> or
+            <code>chrome.storage.local</code>. This data:
+          </p>
+          <ul class="pp-list">
+            <li>Never leaves your device</li>
+            <li>Is not accessible to me or any third party</li>
+            <li>
+              Can be deleted at any time by clearing your browser data
+              or uninstalling the extension/app
+            </li>
+          </ul>
+        </div>
+
+        <div class="pp-section">
+          <h2 class="pp-section__title">Permissions</h2>
+          <p>
+            Some browser extensions or mobile apps may request
+            permissions (e.g., access to the active tab, microphone,
+            or storage). These permissions are required solely for the
+            product to function as described and are
+            <strong>never</strong> used to collect, monitor, or
+            transmit personal information.
+          </p>
+          <p>
+            Each product's listing on the Chrome Web Store or Google
+            Play Store includes a detailed justification for every
+            permission requested.
+          </p>
+        </div>
+
+        <div class="pp-section">
+          <h2 class="pp-section__title">Children's Privacy</h2>
+          <p>
+            My Products are not directed at children under the age of
+            13. I do not knowingly collect any information from
+            children. If you believe a child has provided data through
+            one of my Products, please contact me and I will promptly
+            address the concern.
+          </p>
+        </div>
+
+        <div class="pp-section">
+          <h2 class="pp-section__title">
+            Changes to This Policy
+          </h2>
+          <p>
+            I may update this privacy policy from time to time. Any
+            changes will be reflected on this page with an updated
+            "Last updated" date. Continued use of any Product after
+            changes constitutes acceptance of the revised policy.
+          </p>
+        </div>
+
+        <div class="pp-section">
+          <h2 class="pp-section__title">Contact</h2>
+          <p>
+            If you have any questions or concerns about this privacy
+            policy or any of my Products, please reach out:
+          </p>
+          <p class="pp-contact">
+            <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* =====================================================
+     Header
+     ===================================================== */
+  .pp-header {
+    padding: var(--space-16) 0 var(--space-12);
+    position: relative;
+  }
+
+  .pp-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: radial-gradient(
+      ellipse 60% 80% at 50% 0%,
+      hsla(28, 100%, 70%, 0.08),
+      transparent
+    );
+    pointer-events: none;
+  }
+
+  .pp-header__content {
+    max-width: 600px;
+  }
+
+  .pp-header__title {
+    font-size: var(--text-5xl);
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+    background: linear-gradient(
+      to bottom right,
+      var(--gray-900),
+      var(--gray-600)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .pp-header__subtitle {
+    font-size: var(--text-xl);
+    color: var(--gray-600);
+    line-height: 1.55;
+    margin-bottom: var(--space-4);
+  }
+
+  .pp-header__updated {
+    font-size: var(--text-sm);
+    color: var(--gray-500);
+    margin: 0;
+  }
+
+  .pp-header__updated strong {
+    color: var(--gray-700);
+  }
+
+  /* =====================================================
+     Body
+     ===================================================== */
+  .pp-body {
+    padding: 0 0 var(--space-24);
+  }
+
+  .pp-content {
+    max-width: var(--content-width);
+  }
+
+  /* =====================================================
+     Sections
+     ===================================================== */
+  .pp-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .pp-section__title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: var(--space-4);
+    line-height: 1.3;
+  }
+
+  .pp-section p {
+    font-size: var(--text-base);
+    line-height: 1.8;
+    color: var(--gray-600);
+    margin-bottom: var(--space-4);
+  }
+
+  .pp-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .pp-section strong {
+    color: var(--gray-800);
+    font-weight: 600;
+  }
+
+  .pp-section code {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background: var(--gray-100);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    color: var(--gray-700);
+  }
+
+  .pp-section em {
+    font-style: italic;
+    color: var(--gray-700);
+  }
+
+  /* =====================================================
+     List
+     ===================================================== */
+  .pp-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .pp-list li {
+    position: relative;
+    padding-left: var(--space-6);
+    font-size: var(--text-base);
+    line-height: 1.8;
+    color: var(--gray-600);
+  }
+
+  .pp-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-full);
+    background: var(--color-accent);
+    opacity: 0.5;
+  }
+
+  /* =====================================================
+     Contact
+     ===================================================== */
+  .pp-contact a {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .pp-contact a:hover {
+    color: var(--color-accent-light);
+  }
+
+  /* =====================================================
+     Responsive
+     ===================================================== */
+  @media (max-width: 768px) {
+    .pp-header {
+      padding: var(--space-12) 0 var(--space-8);
+    }
+
+    .pp-header__title {
+      font-size: var(--text-4xl);
+    }
+
+    .pp-header__subtitle {
+      font-size: var(--text-lg);
+    }
+
+    .pp-section__title {
+      font-size: var(--text-xl);
+    }
+  }
+</style>
