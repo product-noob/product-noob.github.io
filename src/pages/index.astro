@@ -10,14 +10,13 @@ import DigitalGarden from '../components/home/DigitalGarden.astro';
 import SpeakingEvents from '../components/home/SpeakingEvents.astro';
 import Inspirations from '../components/home/Inspirations.astro';
 import { workHighlights } from '../data/works';
-import { sideProjects } from '../data/projects';
-import { stack } from '../data/skills';
+import { workshopProjects, homelabServices } from '../data/projects';
 ---
 
 <BaseLayout title="Prince Jain - Product Leader & Builder" preloadImage="/profile-photo-1.webp">
   <HeroSection />
   <SelectedWork items={workHighlights} />
-  <DigitalGarden projects={sideProjects} stack={stack} />
+  <DigitalGarden projects={workshopProjects} services={homelabServices} />
   <SpeakingEvents />
   <Inspirations />
 </BaseLayout>

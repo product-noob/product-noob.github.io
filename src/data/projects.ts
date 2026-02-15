@@ -1,56 +1,96 @@
 /**
- * Side projects for the Digital Garden section on the homepage.
+ * Side Quests data — Projects, HomeLab services, and Vibe Coding config.
  */
 
-export interface SideProject {
+// ─── Projects (Side builds) ─────────────────────────────────────────────────
+
+export interface WorkshopProject {
   title: string;
   description: string;
   icon: string;
   tags: string[];
-  link: string;
+  link?: string;
 }
 
-export const sideProjects: SideProject[] = [
+export const workshopProjects: WorkshopProject[] = [
   {
     title: 'PM Vault',
-    description: 'PM interview prep frameworks.',
-    icon: '📚',
-    tags: ['Career'],
+    description: 'The ultimate PM interview database.',
+    icon: '/icons/pm-vault.svg',
+    tags: ['Web', 'Content'],
     link: 'https://pm-vault.princejain.me',
   },
   {
-    title: 'Meet Summarizer',
-    description: 'Chrome extension for AI summaries.',
-    icon: '🧩',
-    tags: ['AI', 'Extension'],
-    link: 'https://chromewebstore.google.com/detail/chatgpt-google-meet-summa/kofkiemddfpekcadmaeheonbbkhnclhj',
+    title: 'Fusion Bill Uploader',
+    description: 'Automated expense filing using browser agents.',
+    icon: '🧾',
+    tags: ['Playwright', 'Python'],
   },
   {
-    title: 'Whispr Flow',
-    description: 'Speech to Text Transcription.',
-    icon: '✨',
-    tags: ['DevTool'],
+    title: 'Whispr',
+    description: 'High-fidelity voice-to-text transcription.',
+    icon: '/icons/whisprflow.webp',
+    tags: ['Whisper', 'Audio Processing'],
     link: 'https://whispr.princejain.me/',
   },
   {
-    title: 'Immich',
-    description: 'Self-hosted photo backup.',
-    icon: '📸',
-    tags: ['Self-Hosted'],
-    link: 'https://immich.princejain.me',
+    title: 'Micro-Tools',
+    description: 'G-Meet Summariser, Auto-read G-Chat, Local Gmail Cleanup.',
+    icon: '/icons/gmeet-summariser.svg',
+    tags: ['Chrome Ext', 'Python'],
+  },
+];
+
+// ─── The Home Lab (Self-hosted infrastructure) ───────────────────────────────
+
+export interface HomelabService {
+  title: string;
+  description: string;
+  icon: string;
+  link?: string;
+  live?: boolean;
+  tags?: string[];
+}
+
+export const homelabServices: HomelabService[] = [
+  {
+    title: 'Clawdbot',
+    description: 'Open-source local AI agent gateway.',
+    icon: '🤖',
+    tags: ['Python', 'LLM Orchestration'],
+    live: true,
   },
   {
     title: 'n8n',
-    description: 'Workflow automation.',
+    description: 'The automation brain — 50+ workflows (expense parsing, calendar briefings).',
     icon: '🔄',
-    tags: ['Automation'],
     link: 'https://n8n.princejain.me',
+    live: true,
+  },
+  {
+    title: 'Immich',
+    description: 'Self-hosted TB-scale photo & video library.',
+    icon: '📸',
+    link: 'https://immich.princejain.me',
+    live: true,
   },
   {
     title: 'Vaultwarden',
-    description: 'Password manager.',
+    description: 'Self-hosted Bitwarden for zero-knowledge security.',
     icon: '🔐',
-    tags: ['Security'],
     link: 'https://vault.princejain.me',
+    live: true,
+  },
+  {
+    title: 'Adguard',
+    description: 'Network-wide privacy and ad-blocking.',
+    icon: '🛡️',
+    live: true,
   },
 ];
+
+// ─── Vibe Coding Stack ───────────────────────────────────────────────────────
+
+export const vibeCodingStack = {
+  cursorMdUrl: 'https://github.com/product-noob/product-noob.github.io/blob/main/.cursorrules',
+};

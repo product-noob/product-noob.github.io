@@ -28,7 +28,7 @@ export const events: EventData[] = [
     {
         id: 'openai-dev-day',
         title: 'OpenAI Dev Day',
-        tagline: 'Front-row seat to the future of AI agents and multi-modal models.',
+        tagline: 'OpenAI\'s first dev-day event in India - front-row seat to see how AI agents and multi-modal models are changing the future of AI.',
         date: 'Nov 2025',
         status: 'attended',
         accentColor: '#10a37f',
@@ -52,7 +52,7 @@ export const events: EventData[] = [
     {
         id: 'cursor-cafe',
         title: 'Cursor Café',
-        tagline: 'An intimate gathering of builders shipping with AI-first dev tools.',
+        tagline: 'An intimate gathering of builders shipping with AI-first tools. How AI-native tools are changing the future of software development.',
         date: 'Dec 2025',
         status: 'attended',
         accentColor: '#6366f1',
@@ -78,7 +78,7 @@ export const events: EventData[] = [
     {
         id: 'microsoft-ai-tour',
         title: 'Microsoft AI Tour',
-        tagline: 'Deep dives into Copilot Studio, Azure AI, and enterprise LLM adoption.',
+        tagline: 'Deep dives into Latent updates in Enterprise AI solutions including Copilot Studio, Azure AI, and enterprise LLM adoption.',
         date: 'Dec 2025',
         status: 'attended',
         accentColor: '#0078d4',

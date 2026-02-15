@@ -1,19 +1,21 @@
 ---
 /**
- * DigitalGarden — Bento grid of side projects + tech stack.
- * Includes a typographic "pause" divider above the grid.
+ * SideQuests — Three-section layout:
+ * 1. The Home Lab   (self-hosted services with LIVE pills)
+ * 2. Projects       (card grid, no sub-label)
+ * 3. Vibe Coding    (dark monospace banner, bullet format)
+ *
+ * Keeps the existing "typographic pause" divider above.
  */
-import ProjectCard from '../ProjectCard.astro';
-import BentoGrid from '../BentoGrid.astro';
-import type { SideProject } from '../../data/projects';
-import type { StackItem } from '../../data/skills';
+import type { WorkshopProject, HomelabService } from '../../data/projects';
+import { vibeCodingStack } from '../../data/projects';
 
 interface Props {
-  projects: SideProject[];
-  stack: StackItem[];
+  projects: WorkshopProject[];
+  services: HomelabService[];
 }
 
-const { projects, stack } = Astro.props;
+const { projects, services } = Astro.props;
 ---
 
 <!-- Typographic Pause -->
@@ -26,41 +28,154 @@ const { projects, stack } = Astro.props;
   </div>
 </section>
 
-<!-- Digital Garden (Bento Grid) -->
-<section class="section section-gap-medium section-bg--cool">
+<!-- Side Quests -->
+<section class="section garden" id="side-quests">
   <div class="container">
-    <div class="section-header section-header--centered mb-8">
-      <h2 class="section__title section__title--serif">Digital Garden</h2>
-      <p class="section__subtitle">Side projects, self-hosted tools, and experiments.</p>
+    <div class="garden__header">
+      <h2 class="garden__title">Side Quests</h2>
+      <p class="garden__subtitle">Where I spend my weekends and free time to tinker and do experiments.</p>
     </div>
 
-    <BentoGrid class="animate-on-scroll">
-      {projects.map((project) => (
-        <ProjectCard
-          title={project.title}
-          description={project.description}
-          icon={project.icon}
-          tags={project.tags}
-          link={project.link}
-          variant="compact"
-        />
-      ))}
+    <!-- ═══════════ 1. The Home Lab ═══════════ -->
+    <div class="garden__subsection" id="homelab">
+      <h3 class="subsection__label">
+        <span class="subsection__icon">🖥️</span>
+        The Home Lab
+      </h3>
+      <p class="subsection__desc">Services I self-host on my home server, always running.</p>
 
-      <!-- Tech Stack mini card -->
-      <div class="stack-bento project-card project-card--compact">
-        <div class="project-card__inner">
-          <h3 class="project-card__title mb-4">Tech Stack</h3>
-          <div class="stack-list stack-list--mini">
-            {stack.map(tool => (
-              <div class="stack-item--mini" title={tool.name}>
-                {tool.icon}
+      <div class="homelab-rack animate-on-scroll">
+        {services.map((svc, i) => (
+          <div class="homelab-row" style={`--row-delay: ${i * 80}ms`}>
+            {svc.live && (
+              <span class="live-pill">
+                <span class="live-pill__dot"></span>
+                LIVE
+              </span>
+            )}
+            <span class="homelab-row__icon">
+              {svc.icon.startsWith('/') ? (
+                <img src={svc.icon} alt={svc.title} width="24" height="24" loading="lazy" />
+              ) : (
+                svc.icon
+              )}
+            </span>
+            <div class="homelab-row__info">
+              <h4 class="homelab-row__title">{svc.title}</h4>
+              <p class="homelab-row__desc">{svc.description}</p>
+            </div>
+            {svc.tags && svc.tags.length > 0 && (
+              <div class="homelab-row__tags">
+                {svc.tags.map((tag) => (
+                  <span class="tag tag--small">{tag}</span>
+                ))}
               </div>
-            ))}
+            )}
+            {svc.link && (
+              <a
+                href={svc.link}
+                class="homelab-row__link"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open ${svc.title}`}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+              </a>
+            )}
           </div>
-          <p class="text-xs text-gray-500 mt-4">Tools I use daily to build and ship.</p>
+        ))}
+      </div>
+    </div>
+
+    <!-- ═══════════ 2. Projects ═══════════ -->
+    <div class="garden__subsection">
+      <h3 class="subsection__label">
+        <span class="subsection__icon">🛠️</span>
+        Projects
+      </h3>
+
+      <div class="projects-grid animate-on-scroll">
+        {projects.map((project, i) => (
+          <div class="project-card-v2" style={`--card-delay: ${i * 80}ms`}>
+            <div class="project-card-v2__inner">
+              <div class="project-card-v2__header">
+                <span class="project-card-v2__icon">
+                  {project.icon.startsWith('/') ? (
+                    <img src={project.icon} alt={project.title} width="24" height="24" loading="lazy" />
+                  ) : (
+                    project.icon
+                  )}
+                </span>
+                <h4 class="project-card-v2__title">{project.title}</h4>
+              </div>
+              <p class="project-card-v2__desc">{project.description}</p>
+              <div class="project-card-v2__footer">
+                <div class="project-card-v2__tags">
+                  {project.tags.map((tag) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    class="project-card-v2__link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visit
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                  </a>
+                )}
+              </div>
+            </div>
+            <div class="project-card-v2__glow"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- ═══════════ 3. Vibe Coding / AI Stack ═══════════ -->
+    <div class="garden__subsection">
+      <h3 class="subsection__label">
+        <span class="subsection__icon">⚡</span>
+        Vibe Coding / AI Stack
+      </h3>
+
+      <div class="vibe-banner animate-on-scroll" id="vibe-coding">
+        <div class="vibe-banner__inner">
+          <ul class="vibe-banner__list">
+            <li>
+              <strong>Cursor + Claude Code</strong>
+              <span class="vibe-banner__dim">→ coding</span>
+            </li>
+            <li>
+              <strong>ChatGPT / Gemini</strong>
+              <span class="vibe-banner__dim">→ brainstorming & writing</span>
+            </li>
+            <li>
+              <strong>FAL Flux + Gemini Nano Banana</strong>
+              <span class="vibe-banner__dim">→ image generation</span>
+            </li>
+            <li>
+              <a href={vibeCodingStack.cursorMdUrl} target="_blank" rel="noopener noreferrer" class="vibe-banner__link">
+                cursor.md
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+              <span class="vibe-banner__dim">→ context management</span>
+            </li>
+          </ul>
         </div>
       </div>
-    </BentoGrid>
+    </div>
+
   </div>
 </section>
 
@@ -74,7 +189,7 @@ const { projects, stack } = Astro.props;
         }
       });
     }, {
-      threshold: 0.2,
+      threshold: 0.15,
       rootMargin: '0px 0px -50px 0px',
     });
 
@@ -85,7 +200,9 @@ const { projects, stack } = Astro.props;
 </script>
 
 <style>
-  /* Typographic Pause */
+  /* ════════════════════════════════════════════════════════════════
+     Typographic Pause
+     ════════════════════════════════════════════════════════════════ */
   .text-accent {
     color: var(--color-accent);
     font-weight: 500;
@@ -110,67 +227,602 @@ const { projects, stack } = Astro.props;
     letter-spacing: -0.02em;
   }
 
-  /* Section Backgrounds */
-  .section-bg--cool {
+  .text-center { text-align: center; }
+
+  /* ════════════════════════════════════════════════════════════════
+     Garden Section
+     ════════════════════════════════════════════════════════════════ */
+  .garden {
     background: var(--bg-cool);
-    padding-top: var(--space-16);
-    padding-bottom: var(--space-24);
+    padding: var(--space-16) 0 var(--space-24);
   }
 
-  /* Section Header Centered */
-  .section-header--centered {
+  .garden__header {
     text-align: center;
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto var(--space-12);
   }
 
-  .section__title--serif {
+  .garden__title {
     font-family: var(--font-display);
     font-size: var(--text-4xl);
     font-weight: 700;
-    margin-bottom: var(--space-4);
     color: var(--gray-900);
+    margin-bottom: var(--space-4);
   }
 
   @media (min-width: 768px) {
-    .section__title--serif {
-      font-size: var(--text-5xl);
-    }
+    .garden__title { font-size: var(--text-5xl); }
   }
 
-  /* Stack Styles */
-  .stack-list--mini {
+  .garden__subtitle {
+    font-size: var(--text-base);
+    color: var(--gray-500);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── Sub-section ────────────────────────────────────────────── */
+  .garden__subsection {
+    margin-bottom: var(--space-12);
+  }
+
+  .subsection__label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: var(--space-2);
+    position: relative;
+    padding-bottom: var(--space-3);
+  }
+
+  .subsection__label::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent), transparent);
+    border-radius: 2px;
+  }
+
+  .subsection__icon {
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+
+  .subsection__desc {
+    font-size: var(--text-sm);
+    color: var(--gray-500);
+    margin: 0 0 var(--space-6) 0;
+    line-height: 1.5;
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     1. Home Lab — Server Rack with LIVE pills
+     ════════════════════════════════════════════════════════════════ */
+  .homelab-rack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .homelab-rack.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .homelab-rack.visible .homelab-row {
+    animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation-delay: var(--row-delay);
+  }
+
+  .homelab-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+  }
+
+  .homelab-row:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: var(--gray-300);
+    box-shadow: var(--shadow-md);
+    transform: translateX(4px);
+  }
+
+  /* ── LIVE pill ──────────────────────────────────────────────── */
+  .live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    background: #16a34a;
+    color: white;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
+  }
+
+  .live-pill__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: white;
+    animation: liveBlink 1.4s ease-in-out infinite;
+  }
+
+  @keyframes liveBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .homelab-row__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    transition: transform var(--transition-bounce);
+  }
+
+  .homelab-row:hover .homelab-row__icon {
+    transform: scale(1.1);
+  }
+
+  .homelab-row__icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+
+  .homelab-row__info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .homelab-row__title {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--gray-900);
+    margin: 0 0 2px 0;
+    line-height: 1.3;
+  }
+
+  .homelab-row__desc {
+    font-size: var(--text-xs);
+    color: var(--gray-500);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .homelab-row__tags {
+    display: flex;
+    gap: var(--space-1);
+    flex-shrink: 0;
+  }
+
+  .tag--small {
+    padding: 2px 8px;
+    font-size: 0.6rem;
+  }
+
+  .homelab-row__link {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    color: var(--gray-400);
+    transition: all var(--transition-fast);
+  }
+
+  .homelab-row__link:hover {
+    color: var(--color-accent);
+    background: var(--color-accent-glow);
+  }
+
+  .homelab-row__link svg {
+    transition: transform var(--transition-fast);
+  }
+
+  .homelab-row__link:hover svg {
+    transform: translate(1px, -1px);
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     2. Projects — Clean Card Grid (no sub-label)
+     ════════════════════════════════════════════════════════════════ */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .projects-grid.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .projects-grid.visible .project-card-v2 {
+    animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation-delay: var(--card-delay);
+  }
+
+  .project-card-v2 {
+    position: relative;
+    border-radius: var(--radius-lg);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+
+  .project-card-v2__inner {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    box-shadow: var(--shadow-card);
+    transition: all var(--transition-base);
+  }
+
+  .project-card-v2__glow {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+    opacity: 0;
+    z-index: 0;
+    transition: opacity var(--transition-base);
+    padding: 2px;
+  }
+
+  .project-card-v2:hover {
+    transform: translateY(-5px);
+  }
+
+  .project-card-v2:hover .project-card-v2__inner {
+    border-color: transparent;
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .project-card-v2:hover .project-card-v2__glow {
+    opacity: 1;
+  }
+
+  .project-card-v2__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .project-card-v2__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--gray-100), var(--gray-50));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      0 2px 4px rgba(0, 0, 0, 0.04);
+    transition: transform var(--transition-bounce), background var(--transition-base);
+  }
+
+  .project-card-v2:hover .project-card-v2__icon {
+    transform: scale(1.08) rotate(-3deg);
+    background: linear-gradient(135deg, hsla(28, 100%, 95%, 1), hsla(28, 100%, 90%, 1));
+  }
+
+  .project-card-v2__icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+
+  .project-card-v2__title {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--gray-900);
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .project-card-v2__desc {
+    font-size: var(--text-xs);
+    color: var(--gray-600);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .project-card-v2__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-top: auto;
+    flex-wrap: wrap;
+  }
+
+  .project-card-v2__tags {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-2);
   }
 
-  .stack-item--mini {
-    width: 32px;
-    height: 32px;
-    display: flex;
+  .tag {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    background: var(--gray-50);
-    border: 1px solid var(--gray-100);
-    border-radius: var(--radius-md);
-    font-size: 1.2rem;
-    transition: transform var(--transition-bounce),
-      border-color var(--transition-fast);
+    padding: 3px 9px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: linear-gradient(135deg, var(--gray-100), var(--gray-50));
+    color: var(--gray-600);
+    border-radius: var(--radius-full);
+    border: 1px solid var(--gray-200);
+    transition: all var(--transition-fast);
   }
 
-  .stack-item--mini:hover {
-    transform: translateY(-2px) scale(1.1);
-    border-color: var(--color-accent);
+  .project-card-v2:hover .tag {
     background: white;
+    border-color: var(--gray-300);
+    color: var(--gray-800);
   }
 
-  /* Utility classes used in markup */
-  .mb-4 { margin-bottom: var(--space-4); }
-  .mb-8 { margin-bottom: var(--space-8); }
-  .mt-4 { margin-top: var(--space-4); }
-  .text-xs { font-size: var(--text-xs); }
-  .text-gray-500 { color: var(--gray-500); }
-  .text-center { text-align: center; }
+  .project-card-v2__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: gap var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+  .project-card-v2__link:hover {
+    gap: var(--space-2);
+  }
+
+  .project-card-v2__link svg {
+    transition: transform var(--transition-fast);
+  }
+
+  .project-card-v2__link:hover svg {
+    transform: translate(2px, -2px);
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     3. Vibe Coding — Dark Banner, Bullet Format
+     ════════════════════════════════════════════════════════════════ */
+  .vibe-banner {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .vibe-banner.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .vibe-banner__inner {
+    background: var(--gray-900);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6) var(--space-8);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle gradient overlay */
+  .vibe-banner__inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, hsla(28, 100%, 50%, 0.06), hsla(340, 80%, 55%, 0.04));
+    pointer-events: none;
+  }
+
+
+  .vibe-banner__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    position: relative;
+  }
+
+  .vibe-banner__list li {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: white;
+    line-height: 1.5;
+    padding-left: var(--space-5);
+    position: relative;
+  }
+
+  .vibe-banner__list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .vibe-banner__list li strong {
+    color: white;
+    font-weight: 600;
+  }
+
+  .vibe-banner__dim {
+    color: var(--gray-400);
+  }
+
+  .vibe-banner__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--color-accent-light);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid hsla(28, 100%, 60%, 0.3);
+    padding-bottom: 1px;
+    transition: all var(--transition-fast);
+  }
+
+  .vibe-banner__link:hover {
+    color: white;
+    border-bottom-color: white;
+  }
+
+  .vibe-banner__link svg {
+    flex-shrink: 0;
+    transition: transform var(--transition-fast);
+  }
+
+  .vibe-banner__link:hover svg {
+    transform: translate(1px, -1px);
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     Responsive
+     ════════════════════════════════════════════════════════════════ */
+  @media (max-width: 768px) {
+    .garden {
+      padding: var(--space-12) 0 var(--space-16);
+    }
+
+    .garden__subsection {
+      margin-bottom: var(--space-8);
+    }
+
+    .subsection__label {
+      font-size: var(--text-xl);
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+
+    .project-card-v2__inner {
+      padding: var(--space-4);
+    }
+
+    .project-card-v2__icon {
+      width: 38px;
+      height: 38px;
+      font-size: 1.1rem;
+    }
+
+    .project-card-v2:hover {
+      transform: translateY(-3px);
+    }
+
+    .tag {
+      padding: 2px 7px;
+      font-size: 0.6rem;
+    }
+
+    .homelab-row {
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-4);
+    }
+
+    .homelab-row__icon {
+      width: 34px;
+      height: 34px;
+      font-size: 1rem;
+    }
+
+    .homelab-row__tags {
+      display: none;
+    }
+
+    .vibe-banner__inner {
+      padding: var(--space-5) var(--space-5);
+    }
+
+    .projects-section {
+      margin-bottom: var(--space-8);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .project-card-v2__footer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .live-pill {
+      padding: 2px 8px;
+      font-size: 0.55rem;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .homelab-rack,
+    .projects-grid,
+    .vibe-banner {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .homelab-rack.visible .homelab-row,
+    .projects-grid.visible .project-card-v2 {
+      animation: none;
+    }
+
+    .live-pill__dot {
+      animation: none;
+    }
+  }
 </style>
