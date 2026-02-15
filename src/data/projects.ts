@@ -21,12 +21,6 @@ export const workshopProjects: WorkshopProject[] = [
     link: 'https://pm-vault.princejain.me',
   },
   {
-    title: 'Fusion Bill Uploader',
-    description: 'Automated expense filing using browser agents.',
-    icon: '🧾',
-    tags: ['Playwright', 'Python'],
-  },
-  {
     title: 'Whispr',
     description: 'High-fidelity voice-to-text transcription.',
     icon: '/icons/whisprflow.webp',
@@ -38,6 +32,13 @@ export const workshopProjects: WorkshopProject[] = [
     description: 'G-Meet Summariser, Auto-read G-Chat, Local Gmail Cleanup.',
     icon: '/icons/gmeet-summariser.svg',
     tags: ['Chrome Ext', 'Python'],
+  },
+  {
+    title: 'Fusion Bill Uploader',
+    description: 'Automated reimbursement filing for my Mobile/Internet bills using browser agents.',
+    icon: '🧾',
+    tags: ['Playwright', 'Python'],
+    link: 'https://www.linkedin.com/posts/princejain17_spend-5-hours-to-save-5-minutes-every-activity-7375487951251628032-4x6J/',
   },
 ];
 
@@ -54,37 +55,36 @@ export interface HomelabService {
 
 export const homelabServices: HomelabService[] = [
   {
-    title: 'Clawdbot',
-    description: 'Open-source local AI agent gateway.',
-    icon: '🤖',
-    tags: ['Python', 'LLM Orchestration'],
+    title: 'OpenClaw (formerly Clawdbot)',
+    description: 'My Personal AI Assistant: I named him Clawdius',
+    icon: '/icons/openclaw.jpg',
     live: true,
   },
   {
     title: 'n8n',
-    description: 'The automation brain — 50+ workflows (expense parsing, calendar briefings).',
-    icon: '🔄',
+    description: 'Tool I use to run daily automation workflows',
+    icon: '/icons/n8n.svg',
     link: 'https://n8n.princejain.me',
     live: true,
   },
   {
     title: 'Immich',
     description: 'Self-hosted TB-scale photo & video library.',
-    icon: '📸',
+    icon: '/icons/immich.png',
     link: 'https://immich.princejain.me',
     live: true,
   },
   {
     title: 'Vaultwarden',
-    description: 'Self-hosted Bitwarden for zero-knowledge security.',
-    icon: '🔐',
+    description: 'Self-hosted Bitwarden for my passwords and creds.',
+    icon: '/icons/vaultwarden.png',
     link: 'https://vault.princejain.me',
     live: true,
   },
   {
     title: 'Adguard',
-    description: 'Network-wide privacy and ad-blocking.',
-    icon: '🛡️',
+    description: 'Network-wide privacy and ad-blocking at my home lab.',
+    icon: '/icons/adguard.svg',
     live: true,
   },
 ];

@@ -1,12 +1,4 @@
 ---
-/**
- * SideQuests — Three-section layout:
- * 1. The Home Lab   (self-hosted services with LIVE pills)
- * 2. Projects       (card grid, no sub-label)
- * 3. Vibe Coding    (dark monospace banner, bullet format)
- *
- * Keeps the existing "typographic pause" divider above.
- */
 import type { WorkshopProject, HomelabService } from '../../data/projects';
 import { vibeCodingStack } from '../../data/projects';
 
@@ -36,7 +28,55 @@ const { projects, services } = Astro.props;
       <p class="garden__subtitle">Where I spend my weekends and free time to tinker and do experiments.</p>
     </div>
 
-    <!-- ═══════════ 1. The Home Lab ═══════════ -->
+    <!-- ═══════════ 1. Projects ═══════════ -->
+    <div class="garden__subsection">
+      <h3 class="subsection__label">
+        <span class="subsection__icon">🛠️</span>
+        Personal Projects
+      </h3>
+
+      <div class="projects-grid animate-on-scroll">
+        {projects.map((project, i) => (
+          <div class="project-card-v2" style={`--card-delay: ${i * 80}ms`}>
+            <div class="project-card-v2__inner">
+              <div class="project-card-v2__header">
+                <span class="project-card-v2__icon">
+                  {project.icon.startsWith('/') ? (
+                    <img src={project.icon} alt={project.title} width="24" height="24" loading="lazy" />
+                  ) : (
+                    project.icon
+                  )}
+                </span>
+                <h4 class="project-card-v2__title">{project.title}</h4>
+              </div>
+              <p class="project-card-v2__desc">{project.description}</p>
+              <div class="project-card-v2__footer">
+                <div class="project-card-v2__tags">
+                  {project.tags.map((tag) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    class="project-card-v2__link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visit
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                  </a>
+                )}
+              </div>
+            </div>
+            <div class="project-card-v2__glow"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+    <!-- ═══════════ 2. The Home Lab ═══════════ -->
     <div class="garden__subsection" id="homelab">
       <h3 class="subsection__label">
         <span class="subsection__icon">🖥️</span>
@@ -89,60 +129,13 @@ const { projects, services } = Astro.props;
       </div>
     </div>
 
-    <!-- ═══════════ 2. Projects ═══════════ -->
-    <div class="garden__subsection">
-      <h3 class="subsection__label">
-        <span class="subsection__icon">🛠️</span>
-        Projects
-      </h3>
 
-      <div class="projects-grid animate-on-scroll">
-        {projects.map((project, i) => (
-          <div class="project-card-v2" style={`--card-delay: ${i * 80}ms`}>
-            <div class="project-card-v2__inner">
-              <div class="project-card-v2__header">
-                <span class="project-card-v2__icon">
-                  {project.icon.startsWith('/') ? (
-                    <img src={project.icon} alt={project.title} width="24" height="24" loading="lazy" />
-                  ) : (
-                    project.icon
-                  )}
-                </span>
-                <h4 class="project-card-v2__title">{project.title}</h4>
-              </div>
-              <p class="project-card-v2__desc">{project.description}</p>
-              <div class="project-card-v2__footer">
-                <div class="project-card-v2__tags">
-                  {project.tags.map((tag) => (
-                    <span class="tag">{tag}</span>
-                  ))}
-                </div>
-                {project.link && (
-                  <a
-                    href={project.link}
-                    class="project-card-v2__link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Visit
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                    </svg>
-                  </a>
-                )}
-              </div>
-            </div>
-            <div class="project-card-v2__glow"></div>
-          </div>
-        ))}
-      </div>
-    </div>
 
     <!-- ═══════════ 3. Vibe Coding / AI Stack ═══════════ -->
     <div class="garden__subsection">
       <h3 class="subsection__label">
         <span class="subsection__icon">⚡</span>
-        Vibe Coding / AI Stack
+        My Vibe Coding / AI Stack
       </h3>
 
       <div class="vibe-banner animate-on-scroll" id="vibe-coding">
@@ -150,17 +143,8 @@ const { projects, services } = Astro.props;
           <ul class="vibe-banner__list">
             <li>
               <strong>Cursor + Claude Code</strong>
-              <span class="vibe-banner__dim">→ coding</span>
-            </li>
-            <li>
-              <strong>ChatGPT / Gemini</strong>
-              <span class="vibe-banner__dim">→ brainstorming & writing</span>
-            </li>
-            <li>
-              <strong>FAL Flux + Gemini Nano Banana</strong>
-              <span class="vibe-banner__dim">→ image generation</span>
-            </li>
-            <li>
+              <span class="vibe-banner__dim">→ For vibe-coding.</span>
+              My
               <a href={vibeCodingStack.cursorMdUrl} target="_blank" rel="noopener noreferrer" class="vibe-banner__link">
                 cursor.md
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -169,7 +153,22 @@ const { projects, services } = Astro.props;
                   <line x1="10" y1="14" x2="21" y2="3"/>
                 </svg>
               </a>
-              <span class="vibe-banner__dim">→ context management</span>
+            </li>
+            <li>
+              <strong>ChatGPT / Gemini</strong>
+              <span class="vibe-banner__dim">→ brainstorming & writing</span>
+            </li>
+            <li>
+              <strong>FAL Flux/ Gemini Nano Banana</strong>
+              <span class="vibe-banner__dim">→ image generation</span>
+            </li>
+            <li>
+              <strong>Supabase</strong>
+              <span class="vibe-banner__dim">→ Authentication and DB</span>
+            </li>
+            <li>
+              <strong>Google ADK, Langchain</strong>
+              <span class="vibe-banner__dim">→ Multi-Agent Orchestrations</span>
             </li>
           </ul>
         </div>
