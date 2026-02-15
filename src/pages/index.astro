@@ -7,6 +7,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/home/HeroSection.astro';
 import SelectedWork from '../components/home/SelectedWork.astro';
 import DigitalGarden from '../components/home/DigitalGarden.astro';
+import SpeakingEvents from '../components/home/SpeakingEvents.astro';
 import Inspirations from '../components/home/Inspirations.astro';
 import { workHighlights } from '../data/works';
 import { sideProjects } from '../data/projects';
@@ -17,5 +18,6 @@ import { stack } from '../data/skills';
   <HeroSection />
   <SelectedWork items={workHighlights} />
   <DigitalGarden projects={sideProjects} stack={stack} />
+  <SpeakingEvents />
   <Inspirations />
 </BaseLayout>

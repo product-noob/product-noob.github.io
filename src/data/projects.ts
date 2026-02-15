@@ -12,11 +12,11 @@ export interface SideProject {
 
 export const sideProjects: SideProject[] = [
   {
-    title: 'Exponent',
+    title: 'PM Vault',
     description: 'PM interview prep frameworks.',
     icon: '📚',
     tags: ['Career'],
-    link: 'https://exponent.princejain.me',
+    link: 'https://pm-vault.princejain.me',
   },
   {
     title: 'Meet Summarizer',
