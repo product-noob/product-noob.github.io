@@ -1,11 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import profilePhoto from '../assets/profile-photo-1.webp';
 import { skills } from '../data/skills';
 ---
 
 <BaseLayout
   title="About | Prince Jain"
   description="Product Leader at Flipkart building AI-native commerce experiences."
+  ogImage="https://princejain.me/profile-photo-1.webp"
   breadcrumbs={[
     { name: "Home", url: "https://princejain.me" },
     { name: "About" },
@@ -101,12 +104,12 @@ import { skills } from '../data/skills';
 
         <div class="about-image">
           <div class="image-card">
-            <img
-              src="/profile-photo-1.webp"
+            <Image
+              src={profilePhoto}
               alt="Prince Jain"
               class="profile-img"
-              width="400"
-              height="400"
+              width={400}
+              height={400}
               loading="lazy"
             />
             <div class="image-caption">
@@ -120,74 +123,14 @@ import { skills } from '../data/skills';
 </BaseLayout>
 
 <style>
-  /* Page Header — mirrors blog-header pattern */
+  /* About page uses less bottom padding on header */
   .page-header {
-    padding: var(--space-16) 0 var(--space-8);
-    position: relative;
-  }
-
-  .page-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: radial-gradient(
-      ellipse 60% 80% at 50% 0%,
-      hsla(28, 100%, 70%, 0.08),
-      transparent
-    );
-    pointer-events: none;
-  }
-
-  .page-header__content {
-    max-width: 600px;
+    padding-bottom: var(--space-8);
   }
 
   .page-header__icon {
-    display: inline-block;
     font-size: var(--text-3xl);
     margin-bottom: var(--space-4);
-    animation: float 3s ease-in-out infinite;
-  }
-
-  .page-header__title {
-    font-size: var(--text-5xl);
-    font-weight: 700;
-    margin-bottom: var(--space-3);
-    background: linear-gradient(
-      to bottom right,
-      var(--gray-900),
-      var(--gray-600)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .page-header__subtitle {
-    font-size: var(--text-xl);
-    color: var(--gray-600);
-    line-height: 1.5;
-    margin-bottom: var(--space-4);
-  }
-
-  .page-header__stats {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    font-size: var(--text-sm);
-    color: var(--gray-500);
-  }
-
-  .page-header__stat strong {
-    color: var(--color-accent);
-    font-weight: 600;
-  }
-
-  .page-header__separator {
-    color: var(--gray-300);
   }
 
   /* About Section */
@@ -258,28 +201,9 @@ import { skills } from '../data/skills';
     font-weight: 500;
   }
 
-  /* Responsive */
   @media (max-width: 768px) {
     .page-header {
-      padding: var(--space-12) 0 var(--space-6);
-    }
-
-    .page-header__title {
-      font-size: var(--text-4xl);
-    }
-
-    .page-header__subtitle {
-      font-size: var(--text-lg);
-    }
-  }
-
-  /* Float animation for icon */
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0) rotate(0deg);
-    }
-    50% {
-      transform: translateY(-8px) rotate(5deg);
+      padding-bottom: var(--space-6);
     }
   }
 </style>

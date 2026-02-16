@@ -3,6 +3,11 @@
  * HeroSection — Homepage hero with rotating profile images.
  * Self-contained: owns its markup, styles, and client-side script.
  */
+import { Image } from 'astro:assets';
+import profilePhoto1 from '../../assets/profile-photo-1.webp';
+import profilePhoto2 from '../../assets/profile-photo-2.webp';
+import profilePhoto3 from '../../assets/profile-photo-3.webp';
+import profilePhoto4 from '../../assets/profile-photo-4.webp';
 ---
 
 <section class="hero-v2">
@@ -77,10 +82,10 @@
       <!-- Right Column - Profile Image with Rotation Effect -->
       <div class="hero-v2__image-wrapper">
         <div class="hero-v2__image-container" id="profile-container">
-          <img src="/profile-photo-1.webp" alt="Prince Jain" class="hero-v2__image hero-v2__image--active" data-index="0" width="640" height="640" fetchpriority="high" />
-          <img src="/profile-photo-2.webp" alt="Prince Jain" class="hero-v2__image" data-index="1" width="640" height="640" loading="lazy" />
-          <img src="/profile-photo-3.webp" alt="Prince Jain" class="hero-v2__image" data-index="2" width="640" height="640" loading="lazy" />
-          <img src="/profile-photo-4.webp" alt="Prince Jain" class="hero-v2__image" data-index="3" width="640" height="640" loading="lazy" />
+          <Image src={profilePhoto1} alt="Prince Jain" class="hero-v2__image hero-v2__image--active" data-index="0" width={640} height={640} fetchpriority="high" />
+          <Image src={profilePhoto2} alt="Prince Jain" class="hero-v2__image" data-index="1" width={640} height={640} loading="lazy" />
+          <Image src={profilePhoto3} alt="Prince Jain" class="hero-v2__image" data-index="2" width={640} height={640} loading="lazy" />
+          <Image src={profilePhoto4} alt="Prince Jain" class="hero-v2__image" data-index="3" width={640} height={640} loading="lazy" />
 
         </div>
         <div class="hero-v2__glow hero-v2__glow--1"></div>
@@ -172,58 +177,6 @@
     margin-top: var(--space-2);
   }
 
-  .btn-gradient {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: 14px 24px;
-    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
-    color: white;
-    border-radius: var(--radius-full);
-    font-weight: 600;
-    font-size: var(--text-base);
-    box-shadow: 0 4px 14px rgba(255, 94, 50, 0.3);
-    transition: all var(--transition-base);
-  }
-
-  .btn-gradient:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 94, 50, 0.4);
-  }
-
-  .btn-gradient svg {
-    transition: transform var(--transition-fast);
-  }
-
-  .btn-gradient:hover svg {
-    transform: translateX(4px);
-  }
-
-  .btn-outline {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: 14px 24px;
-    background: white;
-    border: 1px solid var(--gray-200);
-    color: var(--gray-900);
-    border-radius: var(--radius-full);
-    font-weight: 600;
-    font-size: var(--text-base);
-    box-shadow: var(--shadow-sm);
-    transition: all var(--transition-base);
-  }
-
-  .btn-outline:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-    background: var(--gray-50);
-  }
-
-  .btn-outline svg {
-    color: var(--color-linkedin);
-  }
-
   /* Image Column */
   .hero-v2__image-wrapper {
     position: relative;
@@ -238,7 +191,7 @@
     aspect-ratio: 1 / 1;
     border-radius: 2.5rem;
     overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--shadow-xl);
     transform: rotate(2deg);
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     background: var(--gray-100);
@@ -291,7 +244,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 8px;
+    gap: var(--space-2);
     font-size: var(--text-lg);
     font-weight: 400;
     color: var(--gray-400);
@@ -307,9 +260,9 @@
     width: 48px;
     height: 48px;
     background: white;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-sm);
     vertical-align: middle;
     flex-shrink: 0;
   }
@@ -325,7 +278,7 @@
     display: inline-flex;
     align-items: center;
     vertical-align: middle;
-    margin-left: 4px;
+    margin-left: var(--space-1);
   }
 
   .hero-v2__cluster-item {
@@ -335,22 +288,22 @@
     justify-content: center;
     width: 48px;
     height: 48px;
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     cursor: pointer;
     text-decoration: none;
-    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-    box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.15);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-md);
   }
 
   .hero-v2__cluster-item:hover {
     z-index: 20 !important;
     transform: scale(1.1);
-    box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-lg);
   }
 
   /* Stacked items overlap on desktop, spread on hover */
   .hero-v2__cluster-item--stacked {
-    margin-left: 4px;
+    margin-left: var(--space-1);
   }
 
   @media (min-width: 768px) {
@@ -359,18 +312,18 @@
     }
 
     .hero-v2__cluster:hover .hero-v2__cluster-item--stacked {
-      margin-left: 4px;
+      margin-left: var(--space-1);
     }
   }
 
   .hero-v2__cluster-card {
     width: 100%;
     height: 100%;
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     background: white;
     overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-sm);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -389,10 +342,10 @@
     top: -48px;
     left: 50%;
     transform: translateX(-50%) translateY(8px);
-    padding: 4px 10px;
+    padding: var(--space-1) var(--space-2);
     background: white;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 6px;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.025em;
@@ -400,8 +353,8 @@
     opacity: 0;
     pointer-events: none;
     white-space: nowrap;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
     z-index: 50;
   }
 
@@ -443,7 +396,7 @@
     .hero-v2__inline-row {
       justify-content: center;
       font-size: var(--text-sm);
-      gap: 6px;
+      gap: var(--space-1);
     }
 
     .hero-v2__icon-card {

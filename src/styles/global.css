@@ -39,7 +39,7 @@ a:hover {
 
 code {
   font-family: var(--font-mono);
-  font-size: 0.9em;
+  font-size: var(--text-sm);
   background-color: var(--gray-100);
   padding: 0.2em 0.4em;
   border-radius: var(--radius-sm);
@@ -52,18 +52,18 @@ code {
 
 .code-copy-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: var(--space-2);
+  right: var(--space-2);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 10px;
-  font-size: 0.7rem;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-2xs);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--gray-600);
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--glass-bg-heavy);
   border: 1px solid var(--gray-200);
   border-radius: var(--radius-full);
   cursor: pointer;
@@ -167,10 +167,10 @@ code {
    ========================================================================== */
 
 .glass {
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--glass-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--glass-border);
 }
 
 /* ==========================================================================

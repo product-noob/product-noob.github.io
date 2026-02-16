@@ -25,6 +25,11 @@
     transform: translateY(0);
 }
 
+.btn:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
 .btn-primary {
     background-color: var(--gray-900);
     /* Stark black for primary */
@@ -76,9 +81,8 @@
 .tag {
     display: inline-flex;
     align-items: center;
-    padding: 6px 14px;
-    font-size: 0.75rem;
-    /* Small/Tech */
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--text-2xs);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -108,15 +112,13 @@
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-    padding: 6px var(--space-4);
-    background: rgba(255, 255, 255, 0.9);
+    padding: var(--space-1) var(--space-4);
+    background: var(--glass-bg-heavy);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border-radius: var(--radius-lg);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 
-        0 1px 2px rgba(0, 0, 0, 0.04),
-        0 2px 8px rgba(0, 0, 0, 0.02);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-sm);
     font-size: var(--text-sm);
     font-weight: 500;
     color: var(--gray-700);
@@ -125,11 +127,14 @@
 
 .chip:hover {
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 
-        0 4px 8px rgba(0, 0, 0, 0.06),
-        0 8px 16px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-md);
     border-color: var(--color-accent-glow);
     background: white;
+}
+
+.chip:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
 }
 
 .chip__icon {
@@ -154,7 +159,7 @@
 .chip--icon .chip__icon {
     width: 24px;
     height: 24px;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
 }
 
 /* ==========================================================================
@@ -170,8 +175,15 @@
     transition: color var(--transition-fast);
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:focus-visible {
     color: var(--gray-900);
+}
+
+.nav-link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm, 4px);
 }
 
 .nav-link::after {
@@ -238,4 +250,275 @@
     .tools-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* ==========================================================================
+   Glass Card — glassmorphism surface
+   ========================================================================== */
+
+.glass-card {
+    position: relative;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    transition:
+        transform var(--transition-base),
+        box-shadow var(--transition-base),
+        border-color var(--transition-base);
+    overflow: hidden;
+}
+
+.glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--color-accent-glow);
+}
+
+.glass-card--heavy {
+    background: linear-gradient(
+        135deg,
+        var(--glass-bg-heavy),
+        var(--glass-bg)
+    );
+    border: 1px solid var(--border-subtle);
+}
+
+/* ==========================================================================
+   Glow Overlay — gradient hover glow behind cards
+   ========================================================================== */
+
+.glow-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    background: linear-gradient(
+        135deg,
+        hsla(28, 100%, 70%, 0.08),
+        hsla(340, 80%, 55%, 0.06)
+    );
+    pointer-events: none;
+}
+
+.glass-card:hover .glow-overlay,
+.blog-card:hover .glow-overlay {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   Page Header — shared header pattern for top-level pages
+   ========================================================================== */
+
+.page-header {
+    padding: var(--space-16) 0 var(--space-12);
+    position: relative;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: radial-gradient(
+        ellipse 60% 80% at 50% 0%,
+        hsla(28, 100%, 70%, 0.08),
+        transparent
+    );
+    pointer-events: none;
+}
+
+.page-header__content {
+    max-width: 600px;
+}
+
+.page-header__icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(
+        135deg,
+        var(--color-accent-glow),
+        hsla(28, 100%, 60%, 0.06)
+    );
+    margin-bottom: var(--space-6);
+    position: relative;
+}
+
+.page-header__icon-wrap::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--color-accent-glow);
+    animation: iconRingPulse 3s ease-in-out infinite;
+}
+
+.page-header__icon {
+    display: inline-block;
+    font-size: 2.75rem;
+    line-height: 1;
+    animation: iconFloat 4s ease-in-out infinite;
+}
+
+.page-header__title {
+    font-size: var(--text-5xl);
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+    background: linear-gradient(
+        to bottom right,
+        var(--gray-900),
+        var(--gray-600)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-header__subtitle {
+    font-size: var(--text-xl);
+    color: var(--gray-600);
+    line-height: 1.55;
+    margin-bottom: var(--space-5);
+}
+
+.page-header__stats {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--gray-500);
+}
+
+.page-header__stat strong {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+.page-header__separator {
+    color: var(--gray-300);
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        padding: var(--space-12) 0 var(--space-8);
+    }
+
+    .page-header__icon-wrap {
+        width: 64px;
+        height: 64px;
+        margin-bottom: var(--space-4);
+    }
+
+    .page-header__icon {
+        font-size: 2rem;
+    }
+
+    .page-header__title {
+        font-size: var(--text-4xl);
+    }
+
+    .page-header__subtitle {
+        font-size: var(--text-lg);
+    }
+}
+
+/* ==========================================================================
+   Icon Wrapper — decorative icon box
+   ========================================================================== */
+
+.icon-wrapper {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--gray-100), var(--gray-50));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow:
+        inset 0 1px 0 var(--glass-bg),
+        var(--shadow-sm);
+    transition: transform var(--transition-bounce), background var(--transition-base);
+}
+
+.icon-wrapper--sm {
+    width: 44px;
+    height: 44px;
+}
+
+/* ==========================================================================
+   CTA Buttons — gradient and outline variants
+   ========================================================================== */
+
+.btn-gradient {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 14px 24px;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+    color: white;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: var(--text-base);
+    box-shadow: var(--shadow-accent-sm);
+    transition: all var(--transition-base);
+    text-decoration: none;
+}
+
+.btn-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-accent-lg);
+}
+
+.btn-gradient svg {
+    transition: transform var(--transition-fast);
+}
+
+.btn-gradient:hover svg {
+    transform: translateX(4px);
+}
+
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 14px 24px;
+    background: white;
+    border: 1px solid var(--gray-200);
+    color: var(--gray-900);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: var(--text-base);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+    text-decoration: none;
+}
+
+.btn-outline:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    background: var(--gray-50);
+}
+
+/* ==========================================================================
+   Keyframes used by page headers
+   ========================================================================== */
+
+@keyframes iconRingPulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.04); }
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-4px) rotate(3deg); }
 }

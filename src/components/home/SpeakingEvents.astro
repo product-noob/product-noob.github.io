@@ -32,7 +32,10 @@ import { events } from '../../data/events';
               src={event.thumbnail}
               alt={event.title}
               class="event-card__img"
+              width="280"
+              height="210"
               loading="lazy"
+              decoding="async"
             />
             {event.status === 'upcoming' && (
               <span class="event-card__badge">Upcoming</span>
@@ -60,7 +63,10 @@ import { events } from '../../data/events';
               src={event.thumbnail}
               alt={event.title}
               class="event-card__img"
+              width="280"
+              height="210"
               loading="lazy"
+              decoding="async"
             />
             {event.status === 'upcoming' && (
               <span class="event-card__badge">Upcoming</span>
@@ -89,7 +95,7 @@ import { events } from '../../data/events';
     </button>
 
     <div class="event-modal__hero" id="modal-hero">
-      <img id="modal-hero-img" class="event-modal__hero-img" src="" alt="" />
+      <img id="modal-hero-img" class="event-modal__hero-img" src="" alt="" width="560" height="245" decoding="async" />
     </div>
 
     <div class="event-modal__body">
@@ -428,15 +434,15 @@ import { events } from '../../data/events';
     position: absolute;
     top: var(--space-3);
     right: var(--space-3);
-    padding: 4px 12px;
+    padding: var(--space-1) var(--space-3);
     background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
     color: white;
-    font-size: 0.65rem;
+    font-size: var(--text-2xs);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     border-radius: var(--radius-full);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-md);
     z-index: 2;
   }
 
@@ -501,8 +507,8 @@ import { events } from '../../data/events';
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(var(--space-2));
+    -webkit-backdrop-filter: blur(var(--space-2));
   }
 
   .event-modal__content {
@@ -549,12 +555,12 @@ import { events } from '../../data/events';
     height: 36px;
     border-radius: var(--radius-full);
     border: none;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: var(--glass-bg-heavy);
+    backdrop-filter: blur(var(--space-2));
+    -webkit-backdrop-filter: blur(var(--space-2));
     cursor: pointer;
     color: var(--gray-600);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
     transition: all 0.2s ease;
   }
 
@@ -600,8 +606,8 @@ import { events } from '../../data/events';
 
   .event-modal__status {
     display: inline-flex;
-    padding: 3px 10px;
-    font-size: 0.65rem;
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--text-2xs);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -761,8 +767,8 @@ import { events } from '../../data/events';
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(var(--space-2));
+    -webkit-backdrop-filter: blur(var(--space-2));
   }
 
   .lightbox__img {

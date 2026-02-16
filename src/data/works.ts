@@ -5,24 +5,8 @@
  * `workHighlights` is a derived compact view used on the homepage timeline.
  */
 
-/** External reference link shown on a work card (top-right). */
-export interface ExternalLink {
-  url: string;
-  label: string;
-}
-
-export interface WorkEntry {
-  company: string;
-  role: string;
-  period: string;
-  description: string;
-  achievements: string[];
-  tags: string[];
-  accentColor: string;
-  icon?: string;
-  link?: string;
-  externalLink?: ExternalLink;
-}
+import type { ExternalLink, WorkEntry, WorkHighlight } from '../types';
+export type { ExternalLink, WorkEntry, WorkHighlight };
 
 export const works: WorkEntry[] = [
   {
@@ -114,7 +98,7 @@ export const works: WorkEntry[] = [
     tags: ['Product-Led', 'Viral', 'Social Change'],
     accentColor: 'hsl(180, 70%, 45%)',
     icon: '/icons/paytm-vaccine-finder.svg',
-    link: '/blogs/Building%20Vaccine%20Slot%20Finder',
+    link: '/blogs/building-vaccine-slot-finder',
     externalLink: {
       url: 'https://paytm.com/blog/engineering/journey-to-build-the-vaccine-slot-finder-tool-on-paytm/',
       label: 'Read on Paytm Blog',
@@ -160,16 +144,6 @@ export const works: WorkEntry[] = [
  * Compact view for the homepage timeline.
  * Derived from `works` so the two can never drift.
  */
-export interface WorkHighlight {
-  title: string;
-  company: string;
-  workIcon?: string;
-  role: string;
-  highlight: string;
-  link: string;
-  accentColor: string;
-}
-
 export const workHighlights: WorkHighlight[] = [
   {
     title: '2025 - Present',
@@ -208,7 +182,7 @@ export const workHighlights: WorkHighlight[] = [
     role: 'Product Lead',
     highlight:
       "Scaled India's largest private vaccine booking tool during the crisis, enabling 3M+ slot bookings.",
-    link: '/blogs/Building%20Vaccine%20Slot%20Finder',
+    link: '/blogs/building-vaccine-slot-finder',
     accentColor: works[4].accentColor,
   },
 ];

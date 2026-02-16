@@ -13,7 +13,12 @@ import { workHighlights } from '../data/works';
 import { workshopProjects, homelabServices } from '../data/projects';
 ---
 
-<BaseLayout title="Prince Jain - Product Leader & Builder" preloadImage="/profile-photo-1.webp">
+<BaseLayout
+  title="Prince Jain - Product Leader & Builder"
+  description="Prince Jain — Group Product Manager at Flipkart. Building 0→1 agentic AI experiences and next-gen AI-native products."
+  preloadImage="/profile-photo-1.webp"
+  breadcrumbs={[{ name: "Home" }]}
+>
   <HeroSection />
   <SelectedWork items={workHighlights} />
   <DigitalGarden projects={workshopProjects} services={homelabServices} />

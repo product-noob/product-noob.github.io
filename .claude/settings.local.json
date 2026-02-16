@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx astro dev)",
+      "Bash(where:*)",
+      "Bash(where npx:*)",
+      "Bash(echo:*)",
+      "Bash(export PATH=\"/c/Program Files/nodejs:$PATH\")",
+      "Bash(npx astro build:*)",
+      "Bash(node:*)",
+      "Bash(where.exe:*)"
+    ]
+  }
+}

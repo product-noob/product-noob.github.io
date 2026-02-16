@@ -79,6 +79,12 @@ export async function GET(context: APIContext) {
       priority: 0.6,
     },
     {
+      loc: `${site}/tools/autoparse/`,
+      lastmod: now,
+      changefreq: 'monthly',
+      priority: 0.6,
+    },
+    {
       loc: `${site}/privacy-policy/`,
       lastmod: now,
       changefreq: 'yearly',

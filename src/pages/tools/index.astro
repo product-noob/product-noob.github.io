@@ -4,7 +4,14 @@ import ProjectCard from '../../components/ProjectCard.astro';
 import { tools } from '../../data/tools';
 ---
 
-<BaseLayout title="Tools | Prince Jain" description="Free web-based developer utilities built by Prince Jain — JSON formatter, validators, and more productivity tools.">
+<BaseLayout
+  title="Tools | Prince Jain"
+  description="Free web-based developer utilities built by Prince Jain — JSON formatter, validators, and more productivity tools."
+  breadcrumbs={[
+    { name: "Home", url: "https://princejain.me" },
+    { name: "Tools" },
+  ]}
+>
   <section class="tools-header">
     <div class="container">
       <h1 class="page-title">Tools</h1>

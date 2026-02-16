@@ -133,7 +133,10 @@ function highlightMetrics(text: string): string {
                       src={work.icon}
                       alt=""
                       class="work-card__icon"
+                      width="44"
+                      height="44"
                       loading="lazy"
+                      decoding="async"
                     />
                   )}
                   <div>
@@ -181,104 +184,6 @@ function highlightMetrics(text: string): string {
 </BaseLayout>
 
 <style>
-  /* =====================================================
-     Page Header
-     ===================================================== */
-  .page-header {
-    padding: var(--space-16) 0 var(--space-12);
-    position: relative;
-  }
-
-  .page-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: radial-gradient(
-      ellipse 60% 80% at 50% 0%,
-      hsla(28, 100%, 70%, 0.08),
-      transparent
-    );
-    pointer-events: none;
-  }
-
-  .page-header__content {
-    max-width: 600px;
-  }
-
-  /* Icon wrapper — decorative circle with animated glow ring */
-  .page-header__icon-wrap {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
-    height: 80px;
-    border-radius: var(--radius-xl);
-    background: linear-gradient(
-      135deg,
-      var(--color-accent-glow),
-      hsla(28, 100%, 60%, 0.06)
-    );
-    margin-bottom: var(--space-6);
-    position: relative;
-  }
-
-  .page-header__icon-wrap::after {
-    content: '';
-    position: absolute;
-    inset: -6px;
-    border-radius: var(--radius-xl);
-    border: 2px solid var(--color-accent-glow);
-    animation: iconRingPulse 3s ease-in-out infinite;
-  }
-
-  .page-header__icon {
-    display: inline-block;
-    font-size: 2.75rem;
-    line-height: 1;
-    animation: iconFloat 4s ease-in-out infinite;
-  }
-
-  .page-header__title {
-    font-size: var(--text-5xl);
-    font-weight: 700;
-    margin-bottom: var(--space-3);
-    background: linear-gradient(
-      to bottom right,
-      var(--gray-900),
-      var(--gray-600)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .page-header__subtitle {
-    font-size: var(--text-xl);
-    color: var(--gray-600);
-    line-height: 1.55;
-    margin-bottom: var(--space-5);
-  }
-
-  .page-header__stats {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    font-size: var(--text-sm);
-    color: var(--gray-500);
-  }
-
-  .page-header__stat strong {
-    color: var(--color-accent);
-    font-weight: 600;
-  }
-
-  .page-header__separator {
-    color: var(--gray-300);
-  }
-
   /* =====================================================
      Work Section & Card List
      ===================================================== */
@@ -545,28 +450,6 @@ function highlightMetrics(text: string): string {
      Responsive
      ===================================================== */
   @media (max-width: 768px) {
-    .page-header {
-      padding: var(--space-12) 0 var(--space-8);
-    }
-
-    .page-header__icon-wrap {
-      width: 64px;
-      height: 64px;
-      margin-bottom: var(--space-4);
-    }
-
-    .page-header__icon {
-      font-size: 2rem;
-    }
-
-    .page-header__title {
-      font-size: var(--text-4xl);
-    }
-
-    .page-header__subtitle {
-      font-size: var(--text-lg);
-    }
-
     .work-card__inner {
       padding: var(--space-5) var(--space-5) var(--space-6);
     }

@@ -4,8 +4,9 @@
  * Self-contained: owns its markup, styles, and client-side script.
  * Dummy data — swap names, descriptions, images, and URLs later.
  */
+import type { PersonInspiration } from '../../types';
 
-const people = [
+const people: PersonInspiration[] = [
   {
     name: 'Lenny Rachitsky',
     description: 'Product, growth, and the mastermind behind the #1 product newsletter.',
@@ -65,7 +66,10 @@ const people = [
               src={person.image}
               alt={person.name}
               class="inspire-card__avatar"
+              width="48"
+              height="48"
               loading="lazy"
+              decoding="async"
             />
             <p class="inspire-card__name">{person.name}</p>
           </div>
@@ -116,7 +120,7 @@ const people = [
 
   .inspire-card:hover {
     border-color: var(--gray-300);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-lg);
     transform: translateY(-3px);
   }
 

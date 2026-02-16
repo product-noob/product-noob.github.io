@@ -1,0 +1,194 @@
+ Code Review: princejain.me
+
+  High-Level Verdict
+
+  This is solid mid-level work with pockets of senior-level thinking. The architecture choices are sound — Astro for a static content site is the right
+  call, the component decomposition is reasonable, the design token system shows intentionality, and the CSS-inlining strategy for performance is a good
+  decision. The site works and ships.
+
+  Where it falls short of senior-quality is in the discipline layer: inconsistent accessibility, scattered magic numbers that undermine the token system,
+  memory leaks in client-side scripts, duplicated code across directories, no testing of any kind, and content schema gaps that will create editorial debt.
+  These are the kinds of things that separate "built it" from "built it to last."
+
+  The codebase feels like it was built in bursts — some sections are clearly more recent and polished (the autoparse tool, the AI-era blog posts) while
+  others show their age (Hello-World.md, the older blog formatting). That's normal for a personal site, but you asked for production-grade feedback, so
+  that's the lens I'm using.
+
+  ---
+  What Is Working Well
+
+  1. Framework choice and static architecture. Astro with output: 'static' is exactly right for a content-heavy personal site. Zero JS shipped by default,
+  islands architecture for interactive tools. You're not fighting the framework.
+
+  2. Design token system (src/styles/tokens.css). Self-hosted fonts with font-display: swap, HSL color variables, responsive token overrides at breakpoints,
+   clear section headers. This is the foundation of a maintainable design system. The decision to eliminate Google Fonts cross-origin overhead (documented
+  in the comments) shows performance awareness.
+
+  3. CSS inlining strategy (astro.config.mjs:10-14). inlineStylesheets: 'always' with a documented rationale ("est. 840ms savings on mobile") is a
+  senior-level move. You made a tradeoff, measured it, and documented why.
+
+  4. Component separation on the homepage. index.astro is 23 lines — it only composes HeroSection, SelectedWork, DigitalGarden, Inspirations,
+  SpeakingEvents. Each section owns its data, markup, and styles. This is the right level of decomposition.
+
+  5. Content collection with Zod validation (src/content/config.ts). Using Astro's content collections with schema validation means you get build-time
+  errors for bad frontmatter. This prevents entire categories of bugs.
+
+  6. RSS and sitemap generation. Having both rss.xml.ts and sitemap.xml.ts as first-class pages, not afterthoughts, is good. The sitemap has proper lastmod,
+   changefreq, and priority fields with cache-control headers.
+
+  7. Reading progress and copy-code scripts. readingProgress.ts uses requestAnimationFrame with a debounce flag — proper scroll performance. copyCode.ts has
+   idempotent initialization via dataset.copyInitialized. These are small things done right.
+
+  ---
+  What Should Be Improved
+
+  Critical Issues
+
+  1. XSS risk in work.astro:170 — set:html without sanitization
+
+  set:html={highlightMetrics(a)}
+
+  The highlightMetrics function (lines 16-21) runs a regex over work data and wraps matches in <span> tags. The data comes from works.ts, which you control
+  — so the risk is low today. But set:html is the Astro equivalent of dangerouslySetInnerHTML. If you ever pull work data from a CMS or API, this becomes an
+   injection vector. At minimum, escape the text before wrapping it in spans.
+
+  2. Memory leaks in every client-side script
+
+  - HeroSection.astro:106 — setInterval(rotateImages, 1500) is never cleared
+  - SelectedWork.astro:80-104 — IntersectionObserver is never disconnected
+  - DigitalGarden.astro:181-199 — same observer leak
+  - SpeakingEvents.astro:237-257 — event listeners pile up if called multiple times
+
+  For a static site where pages fully reload on navigation, this is mostly fine. But if you ever add View Transitions or client-side routing (Astro supports
+   both), every one of these becomes a real leak. Fix them now while it's cheap.
+
+  3. Duplicate autoparse/ directory at project root
+
+  The files autoparse/autoparse.ts, autoparse/detectEngine.ts, autoparse/formatters.ts are exact duplicates of src/scripts/autoparse/*. This is a
+  maintenance hazard — bugs fixed in one location won't be fixed in the other. Delete the root autoparse/ directory.
+
+  4. No prefers-reduced-motion handling in most components
+
+  global.css:85-93 has a good reduced-motion query, but most components add their own animations (scroll-triggered reveals, rotating images, blinking dots,
+  infinite carousels) without respecting this preference. The HeroSection image rotation, DigitalGarden live-pill blink, and SpeakingEvents auto-scroll
+  carousel all violate WCAG 2.3.3. Only SpeakingEvents has a late prefers-reduced-motion block at line 850.
+
+  5. Blog content schema inconsistencies
+
+  - Only 1 of 13 posts has featured: true — the rest omit the field entirely
+  - 4 posts have future publication dates (including Oct 2025)
+  - No post uses an H1 heading — all start at H2 or H3
+  - Hello-World.md is a template/test file mixed with real content
+  - PM-Links.md has numerous (invalid link) annotations indicating broken references
+  - Filename conventions are inconsistent: some use spaces (Apps and SuperApps.md), others use hyphens (AI-Glossary-Every-PM-Needs.md), one uses underscores
+   (Demystifying_SEO.md)
+
+  High Impact, Low Effort
+
+  6. Missing aria-label and focus states across interactive elements
+
+  - components.css — buttons have :hover styles but no :focus-visible styles
+  - mobileMenu.ts — toggle button has no aria-controls or aria-label
+  - copyCode.ts — dynamically created button lacks aria-label
+  - 404.astro — SVG icons inside links not marked aria-hidden="true"
+  - links.astro:31-33 — decorative SVG arrow not hidden from screen readers
+  - BaseLayout.astro — no skip-to-main-content link
+
+  These are all 1-2 line fixes that meaningfully improve keyboard and screen reader accessibility.
+
+  7. Sitemap is incomplete
+
+  sitemap.xml.ts generates entries for static pages and blogs but misses individual tool pages (/tools/autoparse, /tools/json-formatter,
+  /tools/google-meet-summariser). These are real pages that should be discoverable.
+
+  8. RSS feed lacks content
+
+  rss.xml.ts sends title, description, and pubDate but no content field. Most RSS readers show blank entries without content. Adding even the first
+  paragraph would improve the reader experience significantly.
+
+  9. Hardcoded values undermining the design token system
+
+  Despite a good token system, many components use raw values:
+  - 404.astro:103 — rgba(255, 94, 50, 0.3) instead of a token
+  - HeroSection.astro:185 — same hardcoded orange
+  - BlogCard.astro:175-177 — 0.6875rem, uppercase, 0.05em instead of tokens
+  - components.css:79-84 — padding: 6px 14px, font-size: 0.75rem
+
+  Every hardcoded value is a future inconsistency waiting to happen.
+
+  10. Event data paths contain spaces
+
+  events.ts:35,45-49 uses paths like /AI events/OpenAI-DevDay-landing.webp. Spaces in URLs require encoding and cause subtle bugs in some contexts. Use
+  hyphens: /ai-events/.
+
+  High Impact, High Effort
+
+  11. No accessibility testing, no linting, no type checking in CI
+
+  The deploy workflow (deploy.yml) runs npm run build and deploys. No astro check, no ESLint, no axe-core, no Lighthouse CI. For a "production-grade,
+  long-lived system," the build pipeline should catch regressions. Adding astro check to the build step is low effort. Adding Lighthouse CI thresholds is
+  medium effort but high value.
+
+  12. Blog architecture lacks categorization and discovery
+
+  13 posts with 2 tags each and no category system. No tag index pages (can't browse "all AI posts"). No related-posts link at the end of posts (the
+  [...slug].astro computes related posts by tag score but the algorithm is naive). No search. For a site you plan to keep adding content to, this limits
+  discoverability.
+
+  13. SpeakingEvents component is 872 lines
+
+  This single component handles: an auto-scrolling carousel, card rendering, a modal system, a lightbox gallery, keyboard handling, and responsive layout.
+  It should be decomposed into at least 3-4 smaller components (EventCard, EventModal, EventCarousel, EventGallery). As-is, it's the hardest file in the
+  repo to modify safely.
+
+  14. No dark mode
+
+  tokens.css defines only light theme tokens. There's no prefers-color-scheme: dark media query anywhere. For a long-form reading site, this is a
+  significant UX gap — many readers prefer dark mode, especially on mobile at night.
+
+  Low Priority
+
+  15. color-mix() usage in SelectedWork.astro:326 — limited browser support, though adoption is growing. Consider a fallback.
+
+  16. tsconfig.json includes **/* — could be scoped to src/**/* for slightly faster type checking.
+
+  17. Deploy workflow uses cancel-in-progress: false — sequential deploys on rapid pushes. Setting to true would be more efficient.
+
+  18. readingTime.ts regex doesn't handle tilde-fenced code blocks — minor edge case but worth noting.
+
+  19. CSV detection in autoparse splits input multiple times — performance optimization opportunity, but unlikely to matter at typical input sizes.
+
+  ---
+  What I Would Change If This Were My Site
+
+  Immediately (this weekend):
+  1. Delete autoparse/ directory at project root
+  2. Add :focus-visible styles to all interactive elements in components.css
+  3. Add aria-hidden="true" to all decorative SVGs
+  4. Add skip-to-main-content link in BaseLayout.astro
+  5. Add missing tool pages to sitemap.xml.ts
+  6. Add content field to RSS items
+  7. Standardize blog filenames to kebab-case
+  8. Fix space-in-path issue in events.ts
+
+  This month:
+  1. Add astro check and Lighthouse CI to the deploy pipeline
+  2. Extract SpeakingEvents into smaller components
+  3. Add prefers-reduced-motion handling to all animated components
+  4. Replace all hardcoded color/spacing values with tokens
+  5. Clean up setInterval/IntersectionObserver leaks with proper cleanup
+  6. Sanitize data before set:html usage or switch to safe rendering
+  7. Add tag index pages (/blogs/tag/[tag])
+  8. Standardize blog frontmatter (add featured: false default, validate dates)
+
+  This quarter:
+  1. Dark mode support
+  2. Blog search (even a simple client-side filter)
+  3. Content linting (markdownlint config, broken link checker)
+  4. Replace the naive related-posts algorithm with something that considers recency and content similarity
+  5. Add <picture> elements with responsive srcset for hero images (4x 640px images is ~2.5MB)
+
+  ---
+  The bones are good. The architecture is sound, the framework choice is correct, and the visual design shows care. What's missing is the infrastructure of
+  quality — the testing, the accessibility discipline, the cleanup patterns, and the editorial consistency that make a site genuinely production-grade over
+  years, not just months.

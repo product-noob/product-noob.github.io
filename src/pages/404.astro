@@ -1,9 +1,17 @@
 ---
 /**
  * 404 — Custom "Not Found" page.
- * Provides friendly messaging and navigation back to key sections.
+ * Provides friendly messaging, navigation back to key sections,
+ * and recent blog posts to keep visitors engaged.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+import { calculateReadingTime } from '../utils/readingTime';
+
+const recentPosts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 ---
 
 <BaseLayout title="Page Not Found | Prince Jain" description="The page you're looking for doesn't exist. Head back to the homepage or explore blog posts and work.">
@@ -18,7 +26,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="not-found__links">
         <a href="/" class="btn-gradient">
           <span>Back to Home</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </a>
@@ -28,6 +36,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
   </section>
+
+  {recentPosts.length > 0 && (
+    <section class="not-found__recent">
+      <div class="container">
+        <h2 class="not-found__recent-title">Recent Posts</h2>
+        <div class="not-found__posts-grid">
+          {recentPosts.map((post) => (
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              pubDate={post.data.pubDate || new Date()}
+              slug={post.slug}
+              readingTime={calculateReadingTime(post.body ?? '')}
+              tags={post.data.tags}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 </BaseLayout>
 
 <style>
@@ -35,9 +63,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 60vh;
+    min-height: 50vh;
     text-align: center;
-    padding: var(--space-16) 0;
+    padding: var(--space-16) 0 var(--space-8);
   }
 
   .not-found__container {
@@ -85,58 +113,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     justify-content: center;
   }
 
-  /* Reuse CTA button styles from HeroSection */
-  .btn-gradient {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: 14px 24px;
-    background: linear-gradient(
-      135deg,
-      var(--color-accent),
-      var(--color-accent-secondary)
-    );
-    color: white;
-    border-radius: var(--radius-full);
+  .not-found__recent {
+    padding: var(--space-8) 0 var(--space-16);
+  }
+
+  .not-found__recent-title {
+    font-size: var(--text-xl);
     font-weight: 600;
-    font-size: var(--text-base);
-    box-shadow: 0 4px 14px rgba(255, 94, 50, 0.3);
-    transition: all var(--transition-base);
-    text-decoration: none;
+    color: var(--gray-800);
+    margin-bottom: var(--space-6);
+    text-align: center;
   }
 
-  .btn-gradient:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 94, 50, 0.4);
+  .not-found__posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
   }
 
-  .btn-gradient svg {
-    transition: transform var(--transition-fast);
-  }
-
-  .btn-gradient:hover svg {
-    transform: translateX(4px);
-  }
-
-  .btn-outline {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: 14px 24px;
-    background: white;
-    border: 1px solid var(--gray-200);
-    color: var(--gray-900);
-    border-radius: var(--radius-full);
-    font-weight: 600;
-    font-size: var(--text-base);
-    box-shadow: var(--shadow-sm);
-    transition: all var(--transition-base);
-    text-decoration: none;
-  }
-
-  .btn-outline:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-    background: var(--gray-50);
+  @media (max-width: 768px) {
+    .not-found__posts-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
   }
 </style>

@@ -2,15 +2,10 @@
  * Side Quests data — Projects, HomeLab services, and Vibe Coding config.
  */
 
-// ─── Projects (Side builds) ─────────────────────────────────────────────────
+import type { WorkshopProject, HomelabService } from '../types';
+export type { WorkshopProject, HomelabService };
 
-export interface WorkshopProject {
-  title: string;
-  description: string;
-  icon: string;
-  tags: string[];
-  link?: string;
-}
+// ─── Projects (Side builds) ─────────────────────────────────────────────────
 
 export const workshopProjects: WorkshopProject[] = [
   {
@@ -43,15 +38,6 @@ export const workshopProjects: WorkshopProject[] = [
 ];
 
 // ─── The Home Lab (Self-hosted infrastructure) ───────────────────────────────
-
-export interface HomelabService {
-  title: string;
-  description: string;
-  icon: string;
-  link?: string;
-  live?: boolean;
-  tags?: string[];
-}
 
 export const homelabServices: HomelabService[] = [
   {

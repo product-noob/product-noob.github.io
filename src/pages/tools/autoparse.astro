@@ -11,6 +11,11 @@ import 'highlight.js/styles/atom-one-dark.css';
 <BaseLayout
   title="AutoParse — Smart Text Formatter | Prince Jain"
   description="Paste any text — JSON, YAML, XML, CSV, Base64, URL-encoded, minified JS/CSS — and AutoParse auto-detects the format and pretty-prints it instantly."
+  breadcrumbs={[
+    { name: "Home", url: "https://princejain.me" },
+    { name: "Tools", url: "https://princejain.me/tools" },
+    { name: "AutoParse" },
+  ]}
 >
   <div class="ap-page">
     <!-- Compact header -->
@@ -161,7 +166,7 @@ import 'highlight.js/styles/atom-one-dark.css';
     background: var(--gray-50);
     border: 1px solid var(--gray-200);
     border-radius: var(--radius-full);
-    font-size: 0.6875rem;
+    font-size: var(--text-2xs);
     font-weight: 600;
     color: var(--gray-500);
     text-transform: uppercase;
@@ -189,7 +194,7 @@ import 'highlight.js/styles/atom-one-dark.css';
 
   .ap-topbar__tag {
     padding: 2px 8px;
-    font-size: 0.6875rem;
+    font-size: var(--text-2xs);
     font-weight: 500;
     color: var(--gray-400);
     background: var(--gray-50);
@@ -234,7 +239,7 @@ import 'highlight.js/styles/atom-one-dark.css';
     border-radius: var(--radius-full);
     border: 1px solid var(--gray-200);
     background: white;
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     font-weight: 500;
     color: var(--gray-600);
     cursor: pointer;
@@ -305,7 +310,7 @@ import 'highlight.js/styles/atom-one-dark.css';
   .ap-btn {
     padding: 4px 12px;
     border-radius: var(--radius-sm);
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     font-weight: 600;
     cursor: pointer;
     border: 1px solid var(--gray-200);

@@ -2,13 +2,8 @@
  * Web-based tools listed on /tools.
  */
 
-export interface ToolEntry {
-  title: string;
-  description: string;
-  icon: string;
-  link: string;
-  tags: string[];
-}
+import type { ToolEntry } from '../types';
+export type { ToolEntry };
 
 export const tools: ToolEntry[] = [
   {

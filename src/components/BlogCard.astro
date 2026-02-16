@@ -1,13 +1,7 @@
 ---
-interface Props {
-  title: string;
-  description?: string;
-  pubDate: Date;
-  slug: string;
-  readingTime: number;
-  tags?: string[];
-  variant?: 'featured' | 'default';
-}
+import type { BlogCardProps } from '../types';
+
+interface Props extends BlogCardProps {}
 
 const { title, description, pubDate, slug, readingTime, tags = [], variant = 'default' } = Astro.props;
 
@@ -60,7 +54,7 @@ const isFeatured = variant === 'featured';
   </article>
   
   <!-- Gradient glow effect -->
-  <div class="blog-card__glow"></div>
+  <div class="glow-overlay"></div>
 </a>
 
 <style>
@@ -70,11 +64,11 @@ const isFeatured = variant === 'featured';
     flex-direction: column;
     height: 100%;
     padding: var(--space-6);
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--glass-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: var(--radius-lg);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--glass-border);
     box-shadow: var(--shadow-card);
     transition: 
       transform var(--transition-base),
@@ -85,29 +79,8 @@ const isFeatured = variant === 'featured';
 
   .blog-card:hover {
     transform: translateY(-4px);
-    box-shadow: 
-      0 8px 16px rgba(0, 0, 0, 0.06),
-      0 20px 40px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-card-hover);
     border-color: var(--color-accent-glow);
-  }
-
-  .blog-card__glow {
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    opacity: 0;
-    transition: opacity var(--transition-base);
-    background: linear-gradient(
-      135deg,
-      hsla(28, 100%, 70%, 0.08),
-      hsla(340, 80%, 55%, 0.06)
-    );
-    /* Uses accent glow gradient for hover effect */
-    pointer-events: none;
-  }
-
-  .blog-card:hover .blog-card__glow {
-    opacity: 1;
   }
 
   /* Featured variant */
@@ -115,10 +88,10 @@ const isFeatured = variant === 'featured';
     padding: var(--space-8);
     background: linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.9),
-      rgba(255, 255, 255, 0.7)
+      var(--glass-bg-heavy),
+      var(--glass-bg)
     );
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border-subtle);
   }
 
   .blog-card--featured::before {
@@ -172,8 +145,8 @@ const isFeatured = variant === 'featured';
   .blog-card__badge {
     display: inline-flex;
     align-items: center;
-    padding: 4px 10px;
-    font-size: 0.6875rem;
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--text-2xs);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -218,8 +191,8 @@ const isFeatured = variant === 'featured';
 
   .blog-card__tag {
     display: inline-flex;
-    padding: 4px 10px;
-    font-size: 0.6875rem;
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--text-2xs);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.03em;

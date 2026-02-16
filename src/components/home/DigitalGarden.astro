@@ -87,12 +87,6 @@ const { projects, services } = Astro.props;
       <div class="homelab-rack animate-on-scroll">
         {services.map((svc, i) => (
           <div class="homelab-row" style={`--row-delay: ${i * 80}ms`}>
-            {svc.live && (
-              <span class="live-pill">
-                <span class="live-pill__dot"></span>
-                LIVE
-              </span>
-            )}
             <span class="homelab-row__icon">
               {svc.icon.startsWith('/') ? (
                 <img src={svc.icon} alt={svc.title} width="24" height="24" loading="lazy" />
@@ -124,8 +118,14 @@ const { projects, services } = Astro.props;
                 </svg>
               </a>
             )}
+            {svc.live && (
+              <span class="live-pill">
+                <span class="live-pill__dot"></span>
+                LIVE
+              </span>
+            )}
           </div>
-        ))}
+        ))}  
       </div>
     </div>
 
@@ -329,7 +329,7 @@ const { projects, services } = Astro.props;
     align-items: center;
     gap: var(--space-4);
     padding: var(--space-4) var(--space-5);
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--glass-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--gray-200);
@@ -338,7 +338,7 @@ const { projects, services } = Astro.props;
   }
 
   .homelab-row:hover {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--glass-bg-heavy);
     border-color: var(--gray-300);
     box-shadow: var(--shadow-md);
     transform: translateX(4px);
@@ -487,7 +487,7 @@ const { projects, services } = Astro.props;
   .project-card-v2__inner {
     position: relative;
     z-index: 1;
-    background: rgba(255, 255, 255, 0.85);
+    background: var(--glass-bg-heavy);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--gray-200);
@@ -542,8 +542,8 @@ const { projects, services } = Astro.props;
     font-size: 1.3rem;
     flex-shrink: 0;
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.8),
-      0 2px 4px rgba(0, 0, 0, 0.04);
+      inset 0 1px 0 var(--glass-bg),
+      0 2px 4px var(--border-subtle);
     transition: transform var(--transition-bounce), background var(--transition-base);
   }
 
@@ -593,7 +593,7 @@ const { projects, services } = Astro.props;
     display: inline-flex;
     align-items: center;
     padding: 3px 9px;
-    font-size: 0.65rem;
+    font-size: var(--text-2xs);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;

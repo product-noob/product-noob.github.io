@@ -2,12 +2,8 @@
  * Social / contact links shown on /links.
  */
 
-export interface LinkEntry {
-  name: string;
-  url: string;
-  icon: string;
-  description: string;
-}
+import type { LinkEntry } from '../types';
+export type { LinkEntry };
 
 export const links: LinkEntry[] = [
   {

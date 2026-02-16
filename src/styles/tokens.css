@@ -70,8 +70,22 @@
     hsl(340, 80%, 55%)
   );
 
-  /* Secondary accent (pink/magenta) - previously hardcoded */
+  /* Secondary accent (pink/magenta) */
   --color-accent-secondary: hsl(340, 80%, 55%);
+
+  /* Accent shadows — glow under gradient buttons / CTAs */
+  --shadow-accent-sm: 0 4px 14px hsla(28, 100%, 50%, 0.3);
+  --shadow-accent-lg: 0 6px 20px hsla(28, 100%, 50%, 0.4);
+
+  /* Glass / overlay primitives */
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-bg-heavy: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --border-subtle: rgba(0, 0, 0, 0.06);
+
+  /* Header-specific (uses --gray-50 base at varying opacity) */
+  --header-bg: rgba(250, 249, 246, 0.85);
+  --header-bg-hover: rgba(250, 249, 246, 0.95);
 
   /* Brand / social colors */
   --color-linkedin: #0077b5;
@@ -117,6 +131,7 @@
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   /* Font Sizes (Optimized Scale) */
+  --text-2xs: 0.6875rem;  /* 11px — badges, tiny labels */
   --text-xs: 0.8125rem;   /* 13px */
   --text-sm: 0.9375rem;   /* 15px */
   --text-base: 1.0625rem; /* 17px */

@@ -2,10 +2,8 @@
  * Tech stack shown on homepage and skills shown on /about.
  */
 
-export interface StackItem {
-  name: string;
-  icon: string;
-}
+import type { StackItem } from '../types';
+export type { StackItem };
 
 /** Compact tech stack chips for the homepage Digital Garden */
 export const stack: StackItem[] = [

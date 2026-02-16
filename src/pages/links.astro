@@ -3,12 +3,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { links } from '../data/links';
 ---
 
-<BaseLayout title="Links | Prince Jain" description="Find me on LinkedIn, Twitter, GitHub, and more.">
-  <section class="links-header">
+<BaseLayout
+  title="Links | Prince Jain"
+  description="Find me on LinkedIn, Twitter, GitHub, and more."
+  breadcrumbs={[
+    { name: "Home", url: "https://princejain.me" },
+    { name: "Links" },
+  ]}
+>
+  <section class="page-header">
     <div class="container">
-      <div class="links-header__content">
-        <h1 class="links-header__title">Links</h1>
-        <p class="links-header__subtitle">Find me on the internet.</p>
+      <div class="page-header__content">
+        <h1 class="page-header__title">Links</h1>
+        <p class="page-header__subtitle">Find me on the internet.</p>
       </div>
     </div>
   </section>
@@ -28,7 +35,7 @@ import { links } from '../data/links';
               <span class="link-card__name">{link.name}</span>
               <span class="link-card__description">{link.description}</span>
             </div>
-            <svg class="link-card__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="link-card__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M7 17L17 7M17 7H7M17 7V17"/>
             </svg>
           </a>
@@ -39,44 +46,8 @@ import { links } from '../data/links';
 </BaseLayout>
 
 <style>
-  .links-header {
-    padding: var(--space-16) 0 var(--space-8);
-    position: relative;
-  }
-
-  .links-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: radial-gradient(
-      ellipse 60% 80% at 50% 0%,
-      hsla(28, 100%, 70%, 0.08),
-      transparent
-    );
-    pointer-events: none;
-  }
-
-  .links-header__content {
-    max-width: 600px;
-  }
-
-  .links-header__title {
-    font-size: var(--text-5xl);
-    font-weight: 700;
-    margin-bottom: var(--space-3);
-    background: linear-gradient(to bottom right, var(--gray-900), var(--gray-600));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .links-header__subtitle {
-    font-size: var(--text-xl);
-    color: var(--gray-600);
-    line-height: 1.55;
+  .page-header {
+    padding-bottom: var(--space-8);
   }
 
   .links-section {
@@ -145,14 +116,6 @@ import { links } from '../data/links';
   }
 
   @media (max-width: 768px) {
-    .links-header {
-      padding: var(--space-12) 0 var(--space-6);
-    }
-
-    .links-header__title {
-      font-size: var(--text-4xl);
-    }
-
     .link-card {
       padding: var(--space-4) var(--space-5);
     }

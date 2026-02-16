@@ -12,16 +12,17 @@ const contactEmail = 'princemnit@gmail.com';
 <BaseLayout
   title="Privacy Policy | Prince Jain"
   description="Privacy policy for tools, Chrome extensions, and applications built by Prince Jain."
+  ogImage="https://princejain.me/profile-photo-1.webp"
   breadcrumbs={[
     { name: "Home", url: "https://princejain.me" },
     { name: "Privacy Policy" },
   ]}
 >
-  <section class="pp-header">
+  <section class="page-header">
     <div class="container">
-      <div class="pp-header__content">
-        <h1 class="pp-header__title">Privacy Policy</h1>
-        <p class="pp-header__subtitle">
+      <div class="page-header__content">
+        <h1 class="page-header__title">Privacy Policy</h1>
+        <p class="page-header__subtitle">
           Your privacy matters. This policy covers all tools,
           browser extensions, and mobile applications I build.
         </p>
@@ -188,54 +189,6 @@ const contactEmail = 'princemnit@gmail.com';
 </BaseLayout>
 
 <style>
-  /* =====================================================
-     Header
-     ===================================================== */
-  .pp-header {
-    padding: var(--space-16) 0 var(--space-12);
-    position: relative;
-  }
-
-  .pp-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: radial-gradient(
-      ellipse 60% 80% at 50% 0%,
-      hsla(28, 100%, 70%, 0.08),
-      transparent
-    );
-    pointer-events: none;
-  }
-
-  .pp-header__content {
-    max-width: 600px;
-  }
-
-  .pp-header__title {
-    font-size: var(--text-5xl);
-    font-weight: 700;
-    margin-bottom: var(--space-3);
-    background: linear-gradient(
-      to bottom right,
-      var(--gray-900),
-      var(--gray-600)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .pp-header__subtitle {
-    font-size: var(--text-xl);
-    color: var(--gray-600);
-    line-height: 1.55;
-    margin-bottom: var(--space-4);
-  }
-
   .pp-header__updated {
     font-size: var(--text-sm);
     color: var(--gray-500);
@@ -353,18 +306,6 @@ const contactEmail = 'princemnit@gmail.com';
      Responsive
      ===================================================== */
   @media (max-width: 768px) {
-    .pp-header {
-      padding: var(--space-12) 0 var(--space-8);
-    }
-
-    .pp-header__title {
-      font-size: var(--text-4xl);
-    }
-
-    .pp-header__subtitle {
-      font-size: var(--text-lg);
-    }
-
     .pp-section__title {
       font-size: var(--text-xl);
     }

@@ -3,7 +3,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import 'highlight.js/styles/atom-one-dark.css';
 ---
 
-<BaseLayout title="JSON Formatter & Validator | Prince Jain" description="Free online JSON formatter, validator, and beautifier with syntax highlighting and detailed error messages. Paste, format, and copy instantly.">
+<BaseLayout
+  title="JSON Formatter & Validator | Prince Jain"
+  description="Free online JSON formatter, validator, and beautifier with syntax highlighting and detailed error messages. Paste, format, and copy instantly."
+  breadcrumbs={[
+    { name: "Home", url: "https://princejain.me" },
+    { name: "Tools", url: "https://princejain.me/tools" },
+    { name: "JSON Formatter" },
+  ]}
+>
 
   <div class="tool-page container">
     <div class="tool-header">
