@@ -60,6 +60,7 @@ const blogPostingSchema = {
   ...(post.data.updatedDate
     ? { dateModified: post.data.updatedDate.toISOString() }
     : {}),
+  inLanguage: "en",
   author: {
     "@type": "Person",
     name: "Prince Jain",
@@ -69,6 +70,7 @@ const blogPostingSchema = {
     "@type": "Person",
     name: "Prince Jain",
     url: siteUrl,
+    image: `${siteUrl}/profile-photo-1.webp`,
   },
   mainEntityOfPage: {
     "@type": "WebPage",

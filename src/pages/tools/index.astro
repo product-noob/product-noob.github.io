@@ -11,6 +11,29 @@ import { tools } from '../../data/tools';
     { name: "Home", url: "https://princejain.me" },
     { name: "Tools" },
   ]}
+  extraSchema={{
+    "@context": "https://schema.org",
+    "@graph": tools
+      .filter((t) => t.link?.startsWith("/"))
+      .map((t) => ({
+        "@type": "SoftwareApplication",
+        name: t.title,
+        description: t.description,
+        url: `https://princejain.me${t.link}`,
+        applicationCategory: "WebApplication",
+        operatingSystem: "Any",
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        author: {
+          "@type": "Person",
+          name: "Prince Jain",
+          url: "https://princejain.me",
+        },
+      })),
+  }}
 >
   <section class="tools-header">
     <div class="container">
