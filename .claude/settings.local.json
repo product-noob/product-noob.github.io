@@ -8,7 +8,12 @@
       "Bash(export PATH=\"/c/Program Files/nodejs:$PATH\")",
       "Bash(npx astro build:*)",
       "Bash(node:*)",
-      "Bash(where.exe:*)"
+      "Bash(where.exe:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
-  }
+  },
+  "prefersReducedMotion": true,
+  "outputStyle": "Explanatory"
 }
