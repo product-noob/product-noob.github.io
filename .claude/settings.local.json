@@ -11,9 +11,12 @@
       "Bash(where.exe:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(tail:*)",
+      "Bash(head:*)",
+      "Bash(cd:*)"
     ]
   },
-  "prefersReducedMotion": true,
-  "outputStyle": "Explanatory"
+  "outputStyle": "default",
+  "prefersReducedMotion": true
 }
