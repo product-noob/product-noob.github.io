@@ -86,18 +86,25 @@ export const events: EventData[] = [
         },
     },
     {
-        id: 'replit-razorpay',
-        title: 'Replit × Razorpay',
-        tagline: 'Where AI-native developers meet fintech innovation. Excited to explore what\'s next.',
-        date: 'Feb 2026',
-        status: 'upcoming',
-        accentColor: '#f26522',
-        thumbnail: '/ai-events/Replit_Razorpay_landing.webp',
-        modal: {
-            description:
-                'An upcoming collaboration between Replit and Razorpay exploring the intersection of AI-native development and fintech — how LLM-powered coding and payments infrastructure are converging to accelerate builder velocity.',
-            takeaways: [],
-            photos: [],
-        },
-    },
+        "id": "replit-razorpay",
+        "title": "Replit × Razorpay",
+        "tagline": "Where AI-native developers meet fintech innovation. How LLM-powered coding and payments infrastructure converged at the AI Impact Summit.",
+        "date": "Feb 2026",
+        "status": "attended",
+        "accentColor": "#f26522",
+        "thumbnail": "/ai-events/Replit_Razorpay_landing.webp",
+        "modal": {
+            "description": "Unveiled at the AI Impact Summit, the Replit × Razorpay partnership showcased the convergence of 'vibe coding' and fintech. By combining Replit's agentic software creation with Razorpay's payment infrastructure, builders can now move from a natural language prompt to a fully monetized, production-ready app accepting UPI and cards in minutes.",
+            "takeaways": [
+                "The Razorpay MCP server gives Replit Agent direct access to payment APIs — meaning developers can integrate checkouts, payment links, and subscriptions through natural language prompts.",
+                "Monetization is the missing piece of vibe coding: embedding payment infrastructure directly into the AI creation flow bridges the gap between prototype and revenue.",
+                "Localizing the global AI ecosystem: enabling UPI and native INR payments completely removes forex friction for Indian builders upgrading to AI dev tools.",
+                "Compliance and cross-border settlements run seamlessly in the background, allowing global SaaS platforms to scale locally without setting up regional entities."
+            ],
+            "photos": [
+                "/ai-events/replit_razorpay_001.jpg",
+                "/ai-events/replit_razorpay_002.jpg"
+            ]
+        }
+    }
 ];
