@@ -23,10 +23,18 @@ export const workshopProjects: WorkshopProject[] = [
     link: 'https://whispr.princejain.me/',
   },
   {
+    title: 'Launchpad App',
+    description: 'Home for all your vibe coded apps. Effortlessly run local apps.',
+    icon: '/icons/launchpad.svg',
+    tags: ['Electron', 'Python'],
+    link: 'https://launchpad.princejain.me',
+  },
+  {
     title: 'Micro-Tools',
     description: 'G-Meet Summariser, Auto-read G-Chat, Local Gmail Cleanup.',
     icon: '/icons/gmeet-summariser.svg',
     tags: ['Chrome Ext', 'Python'],
+    link: 'https://chromewebstore.google.com/detail/chatgpt-google-meet-summa/kofkiemddfpekcadmaeheonbbkhnclhj',
   },
   {
     title: 'Fusion Bill Uploader',
@@ -34,6 +42,12 @@ export const workshopProjects: WorkshopProject[] = [
     icon: '🧾',
     tags: ['Playwright', 'Python'],
     link: 'https://www.linkedin.com/posts/princejain17_spend-5-hours-to-save-5-minutes-every-activity-7375487951251628032-4x6J/',
+  },
+  {
+    title: 'LocalLedger (WIP)',
+    description: 'A local ledger for tracking my expenses and income.',
+    icon: '/icons/local-ledger.png',
+    tags: ['Playwright', 'Python'],
   },
 ];
 

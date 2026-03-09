@@ -169,7 +169,7 @@ export const workHighlights: WorkHighlight[] = [
     title: '2022 - 2023',
     company: 'Growth Hack (Flipkart)',
     workIcon: '/icons/growth.svg',
-    role: 'Product Manager',
+    role: 'Product Manager 2',
     highlight:
       'Drove 1.7% GMV uplift through 70+ A/B experiments. Awarded "Business Excellence" for outsized impact.',
     link: '/work',
@@ -179,7 +179,7 @@ export const workHighlights: WorkHighlight[] = [
     title: '2021',
     company: 'Vaccine Finder',
     workIcon: '/icons/vaccine.svg',
-    role: 'Product Lead',
+    role: 'Product Manager',
     highlight:
       "Scaled India's largest private vaccine booking tool during the crisis, enabling 3M+ slot bookings.",
     link: '/blogs/building-vaccine-slot-finder',
