@@ -3,7 +3,7 @@ pubDate: '2026-03-01'
 title: "What Happens When You Give a PM Superpowers"
 description: "A log of everything I've built with AI as a PM — internal tools, leadership demos, POCs, and production-adjacent experiments. Not a tutorial. A real record of what changed when the line between PM and builder started dissolving."
 tags: ['AI', 'Product']
-featured: false
+featured: true
 ---
 
 There's a question I've been asked a lot lately by PMs curious about AI: _"Should I learn to code?"_

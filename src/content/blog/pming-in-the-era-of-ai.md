@@ -3,6 +3,7 @@ pubDate: '2025-04-21'
 title: "PMing in the era of AI | How I use AI to supercharge my work"
 description: "My thoughts on how AI is changing PMing"
 tags: ['AI', 'Product']
+featured: false
 ---
 I took a presentation for Flipkart PMs on **"How PMing is changing in the era of AI"** and thought I'll add a similar version of my thoughts here: 
 
