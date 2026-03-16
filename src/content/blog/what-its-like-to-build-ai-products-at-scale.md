@@ -6,8 +6,6 @@ tags: ['AI', 'Product', 'Engineering']
 featured: true
 ---
 
-# What It's Like to Build AI Products at Scale
-
 I've been building AI products for over two and a half years now: before "AI PM" was a LinkedIn badge and before every product roadmap suddenly had the word agentic sprinkled across it. In that time, I've watched the public discourse around building AI products reduce into an oversimplified playbook: spin up an agent, connect some tools, write a prompt, ship it.
 
 I've had more conversations than I can count with people who genuinely believe you can go from zero to production AI product in an afternoon. Some of them are now writing the guides that others follow. In fact, someone just yesterday asked me what I do for so long building agents and agentic implementations when he spun up his first agent in 15 mins (partially what triggered me to write this post).
