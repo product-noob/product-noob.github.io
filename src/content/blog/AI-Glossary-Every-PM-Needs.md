@@ -4,7 +4,7 @@ updatedDate: '2026-02-17'
 title: "The AI Glossary Every PM Needs"
 description: "My personal, field-tested cheat-sheet to decode AI jargon - from tokens to agents, built from my own experience shipping ML-powered features"
 tags: ['AI', 'Product']
-featured: true
+featured: false
 ---
 
 > _If you've sat in a meeting where the data-science team casually drops phrases like "LoRA adapters" or "agentic MCP pipelines" and you're secretly Googling under the table – this one's for you._
