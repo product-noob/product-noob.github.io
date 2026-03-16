@@ -1,6 +1,6 @@
 ---
 pubDate: '2026-03-17'
-title: "How It Is Like to Build AI Products at Scale"
+title: "What It’s Like to Build AI Products at Scale"
 description: "What actually happens after you spin up your first agent in 15 minutes. The trade-offs, decisions, and hard-won lessons from building a conversational AI product at Flipkart scale : 10M+ users, real cost pressure, real latency constraints."
 tags: ['AI', 'Product', 'Engineering']
 featured: true
