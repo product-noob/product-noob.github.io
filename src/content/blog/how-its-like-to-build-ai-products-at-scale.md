@@ -5,7 +5,6 @@ description: "What actually happens after you spin up your first agent in 15 min
 tags: ['AI', 'Product', 'Engineering']
 featured: true
 ---
-# How It Is Like to Build AI Products at Scale
 
 I've been building AI products for over two and a half years now: before "AI PM" was a LinkedIn badge and before every product roadmap suddenly had the word agentic sprinkled across it. In that time, I've watched the public discourse around building AI products reduce into a oversimplified playbook: spin up an agent, connect some tools, write a prompt, ship it.
 
