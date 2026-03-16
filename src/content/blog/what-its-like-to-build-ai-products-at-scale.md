@@ -1,23 +1,25 @@
 ---
 pubDate: '2026-03-17'
-title: "What It’s Like to Build AI Products at Scale"
-description: "What actually happens after you spin up your first agent in 15 minutes. The trade-offs, decisions, and hard-won lessons from building a conversational AI product at Flipkart scale : 10M+ users, real cost pressure, real latency constraints."
+title: "What It's Like to Build AI Products at Scale"
+description: "What actually happens after you spin up your first agent in 15 minutes. The trade-offs, decisions, and hard-won lessons from building a conversational AI product at Flipkart scale: 10M+ users, real cost pressure, real latency constraints."
 tags: ['AI', 'Product', 'Engineering']
 featured: true
 ---
 
-I've been building AI products for over two and a half years now: before "AI PM" was a LinkedIn badge and before every product roadmap suddenly had the word agentic sprinkled across it. In that time, I've watched the public discourse around building AI products reduce into a oversimplified playbook: spin up an agent, connect some tools, write a prompt, ship it.
+# What It's Like to Build AI Products at Scale
 
-I've had more conversations than I can count with people who genuinely believe you can go from zero to production AI product in an afternoon. Some of them are now writing the guides that others follow. Infact someone just yesterday asked me what do I do for so long building Agents and agentic implementation when he spun up his first agent in 15 mins (partially what triggered me to write this post)
+I've been building AI products for over two and a half years now: before "AI PM" was a LinkedIn badge and before every product roadmap suddenly had the word agentic sprinkled across it. In that time, I've watched the public discourse around building AI products reduce into an oversimplified playbook: spin up an agent, connect some tools, write a prompt, ship it.
+
+I've had more conversations than I can count with people who genuinely believe you can go from zero to production AI product in an afternoon. Some of them are now writing the guides that others follow. In fact, someone just yesterday asked me what I do for so long building agents and agentic implementations when he spun up his first agent in 15 mins (partially what triggered me to write this post).
 
 I [vibe-code for fun on weekends](https://princejain.me). I also professionally build an AI product at Flipkart scale (currently building [SLAP](https://play.google.com/store/apps/details?id=com.slap.android)): think **10 million-plus potential users**, thousands of concurrent conversations, real business metrics on the line. These are not the same activity. Not even close. This post is about the gap between the "build an agent in 15 minutes" crowd and what actually happens when you ship an AI product that real people use, at real scale, with real business constraints.
 
-*Disclaimer: As with most things I write and discuss publicly, a lot of internal data and specific decisions have been omitted for obvious reasons. What I'm sharing here are my personal learnings and patterns: not a deep dive on how we actually did it ;).*
+*Disclaimer: As with most things I write and discuss publicly, a lot of internal data and specific decisions have been omitted for obvious reasons. What I'm sharing here are my personal learnings and patterns — not a deep dive on how we actually did it ;).*
 
 ## TL;DR
-1. **The "why is this so hard" answer** - Shipping AI at scale feels 10x harder than the prototypes and vibe coding demos: because every choice is a three-way trade-off between cost, latency, and performance. You can win on two. Winning on all three is the actual job.
-2. **Vibe is a real thing** - While we have created pretty robust eval frameworks to measure objective and subjective aspects; even after two-plus years, I still can't fully formalise what makes one AI response feel better than another when the metrics say they're equal. AI quality has more dimensions than you expect — and the hardest ones to measure matter the most. (we call it Vibe-check!)
-3. **Cost at scale is a real thing to worry about** - At prototype scale, cost is a rounding error. At 10M+ users, every extra context, extra tool call and every retry compounds into actual meaningful business problems. And the difficulty of cost reducing is all about trade-off, there is no magic bullet.
+1. **The "why is this so hard" answer** — Shipping AI at scale feels 10x harder than the prototypes and vibe coding demos: because every choice is a three-way trade-off between cost, latency, and performance. You can win on two. Winning on all three is the actual job.
+2. **Vibe is a real thing** — While we have created pretty robust eval frameworks to measure objective and subjective aspects, even after two-plus years I still can't fully formalise what makes one AI response feel better than another when the metrics say they're equal. AI quality has more dimensions than you expect — and the hardest ones to measure matter the most. (We call it vibe-check!)
+3. **Cost at scale is a real thing to worry about** — At prototype scale, cost is a rounding error. At 10M+ users, every extra context, extra tool call, and every retry compounds into actual meaningful business problems. And the difficulty of cost reduction is all about trade-offs — there is no magic bullet.
 4. **Evals are a living system, not a one-time setup.** Golden sets decay, ground truth requires product judgment, and "vibe" is a real quality dimension you can't escape.
 5. **The prototype teaches you what to build. Production teaches you what you didn't know.** Almost nothing in the current discourse prepares you for that transition.
 
@@ -27,7 +29,7 @@ I [vibe-code for fun on weekends](https://princejain.me). I also professionally 
 
 The LinkedIn gurus actually get the building blocks right: choose an orchestration framework, pick a model, write prompts, connect tools, set up evals.
 
-That sentence took four seconds to read. Each of those decisions, done properly at scale, takes weeks of iteration. The building blocks are simple. The engineering of how they compose under real-world constraints is where the entire difficulty lies. And every single one of those decisions sits on a three-way trade-off that defines the entire craft of building production scale AI systems.
+That sentence took four seconds to read. Each of those decisions, done properly at scale, takes weeks of iteration. The building blocks are simple. The engineering of how they compose under real-world constraints is where the entire difficulty lies. And every single one of those decisions sits on a three-way trade-off that defines the entire craft of building production-scale AI systems.
 
 ---
 
@@ -73,11 +75,11 @@ The simple math is: **active users × tokens per interaction × model price per 
 
 **Provisioned throughput vs. pay-as-you-go** — this is one of those decisions that sounds like a boring infrastructure call but has massive product implications. Provisioned capacity (PTUs in the OpenAI world, GSUs in Google's) gives you discounted per-token costs, guaranteed availability, and predictable latency. All of these are critical when you're building for millions of users and a rate-limit error or latency spike during peak hours is not an acceptable outcome. Pay-as-you-go is more flexible and cheaper at low volumes, but at scale it's pricier, and — here's the part people miss — your request might be served from a Mumbai deployment or routed to Singapore depending on load. That routing difference alone can add hundreds of milliseconds. For a user-facing conversational product, that's the difference between feeling snappy and feeling sluggish.
 
-What we found works best is a hybrid: provisioned throughput sized to your average load, pay-as-you-go as overflow for peaks and bursts. You minimise waste from over-provisioning while keeping your baseline experience reliable. `[PRINCE: if you can share a rough split — "provisioned for ~X% of peak" or "hybrid saved ~Y% vs. pure PAYG" — it becomes a concrete reference point]`
+What we found works best is a hybrid: provisioned throughput sized to your average load, pay-as-you-go as overflow for peaks and bursts. You minimise waste from over-provisioning while keeping your baseline experience reliable. Moving to this hybrid approach saved us more than 40% on inference costs.
 
-**The vendor lock-in trap.** Provisioned throughput means commitment, and commitment means lock-in. Which is dangerous when the state of the art changes every quarter. We experienced this firsthand: we'd committed to a specific model for an image-understanding use case, and then Google I/O happened and two new models instantly outperformed what we were locked into. The commitment became an anchor, not an asset.
+**The vendor lock-in trap.** Provisioned throughput means commitment, and commitment means lock-in. Which is dangerous when the state of the art changes every quarter. We learned this the hard way: we'd committed to a specific model for an image-generation use case, and then Google I/O happened — Nano-Banana and VTON dropped, and both instantly outperformed what we were locked into across cost, performance, *and* latency. The commitment became an anchor, not an asset.
 
-The lesson I took away: optimise for optionality, not just unit economics. Shorter contract terms, abstraction layers between your app logic and model APIs, and — critically — maintaining the ability to run evals across multiple providers without needing a rewrite. The cheapest model today might be the wrong model next quarter. `[PRINCE: comfortable naming the specific image use case — "visual search" / "virtual try-on"? Adds specificity]`
+The lesson I took away: optimise for optionality, not just unit economics. Shorter contract terms, abstraction layers between your app logic and model APIs, and — critically — maintaining the ability to run evals across multiple providers without needing a rewrite. The cheapest model today might be the wrong model next quarter.
 
 ---
 
@@ -99,25 +101,25 @@ The trilemma isn't just a conceptual framework — it's the lens through which e
 
 ### Orchestration: Choosing a Framework (and Why It Matters More Than You Think)
 
-The agent ecosystem is evolving extremely fast. Today the market includes frameworks like **Google ADK, Microsoft AutoGen, LangChain, LangGraph, CrewAI,** and probably ten others that launched since I started writing this post. You can also build your own — and for many production systems, that may end up being the right call.
+The agent ecosystem is evolving extremely fast. Today the market includes frameworks like **Google ADK, Microsoft AutoGen, LangChain, LangGraph, CrewAI**, and probably ten others that launched since I started writing this post. You can also build your own — and for many production systems, that may end up being the right call.
 
-In our context we spent a full week with senior-most product and engineering folks in a room, brainstorming and laying down our requirements (current and future), evaluating frameworks even before writing a single line of product code just to decide our preferred mode of orchestrating this agentic workflow. The choices are plenty and each have their pros and cons. Ultimately the decision comes down to what fits your needs best today while still leaving room for future evolution.
+In our context, we spent a full week with senior-most product and engineering folks in a room, brainstorming and laying down our requirements (current and future), evaluating frameworks before writing a single line of product code — just to decide our preferred mode of orchestrating this agentic workflow. The choices are plenty and each have their pros and cons. Ultimately the decision comes down to what fits your needs best today while still leaving room for future evolution.
 
 We looked at the problem across multiple dimensions: **capabilities on offer, ease of adding new capabilities later, developer experience (and the expertise our team already has), vendor lock-in risks, deployment and scaling complexity**, and the flexibility of orchestration patterns supported. For example: can it support **reactive agents, deterministic workflows when needed, and parallel agents when tasks can be decomposed?** Can agents call tools easily? Does it support **MCP, A2A protocols, or custom LLM integrations**?
 
 Equally important were production considerations. How does the framework handle **context management, memory and state persistence, guardrails and safety**, and debugging when something inevitably goes wrong? Can you **trace a single user request across multiple agents, tool calls, and reasoning steps**? Does it support **parallelisation, remote agents, or multi-deployment setups** if the system needs to scale to millions of users?
 
-The things that actually matter in evaluation, and that most "framework comparison" posts never cover, show up only when you think about production systems. Can it handle **partial failures in multi-agent flows**? What is the **observability story**? And crucially, what is the **token overhead**?
+The things that actually matter in evaluation — and that most "framework comparison" posts never cover — show up only when you think about production systems. Can it handle **partial failures in multi-agent flows**? What is the **observability story**? And crucially, what is the **token overhead**?
 
 Every framework injects system context into the prompt: agent descriptions, tool schemas, routing instructions, execution traces. At small scale this looks negligible. But at millions of requests per day, a framework that adds **500 tokens per request versus one that adds 2,000** becomes a very real infrastructure cost difference.
 
-Hope you get the jist and we haven't even started yet!
+Hope you get the gist and we haven't even started yet!
 
 ### Single Agent vs. Multi-Agent: The Context-Control Trade-off
 
-A single agent gives you maximum context coherence: one entity that sees everything, no handoff overhead, no routing errors. The downside is obvious — as complexity grows, you're stuffing more tools, more instructions, more context into a single prompt. Cost goes up, latency goes up, and eventually performance degrades as the model struggles to attend to everything at once. As with many others building in this space, we went through the same journey: we started feeling our Agent become less "smart" as we progressed.
+A single agent gives you maximum context coherence: one entity that sees everything, no handoff overhead, no routing errors. The downside is obvious — as complexity grows, you're stuffing more tools, more instructions, more context into a single prompt. Cost goes up, latency goes up, and eventually performance degrades as the model struggles to attend to everything at once. As with many others building in this space, we went through the same journey: we started feeling our agent become less "smart" as we progressed.
 
-Multi-agent distributes responsibility but creates coordination overhead and adds complexity on multiple things you need to manage. Here's a reference example from building SLAP: A user asks: "What's the battery life of the iPhone 15?" In a multi-agent setup, you might have a search agent and a product specialist agent. If the query lands at the search agent first (which it might — "battery life of iPhone 15" pattern-matches to a search query), it'll try answering using its search tool. That produces a generic web-style result instead of structured product data. Wasted tool call, wasted inference, added latency, worse answer. The obvious fix: hand off to the agent which handles product queries. But now you've added a full agent hop — another LLM call just for routing, plus the specialist needs to re-process the query and make its own tool call. You've traded one wasted call for two additional calls.
+Multi-agent distributes responsibility but creates coordination overhead and adds complexity on multiple things you need to manage. Here's a reference example from building SLAP: a user asks "What's the battery life of the iPhone 15?" In a multi-agent setup, you might have a search agent and a product specialist agent. If the query lands at the search agent first (which it might — "battery life of iPhone 15" pattern-matches to a search query), it'll try answering using its search tool. That produces a generic web-style result instead of structured product data. Wasted tool call, wasted inference, added latency, worse answer. The obvious fix: hand off to the agent which handles product queries. But now you've added a full agent hop — another LLM call just for routing, plus the specialist needs to re-process the query and make its own tool call. You've traded one wasted call for two additional calls.
 
 The subtler optimisation — the one you arrive at after watching user query patterns — is realising ~30% of search queries eventually need product specs. So you give the search agent a lightweight product tool covering the most commonly asked specs (battery, display, processor, price), while the deep specialist handles narrow queries about warranty, delivery, compatibility. This isn't designed on a whiteboard. It's discovered through observability data and iterated toward.
 
@@ -147,16 +149,17 @@ Every AI guide says evals are important. "What you can't measure, you can't impr
 
 ### It's Never a One-Shot Build
 
-You will not sit down, design an eval framework, build it, and move on. Evals are a living system that evolves with your product. Ours has gone through at least 4 major iterations and we're still improving it. The process starts by getting every stakeholder you can — business, product, engineering, data science, and ideally actual users together and interrogating what "good" means for the current version. Not good in the abstract. Good for the thing you just shipped, rough edges and all.
+You will not sit down, design an eval framework, build it, and move on. Evals are a living system that evolves with your product. Ours has gone through at least 4 major iterations and we're still improving it. The process starts by getting every stakeholder you can — business, product, engineering, data science, and ideally actual users — together and interrogating what "good" means for the current version. Not good in the abstract. Good for the thing you just shipped, rough edges and all.
 
 ### The Golden Set Problem
 
 This is one of the hardest parts and almost nobody talks about it properly. You need a static, curated set of queries — a "golden set" — that you benchmark every pipeline change against. New model? Run the golden set. Prompt change? Run the golden set. Tool contract update? Run the golden set. Without it, you're evaluating in the dark.
 
-Building a good one is deceptively hard. Few whys:
+Building a good one is deceptively hard. A few reasons why:
+
 - **Representativeness**: your users can type anything — the input space is infinite. A random sample over-represents head queries and misses the long tail, which is exactly where your system breaks.
 - **Ground truth**: for each query you need an ideal response, and generating those requires senior product judgment, not just annotation teams — because the calls about what constitutes "ideal" are product decisions.
-- **Maintenance**: your product evolves, your catalog changes, your response format changes and even your understanding and hence the requirement changes. Ground truths decay over time. Keeping the golden set current requires active, ongoing investment that most teams underestimate.
+- **Maintenance**: your product evolves, your catalog changes, your response format changes, and even your understanding and hence the requirements change. Ground truths decay over time. Keeping the golden set current requires active, ongoing investment that most teams underestimate.
 
 ---
 
@@ -169,8 +172,6 @@ In AI products, observability becomes a core product capability. Here's why: LLM
 What production-grade observability actually looks like: full request tracing (the raw input through every agent decision, every tool call with exact I/O, every LLM call with the full prompt and response, all timestamped for latency analysis), conversation-level debugging across multi-turn sessions, and automated and on-demand anomaly flagging for hallucinations, agent routing loops, and tool failures that the model quietly confabulates around instead of surfacing.
 
 One of the first tools I vibe-coded internally was a debugging dashboard: enter a conversation ID, see the complete trace — every agent decision, every tool input/output, latency per step. Being able to identify faulty cases and push them into a pipeline that feeds back into our eval set has been one of the highest-leverage investments we made. Evals improve way faster when they're fed by real production failures instead of synthetic test cases.
-
-`{Add Screenshot/GIF of the SLAP Debug Tool}`
 
 ---
 
@@ -186,52 +187,58 @@ In a multi-agent setup, this means being very deliberate about what each agent s
 
 This extends to retrieval too. If you're pulling context from a knowledge base or product catalog, the naive approach is to stuff everything the retriever returns into the prompt. The smarter approach is to compress and filter retrieved context before it hits the LLM — summarise long product descriptions, strip irrelevant metadata, rank chunks by relevance and only pass the top-k. The cost and latency savings from this alone can be dramatic, especially on queries where the retriever returns 10+ chunks and the LLM only actually needs 2-3 to answer well.
 
-`[PRINCE: if you can share a rough before/after — "trimming agent context reduced tokens per request by ~X%" or "retrieval compression cut cost on retrieval-heavy queries by ~Y%" — it would hit hard here]`
+Effective context engineering across tools and agents got us to 10x cost reduction compared to our initial prototype. That's not a typo.
 
 ### Moving Tasks to Fine-Tuned SLMs
 
-This is the big one. Not every task in your pipeline needs a frontier model. Intent classification, entity extraction, query reformulation, language detection, simple slot-filling — these are tasks where a fine-tuned small language model (SLM) can match or beat a general-purpose frontier model, at a fraction of the cost and latency.
+Not every task in your pipeline needs a frontier model. Intent classification, entity extraction, query reformulation, language detection, simple slot-filling — these are tasks where a fine-tuned small language model can match or beat a general-purpose frontier model at a fraction of the cost and latency.
 
-The economics are stark: a well-tuned 7B or 8B parameter model running on your own infrastructure can be 10-20x cheaper per request than a frontier API call, with latency often measured in tens of milliseconds rather than seconds. And because it's your model on your infra, you get predictable latency, no rate limits, and no vendor dependency.
+The economics are stark: a well-tuned 7B or 8B parameter model running on your own infrastructure can be 10–20x cheaper per request than a frontier API call, with latency often measured in tens of milliseconds rather than seconds. And because it's your model on your infra, you get predictable latency, no rate limits, and no vendor dependency.
 
 The catch — and it's a real one — is the investment required. You need training data (which usually means labelling, which means time and product judgment), infrastructure for training and serving, and an ongoing eval pipeline to make sure the SLM doesn't drift or degrade as your product evolves. It's not a weekend project. But for high-volume, well-defined tasks, the ROI is hard to beat.
 
-The pattern we've seen work: start with a frontier model for everything, use production traffic and your observability pipeline to identify tasks that are high-volume and low-complexity, collect labelled examples from production, fine-tune an SLM, and A/B test it against the frontier model on that specific task. When it matches on quality and wins on cost and latency, swap it in. `[PRINCE: comfortable sharing which task(s) you moved to SLMs first — intent classification? entity extraction? Even naming the category helps]`
+The pattern that works: start with a frontier model for everything, use production traffic and your observability pipeline to identify tasks that are high-volume and low-complexity, collect labelled examples from production, fine-tune an SLM, and A/B test it against the frontier model on that specific task. When it matches on quality and wins on cost and latency, swap it in. For us, the first SLMs we shipped were a query classifier and a query reformulator.
 
 ### Caching: More Layers Than You'd Think
 
 Caching in AI systems isn't one thing — it's at least four distinct strategies, each targeting a different part of the pipeline.
 
-**Implicit caching (provider-level):** Most major model providers now offer some form of prompt caching — if a large portion of your prompt (system instructions, tool schemas) is identical across requests, the provider caches the KV computations and charges you less for the repeated prefix. This is essentially free money if your prompts have a stable prefix, which in production they almost always do. The savings can be significant: Google's context caching, for instance, charges cached input tokens at a fraction of the standard rate.
+**Implicit caching (provider-level):** Most major model providers now offer prompt caching — if a large portion of your prompt (system instructions, tool schemas) is identical across requests, the provider caches the KV computations and charges less for the repeated prefix. This is essentially free money if your prompts have a stable prefix, which in production they almost always do.
 
-**Explicit response caching:** For queries that recur frequently with near-identical context — think "what's the return policy" or "track my order" — you can cache the full LLM response and serve it directly without hitting the model at all. The key is defining your cache key carefully: it needs to be specific enough that you're not serving stale or wrong answers, but broad enough that you actually get cache hits. Query normalisation (lowercasing, synonym mapping, stripping filler words) helps here.
+**Explicit response caching:** For queries that recur frequently with near-identical context — think "what's the return policy" or "track my order" — you can cache the full LLM response and serve it without hitting the model at all. The key is defining your cache key carefully: specific enough to avoid serving wrong answers, broad enough to actually get cache hits. Query normalisation (lowercasing, synonym mapping, stripping filler words) helps.
 
-**Semantic caching:** A step beyond exact-match caching. You embed incoming queries and check similarity against a cache of recent query-response pairs. If a new query is semantically close enough to a cached one (above a tuned similarity threshold), you serve the cached response. This catches paraphrases and minor variations that explicit caching misses. The trade-off is precision — set the similarity threshold too low and you serve wrong answers; set it too high and you get very few cache hits. This needs careful tuning and ongoing monitoring.
+**Semantic caching:** A step beyond exact-match. You embed incoming queries and check similarity against cached query-response pairs. If a new query is semantically close enough to a cached one, you serve the cached response — catching paraphrases and minor variations that explicit caching misses. The trade-off is precision: threshold too low and you serve wrong answers; too high and you get negligible cache hits.
 
-**Tool response caching:** Often overlooked but high-impact. Many tool calls return data that doesn't change frequently — product specs, pricing, inventory status (at a reasonable staleness tolerance), policy documents. Caching these tool responses means the agent can access the data without a fresh API call, saving both latency and cost. The challenge is staleness management: you need TTLs that are appropriate for each data type (product specs can be cached for hours; price and stock might need minutes).
+**Tool response caching:** Often overlooked but high-impact. Many tool calls return data that doesn't change frequently — product specs, policy documents, even pricing at a reasonable staleness tolerance. Caching these means the agent can access the data without a fresh API call. The challenge is staleness management: product specs can be cached for hours; price and stock might need minutes.
 
 The compounding effect of layering these is real. Provider-level caching reduces your per-request cost floor. Explicit and semantic caching eliminate entire LLM calls for common queries. Tool caching cuts latency and cost within the calls that do hit the model. Together they can meaningfully shift your cost curve without touching model quality at all.
 
 ### Streaming and Parallelisation
 
-Two patterns that are less about cost reduction and more about making the same cost feel faster — which, in a user-facing product, is functionally the same thing.
+Two patterns that are less about cost reduction and more about making the same cost *feel* faster — which, in a user-facing product, is functionally the same thing.
 
 **Streaming** partial responses to the user is table stakes at this point. It doesn't reduce actual time-to-complete, but it dramatically changes perceived responsiveness. If you're not doing it already, start.
 
-**Parallelisation** is about identifying steps in your pipeline that don't depend on each other and running them concurrently. Intent classification and retrieval can often run in parallel. Multiple tool calls that are independent of each other can be fired simultaneously. In agentic flows where the orchestration is sequential by default, auditing for parallelisation opportunities can be a good optimisation lever, sometimes shaving full seconds off end-to-end response time. In our implementation the first thing we parallelised is Search tool calls.
+**Parallelisation** is about identifying steps in your pipeline that don't depend on each other and running them concurrently. Intent classification and retrieval can often run in parallel. Multiple independent tool calls can be fired simultaneously. In agentic flows where the orchestration is sequential by default, auditing for parallelisation opportunities can be a good optimisation lever — sometimes shaving full seconds off end-to-end response time. In our implementation, the first thing we parallelised was search tool calls.
 
 ### Token Budgeting
 
 Simple idea, surprisingly effective. Cap output length based on task type. A factual answer ("What's the battery capacity of iPhone 15?") doesn't need 500 tokens. A comparison response might need 300. Setting max_tokens intentionally per query type — rather than using a single generous default — saves more money than you'd expect, and it often improves response quality too because the model is forced to be concise rather than padding.
 
+---
+
 ## So What's the Actual Job?
 
-Building AI products at scale is not a harder version of building demo AI products. It's a fundamentally different activity (atleast I think so!)
+Building AI products at scale is not a harder version of building demo AI products. It's a fundamentally different activity (at least I think so!)
 
 You're not just designing prompts. You're deciding which agent gets what context, how to fail when the LLM confidently makes things up, how to keep your per-conversation cost from spiraling, how to shave 2 seconds off a response without losing quality — and doing all of that simultaneously, while the ground keeps shifting under you.
 
-The real craft is finding the equilibrium where performance is good enough, latency feels responsive, and cost scales sustainably. That point shifts constantly: with every model update, every product change, every new class of user query you didn't anticipate. The rebalancing never stops. That's not a phase of building the product. That is the product.
+The real craft is finding the point where performance is good enough, latency feels responsive, and cost doesn't make your finance team nervous. That point shifts constantly: with every model update, every product change, every new class of user query you didn't anticipate. The rebalancing never stops. That's not a phase of building the product. That *is* the product.
 
-Nobody's weekend project prepared them for this. The prototype taught you what to build. Production taught you everything you didn't know you didn't know. If you're in the middle of it, you know exactly what I'm talking about. If you're about to start : well, now you know what's coming :)
+Nobody's weekend project prepared them for this. The prototype taught you what to build. Production taught you everything you didn't know you didn't know.
 
-*I build AI products at Flipkart and vibe-code for fun at [princejain.me](https://princejain.me). If you're navigating these trade-offs at scale and want to swap notes, I'm always up for it.*
+So the next time someone asks me what I do all day when they spun up their agent in 15 minutes — I might just send them this post.
+
+---
+
+*I build AI products at Flipkart and vibe-code for fun at [princejain.me](https://princejain.me). If you're navigating these trade-offs at scale and want to swap notes, find me on [Twitter](https://twitter.com/princejain) or [LinkedIn](https://linkedin.com/in/princejain). Always up for it.*
