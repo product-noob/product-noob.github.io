@@ -45,10 +45,12 @@ const shareTitle = encodeURIComponent(post.data.title);
 const twitterShareUrl = `https://twitter.com/intent/tweet?text=${shareTitle}&url=${encodeURIComponent(shareUrl)}&via=Prince_Jain17`;
 const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
 
-// SEO: Determine OG image (use heroImage if available, else fallback)
-const ogImage = post.data.heroImage
-  ? `${siteUrl}${post.data.heroImage}`
-  : `${siteUrl}/profile-photo-1.webp`;
+// SEO: Determine OG image (ogImage > heroImage > profile photo fallback)
+const ogImage = post.data.ogImage
+  ? `${siteUrl}${post.data.ogImage}`
+  : post.data.heroImage
+    ? `${siteUrl}${post.data.heroImage}`
+    : `${siteUrl}/profile-photo-1.webp`;
 
 // SEO: BlogPosting structured data
 const blogPostingSchema = {
