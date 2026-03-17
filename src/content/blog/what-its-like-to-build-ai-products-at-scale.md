@@ -3,7 +3,6 @@ pubDate: '2026-03-17'
 title: "What It's Like to Build AI Products at Scale"
 description: "Beyond the 15-minute demo: what it actually takes to run AI at 10M+ users"
 tags: ['AI', 'Product', 'Engineering']
-ogImage: '/images/og/what-its-like-to-build-ai-products-at-scale.png'
 featured: true
 ---
 
