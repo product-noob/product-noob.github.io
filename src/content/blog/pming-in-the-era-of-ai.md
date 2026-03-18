@@ -1,194 +1,200 @@
 ---
 pubDate: '2025-04-21'
-title: "PMing in the era of AI | How I use AI to supercharge my work"
-description: "My thoughts on how AI is changing PMing"
+updatedDate: '2026-03-18'
+title: "PMing in the Era of AI | How AI Has Rewired How I Work"
+description: "How AI has changed my day-to-day as a PM. Real workflows, real trade-offs, and why the job is shifting upwards, not disappearing"
 tags: ['AI', 'Product']
 featured: false
 ---
-I took a presentation for Flipkart PMs on **"How PMing is changing in the era of AI"** and thought I'll add a similar version of my thoughts here: 
 
-## TL;DR | How AI is (and isn't) Changing Product Management — My Take
+I took a presentation for Flipkart PMs on **"How PMing is changing in the era of AI"** a while back and thought I'd turn a version of my thoughts into a post. But as I started writing, I realised the generic "AI is changing everything!" take is already everywhere. What's harder to find is someone showing _how_ it actually changes the daily work. The real workflows, the time saved, the new failure modes, and the parts that still need a human in the loop.
 
-1. **AI isn't replacing PMs anytime soon.**  
-   It's clearing out the grunt work (reducing dependency on design, dev & DS) so we can double-down on the meaningful bits (i.e. strategy decks, storytelling workshops, and—of course—endless stakeholder alignment 😅). 
+So that's what this is. Not a prediction piece. Not a framework deck. Just an honest account of how AI has rewired how I work as a PM, what tools I actually use, and where I think this is all heading.
 
-2. **LLMs + no-code = days → hours.**  
-   Prototyping, research, data crunching, classification, copywriting — all way faster now. All you really need is an idea, a problem or an itch you want to solve and AI will co-solve that with you.
-
-3. **Think of AI as your co-pilot, not your replacement.**  
-    It's here to help you think faster and execute smarter — not to do your job *for* you. Great prompts in = great output out. But always review, refine, and make it your own.
-
-4. **Speed + responsibility = real success.**  
-   As AI tools speed things up, PMs are also on the hook for ensuring privacy, security, and fairness. It's part of the job now.
-
-5. **Hold on to your product intuition.**  
-    AI can accelerate the *how*, but it can't replace the *why*. Your empathy, curiosity, and product taste are irreplaceable—keep sharpening them. Your instincts, empathy, and critical thinking still matter — maybe more than ever.
-
-*AGI may change the game entirely… but until then, let's stay sharp.* 🔥
-
----
-Here's the longer version of those who likes learning the nitty gritties: 
-
-## 👋 Welcome to the AI-Augmented PM Era
-> "Product Management is dead."  
-> *Not so fast.*
-
-Every few years, someone rings the alarm: PM is over.  
-- In 2010, it was all about being *design-led*.  
-- By 2015, we were *growth-led*.  
-- 2020? *Data-led.*  
-- And now in 2024, the buzzword of choice? You guessed it — **AI-led**.
-
-*Every wave rewrites the rules. The smart PMs grab the pen.*   If you're still hand-writing SQL or waiting a week for hi-fi mocks, you're not just falling behind — you're missing a massive opportunity to level up.
-
-
-## 🆚 Traditional vs AI-Powered Product Management
-
-AI isn't changing *what* PMs do — it's transforming *how fast and smartly* we can do it.  
-Here's a look at how my core workflows have evolved — a before vs after snapshot:
-
-
-### 🔍 Research (Competitor / Feature)
-
-**Traditional:**  
-Took weeks (sometimes months) to manually dig through competitor websites, product docs, user reviews, and best practices. A slow and often fragmented process.
-
-**AI-Powered:**  
-With a single prompt into ChatGPT, I now trigger a **deep research** query that returns a detailed synthesis — competitor feature sets, pros/cons, pitfalls, best practices, and even comparison tables — all in under 15 minutes.
-
-
-### 📝 Product Notes (PRDs)
-
-**Traditional:**  
-Writing PRDs used to mean juggling meetings, aligning with stakeholders, capturing edge cases, and endless rounds of iteration. Getting one finalized often took weeks.
-
-**AI-Powered:**  
-Now I brain-dump rough notes into an LLM, generate a scaffolded PRD in minutes, and iterate quickly. I also use AI to rewrite, critique, summarize, or expand my existing product docs — faster collaboration, sharper output.
-
-
-### 🎨 UI/UX Prototyping
-
-**Traditional:**  
-Started with sketching UX flows on paper or in tools like Excalidraw. Then came the wait for design bandwidth. Figma prototypes were often too rigid for realistic feedback, and working engineering builds came way too late for meaningful user testing.
-
-**AI-Powered:**  
-I now use AI code editors to build interactive, demo-worthy prototypes in just a few hours. It's possible to go from idea → testable UI within the same day — a game-changer for speed and iteration.
-
-
-### 📊 Data Analysis & Ops Labelling
-
-**Traditional:**  
-By far the most mundane part of PMing — remembering table names, writing SQL queries from scratch, or waiting for analytics support. Ops labelling (manual annotation, classification models, clustering) was painfully slow and resource-heavy.
-
-**AI-Powered:**  
-I now use a custom agentic SQL generator I created (inspired by [Uber's QueryGPT](https://www.uber.com/en-IN/blog/query-gpt/)) to convert plain English into accurate SQL queries. For ops labelling, clustering, and classification — LLMs do the heavy lifting, improving speed, cost-efficiency, and quality.
-
-### ⚙️ General Productivity
-
-**Traditional:**  
-Lots of manual busywork — digging through Slack for doc links, watching entire recordings to find action items, keeping live meeting notes, or writing Jira tickets from scratch (Initiative → Epic → Story → Task).
-
-**AI-Powered:**  
-I use LLMs creatively to automate and speed up everything.  
-- Built a [custom JS script](https://princejain.me/2025/05/19/Auto-Reading-Google-Chat-Messages.html) to auto-read Google Chat messages 
-- Created a [Chrome extension](https://chromewebstore.google.com/detail/chatgpt-google-meet-summa/kofkiemddfpekcadmaeheonbbkhnclhj?pli=1) for meeting notes
-- Built a CSV generator to bulk-create Jira tickets from natural language  
-
-🧠 *With AI in my toolkit, I spend less time grinding and more time thinking, building, and shipping.*
-
----
-## The 2025 AI-PM Toolkit I Recommend / Use
-
-Here's a breakdown of the AI tools I use regularly and how they supercharge different parts of the product workflow — all in bullet format for mobile-friendliness:
-
-- **💬 Chat & Research**  
-  *Tools I ❤️:*  Gemini, ChatGPT, AI Studio (for rapid testing), Perplexity(for Search), Claude (for Code)  
-  *Use case:* Deep dives, prompt-assisted ideation
-
-- **🔌 APIs**  
-  *Tools I ❤️:* OpenAI, Gemini  
-  *Use case:* Embedding LLM magic into prototypes & user-facing features
-
-- **💻 AI IDEs / No-Code Platforms**  
-  *Tools I ❤️:* Cursor, Replit, Windsurf  
-  *Use case:* Shipping proof-of-concepts lightning fast without heavy engineering lift
-
-- **🎨 Design & Visuals**  
-  *Tools I ❤️:* V0.dev, Lovable, Leonardo.AI  
-  *Use case:* Creating UI mocks, hero images, visual concepts for decks or A/B tests
-
-## 🧠 Mastering the Prompt: How to Talk to AI (So It Talks Back Smart)
-
-The old saying "garbage in, garbage out" has never been more relevant. With AI, your **input is everything** — the quality of your prompt directly shapes the quality of the output. Prompting is fast becoming a **core PM skill**, right up there with writing crisp user stories or crystal-clear PRDs.
-
-Think of prompts as the new user interface — it's how we talk to powerful models and get them to think, ideate, analyze, or build *with* us. Weak prompts = wasted time, meh results, and unnecessary frustration. Great prompts? That's your secret weapon for speed, clarity, and impact.
-
-Here's how I've learned to get the best out of AI tools — a playbook for writing prompts that actually work:
-
-
-### ✅ Best Practices for Better Prompts (What I've Learned)
-
-- **Be Specific**  
-  Set clear context. Mention exactly what you want: format (e.g., list, report, markdown), tone, length, level of detail, audience. The more precise, the better the output.
-
-- **Show, Don't Just Tell**  
-  Share example outputs. If you're asking for something creative or nuanced, include a few sample styles so the model has something to mirror.
-
-- **Ground it with Data**  
-  Feeding in actual data (CSV samples, raw feedback, product info) helps the AI respond with sharper relevance.
-
-- **Define Output Structure**  
-  Want bullet points? Subheadings? A table? Say it. You'll save yourself a ton of reformatting later.
-
-- **Assign a Role**  
-  Start with "Act as a..." — e.g., "Act as a product strategist" or "Write like a UX writer for Gen Z". This frames the tone and focus instantly.
-
-- **Use Chain-of-Thought Reasoning**  
-  For complex asks, prompt the AI to "think step by step" or "explain its reasoning". You'll get more robust and transparent responses.
-
-- **Break Big into Small**  
-  Don't overload the model. Split big problems into manageable chunks — especially helpful when writing specs, summaries, or multi-part analysis.
-
-- **Tell It What To Do (Not What *Not* to Do)**  
-  Positive instructions work better. Say "Write a concise summary" instead of "Don't be too wordy."
-
-- **Build a Prompt Library**  
-  Keep a running list of great prompts that worked for you — categorized by task (PRD writing, insight synthesis, SQL gen, etc.). Saves time and builds consistency.
-
----
-## ⚠️ Pitfalls to Keep in Mind
-
-Working with AI can feel magical — until it isn't. These are the key traps to watch out for, and how I keep myself grounded while using LLMs in day-to-day PM work.
-
-- #### 🍰 Prompt Craft 101  
-A good prompt isn't just a question — it's a **brief**. The golden formula:  
-**Specific context + examples + desired format = chef's-kiss output.**  
-Want a crisp summary? Say so. Want markdown bullets? Specify that. Want Gen Z tone? Add a style reference.  
-Also: keep a running prompt library. Seriously. It'll save you time, bring consistency, and *future you will high-five past you*.
-
-- #### 🧯 Hallucination Hazards  
-LLMs can be *wildly confident* — even when they're flat-out wrong. This matters **a lot** when you're dealing with data, user research, or anything business-critical.  
-Always fact-check, especially if you're using AI for analysis, summaries, or external-facing content. When in doubt, **add grounding** — tools with retrieval-augmented generation (RAG) can help bring source-based answers into the loop.
-
-- #### 👫 Human Intuition > Algorithm  
-AI can crunch, scale, and generate at warp speed — but it doesn't know your customer, your business nuance, or your gut feel. Empathy, creativity, and product taste still live with *you*. Think of AI as a co-pilot, not a replacement. You're the one with the map. 
-Also, don't outsource your intuition to AI—stay in the driver's seat with AI as your co-pilot.
-It's not just a tech problem — **you own the guardrails**. Use responsibly, document decisions, and keep your team (and users) protected.
-
-- #### 🔐 Security & Ethics – Non-Negotiable  
-Just because it's fast doesn't mean it's safe. As PMs, we can't treat LLMs like a black box playground — we're responsible for what goes in, and what comes out. Keep these in mind:
-
-    - 🚫 **Don't feed in sensitive data** – Never share internal documents, customer PII, or confidential business info with public LLMs unless explicitly approved. When in doubt, redact or use dummy data.
-    - ✅ **Use access controls** – Make sure tools (especially AI copilots or Slackbots) are behind MFA and scoped to the right users.
-    - ⚖️ **Check for bias & explainability** – Always question how the model arrived at an answer — especially if it informs decisions or affects users.
-    - 🛑 **Know your failure modes** – AI can go off the rails. Define clear fallbacks and escalation paths before deploying anything user-facing.
-    - 📢 **Be transparent with users** – If you're using AI in your product, let users know. Clear disclosures build trust.
+_A note: I've since written a much deeper dive on [what it's like to build AI products at scale](https://princejain.me/blogs/what-its-like-to-build-ai-products-at-scale). Think of this post as the "how I use AI as a PM" side, and that one as the "how I build AI products" side. Different angles, same world._
 
 ---
 
-## So… is the PM role really changing?
+## TL;DR
 
-Absolutely – **upwards**. Less ticket-tetris, more strategy & storytelling. Every PM will be an "AI PM" sooner than later. 
+1. **AI isn't replacing PMs. It's compressing the boring parts.** Research that took weeks now takes hours. Prototyping that needed design bandwidth now needs an idea and a prompt. The time you get back is real.
+
+2. **The biggest shift is in what you can do _alone_.** I've built working prototypes, automated classification pipelines, and internal tools. Things that used to require a cross-functional team just to get started. The dependency model has fundamentally changed.
+
+3. **Prompting is a real skill, not a meme.** The difference between a vague prompt and a well-structured one is the difference between "meh, I could've Googled this" and genuinely useful output. It's the new version of writing a good brief.
+
+4. **Speed creates new responsibilities.** When you can ship faster, the guardrails around _what_ you ship matter more. Privacy, bias, hallucination risk. These aren't someone else's problems anymore.
+
+5. **The PM role is shifting upwards, not sideways.** Less time on ticket-tetris and formatting decks. More time on strategy, judgment calls, and the kind of product thinking that AI can't do for you.
+
+---
+
+## Every Wave Rewrites the Rules
+
+Every few years, someone declares PM is over. It's been happening since before I started my career.
+
+- **2010:** We were told to be _design-led_. If you couldn't sketch a wireframe, you were obsolete.
+- **2015:** The narrative shifted to _growth-led_. Experiment velocity was everything.
+- **2020:** _Data-led_ became the mandate. If you weren't writing SQL or running cohort analyses, you were falling behind.
+- **2025:** And now, predictably, it's **AI-led**. If you're not using LLMs in your workflow, you're apparently a dinosaur.
+
+Here's the pattern I've noticed: each wave doesn't replace the previous skills, it _stacks on top of them_. The PMs who thrived through each shift weren't the ones who abandoned what they knew. They were the ones who grabbed the new tool and added it to their existing toolkit. Design sense didn't stop mattering when growth became the thing. Data fluency didn't become irrelevant when AI arrived.
+
+The smart PMs don't panic. They grab the pen.
+
+If you're still hand-writing SQL queries from scratch, waiting a week for hi-fi mocks, or manually tagging support tickets... you're not just falling behind. You're missing the chance to redirect that time into work that actually needs a human brain.
+
+---
+
+## How My Actual Workflows Have Changed
+
+I want to be specific here, because the before-and-after framing only works if the "after" is grounded in real work. These aren't hypothetical. This is what my weeks actually look like now versus two years ago.
+
+### Research: From Weeks to Hours
+
+**Before:** Competitor research meant manually digging through product websites, app stores, user reviews, analyst reports, and best-practice documentation. A thorough competitive analysis could take weeks, sometimes stretching across sprints before it was actionable. And it was always fragmented. One person's notes in a doc, another's in a spreadsheet, the analyst report buried in someone's email.
+
+**Now:** I start most research tasks with a **deep research query**: a single, well-structured prompt that synthesises competitor feature sets, pricing models, user sentiment patterns, common pitfalls, and comparison tables. The first pass takes **under 30 minutes**. It's not perfect. I still need to verify claims, check for hallucinated data points, and layer in proprietary knowledge the model doesn't have. But the delta in time-to-first-draft is massive.
+
+The key insight: AI didn't replace the research. It replaced the **gathering** phase. The synthesis and judgment ("what does this mean for _our_ product?") is still entirely mine. And honestly, because I'm spending less time on mechanical collection, I have more energy for the analysis that actually matters.
+
+### PRDs and Product Notes: The Brain-Dump Pipeline
+
+**Before:** Writing a PRD was a multi-week affair. Stakeholder alignment meetings, edge-case discovery sessions, iteration after iteration on scope and requirements. The writing itself was the easy part. It was the _thinking_ that took time, and much of that thinking happened _while_ writing, which made the process slow and non-linear.
+
+**Now:** I brain-dump rough notes, meeting transcripts, and half-formed thoughts into an LLM and ask it to scaffold a structured PRD. The output isn't ship-ready (it never is) but it gives me a skeleton in minutes that would've taken me a day to structure from scratch. More importantly, I use it as a **thinking tool**: I ask the model to critique my PRD, identify missing edge cases, suggest failure modes I haven't considered, or rewrite sections for different audiences _(try asking it to explain your technical spec to a non-technical stakeholder, the output is genuinely useful)_.
+
+The document still needs my product judgment. The model doesn't know our users, our constraints, our strategy. But the mechanical parts: formatting, structuring, ensuring completeness against a template... that's where AI saves me 5+ hours per week.
+
+### Prototyping: From Design Queue to Same-Day Testable
+
+**Before:** The prototyping pipeline used to look like this: sketch UX flows on paper or Excalidraw, wait for design bandwidth, get Figma mocks, wait for engineering bandwidth, get a working build you could actually test with users. The total cycle from idea to testable prototype was often **3-4 weeks** at minimum, and that's if nothing got deprioritised.
+
+**Now:** I use AI code editors like **Cursor** and **Claude** to build interactive, demo-worthy prototypes in a few hours. Not wireframes. Not clickable Figma mocks. Actual working interfaces with real logic, connected to dummy data, that I can put in front of users and stakeholders the same day.
+
+This has fundamentally changed how I de-risk product bets. Instead of writing a long spec, getting alignment, waiting for a build, and _then_ learning from user feedback... I can test the core hypothesis before I've even written the spec. The feedback loop went from weeks to hours. That's not an incremental improvement. It's a structural change in how I make product decisions.
+
+_(Full disclosure: the code I write is not production-ready. It's held together with duct tape and optimism. But for testing whether an idea resonates? It's more than enough.)_
+
+### Data Analysis: The End of "Can You Pull This For Me?"
+
+**Before:** This was, by far, the most mundane and dependency-heavy part of my job. Remembering table names, writing SQL queries from scratch, waiting for analytics support when you needed something non-standard. Ops labelling (manually annotating data, building classification models, running clustering) was painfully slow and resource-heavy.
+
+**Now:** I built a custom **agentic SQL generator** _(inspired by [Uber's QueryGPT](https://www.uber.com/en-IN/blog/query-gpt/))_ that converts plain English into accurate SQL queries against our data warehouse. I describe what I want in natural language, it generates the query, I review it, run it, and have my answer. What used to be a half-day dependency on an analyst is now a 10-minute self-serve task.
+
+For classification and labelling tasks, LLMs have been transformative. What used to require building a custom ML model (data collection, labelling, training, evaluation, deployment) can now often be handled with a well-designed prompt and a structured output schema. The quality isn't always production-grade, but for exploratory analysis and rapid categorisation, it's dramatically faster and cheaper.
+
+### General Productivity: The Compound Effect
+
+The individual workflow improvements are meaningful on their own. But the compound effect is where it really hits.
+
+I [built a custom JS script](https://princejain.me/blogs/Auto-Reading-Google-Chat-Messages) to auto-read Google Chat messages _(because yes, that was annoying me enough to solve it)_. I built a [Chrome extension](https://chromewebstore.google.com/detail/chatgpt-google-meet-summa/kofkiemddfpekcadmaeheonbbkhnclhj?pli=1) for summarising Google Meet recordings into structured notes. I built a CSV generator that bulk-creates Jira tickets from natural language descriptions. None of these are products. They're small, personal automations that each save me 10-30 mins per week.
+
+Added up, these micro-automations mean I spend dramatically less time on mechanical work and more time on the parts of the job that actually require product judgment. Deciding _what_ to build, _why_ to build it, and _how_ to sequence it.
+
+---
+
+## My Actual AI Toolkit (2025)
+
+I get asked about my toolkit a lot, so here's the real list. Not a sponsored recommendations page, just what I actually open every week:
+
+- **Chat & Research:** Gemini _(my daily driver for most things)_, ChatGPT _(especially with deep research mode)_, AI Studio _(for rapid model testing)_, Perplexity _(for search-grounded research)_, Claude _(for code and long-form writing)_
+- **APIs:** OpenAI and Gemini APIs, for embedding LLM capabilities into prototypes and internal tools
+- **AI IDEs:** Cursor _(primary)_, Claude Code, for shipping proof-of-concepts fast without needing engineering support
+- **Design & Visuals:** V0.dev, Lovable, Leonardo.AI, for UI mocks, hero images, and visual concepts for decks
+
+The toolkit evolves fast. Half of what I used a year ago has been replaced or deprecated. The meta-skill isn't mastering any single tool. It's staying fluent enough across the ecosystem that you can pick up the best tool for each task.
+
+If you're just getting started, I wrote an [AI Starter Kit for PMs](https://princejain.me/blogs/ai-starter-kit-for-pms) that walks through the progression from zero to comfortably using AI in your daily work. And if you keep running into jargon you don't recognise, the [AI Glossary](https://princejain.me/blogs/AI-Glossary-Every-PM-Needs) might help.
+
+---
+
+## What Actually Makes AI Work For You: Real Prompt Patterns
+
+I'm going to skip the generic "be specific with your prompts" advice _(you've seen that in every AI article already)_ and instead share the actual patterns I've found most useful in real PM work.
+
+### The Structured Brief Pattern
+
+The single biggest upgrade to my AI output was treating prompts like product briefs. Not "write me a PRD", that gives you garbage. Instead:
+
+> **Context** (who you are, what you're working on) + **Input** (the raw material: notes, data, constraints) + **Output spec** (exact format, length, audience, tone) + **Examples** (what good looks like)
+
+When I scaffold a PRD, my prompt includes the problem statement from our team's discussions, 3-4 bullet points of constraints the model doesn't know, the PRD template we use internally, and an example section from a previous PRD I liked. The output quality difference between this and a bare "write a PRD about X" is night and day.
+
+### The Critique Loop
+
+I rarely use AI output as-is. Instead, I generate a first pass, then ask the model to critique it:
+
+- _"What edge cases am I missing in this spec?"_
+- _"If you were a senior engineer reviewing this, what questions would you ask?"_
+- _"Rewrite this from the perspective of a user who's frustrated with our current experience."_
+
+This is where the model becomes a thinking partner rather than a content generator. The critiques surface blind spots I genuinely hadn't considered. Not always, but often enough to make it a default step in my process.
+
+### The Classification Prompt
+
+For ops work like tagging support tickets, categorising user feedback, or bucketing feature requests, I use a structured classification prompt.
+
+The trick is to define the categories upfront _(with descriptions and example items for each)_, provide the input data, specify the output format _(usually JSON with a confidence score)_, and include a "none of the above" category so the model doesn't force-fit everything.
+
+This pattern alone has replaced what used to be days of manual labelling work for exploratory analysis. The accuracy isn't perfect, roughly 85% on our internal benchmarks, but for a first pass that you then review and correct, it's dramatically faster than starting from scratch.
 
 
-**So, What are *You* Building Next? 🚀🚀**
+### The SQL Generation Pattern
+
+For my internal SQL tool, the prompt includes the database schema _(table names, key columns, relationships)_, a few example queries with their natural-language descriptions, and explicit instructions about our naming conventions and common joins. The model generates the SQL, I review it before running, and over time the prompt has gotten better as I've added more edge cases from queries that initially failed.
+
+_The lesson across all of these: the quality of AI output is directly proportional to the quality of the structure you give it. "Garbage in, garbage out" has never been more true. The skill isn't "prompting" in some abstract sense. It's knowing your domain well enough to write a good brief._
+
+---
+
+## The Traps: Where AI Makes You Worse If You're Not Careful
+
+AI in the PM workflow isn't all upside. There are real failure modes I've hit, and they're worth being explicit about.
+
+### Hallucination Risk in Research
+
+LLMs can be _wildly confident_ about things that are completely wrong. I've caught fabricated competitor features, invented statistics, and citations to papers that don't exist. This matters **a lot** when you're using AI-generated research to inform product decisions or present to leadership.
+
+My rule: anything that's going into a deck, a spec, or a decision-making conversation gets fact-checked against primary sources. AI does the first draft of research. I do the verification. Skipping verification because "it sounds right" is a trap that will burn you exactly once before you learn the lesson.
+
+### The Outsourced Thinking Problem
+
+This is the subtler risk. When AI gives you fast, articulate answers, it's tempting to stop thinking as deeply yourself. I've noticed it in my own work: there are weeks where I catch myself accepting the model's framing of a problem instead of developing my own point of view first.
+
+The best PMs I work with use AI to _stress-test_ their thinking, not to _replace_ it. They come to the model with a hypothesis and ask it to poke holes, not with a blank page asking it what to think. The distinction matters more than it sounds.
+
+### Security and Privacy: Your Problem Now
+
+As PMs start feeding more data into AI tools (meeting transcripts, user feedback, internal documents, product specs) the question of what data goes where becomes a real concern. Most public LLM tools don't guarantee data privacy in the way your company's security team would want.
+
+Some non-negotiable rules I follow:
+- **Never feed sensitive data** _(customer PII, internal financials, unreleased product details)_ into public LLMs unless explicitly approved by your security team
+- **Use enterprise-grade tools** with proper access controls when working with internal data
+- **Always assume the model could surface your input** in some form to other users. If that thought makes you uncomfortable, don't input it
+
+And increasingly, if you're a PM building AI-powered features: bias, explainability, and transparency are product requirements, not afterthoughts. Users deserve to know when they're interacting with AI, and you need to understand how your model arrives at its outputs. This isn't a "nice to have" section in your PRD. It's a core part of the product spec.
+
+---
+
+## So... Is the PM Role Actually Changing?
+
+Yes. **Upwards.**
+
+The mechanical, dependency-heavy parts of the job (writing boilerplate docs, waiting in design queues, manually pulling data, formatting decks) are getting compressed. Some of them are disappearing entirely.
+
+What's left is the stuff that was always the hardest and most valuable: **figuring out what to build and why**. Understanding users at a level that can't be automated. Making judgment calls in the face of ambiguity. Storytelling that gets a room of stakeholders aligned. Sequencing decisions that balance short-term wins with long-term strategy.
+
+If anything, AI raises the bar on what's expected of PMs. When everyone has access to the same tools, the differentiator isn't "can you use ChatGPT?" It's the quality of your product thinking, the clarity of your judgment, and how fast you can translate insight into action.
+
+The PMs who treat AI as a replacement for thinking will produce mediocre work, faster. The PMs who treat it as a _multiplier_ for their existing skills will operate at a level that wasn't possible two years ago.
+
+Every PM is going to be an "AI PM" sooner than they think. Not because the title changes, but because the baseline expectations of the role will include AI fluency. Just like data fluency became table stakes a few years ago.
+
+---
+
+The tools are evolving fast. What I'm using today will probably look dated in six months. But the underlying shift, from PMs as coordinators of other people's output to PMs as builders who can prototype, analyse, and iterate independently, that's structural. And it's not going back.
+
+If you're a PM who hasn't started integrating AI into your workflow yet, here's my honest advice: stop reading and go use it. Open ChatGPT, or Claude, or Gemini, and take a real work problem to it. Not a toy example. A real one. The learning curve is surprisingly short, and the "aha" moment when you save three hours on something that used to take a full day... that's when it clicks.
+
+*If you're navigating this shift and want to swap notes, find me on [Twitter](https://twitter.com/princejain) or [LinkedIn](https://linkedin.com/in/princejain). Always up for it.*
