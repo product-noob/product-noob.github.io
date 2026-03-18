@@ -42,7 +42,6 @@ Here's a quick demo of how it works:
 
 [![G-Meet Summariser Demo](https://img.youtube.com/vi/8aTsvNZB7b0/maxresdefault.jpg)](https://www.youtube.com/watch?v=8aTsvNZB7b0)
 
-
 **The interesting bit:** I built this well before Google and Gemini added native AI summaries to Meet. We're talking early days, when meeting summarisation wasn't a feature anyone was shipping yet. That timing taught me a pattern that keeps repeating: if you can spot the workflow that doesn't have an AI layer yet, you can be first. I had a long runway of ahead-of-the-curve advantage before the feature shipped natively.
 
 But the bigger lesson was about behaviour change. When note-taking was a 20-minute chore, I'd skip it for "smaller" meetings. When it became 30 seconds, I started summarising everything. Decisions that used to get lost in verbal agreements started getting documented consistently. The compound effect on team alignment was surprisingly significant.
@@ -75,6 +74,8 @@ It also made me think differently about how chat tools are designed. The default
 
 Second insight: natural language interfaces expose how poorly structured most JIRA projects actually are. When the model needs to create a ticket, it needs to know which project, which epic, which sprint, which labels. If your JIRA hygiene is bad, the tool struggles. Fixing the interface forced me to fix the underlying data, which was its own win.
 
+![JIRA via Natural Language - Claude integration for ticket management](/images/vibe-coding-jira.jpeg)
+
 **What it changed:** Most of my JIRA management is now prompt-driven. Rough estimate: 45 minutes a day reclaimed.
 
 ---
@@ -84,6 +85,8 @@ Second insight: natural language interfaces expose how poorly structured most JI
 **The problem:** I wanted a voice-to-structured-text workflow. Record a thought while walking, get it formatted and filed. The best tool for this got blocked by IT policy. So naturally, I built my own.
 
 **What I built:** Record audio, transcribe with Whisper API, structure and tag with Claude, file to the right place. Works for meeting notes, thought dumps, and async communication drafts. Runs locally so no IT policy issues.
+
+![Whispr Flow - voice-to-structured-text app](/images/vibe-coding-whispr.png)
 
 **The interesting bit:** Building this forced me to understand the actual pipeline behind "voice AI" tools. The transcription step (Whisper) is the easy part. The structuring step, turning raw speech into formatted notes with headers, action items, and tagged topics, is where 90% of the value comes from. And that step is entirely a prompting problem.
 
@@ -119,7 +122,7 @@ _Every one of these took a day or less to build. Every one of them influenced we
 
 **What I built:** A working demo of an agentic commerce interaction. A user conversing with an AI that could search products, compare options, and simulate a purchase flow. Built in a single day using Claude and a lightweight orchestration wrapper. No production code. No backend. Just enough to make it feel real.
 
-<!-- [SCREENSHOT PLACEHOLDER: SLAP Day 0 demo interface or conversation flow] -->
+![SLAP Day 0 Demo - agentic commerce prototype](/images/vibe-coding-slap-demo.gif)
 
 **The interesting bit:** This demo created more strategic clarity in 20 minutes than weeks of PRD review would have. Once people could interact with the product hypothesis, conversations shifted from "is this the right thing to build?" to "here's what we need to make this actually work." That's a fundamentally different conversation. The first is about conviction. The second is about execution. And the speed at which we moved from one to the other wouldn't have been possible without the ability to prototype this fast.
 
@@ -135,7 +138,7 @@ I've since started doing this for almost every major product bet. Before writing
 
 **What I built:** A natural language interface to internal data _(inspired by [Uber's QueryGPT](https://www.uber.com/en-IN/blog/query-gpt/))_. Type a question in plain English, get a SQL query, get a result. Self-serve data access without needing to know the exact table structure.
 
-<!-- [SCREENSHOT PLACEHOLDER: QueryGPT interface showing a natural language question and generated SQL] -->
+![QueryGPT - natural language to SQL interface](/images/vibe-coding-querygpt.png)
 
 **The interesting bit:** The biggest unlock wasn't speed. It was _question quality_. When getting an answer takes 3 days, you optimise for asking one really good question. When it takes 30 seconds, you can follow threads. "What's the conversion rate for search queries?" leads to "break that down by query type" leads to "show me the long-tail queries specifically" leads to "what's the average response time for those?" In 15 minutes, I'd done an investigation that would have taken a week of back-and-forth.
 
@@ -150,8 +153,6 @@ My product intuition improved noticeably once I could interrogate data in real-t
 **The problem:** The hypothesis underlying quick commerce is "fast = better." But what if the interface itself was the bottleneck, not the delivery time?
 
 **What I built:** A POC for commerce as a pure conversation. Describe what you need, get options, confirm, done. No browsing, no categories, no scrolling. Just a natural language transaction from intent to purchase.
-
-<!-- [SCREENSHOT PLACEHOLDER: Conversational commerce interaction flow] -->
 
 **The interesting bit:** Two things surprised me.
 
@@ -177,9 +178,7 @@ We started with the hypothesis "can we make shopping faster?" and ended up askin
 
 3. **Annotation Tool**: A workflow for taking faulty production cases from the debugger and pushing them into our evaluation pipeline. Real production failures feeding back into the golden set, not synthetic test cases.
 
-<!-- [SCREENSHOT PLACEHOLDER: ADK Log Tracer showing a conversation trace with agent decisions and tool calls] -->
-<!-- [SCREENSHOT PLACEHOLDER: Debugger view showing flagged anomalies] -->
-<!-- [SCREENSHOT PLACEHOLDER: Annotation tool workflow] -->
+![SLAP Debug Dashboard - conversation trace and debugging tools](/images/vibe-coding-slap-debug.png)
 
 **The interesting bit:** This was the most technically sophisticated thing on this list. Building on ADK meant working with agent orchestration primitives directly. Not just calling an API, but reasoning about agent state, tool invocations, and execution traces in ways most PM-built tools never get close to.
 
