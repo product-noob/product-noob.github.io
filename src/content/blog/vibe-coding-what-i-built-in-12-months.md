@@ -1,7 +1,7 @@
 ---
 pubDate: '2026-03-19'
 title: "What I Built in 12 Months of Vibe Coding as a PM"
-description: "13+ tools, POCs, and prototypes built with AI-assisted development - from weekend itch-scratchers to strategic POCs that shaped product direction at Flipkart."
+description: "13+ AI-built tools and prototypes, from weekend ideas to product-shaping POCs."
 tags: ['AI', 'Product', 'Engineering']
 featured: false
 ---
