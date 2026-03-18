@@ -130,6 +130,7 @@ Auto-generated at `/rss.xml` by `src/pages/rss.xml.ts` using `@astrojs/rss`. Pos
 
 - Push to `master` triggers GitHub Actions build + deploy to GitHub Pages
 - Always run `npm run build` before pushing to catch errors
+- Conventional commit messages: `type(scope): description` (feat, fix, refactor, docs, chore, style, perf)
 - Site URL: https://princejain.me
 
 ## Responsive Breakpoints
@@ -138,3 +139,24 @@ Auto-generated at `/rss.xml` by `src/pages/rss.xml.ts` using `@astrojs/rss`. Pos
 - Tablet: 768px–1024px
 - Mobile: < 768px
 - Small mobile: < 480px
+- Mobile-first: base styles are mobile, use `min-width` media queries to scale up
+- NEVER modify desktop styles to fix a mobile issue — mobile overrides go in their own `@media` block
+
+## Banned Patterns
+
+- `eval()`, `new Function()`, `document.write()` — never use
+- `innerHTML` with user-controlled text — use `textContent` instead
+- Inline `style=` attributes in markup — use classes or CSS custom properties
+- `<script is:inline>` — use `<script>` with imports from `src/scripts/`
+- CDN `<link>`/`<script>` for libraries — `npm install` + import instead
+- `!important` — except in `prefers-reduced-motion` reset
+- Legacy frontmatter fields: `layout`, `date`, `categories` — use `pubDate` and `tags`
+- Raw hardcoded hex/hsl/rgb values — always use tokens from `tokens.css`
+- `loading="lazy"` on above-fold images — only lazy-load below the fold
+
+## Performance
+
+- Use `loading="lazy"` on all images below the fold
+- Import only what you need from libraries (e.g., `highlight.js/lib/core` + specific languages, not the full bundle)
+- Prefer Astro's static rendering — only add client-side JS when interactivity is genuinely required
+- External links: `rel="noopener noreferrer"` with `target="_blank"`
