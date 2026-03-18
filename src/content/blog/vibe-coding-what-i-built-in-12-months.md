@@ -38,7 +38,10 @@ _Disclaimer: Some of these projects are internal to Flipkart. I've kept descript
 
 **What I built:** A [Chrome extension](https://chromewebstore.google.com/detail/chatgpt-google-meet-summa/kofkiemddfpekcadmaeheonbbkhnclhj) that ingests a Google Meet transcript and produces a structured summary: decisions made, open questions, action items with owners. One prompt, about 30 seconds of processing.
 
-<!-- [SCREENSHOT PLACEHOLDER: Example of a raw transcript vs the structured summary output] -->
+Here's a quick demo of how it works:
+
+[![G-Meet Summariser Demo](https://img.youtube.com/vi/8aTsvNZB7b0/maxresdefault.jpg)](https://www.youtube.com/watch?v=8aTsvNZB7b0)
+
 
 **The interesting bit:** I built this well before Google and Gemini added native AI summaries to Meet. We're talking early days, when meeting summarisation wasn't a feature anyone was shipping yet. That timing taught me a pattern that keeps repeating: if you can spot the workflow that doesn't have an AI layer yet, you can be first. I had a long runway of ahead-of-the-curve advantage before the feature shipped natively.
 
