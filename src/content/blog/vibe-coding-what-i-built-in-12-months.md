@@ -40,7 +40,7 @@ _Disclaimer: Some of these projects are internal to Flipkart. I've kept descript
 
 Here's a quick demo of how it works:
 
-[![G-Meet Summariser Demo](/images/vibe-coding-meet-summariser.png)](https://www.youtube.com/watch?v=8aTsvNZB7b0)
+[![G-Meet Summariser Demo](/images/vibe-coding-meet-summariser.png){style="max-width:320px;"}](https://www.youtube.com/watch?v=8aTsvNZB7b0)
 
 **The interesting bit:** I built this well before Google and Gemini added native AI summaries to Meet. We're talking early days, when meeting summarisation wasn't a feature anyone was shipping yet. That timing taught me a pattern that keeps repeating: if you can spot the workflow that doesn't have an AI layer yet, you can be first. I had a long runway of ahead-of-the-curve advantage before the feature shipped natively.
 
