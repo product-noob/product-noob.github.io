@@ -134,7 +134,11 @@ _Every one of these took a day or less to build. Every one of them influenced we
 
 **What I built:** A working demo of an agentic commerce interaction. A user conversing with an AI that could search products, compare options, and simulate a purchase flow. Built in a single day using Claude and a lightweight orchestration wrapper. No production code. No backend. Just enough to make it feel real.
 
+<div style="max-width: 300px; margin: 1.5rem auto;">
+
 ![SLAP Day 0 Demo - agentic commerce prototype](/images/vibe-coding-slap-demo.gif)
+
+</div>
 
 **The interesting bit:** This demo created more strategic clarity in 20 minutes than weeks of PRD review would have. Once people could interact with the product hypothesis, conversations shifted from "is this the right thing to build?" to "here's what we need to make this actually work." That's a fundamentally different conversation. The first is about conviction. The second is about execution. And the speed at which we moved from one to the other wouldn't have been possible without the ability to prototype this fast.
 
@@ -148,7 +152,9 @@ I've since started doing this for almost every major product bet. Before writing
 
 **The problem:** I was deeply dependent on data analysts for every ad-hoc question. Want to know how query reformulation affects conversion? Write a request, wait 2-3 days, get a table. Want a follow-up? Start the cycle again.
 
-**What I built:** A natural language interface to internal data _(inspired by [Uber's QueryGPT](https://www.uber.com/en-IN/blog/query-gpt/))_. Type a question in plain English, get a SQL query, get a result. Self-serve data access without needing to know the exact table structure.
+**What I built:** A natural language interface to internal data _(inspired by [Uber's QueryGPT](https://www.uber.com/en-IN/blog/query-gpt/))_. Type a question in plain English, get a SQL query, get a result. Self-serve data access without needing to know the exact table structure. 
+
+Here is a Gemini generated mock-up of how roughly the tool looks. (AI generated since it required a lot of masking of actual business data)
 
 ![QueryGPT - natural language to SQL interface](/images/vibe-coding-querygpt.png)
 
@@ -178,7 +184,7 @@ We started with the hypothesis "can we make shopping faster?" and ended up askin
 
 ---
 
-### ADK Log Tracer, Debugger & Annotation Tools
+### SLAP Agentic Session Tracer and Debug Dashboard
 
 **The problem:** When you're building AI products at scale, the hardest part isn't getting the model to work. It's figuring out _why_ it didn't work the way you expected. LLMs are non-deterministic. The same request hit twice won't give the same response. If a user reports a bad answer and you didn't capture the full trace at the time, that information is gone forever. You can't reproduce the bug by replaying the request.
 
