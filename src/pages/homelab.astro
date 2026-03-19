@@ -254,7 +254,9 @@ const homelabServices = [
               <span class="service-card__key">Exposes</span>
               <span class="service-card__val">
                 <a href="https://immich.princejain.me" target="_blank" rel="noopener noreferrer">immich.princejain.me</a>,
+                <a href="https://vault.princejain.me" target="_blank" rel="noopener noreferrer">vault.princejain.me</a>,
                 <a href="https://pdf.princejain.me" target="_blank" rel="noopener noreferrer">pdf.princejain.me</a>,
+                <a href="https://n8n.princejain.me" target="_blank" rel="noopener noreferrer">n8n.princejain.me</a>,
                 <a href="https://portainer.princejain.me" target="_blank" rel="noopener noreferrer">portainer.princejain.me</a>
               </span>
             </div>
@@ -612,6 +614,16 @@ const homelabServices = [
      Scoped Styles
      ═══════════════════════════════════════════════════════════ -->
 <style>
+  /* ─── Local color tokens (macOS / terminal theme) ── */
+  :global(:root) {
+    --terminal-dot-red: #ff5f57;
+    --terminal-dot-yellow: #ffbd2e;
+    --terminal-dot-green: #28c840;
+    --color-live: #4ade80;
+    --color-live-strong: #16a34a;
+    --color-info: #60a5fa;
+  }
+
   /* ─── Page background — lighter, warmer ──────────── */
   .lab-hero {
     background: var(--gray-900);
@@ -696,9 +708,9 @@ const homelabServices = [
     flex-shrink: 0;
   }
 
-  .terminal__dot--red { background: #ff5f57; }
-  .terminal__dot--yellow { background: #ffbd2e; }
-  .terminal__dot--green { background: #28c840; }
+  .terminal__dot--red { background: var(--terminal-dot-red); }
+  .terminal__dot--yellow { background: var(--terminal-dot-yellow); }
+  .terminal__dot--green { background: var(--terminal-dot-green); }
 
   .terminal__bar-title {
     font-family: var(--font-mono);
@@ -791,7 +803,7 @@ const homelabServices = [
   }
 
   .hero-stat__value--live {
-    color: #4ade80;
+    color: var(--color-live);
   }
 
   /* ─── Live Dot ───────────────────────────────────── */
@@ -805,7 +817,7 @@ const homelabServices = [
     width: 8px;
     height: 8px;
     border-radius: var(--radius-full);
-    background: #4ade80;
+    background: var(--color-live);
     animation: livePulse 1.4s ease-in-out infinite;
     vertical-align: middle;
     margin-left: var(--space-1);
@@ -829,9 +841,9 @@ const homelabServices = [
 
   .topo-muted { color: var(--gray-600); }
   .topo-accent { color: var(--color-accent); }
-  .topo-blue { color: #60a5fa; }
-  .topo-cloud { color: #60a5fa; font-weight: 600; }
-  .topo-live { color: #4ade80; }
+  .topo-blue { color: var(--color-info); }
+  .topo-cloud { color: var(--color-info); font-weight: 600; }
+  .topo-live { color: var(--color-live); }
   .topo-comment { color: var(--gray-500); font-style: italic; }
 
   /* ─── Hardware Grid ──────────────────────────────── */
@@ -914,7 +926,7 @@ const homelabServices = [
     top: 0;
     bottom: 0;
     width: 3px;
-    background: #16a34a;
+    background: var(--color-live-strong);
   }
 
   .service-card__content {
@@ -938,8 +950,8 @@ const homelabServices = [
   }
 
   .service-card__dot--live {
-    background: #4ade80;
-    box-shadow: 0 0 6px rgba(74, 222, 128, 0.4);
+    background: var(--color-live);
+    box-shadow: 0 0 6px color-mix(in srgb, var(--color-live) 40%, transparent);
   }
 
   .service-card__icon-img {
@@ -969,7 +981,7 @@ const homelabServices = [
     align-items: center;
     gap: 5px;
     padding: 2px 8px;
-    background: #16a34a;
+    background: var(--color-live-strong);
     color: white;
     font-family: var(--font-mono);
     font-size: 0.6rem;
@@ -979,7 +991,7 @@ const homelabServices = [
     border-radius: var(--radius-full);
     flex-shrink: 0;
     margin-left: auto;
-    box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--color-live-strong) 30%, transparent);
   }
 
   .live-pill__dot {
@@ -1000,7 +1012,7 @@ const homelabServices = [
   }
 
   .service-card__active {
-    color: #4ade80;
+    color: var(--color-live);
   }
 
   .service-card__port {
@@ -1146,7 +1158,7 @@ const homelabServices = [
   }
 
   .docker-status--live {
-    color: #4ade80;
+    color: var(--color-live);
     font-style: normal;
     font-weight: 500;
   }
@@ -1234,9 +1246,7 @@ const homelabServices = [
     .section-heading {
       font-size: var(--text-2xl);
     }
-  }
 
-  @media (max-width: 768px) {
     .topology-scroll {
       position: relative;
     }
