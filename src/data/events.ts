@@ -106,5 +106,27 @@ export const events: EventData[] = [
                 "/ai-events/replit_razorpay_002.jpg"
             ]
         }
-    }
+    },
+    {
+        id: 'openclaw-showcase',
+        title: 'OpenClaw Showcase',
+        tagline: 'An exclusive evening of live demos by builders shipping with OpenClaw — hosted by OpenAI, Razorpay & Peak XV, powered by GrowthX.',
+        date: 'Mar 2026',
+        status: 'attended',
+        accentColor: '#e63946',
+        thumbnail: '/ai-events/openclaw-razorpay.jpg',
+        modal: {
+            description:
+                'The OpenClaw Showcase brought together 100 curated builders in Bangalore for an evening of live demos, intense conversations, and hands-on exploration of what\'s possible when you give developers local-first AI agents. Kicked off by Razorpay CEO Harshil Mathur, the top 5 builder projects each got a live demo slot — and the energy in the room was electric.',
+            takeaways: [
+                'Someone loaded "Picoclaw" into a sub-$100 Android phone and controlled the entire device using voice commands — a genuine glimpse of how personal computing devices of the future will work.',
+                'The builder density was remarkable — high-signal conversations with the right amount of enthusiasm, no fluff.',
+                'Harshil Mathur demo-ed his own setup but didn\'t enter the contest in fairness — still an insane showcase of what\'s possible.',
+                'OpenClaw is a user group, not a workshop — the focus is on developers running agents locally or in the cloud, tackling security, configuration, and agent safety challenges.',
+            ],
+            photos: [
+                '/ai-events/openclaw-razorpay_001.jpg',
+            ],
+        },
+    },
 ];

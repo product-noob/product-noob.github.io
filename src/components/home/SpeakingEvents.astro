@@ -330,6 +330,7 @@ import { events } from '../../data/events';
     margin: 0;
   }
 
+
   /* ================================================================
      Carousel viewport and track
      ================================================================ */
@@ -825,9 +826,17 @@ import { events } from '../../data/events';
       width: 240px;
     }
 
+    .events__viewport {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+
     .events__track {
       gap: var(--space-4);
       padding: var(--space-3) var(--space-4);
+      animation: none;
     }
 
     .event-modal__body {

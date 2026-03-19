@@ -37,8 +37,11 @@ const { projects, services } = Astro.props;
 
       <div class="projects-grid animate-on-scroll">
         {projects.map((project, i) => (
-          <div class="project-card-v2" style={`--card-delay: ${i * 80}ms`}>
+          <div class={`project-card-v2${project.status === 'wip' ? ' project-card-v2--wip' : ''}`} style={`--card-delay: ${i * 80}ms`}>
             <div class="project-card-v2__inner">
+              {project.status === 'wip' && (
+                <span class="project-card-v2__wip-badge">In Progress</span>
+              )}
               <div class="project-card-v2__header">
                 <span class="project-card-v2__icon">
                   {project.icon.startsWith('/') ? (
@@ -538,6 +541,30 @@ const { projects, services } = Astro.props;
     opacity: 1;
   }
 
+  /* WIP card — dimmed with badge */
+  .project-card-v2--wip .project-card-v2__inner {
+    opacity: 0.7;
+  }
+
+  .project-card-v2--wip:hover .project-card-v2__inner {
+    opacity: 1;
+  }
+
+  .project-card-v2__wip-badge {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    padding: 2px var(--space-2);
+    background: var(--gray-200);
+    color: var(--gray-600);
+    font-size: var(--text-2xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: var(--radius-full);
+    z-index: 2;
+  }
+
   .project-card-v2__header {
     display: flex;
     align-items: center;
@@ -548,27 +575,27 @@ const { projects, services } = Astro.props;
     width: 44px;
     height: 44px;
     border-radius: var(--radius-md);
-    background: linear-gradient(135deg, var(--gray-100), var(--gray-50));
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.3rem;
     flex-shrink: 0;
-    box-shadow:
-      inset 0 1px 0 var(--glass-bg),
-      0 2px 4px var(--border-subtle);
+    overflow: hidden;
     transition: transform var(--transition-bounce), background var(--transition-base);
   }
 
   .project-card-v2:hover .project-card-v2__icon {
-    transform: scale(1.08) rotate(-3deg);
-    background: linear-gradient(135deg, hsla(28, 100%, 95%, 1), hsla(28, 100%, 90%, 1));
+    transform: scale(1.08);
+    background: var(--gray-50);
   }
 
   .project-card-v2__icon img {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
     object-fit: contain;
+    border-radius: var(--radius-sm);
   }
 
   .project-card-v2__title {
@@ -663,11 +690,12 @@ const { projects, services } = Astro.props;
 
   .vibe-banner__inner {
     background: var(--gray-900);
-    border-radius: var(--radius-lg);
-    padding: var(--space-6) var(--space-8);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8) var(--space-8);
     box-shadow: var(--shadow-lg);
     position: relative;
     overflow: hidden;
+    border: 1px solid var(--gray-800);
   }
 
   /* Subtle gradient overlay */

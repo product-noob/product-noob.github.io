@@ -44,10 +44,11 @@ export const workshopProjects: WorkshopProject[] = [
     link: 'https://www.linkedin.com/posts/princejain17_spend-5-hours-to-save-5-minutes-every-activity-7375487951251628032-4x6J/',
   },
   {
-    title: 'LocalLedger (WIP)',
+    title: 'LocalLedger',
     description: 'A local ledger for tracking my expenses and income.',
     icon: '/icons/local-ledger.png',
     tags: ['Playwright', 'Python'],
+    status: 'wip',
   },
 ];
 

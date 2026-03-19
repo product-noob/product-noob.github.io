@@ -63,6 +63,8 @@ export interface WorkshopProject {
   icon: string;
   tags: string[];
   link?: string;
+  status?: 'live' | 'wip';
+  featured?: boolean;
 }
 
 export interface HomelabService {

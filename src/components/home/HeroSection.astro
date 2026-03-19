@@ -41,14 +41,14 @@ import profilePhoto4 from '../../assets/profile-photo-4.webp';
         <p class="hero-v2__inline-row">
           <span>Currently PM at</span>
           <span class="hero-v2__icon-card">
-            <img src="/icons/flipkart.svg" alt="Flipkart" class="hero-v2__icon-card-logo" width="32" height="32" />
+            <img src="/icons/flipkart.svg" alt="Flipkart" class="hero-v2__icon-card-logo" width="36" height="36" />
           </span>
           <span>previously at</span>
           <span class="hero-v2__icon-card">
-            <img src="/icons/paytm.svg" alt="Paytm" class="hero-v2__icon-card-logo" width="32" height="32" />
+            <img src="/icons/paytm.svg" alt="Paytm" class="hero-v2__icon-card-logo" width="36" height="36" />
           </span>
           <span class="hero-v2__icon-card">
-            <img src="/icons/oracle.svg" alt="Oracle" class="hero-v2__icon-card-logo" width="32" height="32" />
+            <img src="/icons/oracle.svg" alt="Oracle" class="hero-v2__icon-card-logo" width="36" height="36" />
           </span>
         </p>
 
@@ -259,24 +259,30 @@ import profilePhoto4 from '../../assets/profile-photo-4.webp';
     line-height: 1.6;
   }
 
-  /* White icon card — company logos */
+  /* Company logo cards — larger icons like side projects */
   .hero-v2__icon-card {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     background: white;
     border-radius: var(--radius-md);
     border: 1px solid var(--border-subtle);
     box-shadow: var(--shadow-sm);
     vertical-align: middle;
     flex-shrink: 0;
+    transition: all var(--transition-base);
+  }
+
+  .hero-v2__icon-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: scale(1.05);
   }
 
   .hero-v2__icon-card-logo {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     object-fit: contain;
   }
 
@@ -391,8 +397,12 @@ import profilePhoto4 from '../../assets/profile-photo-4.webp';
       justify-content: center;
     }
 
+    .hero-v2__image-wrapper {
+      margin-top: var(--space-4);
+    }
+
     .hero-v2__image-container {
-      max-width: 280px;
+      max-width: 240px;
       transform: rotate(0deg);
     }
 
@@ -407,14 +417,14 @@ import profilePhoto4 from '../../assets/profile-photo-4.webp';
     }
 
     .hero-v2__icon-card {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
     }
 
     .hero-v2__icon-card-logo {
-      width: 20px;
-      height: 20px;
+      width: 28px;
+      height: 28px;
     }
 
     .hero-v2__cluster-item {

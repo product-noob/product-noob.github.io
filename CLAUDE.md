@@ -28,13 +28,13 @@ Build requires Node 20+. On this machine, prepend `export PATH="/c/Program Files
 All styling must use design tokens from `src/styles/tokens.css`. Never hardcode colors, spacing, font sizes, shadows, or radii.
 
 ```
-Colors:     --color-accent, --gray-50 to --gray-950
+Colors:     --color-accent, --color-accent-secondary (pink/magenta), --gray-50 to --gray-950
 Typography: --text-2xs to --text-hero, --font-body/display/mono
 Spacing:    --space-1 (4px) to --space-32 (128px)
 Shadows:    --shadow-sm to --shadow-xl
 Radii:      --radius-sm to --radius-full
 Transitions: --transition-fast/base/slow
-Glass:      --glass-bg, --glass-border
+Glass:      --glass-bg, --glass-bg-heavy, --glass-border
 ```
 
 ### CSS file roles (all globally inlined — keep them lean)
@@ -104,6 +104,7 @@ Scripts in `src/scripts/` are globally loaded via BaseLayout, initialized on `DO
 - `breadcrumbs` array for BreadcrumbList schema
 - `ogImage` for social sharing (defaults to profile photo)
 - `extraSchema` for page-specific JSON-LD (e.g., BlogPosting, SoftwareApplication)
+- `preloadImage` for above-fold hero images (sets `fetchpriority="high"` + `<link rel="preload">` for LCP)
 
 Structured data already present site-wide: Person, WebSite, BreadcrumbList.
 
@@ -114,7 +115,8 @@ Google Analytics is loaded deferred in BaseLayout via `requestIdleCallback` (fal
 1. Create `src/pages/your-page.astro`
 2. Use `<BaseLayout>` with title, description, breadcrumbs
 3. Styles go in a scoped `<style>` block (not in global CSS files)
-4. Add to nav in BaseLayout if needed
+4. Add to nav in BaseLayout if needed — nav uses exact pathname match for most routes but `.startsWith('/blogs')` for the blog section
+5. Add the new URL to the hand-rolled sitemap at `src/pages/sitemap.xml.ts` (this project does **not** use `@astrojs/sitemap`; the sitemap is fully manual)
 
 ## Adding a New Blog Post
 

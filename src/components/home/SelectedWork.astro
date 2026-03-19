@@ -134,7 +134,7 @@ const { items } = Astro.props;
 
   /* Timeline Section */
   .timeline-section {
-    padding: var(--space-24) 0 var(--space-32);
+    padding: var(--space-16) 0 var(--space-24);
     background: var(--bg-warm);
     position: relative;
   }
@@ -154,12 +154,12 @@ const { items } = Astro.props;
   .timeline-header {
     text-align: center;
     max-width: 42rem;
-    margin: 0 auto var(--space-16);
+    margin: 0 auto var(--space-12);
   }
 
   @media (min-width: 768px) {
     .timeline-header {
-      margin-bottom: var(--space-24);
+      margin-bottom: var(--space-16);
     }
   }
 
@@ -199,7 +199,7 @@ const { items } = Astro.props;
   .timeline-entry {
     position: relative;
     padding-left: 2rem;
-    margin-bottom: var(--space-16);
+    margin-bottom: var(--space-10);
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.7s ease, transform 0.7s ease;
@@ -209,7 +209,7 @@ const { items } = Astro.props;
   @media (min-width: 768px) {
     .timeline-entry {
       padding-left: 5rem;
-      margin-bottom: var(--space-16);
+      margin-bottom: var(--space-12);
     }
   }
 
@@ -396,7 +396,7 @@ const { items } = Astro.props;
 
     .timeline-entry {
       padding-left: var(--space-12);
-      margin-bottom: var(--space-8);
+      margin-bottom: var(--space-6);
     }
 
     .timeline-track-segment { left: 0; }

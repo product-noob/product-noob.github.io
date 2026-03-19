@@ -7,6 +7,18 @@
  * Phase 1: Self-contained prototype with inline dummy data.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const homelabServices = [
+  { "@type": "ListItem" as const, "position": 1, "name": "Cloudflare Tunnel", "description": "Secure reverse tunnel for external access" },
+  { "@type": "ListItem" as const, "position": 2, "name": "Docker", "description": "Container runtime with Compose V2" },
+  { "@type": "ListItem" as const, "position": 3, "name": "Portainer", "description": "Docker management UI", "url": "https://portainer.princejain.me" },
+  { "@type": "ListItem" as const, "position": 4, "name": "Immich", "description": "Self-hosted photo and video library", "url": "https://immich.princejain.me" },
+  { "@type": "ListItem" as const, "position": 5, "name": "Vaultwarden", "description": "Self-hosted password manager", "url": "https://vault.princejain.me" },
+  { "@type": "ListItem" as const, "position": 6, "name": "AdGuard Home", "description": "Network-wide DNS ad blocker" },
+  { "@type": "ListItem" as const, "position": 7, "name": "Stirling PDF", "description": "Self-hosted PDF toolkit", "url": "https://pdf.princejain.me" },
+  { "@type": "ListItem" as const, "position": 8, "name": "n8n", "description": "Automation workflows", "url": "https://n8n.princejain.me" },
+  { "@type": "ListItem" as const, "position": 9, "name": "OpenClaw", "description": "Personal AI assistant" },
+];
 ---
 
 <BaseLayout
@@ -20,18 +32,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     "@type": "ItemList",
     "name": "Home Lab Services",
     "description": "Self-hosted services running on Prince Jain's home lab infrastructure",
-    "numberOfItems": 9,
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Cloudflare Tunnel", "description": "Secure reverse tunnel for external access" },
-      { "@type": "ListItem", "position": 2, "name": "Docker", "description": "Container runtime with Compose V2" },
-      { "@type": "ListItem", "position": 3, "name": "Portainer", "description": "Docker management UI", "url": "https://portainer.princejain.me" },
-      { "@type": "ListItem", "position": 4, "name": "Immich", "description": "Self-hosted photo and video library", "url": "https://immich.princejain.me" },
-      { "@type": "ListItem", "position": 5, "name": "Vaultwarden", "description": "Self-hosted password manager", "url": "https://vault.princejain.me" },
-      { "@type": "ListItem", "position": 6, "name": "AdGuard Home", "description": "Network-wide DNS ad blocker" },
-      { "@type": "ListItem", "position": 7, "name": "Stirling PDF", "description": "Self-hosted PDF toolkit", "url": "https://pdf.princejain.me" },
-      { "@type": "ListItem", "position": 8, "name": "n8n", "description": "Automation workflows", "url": "https://n8n.princejain.me" },
-      { "@type": "ListItem", "position": 9, "name": "OpenClaw", "description": "Personal AI assistant" },
-    ],
+    "numberOfItems": homelabServices.length,
+    "itemListElement": homelabServices,
   }}
 >
 
@@ -114,32 +116,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <span class="terminal__bar-title">network-topology</span>
       </div>
       <div class="terminal__content topology-scroll">
-        <pre class="topology-art"><span class="topo-muted">┌────────────────────────── NETWORK TOPOLOGY ───────────────────────────┐
-│                                                                       │
-│</span>    <span class="topo-cloud">INTERNET</span>                                                         <span class="topo-muted">│
-│</span>        <span class="topo-muted">│</span>                                                                <span class="topo-muted">│
-│</span>        <span class="topo-muted">▼</span>                                                                <span class="topo-muted">│
-│</span>    <span class="topo-blue">┌────────────────────────────┐</span>                                     <span class="topo-muted">│
-│</span>    <span class="topo-blue">│  Cloudflare Edge           │</span>                                     <span class="topo-muted">│
-│</span>    <span class="topo-blue">│  DNS + TLS + WAF           │</span>                                     <span class="topo-muted">│
-│</span>    <span class="topo-blue">└──────────────┬─────────────┘</span>                                     <span class="topo-muted">│
-│</span>                   <span class="topo-muted">│</span> <span class="topo-comment">outbound tunnel only</span>                               <span class="topo-muted">│
-│</span>                   <span class="topo-muted">▼</span>                                                        <span class="topo-muted">│
-│</span>    <span class="topo-accent">┌────────────────────────────┐</span>      <span class="topo-accent">┌─────────────────────┐</span>   <span class="topo-muted">│
-│</span>    <span class="topo-accent">│  UBUNTU-MAC</span>                <span class="topo-accent">│</span>      <span class="topo-accent">│  WINDOWS-GPU</span>        <span class="topo-accent">│</span>   <span class="topo-muted">│
-│</span>    <span class="topo-accent">│</span>  192.168.0.104             <span class="topo-accent">│</span><span class="topo-muted">◄────►</span><span class="topo-accent">│</span>  192.168.0.197     <span class="topo-accent">│</span>   <span class="topo-muted">│
-│</span>    <span class="topo-accent">│</span>                            <span class="topo-accent">│</span> <span class="topo-comment">ML</span>   <span class="topo-accent">│</span>                     <span class="topo-accent">│</span>   <span class="topo-muted">│
-│</span>    <span class="topo-accent">│</span>  ├─ immich:2283      <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>      <span class="topo-accent">│</span>  └─ ml:3003 <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>   <span class="topo-muted">│
-│</span>    <span class="topo-accent">│</span>  ├─ adguard:53       <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>      <span class="topo-accent">└─────────────────────┘</span>   <span class="topo-muted">│
-│</span>    <span class="topo-accent">│</span>  ├─ portainer:9000   <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                      <span class="topo-muted">│
-│</span>    <span class="topo-accent">│</span>  ├─ pdf:8080         <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                      <span class="topo-muted">│
-│</span>    <span class="topo-accent">│</span>  ├─ n8n:5678         <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                      <span class="topo-muted">│
-│</span>    <span class="topo-accent">│</span>  ├─ vault:8888       <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                      <span class="topo-muted">│
-│</span>    <span class="topo-accent">│</span>  └─ openclaw         <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                      <span class="topo-muted">│
-│</span>    <span class="topo-accent">└────────────────────────────┘</span>                                     <span class="topo-muted">│
-│                                                                       │
-│</span>    <span class="topo-live">●</span> = LIVE    <span class="topo-muted">○ = stopped</span>                                           <span class="topo-muted">│
-└───────────────────────────────────────────────────────────────────────┘</span></pre>
+        <pre class="topology-art" role="img" aria-label="Network topology diagram: Internet traffic flows through Cloudflare Edge (DNS, TLS, WAF) via an outbound-only tunnel to ubuntu-mac running immich, adguard, portainer, pdf, n8n, vault, and openclaw. A second node windows-gpu handles ML tasks over the local network."><span class="topo-muted">┌──────────────────────── NETWORK TOPOLOGY ─────────────────────────┐
+│                                                                   │
+│</span>  <span class="topo-cloud">INTERNET</span>                                                       <span class="topo-muted">│
+│</span>      <span class="topo-muted">│</span>                                                              <span class="topo-muted">│
+│</span>      <span class="topo-muted">▼</span>                                                              <span class="topo-muted">│
+│</span>  <span class="topo-blue">┌──────────────────────────┐</span>                                   <span class="topo-muted">│
+│</span>  <span class="topo-blue">│  Cloudflare Edge         │</span>                                   <span class="topo-muted">│
+│</span>  <span class="topo-blue">│  DNS + TLS + WAF         │</span>                                   <span class="topo-muted">│
+│</span>  <span class="topo-blue">└────────────┬─────────────┘</span>                                   <span class="topo-muted">│
+│</span>               <span class="topo-muted">│</span> <span class="topo-comment">outbound tunnel only</span>                             <span class="topo-muted">│
+│</span>               <span class="topo-muted">▼</span>                                                      <span class="topo-muted">│
+│</span>  <span class="topo-accent">┌──────────────────────────┐</span>  <span class="topo-accent">┌───────────────────┐</span>   <span class="topo-muted">│
+│</span>  <span class="topo-accent">│  UBUNTU-MAC</span>              <span class="topo-accent">│</span>  <span class="topo-accent">│  WINDOWS-GPU</span>      <span class="topo-accent">│</span>   <span class="topo-muted">│
+│</span>  <span class="topo-accent">│</span>  Primary Server          <span class="topo-accent">│</span><span class="topo-muted">◄►</span><span class="topo-accent">│</span>  ML Offload Node <span class="topo-accent">│</span>   <span class="topo-muted">│
+│</span>  <span class="topo-accent">│</span>                          <span class="topo-accent">│</span><span class="topo-comment">ML</span><span class="topo-accent">│</span>                   <span class="topo-accent">│</span>   <span class="topo-muted">│
+│</span>  <span class="topo-accent">│</span>  ├─ immich:2283    <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>  <span class="topo-accent">│</span>  └─ ml:3003 <span class="topo-live">[●]</span><span class="topo-accent">│</span>   <span class="topo-muted">│
+│</span>  <span class="topo-accent">│</span>  ├─ adguard:53     <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>  <span class="topo-accent">└───────────────────┘</span>   <span class="topo-muted">│
+│</span>  <span class="topo-accent">│</span>  ├─ portainer:9000 <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                <span class="topo-muted">│
+│</span>  <span class="topo-accent">│</span>  ├─ pdf:8080       <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                <span class="topo-muted">│
+│</span>  <span class="topo-accent">│</span>  ├─ n8n:5678       <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                <span class="topo-muted">│
+│</span>  <span class="topo-accent">│</span>  ├─ vault:8888     <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                <span class="topo-muted">│
+│</span>  <span class="topo-accent">│</span>  └─ openclaw       <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                <span class="topo-muted">│
+│</span>  <span class="topo-accent">└──────────────────────────┘</span>                                   <span class="topo-muted">│
+│</span>                                                                   <span class="topo-muted">│
+│</span>  <span class="topo-live">●</span> = LIVE    <span class="topo-muted">○ = stopped</span>                                       <span class="topo-muted">│
+└───────────────────────────────────────────────────────────────────┘</span></pre>
       </div>
     </div>
   </div>
@@ -239,7 +241,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="service-card__content">
           <div class="service-card__header">
             <span class="service-card__dot service-card__dot--live"></span>
-            <span class="service-card__icon">🌐</span>
+            <img class="service-card__icon-img" src="/icons/cloudflare.svg" alt="" width="20" height="20" loading="lazy" />
             <span class="service-card__name">cloudflared.service</span>
             <span class="service-card__title">- Secure Reverse Tunnel</span>
             <span class="live-pill"><span class="live-pill__dot"></span>LIVE</span>
@@ -278,7 +280,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="service-card__content">
           <div class="service-card__header">
             <span class="service-card__dot service-card__dot--live"></span>
-            <span class="service-card__icon">🐳</span>
+            <img class="service-card__icon-img" src="/icons/docker.svg" alt="" width="20" height="20" loading="lazy" />
             <span class="service-card__name">docker.service</span>
             <span class="service-card__title">- Container Runtime</span>
             <span class="live-pill"><span class="live-pill__dot"></span>LIVE</span>
@@ -308,7 +310,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="service-card__content">
           <div class="service-card__header">
             <span class="service-card__dot service-card__dot--live"></span>
-            <span class="service-card__icon">🎛️</span>
+            <img class="service-card__icon-img" src="/icons/portainer.svg" alt="" width="20" height="20" loading="lazy" />
             <span class="service-card__name">portainer.service</span>
             <span class="service-card__title">- Docker Management UI</span>
             <span class="live-pill"><span class="live-pill__dot"></span>LIVE</span>
@@ -432,7 +434,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="service-card__content">
           <div class="service-card__header">
             <span class="service-card__dot service-card__dot--live"></span>
-            <span class="service-card__icon">📄</span>
+            <img class="service-card__icon-img" src="/icons/stirling-pdf.svg" alt="" width="20" height="20" loading="lazy" />
             <span class="service-card__name">stirling-pdf.service</span>
             <span class="service-card__title">- PDF Toolkit</span>
             <span class="live-pill"><span class="live-pill__dot"></span>LIVE</span>
@@ -525,7 +527,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
       <div class="terminal__content">
         <pre class="config-file"><span class="config-comment"># /etc/homelab/decisions.conf</span>
-<span class="config-comment"># Last updated: Dec 2024</span>
+<span class="config-comment"># Last updated: Mar 2026</span>
 <span class="config-sep"># ─────────────────────────────────────────────────────</span>
 
 <span class="config-key"># WHY: Cloudflare Tunnels over Port Forwarding</span>
@@ -940,12 +942,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     box-shadow: 0 0 6px rgba(74, 222, 128, 0.4);
   }
 
-  .service-card__icon {
-    font-size: 1rem;
-    line-height: 1;
-    flex-shrink: 0;
-  }
-
   .service-card__icon-img {
     width: 20px;
     height: 20px;
@@ -1240,6 +1236,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
   }
 
+  @media (max-width: 768px) {
+    .topology-scroll {
+      position: relative;
+    }
+
+    .topology-scroll::after {
+      content: 'scroll \2192';
+      position: absolute;
+      bottom: var(--space-2);
+      right: var(--space-3);
+      font-family: var(--font-mono);
+      font-size: var(--text-2xs);
+      color: var(--gray-500);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+  }
+
   @media (max-width: 480px) {
     .lab-hero__title {
       font-size: var(--text-2xl);
@@ -1268,7 +1282,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       min-width: 85px;
     }
 
-    .service-card__icon,
     .service-card__icon-img {
       display: none;
     }
@@ -1315,14 +1328,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const items = document.querySelectorAll<HTMLElement>('.homelab-animate');
     if (!items.length) return;
 
+    const MAX_STAGGER_DELAY = 600;
+    const STAGGER_STEP = 120;
     let staggerIndex = 0;
+    let resetTimer: ReturnType<typeof setTimeout> | null = null;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const el = entry.target as HTMLElement;
-            const delay = staggerIndex * 120;
+            const delay = Math.min(staggerIndex * STAGGER_STEP, MAX_STAGGER_DELAY);
             staggerIndex++;
             window.setTimeout(() => {
               el.classList.add('is-visible');
@@ -1330,6 +1346,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             observer.unobserve(el);
           }
         });
+        if (resetTimer) clearTimeout(resetTimer);
+        resetTimer = setTimeout(() => { staggerIndex = 0; }, 300);
       },
       { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
     );
