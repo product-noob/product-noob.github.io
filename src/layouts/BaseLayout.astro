@@ -244,6 +244,12 @@ const siteUrl = "https://princejain.me";
             }`}>Links</a
           >
           <a
+            href="/homelab"
+            class={`nav-link ${
+              Astro.url.pathname === "/homelab" ? "nav-link--active" : ""
+            }`}>Lab</a
+          >
+          <a
             href="/about"
             class={`nav-link ${
               Astro.url.pathname === "/about" ? "nav-link--active" : ""
