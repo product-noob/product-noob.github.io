@@ -1,0 +1,1345 @@
+---
+/**
+ * /homelab — Self-hosted infrastructure showcase.
+ * Terminal-inspired design with lighter page background,
+ * narrative content, and mono-font terminal cards.
+ *
+ * Phase 1: Self-contained prototype with inline dummy data.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Home Lab | Prince Jain"
+  description="Self-hosted infrastructure on a headless MacBook - Immich, Vaultwarden, AdGuard, n8n, and more, secured through Cloudflare Tunnels."
+  breadcrumbs={[
+    { name: "Home", url: "https://princejain.me" },
+    { name: "Home Lab" },
+  ]}
+  extraSchema={{
+    "@type": "ItemList",
+    "name": "Home Lab Services",
+    "description": "Self-hosted services running on Prince Jain's home lab infrastructure",
+    "numberOfItems": 9,
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Cloudflare Tunnel", "description": "Secure reverse tunnel for external access" },
+      { "@type": "ListItem", "position": 2, "name": "Docker", "description": "Container runtime with Compose V2" },
+      { "@type": "ListItem", "position": 3, "name": "Portainer", "description": "Docker management UI", "url": "https://portainer.princejain.me" },
+      { "@type": "ListItem", "position": 4, "name": "Immich", "description": "Self-hosted photo and video library", "url": "https://immich.princejain.me" },
+      { "@type": "ListItem", "position": 5, "name": "Vaultwarden", "description": "Self-hosted password manager", "url": "https://vault.princejain.me" },
+      { "@type": "ListItem", "position": 6, "name": "AdGuard Home", "description": "Network-wide DNS ad blocker" },
+      { "@type": "ListItem", "position": 7, "name": "Stirling PDF", "description": "Self-hosted PDF toolkit", "url": "https://pdf.princejain.me" },
+      { "@type": "ListItem", "position": 8, "name": "n8n", "description": "Automation workflows", "url": "https://n8n.princejain.me" },
+      { "@type": "ListItem", "position": 9, "name": "OpenClaw", "description": "Personal AI assistant" },
+    ],
+  }}
+>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 1: Page Header + Terminal Hero
+     ═══════════════════════════════════════════════════════════ -->
+<section class="lab-hero">
+  <div class="container">
+    <div class="lab-hero__intro animate-fade-up">
+      <h1 class="lab-hero__title">The Home Lab</h1>
+      <p class="lab-hero__desc">
+        I run a small self-hosted cloud out of a repurposed MacBook and a spare GPU laptop.
+        Everything from my photo library to my password manager lives on hardware I own -
+        no subscriptions, no vendor lock-in, and zero open ports on my router.
+      </p>
+    </div>
+
+    <div class="terminal homelab-animate">
+      <div class="terminal__bar">
+        <span class="terminal__dot terminal__dot--red"></span>
+        <span class="terminal__dot terminal__dot--yellow"></span>
+        <span class="terminal__dot terminal__dot--green"></span>
+        <span class="terminal__bar-title">prince@ubuntu-mac: ~/homelab</span>
+      </div>
+      <div class="terminal__content">
+        <div class="hero-prompt">
+          <span class="prompt-user">prince@ubuntu-mac</span><span class="prompt-sep">:</span><span class="prompt-path">~</span><span class="prompt-dollar">$</span> neofetch --homelab
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat__label">Uptime</span>
+            <span class="hero-stat__value">24/7</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat__label">Services</span>
+            <span class="hero-stat__value">9 running</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat__label">Nodes</span>
+            <span class="hero-stat__value">2 (MacBook + GPU)</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat__label">Open Ports</span>
+            <span class="hero-stat__value">0 (Cloudflare Tunnels)</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat__label">Status</span>
+            <span class="hero-stat__value hero-stat__value--live">All systems operational <span class="live-dot"></span></span>
+          </div>
+        </div>
+        <div class="hero-prompt hero-prompt--bottom">
+          <span class="prompt-user">prince@ubuntu-mac</span><span class="prompt-sep">:</span><span class="prompt-path">~</span><span class="prompt-dollar">$</span> <span class="cursor"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 2: Network Topology
+     ═══════════════════════════════════════════════════════════ -->
+<section class="lab-section">
+  <div class="container">
+    <div class="section-intro homelab-animate">
+      <h2 class="section-heading">How it all connects</h2>
+      <p class="section-desc">
+        Traffic from the internet hits Cloudflare first, which handles TLS, caching, and DDoS protection.
+        A lightweight tunnel daemon on the MacBook maintains an outbound-only connection - so nothing on my home
+        network is directly exposed. The GPU laptop handles ML-heavy tasks like face detection over the local network.
+      </p>
+    </div>
+    <div class="section-cmd">
+      <span class="prompt-dollar">$</span> cat /etc/homelab/topology.txt
+    </div>
+    <div class="terminal homelab-animate">
+      <div class="terminal__bar">
+        <span class="terminal__dot terminal__dot--red"></span>
+        <span class="terminal__dot terminal__dot--yellow"></span>
+        <span class="terminal__dot terminal__dot--green"></span>
+        <span class="terminal__bar-title">network-topology</span>
+      </div>
+      <div class="terminal__content topology-scroll">
+        <pre class="topology-art"><span class="topo-muted">┌────────────────────────── NETWORK TOPOLOGY ───────────────────────────┐
+│                                                                       │
+│</span>    <span class="topo-cloud">INTERNET</span>                                                         <span class="topo-muted">│
+│</span>        <span class="topo-muted">│</span>                                                                <span class="topo-muted">│
+│</span>        <span class="topo-muted">▼</span>                                                                <span class="topo-muted">│
+│</span>    <span class="topo-blue">┌────────────────────────────┐</span>                                     <span class="topo-muted">│
+│</span>    <span class="topo-blue">│  Cloudflare Edge           │</span>                                     <span class="topo-muted">│
+│</span>    <span class="topo-blue">│  DNS + TLS + WAF           │</span>                                     <span class="topo-muted">│
+│</span>    <span class="topo-blue">└──────────────┬─────────────┘</span>                                     <span class="topo-muted">│
+│</span>                   <span class="topo-muted">│</span> <span class="topo-comment">outbound tunnel only</span>                               <span class="topo-muted">│
+│</span>                   <span class="topo-muted">▼</span>                                                        <span class="topo-muted">│
+│</span>    <span class="topo-accent">┌────────────────────────────┐</span>      <span class="topo-accent">┌─────────────────────┐</span>   <span class="topo-muted">│
+│</span>    <span class="topo-accent">│  UBUNTU-MAC</span>                <span class="topo-accent">│</span>      <span class="topo-accent">│  WINDOWS-GPU</span>        <span class="topo-accent">│</span>   <span class="topo-muted">│
+│</span>    <span class="topo-accent">│</span>  192.168.0.104             <span class="topo-accent">│</span><span class="topo-muted">◄────►</span><span class="topo-accent">│</span>  192.168.0.197     <span class="topo-accent">│</span>   <span class="topo-muted">│
+│</span>    <span class="topo-accent">│</span>                            <span class="topo-accent">│</span> <span class="topo-comment">ML</span>   <span class="topo-accent">│</span>                     <span class="topo-accent">│</span>   <span class="topo-muted">│
+│</span>    <span class="topo-accent">│</span>  ├─ immich:2283      <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>      <span class="topo-accent">│</span>  └─ ml:3003 <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>   <span class="topo-muted">│
+│</span>    <span class="topo-accent">│</span>  ├─ adguard:53       <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>      <span class="topo-accent">└─────────────────────┘</span>   <span class="topo-muted">│
+│</span>    <span class="topo-accent">│</span>  ├─ portainer:9000   <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                      <span class="topo-muted">│
+│</span>    <span class="topo-accent">│</span>  ├─ pdf:8080         <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                      <span class="topo-muted">│
+│</span>    <span class="topo-accent">│</span>  ├─ n8n:5678         <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                      <span class="topo-muted">│
+│</span>    <span class="topo-accent">│</span>  ├─ vault:8888       <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                      <span class="topo-muted">│
+│</span>    <span class="topo-accent">│</span>  └─ openclaw         <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                      <span class="topo-muted">│
+│</span>    <span class="topo-accent">└────────────────────────────┘</span>                                     <span class="topo-muted">│
+│                                                                       │
+│</span>    <span class="topo-live">●</span> = LIVE    <span class="topo-muted">○ = stopped</span>                                           <span class="topo-muted">│
+└───────────────────────────────────────────────────────────────────────┘</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 3: Hardware Nodes (neofetch style)
+     ═══════════════════════════════════════════════════════════ -->
+<section class="lab-section">
+  <div class="container">
+    <div class="section-intro homelab-animate">
+      <h2 class="section-heading">The hardware</h2>
+      <p class="section-desc">
+        The primary server is a repurposed Intel MacBook running Ubuntu headless - lid closed, display off, always on.
+        A custom systemd service handles the lid-close without suspending. The second node is a Windows laptop with an
+        NVIDIA GPU that handles computationally expensive machine learning tasks over the local network.
+      </p>
+    </div>
+    <div class="section-cmd">
+      <span class="prompt-dollar">$</span> ssh prince@ubuntu-mac && ssh prince@windows-gpu
+    </div>
+    <div class="hardware-grid">
+      <!-- MacBook Node -->
+      <div class="terminal homelab-animate">
+        <div class="terminal__bar">
+          <span class="terminal__dot terminal__dot--red"></span>
+          <span class="terminal__dot terminal__dot--yellow"></span>
+          <span class="terminal__dot terminal__dot--green"></span>
+          <span class="terminal__bar-title">ssh: ubuntu-mac</span>
+        </div>
+        <div class="terminal__content">
+          <div class="neofetch">
+            <div class="neofetch__hostname"><span class="prompt-user">prince</span>@<span class="prompt-user">ubuntu-mac</span></div>
+            <div class="neofetch__sep">─────────────────────</div>
+            <div class="neofetch__row"><span class="neofetch__label">OS</span><span class="neofetch__value">Ubuntu Server 22.04</span></div>
+            <div class="neofetch__row"><span class="neofetch__label">Host</span><span class="neofetch__value">Intel MacBook (Headless)</span></div>
+            <div class="neofetch__row"><span class="neofetch__label">Role</span><span class="neofetch__value">Primary Server</span></div>
+            <div class="neofetch__row"><span class="neofetch__label">IP</span><span class="neofetch__value">192.168.0.104</span></div>
+            <div class="neofetch__row"><span class="neofetch__label">Uptime</span><span class="neofetch__value">24/7 (sleep disabled)</span></div>
+            <div class="neofetch__row"><span class="neofetch__label">WiFi</span><span class="neofetch__value">Broadcom BCM4360</span></div>
+            <div class="neofetch__row"><span class="neofetch__label">Storage</span><span class="neofetch__value">Samsung T7 Shield SSD</span></div>
+            <div class="neofetch__row"><span class="neofetch__label">Docker</span><span class="neofetch__value">Compose V2 (plugin)</span></div>
+            <div class="neofetch__row"><span class="neofetch__label">Special</span><span class="neofetch__value">Custom lid-monitor daemon</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Windows GPU Node -->
+      <div class="terminal homelab-animate">
+        <div class="terminal__bar">
+          <span class="terminal__dot terminal__dot--red"></span>
+          <span class="terminal__dot terminal__dot--yellow"></span>
+          <span class="terminal__dot terminal__dot--green"></span>
+          <span class="terminal__bar-title">ssh: windows-gpu</span>
+        </div>
+        <div class="terminal__content">
+          <div class="neofetch">
+            <div class="neofetch__hostname"><span class="prompt-user">prince</span>@<span class="prompt-user">windows-gpu</span></div>
+            <div class="neofetch__sep">─────────────────────</div>
+            <div class="neofetch__row"><span class="neofetch__label">OS</span><span class="neofetch__value">Windows + WSL2</span></div>
+            <div class="neofetch__row"><span class="neofetch__label">Host</span><span class="neofetch__value">NVIDIA GPU Laptop</span></div>
+            <div class="neofetch__row"><span class="neofetch__label">Role</span><span class="neofetch__value">ML Offload Node</span></div>
+            <div class="neofetch__row"><span class="neofetch__label">IP</span><span class="neofetch__value">192.168.0.197</span></div>
+            <div class="neofetch__row"><span class="neofetch__label">GPU</span><span class="neofetch__value">NVIDIA CUDA (v545+)</span></div>
+            <div class="neofetch__row"><span class="neofetch__label">Service</span><span class="neofetch__value">Immich ML (face/object)</span></div>
+            <div class="neofetch__row"><span class="neofetch__label">Port</span><span class="neofetch__value">3003</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 4: Services (systemctl style)
+     ═══════════════════════════════════════════════════════════ -->
+<section class="lab-section">
+  <div class="container">
+    <div class="section-intro homelab-animate">
+      <h2 class="section-heading">What's running</h2>
+      <p class="section-desc">
+        Nine services run across the two nodes, split into three categories.
+        Every externally-accessible service goes through Cloudflare Tunnels - no ports are opened on the router.
+        Each card below shows the service name, its status, and the engineering decisions behind it.
+      </p>
+    </div>
+    <div class="section-cmd">
+      <span class="prompt-dollar">$</span> systemctl list-units --type=service --state=running
+    </div>
+
+    <!-- Core Infrastructure -->
+    <div class="service-group">
+      <div class="service-group__label"><span class="comment-hash">#</span> ─── Core Infrastructure ───────────────────────────</div>
+
+      <div class="service-card homelab-animate">
+        <div class="service-card__status-bar"></div>
+        <div class="service-card__content">
+          <div class="service-card__header">
+            <span class="service-card__dot service-card__dot--live"></span>
+            <span class="service-card__icon">🌐</span>
+            <span class="service-card__name">cloudflared.service</span>
+            <span class="service-card__title">- Secure Reverse Tunnel</span>
+            <span class="live-pill"><span class="live-pill__dot"></span>LIVE</span>
+          </div>
+          <div class="service-card__meta">
+            <span class="service-card__active">Active: active (running)</span>
+          </div>
+          <div class="service-card__details">
+            <div class="service-card__row">
+              <span class="service-card__key">Exposes</span>
+              <span class="service-card__val">
+                <a href="https://immich.princejain.me" target="_blank" rel="noopener noreferrer">immich.princejain.me</a>,
+                <a href="https://pdf.princejain.me" target="_blank" rel="noopener noreferrer">pdf.princejain.me</a>,
+                <a href="https://portainer.princejain.me" target="_blank" rel="noopener noreferrer">portainer.princejain.me</a>
+              </span>
+            </div>
+            <div class="service-card__row">
+              <span class="service-card__key">Mode</span>
+              <span class="service-card__val">systemd (host-level, not Docker)</span>
+            </div>
+          </div>
+          <div class="service-card__decisions">
+            <div class="service-card__decision"><span class="decision-arrow">&gt;</span> Outbound-only tunnel - zero open ports on the router</div>
+            <div class="service-card__decision"><span class="decision-arrow">&gt;</span> Free TLS, DDoS protection, and WAF from Cloudflare</div>
+          </div>
+          <div class="service-card__tags">
+            <span class="tag">Cloudflare</span>
+            <span class="tag">systemd</span>
+            <span class="tag">HTTPS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card homelab-animate">
+        <div class="service-card__status-bar"></div>
+        <div class="service-card__content">
+          <div class="service-card__header">
+            <span class="service-card__dot service-card__dot--live"></span>
+            <span class="service-card__icon">🐳</span>
+            <span class="service-card__name">docker.service</span>
+            <span class="service-card__title">- Container Runtime</span>
+            <span class="live-pill"><span class="live-pill__dot"></span>LIVE</span>
+          </div>
+          <div class="service-card__meta">
+            <span class="service-card__active">Active: active (running)</span>
+          </div>
+          <div class="service-card__details">
+            <div class="service-card__row">
+              <span class="service-card__key">Version</span>
+              <span class="service-card__val">Docker CE + Compose V2 (plugin)</span>
+            </div>
+          </div>
+          <div class="service-card__decisions">
+            <div class="service-card__decision"><span class="decision-arrow">&gt;</span> Official Docker repo, not Ubuntu's older version</div>
+            <div class="service-card__decision"><span class="decision-arrow">&gt;</span> systemd-resolved disabled on port 53 for AdGuard</div>
+          </div>
+          <div class="service-card__tags">
+            <span class="tag">Docker</span>
+            <span class="tag">Compose V2</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card homelab-animate">
+        <div class="service-card__status-bar"></div>
+        <div class="service-card__content">
+          <div class="service-card__header">
+            <span class="service-card__dot service-card__dot--live"></span>
+            <span class="service-card__icon">🎛️</span>
+            <span class="service-card__name">portainer.service</span>
+            <span class="service-card__title">- Docker Management UI</span>
+            <span class="live-pill"><span class="live-pill__dot"></span>LIVE</span>
+          </div>
+          <div class="service-card__meta">
+            <span class="service-card__active">Active: active (running)</span>
+            <span class="service-card__port">Port: 9000 <span class="port-arrow">-></span> <a href="https://portainer.princejain.me" target="_blank" rel="noopener noreferrer">portainer.princejain.me</a></span>
+          </div>
+          <div class="service-card__decisions">
+            <div class="service-card__decision"><span class="decision-arrow">&gt;</span> Full Docker socket access for container management</div>
+            <div class="service-card__decision"><span class="decision-arrow">&gt;</span> Protected behind Cloudflare Access authentication</div>
+          </div>
+          <div class="service-card__tags">
+            <span class="tag">Portainer</span>
+            <span class="tag">Docker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data & Privacy -->
+    <div class="service-group">
+      <div class="service-group__label"><span class="comment-hash">#</span> ─── Data & Privacy ────────────────────────────────</div>
+
+      <div class="service-card homelab-animate">
+        <div class="service-card__status-bar"></div>
+        <div class="service-card__content">
+          <div class="service-card__header">
+            <span class="service-card__dot service-card__dot--live"></span>
+            <img class="service-card__icon-img" src="/icons/immich.png" alt="" width="20" height="20" loading="lazy" />
+            <span class="service-card__name">immich.service</span>
+            <span class="service-card__title">- Self-hosted Photos</span>
+            <span class="live-pill"><span class="live-pill__dot"></span>LIVE</span>
+          </div>
+          <div class="service-card__meta">
+            <span class="service-card__active">Active: active (running)</span>
+            <span class="service-card__port">Port: 2283 <span class="port-arrow">-></span> <a href="https://immich.princejain.me" target="_blank" rel="noopener noreferrer">immich.princejain.me</a></span>
+          </div>
+          <div class="service-card__details">
+            <div class="service-card__row">
+              <span class="service-card__key">Stack</span>
+              <span class="service-card__val">Server + PostgreSQL (pgvector) + Redis + ML</span>
+            </div>
+            <div class="service-card__row">
+              <span class="service-card__key">Storage</span>
+              <span class="service-card__val">Samsung T7 Shield SSD @ /mnt/immich</span>
+            </div>
+          </div>
+          <div class="service-card__decisions">
+            <div class="service-card__decision"><span class="decision-arrow">&gt;</span> External SSD for data portability - host can be replaced</div>
+            <div class="service-card__decision"><span class="decision-arrow">&gt;</span> ML offloaded to GPU node over LAN for face/object detection</div>
+            <div class="service-card__decision"><span class="decision-arrow">&gt;</span> SSD auto-mounts via UUID in /etc/fstab before Docker starts</div>
+          </div>
+          <div class="service-card__tags">
+            <span class="tag">Docker</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Redis</span>
+            <span class="tag">ML</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card homelab-animate">
+        <div class="service-card__status-bar"></div>
+        <div class="service-card__content">
+          <div class="service-card__header">
+            <span class="service-card__dot service-card__dot--live"></span>
+            <img class="service-card__icon-img" src="/icons/vaultwarden.png" alt="" width="20" height="20" loading="lazy" />
+            <span class="service-card__name">vaultwarden.service</span>
+            <span class="service-card__title">- Password Manager</span>
+            <span class="live-pill"><span class="live-pill__dot"></span>LIVE</span>
+          </div>
+          <div class="service-card__meta">
+            <span class="service-card__active">Active: active (running)</span>
+            <span class="service-card__port">Port: 8888 <span class="port-arrow">-></span> <a href="https://vault.princejain.me" target="_blank" rel="noopener noreferrer">vault.princejain.me</a></span>
+          </div>
+          <div class="service-card__decisions">
+            <div class="service-card__decision"><span class="decision-arrow">&gt;</span> Self-hosted Bitwarden - all credentials stay on my hardware</div>
+          </div>
+          <div class="service-card__tags">
+            <span class="tag">Vaultwarden</span>
+            <span class="tag">Bitwarden</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card homelab-animate">
+        <div class="service-card__status-bar"></div>
+        <div class="service-card__content">
+          <div class="service-card__header">
+            <span class="service-card__dot service-card__dot--live"></span>
+            <img class="service-card__icon-img" src="/icons/adguard.svg" alt="" width="20" height="20" loading="lazy" />
+            <span class="service-card__name">adguard.service</span>
+            <span class="service-card__title">- Network Ad Blocker</span>
+            <span class="live-pill"><span class="live-pill__dot"></span>LIVE</span>
+          </div>
+          <div class="service-card__meta">
+            <span class="service-card__active">Active: active (running)</span>
+            <span class="service-card__port">Port: 53 (DNS) + 80 (Dashboard)</span>
+          </div>
+          <div class="service-card__decisions">
+            <div class="service-card__decision"><span class="decision-arrow">&gt;</span> Network-wide DNS filtering - ads blocked for all devices</div>
+            <div class="service-card__decision"><span class="decision-arrow">&gt;</span> Runs in host network mode to bind to port 53</div>
+            <div class="service-card__decision"><span class="decision-arrow">&gt;</span> Required disabling systemd-resolved to free DNS port</div>
+          </div>
+          <div class="service-card__tags">
+            <span class="tag">AdGuard</span>
+            <span class="tag">DNS</span>
+            <span class="tag">Privacy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Productivity -->
+    <div class="service-group">
+      <div class="service-group__label"><span class="comment-hash">#</span> ─── Productivity ──────────────────────────────────</div>
+
+      <div class="service-card homelab-animate">
+        <div class="service-card__status-bar"></div>
+        <div class="service-card__content">
+          <div class="service-card__header">
+            <span class="service-card__dot service-card__dot--live"></span>
+            <span class="service-card__icon">📄</span>
+            <span class="service-card__name">stirling-pdf.service</span>
+            <span class="service-card__title">- PDF Toolkit</span>
+            <span class="live-pill"><span class="live-pill__dot"></span>LIVE</span>
+          </div>
+          <div class="service-card__meta">
+            <span class="service-card__active">Active: active (running)</span>
+            <span class="service-card__port">Port: 8080 <span class="port-arrow">-></span> <a href="https://pdf.princejain.me" target="_blank" rel="noopener noreferrer">pdf.princejain.me</a></span>
+          </div>
+          <div class="service-card__decisions">
+            <div class="service-card__decision"><span class="decision-arrow">&gt;</span> Merge, split, rotate, compress, OCR - all self-hosted</div>
+          </div>
+          <div class="service-card__tags">
+            <span class="tag">Stirling PDF</span>
+            <span class="tag">OCR</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card homelab-animate">
+        <div class="service-card__status-bar"></div>
+        <div class="service-card__content">
+          <div class="service-card__header">
+            <span class="service-card__dot service-card__dot--live"></span>
+            <img class="service-card__icon-img" src="/icons/n8n.svg" alt="" width="20" height="20" loading="lazy" />
+            <span class="service-card__name">n8n.service</span>
+            <span class="service-card__title">- Automation Workflows</span>
+            <span class="live-pill"><span class="live-pill__dot"></span>LIVE</span>
+          </div>
+          <div class="service-card__meta">
+            <span class="service-card__active">Active: active (running)</span>
+            <span class="service-card__port">Port: 5678 <span class="port-arrow">-></span> <a href="https://n8n.princejain.me" target="_blank" rel="noopener noreferrer">n8n.princejain.me</a></span>
+          </div>
+          <div class="service-card__decisions">
+            <div class="service-card__decision"><span class="decision-arrow">&gt;</span> Daily automation workflows for personal productivity</div>
+          </div>
+          <div class="service-card__tags">
+            <span class="tag">n8n</span>
+            <span class="tag">Automation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card homelab-animate">
+        <div class="service-card__status-bar"></div>
+        <div class="service-card__content">
+          <div class="service-card__header">
+            <span class="service-card__dot service-card__dot--live"></span>
+            <img class="service-card__icon-img" src="/icons/openclaw.jpg" alt="" width="20" height="20" loading="lazy" />
+            <span class="service-card__name">openclaw.service</span>
+            <span class="service-card__title">- Personal AI Assistant</span>
+            <span class="live-pill"><span class="live-pill__dot"></span>LIVE</span>
+          </div>
+          <div class="service-card__meta">
+            <span class="service-card__active">Active: active (running)</span>
+          </div>
+          <div class="service-card__decisions">
+            <div class="service-card__decision"><span class="decision-arrow">&gt;</span> Named him Clawdius - my personal AI assistant</div>
+          </div>
+          <div class="service-card__tags">
+            <span class="tag">OpenClaw</span>
+            <span class="tag">AI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 5: Architecture Decisions (config comments)
+     ═══════════════════════════════════════════════════════════ -->
+<section class="lab-section">
+  <div class="container">
+    <div class="section-intro homelab-animate">
+      <h2 class="section-heading">Why I built it this way</h2>
+      <p class="section-desc">
+        Every choice here was deliberate. These are the architectural decisions that shaped the lab,
+        written as comments in a config file because that felt right.
+      </p>
+    </div>
+    <div class="section-cmd">
+      <span class="prompt-dollar">$</span> cat /etc/homelab/decisions.conf
+    </div>
+    <div class="terminal homelab-animate">
+      <div class="terminal__bar">
+        <span class="terminal__dot terminal__dot--red"></span>
+        <span class="terminal__dot terminal__dot--yellow"></span>
+        <span class="terminal__dot terminal__dot--green"></span>
+        <span class="terminal__bar-title">decisions.conf</span>
+      </div>
+      <div class="terminal__content">
+        <pre class="config-file"><span class="config-comment"># /etc/homelab/decisions.conf</span>
+<span class="config-comment"># Last updated: Dec 2024</span>
+<span class="config-sep"># ─────────────────────────────────────────────────────</span>
+
+<span class="config-key"># WHY: Cloudflare Tunnels over Port Forwarding</span>
+<span class="config-val">Zero open ports on the router. Outbound-only HTTPS</span>
+<span class="config-val">connections. Free TLS, DDoS protection, and WAF.</span>
+<span class="config-val">No need to touch router settings or expose home IP.</span>
+
+<span class="config-key"># WHY: External SSD for Immich Storage</span>
+<span class="config-val">Data lives independently of the host machine.</span>
+<span class="config-val">Portable and upgradeable. Auto-mounts via fstab UUID.</span>
+<span class="config-val">The MacBook could be replaced without losing a single photo.</span>
+
+<span class="config-key"># WHY: Distributed ML Processing</span>
+<span class="config-val">Heavy ML tasks (face detection, smart search) offloaded</span>
+<span class="config-val">to a Windows laptop with NVIDIA GPU over LAN.</span>
+<span class="config-val">Main server stays lean. Both nodes update independently.</span>
+<span class="config-val">If GPU node goes down, Immich queues jobs gracefully.</span>
+
+<span class="config-key"># WHY: Headless MacBook as Server</span>
+<span class="config-val">Custom lid-monitor systemd service turns off display</span>
+<span class="config-val">when lid closes without suspending. Sleep/hibernate</span>
+<span class="config-val">disabled entirely. 24/7 uptime with minimal power draw.</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 6: Tech Stack (docker images style)
+     ═══════════════════════════════════════════════════════════ -->
+<section class="lab-section lab-section--last">
+  <div class="container">
+    <div class="section-intro homelab-animate">
+      <h2 class="section-heading">The full stack</h2>
+      <p class="section-desc">
+        Everything runs on Docker containers orchestrated with Compose V2.
+        Here is the complete image list, straight from the machine.
+      </p>
+    </div>
+    <div class="section-cmd">
+      <span class="prompt-dollar">$</span> docker images --format "table {`{{.Repository}}`}\t{`{{.Tag}}`}"
+    </div>
+    <div class="terminal homelab-animate">
+      <div class="terminal__bar">
+        <span class="terminal__dot terminal__dot--red"></span>
+        <span class="terminal__dot terminal__dot--yellow"></span>
+        <span class="terminal__dot terminal__dot--green"></span>
+        <span class="terminal__bar-title">docker-images</span>
+      </div>
+      <div class="terminal__content">
+        <table class="docker-table">
+          <thead>
+            <tr>
+              <th>REPOSITORY</th>
+              <th>TAG</th>
+              <th>STATUS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>ubuntu-server</td><td>22.04</td><td class="docker-status">base</td></tr>
+            <tr><td>docker-ce</td><td>compose-v2</td><td class="docker-status">runtime</td></tr>
+            <tr><td>cloudflared</td><td>latest</td><td class="docker-status">tunnel</td></tr>
+            <tr><td>immich-server</td><td>latest</td><td class="docker-status docker-status--live">running</td></tr>
+            <tr><td>immich-ml</td><td>cuda</td><td class="docker-status docker-status--live">running</td></tr>
+            <tr><td>postgresql</td><td>16-pgvector</td><td class="docker-status docker-status--live">running</td></tr>
+            <tr><td>redis/valkey</td><td>latest</td><td class="docker-status docker-status--live">running</td></tr>
+            <tr><td>adguard-home</td><td>latest</td><td class="docker-status docker-status--live">running</td></tr>
+            <tr><td>stirling-pdf</td><td>latest</td><td class="docker-status docker-status--live">running</td></tr>
+            <tr><td>portainer-ce</td><td>latest</td><td class="docker-status docker-status--live">running</td></tr>
+            <tr><td>n8n</td><td>latest</td><td class="docker-status docker-status--live">running</td></tr>
+            <tr><td>vaultwarden</td><td>latest</td><td class="docker-status docker-status--live">running</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
+
+<!-- ═══════════════════════════════════════════════════════════
+     Scoped Styles
+     ═══════════════════════════════════════════════════════════ -->
+<style>
+  /* ─── Page background — lighter, warmer ──────────── */
+  .lab-hero {
+    background: var(--gray-900);
+    padding: var(--space-16) 0 var(--space-12);
+  }
+
+  .lab-section {
+    background: var(--gray-50);
+    padding: var(--space-12) 0;
+  }
+
+  .lab-section--last {
+    padding-bottom: var(--space-24);
+  }
+
+  /* ─── Section Intros (narrative content) ─────────── */
+  .lab-hero__intro {
+    margin-bottom: var(--space-8);
+  }
+
+  .lab-hero__title {
+    font-family: var(--font-display);
+    font-size: var(--text-5xl);
+    font-weight: 700;
+    color: white;
+    margin-bottom: var(--space-4);
+    line-height: 1.1;
+  }
+
+  .lab-hero__desc {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    color: var(--gray-400);
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0;
+  }
+
+  .section-intro {
+    margin-bottom: var(--space-6);
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: var(--space-3);
+  }
+
+  .section-desc {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0;
+  }
+
+  /* ─── Terminal Window ────────────────────────────── */
+  .terminal {
+    background: var(--gray-950);
+    border: 1px solid var(--gray-700);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .terminal__bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--gray-800);
+    background: var(--gray-900);
+  }
+
+  .terminal__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+  }
+
+  .terminal__dot--red { background: #ff5f57; }
+  .terminal__dot--yellow { background: #ffbd2e; }
+  .terminal__dot--green { background: #28c840; }
+
+  .terminal__bar-title {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    color: var(--gray-500);
+    margin-left: var(--space-3);
+  }
+
+  .terminal__content {
+    padding: var(--space-6);
+    color: var(--gray-300);
+    font-size: var(--text-sm);
+    line-height: 1.7;
+  }
+
+  /* ─── Prompt Styling ─────────────────────────────── */
+  .prompt-user { color: var(--color-accent); font-weight: 600; }
+  .prompt-sep { color: var(--gray-500); }
+  .prompt-path { color: var(--color-accent-light); }
+  .prompt-dollar { color: var(--gray-400); margin-left: var(--space-1); }
+
+  .section-cmd {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--gray-500);
+    margin-bottom: var(--space-4);
+    padding-left: var(--space-1);
+  }
+
+  .section-cmd .prompt-dollar {
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-left: 0;
+    margin-right: var(--space-2);
+  }
+
+  /* ─── Blinking Cursor ────────────────────────────── */
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 9px;
+    height: 1.15em;
+    background: var(--color-accent);
+    animation: blink 1.1s step-end infinite;
+    vertical-align: text-bottom;
+    border-radius: 1px;
+  }
+
+  /* ─── Hero Section ───────────────────────────────── */
+  .hero-prompt {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-5);
+  }
+
+  .hero-prompt--bottom {
+    margin-top: var(--space-5);
+    margin-bottom: 0;
+  }
+
+  .hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-family: var(--font-mono);
+  }
+
+  .hero-stat {
+    display: flex;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+  }
+
+  .hero-stat__label {
+    color: var(--gray-500);
+    min-width: 120px;
+  }
+
+  .hero-stat__label::after {
+    content: ':';
+  }
+
+  .hero-stat__value {
+    color: var(--gray-200);
+    font-weight: 500;
+  }
+
+  .hero-stat__value--live {
+    color: #4ade80;
+  }
+
+  /* ─── Live Dot ───────────────────────────────────── */
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .live-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: #4ade80;
+    animation: livePulse 1.4s ease-in-out infinite;
+    vertical-align: middle;
+    margin-left: var(--space-1);
+  }
+
+  /* ─── Topology Diagram ───────────────────────────── */
+  .topology-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .topology-art {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    line-height: 1.45;
+    color: var(--gray-300);
+    margin: 0;
+    white-space: pre;
+    tab-size: 4;
+  }
+
+  .topo-muted { color: var(--gray-600); }
+  .topo-accent { color: var(--color-accent); }
+  .topo-blue { color: #60a5fa; }
+  .topo-cloud { color: #60a5fa; font-weight: 600; }
+  .topo-live { color: #4ade80; }
+  .topo-comment { color: var(--gray-500); font-style: italic; }
+
+  /* ─── Hardware Grid ──────────────────────────────── */
+  .hardware-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  /* ─── Neofetch Style ─────────────────────────────── */
+  .neofetch {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+  }
+
+  .neofetch__hostname {
+    font-weight: 700;
+    font-size: var(--text-base);
+    margin-bottom: var(--space-1);
+  }
+
+  .neofetch__sep {
+    color: var(--gray-600);
+    margin-bottom: var(--space-3);
+  }
+
+  .neofetch__row {
+    display: flex;
+    gap: var(--space-3);
+    margin-bottom: var(--space-1);
+    line-height: 1.6;
+  }
+
+  .neofetch__label {
+    color: var(--color-accent);
+    font-weight: 600;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  .neofetch__value {
+    color: var(--gray-300);
+  }
+
+  /* ─── Service Cards ──────────────────────────────── */
+  .service-group {
+    margin-bottom: var(--space-8);
+  }
+
+  .service-group__label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--gray-500);
+    margin-bottom: var(--space-4);
+    letter-spacing: 0.02em;
+  }
+
+  .comment-hash {
+    color: var(--gray-400);
+  }
+
+  .service-card {
+    position: relative;
+    background: var(--gray-950);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-3);
+    overflow: hidden;
+    transition: border-color var(--transition-base),
+                box-shadow var(--transition-base);
+  }
+
+  .service-card:hover {
+    border-color: var(--gray-300);
+    box-shadow: var(--shadow-md);
+  }
+
+  .service-card__status-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #16a34a;
+  }
+
+  .service-card__content {
+    padding: var(--space-4) var(--space-5);
+    padding-left: var(--space-6);
+  }
+
+  .service-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .service-card__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+  }
+
+  .service-card__dot--live {
+    background: #4ade80;
+    box-shadow: 0 0 6px rgba(74, 222, 128, 0.4);
+  }
+
+  .service-card__icon {
+    font-size: 1rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .service-card__icon-img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  .service-card__name {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: white;
+  }
+
+  .service-card__title {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--gray-400);
+  }
+
+  /* ─── LIVE Pill ──────────────────────────────────── */
+  .live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 8px;
+    background: #16a34a;
+    color: white;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+    margin-left: auto;
+    box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
+  }
+
+  .live-pill__dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: white;
+    animation: livePulse 1.4s ease-in-out infinite;
+  }
+
+  .service-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+
+  .service-card__active {
+    color: #4ade80;
+  }
+
+  .service-card__port {
+    color: var(--gray-400);
+  }
+
+  .port-arrow {
+    color: var(--gray-600);
+    margin: 0 var(--space-1);
+  }
+
+  .service-card__port a {
+    color: var(--color-accent-light);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--transition-fast);
+  }
+
+  .service-card__port a:hover {
+    border-bottom-color: var(--color-accent-light);
+  }
+
+  .service-card__details {
+    margin-bottom: var(--space-3);
+  }
+
+  .service-card__row {
+    display: flex;
+    gap: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    margin-bottom: var(--space-1);
+    line-height: 1.6;
+  }
+
+  .service-card__key {
+    color: var(--gray-500);
+    min-width: 70px;
+    flex-shrink: 0;
+  }
+
+  .service-card__val {
+    color: var(--gray-300);
+  }
+
+  .service-card__val a {
+    color: var(--color-accent-light);
+    text-decoration: none;
+  }
+
+  .service-card__val a:hover {
+    text-decoration: underline;
+  }
+
+  .service-card__decisions {
+    margin-bottom: var(--space-3);
+  }
+
+  .service-card__decision {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--gray-400);
+    line-height: 1.6;
+    margin-bottom: var(--space-1);
+  }
+
+  .decision-arrow {
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-right: var(--space-1);
+  }
+
+  .service-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .tag {
+    display: inline-flex;
+    padding: 2px 8px;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray-400);
+    background: var(--gray-800);
+    border: 1px solid var(--gray-700);
+    border-radius: var(--radius-full);
+  }
+
+  /* ─── Config File (Decisions) ────────────────────── */
+  .config-file {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    line-height: 1.8;
+    margin: 0;
+    white-space: pre-wrap;
+  }
+
+  .config-comment { color: var(--gray-600); }
+  .config-sep { color: var(--gray-700); }
+  .config-key { color: var(--color-accent); font-weight: 600; }
+  .config-val { color: var(--gray-400); }
+
+  /* ─── Docker Images Table ────────────────────────── */
+  .docker-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+
+  .docker-table th {
+    text-align: left;
+    color: var(--gray-500);
+    font-weight: 600;
+    padding: var(--space-2) var(--space-4) var(--space-2) 0;
+    border-bottom: 1px solid var(--gray-700);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.6rem;
+  }
+
+  .docker-table td {
+    padding: var(--space-2) var(--space-4) var(--space-2) 0;
+    color: var(--gray-300);
+    border-bottom: 1px solid var(--gray-800);
+  }
+
+  .docker-table tbody tr {
+    transition: background var(--transition-fast);
+  }
+
+  .docker-table tbody tr:hover {
+    background: var(--gray-900);
+  }
+
+  .docker-status {
+    color: var(--gray-500);
+    font-style: italic;
+  }
+
+  .docker-status--live {
+    color: #4ade80;
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  /* ─── Scroll Reveal ──────────────────────────────── */
+  .homelab-animate {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  .homelab-animate.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* ─── Responsive ─────────────────────────────────── */
+  @media (min-width: 768px) {
+    .hardware-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .terminal__content {
+      padding: var(--space-6) var(--space-8);
+    }
+
+    .topology-art {
+      font-size: var(--text-sm);
+    }
+
+    .lab-hero__title {
+      font-size: var(--text-5xl);
+    }
+
+    .hero-stat__label {
+      min-width: 140px;
+    }
+
+    .neofetch__label {
+      min-width: 100px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .lab-hero {
+      padding: var(--space-8) 0 var(--space-6);
+    }
+
+    .lab-section {
+      padding: var(--space-8) 0;
+    }
+
+    .lab-hero__title {
+      font-size: var(--text-3xl);
+    }
+
+    .terminal__content {
+      padding: var(--space-4) var(--space-3);
+    }
+
+    .service-card__content {
+      padding: var(--space-3) var(--space-4);
+      padding-left: var(--space-5);
+    }
+
+    .service-card__header {
+      gap: var(--space-1);
+    }
+
+    .service-card__title {
+      display: none;
+    }
+
+    .live-pill {
+      padding: 1px 6px;
+      font-size: 0.5rem;
+    }
+
+    .hero-stat__label {
+      min-width: 100px;
+    }
+
+    .section-heading {
+      font-size: var(--text-2xl);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .lab-hero__title {
+      font-size: var(--text-2xl);
+    }
+
+    .topology-art {
+      font-size: 0.6rem;
+      line-height: 1.4;
+    }
+
+    .neofetch__row {
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: var(--space-2);
+    }
+
+    .neofetch__label {
+      min-width: unset;
+    }
+
+    .hero-stat {
+      font-size: var(--text-xs);
+    }
+
+    .hero-stat__label {
+      min-width: 85px;
+    }
+
+    .service-card__icon,
+    .service-card__icon-img {
+      display: none;
+    }
+
+    .section-cmd {
+      font-size: var(--text-xs);
+    }
+
+    .docker-table {
+      font-size: 0.55rem;
+    }
+
+    .docker-table td,
+    .docker-table th {
+      padding: var(--space-1) var(--space-2) var(--space-1) 0;
+    }
+  }
+
+  /* ─── Reduced Motion ─────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .homelab-animate {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .cursor {
+      animation: none;
+      opacity: 1;
+    }
+
+    .live-dot,
+    .live-pill__dot {
+      animation: none;
+    }
+  }
+</style>
+
+<!-- ═══════════════════════════════════════════════════════════
+     Scroll Animation Script
+     ═══════════════════════════════════════════════════════════ -->
+<script>
+  function initHomelabAnimations(): void {
+    const items = document.querySelectorAll<HTMLElement>('.homelab-animate');
+    if (!items.length) return;
+
+    let staggerIndex = 0;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const delay = staggerIndex * 120;
+            staggerIndex++;
+            window.setTimeout(() => {
+              el.classList.add('is-visible');
+            }, delay);
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+    );
+
+    items.forEach((item) => observer.observe(item));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHomelabAnimations);
+  } else {
+    initHomelabAnimations();
+  }
+</script>
