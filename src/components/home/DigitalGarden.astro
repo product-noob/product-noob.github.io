@@ -82,7 +82,8 @@ const { projects, services } = Astro.props;
         <span class="subsection__icon">🖥️</span>
         The Home Lab
       </h3>
-      <p class="subsection__desc">Services I self-host on my home server, always running.</p>
+      <p class="subsection__desc">Services I self-host on my home server, always running. <a href="/homelab" class="subsection__link">See the full setup &rarr;</a></p>
+
 
       <div class="homelab-rack animate-on-scroll">
         {services.map((svc, i) => (
@@ -301,6 +302,18 @@ const { projects, services } = Astro.props;
     margin: 0 0 var(--space-6) 0;
     line-height: 1.5;
   }
+  .subsection__link {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+
+.subsection__link:hover {
+  color: var(--color-accent-light);
+}
+
 
   /* ════════════════════════════════════════════════════════════════
      1. Home Lab — Server Rack with LIVE pills
