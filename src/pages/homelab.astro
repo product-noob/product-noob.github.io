@@ -45,9 +45,14 @@ const homelabServices = [
     <div class="lab-hero__intro animate-fade-up">
       <h1 class="lab-hero__title">The Home Lab</h1>
       <p class="lab-hero__desc">
-        I run a small self-hosted cloud out of a repurposed MacBook and a spare GPU laptop.
-        Everything from my photo library to my password manager lives on hardware I own -
-        no subscriptions, no vendor lock-in, and zero open ports on my router.
+        My photos, passwords, and automation workflows were spread across a dozen SaaS tools and cloud providers
+        (me trying to maximally utilise different free-tiers :P) - each with its own subscription, limits, and
+        general overhead of managing. I replaced all of them with a single self-hosted system running on a
+        repurposed MacBook Air.
+      </p>
+      <p class="lab-hero__subtext">
+        Here are the details on how I built a low-cost, production-grade infrastructure that scratches most of
+        my experimentation itch these days.
       </p>
     </div>
 
@@ -73,7 +78,7 @@ const homelabServices = [
           </div>
           <div class="hero-stat">
             <span class="hero-stat__label">Nodes</span>
-            <span class="hero-stat__value">2 (MacBook + GPU)</span>
+            <span class="hero-stat__value">MacBook Air + GPU helper</span>
           </div>
           <div class="hero-stat">
             <span class="hero-stat__label">Open Ports</span>
@@ -100,9 +105,15 @@ const homelabServices = [
     <div class="section-intro homelab-animate">
       <h2 class="section-heading">How it all connects</h2>
       <p class="section-desc">
-        Traffic from the internet hits Cloudflare first, which handles TLS, caching, and DDoS protection.
-        A lightweight tunnel daemon on the MacBook maintains an outbound-only connection - so nothing on my home
-        network is directly exposed. The GPU laptop handles ML-heavy tasks like face detection over the local network.
+        All traffic from the internet hits Cloudflare first - TLS, caching, DDoS protection, the works.
+        A lightweight <code>cloudflared</code> daemon on the MacBook maintains an outbound-only tunnel, so nothing
+        on my home network is directly reachable from outside. A second laptop with an NVIDIA GPU sits on the
+        local network purely for Immich's ML workloads (face detection, smart search).
+      </p>
+      <p class="section-tradeoff homelab-animate">
+        <span class="tradeoff-label">Key tradeoff:</span> I went with Cloudflare Tunnels over port forwarding or a self-managed
+        reverse proxy. Since it eliminates the attack surface entirely and easy to manage for a simple home setup.
+        Zero open ports, no router config to maintain, and has been worth it.
       </p>
     </div>
     <div class="section-cmd">
@@ -117,31 +128,31 @@ const homelabServices = [
       </div>
       <div class="terminal__content topology-scroll">
         <pre class="topology-art" role="img" aria-label="Network topology diagram: Internet traffic flows through Cloudflare Edge (DNS, TLS, WAF) via an outbound-only tunnel to ubuntu-mac running immich, adguard, portainer, pdf, n8n, vault, and openclaw. A second node windows-gpu handles ML tasks over the local network."><span class="topo-muted">┌──────────────────────── NETWORK TOPOLOGY ─────────────────────────┐
-│                                                                   │
-│</span>  <span class="topo-cloud">INTERNET</span>                                                       <span class="topo-muted">│
-│</span>      <span class="topo-muted">│</span>                                                              <span class="topo-muted">│
-│</span>      <span class="topo-muted">▼</span>                                                              <span class="topo-muted">│
+│                                                               │
+│</span>  <span class="topo-cloud">INTERNET</span>                                                     <span class="topo-muted">│
+│</span>      <span class="topo-muted">│</span>                                                        <span class="topo-muted">│
+│</span>      <span class="topo-muted">▼</span>                                                        <span class="topo-muted">│
 │</span>  <span class="topo-blue">┌──────────────────────────┐</span>                                   <span class="topo-muted">│
-│</span>  <span class="topo-blue">│  Cloudflare Edge         │</span>                                   <span class="topo-muted">│
-│</span>  <span class="topo-blue">│  DNS + TLS + WAF         │</span>                                   <span class="topo-muted">│
+│</span>  <span class="topo-blue">│  Cloudflare Edge       │</span>                                   <span class="topo-muted">│
+│</span>  <span class="topo-blue">│  DNS + TLS + WAF       │</span>                                   <span class="topo-muted">│
 │</span>  <span class="topo-blue">└────────────┬─────────────┘</span>                                   <span class="topo-muted">│
-│</span>               <span class="topo-muted">│</span> <span class="topo-comment">outbound tunnel only</span>                             <span class="topo-muted">│
-│</span>               <span class="topo-muted">▼</span>                                                      <span class="topo-muted">│
-│</span>  <span class="topo-accent">┌──────────────────────────┐</span>  <span class="topo-accent">┌───────────────────┐</span>   <span class="topo-muted">│
-│</span>  <span class="topo-accent">│  UBUNTU-MAC</span>              <span class="topo-accent">│</span>  <span class="topo-accent">│  WINDOWS-GPU</span>      <span class="topo-accent">│</span>   <span class="topo-muted">│
-│</span>  <span class="topo-accent">│</span>  Primary Server          <span class="topo-accent">│</span><span class="topo-muted">◄►</span><span class="topo-accent">│</span>  ML Offload Node <span class="topo-accent">│</span>   <span class="topo-muted">│
-│</span>  <span class="topo-accent">│</span>                          <span class="topo-accent">│</span><span class="topo-comment">ML</span><span class="topo-accent">│</span>                   <span class="topo-accent">│</span>   <span class="topo-muted">│
-│</span>  <span class="topo-accent">│</span>  ├─ immich:2283    <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>  <span class="topo-accent">│</span>  └─ ml:3003 <span class="topo-live">[●]</span><span class="topo-accent">│</span>   <span class="topo-muted">│
-│</span>  <span class="topo-accent">│</span>  ├─ adguard:53     <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>  <span class="topo-accent">└───────────────────┘</span>   <span class="topo-muted">│
-│</span>  <span class="topo-accent">│</span>  ├─ portainer:9000 <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                <span class="topo-muted">│
-│</span>  <span class="topo-accent">│</span>  ├─ pdf:8080       <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                <span class="topo-muted">│
-│</span>  <span class="topo-accent">│</span>  ├─ n8n:5678       <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                <span class="topo-muted">│
-│</span>  <span class="topo-accent">│</span>  ├─ vault:8888     <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                <span class="topo-muted">│
-│</span>  <span class="topo-accent">│</span>  └─ openclaw       <span class="topo-live">[●]</span>  <span class="topo-accent">│</span>                                <span class="topo-muted">│
-│</span>  <span class="topo-accent">└──────────────────────────┘</span>                                   <span class="topo-muted">│
-│</span>                                                                   <span class="topo-muted">│
-│</span>  <span class="topo-live">●</span> = LIVE    <span class="topo-muted">○ = stopped</span>                                       <span class="topo-muted">│
-└───────────────────────────────────────────────────────────────────┘</span></pre>
+│</span>              <span class="topo-muted">│</span> <span class="topo-comment">outbound tunnel only</span>                           <span class="topo-muted">│
+│</span>              <span class="topo-muted">▼</span>                                                <span class="topo-muted">│
+│</span>  <span class="topo-accent">┌───────────────────────────┐</span>  <span class="topo-accent">┌───────────────────┐</span>   <span class="topo-muted">          │
+│</span>  <span class="topo-accent">│  UBUNTU-MAC</span>            <span class="topo-accent"> │</span>  <span class="topo-accent">│  WINDOWS-GPU</span>    <span class="topo-accent">│</span>   <span class="topo-muted">          │
+│</span>  <span class="topo-accent">│</span>  Primary Server        <span class="topo-accent"> │</span><span class="topo-muted">◄►</span><span class="topo-accent">│</span>  ML Offload Node<span class="topo-accent">│</span>             <span class="topo-muted">│
+│</span>  <span class="topo-accent">│</span>                        <span class="topo-accent"> │</span><span class="topo-comment">ML</span><span class="topo-accent">│</span>                 <span class="topo-accent">│</span>           <span class="topo-muted">  │
+│</span>  <span class="topo-accent">│</span>  ├─ immich:2283   <span class="topo-live">[●]</span>   <span class="topo-accent">│</span>  <span class="topo-accent">│</span>  └─ ml:3003  <span class="topo-live">[●] </span><span class="topo-accent">│</span>            <span class="topo-muted"> │
+│</span>  <span class="topo-accent">│</span>  ├─ adguard:53    <span class="topo-live">[●]</span>   <span class="topo-accent">│</span>  <span class="topo-accent">└───────────────────┘</span>   <span class="topo-muted">          │
+│</span>  <span class="topo-accent">│</span>  ├─ portainer:9000<span class="topo-live">[●]</span>   <span class="topo-accent">│</span>                                <span class="topo-muted">  │
+│</span>  <span class="topo-accent">│</span>  ├─ pdf:8080      <span class="topo-live">[●]</span>   <span class="topo-accent">│</span>                                <span class="topo-muted">  │
+│</span>  <span class="topo-accent">│</span>  ├─ n8n:5678      <span class="topo-live">[●]</span>   <span class="topo-accent">│</span>                                <span class="topo-muted">  │
+│</span>  <span class="topo-accent">│</span>  ├─ vault:8888    <span class="topo-live">[●]</span>   <span class="topo-accent">│</span>                                <span class="topo-muted">  │
+│</span>  <span class="topo-accent">│</span>  └─ openclaw      <span class="topo-live">[●]</span>   <span class="topo-accent">│</span>                                <span class="topo-muted">  │
+│</span>  <span class="topo-accent">└───────────────────────────┘</span>                                  <span class="topo-muted">│
+│</span>                                                               <span class="topo-muted">│
+│</span>  <span class="topo-live">●</span> = LIVE     <span class="topo-muted">○ = stopped</span>                                     <span class="topo-muted">│
+└────────────────────────────────────────────────────────────────────┘</span></pre>
       </div>
     </div>
   </div>
@@ -155,9 +166,15 @@ const homelabServices = [
     <div class="section-intro homelab-animate">
       <h2 class="section-heading">The hardware</h2>
       <p class="section-desc">
-        The primary server is a repurposed Intel MacBook running Ubuntu headless - lid closed, display off, always on.
-        A custom systemd service handles the lid-close without suspending. The second node is a Windows laptop with an
-        NVIDIA GPU that handles computationally expensive machine learning tasks over the local network.
+        The heart of the system is an old Intel MacBook Air running Ubuntu Server headless - lid closed,
+        display off (basically for best performance by saving resources to the max possble), running 24/7. I wrote a custom systemd service that handles the lid-close without
+        suspending (that was a fun rabbit hole). A spare Windows laptop with an NVIDIA GPU sits alongside
+        it on the network, but only for one job: running Immich's ML library for face and object detection and is turned on whenver there are heavy ML tasks (think of a bulk upload post vacation :) )
+      </p>
+      <p class="section-tradeoff homelab-animate">
+        <span class="tradeoff-label">Benefit:</span> No budget needed for dedicated server hardware.
+        <span class="tradeoff-label">Approach:</span> Repurpose what I already had. Less reliable than
+        rack-mounted gear, sure - but the uptime has been surprisingly solid and the cost was literally zero.
       </p>
     </div>
     <div class="section-cmd">
@@ -223,9 +240,9 @@ const homelabServices = [
     <div class="section-intro homelab-animate">
       <h2 class="section-heading">What's running</h2>
       <p class="section-desc">
-        Nine services run across the two nodes, split into three categories.
-        Every externally-accessible service goes through Cloudflare Tunnels - no ports are opened on the router.
-        Each card below shows the service name, its status, and the engineering decisions behind it.
+        Nine services, split across three categories. Everything that needs external access goes through
+        Cloudflare Tunnels - not a single port is opened on the router. Here's what's running and the
+        decisions behind each one.
       </p>
     </div>
     <div class="section-cmd">
@@ -347,6 +364,10 @@ const homelabServices = [
             <span class="service-card__title">- Self-hosted Photos</span>
             <span class="live-pill"><span class="live-pill__dot"></span>LIVE</span>
           </div>
+          <div class="service-card__problem">
+            <span class="problem-label">Problem:</span> Google Photos owns your memories. Lock-in, recurring cost, and zero control over something deeply personal.
+            <span class="problem-label">Solution:</span> Local-first photo storage with ML-powered search - all on an external SSD I can unplug and carry.
+          </div>
           <div class="service-card__meta">
             <span class="service-card__active">Active: active (running)</span>
             <span class="service-card__port">Port: 2283 <span class="port-arrow">-></span> <a href="https://immich.princejain.me" target="_blank" rel="noopener noreferrer">immich.princejain.me</a></span>
@@ -385,6 +406,10 @@ const homelabServices = [
             <span class="service-card__title">- Password Manager</span>
             <span class="live-pill"><span class="live-pill__dot"></span>LIVE</span>
           </div>
+          <div class="service-card__problem">
+            <span class="problem-label">Problem:</span> Your password manager holds the keys to everything. A third-party breach there is genuinely existential.
+            <span class="problem-label">Solution:</span> Self-hosted Bitwarden-compatible vault. Every credential stays on my hardware, synced across all my devices.
+          </div>
           <div class="service-card__meta">
             <span class="service-card__active">Active: active (running)</span>
             <span class="service-card__port">Port: 8888 <span class="port-arrow">-></span> <a href="https://vault.princejain.me" target="_blank" rel="noopener noreferrer">vault.princejain.me</a></span>
@@ -409,12 +434,15 @@ const homelabServices = [
             <span class="service-card__title">- Network Ad Blocker</span>
             <span class="live-pill"><span class="live-pill__dot"></span>LIVE</span>
           </div>
+          <div class="service-card__problem">
+            <span class="problem-label">Problem:</span> You can install an ad blocker on a laptop, but good luck doing that on a smart TV or a phone app.
+            <span class="problem-label">Solution:</span> DNS-level filtering. Every device on my network gets ad blocking automatically - no per-device setup.
+          </div>
           <div class="service-card__meta">
             <span class="service-card__active">Active: active (running)</span>
             <span class="service-card__port">Port: 53 (DNS) + 80 (Dashboard)</span>
           </div>
           <div class="service-card__decisions">
-            <div class="service-card__decision"><span class="decision-arrow">&gt;</span> Network-wide DNS filtering - ads blocked for all devices</div>
             <div class="service-card__decision"><span class="decision-arrow">&gt;</span> Runs in host network mode to bind to port 53</div>
             <div class="service-card__decision"><span class="decision-arrow">&gt;</span> Required disabling systemd-resolved to free DNS port</div>
           </div>
@@ -513,8 +541,8 @@ const homelabServices = [
     <div class="section-intro homelab-animate">
       <h2 class="section-heading">Why I built it this way</h2>
       <p class="section-desc">
-        Every choice here was deliberate. These are the architectural decisions that shaped the lab,
-        written as comments in a config file because that felt right.
+        Nothing here was accidental. These are the key architectural decisions that shaped the lab -
+        written as comments in a config file, because honestly, that felt right for the vibe.
       </p>
     </div>
     <div class="section-cmd">
@@ -531,78 +559,199 @@ const homelabServices = [
         <pre class="config-file"><span class="config-comment"># /etc/homelab/decisions.conf</span>
 <span class="config-comment"># Last updated: Mar 2026</span>
 <span class="config-sep"># ─────────────────────────────────────────────────────</span>
+<span class="config-sep"># [SECURITY]</span>
 
 <span class="config-key"># WHY: Cloudflare Tunnels over Port Forwarding</span>
 <span class="config-val">Zero open ports on the router. Outbound-only HTTPS</span>
 <span class="config-val">connections. Free TLS, DDoS protection, and WAF.</span>
 <span class="config-val">No need to touch router settings or expose home IP.</span>
+<span class="config-impact"># IMPACT: Zero attack surface. No firewall rules to maintain.</span>
+
+<span class="config-sep"># [PORTABILITY]</span>
 
 <span class="config-key"># WHY: External SSD for Immich Storage</span>
 <span class="config-val">Data lives independently of the host machine.</span>
 <span class="config-val">Portable and upgradeable. Auto-mounts via fstab UUID.</span>
-<span class="config-val">The MacBook could be replaced without losing a single photo.</span>
+<span class="config-impact"># IMPACT: Full system migration in &lt;10 min, zero data loss.</span>
+<span class="config-impact"># The MacBook could be replaced without losing a single photo.</span>
 
-<span class="config-key"># WHY: Distributed ML Processing</span>
-<span class="config-val">Heavy ML tasks (face detection, smart search) offloaded</span>
-<span class="config-val">to a Windows laptop with NVIDIA GPU over LAN.</span>
-<span class="config-val">Main server stays lean. Both nodes update independently.</span>
-<span class="config-val">If GPU node goes down, Immich queues jobs gracefully.</span>
+<span class="config-sep"># [SCALABILITY]</span>
+
+<span class="config-key"># WHY: Offload ML to a separate GPU machine</span>
+<span class="config-val">Face detection and smart search are GPU-hungry. Instead of</span>
+<span class="config-val">cramming it all on the MacBook, a spare Windows laptop with</span>
+<span class="config-val">an NVIDIA GPU handles just Immich's ML library over LAN.</span>
+<span class="config-impact"># IMPACT: MacBook CPU stays under 15%. GPU node can go</span>
+<span class="config-impact"># offline without breaking Immich - jobs just queue up.</span>
+
+<span class="config-sep"># [COST]</span>
 
 <span class="config-key"># WHY: Headless MacBook as Server</span>
 <span class="config-val">Custom lid-monitor systemd service turns off display</span>
 <span class="config-val">when lid closes without suspending. Sleep/hibernate</span>
-<span class="config-val">disabled entirely. 24/7 uptime with minimal power draw.</span></pre>
+<span class="config-val">disabled entirely. 24/7 uptime with minimal power draw.</span>
+<span class="config-impact"># IMPACT: $0 hardware cost. Replaces ~$15/mo in SaaS subscriptions.</span></pre>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     SECTION 6: Tech Stack (docker images style)
+     SECTION 6: What this enables
      ═══════════════════════════════════════════════════════════ -->
-<section class="lab-section lab-section--last">
+<section class="lab-section">
   <div class="container">
     <div class="section-intro homelab-animate">
-      <h2 class="section-heading">The full stack</h2>
+      <h2 class="section-heading">What this actually gives me</h2>
       <p class="section-desc">
-        Everything runs on Docker containers orchestrated with Compose V2.
-        Here is the complete image list, straight from the machine.
+        The infra is a means, not an end. Here's what it actually delivers on a daily basis.
       </p>
     </div>
     <div class="section-cmd">
-      <span class="prompt-dollar">$</span> docker images --format "table {`{{.Repository}}`}\t{`{{.Tag}}`}"
+      <span class="prompt-dollar">$</span> cat /etc/homelab/outcomes.log
     </div>
     <div class="terminal homelab-animate">
       <div class="terminal__bar">
         <span class="terminal__dot terminal__dot--red"></span>
         <span class="terminal__dot terminal__dot--yellow"></span>
         <span class="terminal__dot terminal__dot--green"></span>
-        <span class="terminal__bar-title">docker-images</span>
+        <span class="terminal__bar-title">outcomes.log</span>
       </div>
       <div class="terminal__content">
-        <table class="docker-table">
-          <thead>
-            <tr>
-              <th>REPOSITORY</th>
-              <th>TAG</th>
-              <th>STATUS</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>ubuntu-server</td><td>22.04</td><td class="docker-status">base</td></tr>
-            <tr><td>docker-ce</td><td>compose-v2</td><td class="docker-status">runtime</td></tr>
-            <tr><td>cloudflared</td><td>latest</td><td class="docker-status">tunnel</td></tr>
-            <tr><td>immich-server</td><td>latest</td><td class="docker-status docker-status--live">running</td></tr>
-            <tr><td>immich-ml</td><td>cuda</td><td class="docker-status docker-status--live">running</td></tr>
-            <tr><td>postgresql</td><td>16-pgvector</td><td class="docker-status docker-status--live">running</td></tr>
-            <tr><td>redis/valkey</td><td>latest</td><td class="docker-status docker-status--live">running</td></tr>
-            <tr><td>adguard-home</td><td>latest</td><td class="docker-status docker-status--live">running</td></tr>
-            <tr><td>stirling-pdf</td><td>latest</td><td class="docker-status docker-status--live">running</td></tr>
-            <tr><td>portainer-ce</td><td>latest</td><td class="docker-status docker-status--live">running</td></tr>
-            <tr><td>n8n</td><td>latest</td><td class="docker-status docker-status--live">running</td></tr>
-            <tr><td>vaultwarden</td><td>latest</td><td class="docker-status docker-status--live">running</td></tr>
-          </tbody>
-        </table>
+        <div class="outcomes-list">
+          <div class="outcome-item">
+            <span class="outcome-icon">&#9632;</span>
+            <div class="outcome-text">
+              <span class="outcome-title">My photos are actually mine</span>
+              <span class="outcome-desc">15,000+ photos with ML-powered face detection and search - no cloud, no subscription, no lock-in and full privacy.</span>
+            </div>
+          </div>
+          <div class="outcome-item">
+            <span class="outcome-icon">&#9632;</span>
+            <div class="outcome-text">
+              <span class="outcome-title">Passwords I actually trust</span>
+              <span class="outcome-desc">Bitwarden-compatible vault synced across all my devices, stored entirely on my hardware</span>
+            </div>
+          </div>
+          <div class="outcome-item">
+            <span class="outcome-icon">&#9632;</span>
+            <div class="outcome-text">
+              <span class="outcome-title">Ads blocked everywhere</span>
+              <span class="outcome-desc">DNS-level filtering for every device on the network - phones, TVs, laptops - zero per-device config</span>
+            </div>
+          </div>
+          <div class="outcome-item">
+            <span class="outcome-icon">&#9632;</span>
+            <div class="outcome-text">
+              <span class="outcome-title">Workflows that run themselves</span>
+              <span class="outcome-desc">Daily automations for notifications, data sync, and task management via n8n - set it and forget it</span>
+            </div>
+          </div>
+          <div class="outcome-item">
+            <span class="outcome-icon">&#9632;</span>
+            <div class="outcome-text">
+              <span class="outcome-title">$0/month</span>
+              <span class="outcome-desc">Replaced atleast $30/mo in cloud and hosting subscriptions with hardware that was collecting dust</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 7: Key Learnings
+     ═══════════════════════════════════════════════════════════ -->
+<section class="lab-section">
+  <div class="container">
+    <div class="section-intro homelab-animate">
+      <h2 class="section-heading">What I actually learned</h2>
+      <p class="section-desc">
+        Building this was one thing. Operating it day-to-day taught me stuff no documentation ever would.
+      </p>
+    </div>
+    <div class="section-cmd">
+      <span class="prompt-dollar">$</span> grep -r "LESSON" /var/log/homelab/
+    </div>
+    <div class="terminal homelab-animate">
+      <div class="terminal__bar">
+        <span class="terminal__dot terminal__dot--red"></span>
+        <span class="terminal__dot terminal__dot--yellow"></span>
+        <span class="terminal__dot terminal__dot--green"></span>
+        <span class="terminal__bar-title">learnings</span>
+      </div>
+      <div class="terminal__content">
+        <pre class="config-file"><span class="config-key"># Architecture beats policy for security</span>
+<span class="config-val">Cloudflare Tunnels removed an entire class of risks by design.</span>
+<span class="config-val">No firewall rules to audit, no ports to accidentally leave open.</span>
+<span class="config-val">The best security rule is the one you never have to remember.</span>
+
+<span class="config-key"># Decouple compute from storage (always)</span>
+<span class="config-val">The GPU laptop can go offline and photos still load fine.</span>
+<span class="config-val">The SSD can move to a new host in minutes. This separation</span>
+<span class="config-val">saved me when I had to swap the MacBook's WiFi driver once.</span>
+
+<span class="config-key"># You are the SRE team</span>
+<span class="config-val">If a container crashes at 2am, it stays down until I notice.</span>
+<span class="config-val">Health checks, restart policies, and Docker's restart: unless-stopped</span>
+<span class="config-val">aren't nice-to-haves - they're what keeps this thing running.</span>
+
+<span class="config-key"># Constraints are underrated</span>
+<span class="config-val">No budget meant repurposing hardware I already owned.</span>
+<span class="config-val">WiFi-only meant optimising for reliability over throughput.</span>
+<span class="config-val">Every limitation forced a more thoughtful decision.</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 8: What's next
+     ═══════════════════════════════════════════════════════════ -->
+<section class="lab-section lab-section--last">
+  <div class="container">
+    <div class="section-intro homelab-animate">
+      <h2 class="section-heading">What's next</h2>
+      <p class="section-desc">
+        It works. But it's not done - and honestly, that's half the fun.
+      </p>
+    </div>
+    <div class="section-cmd">
+      <span class="prompt-dollar">$</span> cat /etc/homelab/TODO
+    </div>
+    <div class="terminal homelab-animate">
+      <div class="terminal__bar">
+        <span class="terminal__dot terminal__dot--red"></span>
+        <span class="terminal__dot terminal__dot--yellow"></span>
+        <span class="terminal__dot terminal__dot--green"></span>
+        <span class="terminal__bar-title">TODO</span>
+      </div>
+      <div class="terminal__content">
+        <pre class="config-file"><span class="config-comment"># /etc/homelab/TODO</span>
+<span class="config-sep"># ─────────────────────────────────────────────────────</span>
+
+<span class="config-key">[ ] Wired ethernet over WiFi</span>
+<span class="config-val">WiFi has been fine, but it's still a failure point I'd rather</span>
+<span class="config-val">not have. Ethernet would especially help ML offloading latency.</span>
+
+<span class="config-key">[ ] Proper monitoring (Prometheus + Grafana)</span>
+<span class="config-val">Right now if something dies silently, I find out when I try to</span>
+<span class="config-val">use it. Not great. Can't really call it production-grade without this.</span>
+
+<span class="config-key">[ ] Automated offsite backups</span>
+<span class="config-val">The SSD is portable, but portable isn't the same as backed up.</span>
+<span class="config-val">Encrypted snapshots to a remote target would close this gap.</span>
+
+<span class="config-key">[ ] Go deeper on OpenClaw (Clawdius)</span>
+<span class="config-val">Turn Clawdius into a real personal agent, not just a local assistant.</span>
+<span class="config-val">Next step: WhatsApp-based grocery automation (search → list → order).</span>
+<span class="config-val">Also exploring PicoClaw for lightweight, always-on edge inference.</span>
+
+<span class="config-key">[ ] Failure recovery & self-healing</span>
+<span class="config-val">Right now, restarts are manual or Docker-level.</span>
+<span class="config-val">Adding health checks, auto-restarts, and dependency-aware recovery</span>
+<span class="config-val">would make the system resilient to partial failures.</span>
       </div>
     </div>
   </div>
@@ -1119,48 +1268,95 @@ const homelabServices = [
   .config-key { color: var(--color-accent); font-weight: 600; }
   .config-val { color: var(--gray-400); }
 
-  /* ─── Docker Images Table ────────────────────────── */
-  .docker-table {
-    width: 100%;
-    border-collapse: collapse;
+  /* ─── Hero Subtext ──────────────────────────────── */
+  .lab-hero__subtext {
     font-family: var(--font-mono);
     font-size: var(--text-xs);
+    color: var(--color-accent-light);
+    margin-top: var(--space-4);
+    line-height: 1.6;
+    max-width: 700px;
   }
 
-  .docker-table th {
-    text-align: left;
+  /* ─── Tradeoff / Constraint Callouts ───────────── */
+  .section-tradeoff {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
     color: var(--gray-500);
-    font-weight: 600;
-    padding: var(--space-2) var(--space-4) var(--space-2) 0;
-    border-bottom: 1px solid var(--gray-700);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.6rem;
+    line-height: 1.7;
+    margin-top: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-left: 2px solid var(--color-accent);
+    background: var(--gray-100);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    max-width: 700px;
   }
 
-  .docker-table td {
-    padding: var(--space-2) var(--space-4) var(--space-2) 0;
-    color: var(--gray-300);
+  .tradeoff-label {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  /* ─── Problem / Solution in Service Cards ──────── */
+  .service-card__problem {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--gray-400);
+    line-height: 1.7;
+    margin-bottom: var(--space-3);
+    padding: var(--space-2) 0;
     border-bottom: 1px solid var(--gray-800);
   }
 
-  .docker-table tbody tr {
-    transition: background var(--transition-fast);
+  .problem-label {
+    color: var(--color-accent-light);
+    font-weight: 600;
   }
 
-  .docker-table tbody tr:hover {
-    background: var(--gray-900);
-  }
-
-  .docker-status {
-    color: var(--gray-500);
-    font-style: italic;
-  }
-
-  .docker-status--live {
+  /* ─── Config Impact Lines ──────────────────────── */
+  .config-impact {
     color: var(--color-live);
-    font-style: normal;
     font-weight: 500;
+  }
+
+  /* ─── Outcomes List ────────────────────────────── */
+  .outcomes-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .outcome-item {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .outcome-icon {
+    color: var(--color-live);
+    font-size: var(--text-xs);
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .outcome-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .outcome-title {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: white;
+    font-weight: 600;
+  }
+
+  .outcome-desc {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--gray-400);
+    line-height: 1.6;
   }
 
   /* ─── Scroll Reveal ──────────────────────────────── */
@@ -1298,15 +1494,6 @@ const homelabServices = [
 
     .section-cmd {
       font-size: var(--text-xs);
-    }
-
-    .docker-table {
-      font-size: 0.55rem;
-    }
-
-    .docker-table td,
-    .docker-table th {
-      padding: var(--space-1) var(--space-2) var(--space-1) 0;
     }
   }
 
