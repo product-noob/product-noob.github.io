@@ -93,5 +93,5 @@ export const homelabServices: HomelabService[] = [
 // ─── Vibe Coding Stack ───────────────────────────────────────────────────────
 
 export const vibeCodingStack = {
-  cursorMdUrl: 'https://github.com/product-noob/product-noob.github.io/blob/main/.cursorrules',
+  cursorMdUrl: 'https://gist.github.com/product-noob/fa99ec973966e8fa41c49f71610bca6e',
 };
