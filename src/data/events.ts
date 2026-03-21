@@ -126,6 +126,9 @@ export const events: EventData[] = [
             ],
             photos: [
                 '/ai-events/openclaw-razorpay_001.jpg',
+                '/ai-events/openclaw-razorpay_002.webp',
+                '/ai-events/openclaw-razorpay_003.webp',
+                '/ai-events/openclaw-razorpay_004.webp',
             ],
         },
     },
