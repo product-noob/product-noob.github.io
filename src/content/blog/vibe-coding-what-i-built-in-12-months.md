@@ -6,23 +6,23 @@ tags: ['AI', 'Product', 'Engineering']
 featured: false
 ---
 
-Over the last 12 months, I've burned through hundreds of millions of tokens, built **13+ tools, POCs, and prototypes**, and figured out (mostly through failed attempts) what actually works when a PM sits down to vibe code. Some of these were weekend itch-scratchers. Some ended up influencing product strategy at Flipkart. A couple have crossed into production-adjacent territory.
+Over the last 12 months, I built **13+ AI tools and prototypes**, some as weekend experiments, some that ended up influencing product direction at Flipkart.
 
-This is a real log of what I built, what it changed, and what it taught me. If you're here for the approach that finally clicked after a lot of trial and error, [skip to how I vibe code](#how-i-vibe-code).
+This is a real log of what I built, what it changed, and what it taught me on how fast I could go from idea → working product → conviction. 
 
 _Disclaimer: Some of these projects are internal to Flipkart. I've kept descriptions at a level that shares patterns without exposing specifics. The usual caveat applies - a lot of internal data and decisions have been omitted for obvious reasons._
 
 ## TL;DR
 
-1. **13+ tools and prototypes in 12 months.** From personal productivity scripts to strategic POCs that shaped product direction at Flipkart.
+1. **Building compresses learning cycles by 10x.** A 1-day prototype teaches more about feasibility, cost, and user behaviour than weeks of docs and design reviews.
 
-2. **The biggest unlock isn't the code, it's the speed of learning.** Build a working version in a day, develop product intuition 10x faster than reading docs.
+2. **POCs are the fastest way to create alignment.** A demo beats a PRD every time. The SLAP demo, conversational commerce POC, and self-serve data tool all started as day-builds and became alignment artifacts.
 
-3. **One-day POCs influenced months of product direction.** The SLAP demo, conversational commerce POC, and self-serve data tool all started as day-builds and became alignment artifacts.
+3. **Speed changes the PM role.** You stop asking "can we build this?" and start asking "what’s worth building?" That second question is the actual job.
 
-4. **Building changes how people engage with you.** Engineers, data scientists, and leadership collaborate differently when you've built things yourself.
+4. **Builders get different access.** Engineers and leadership engage differently when you’ve shipped something yourself. Sharper feedback, more honest pushback, better collaboration.
 
-5. **The PM who can't build anything is becoming a liability.** Not because you need to write production code. But because the floor of what’s expected is rising fast, and the PMs who can go from idea to working prototype in a day are operating at a **different speed.**
+5. **The PM who can’t build anything is becoming a liability.** Not because you need to write production code. But because the PMs who can go from idea to working prototype in a day are operating at a **different speed.**
 
 ## Part 1: Solving My Own Problems
 
@@ -202,7 +202,7 @@ These are learnings crystallized from burning literally hundreds of millions of 
 
 This is the single biggest thing. Most people jump into vibe coding with the very first thought they have and start building from there. I've found that's a deeply inefficient process. It doesn't give the LLM enough input to make the right architectural choices, and the output isn't holistic.
 
-When you have clarity of what you want, write it down first. When I built the [SLAP debug dashboard](#slap-agentic-session-tracer-and-debug-dashboard), I had a full product note ready before I wrote a single prompt: what sections the tool should have, how the screens should broadly look, input methods, what the user sees after each action, how they interact with the output, tracing and logging requirements, the broad system structure. All of that went into a product note, and then I gave it to Claude Code. Got a ~90% version on the very first attempt.
+When you have clarity of what you want, write it down first. When I built the [SLAP debug dashboard](#slap-debug-dashboard), I had a full product note ready before I wrote a single prompt: what sections the tool should have, how the screens should broadly look, input methods, what the user sees after each action, how they interact with the output, tracing and logging requirements, the broad system structure. All of that went into a product note, and then I gave it to Claude Code. Got a ~90% version on the very first attempt.
 
 Sometimes you _do_ need to brainstorm with the LLM, explore ideas, try things loosely. That's fine. But when you know what you want, bring as much clarity as you can at the start. The difference in output quality is night and day.
 
@@ -224,18 +224,33 @@ Context windows degrade. After enough back-and-forth, the LLM starts losing trac
 
 
 
+## What Didn't Work
+
+Not everything was leverage. Worth being honest about that.
+
+- **Thin AI wrappers that got killed by platform features.** The Meet summariser is the obvious one. If your entire product is a layer on top of someone else's platform, you're living on borrowed time.
+- **Long context sessions where output quality quietly degraded.** I'd push through a session for hours, not realising the LLM had lost the thread 30 minutes ago. Took a while to learn when to just start fresh.
+- **Over-automation where manual was genuinely faster.** Not everything needs a tool. Some things take 2 minutes and don't recur enough to justify building.
+- **Shipping speed without verification.** Speed amplifies both good and bad decisions. A couple of times I shipped something fast that had subtle issues I would have caught with 10 more minutes of review.
+
+The key lesson: speed is a multiplier, not a guarantee. It makes good judgment more valuable, not less.
+
+---
+
 ## What Building Taught Me About the PM Role
 
-**Speed changes the question.** When a POC takes a day instead of a sprint, the bottleneck shifts from "can we build it?" to "what's worth building?" That second question is the actual PM job.
+**Speed changes the question.** When a POC takes a day instead of a sprint, the bottleneck shifts from "can we build it?" to "what's worth building?"
 
-**Building gives you intuition that reading can't.** When you've debugged a latency issue in an agent pipeline yourself, you ask very different questions in design reviews.
+**Building creates real intuition.** Reading about systems is not the same as debugging them. Hands-on experience changes the questions you ask in every review.
 
 **The credibility effect is real.** When people know you've built things yourself, they engage differently. Questions get more precise. Pushback gets more honest. Collaboration gets better.
 
-**Accountability matters more than code.** The real constraint isn't technical ability anymore. It's the judgment to be accountable for what ships. AI removed the coding barrier. What remains is the harder, more interesting problem.
+**Accountability is the new bottleneck.** AI removed the coding barrier. What remains is judgment: understanding the system well enough to be accountable for what ships. That's the harder, more interesting problem.
 
+---
 
+This started as scratching itches on weekends. It's become how I evaluate ideas, drive alignment, and make product decisions.
 
-This started as scratching itches on weekends. It's become how I think about the job.
+The gap between PMs who build and PMs who don't is widening. Not in technical skill. In speed of thinking and conviction.
 
 *If you want to compare notes on any of these, I'm on [Twitter](https://twitter.com/princejain) and [LinkedIn](https://www.linkedin.com/in/prince-jain/). Always happy to chat.*
