@@ -1,0 +1,386 @@
+{
+  "nodes": [
+    {
+      "id": "seo_google_ctr_stat",
+      "label": "Google #1 Result CTR Statistic (31.7%)",
+      "file_type": "image",
+      "source_file": "public/images/SEO_GoogleSearchTrend.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "seo_google_search",
+      "label": "Google Search Results Page",
+      "file_type": "image",
+      "source_file": "public/images/SEO_GoogleSearchTrend.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "site_icon_png",
+      "label": "Site Icon - Prince Jain Profile Photo (PNG)",
+      "file_type": "image",
+      "source_file": "public/images/site-icon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "site_icon_webp",
+      "label": "Site Icon - Prince Jain Profile Photo (WebP)",
+      "file_type": "image",
+      "source_file": "public/images/site-icon.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_architecture",
+      "label": "System Design Architecture Diagram - Web/Mobile App with Backend and PostgreSQL",
+      "file_type": "image",
+      "source_file": "public/images/System_design.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_backend_server",
+      "label": "Backend Server Component",
+      "file_type": "image",
+      "source_file": "public/images/System_design.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_load_balancer",
+      "label": "Load Balancer Component",
+      "file_type": "image",
+      "source_file": "public/images/System_design.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_postgresql_replica",
+      "label": "PostgreSQL DB Read Replicas (Sharded by Location)",
+      "file_type": "image",
+      "source_file": "public/images/System_design.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_payment_server",
+      "label": "3rd Party Payments Server (Stripe, Square)",
+      "file_type": "image",
+      "source_file": "public/images/System_design.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_api_endpoints",
+      "label": "System Design API Endpoints (Reserve, Payment, Cancel, Calculate Payment, Free Spots, Allocate Spot)",
+      "file_type": "image",
+      "source_file": "public/images/System_design_1.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_public_endpoints",
+      "label": "Public API Endpoints - /reserve, /payment, /cancel",
+      "file_type": "image",
+      "source_file": "public/images/System_design_1.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_internal_endpoints",
+      "label": "Internal API Endpoints - /calculate_payment, /freespots, /allocate_spot, /create_account",
+      "file_type": "image",
+      "source_file": "public/images/System_design_1.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_data_schema",
+      "label": "System Design Data Schema (Reservations, Garage, Spots, Users tables)",
+      "file_type": "image",
+      "source_file": "public/images/System_design_2.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_reservations_table",
+      "label": "Reservations Table Schema",
+      "file_type": "image",
+      "source_file": "public/images/System_design_2.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_garage_table",
+      "label": "Garage Table Schema",
+      "file_type": "image",
+      "source_file": "public/images/System_design_2.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_spots_table",
+      "label": "Spots Table Schema",
+      "file_type": "image",
+      "source_file": "public/images/System_design_2.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_users_table",
+      "label": "Users Table Schema",
+      "file_type": "image",
+      "source_file": "public/images/System_design_2.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "seo_google_ctr_stat",
+      "target": "seo_google_search",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/SEO_GoogleSearchTrend.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "site_icon_png",
+      "target": "site_icon_webp",
+      "relation": "semantically_similar_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/site-icon.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_architecture",
+      "target": "system_design_backend_server",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_architecture",
+      "target": "system_design_load_balancer",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_architecture",
+      "target": "system_design_postgresql_replica",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_architecture",
+      "target": "system_design_payment_server",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_backend_server",
+      "target": "system_design_load_balancer",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_load_balancer",
+      "target": "system_design_postgresql_replica",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_api_endpoints",
+      "target": "system_design_public_endpoints",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design_1.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_api_endpoints",
+      "target": "system_design_internal_endpoints",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design_1.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_data_schema",
+      "target": "system_design_reservations_table",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design_2.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_data_schema",
+      "target": "system_design_garage_table",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design_2.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_data_schema",
+      "target": "system_design_spots_table",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design_2.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_data_schema",
+      "target": "system_design_users_table",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design_2.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_architecture",
+      "target": "system_design_api_endpoints",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/images/System_design.png",
+      "source_location": null,
+      "weight": 0.9
+    },
+    {
+      "source": "system_design_architecture",
+      "target": "system_design_data_schema",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/images/System_design.png",
+      "source_location": null,
+      "weight": 0.9
+    },
+    {
+      "source": "system_design_reservations_table",
+      "target": "system_design_garage_table",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design_2.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_reservations_table",
+      "target": "system_design_spots_table",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design_2.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_public_endpoints",
+      "target": "system_design_payment_server",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/images/System_design_1.png",
+      "source_location": null,
+      "weight": 0.85
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}
