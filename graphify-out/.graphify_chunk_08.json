@@ -1,0 +1,125 @@
+{
+  "nodes": [
+    {
+      "id": "adguard_icon",
+      "label": "AdGuard",
+      "file_type": "image",
+      "source_file": "public/icons/adguard.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "autoparse_icon",
+      "label": "AutoParse",
+      "file_type": "image",
+      "source_file": "public/icons/autoparse.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "cloudflare_icon",
+      "label": "Cloudflare",
+      "file_type": "image",
+      "source_file": "public/icons/cloudflare.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docker_icon",
+      "label": "Docker",
+      "file_type": "image",
+      "source_file": "public/icons/docker.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "exponent_icon_png",
+      "label": "Exponent (PNG)",
+      "file_type": "image",
+      "source_file": "public/icons/exponent.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "exponent_icon_webp",
+      "label": "Exponent (WebP)",
+      "file_type": "image",
+      "source_file": "public/icons/exponent.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "adguard_icon",
+      "target": "docker_icon",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "public/icons/adguard.svg",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "adguard_icon",
+      "target": "cloudflare_icon",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "public/icons/adguard.svg",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "docker_icon",
+      "target": "cloudflare_icon",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "public/icons/docker.svg",
+      "source_location": null,
+      "weight": 0.7
+    },
+    {
+      "source": "exponent_icon_png",
+      "target": "exponent_icon_webp",
+      "relation": "semantically_similar_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/icons/exponent.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "autoparse_icon",
+      "target": "exponent_icon_png",
+      "relation": "conceptually_related_to",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "public/icons/autoparse.png",
+      "source_location": null,
+      "weight": 0.3
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}
