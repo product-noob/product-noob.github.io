@@ -1,0 +1,199 @@
+{
+  "nodes": [
+    {
+      "id": "twitter_icon",
+      "label": "Twitter (X) Icon",
+      "file_type": "image",
+      "source_file": "public/icons/twitter.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vaccine_icon",
+      "label": "Vaccine / Health Icon",
+      "file_type": "image",
+      "source_file": "public/icons/vaccine.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vaultwarden_icon",
+      "label": "Vaultwarden Icon",
+      "file_type": "image",
+      "source_file": "public/icons/vaultwarden.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "whisprflow_icon_jpg",
+      "label": "WhisprFlow Icon (JPG)",
+      "file_type": "image",
+      "source_file": "public/icons/whisprflow.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "whisprflow_icon_webp",
+      "label": "WhisprFlow Icon (WebP)",
+      "file_type": "image",
+      "source_file": "public/icons/whisprflow.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "apps_superapps_stats_chart",
+      "label": "New Apps Released per Month/Week Stats Chart",
+      "file_type": "image",
+      "source_file": "public/images/apps_superapps_stats.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "twitter_brand",
+      "label": "Twitter / X Social Media Platform",
+      "file_type": "concept",
+      "source_file": "public/icons/twitter.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vaultwarden_tool",
+      "label": "Vaultwarden Password Manager",
+      "file_type": "concept",
+      "source_file": "public/icons/vaultwarden.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "whisprflow_tool",
+      "label": "WhisprFlow Audio/Voice Tool",
+      "file_type": "concept",
+      "source_file": "public/icons/whisprflow.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "superapps_market_data",
+      "label": "Super Apps Market Data - App Release Volume",
+      "file_type": "concept",
+      "source_file": "public/images/apps_superapps_stats.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "twitter_icon",
+      "target": "twitter_brand",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/icons/twitter.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "vaultwarden_icon",
+      "target": "vaultwarden_tool",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/icons/vaultwarden.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "whisprflow_icon_jpg",
+      "target": "whisprflow_tool",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/icons/whisprflow.jpg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "whisprflow_icon_webp",
+      "target": "whisprflow_tool",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/icons/whisprflow.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "whisprflow_icon_jpg",
+      "target": "whisprflow_icon_webp",
+      "relation": "semantically_similar_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/icons/whisprflow.jpg",
+      "source_location": null,
+      "weight": 0.9
+    },
+    {
+      "source": "apps_superapps_stats_chart",
+      "target": "superapps_market_data",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/apps_superapps_stats.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "vaultwarden_tool",
+      "target": "vaccine_icon",
+      "relation": "conceptually_related_to",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.2,
+      "source_file": "public/icons/vaultwarden.png",
+      "source_location": null,
+      "weight": 0.2
+    },
+    {
+      "source": "twitter_brand",
+      "target": "superapps_market_data",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "public/images/apps_superapps_stats.png",
+      "source_location": null,
+      "weight": 0.7
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}
