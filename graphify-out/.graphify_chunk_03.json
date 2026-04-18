@@ -1,0 +1,269 @@
+{
+  "nodes": [
+    {
+      "id": "profilephoto3_portrait",
+      "label": "Profile Photo 3 - Pop Art Illustrated Portrait",
+      "file_type": "image",
+      "source_file": "public/profile-photo-3.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "profilephoto4png_portrait",
+      "label": "Profile Photo 4 PNG - Sketch Style Illustrated Portrait",
+      "file_type": "image",
+      "source_file": "public/profile-photo-4.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "profilephoto4webp_portrait",
+      "label": "Profile Photo 4 WebP - Watercolor Sketch Illustrated Portrait",
+      "file_type": "image",
+      "source_file": "public/profile-photo-4.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "prince_jain_person",
+      "label": "Prince Jain - Portfolio Owner",
+      "file_type": "image",
+      "source_file": "public/profile-photo-4.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "cafe_cursor_event",
+      "label": "Cafe Cursor Event - AI Community Meetup",
+      "file_type": "image",
+      "source_file": "public/ai-events/cafe_cursor_001.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "cafe_cursor001_merch",
+      "label": "Cafe Cursor 001 - Cursor AI Merch and Branded Bottles",
+      "file_type": "image",
+      "source_file": "public/ai-events/cafe_cursor_001.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "cafe_cursor002_workshop",
+      "label": "Cafe Cursor 002 - Attendees Working on Laptops",
+      "file_type": "image",
+      "source_file": "public/ai-events/cafe_cursor_002.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "cafe_cursor003_barista",
+      "label": "Cafe Cursor 003 - Barista Making Coffee Outdoors",
+      "file_type": "image",
+      "source_file": "public/ai-events/cafe_cursor_003.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "cursor_ai_brand",
+      "label": "Cursor AI - AI Code Editor Brand",
+      "file_type": "image",
+      "source_file": "public/ai-events/cafe_cursor_001.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "illustrated_portrait_style",
+      "label": "Illustrated Portrait Style - AI Art Style for Profile Photos",
+      "file_type": "image",
+      "source_file": "public/profile-photo-3.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "profilephoto3_portrait",
+      "target": "prince_jain_person",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/profile-photo-3.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "profilephoto4png_portrait",
+      "target": "prince_jain_person",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/profile-photo-4.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "profilephoto4webp_portrait",
+      "target": "prince_jain_person",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/profile-photo-4.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "profilephoto3_portrait",
+      "target": "illustrated_portrait_style",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/profile-photo-3.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "profilephoto4png_portrait",
+      "target": "illustrated_portrait_style",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/profile-photo-4.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "profilephoto4webp_portrait",
+      "target": "illustrated_portrait_style",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/profile-photo-4.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "profilephoto3_portrait",
+      "target": "profilephoto4png_portrait",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/profile-photo-3.webp",
+      "source_location": null,
+      "weight": 0.9
+    },
+    {
+      "source": "profilephoto4png_portrait",
+      "target": "profilephoto4webp_portrait",
+      "relation": "semantically_similar_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/profile-photo-4.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "cafe_cursor001_merch",
+      "target": "cafe_cursor_event",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/cafe_cursor_001.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "cafe_cursor002_workshop",
+      "target": "cafe_cursor_event",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/cafe_cursor_002.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "cafe_cursor003_barista",
+      "target": "cafe_cursor_event",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/cafe_cursor_003.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "cafe_cursor001_merch",
+      "target": "cursor_ai_brand",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/cafe_cursor_001.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "cafe_cursor_event",
+      "target": "cursor_ai_brand",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/cafe_cursor_001.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "cafe_cursor002_workshop",
+      "target": "cafe_cursor003_barista",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/ai-events/cafe_cursor_002.webp",
+      "source_location": null,
+      "weight": 0.9
+    },
+    {
+      "source": "prince_jain_person",
+      "target": "cafe_cursor_event",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "public/ai-events/cafe_cursor_002.webp",
+      "source_location": null,
+      "weight": 0.7
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}
