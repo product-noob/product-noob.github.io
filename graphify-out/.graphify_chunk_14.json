@@ -1,0 +1,220 @@
+{
+  "nodes": [
+    {
+      "id": "claudejira_jira_backlog_overview",
+      "label": "Claude Jira Automation - Backlog Overview Table",
+      "file_type": "image",
+      "source_file": "public/images/claude-jira-automation.jpeg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "claudejira_ai_analysis",
+      "label": "Claude AI Jira Issue Analysis Output",
+      "file_type": "image",
+      "source_file": "public/images/claude-jira-automation.jpeg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "claudejira_conversational_ai_feature",
+      "label": "Conversational AI Feature Category in Jira",
+      "file_type": "image",
+      "source_file": "public/images/claude-jira-automation.jpeg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "error_img_sadness_character",
+      "label": "Error State - Sadness Character (Inside Out)",
+      "file_type": "image",
+      "source_file": "public/images/error_img.jpeg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "googlechat_empty_state",
+      "label": "Google Chat No Unread Messages Empty State",
+      "file_type": "image",
+      "source_file": "public/images/googlechatnounread.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "googlecloud_cloud_run_pricing",
+      "label": "Google Cloud Run Free Tier Pricing Limits",
+      "file_type": "image",
+      "source_file": "public/images/googlecloud_freetier_limits.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "googlecloud_free_tier",
+      "label": "Google Cloud Free Tier",
+      "file_type": "image",
+      "source_file": "public/images/googlecloud_freetier_limits.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "healthstack_aadhaar_enrollment_chart",
+      "label": "Aadhaar Digital ID Rapid Enrollment Chart (2010-2019)",
+      "file_type": "image",
+      "source_file": "public/images/Health_Stack.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "healthstack_india_digital_id",
+      "label": "India Aadhaar Digital Identity Program",
+      "file_type": "image",
+      "source_file": "public/images/Health_Stack.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "healthstack1_upi_payments_chart",
+      "label": "UPI Rising Retail Payments Digital Wallets Chart (2016-2021)",
+      "file_type": "image",
+      "source_file": "public/images/Health_Stack_1.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "healthstack1_upi_growth",
+      "label": "Unified Payments Interface (UPI) Transaction Growth",
+      "file_type": "image",
+      "source_file": "public/images/Health_Stack_1.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "claudejira_jira_backlog_overview",
+      "target": "claudejira_ai_analysis",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/claude-jira-automation.jpeg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claudejira_ai_analysis",
+      "target": "claudejira_conversational_ai_feature",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/claude-jira-automation.jpeg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claudejira_jira_backlog_overview",
+      "target": "claudejira_conversational_ai_feature",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/claude-jira-automation.jpeg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "googlecloud_cloud_run_pricing",
+      "target": "googlecloud_free_tier",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/googlecloud_freetier_limits.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "healthstack_aadhaar_enrollment_chart",
+      "target": "healthstack_india_digital_id",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/Health_Stack.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "healthstack1_upi_payments_chart",
+      "target": "healthstack1_upi_growth",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/Health_Stack_1.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "healthstack_india_digital_id",
+      "target": "healthstack1_upi_growth",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/images/Health_Stack.png",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "healthstack_aadhaar_enrollment_chart",
+      "target": "healthstack1_upi_payments_chart",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "public/images/Health_Stack.png",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "error_img_sadness_character",
+      "target": "googlechat_empty_state",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "public/images/error_img.jpeg",
+      "source_location": null,
+      "weight": 0.65
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}
