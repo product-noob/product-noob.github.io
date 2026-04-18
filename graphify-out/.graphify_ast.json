@@ -1,0 +1,631 @@
+{
+  "nodes": [
+    {
+      "id": "astro_config_mjs",
+      "label": "astro.config.mjs",
+      "file_type": "code",
+      "source_file": "astro.config.mjs",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_types_ts",
+      "label": "types.ts",
+      "file_type": "code",
+      "source_file": "src\\types.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_content_config_ts",
+      "label": "config.ts",
+      "file_type": "code",
+      "source_file": "src\\content\\config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_events_ts",
+      "label": "events.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\events.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_links_ts",
+      "label": "links.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\links.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_projects_ts",
+      "label": "projects.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\projects.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_skills_ts",
+      "label": "skills.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\skills.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_tools_ts",
+      "label": "tools.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\tools.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_works_ts",
+      "label": "works.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\works.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_rss_xml_ts",
+      "label": "rss.xml.ts",
+      "file_type": "code",
+      "source_file": "src\\pages\\rss.xml.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "rss_xml_get",
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "src\\pages\\rss.xml.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "src_pages_sitemap_xml_ts",
+      "label": "sitemap.xml.ts",
+      "file_type": "code",
+      "source_file": "src\\pages\\sitemap.xml.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "sitemap_xml_tow3cdate",
+      "label": "toW3CDate()",
+      "file_type": "code",
+      "source_file": "src\\pages\\sitemap.xml.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "sitemap_xml_get",
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "src\\pages\\sitemap.xml.ts",
+      "source_location": "L26"
+    },
+    {
+      "id": "src_scripts_copycode_ts",
+      "label": "copyCode.ts",
+      "file_type": "code",
+      "source_file": "src\\scripts\\copyCode.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "copycode_addcopybuttons",
+      "label": "addCopyButtons()",
+      "file_type": "code",
+      "source_file": "src\\scripts\\copyCode.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "src_scripts_mobilemenu_ts",
+      "label": "mobileMenu.ts",
+      "file_type": "code",
+      "source_file": "src\\scripts\\mobileMenu.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "mobilemenu_initmobilemenu",
+      "label": "initMobileMenu()",
+      "file_type": "code",
+      "source_file": "src\\scripts\\mobileMenu.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "src_scripts_readingprogress_ts",
+      "label": "readingProgress.ts",
+      "file_type": "code",
+      "source_file": "src\\scripts\\readingProgress.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "readingprogress_initreadingprogress",
+      "label": "initReadingProgress()",
+      "file_type": "code",
+      "source_file": "src\\scripts\\readingProgress.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "src_scripts_autoparse_autoparse_ts",
+      "label": "autoparse.ts",
+      "file_type": "code",
+      "source_file": "src\\scripts\\autoparse\\autoparse.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "autoparse_init",
+      "label": "init()",
+      "file_type": "code",
+      "source_file": "src\\scripts\\autoparse\\autoparse.ts",
+      "source_location": "L36"
+    },
+    {
+      "id": "src_scripts_autoparse_detectengine_ts",
+      "label": "detectEngine.ts",
+      "file_type": "code",
+      "source_file": "src\\scripts\\autoparse\\detectEngine.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "detectengine_detect",
+      "label": "detect()",
+      "file_type": "code",
+      "source_file": "src\\scripts\\autoparse\\detectEngine.ts",
+      "source_location": "L25"
+    },
+    {
+      "id": "detectengine_detectbest",
+      "label": "detectBest()",
+      "file_type": "code",
+      "source_file": "src\\scripts\\autoparse\\detectEngine.ts",
+      "source_location": "L49"
+    },
+    {
+      "id": "src_scripts_autoparse_formatters_ts",
+      "label": "formatters.ts",
+      "file_type": "code",
+      "source_file": "src\\scripts\\autoparse\\formatters.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "formatters_unescapejson",
+      "label": "unescapeJson()",
+      "file_type": "code",
+      "source_file": "src\\scripts\\autoparse\\formatters.ts",
+      "source_location": "L96"
+    },
+    {
+      "id": "formatters_indentxml",
+      "label": "indentXml()",
+      "file_type": "code",
+      "source_file": "src\\scripts\\autoparse\\formatters.ts",
+      "source_location": "L149"
+    },
+    {
+      "id": "formatters_bestdelimiter",
+      "label": "bestDelimiter()",
+      "file_type": "code",
+      "source_file": "src\\scripts\\autoparse\\formatters.ts",
+      "source_location": "L258"
+    },
+    {
+      "id": "formatters_beautifycss",
+      "label": "beautifyCss()",
+      "file_type": "code",
+      "source_file": "src\\scripts\\autoparse\\formatters.ts",
+      "source_location": "L420"
+    },
+    {
+      "id": "formatters_beautifyjs",
+      "label": "beautifyJs()",
+      "file_type": "code",
+      "source_file": "src\\scripts\\autoparse\\formatters.ts",
+      "source_location": "L528"
+    },
+    {
+      "id": "formatters_ok",
+      "label": "ok()",
+      "file_type": "code",
+      "source_file": "src\\scripts\\autoparse\\formatters.ts",
+      "source_location": "L613"
+    },
+    {
+      "id": "formatters_fail",
+      "label": "fail()",
+      "file_type": "code",
+      "source_file": "src\\scripts\\autoparse\\formatters.ts",
+      "source_location": "L617"
+    },
+    {
+      "id": "src_utils_readingtime_ts",
+      "label": "readingTime.ts",
+      "file_type": "code",
+      "source_file": "src\\utils\\readingTime.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "readingtime_calculatereadingtime",
+      "label": "calculateReadingTime()",
+      "file_type": "code",
+      "source_file": "src\\utils\\readingTime.ts",
+      "source_location": "L7"
+    }
+  ],
+  "edges": [
+    {
+      "source": "astro_config_mjs",
+      "target": "config",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "astro.config.mjs",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_content_config_ts",
+      "target": "astro_content",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\content\\config.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_events_ts",
+      "target": "src_types",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\events.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_links_ts",
+      "target": "src_types",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\links.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_projects_ts",
+      "target": "src_types",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\projects.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_skills_ts",
+      "target": "src_types",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\skills.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_tools_ts",
+      "target": "src_types",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\tools.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_works_ts",
+      "target": "src_types",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\works.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_rss_xml_ts",
+      "target": "rss",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\rss.xml.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_rss_xml_ts",
+      "target": "astro_content",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\rss.xml.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_rss_xml_ts",
+      "target": "astro",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\rss.xml.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_rss_xml_ts",
+      "target": "rss_xml_get",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\rss.xml.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_sitemap_xml_ts",
+      "target": "astro_content",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\sitemap.xml.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_sitemap_xml_ts",
+      "target": "astro",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\sitemap.xml.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_sitemap_xml_ts",
+      "target": "sitemap_xml_tow3cdate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\sitemap.xml.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_sitemap_xml_ts",
+      "target": "sitemap_xml_get",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\sitemap.xml.ts",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "sitemap_xml_get",
+      "target": "sitemap_xml_tow3cdate",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\sitemap.xml.ts",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_copycode_ts",
+      "target": "copycode_addcopybuttons",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\copyCode.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_mobilemenu_ts",
+      "target": "mobilemenu_initmobilemenu",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\mobileMenu.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_readingprogress_ts",
+      "target": "readingprogress_initreadingprogress",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\readingProgress.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_autoparse_ts",
+      "target": "core",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\autoparse.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_autoparse_ts",
+      "target": "json",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\autoparse.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_autoparse_ts",
+      "target": "xml",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\autoparse.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_autoparse_ts",
+      "target": "yaml",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\autoparse.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_autoparse_ts",
+      "target": "css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\autoparse.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_autoparse_ts",
+      "target": "javascript",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\autoparse.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_autoparse_ts",
+      "target": "src_scripts_autoparse_detectengine",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\autoparse.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_autoparse_ts",
+      "target": "src_scripts_autoparse_formatters",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\autoparse.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_autoparse_ts",
+      "target": "autoparse_init",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\autoparse.ts",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_detectengine_ts",
+      "target": "src_scripts_autoparse_formatters",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\detectEngine.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_detectengine_ts",
+      "target": "detectengine_detect",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\detectEngine.ts",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_detectengine_ts",
+      "target": "detectengine_detectbest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\detectEngine.ts",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "detectengine_detectbest",
+      "target": "detectengine_detect",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\detectEngine.ts",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_formatters_ts",
+      "target": "js_yaml",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\formatters.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_formatters_ts",
+      "target": "formatters_unescapejson",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\formatters.ts",
+      "source_location": "L96",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_formatters_ts",
+      "target": "formatters_indentxml",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\formatters.ts",
+      "source_location": "L149",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_formatters_ts",
+      "target": "formatters_bestdelimiter",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\formatters.ts",
+      "source_location": "L258",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_formatters_ts",
+      "target": "formatters_beautifycss",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\formatters.ts",
+      "source_location": "L420",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_formatters_ts",
+      "target": "formatters_beautifyjs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\formatters.ts",
+      "source_location": "L528",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_formatters_ts",
+      "target": "formatters_ok",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\formatters.ts",
+      "source_location": "L613",
+      "weight": 1.0
+    },
+    {
+      "source": "src_scripts_autoparse_formatters_ts",
+      "target": "formatters_fail",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\scripts\\autoparse\\formatters.ts",
+      "source_location": "L617",
+      "weight": 1.0
+    },
+    {
+      "source": "src_utils_readingtime_ts",
+      "target": "readingtime_calculatereadingtime",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\utils\\readingTime.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

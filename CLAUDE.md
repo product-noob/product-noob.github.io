@@ -162,3 +162,12 @@ Auto-generated at `/rss.xml` by `src/pages/rss.xml.ts` using `@astrojs/rss`. Pos
 - Import only what you need from libraries (e.g., `highlight.js/lib/core` + specific languages, not the full bundle)
 - Prefer Astro's static rendering — only add client-side JS when interactivity is genuinely required
 - External links: `rel="noopener noreferrer"` with `target="_blank"`
+
+## graphify
+
+This project has a graphify knowledge graph at graphify-out/.
+
+Rules:
+- Before answering architecture or codebase questions, read graphify-out/GRAPH_REPORT.md for god nodes and community structure
+- If graphify-out/wiki/index.md exists, navigate it instead of reading raw files
+- After modifying code files in this session, run `graphify update .` to keep the graph current (AST-only, no API cost)

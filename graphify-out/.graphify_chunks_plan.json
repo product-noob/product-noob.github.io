@@ -1,0 +1,245 @@
+[
+  {
+    "type": "doc",
+    "files": [
+      "CLAUDE.md",
+      "README.md",
+      "public\\robots.txt",
+      "src\\content\\AI_Tools.md",
+      "src\\content\\vibe-coding-pm.md",
+      "src\\content\\blog\\AI-Glossary-Every-PM-Needs.md",
+      "src\\content\\blog\\apps-and-superapps.md",
+      "src\\content\\blog\\Auto-Reading-Google-Chat-Messages.md",
+      "src\\content\\blog\\building-mini-apps.md",
+      "src\\content\\blog\\building-vaccine-slot-finder.md",
+      "src\\content\\blog\\cracking-system-design-interview.md",
+      "src\\content\\blog\\Creating-Your-First-API-With-Database-For-Free.md",
+      "src\\content\\blog\\demystifying-seo.md",
+      "src\\content\\blog\\Hello-World.md",
+      "src\\content\\blog\\Hosting-your-free-local-n8n.md",
+      "src\\content\\blog\\national-health-stack.md",
+      "src\\content\\blog\\PM-Links.md",
+      "src\\content\\blog\\pming-in-the-era-of-ai.md",
+      "src\\content\\blog\\vibe-coding-what-i-built-in-12-months.md",
+      "src\\content\\blog\\what-its-like-to-build-ai-products-at-scale.md"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\favicon.svg",
+      "public\\profile-photo-1.png",
+      "public\\profile-photo-1.webp",
+      "public\\profile-photo-2.png",
+      "public\\profile-photo-2.webp",
+      "public\\profile-photo-3.png"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\profile-photo-3.webp",
+      "public\\profile-photo-4.png",
+      "public\\profile-photo-4.webp",
+      "public\\ai-events\\cafe_cursor_001.webp",
+      "public\\ai-events\\cafe_cursor_002.webp",
+      "public\\ai-events\\cafe_cursor_003.webp"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\ai-events\\cafe_cursor_004.webp",
+      "public\\ai-events\\cafe_cursor_landing.webp",
+      "public\\ai-events\\Microsoft_AI_Tour_landing.webp",
+      "public\\ai-events\\ms_ai_tour_001.webp",
+      "public\\ai-events\\ms_ai_tour_002.webp",
+      "public\\ai-events\\ms_ai_tour_003.webp"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\ai-events\\OpenAI-DevDay-2025_2.webp",
+      "public\\ai-events\\OpenAI-DevDay-landing.webp",
+      "public\\ai-events\\openai_dev_day_001.webp",
+      "public\\ai-events\\openai_dev_day_002.webp",
+      "public\\ai-events\\openclaw-razorpay.jpg",
+      "public\\ai-events\\openclaw-razorpay_001.jpg"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\ai-events\\openclaw-razorpay_002.webp",
+      "public\\ai-events\\openclaw-razorpay_003.webp",
+      "public\\ai-events\\openclaw-razorpay_004.webp",
+      "public\\ai-events\\replit_razorpay_001.jpg",
+      "public\\ai-events\\replit_razorpay_002.jpg",
+      "public\\ai-events\\Replit_Razorpay_landing.webp"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\assets\\healthstackblog.png",
+      "public\\assets\\healthstackblog.webp",
+      "public\\assets\\miniappsblog.png",
+      "public\\assets\\miniappsblog.webp",
+      "public\\assets\\Vaccinefinderblog.png",
+      "public\\assets\\Vaccinefinderblog.webp"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\icons\\adguard.svg",
+      "public\\icons\\autoparse.png",
+      "public\\icons\\cloudflare.svg",
+      "public\\icons\\docker.svg",
+      "public\\icons\\exponent.png",
+      "public\\icons\\exponent.webp"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\icons\\flipkart.svg",
+      "public\\icons\\flippi.png",
+      "public\\icons\\flippi.svg",
+      "public\\icons\\flippi.webp",
+      "public\\icons\\gmeet-summariser.svg",
+      "public\\icons\\growth.svg"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\icons\\immich.png",
+      "public\\icons\\launchpad.svg",
+      "public\\icons\\linkedin.svg",
+      "public\\icons\\local-ledger.png",
+      "public\\icons\\n8n.svg",
+      "public\\icons\\openclaw.jpg"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\icons\\oracle.svg",
+      "public\\icons\\paytm-miniapps.svg",
+      "public\\icons\\paytm-miniapps.webp",
+      "public\\icons\\paytm-vaccine-finder.svg",
+      "public\\icons\\paytm.svg",
+      "public\\icons\\paytm.webp"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\icons\\platform.svg",
+      "public\\icons\\pm-vault.svg",
+      "public\\icons\\portainer.svg",
+      "public\\icons\\slap.png",
+      "public\\icons\\slap.webp",
+      "public\\icons\\stirling-pdf.svg"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\icons\\twitter.svg",
+      "public\\icons\\vaccine.svg",
+      "public\\icons\\vaultwarden.png",
+      "public\\icons\\whisprflow.jpg",
+      "public\\icons\\whisprflow.webp",
+      "public\\images\\apps_superapps_stats.png"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\images\\claude-jira-automation.jpeg",
+      "public\\images\\error_img.jpeg",
+      "public\\images\\googlechatnounread.png",
+      "public\\images\\googlecloud_freetier_limits.png",
+      "public\\images\\Health_Stack.png",
+      "public\\images\\Health_Stack_1.png"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\images\\Health_Stack_2.png",
+      "public\\images\\Health_Stack_3.png",
+      "public\\images\\Health_Stack_4.png",
+      "public\\images\\Health_Stack_5.png",
+      "public\\images\\Health_Stack_6.png",
+      "public\\images\\Health_Stack_7.png"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\images\\Mini_Apps_1.png",
+      "public\\images\\Mini_Apps_2.png",
+      "public\\images\\Mini_Apps_3.png",
+      "public\\images\\Mini_Apps_4.png",
+      "public\\images\\Mini_Apps_5.png",
+      "public\\images\\Mini_Apps_6.png"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\images\\my-image.png",
+      "public\\images\\my-image.webp",
+      "public\\images\\my-image1.webp",
+      "public\\images\\onto_the_next.gif",
+      "public\\images\\SEO_Cleartax.png",
+      "public\\images\\SEO_Dominos.png"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\images\\SEO_GoogleSearchTrend.png",
+      "public\\images\\site-icon.png",
+      "public\\images\\site-icon.webp",
+      "public\\images\\System_design.png",
+      "public\\images\\System_design_1.png",
+      "public\\images\\System_design_2.png"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\images\\System_design_3.png",
+      "public\\images\\VaccineFinder_Screenshot.png",
+      "public\\images\\VaccineFinder_Usergraph.png",
+      "public\\images\\vibe-coding-jira.jpeg",
+      "public\\images\\vibe-coding-meet-summariser.png",
+      "public\\images\\vibe-coding-querygpt.png"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "public\\images\\vibe-coding-slap-debug.png",
+      "public\\images\\vibe-coding-slap-demo.gif",
+      "public\\images\\vibe-coding-whispr.png",
+      "public\\images\\wechat_Miniapps.png",
+      "public\\images\\og\\placeholder_og.png",
+      "public\\images\\og\\what-its-like-to-build-ai-products-at-scale.webp"
+    ]
+  },
+  {
+    "type": "img",
+    "files": [
+      "src\\assets\\profile-photo-1.webp",
+      "src\\assets\\profile-photo-2.webp",
+      "src\\assets\\profile-photo-3.webp",
+      "src\\assets\\profile-photo-4.webp"
+    ]
+  }
+]
