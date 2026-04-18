@@ -1,0 +1,332 @@
+{
+  "nodes": [
+    {
+      "id": "cafe_cursor_venue_exterior",
+      "label": "Cafe Cursor Venue Exterior Sign",
+      "file_type": "image",
+      "source_file": "public/ai-events/cafe_cursor_004.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "cafe_cursor_bangalore_event",
+      "label": "Cafe Cursor Bangalore Event",
+      "file_type": "image",
+      "source_file": "public/ai-events/cafe_cursor_landing.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "cursor_brand",
+      "label": "Cursor (AI Code Editor Brand)",
+      "file_type": "image",
+      "source_file": "public/ai-events/cafe_cursor_landing.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "bangalore_city",
+      "label": "Bangalore / Bengaluru City",
+      "file_type": "image",
+      "source_file": "public/ai-events/cafe_cursor_landing.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ms_ai_tour_landing",
+      "label": "Microsoft AI Tour Landing Banner",
+      "file_type": "image",
+      "source_file": "public/ai-events/Microsoft_AI_Tour_landing.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": "Prince Jain"
+    },
+    {
+      "id": "microsoft_brand",
+      "label": "Microsoft (Brand)",
+      "file_type": "image",
+      "source_file": "public/ai-events/Microsoft_AI_Tour_landing.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ms_ai_tour_badge",
+      "label": "Microsoft AI Tour Attendee Badge - Prince Jain (Flipkart)",
+      "file_type": "image",
+      "source_file": "public/ai-events/ms_ai_tour_001.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": "Prince Jain"
+    },
+    {
+      "id": "prince_jain_person",
+      "label": "Prince Jain (Attendee / Author)",
+      "file_type": "image",
+      "source_file": "public/ai-events/ms_ai_tour_001.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "Prince Jain",
+      "contributor": null
+    },
+    {
+      "id": "flipkart_org",
+      "label": "Flipkart (Organisation)",
+      "file_type": "image",
+      "source_file": "public/ai-events/ms_ai_tour_001.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ms_ai_tour_keynote_stage",
+      "label": "Microsoft AI Tour Keynote Stage - Empower Every Person",
+      "file_type": "image",
+      "source_file": "public/ai-events/ms_ai_tour_002.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": "Prince Jain"
+    },
+    {
+      "id": "ms_mission_statement",
+      "label": "Microsoft Mission: Empower Every Person and Every Organization",
+      "file_type": "image",
+      "source_file": "public/ai-events/ms_ai_tour_002.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ms_ai_tour_main_screen",
+      "label": "Microsoft AI Tour Main Stage Screen",
+      "file_type": "image",
+      "source_file": "public/ai-events/ms_ai_tour_003.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": "Prince Jain"
+    },
+    {
+      "id": "ms_ai_tour_bengaluru_event",
+      "label": "Microsoft AI Tour Bengaluru Event (Jan 7 2025)",
+      "file_type": "image",
+      "source_file": "public/ai-events/Microsoft_AI_Tour_landing.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2025-01-07",
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "cafe_cursor_venue_exterior",
+      "target": "cafe_cursor_bangalore_event",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/cafe_cursor_004.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "cafe_cursor_bangalore_event",
+      "target": "cursor_brand",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/cafe_cursor_landing.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "cafe_cursor_bangalore_event",
+      "target": "bangalore_city",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/cafe_cursor_landing.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ms_ai_tour_landing",
+      "target": "ms_ai_tour_bengaluru_event",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/Microsoft_AI_Tour_landing.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ms_ai_tour_landing",
+      "target": "microsoft_brand",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/Microsoft_AI_Tour_landing.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ms_ai_tour_bengaluru_event",
+      "target": "bangalore_city",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/Microsoft_AI_Tour_landing.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ms_ai_tour_badge",
+      "target": "prince_jain_person",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/ms_ai_tour_001.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ms_ai_tour_badge",
+      "target": "flipkart_org",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/ms_ai_tour_001.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ms_ai_tour_badge",
+      "target": "ms_ai_tour_bengaluru_event",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/ms_ai_tour_001.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "prince_jain_person",
+      "target": "flipkart_org",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/ms_ai_tour_001.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ms_ai_tour_keynote_stage",
+      "target": "ms_ai_tour_bengaluru_event",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/ai-events/ms_ai_tour_002.webp",
+      "source_location": null,
+      "weight": 0.9
+    },
+    {
+      "source": "ms_ai_tour_keynote_stage",
+      "target": "ms_mission_statement",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/ms_ai_tour_002.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ms_ai_tour_keynote_stage",
+      "target": "microsoft_brand",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/ai-events/ms_ai_tour_002.webp",
+      "source_location": null,
+      "weight": 0.9
+    },
+    {
+      "source": "ms_ai_tour_main_screen",
+      "target": "ms_ai_tour_bengaluru_event",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/ms_ai_tour_003.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ms_ai_tour_main_screen",
+      "target": "microsoft_brand",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/ms_ai_tour_003.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ms_ai_tour_bengaluru_event",
+      "target": "cafe_cursor_bangalore_event",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "public/ai-events/Microsoft_AI_Tour_landing.webp",
+      "source_location": null,
+      "weight": 0.7
+    },
+    {
+      "source": "prince_jain_person",
+      "target": "ms_ai_tour_bengaluru_event",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ai-events/ms_ai_tour_001.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "prince_jain_person",
+      "target": "cafe_cursor_bangalore_event",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "public/ai-events/cafe_cursor_004.webp",
+      "source_location": null,
+      "weight": 0.7
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}
