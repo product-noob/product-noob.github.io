@@ -1,0 +1,503 @@
+{
+  "nodes": [
+    {
+      "id": "system_design_3_atm_cash_management",
+      "label": "ATM Cash Management System Design",
+      "file_type": "image",
+      "source_file": "public/images/System_design_3.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_3_load_balancer",
+      "label": "Load Balancer (ATM System)",
+      "file_type": "image",
+      "source_file": "public/images/System_design_3.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_3_application_server",
+      "label": "Application Server (ATM System)",
+      "file_type": "image",
+      "source_file": "public/images/System_design_3.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_3_data_model",
+      "label": "Data Model (ATM Cash Prediction)",
+      "file_type": "image",
+      "source_file": "public/images/System_design_3.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_3_cash_dispensed_db",
+      "label": "Cash Dispensed Database",
+      "file_type": "image",
+      "source_file": "public/images/System_design_3.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_3_emergency_server",
+      "label": "Emergency Server (ATM SOS Signal)",
+      "file_type": "image",
+      "source_file": "public/images/System_design_3.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_3_operator_app",
+      "label": "Operator App / Facility Manager Dashboard",
+      "file_type": "image",
+      "source_file": "public/images/System_design_3.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_design_3_notify_authorities",
+      "label": "Notify Authorities (ATM Emergency)",
+      "file_type": "image",
+      "source_file": "public/images/System_design_3.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vaccinefinder_screenshot_app",
+      "label": "VaccineFinder App Screenshot (Covid-19 Vaccine Availability)",
+      "file_type": "image",
+      "source_file": "public/images/VaccineFinder_Screenshot.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vaccinefinder_screenshot_search_pincode",
+      "label": "VaccineFinder Search by PIN Code Feature",
+      "file_type": "image",
+      "source_file": "public/images/VaccineFinder_Screenshot.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vaccinefinder_screenshot_search_district",
+      "label": "VaccineFinder Search by District Feature",
+      "file_type": "image",
+      "source_file": "public/images/VaccineFinder_Screenshot.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vaccinefinder_screenshot_slot_availability",
+      "label": "VaccineFinder Slot Availability by Hospital",
+      "file_type": "image",
+      "source_file": "public/images/VaccineFinder_Screenshot.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vaccinefinder_screenshot_cowin_integration",
+      "label": "VaccineFinder Co-WIN Portal Integration",
+      "file_type": "image",
+      "source_file": "public/images/VaccineFinder_Screenshot.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vaccinefinder_usergraph_growth_chart",
+      "label": "VaccineFinder User Growth Chart",
+      "file_type": "image",
+      "source_file": "public/images/VaccineFinder_Usergraph.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vibecoding_jira_overview",
+      "label": "Vibe Coding Jira Board Overview",
+      "file_type": "image",
+      "source_file": "public/images/vibe-coding-jira.jpeg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vibecoding_jira_epics_features",
+      "label": "Jira Epics and Features Breakdown (UI/Frontend, Backend, AI, DS/ML)",
+      "file_type": "image",
+      "source_file": "public/images/vibe-coding-jira.jpeg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vibecoding_jira_conversational_ai",
+      "label": "Jira Conversational AI Feature Category",
+      "file_type": "image",
+      "source_file": "public/images/vibe-coding-jira.jpeg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vibecoding_meet_summariser_app",
+      "label": "ChatGPT G-Meet Summariser Chrome Extension",
+      "file_type": "image",
+      "source_file": "public/images/vibe-coding-meet-summariser.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vibecoding_meet_summariser_openai_key",
+      "label": "Meet Summariser OpenAI API Key Integration",
+      "file_type": "image",
+      "source_file": "public/images/vibe-coding-meet-summariser.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vibecoding_meet_summariser_auto_mode",
+      "label": "Meet Summariser Auto/Manual Transcript Mode",
+      "file_type": "image",
+      "source_file": "public/images/vibe-coding-meet-summariser.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vibecoding_querygpt_flippi",
+      "label": "QueryGPT - Flippi Data Agent UI",
+      "file_type": "image",
+      "source_file": "public/images/vibe-coding-querygpt.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vibecoding_querygpt_nl_to_sql",
+      "label": "QueryGPT Natural Language to FDP SQL Generation",
+      "file_type": "image",
+      "source_file": "public/images/vibe-coding-querygpt.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vibecoding_querygpt_ai_process_flow",
+      "label": "QueryGPT AI Agent Process Flow (Understand, Select Facts, Analyze, Generate SQL)",
+      "file_type": "image",
+      "source_file": "public/images/vibe-coding-querygpt.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vibecoding_querygpt_visualization",
+      "label": "QueryGPT Query Results Visualization (Chart/Table/Map)",
+      "file_type": "image",
+      "source_file": "public/images/vibe-coding-querygpt.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "system_design_3_load_balancer",
+      "target": "system_design_3_application_server",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design_3.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_3_application_server",
+      "target": "system_design_3_data_model",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design_3.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_3_application_server",
+      "target": "system_design_3_cash_dispensed_db",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design_3.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_3_application_server",
+      "target": "system_design_3_operator_app",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design_3.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_3_application_server",
+      "target": "system_design_3_emergency_server",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design_3.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_3_emergency_server",
+      "target": "system_design_3_notify_authorities",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design_3.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_3_atm_cash_management",
+      "target": "system_design_3_load_balancer",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design_3.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_design_3_atm_cash_management",
+      "target": "system_design_3_data_model",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/System_design_3.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "vaccinefinder_screenshot_app",
+      "target": "vaccinefinder_screenshot_search_pincode",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/VaccineFinder_Screenshot.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "vaccinefinder_screenshot_app",
+      "target": "vaccinefinder_screenshot_search_district",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/VaccineFinder_Screenshot.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "vaccinefinder_screenshot_app",
+      "target": "vaccinefinder_screenshot_slot_availability",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/VaccineFinder_Screenshot.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "vaccinefinder_screenshot_app",
+      "target": "vaccinefinder_screenshot_cowin_integration",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/VaccineFinder_Screenshot.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "vaccinefinder_screenshot_app",
+      "target": "vaccinefinder_usergraph_growth_chart",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/images/VaccineFinder_Usergraph.png",
+      "source_location": null,
+      "weight": 0.9
+    },
+    {
+      "source": "vibecoding_jira_overview",
+      "target": "vibecoding_jira_epics_features",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/vibe-coding-jira.jpeg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "vibecoding_jira_overview",
+      "target": "vibecoding_jira_conversational_ai",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/vibe-coding-jira.jpeg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "vibecoding_jira_conversational_ai",
+      "target": "vibecoding_querygpt_flippi",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "public/images/vibe-coding-jira.jpeg",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "vibecoding_meet_summariser_app",
+      "target": "vibecoding_meet_summariser_openai_key",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/vibe-coding-meet-summariser.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "vibecoding_meet_summariser_app",
+      "target": "vibecoding_meet_summariser_auto_mode",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/vibe-coding-meet-summariser.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "vibecoding_querygpt_flippi",
+      "target": "vibecoding_querygpt_nl_to_sql",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/vibe-coding-querygpt.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "vibecoding_querygpt_flippi",
+      "target": "vibecoding_querygpt_ai_process_flow",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/vibe-coding-querygpt.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "vibecoding_querygpt_flippi",
+      "target": "vibecoding_querygpt_visualization",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/vibe-coding-querygpt.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "vibecoding_meet_summariser_app",
+      "target": "vibecoding_jira_overview",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "public/images/vibe-coding-meet-summariser.png",
+      "source_location": null,
+      "weight": 0.7
+    },
+    {
+      "source": "vibecoding_querygpt_nl_to_sql",
+      "target": "vibecoding_jira_conversational_ai",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "public/images/vibe-coding-querygpt.png",
+      "source_location": null,
+      "weight": 0.75
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}
