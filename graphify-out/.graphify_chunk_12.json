@@ -1,0 +1,125 @@
+{
+  "nodes": [
+    {
+      "id": "platform_icon",
+      "label": "Platform Icon",
+      "file_type": "image",
+      "source_file": "public/icons/platform.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "pmvault_icon",
+      "label": "PM Vault (Password Manager Vault) Icon",
+      "file_type": "image",
+      "source_file": "public/icons/pm-vault.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "portainer_icon",
+      "label": "Portainer Icon",
+      "file_type": "image",
+      "source_file": "public/icons/portainer.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "slap_png_icon",
+      "label": "Slap App Icon (PNG)",
+      "file_type": "image",
+      "source_file": "public/icons/slap.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "slap_webp_icon",
+      "label": "Slap App Icon (WebP)",
+      "file_type": "image",
+      "source_file": "public/icons/slap.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "stirlingpdf_icon",
+      "label": "Stirling PDF Icon",
+      "file_type": "image",
+      "source_file": "public/icons/stirling-pdf.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "portainer_icon",
+      "target": "platform_icon",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "public/icons/portainer.svg",
+      "source_location": null,
+      "weight": 0.7
+    },
+    {
+      "source": "portainer_icon",
+      "target": "stirlingpdf_icon",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "public/icons/portainer.svg",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "pmvault_icon",
+      "target": "portainer_icon",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "public/icons/pm-vault.svg",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "stirlingpdf_icon",
+      "target": "pmvault_icon",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "public/icons/stirling-pdf.svg",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "slap_png_icon",
+      "target": "slap_webp_icon",
+      "relation": "semantically_similar_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/icons/slap.png",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}
