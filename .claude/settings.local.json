@@ -14,7 +14,8 @@
       "Bash(git push:*)",
       "Bash(tail:*)",
       "Bash(head:*)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(xxd \"C:/Users/princ/OneDrive/Attachments/Documents/AI Projects/product-noob.github.io/graphify-out/GRAPH_REPORT.md\")"
     ]
   },
   "outputStyle": "default",
