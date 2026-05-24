@@ -20,6 +20,17 @@ function highlightMetrics(text: string): string {
   );
 }
 
+function extractTopMetrics(achievements: string[]): string[] {
+  const metricPattern = /(?:₹\s?[\d,.]+\s?(?:Cr|Lakh)?\+?|\d[\d,.]*\+?\s?(?:M|K|Cr|MAU|MAUs|users|bookings|developers|merchant apps|A\/B experiments|%)?)/gi;
+  return [
+    ...new Set(
+      achievements
+        .flatMap((item) => item.match(metricPattern) ?? [])
+        .map((value) => value.trim())
+        .filter((value) => /[0-9]/.test(value))
+    ),
+  ].slice(0, 2);
+}
 ---
 
 <BaseLayout
@@ -154,6 +165,14 @@ function highlightMetrics(text: string): string {
                     <span class="work-card__tag">{tag}</span>
                   ))}
                 </div>
+
+                {extractTopMetrics(work.achievements).length > 0 && (
+                  <div class="work-card__impact-strip">
+                    {extractTopMetrics(work.achievements).map((metric) => (
+                      <span class="work-card__impact-chip">{metric}</span>
+                    ))}
+                  </div>
+                )}
 
                 {/* Divider */}
                 <hr class="work-card__divider" />
@@ -411,6 +430,25 @@ function highlightMetrics(text: string): string {
     background: color-mix(in srgb, var(--accent) 8%, white);
     border-color: color-mix(in srgb, var(--accent) 30%, var(--gray-200));
     color: color-mix(in srgb, var(--accent) 45%, var(--gray-700));
+  }
+
+  .work-card__impact-strip {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-4);
+  }
+
+  .work-card__impact-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: color-mix(in srgb, var(--accent) 55%, var(--gray-800));
+    background: color-mix(in srgb, var(--accent) 16%, white);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--gray-200));
   }
 
   /* Divider */
