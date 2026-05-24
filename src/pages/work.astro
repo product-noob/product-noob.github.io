@@ -19,6 +19,7 @@ function highlightMetrics(text: string): string {
     '<strong class="metric">$1</strong>'
   );
 }
+
 ---
 
 <BaseLayout
@@ -140,10 +141,10 @@ function highlightMetrics(text: string): string {
                     />
                   )}
                   <div>
+                    <p class="work-card__role">{work.role}</p>
                     <h2 class="work-card__company">
                       {work.company}
                     </h2>
-                    <p class="work-card__role">{work.role}</p>
                   </div>
                 </div>
 
@@ -184,6 +185,25 @@ function highlightMetrics(text: string): string {
 </BaseLayout>
 
 <style>
+  .page-header__stats {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--gray-700);
+    font-size: var(--text-base);
+    margin-top: var(--space-3);
+    padding: 0.45rem 0.9rem;
+    border-radius: var(--radius-full);
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+  }
+
+  .page-header__stat strong {
+    font-size: var(--text-lg);
+    font-weight: 800;
+    color: var(--gray-900);
+  }
+
   /* =====================================================
      Work Section & Card List
      ===================================================== */
@@ -260,11 +280,10 @@ function highlightMetrics(text: string): string {
       hsla(28, 100%, 50%, 0.06)
     );
     border-bottom: 1px solid hsla(45, 100%, 50%, 0.15);
-    font-size: var(--text-xs);
-    font-weight: 700;
+    font-size: var(--text-sm);
+    font-weight: 800;
     color: var(--gray-700);
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
+    letter-spacing: 0.01em;
   }
 
   /* Inner padding container */
@@ -301,7 +320,7 @@ function highlightMetrics(text: string): string {
     align-items: center;
     gap: 4px;
     font-size: var(--text-xs);
-    font-weight: 600;
+    font-weight: 500;
     color: var(--gray-400);
     text-decoration: none;
     padding: 3px var(--space-3);
@@ -315,7 +334,7 @@ function highlightMetrics(text: string): string {
   }
 
   .work-card__ext-link:hover {
-    color: var(--accent);
+    color: var(--gray-700);
     background: color-mix(in srgb, var(--accent) 6%, transparent);
     border-color: color-mix(in srgb, var(--accent) 15%, transparent);
   }
@@ -350,19 +369,19 @@ function highlightMetrics(text: string): string {
 
   .work-card__company {
     font-family: var(--font-display);
-    font-size: var(--text-2xl);
-    font-weight: 700;
-    color: var(--gray-900);
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--gray-600);
     line-height: 1.25;
-    margin-bottom: 2px;
+    margin-bottom: 0;
   }
 
   .work-card__role {
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--accent);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--gray-900);
     line-height: 1.4;
-    margin: 0;
+    margin: 0 0 var(--space-1);
   }
 
   /* Tags */
@@ -381,17 +400,17 @@ function highlightMetrics(text: string): string {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--gray-500);
-    background: var(--gray-50);
-    border: 1px solid var(--gray-100);
+    color: color-mix(in srgb, var(--accent) 38%, var(--gray-700));
+    background: color-mix(in srgb, var(--accent) 14%, white);
+    border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--gray-200));
     border-radius: var(--radius-full);
     transition: all var(--transition-fast);
   }
 
   .work-card:hover .work-card__tag {
-    background: white;
-    border-color: var(--gray-200);
-    color: var(--gray-700);
+    background: color-mix(in srgb, var(--accent) 8%, white);
+    border-color: color-mix(in srgb, var(--accent) 30%, var(--gray-200));
+    color: color-mix(in srgb, var(--accent) 45%, var(--gray-700));
   }
 
   /* Divider */
@@ -450,12 +469,23 @@ function highlightMetrics(text: string): string {
      Responsive
      ===================================================== */
   @media (max-width: 768px) {
-    .work-card__inner {
-      padding: var(--space-5) var(--space-5) var(--space-6);
+    .page-header__stats {
+      font-size: var(--text-sm);
+      gap: var(--space-2);
+      padding: 0.35rem 0.65rem;
+      white-space: nowrap;
     }
 
-    .work-card__company {
-      font-size: var(--text-xl);
+    .page-header__stat strong {
+      font-size: var(--text-base);
+    }
+
+    .page-header__separator {
+      opacity: 0.7;
+    }
+
+    .work-card__inner {
+      padding: var(--space-5) var(--space-5) var(--space-6);
     }
 
     .work-card__heading {
@@ -475,6 +505,14 @@ function highlightMetrics(text: string): string {
     .work-card__ext-link {
       font-size: 0.7rem;
       padding: 2px var(--space-2);
+    }
+
+    .work-card__role {
+      font-size: var(--text-lg);
+    }
+
+    .work-card__company {
+      font-size: var(--text-sm);
     }
   }
 

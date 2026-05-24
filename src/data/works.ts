@@ -16,8 +16,8 @@ export const works: WorkEntry[] = [
     description:
       'Leading the Conversational Commerce & AI charter. Building a bold 0→1 bet at the intersection of shopping and AI, rethinking how users discover and shop.',
     achievements: [
-      'Spearheading the vision for agentic commerce and AI-first shopping experiences.',
-      'Developing novel interaction paradigms for LLM-powered commerce.',
+      'Driving a 0→1 multi-marketplace AI shopping app with agentic workflows and MCP-based tool interfaces.',
+      'Leading Flipkart’s AI-commerce charter across app, off-app, and partner surfaces with a defensible domain-data moat.',
       'Orchestrating a massive cross-functional effort to redefine the future of Flipkart.',
     ],
     tags: ['AI', 'Strategy', '0→1'],
@@ -36,9 +36,9 @@ export const works: WorkEntry[] = [
     description:
       "Led the end-to-end development of Flippi, Flipkart's AI-powered conversational assistant, scaling it to millions of users.",
     achievements: [
-      'Drove 3M+ MAUs and 1% assisted conversions through intelligent discovery.',
-      'Built an advanced RAG platform and in-house fine-tuned LLMs saving ₹100 Cr+ annually.',
-      'Established the central LLM platform for all GenAI use-cases across the organization.',
+      'Scaled Flippi to 3M+ MAUs with 5% assisted conversions across discovery, research, and post-order journeys.',
+      'Built an advanced RAG platform and in-house fine-tuned LLM systems, unlocking ₹600 Cr+ incremental GMV.',
+      'Improved long-tail and subjective-query relevance by 40% via LLM interpretation and ranking layers.',
     ],
     tags: ['Generative AI', 'LLMs', 'Scale'],
     accentColor: 'hsl(250, 90%, 60%)',
@@ -56,9 +56,9 @@ export const works: WorkEntry[] = [
     description:
       'Drove non-incentivized GMV and Monthly Active Customer growth through rapid, hypothesis-led experimentation across the shopping funnel.',
     achievements: [
-      'Led 70+ A/B experiments across the funnel, resulting in a 1.7% total GMV uplift.',
+      'Executed 50+ high-velocity experiments and 70+ A/B tests across the funnel, resulting in a 1.7% GMV uplift.',
       'Awarded the "Business Excellence" award (top product team in org) for outsized impact.',
-      'Optimized ad conversion rates and launched new formats contributing ₹100 Cr+ bottom-line.',
+      'Drove ₹3,000 Cr GMV uplift through payment and COD funnel optimization; ads improvements added ₹40 Cr to bottom-line.',
     ],
     tags: ['Growth', 'A/B Testing', 'Retention'],
     accentColor: 'hsl(340, 80%, 55%)',
@@ -91,7 +91,8 @@ export const works: WorkEntry[] = [
     description:
       "Built a viral tool during the COVID crisis that scaled to become India's largest private vaccine booking platform.",
     achievements: [
-      'Enabled over 3 Million vaccine slot bookings during the peak of the pandemic.',
+      'Launched the product in 2 weeks and scaled to 10M+ users during the peak of the pandemic.',
+      'Enabled over 3M vaccine slot bookings and acquired 300k new users.',
       'Featured globally as a high-impact solution solving critical distribution friction.',
       'Integrated seamlessly as an in-house tool within the Paytm ecosystem.',
     ],
@@ -112,8 +113,9 @@ export const works: WorkEntry[] = [
       "Architected and launched the Mini App ecosystem to help achieve Paytm's Super-App ambition.",
     achievements: [
       'Grew the platform from ideation to 10M+ MAUs with 600+ merchant partners.',
-      'Built the developer SDK, documentation, and DIY onboarding flows from scratch.',
+      'Built the developer SDK, documentation, and DIY onboarding flows, reducing integration time by 70%.',
       "Launched strategic partnerships with major apps like Ola, Domino's, and Zomato.",
+      'Onboarded 10k developers via a pan-India developer conference and ecosystem push.',
     ],
     tags: ['Super-App', 'Ecosystem', 'SDK'],
     accentColor: 'hsl(200, 100%, 45%)',
