@@ -6,7 +6,7 @@ interface Props {
   style?: string;
 }
 
-const { href, class: className, ariaLabel, style } = Astro.props;
+const { href, class: className, ariaLabel, style, ...rest } = Astro.props;
 ---
 
 <a
@@ -16,6 +16,7 @@ const { href, class: className, ariaLabel, style } = Astro.props;
   target="_blank"
   rel="noopener noreferrer"
   aria-label={ariaLabel}
+  {...rest}
 >
   <slot />
 </a>

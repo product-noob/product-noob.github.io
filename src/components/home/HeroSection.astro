@@ -89,7 +89,7 @@ import profilePhoto4 from '../../assets/profile-photo-4.webp';
 
       <!-- Right Column - Profile Image with Rotation Effect -->
       <div class="hero-v2__image-wrapper">
-        <div class="hero-v2__image-container" id="profile-container">
+        <div class="hero-v2__image-container" id="profile-container" tabindex="0" aria-label="Profile image carousel. Hover or focus to pause.">
           <Image src={profilePhoto1} alt="Prince Jain" class="hero-v2__image hero-v2__image--active" data-index="0" width={640} height={640} fetchpriority="high" />
           <Image src={profilePhoto2} alt="Prince Jain" class="hero-v2__image" data-index="1" width={640} height={640} loading="lazy" />
           <Image src={profilePhoto3} alt="Prince Jain" class="hero-v2__image" data-index="2" width={640} height={640} loading="lazy" />
@@ -157,7 +157,12 @@ import profilePhoto4 from '../../assets/profile-photo-4.webp';
     startRotation();
   };
 
-  reduceMotionQuery.addEventListener('change', onMotionPreferenceChange);
+  if (typeof reduceMotionQuery.addEventListener === 'function') {
+    reduceMotionQuery.addEventListener('change', onMotionPreferenceChange);
+  } else if (typeof reduceMotionQuery.addListener === 'function') {
+    reduceMotionQuery.addListener(onMotionPreferenceChange);
+  }
+
   onMotionPreferenceChange();
 </script>
 
