@@ -1,0 +1,470 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Prince Jain" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - navigation "Main navigation" [ref=e6]:
+        - link "Blog" [ref=e7] [cursor=pointer]:
+          - /url: /blogs
+        - link "Work" [ref=e8] [cursor=pointer]:
+          - /url: /work
+        - link "Links" [ref=e9] [cursor=pointer]:
+          - /url: /links
+        - link "Lab" [ref=e10] [cursor=pointer]:
+          - /url: /homelab
+        - link "About" [ref=e11] [cursor=pointer]:
+          - /url: /about
+      - button "Toggle menu" [ref=e12] [cursor=pointer]:
+        - img [ref=e13]
+  - main [ref=e14]:
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - heading "I build AI Products." [level=1] [ref=e19]:
+          - text: I build
+          - text: AI Products.
+        - paragraph [ref=e20]:
+          - text: I'm
+          - strong [ref=e21]: Prince Jain
+          - text: — Group Product Manager at
+          - strong [ref=e22]: Flipkart
+          - text: ","
+          - text: building 0→1 agentic AI experiences and the next wave of AI-native products.
+        - generic [ref=e23]:
+          - link "View my work" [ref=e24] [cursor=pointer]:
+            - /url: /work
+            - generic [ref=e25]: View my work
+            - img [ref=e26]
+          - link "Read the blog" [ref=e28] [cursor=pointer]:
+            - /url: /blogs
+            - generic [ref=e29]: Read the blog
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - generic [ref=e32]:
+              - generic [ref=e33]: Now
+              - img "Flipkart" [ref=e35]
+            - generic [ref=e36]:
+              - generic [ref=e37]: Previously
+              - img "Paytm" [ref=e39]
+              - img "Oracle" [ref=e41]
+          - paragraph [ref=e42]:
+            - generic [ref=e43]: Some recent side projects
+            - generic [ref=e44]:
+              - link "PM Vault PM Vault" [ref=e45] [cursor=pointer]:
+                - /url: https://pm-vault.princejain.me/
+                - img "PM Vault" [ref=e47]
+                - generic [ref=e48]: PM Vault
+              - link "Whisprflow Whispr" [ref=e49] [cursor=pointer]:
+                - /url: https://whispr.princejain.me/
+                - img "Whisprflow" [ref=e51]
+                - generic [ref=e52]: Whispr
+              - link "G-meet Summariser G-Meet" [ref=e53] [cursor=pointer]:
+                - /url: https://chromewebstore.google.com/detail/chatgpt-google-meet-summa/kofkiemddfpekcadmaeheonbbkhnclhj
+                - img "G-meet Summariser" [ref=e55]
+                - generic [ref=e56]: G-Meet
+              - link "Launchpad Launchpad" [ref=e57] [cursor=pointer]:
+                - /url: https://launchpad.princejain.me/
+                - img "Launchpad" [ref=e59]
+                - generic [ref=e60]: Launchpad
+      - generic "Profile image carousel. Hover or focus to pause." [ref=e62]:
+        - img "Prince Jain" [ref=e63]
+        - img "Prince Jain" [ref=e64]
+        - img "Prince Jain" [ref=e65]
+        - img "Prince Jain" [ref=e66]
+    - img [ref=e68]
+    - generic [ref=e71]:
+      - generic [ref=e72]:
+        - heading "Selected Work" [level=2] [ref=e73]
+        - paragraph [ref=e74]: Highlights from my work at Flipkart and Paytm, focusing on AI products and growth.
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - link "2025 — Present Group Product Manager · Flipkart SLAP Leading a 0→1 AI-first shopping app with agentic workflows and an MCP tool layer. Learn more" [ref=e77] [cursor=pointer]:
+            - /url: /work
+            - generic [ref=e80]:
+              - paragraph [ref=e81]:
+                - generic [ref=e82]: 2025 — Present
+                - generic [ref=e83]: ·
+                - generic [ref=e84]: Group Product Manager · Flipkart
+              - heading "SLAP" [level=3] [ref=e85]
+              - paragraph [ref=e86]: Leading a 0→1 AI-first shopping app with agentic workflows and an MCP tool layer.
+              - generic [ref=e87]:
+                - text: Learn more
+                - img [ref=e88]
+          - link "2024 — 2025 Senior Product Manager · Flipkart Flippi Led Flipkart's AI assistant to 3M+ MAU. Built in-house LLMs and RAG platform, saving ₹100 Cr+ annually. Learn more" [ref=e90] [cursor=pointer]:
+            - /url: /work
+            - generic [ref=e93]:
+              - paragraph [ref=e94]:
+                - generic [ref=e95]: 2024 — 2025
+                - generic [ref=e96]: ·
+                - generic [ref=e97]: Senior Product Manager · Flipkart
+              - heading "Flippi" [level=3] [ref=e98]
+              - paragraph [ref=e99]: Led Flipkart's AI assistant to 3M+ MAU. Built in-house LLMs and RAG platform, saving ₹100 Cr+ annually.
+              - generic [ref=e100]:
+                - text: Learn more
+                - img [ref=e101]
+          - link "2022 — 2023 Product Manager · Flipkart Growth Hack Drove 1.7% GMV uplift through 70+ A/B experiments. Awarded \"Business Excellence\" for outsized impact. Learn more" [ref=e103] [cursor=pointer]:
+            - /url: /work
+            - generic [ref=e106]:
+              - paragraph [ref=e107]:
+                - generic [ref=e108]: 2022 — 2023
+                - generic [ref=e109]: ·
+                - generic [ref=e110]: Product Manager · Flipkart
+              - heading "Growth Hack" [level=3] [ref=e111]
+              - paragraph [ref=e112]: Drove 1.7% GMV uplift through 70+ A/B experiments. Awarded "Business Excellence" for outsized impact.
+              - generic [ref=e113]:
+                - text: Learn more
+                - img [ref=e114]
+          - link "2021 Product Manager · Paytm Vaccine Finder Scaled India's largest private vaccine booking tool during the crisis, enabling 3M+ slot bookings. Read case study" [ref=e116] [cursor=pointer]:
+            - /url: /blogs/building-vaccine-slot-finder
+            - generic [ref=e119]:
+              - paragraph [ref=e120]:
+                - generic [ref=e121]: "2021"
+                - generic [ref=e122]: ·
+                - generic [ref=e123]: Product Manager · Paytm
+              - heading "Vaccine Finder" [level=3] [ref=e124]
+              - paragraph [ref=e125]: Scaled India's largest private vaccine booking tool during the crisis, enabling 3M+ slot bookings.
+              - generic [ref=e126]:
+                - text: Read case study
+                - img [ref=e127]
+        - link "View all work experience" [ref=e130] [cursor=pointer]:
+          - /url: /work
+          - text: View all work experience
+          - img [ref=e131]
+    - heading "AI doesn't replace product judgment; it raises the bar for it." [level=2] [ref=e135]:
+      - text: AI doesn't replace product judgment;
+      - text: it raises the bar for it.
+    - generic [ref=e137]:
+      - generic [ref=e138]:
+        - heading "Side Quests" [level=2] [ref=e139]
+        - paragraph [ref=e140]: Where I spend my weekends and free time to tinker and do experiments.
+      - generic [ref=e141]:
+        - heading "🛠️ Personal Projects" [level=3] [ref=e142]:
+          - generic [ref=e143]: 🛠️
+          - text: Personal Projects
+        - generic [ref=e144]:
+          - generic [ref=e146]:
+            - generic [ref=e147]:
+              - img "PM Vault" [ref=e149]
+              - heading "PM Vault" [level=4] [ref=e150]
+            - paragraph [ref=e151]: A searchable PM interview prep database.
+            - generic [ref=e152]:
+              - generic [ref=e153]:
+                - generic [ref=e154]: Web
+                - generic [ref=e155]: Content
+              - link "Visit" [ref=e156] [cursor=pointer]:
+                - /url: https://pm-vault.princejain.me
+                - text: Visit
+                - img [ref=e157]
+          - generic [ref=e161]:
+            - generic [ref=e162]:
+              - img "Whispr" [ref=e164]
+              - heading "Whispr" [level=4] [ref=e165]
+            - paragraph [ref=e166]: High-fidelity voice-to-text transcription.
+            - generic [ref=e167]:
+              - generic [ref=e168]:
+                - generic [ref=e169]: Whisper
+                - generic [ref=e170]: Audio Processing
+              - link "Visit" [ref=e171] [cursor=pointer]:
+                - /url: https://whispr.princejain.me/
+                - text: Visit
+                - img [ref=e172]
+          - generic [ref=e176]:
+            - generic [ref=e177]:
+              - img "Launchpad App" [ref=e179]
+              - heading "Launchpad App" [level=4] [ref=e180]
+            - paragraph [ref=e181]: Home for all your vibe coded apps. Effortlessly run local apps.
+            - generic [ref=e182]:
+              - generic [ref=e183]:
+                - generic [ref=e184]: Electron
+                - generic [ref=e185]: Python
+              - link "Visit" [ref=e186] [cursor=pointer]:
+                - /url: https://launchpad.princejain.me
+                - text: Visit
+                - img [ref=e187]
+          - generic [ref=e191]:
+            - generic [ref=e192]:
+              - img "Micro-Tools" [ref=e194]
+              - heading "Micro-Tools" [level=4] [ref=e195]
+            - paragraph [ref=e196]: G-Meet Summariser, Auto-read G-Chat, Local Gmail Cleanup.
+            - generic [ref=e197]:
+              - generic [ref=e198]:
+                - generic [ref=e199]: Chrome Ext
+                - generic [ref=e200]: Python
+              - link "Visit" [ref=e201] [cursor=pointer]:
+                - /url: https://chromewebstore.google.com/detail/chatgpt-google-meet-summa/kofkiemddfpekcadmaeheonbbkhnclhj
+                - text: Visit
+                - img [ref=e202]
+          - generic [ref=e206]:
+            - generic [ref=e207]:
+              - generic [ref=e208]: 🧾
+              - heading "Fusion Bill Uploader" [level=4] [ref=e209]
+            - paragraph [ref=e210]: Automated reimbursement filing for my Mobile/Internet bills using browser agents.
+            - generic [ref=e211]:
+              - generic [ref=e212]:
+                - generic [ref=e213]: Playwright
+                - generic [ref=e214]: Python
+              - link "Visit" [ref=e215] [cursor=pointer]:
+                - /url: https://www.linkedin.com/posts/princejain17_spend-5-hours-to-save-5-minutes-every-activity-7375487951251628032-4x6J/
+                - text: Visit
+                - img [ref=e216]
+          - generic [ref=e220]:
+            - generic [ref=e221]: In Progress
+            - generic [ref=e222]:
+              - img "LocalLedger" [ref=e224]
+              - heading "LocalLedger" [level=4] [ref=e225]
+            - paragraph [ref=e226]: A local ledger for tracking my expenses and income.
+            - generic [ref=e228]:
+              - generic [ref=e229]: Playwright
+              - generic [ref=e230]: Python
+      - generic [ref=e232]:
+        - heading "🖥️ The Home Lab" [level=3] [ref=e233]:
+          - generic [ref=e234]: 🖥️
+          - text: The Home Lab
+        - paragraph [ref=e235]:
+          - text: Services I self-host on my home server, always running.
+          - link "See the full setup →" [ref=e236] [cursor=pointer]:
+            - /url: /homelab
+        - generic [ref=e237]:
+          - generic [ref=e238]:
+            - img "OpenClaw (formerly Clawdbot)" [ref=e240]
+            - generic [ref=e241]:
+              - heading "OpenClaw (formerly Clawdbot)" [level=4] [ref=e242]
+              - paragraph [ref=e243]: "My Personal AI Assistant: I named him Clawdius"
+            - generic [ref=e244]: LIVE
+          - generic [ref=e246]:
+            - img "n8n" [ref=e248]
+            - generic [ref=e249]:
+              - heading "n8n" [level=4] [ref=e250]
+              - paragraph [ref=e251]: Tool I use to run daily automation workflows
+            - link "Open n8n" [ref=e252] [cursor=pointer]:
+              - /url: https://n8n.princejain.me
+              - img [ref=e253]
+            - generic [ref=e255]: LIVE
+          - generic [ref=e257]:
+            - img "Immich" [ref=e259]
+            - generic [ref=e260]:
+              - heading "Immich" [level=4] [ref=e261]
+              - paragraph [ref=e262]: Self-hosted TB-scale photo & video library.
+            - link "Open Immich" [ref=e263] [cursor=pointer]:
+              - /url: https://immich.princejain.me
+              - img [ref=e264]
+            - generic [ref=e266]: LIVE
+      - generic [ref=e268]:
+        - heading "⚡ My Vibe Coding / AI Stack" [level=3] [ref=e269]:
+          - generic [ref=e270]: ⚡
+          - text: My Vibe Coding / AI Stack
+        - list [ref=e273]:
+          - listitem [ref=e274]:
+            - text: →
+            - strong [ref=e275]: Cursor + Claude Code
+            - text: → For vibe-coding. My
+            - link "CLAUDE.md" [ref=e276] [cursor=pointer]:
+              - /url: https://gist.github.com/product-noob/fa99ec973966e8fa41c49f71610bca6e
+              - text: CLAUDE.md
+              - img [ref=e277]
+          - listitem [ref=e281]:
+            - text: →
+            - strong [ref=e282]: ChatGPT / Gemini
+            - text: → brainstorming & writing
+          - listitem [ref=e283]:
+            - text: →
+            - strong [ref=e284]: FAL Flux/ Gemini Nano Banana
+            - text: → image generation
+          - listitem [ref=e285]:
+            - text: →
+            - strong [ref=e286]: Supabase
+            - text: → Authentication and DB
+          - listitem [ref=e287]:
+            - text: →
+            - strong [ref=e288]: Google ADK, Langchain
+            - text: → Multi-Agent Orchestrations
+    - generic [ref=e289]:
+      - generic [ref=e291]:
+        - heading "Speaking & Events" [level=2] [ref=e292]
+        - paragraph [ref=e293]: Showing up where AI meets product — learning, sharing, and connecting.
+      - generic [ref=e295]:
+        - button "View details for OpenAI Dev Day" [ref=e296] [cursor=pointer]:
+          - img "OpenAI Dev Day" [ref=e298]
+          - generic [ref=e299]:
+            - paragraph [ref=e300]: Nov 2025
+            - heading "OpenAI Dev Day" [level=3] [ref=e301]
+            - paragraph [ref=e302]: OpenAI's first dev-day event in India - front-row seat to see how AI agents and multi-modal models are changing the future of AI.
+        - button "View details for Cursor Café" [ref=e304] [cursor=pointer]:
+          - img "Cursor Café" [ref=e306]
+          - generic [ref=e307]:
+            - paragraph [ref=e308]: Dec 2025
+            - heading "Cursor Café" [level=3] [ref=e309]
+            - paragraph [ref=e310]: An intimate gathering of builders shipping with AI-first tools. How AI-native tools are changing the future of software development.
+        - button "View details for Microsoft AI Tour" [ref=e312] [cursor=pointer]:
+          - img "Microsoft AI Tour" [ref=e314]
+          - generic [ref=e315]:
+            - paragraph [ref=e316]: Dec 2025
+            - heading "Microsoft AI Tour" [level=3] [ref=e317]
+            - paragraph [ref=e318]: Deep dives into Latent updates in Enterprise AI solutions including Copilot Studio, Azure AI, and enterprise LLM adoption.
+        - button "View details for Replit × Razorpay" [ref=e320] [cursor=pointer]:
+          - img "Replit × Razorpay" [ref=e322]
+          - generic [ref=e323]:
+            - paragraph [ref=e324]: Feb 2026
+            - heading "Replit × Razorpay" [level=3] [ref=e325]
+            - paragraph [ref=e326]: Where AI-native developers meet fintech innovation. How LLM-powered coding and payments infrastructure converged at the AI Impact Summit.
+        - button "View details for OpenClaw Showcase" [ref=e328] [cursor=pointer]:
+          - img "OpenClaw Showcase" [ref=e330]
+          - generic [ref=e331]:
+            - paragraph [ref=e332]: Mar 2026
+            - heading "OpenClaw Showcase" [level=3] [ref=e333]
+            - paragraph [ref=e334]: An exclusive evening of live demos by builders shipping with OpenClaw — hosted by OpenAI, Razorpay & Peak XV, powered by GrowthX.
+        - button [ref=e336] [cursor=pointer]:
+          - img [ref=e338]
+          - generic [ref=e339]:
+            - paragraph [ref=e340]: Nov 2025
+            - heading [level=3] [ref=e341]: OpenAI Dev Day
+            - paragraph [ref=e342]: OpenAI's first dev-day event in India - front-row seat to see how AI agents and multi-modal models are changing the future of AI.
+        - button [ref=e344] [cursor=pointer]:
+          - img [ref=e346]
+          - generic [ref=e347]:
+            - paragraph [ref=e348]: Dec 2025
+            - heading [level=3] [ref=e349]: Cursor Café
+            - paragraph [ref=e350]: An intimate gathering of builders shipping with AI-first tools. How AI-native tools are changing the future of software development.
+        - button [ref=e352] [cursor=pointer]:
+          - img [ref=e354]
+          - generic [ref=e355]:
+            - paragraph [ref=e356]: Dec 2025
+            - heading [level=3] [ref=e357]: Microsoft AI Tour
+            - paragraph [ref=e358]: Deep dives into Latent updates in Enterprise AI solutions including Copilot Studio, Azure AI, and enterprise LLM adoption.
+        - button [ref=e360] [cursor=pointer]:
+          - img [ref=e362]
+          - generic [ref=e363]:
+            - paragraph [ref=e364]: Feb 2026
+            - heading [level=3] [ref=e365]: Replit × Razorpay
+            - paragraph [ref=e366]: Where AI-native developers meet fintech innovation. How LLM-powered coding and payments infrastructure converged at the AI Impact Summit.
+        - button [ref=e368] [cursor=pointer]:
+          - img [ref=e370]
+          - generic [ref=e371]:
+            - paragraph [ref=e372]: Mar 2026
+            - heading [level=3] [ref=e373]: OpenClaw Showcase
+            - paragraph [ref=e374]: An exclusive evening of live demos by builders shipping with OpenClaw — hosted by OpenAI, Razorpay & Peak XV, powered by GrowthX.
+    - generic:
+      - button:
+        - img
+    - generic [ref=e377]:
+      - generic [ref=e378]:
+        - heading "Latest Writing" [level=2] [ref=e379]
+        - paragraph [ref=e380]: Notes on building AI products, product craft, and the work of being a PM today.
+      - generic [ref=e381]:
+        - link "Featured Jun 9, 2026 18 min read How I Pick the UI Before Writing a Single Prompt Eight vibes, six shapes, and the 30-second decision that decides whether your vibe-coded prototype looks generic or considered. AI Vibe Coding Design Read" [ref=e382] [cursor=pointer]:
+          - /url: /blogs/picking-the-right-ui-for-vibe-coding
+          - generic [ref=e383]:
+            - generic [ref=e384]: Featured
+            - paragraph [ref=e385]:
+              - time [ref=e386]: Jun 9, 2026
+              - generic [ref=e387]: ·
+              - generic [ref=e388]: 18 min read
+            - heading "How I Pick the UI Before Writing a Single Prompt" [level=3] [ref=e389]
+            - paragraph [ref=e390]: Eight vibes, six shapes, and the 30-second decision that decides whether your vibe-coded prototype looks generic or considered.
+            - generic [ref=e391]:
+              - generic [ref=e392]:
+                - generic [ref=e393]: AI
+                - generic [ref=e394]: Vibe Coding
+                - generic [ref=e395]: Design
+              - generic [ref=e396]:
+                - text: Read
+                - img [ref=e397]
+        - 'link "Featured Mar 17, 2026 26 min read What It''s Like to Build AI Products at Scale Beyond the 15-minute demo: what it actually takes to run AI at 10M+ users AI Product Engineering Read" [ref=e400] [cursor=pointer]':
+          - /url: /blogs/what-its-like-to-build-ai-products-at-scale
+          - generic [ref=e401]:
+            - generic [ref=e402]: Featured
+            - paragraph [ref=e403]:
+              - time [ref=e404]: Mar 17, 2026
+              - generic [ref=e405]: ·
+              - generic [ref=e406]: 26 min read
+            - heading "What It's Like to Build AI Products at Scale" [level=3] [ref=e407]
+            - paragraph [ref=e408]: "Beyond the 15-minute demo: what it actually takes to run AI at 10M+ users"
+            - generic [ref=e409]:
+              - generic [ref=e410]:
+                - generic [ref=e411]: AI
+                - generic [ref=e412]: Product
+                - generic [ref=e413]: Engineering
+              - generic [ref=e414]:
+                - text: Read
+                - img [ref=e415]
+      - link "Browse all writing" [ref=e419] [cursor=pointer]:
+        - /url: /blogs
+        - text: Browse all writing
+        - img [ref=e420]
+    - generic [ref=e423]:
+      - generic [ref=e424]:
+        - heading "People Who Inspire Me" [level=2] [ref=e425]
+        - paragraph [ref=e426]: Thinkers and builders who shaped how I think about product.
+      - generic [ref=e427]:
+        - 'link "LR Lenny Rachitsky Product, growth, and the mastermind behind the #1 product newsletter." [ref=e428] [cursor=pointer]':
+          - /url: https://www.lennysnewsletter.com/
+          - generic [ref=e429]: LR
+          - generic [ref=e430]:
+            - paragraph [ref=e431]: Lenny Rachitsky
+            - paragraph [ref=e432]: "Product, growth, and the mastermind behind the #1 product newsletter."
+          - img [ref=e433]
+        - link "SD Shreyas Doshi Former PM at Stripe, Twitter, Google — prolific thinker on product craft." [ref=e435] [cursor=pointer]:
+          - /url: https://twitter.com/shreyas
+          - generic [ref=e436]: SD
+          - generic [ref=e437]:
+            - paragraph [ref=e438]: Shreyas Doshi
+            - paragraph [ref=e439]: Former PM at Stripe, Twitter, Google — prolific thinker on product craft.
+          - img [ref=e440]
+        - link "PG Paul Graham Co-founder of Y Combinator. Essayist on startups, tech, and thinking clearly." [ref=e442] [cursor=pointer]:
+          - /url: https://paulgraham.com/
+          - generic [ref=e443]: PG
+          - generic [ref=e444]:
+            - paragraph [ref=e445]: Paul Graham
+            - paragraph [ref=e446]: Co-founder of Y Combinator. Essayist on startups, tech, and thinking clearly.
+          - img [ref=e447]
+        - link "NR Naval Ravikant AngelList founder. Philosopher-investor on wealth, leverage, and judgement." [ref=e449] [cursor=pointer]:
+          - /url: https://nav.al/
+          - generic [ref=e450]: NR
+          - generic [ref=e451]:
+            - paragraph [ref=e452]: Naval Ravikant
+            - paragraph [ref=e453]: AngelList founder. Philosopher-investor on wealth, leverage, and judgement.
+          - img [ref=e454]
+        - link "BT Ben Thompson Stratechery founder. The sharpest analyst on tech strategy and aggregation." [ref=e456] [cursor=pointer]:
+          - /url: https://stratechery.com/
+          - generic [ref=e457]: BT
+          - generic [ref=e458]:
+            - paragraph [ref=e459]: Ben Thompson
+            - paragraph [ref=e460]: Stratechery founder. The sharpest analyst on tech strategy and aggregation.
+          - img [ref=e461]
+        - link "SG Shrinivas SG My former manager and a defining influence on how I think about people leadership." [ref=e463] [cursor=pointer]:
+          - /url: https://x.com/shrinivassg
+          - generic [ref=e464]: SG
+          - generic [ref=e465]:
+            - paragraph [ref=e466]: Shrinivas SG
+            - paragraph [ref=e467]: My former manager and a defining influence on how I think about people leadership.
+          - img [ref=e468]
+  - contentinfo [ref=e470]:
+    - generic [ref=e471]:
+      - generic [ref=e472]:
+        - link "Twitter" [ref=e473] [cursor=pointer]:
+          - /url: https://twitter.com/Prince_Jain17
+          - img [ref=e474]
+        - link "LinkedIn" [ref=e476] [cursor=pointer]:
+          - /url: https://linkedin.com/in/princejain17
+          - img [ref=e477]
+        - link "GitHub" [ref=e479] [cursor=pointer]:
+          - /url: https://github.com/product-noob
+          - img [ref=e480]
+        - link "Email" [ref=e482] [cursor=pointer]:
+          - /url: mailto:princemnit@gmail.com
+          - img [ref=e483]
+      - paragraph [ref=e486]: © 2026 Prince Jain. All rights reserved.
+  - generic [ref=e489]:
+    - button "Menu" [ref=e490]:
+      - img [ref=e492]
+      - generic: Menu
+    - button "Inspect" [ref=e496]:
+      - img [ref=e498]
+      - generic: Inspect
+    - button "Audit" [ref=e500]:
+      - img [ref=e502]
+      - generic: Audit
+    - button "Settings" [ref=e505]:
+      - img [ref=e507]
+      - generic: Settings

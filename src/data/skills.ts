@@ -15,14 +15,10 @@ export const stack: StackItem[] = [
   { name: 'Tailwind', icon: '💅' },
 ];
 
-/** Professional skills for the /about page */
+/** Professional skills for the /about page — grouped pairs */
 export const skills: string[] = [
-  'Product Strategy',
-  'Growth Hacking',
-  'Generative AI',
-  'Agentic Workflows',
-  'Zero-to-One',
-  'Stakeholder Management',
-  'UX Design',
-  'Data Analysis',
+  'Product Strategy & Zero-to-One',
+  'Generative AI & Agentic Workflows',
+  'Growth Hacking & Data Analysis',
+  'UX Design & Stakeholder Management',
 ];

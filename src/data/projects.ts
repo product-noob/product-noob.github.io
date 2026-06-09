@@ -10,7 +10,7 @@ export type { WorkshopProject, HomelabService };
 export const workshopProjects: WorkshopProject[] = [
   {
     title: 'PM Vault',
-    description: 'The ultimate PM interview database.',
+    description: 'A searchable PM interview prep database.',
     icon: '/icons/pm-vault.svg',
     tags: ['Web', 'Content'],
     link: 'https://pm-vault.princejain.me',

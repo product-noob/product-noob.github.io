@@ -538,6 +538,7 @@ const siteUrl = "https://princejain.me";
 <script>
   import { addCopyButtons } from "../scripts/copyCode";
   import { initMobileMenu } from "../scripts/mobileMenu";
+  import { initCtaTracking } from "../scripts/analytics";
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", addCopyButtons);
@@ -546,4 +547,5 @@ const siteUrl = "https://princejain.me";
   }
 
   initMobileMenu();
+  initCtaTracking();
 </script>

@@ -14,11 +14,11 @@ export const works: WorkEntry[] = [
     role: 'Group Product Manager (SLAP)',
     period: 'July 2025 - Present',
     description:
-      'Leading the Conversational Commerce & AI charter. Building a bold 0→1 bet at the intersection of shopping and AI, rethinking how users discover and shop.',
+      'Leading the Conversational Commerce & AI charter. Building a 0→1 bet at the intersection of shopping and AI.',
     achievements: [
       'Driving a 0→1 multi-marketplace AI shopping app with agentic workflows and MCP-based tool interfaces.',
-      'Leading Flipkart’s AI-commerce charter across app, off-app, and partner surfaces with a defensible domain-data moat.',
-      'Orchestrating a massive cross-functional effort to redefine the future of Flipkart.',
+      'Leading the charter across app, off-app, and partner surfaces — directing PM, engineering, design, and data science toward a single roadmap with a defensible domain-data moat.',
+      'Bet on an agentic + MCP architecture over a thinner LLM wrapper — slower to launch, but the data moat compounds.',
     ],
     tags: ['AI', 'Strategy', '0→1'],
     accentColor: 'hsl(28, 100%, 50%)',
@@ -37,7 +37,7 @@ export const works: WorkEntry[] = [
       "Led the end-to-end development of Flippi, Flipkart's AI-powered conversational assistant, scaling it to millions of users.",
     achievements: [
       'Scaled Flippi to 3M+ MAUs with 5% assisted conversions across discovery, research, and post-order journeys.',
-      'Built an advanced RAG platform and in-house fine-tuned LLM systems, unlocking ₹600 Cr+ incremental GMV.',
+      'Built an in-house RAG platform and fine-tuned LLM systems, unlocking ₹600 Cr+ incremental GMV.',
       'Improved long-tail and subjective-query relevance by 40% via LLM interpretation and ranking layers.',
     ],
     tags: ['Generative AI', 'LLMs', 'Scale'],
@@ -56,7 +56,7 @@ export const works: WorkEntry[] = [
     description:
       'Drove non-incentivized GMV and Monthly Active Customer growth through rapid, hypothesis-led experimentation across the shopping funnel.',
     achievements: [
-      'Executed 50+ high-velocity experiments and 70+ A/B tests across the funnel, resulting in a 1.7% GMV uplift.',
+      'Executed 50+ experiments and 70+ A/B tests across the funnel, resulting in a 1.7% GMV uplift.',
       'Awarded the "Business Excellence" award (top product team in org) for outsized impact.',
       'Drove ₹3,000 Cr GMV uplift through payment and COD funnel optimization; ads improvements added ₹40 Cr to bottom-line.',
     ],
@@ -66,15 +66,15 @@ export const works: WorkEntry[] = [
     link: '/work',
   },
   {
-    company: 'Paytm Health',
-    role: 'Senior Product Manager (Founding Team)',
+    company: 'Paytm',
+    role: 'Senior Product Manager (Paytm Health)',
     period: 'Aug 2021 - March 2022',
     description:
       "Launched the Paytm Health vertical as a one-stop-shop for healthcare, integrated with India's National Health Stack.",
     achievements: [
       'Envisioned and launched the first PHR (Public Health Records) app on the national stack.',
       'Integrated e-Raktkosh for blood bank discovery and donated blood services.',
-      'Built a dedicated Health storefront to enable discovery of all medical services for 300M+ users.',
+      'Built a dedicated Health storefront for medical service discovery, surfaced to Paytm’s 300M+ user base.',
     ],
     tags: ['Healthtech', 'Impact', 'Government'],
     accentColor: 'hsl(150, 80%, 40%)',
@@ -85,16 +85,15 @@ export const works: WorkEntry[] = [
     },
   },
   {
-    company: 'Vaccine Finder',
-    role: 'Product Lead (Viral Side Project)',
+    company: 'Paytm',
+    role: 'Product Lead (Vaccine Finder)',
     period: 'May 2021 - Aug 2021',
     description:
       "Built a viral tool during the COVID crisis that scaled to become India's largest private vaccine booking platform.",
     achievements: [
       'Launched the product in 2 weeks and scaled to 10M+ users during the peak of the pandemic.',
       'Enabled over 3M vaccine slot bookings and acquired 300k new users.',
-      'Featured globally as a high-impact solution solving critical distribution friction.',
-      'Integrated seamlessly as an in-house tool within the Paytm ecosystem.',
+      'Integrated as a first-party tool inside the Paytm app, leveraging existing distribution.',
     ],
     tags: ['Product-Led', 'Viral', 'Social Change'],
     accentColor: 'hsl(180, 70%, 45%)',
@@ -106,8 +105,8 @@ export const works: WorkEntry[] = [
     },
   },
   {
-    company: 'Paytm Mini Apps',
-    role: 'Product Manager',
+    company: 'Paytm',
+    role: 'Product Manager (Paytm Mini Apps)',
     period: 'May 2019 - Aug 2021',
     description:
       "Architected and launched the Mini App ecosystem to help achieve Paytm's Super-App ambition.",
@@ -133,9 +132,8 @@ export const works: WorkEntry[] = [
     description:
       'Built enterprise-grade data governance tools for the financial services industry, helping global banks maintain data integrity and stay ahead of evolving regulatory mandates.',
     achievements: [
-      'Engineered core modules of the Data Governance Studio (DGS), enabling banking clients to automate data quality checks across 50+ regulatory dimensions.',
-      'Designed a custom data generation and validation utility that cut manual testing effort by 20%, accelerating release cycles for the entire team.',
-      'Recognized as a Top 10% performer in FY 2016-17 for consistent contributions to product development and cross-team collaboration.',
+      'Built core modules of the Data Governance Studio, automating data quality checks across 50+ regulatory dimensions for global banks.',
+      'Designed a data generation and validation utility that cut manual testing effort by 20%; recognized as a Top 10% performer (FY 2016-17).',
     ],
     tags: ['Enterprise', 'Data Quality', 'FinTech'],
     accentColor: 'hsl(0, 85%, 50%)',
@@ -148,43 +146,47 @@ export const works: WorkEntry[] = [
  */
 export const workHighlights: WorkHighlight[] = [
   {
-    title: '2025 - Present',
-    company: 'SLAP (Flipkart)',
+    title: '2025 — Present',
+    company: 'SLAP',
     workIcon: '/icons/slap.webp',
-    role: 'Group Product Manager',
+    role: 'Group Product Manager · Flipkart',
     highlight:
-      'Building the future of agentic commerce. Leading a 0→1 AI-first app to rethink discovery and shopping paradigms.',
+      'Leading a 0→1 AI-first shopping app with agentic workflows and an MCP tool layer.',
     link: '/work',
+    linkText: 'Learn more',
     accentColor: works[0].accentColor,
   },
   {
-    title: '2024 - 2025',
-    company: 'Flippi (Flipkart)',
+    title: '2024 — 2025',
+    company: 'Flippi',
     workIcon: '/icons/flippi.svg',
-    role: 'Senior Product Manager',
+    role: 'Senior Product Manager · Flipkart',
     highlight:
       "Led Flipkart's AI assistant to 3M+ MAU. Built in-house LLMs and RAG platform, saving ₹100 Cr+ annually.",
     link: '/work',
+    linkText: 'Learn more',
     accentColor: works[1].accentColor,
   },
   {
-    title: '2022 - 2023',
-    company: 'Growth Hack (Flipkart)',
-    workIcon: '/icons/growth.svg',
-    role: 'Product Manager 2',
+    title: '2022 — 2023',
+    company: 'Growth Hack',
+    workIcon: '/icons/flipkart.svg',
+    role: 'Product Manager · Flipkart',
     highlight:
       'Drove 1.7% GMV uplift through 70+ A/B experiments. Awarded "Business Excellence" for outsized impact.',
     link: '/work',
+    linkText: 'Learn more',
     accentColor: works[2].accentColor,
   },
   {
     title: '2021',
     company: 'Vaccine Finder',
-    workIcon: '/icons/vaccine.svg',
-    role: 'Product Manager',
+    workIcon: '/icons/paytm.svg',
+    role: 'Product Manager · Paytm',
     highlight:
       "Scaled India's largest private vaccine booking tool during the crisis, enabling 3M+ slot bookings.",
     link: '/blogs/building-vaccine-slot-finder',
+    linkText: 'Read case study',
     accentColor: works[4].accentColor,
   },
 ];

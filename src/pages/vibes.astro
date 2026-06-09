@@ -1,0 +1,400 @@
+---
+/**
+ * /vibes — prompt reference index for the 8 UI vibes.
+ *
+ * Each row: vibe name + id + blurb + "For:" + reference brand chips + a
+ * collapsible <details> showing the full prompt, plus a "Copy prompt" button.
+ * No per-vibe styling — the visuals live in the blog widget (interactive
+ * preview) and the HTML reference (full multi-component examples). This page
+ * is the canonical deep-linkable prompt index.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { vibes, buildFullPrompt } from '../data/vibes';
+---
+
+<BaseLayout
+  title="UI Vibes — Prompt Reference | Prince Jain"
+  description="Eight named UI aesthetics with copy-paste prompt blocks. Pick a vibe, copy the prompt, paste into Claude, get a UI that doesn't look generic."
+  breadcrumbs={[
+    { name: 'Home', url: 'https://princejain.me' },
+    { name: 'UI Vibes' },
+  ]}
+>
+  <section class="vibes-header">
+    <div class="container">
+      <p class="vibes-eyebrow">REFERENCE</p>
+      <h1 class="vibes-title">UI Vibes — Prompt Reference</h1>
+      <p class="vibes-subtitle">
+        Eight design systems for vibe-coding. Pick one, copy its prompt block, paste into Claude
+        (or any LLM that builds UIs). Each prompt includes the full design system, layout guidance,
+        responsive rules, and non-negotiables.
+      </p>
+      <p class="vibes-meta">
+        New here?
+        <a href="/blogs/picking-the-right-ui-for-vibe-coding/">The blog post</a>
+        explains how to pick the right vibe. Want to see each one at full scale across multiple
+        components?
+        <a href="/ui-vibes-reference.html" target="_blank" rel="noopener noreferrer">
+          Open the HTML reference ↗
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <section class="vibes-list-section">
+    <div class="container">
+      <ol class="vibes-list">
+        {vibes.map((vibe) => {
+          const prompt = buildFullPrompt(vibe);
+          return (
+            <li class="vibe-row" id={vibe.id}>
+              <div class="vibe-row__head">
+                <div class="vibe-row__name-block">
+                  <h2 class="vibe-row__name">{vibe.name}</h2>
+                  <span class="vibe-row__id">#{vibe.id}</span>
+                </div>
+                <div class="vibe-row__actions">
+                  <button
+                    class="vibe-copy-btn"
+                    type="button"
+                    data-copy-prompt={vibe.id}
+                    aria-label={`Copy ${vibe.name} prompt block`}
+                  >
+                    <span class="vibe-copy-btn__label">Copy prompt</span>
+                  </button>
+                  <a
+                    class="vibe-row__permalink"
+                    href={`#${vibe.id}`}
+                    aria-label={`Permalink to ${vibe.name}`}
+                  >
+                    #
+                  </a>
+                </div>
+              </div>
+
+              <p class="vibe-row__blurb">{vibe.blurb}</p>
+              <p class="vibe-row__usefor">
+                <strong>For:</strong> {vibe.useFor}
+              </p>
+              <ul class="vibe-row__refs">
+                {vibe.references.map((ref) => (
+                  <li>{ref}</li>
+                ))}
+              </ul>
+
+              <details class="vibe-row__details">
+                <summary>Show prompt</summary>
+                <pre class="vibe-row__pre"><code>{prompt}</code></pre>
+              </details>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  </section>
+
+  <section class="vibes-footer">
+    <div class="container">
+      <p>
+        Don't see a vibe that fits? Tell me on
+        <a
+          href="https://twitter.com/Prince_Jain17"
+          target="_blank"
+          rel="noopener noreferrer">Twitter</a>
+        or
+        <a
+          href="https://www.linkedin.com/in/princejain17/"
+          target="_blank"
+          rel="noopener noreferrer">LinkedIn</a>
+        — I'll add it if it clears the bar.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ============================================================
+     Page chrome
+     ============================================================ */
+  .vibes-header {
+    padding: var(--space-16) 0 var(--space-8);
+  }
+  .vibes-eyebrow {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+    margin-bottom: var(--space-3);
+  }
+  .vibes-title {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--gray-900);
+    margin-bottom: var(--space-3);
+  }
+  .vibes-subtitle {
+    font-size: var(--text-lg);
+    color: var(--gray-600);
+    max-width: 720px;
+    line-height: 1.6;
+  }
+  .vibes-meta {
+    margin-top: var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--gray-500);
+    max-width: 720px;
+    line-height: 1.6;
+  }
+  .vibes-meta a {
+    color: var(--gray-700);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .vibes-meta a:hover {
+    color: var(--color-accent);
+  }
+
+  /* ============================================================
+     Prompt list — uniform rows, no per-vibe styling
+     ============================================================ */
+  .vibes-list-section {
+    padding: var(--space-8) 0 var(--space-16);
+  }
+  .vibes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--gray-200);
+  }
+
+  .vibe-row {
+    padding: var(--space-6) 0;
+    border-bottom: 1px solid var(--gray-200);
+    scroll-margin-top: var(--space-16);
+  }
+  .vibe-row__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-bottom: var(--space-2);
+  }
+  .vibe-row__name-block {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+  .vibe-row__name {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--gray-900);
+    letter-spacing: -0.01em;
+  }
+  .vibe-row__id {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--gray-500);
+  }
+  .vibe-row__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-shrink: 0;
+  }
+  .vibe-row__permalink {
+    color: var(--gray-400);
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    text-decoration: none;
+    line-height: 1;
+  }
+  .vibe-row__permalink:hover {
+    color: var(--gray-700);
+  }
+  .vibe-copy-btn {
+    appearance: none;
+    border: 1px solid var(--gray-900);
+    background: var(--gray-900);
+    color: white;
+    padding: 7px 14px;
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      transform 120ms ease,
+      background 120ms ease;
+  }
+  .vibe-copy-btn:hover {
+    background: black;
+  }
+  .vibe-copy-btn:active {
+    transform: scale(0.98);
+  }
+  .vibe-copy-btn.is-copied {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  .vibe-row__blurb {
+    color: var(--gray-700);
+    font-size: var(--text-base);
+    line-height: 1.55;
+    margin-bottom: var(--space-2);
+  }
+  .vibe-row__usefor {
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+    margin-bottom: var(--space-3);
+  }
+  .vibe-row__usefor strong {
+    color: var(--gray-800);
+    font-weight: 600;
+  }
+
+  .vibe-row__refs {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-3);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .vibe-row__refs li {
+    background: var(--gray-100);
+    color: var(--gray-700);
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: var(--text-xs);
+    font-weight: 500;
+  }
+
+  .vibe-row__details {
+    font-size: var(--text-sm);
+  }
+  .vibe-row__details summary {
+    cursor: pointer;
+    color: var(--gray-600);
+    font-weight: 500;
+    user-select: none;
+    padding: 4px 0;
+  }
+  .vibe-row__details summary:hover {
+    color: var(--gray-900);
+  }
+  .vibe-row__pre {
+    margin-top: var(--space-3);
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    padding: var(--space-4);
+    overflow: auto;
+    max-height: 360px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--gray-800);
+  }
+
+  /* ============================================================
+     Footer
+     ============================================================ */
+  .vibes-footer {
+    padding: var(--space-8) 0 var(--space-16);
+    text-align: center;
+    color: var(--gray-600);
+    font-size: var(--text-sm);
+  }
+  .vibes-footer a {
+    color: var(--gray-800);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .vibes-footer a:hover {
+    color: var(--color-accent);
+  }
+
+  /* Mobile: stack head into two rows */
+  @media (max-width: 640px) {
+    .vibe-row__head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+    .vibe-row__actions {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+</style>
+
+<script>
+  /**
+   * Wires the "Copy prompt" buttons to clipboard. Pulls prompts from
+   * /vibes-prompts.json (single source of truth), caches after first fetch,
+   * falls back to the visible <pre> block if the fetch ever fails.
+   */
+  type PromptMap = Record<string, string>;
+  let promptsCache: PromptMap | null = null;
+
+  async function loadPrompts(): Promise<PromptMap> {
+    if (promptsCache) return promptsCache;
+    const res = await fetch('/vibes-prompts.json');
+    if (!res.ok) throw new Error('Failed to load prompts');
+    promptsCache = (await res.json()) as PromptMap;
+    return promptsCache;
+  }
+
+  function fallbackPrompt(vibeId: string): string | null {
+    const row = document.querySelector(`.vibe-row[id="${vibeId}"]`);
+    const pre = row?.querySelector('.vibe-row__pre');
+    return pre?.textContent ?? null;
+  }
+
+  async function copyPrompt(button: HTMLButtonElement): Promise<void> {
+    const vibeId = button.dataset.copyPrompt;
+    if (!vibeId) return;
+
+    let text: string | null = null;
+    try {
+      const prompts = await loadPrompts();
+      text = prompts[vibeId] ?? null;
+    } catch {
+      text = fallbackPrompt(vibeId);
+    }
+    if (!text) return;
+
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      return;
+    }
+
+    const label = button.querySelector('.vibe-copy-btn__label');
+    const original = label?.textContent ?? 'Copy prompt';
+    if (label) label.textContent = 'Copied ✓';
+    button.classList.add('is-copied');
+
+    window.gtag?.('event', 'vibe_prompt_copied', {
+      vibe_id: vibeId,
+      source: 'vibes_page',
+    });
+
+    setTimeout(() => {
+      if (label) label.textContent = original;
+      button.classList.remove('is-copied');
+    }, 1800);
+  }
+
+  document.addEventListener('click', (event) => {
+    const target = (event.target as Element)?.closest<HTMLButtonElement>(
+      '[data-copy-prompt]'
+    );
+    if (!target) return;
+    void copyPrompt(target);
+  });
+</script>

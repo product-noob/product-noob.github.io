@@ -7,7 +7,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { works } from '../data/works';
 
-const uniqueCompanies = [...new Set(works.map(w => w.company))];
+const RESUME_URL =
+  'https://drive.google.com/file/d/150T9ti3Mqdquq7UbNqWnElOGwD-Ij9rD/view?usp=share_link';
+const CONTACT_EMAIL = 'princemnit@gmail.com';
 
 /**
  * Wraps numeric metrics in achievement text with <strong>
@@ -18,18 +20,6 @@ function highlightMetrics(text: string): string {
     /(\d[\d,.]*[+%]?(?:\s*(?:Cr|M|K|MAU|MAUs|Lakh)[\+]?)?(?:\s*\+)?)/g,
     '<strong class="metric">$1</strong>'
   );
-}
-
-function extractTopMetrics(achievements: string[]): string[] {
-  const metricPattern = /(?:₹\s?[\d,.]+\s?(?:Cr|Lakh)?\+?|\d[\d,.]*\+?\s?(?:M|K|Cr|MAU|MAUs|users|bookings|developers|merchant apps|A\/B experiments|%)?)/gi;
-  return [
-    ...new Set(
-      achievements
-        .flatMap((item) => item.match(metricPattern) ?? [])
-        .map((value) => value.trim())
-        .filter((value) => /[0-9]/.test(value))
-    ),
-  ].slice(0, 2);
 }
 ---
 
@@ -54,8 +44,8 @@ function extractTopMetrics(achievements: string[]): string[] {
         </h1>
         <p class="page-header__subtitle animate-fade-up"
           style="animation-delay: 140ms;">
-          A journey through building platforms, scaling
-          ecosystems, and pioneering AI-first products.
+          9 years building consumer products at scale.
+          Now leading 0→1 AI bets at Flipkart.
         </p>
         <div class="page-header__stats animate-fade-up"
           style="animation-delay: 200ms;">
@@ -71,6 +61,40 @@ function extractTopMetrics(achievements: string[]): string[] {
             2015 – Present
           </span>
         </div>
+
+        <div class="page-header__quietlinks animate-fade-up"
+          style="animation-delay: 260ms;">
+          <a
+            href={RESUME_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="page-header__quietlink"
+            data-track="resume_download"
+            data-track-location="work_header"
+            aria-label="Download resume"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span>Resume</span>
+          </a>
+          <span class="page-header__quietlinks-sep" aria-hidden="true">·</span>
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            class="page-header__quietlink"
+            data-track="contact_email"
+            data-track-location="work_header"
+            aria-label="Email Prince"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2"/>
+              <path d="m3 7 9 6 9-6"/>
+            </svg>
+            <span>Contact me</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -81,9 +105,10 @@ function extractTopMetrics(achievements: string[]): string[] {
       <div class="work-portfolio">
         {works.map((work) => {
           const isAwardEntry = work.role.includes('Growth Hack');
+          const isCurrent = work.period.includes('Present');
           return (
             <article
-              class="work-card"
+              class={`work-card${isCurrent ? ' work-card--current' : ''}`}
               style={`--accent: ${work.accentColor};`}
             >
               {/* Accent top stripe */}
@@ -99,43 +124,17 @@ function extractTopMetrics(achievements: string[]): string[] {
               )}
 
               <div class="work-card__inner">
-                {/* Period badge + optional external link */}
+                {/* Period (and current indicator) */}
                 <div class="work-card__top-row">
+                  {isCurrent && (
+                    <span class="work-card__current-badge" aria-label="Current role">
+                      <span class="work-card__current-dot" aria-hidden="true" />
+                      Currently
+                    </span>
+                  )}
                   <span class="work-card__period">
                     {work.period}
                   </span>
-                  {work.externalLink && (
-                    <a
-                      class="work-card__ext-link"
-                      href={work.externalLink.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {work.externalLink.label}
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        fill="none"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M3.5 1.5H10.5V8.5"
-                          stroke="currentColor"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                        <path
-                          d="M10.5 1.5L1.5 10.5"
-                          stroke="currentColor"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                    </a>
-                  )}
                 </div>
 
                 {/* Heading row: icon + company/role */}
@@ -145,17 +144,17 @@ function extractTopMetrics(achievements: string[]): string[] {
                       src={work.icon}
                       alt=""
                       class="work-card__icon"
-                      width="44"
-                      height="44"
+                      width="48"
+                      height="48"
                       loading="lazy"
                       decoding="async"
                     />
                   )}
                   <div>
-                    <p class="work-card__role">{work.role}</p>
                     <h2 class="work-card__company">
                       {work.company}
                     </h2>
+                    <p class="work-card__role">{work.role}</p>
                   </div>
                 </div>
 
@@ -165,14 +164,6 @@ function extractTopMetrics(achievements: string[]): string[] {
                     <span class="work-card__tag">{tag}</span>
                   ))}
                 </div>
-
-                {extractTopMetrics(work.achievements).length > 0 && (
-                  <div class="work-card__impact-strip">
-                    {extractTopMetrics(work.achievements).map((metric) => (
-                      <span class="work-card__impact-chip">{metric}</span>
-                    ))}
-                  </div>
-                )}
 
                 {/* Divider */}
                 <hr class="work-card__divider" />
@@ -186,14 +177,44 @@ function extractTopMetrics(achievements: string[]): string[] {
                 <ul class="work-card__list">
                   {work.achievements.map(a => (
                     <li>
-                      <span
-                        class="work-card__dot"
-                        aria-hidden="true"
-                      />
                       <span set:html={highlightMetrics(a)} />
                     </li>
                   ))}
                 </ul>
+
+                {/* Third-party proof link */}
+                {work.externalLink && (
+                  <a
+                    class="work-card__proof-link"
+                    href={work.externalLink.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {work.externalLink.label}
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M4 2H12V10"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M12 2L2 12"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                )}
               </div>
             </article>
           );
@@ -221,6 +242,42 @@ function extractTopMetrics(achievements: string[]): string[] {
     font-size: var(--text-lg);
     font-weight: 800;
     color: var(--gray-900);
+  }
+
+  /* =====================================================
+     Page Header — Quiet inline links (Resume + Contact)
+     ===================================================== */
+  .page-header__quietlinks {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+    font-size: var(--text-xs);
+    color: var(--gray-500);
+  }
+
+  .page-header__quietlink {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--gray-500);
+    text-decoration: none;
+    padding: 2px 4px;
+    transition: color var(--transition-fast);
+  }
+
+  .page-header__quietlink:hover {
+    color: var(--color-accent);
+  }
+
+  .page-header__quietlink svg {
+    flex-shrink: 0;
+    opacity: 0.8;
+  }
+
+  .page-header__quietlinks-sep {
+    color: var(--gray-300);
+    user-select: none;
   }
 
   /* =====================================================
@@ -310,61 +367,90 @@ function extractTopMetrics(achievements: string[]): string[] {
     padding: var(--space-6) var(--space-8) var(--space-8);
   }
 
-  /* Top row: period badge (left) + external link (right) */
+  /* Top row: period + optional current badge */
   .work-card__top-row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: var(--space-4);
     gap: var(--space-3);
+    margin-bottom: var(--space-4);
   }
 
-  /* Period badge */
+  /* Period — quiet date stamp */
   .work-card__period {
-    display: inline-block;
-    font-size: var(--text-xs);
-    font-weight: 600;
-    color: var(--gray-500);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    background: var(--gray-50);
-    border: 1px solid var(--gray-200);
-    padding: 3px var(--space-3);
-    border-radius: var(--radius-full);
-  }
-
-  /* External reference link */
-  .work-card__ext-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
     font-size: var(--text-xs);
     font-weight: 500;
-    color: var(--gray-400);
-    text-decoration: none;
-    padding: 3px var(--space-3);
+    color: var(--gray-500);
+    letter-spacing: 0.02em;
+  }
+
+  /* Currently badge */
+  .work-card__current-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--text-2xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: color-mix(in srgb, var(--accent) 60%, var(--gray-900));
+    background: color-mix(in srgb, var(--accent) 12%, white);
+    border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--gray-200));
+    padding: 3px 10px;
     border-radius: var(--radius-full);
-    border: 1px solid transparent;
-    transition:
-      color var(--transition-fast),
-      background var(--transition-fast),
-      border-color var(--transition-fast);
-    white-space: nowrap;
   }
 
-  .work-card__ext-link:hover {
-    color: var(--gray-700);
-    background: color-mix(in srgb, var(--accent) 6%, transparent);
-    border-color: color-mix(in srgb, var(--accent) 15%, transparent);
+  .work-card__current-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-full);
+    background: var(--accent);
+    animation: workCurrentPulse 1.6s ease-in-out infinite;
   }
 
-  .work-card__ext-link svg {
+  @keyframes workCurrentPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+
+  /* Current role — left accent rail */
+  .work-card--current {
+    border-color: color-mix(in srgb, var(--accent) 35%, var(--gray-200));
+    box-shadow:
+      inset 4px 0 0 0 var(--accent),
+      var(--shadow-card);
+  }
+
+  .work-card--current:hover {
+    box-shadow:
+      inset 4px 0 0 0 var(--accent),
+      var(--shadow-card-hover);
+  }
+
+  /* Third-party proof link — promoted from a corner gray-on-gray */
+  .work-card__proof-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: var(--space-5);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    transition: gap var(--transition-fast), color var(--transition-fast);
+  }
+
+  .work-card__proof-link:hover {
+    gap: var(--space-2);
+    color: color-mix(in srgb, var(--accent) 75%, var(--gray-900));
+  }
+
+  .work-card__proof-link svg {
     flex-shrink: 0;
     transition: transform var(--transition-fast);
   }
 
-  .work-card__ext-link:hover svg {
-    transform: translate(1px, -1px);
+  .work-card__proof-link:hover svg {
+    transform: translate(2px, -2px);
   }
 
   /* Heading row */
@@ -376,8 +462,8 @@ function extractTopMetrics(achievements: string[]): string[] {
   }
 
   .work-card__icon {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     object-fit: contain;
     border-radius: var(--radius-md);
     background: var(--gray-50);
@@ -388,19 +474,19 @@ function extractTopMetrics(achievements: string[]): string[] {
 
   .work-card__company {
     font-family: var(--font-display);
-    font-size: var(--text-base);
-    font-weight: 500;
-    color: var(--gray-600);
-    line-height: 1.25;
-    margin-bottom: 0;
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--gray-900);
+    line-height: 1.2;
+    margin: 0 0 4px;
   }
 
   .work-card__role {
-    font-size: var(--text-xl);
-    font-weight: 700;
-    color: var(--gray-900);
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--gray-600);
     line-height: 1.4;
-    margin: 0 0 var(--space-1);
+    margin: 0;
   }
 
   /* Tags */
@@ -432,25 +518,6 @@ function extractTopMetrics(achievements: string[]): string[] {
     color: color-mix(in srgb, var(--accent) 45%, var(--gray-700));
   }
 
-  .work-card__impact-strip {
-    display: flex;
-    gap: var(--space-2);
-    flex-wrap: wrap;
-    margin-bottom: var(--space-4);
-  }
-
-  .work-card__impact-chip {
-    display: inline-flex;
-    align-items: center;
-    padding: 4px 10px;
-    border-radius: var(--radius-full);
-    font-size: var(--text-xs);
-    font-weight: 700;
-    color: color-mix(in srgb, var(--accent) 55%, var(--gray-800));
-    background: color-mix(in srgb, var(--accent) 16%, white);
-    border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--gray-200));
-  }
-
   /* Divider */
   .work-card__divider {
     border: none;
@@ -478,23 +545,23 @@ function extractTopMetrics(achievements: string[]): string[] {
   }
 
   .work-card__list li {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-3);
-    color: var(--gray-600);
+    position: relative;
+    padding-left: var(--space-4);
+    color: var(--gray-700);
     font-size: var(--text-sm);
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
-  /* Accent dot bullet */
-  .work-card__dot {
-    flex-shrink: 0;
-    width: 6px;
-    height: 6px;
-    margin-top: 8px;
-    border-radius: var(--radius-full);
+  .work-card__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 8px;
+    height: 1.5px;
     background: var(--accent);
-    opacity: 0.6;
+    border-radius: 1px;
+    opacity: 0.7;
   }
 
   /* Highlighted metrics */
@@ -519,8 +586,8 @@ function extractTopMetrics(achievements: string[]): string[] {
     }
 
     .work-card__icon {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
     }
 
     .work-card__award {
@@ -528,17 +595,16 @@ function extractTopMetrics(achievements: string[]): string[] {
       padding-right: var(--space-5);
     }
 
-    .work-card__ext-link {
-      font-size: 0.7rem;
-      padding: 2px var(--space-2);
+    .work-card__company {
+      font-size: var(--text-xl);
     }
 
     .work-card__role {
-      font-size: var(--text-lg);
+      font-size: var(--text-sm);
     }
 
-    .work-card__company {
-      font-size: var(--text-sm);
+    .work-card__proof-link {
+      font-size: var(--text-xs);
     }
   }
 

@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogCard from '../../components/BlogCard.astro';
 import { calculateReadingTime } from '../../utils/readingTime';
@@ -7,7 +7,7 @@ import { calculateReadingTime } from '../../utils/readingTime';
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: post,
   }));
 }
@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 const readingTime = calculateReadingTime(post.body ?? '');
 const tags = post.data.tags;
@@ -28,7 +28,7 @@ const allPosts = (await getCollection('blog')).sort(
 
 // Find related posts by shared tags, excluding current
 const relatedPosts = allPosts
-  .filter(p => p.slug !== post.slug)
+  .filter(p => p.id !== post.id)
   .map(p => ({
     ...p,
     readingTime: calculateReadingTime(p.body ?? ''),
@@ -40,7 +40,7 @@ const relatedPosts = allPosts
 
 // Share URLs
 const siteUrl = "https://princejain.me";
-const shareUrl = `${siteUrl}/blogs/${post.slug}/`;
+const shareUrl = `${siteUrl}/blogs/${post.id}/`;
 const shareTitle = encodeURIComponent(post.data.title);
 const twitterShareUrl = `https://twitter.com/intent/tweet?text=${shareTitle}&url=${encodeURIComponent(shareUrl)}&via=Prince_Jain17`;
 const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
@@ -213,7 +213,7 @@ const breadcrumbs = [
                   title={relatedPost.data.title}
                   description={relatedPost.data.description}
                   pubDate={relatedPost.data.pubDate || new Date()}
-                  slug={relatedPost.slug}
+                  slug={relatedPost.id}
                   readingTime={relatedPost.readingTime}
                   tags={relatedPost.tags}
                 />

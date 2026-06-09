@@ -1,6 +1,7 @@
 ---
 import type { WorkshopProject, HomelabService } from '../../data/projects';
 import { vibeCodingStack } from '../../data/projects';
+import ExternalLink from '../ExternalLink.astro';
 
 interface Props {
   projects: WorkshopProject[];
@@ -14,8 +15,8 @@ const { projects, services } = Astro.props;
 <section class="section section--pause text-center">
   <div class="container">
     <h2 class="pause-statement">
-      AI will not replace <span class="text-accent">you</span>,<br>
-      A person using AI <span class="text-accent-secondary">will</span>.
+      AI doesn't replace <span class="text-accent">product judgment</span>;<br>
+      it raises the <span class="text-accent-secondary">bar</span> for it.
     </h2>
   </div>
 </section>
@@ -60,17 +61,12 @@ const { projects, services } = Astro.props;
                   ))}
                 </div>
                 {project.link && (
-                  <a
-                    href={project.link}
-                    class="project-card-v2__link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <ExternalLink href={project.link} class="project-card-v2__link">
                     Visit
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="M7 17L17 7M17 7H7M17 7V17"/>
                     </svg>
-                  </a>
+                  </ExternalLink>
                 )}
               </div>
             </div>
@@ -110,17 +106,15 @@ const { projects, services } = Astro.props;
               </div>
             )}
             {svc.link && (
-              <a
+              <ExternalLink
                 href={svc.link}
                 class="homelab-row__link"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Open ${svc.title}`}
+                ariaLabel={`Open ${svc.title}`}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M7 17L17 7M17 7H7M17 7V17"/>
                 </svg>
-              </a>
+              </ExternalLink>
             )}
             {svc.live && (
               <span class="live-pill">
@@ -149,14 +143,14 @@ const { projects, services } = Astro.props;
               <strong>Cursor + Claude Code</strong>
               <span class="vibe-banner__dim">→ For vibe-coding.</span>
               My
-              <a href={vibeCodingStack.cursorMdUrl} target="_blank" rel="noopener noreferrer" class="vibe-banner__link">
+              <ExternalLink href={vibeCodingStack.cursorMdUrl} class="vibe-banner__link">
                 CLAUDE.md
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
                   <polyline points="15 3 21 3 21 9"/>
                   <line x1="10" y1="14" x2="21" y2="3"/>
                 </svg>
-              </a>
+              </ExternalLink>
             </li>
             <li>
               <strong>ChatGPT / Gemini</strong>
