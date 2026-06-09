@@ -1,135 +1,153 @@
 /**
- * Custom XML sitemap with full metadata — lastmod, changefreq, priority.
+ * Custom XML sitemap with explicit crawl metadata.
  *
- * Replaces the @astrojs/sitemap auto-generated version so we can:
- *  1. Include real pubDate / updatedDate from blog frontmatter as <lastmod>.
- *  2. Set per-page <priority> to guide crawler attention.
- *  3. Set <changefreq> based on how often each page type changes.
- *
- * Consumed by: search engine crawlers, Google Search Console, robots.txt.
+ * Keep this in sync with public, indexable routes in src/pages. Do not include
+ * utility JSON endpoints, 404 pages, or private/reference files from public/.
  */
 import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
 
-/** ISO date string truncated to YYYY-MM-DD (W3C Datetime format). */
-function toW3CDate(date: Date): string {
-  return date.toISOString().split('T')[0];
-}
+type ChangeFrequency =
+  | 'always'
+  | 'hourly'
+  | 'daily'
+  | 'weekly'
+  | 'monthly'
+  | 'yearly'
+  | 'never';
 
 interface SitemapEntry {
   loc: string;
   lastmod: string;
-  changefreq: string;
+  changefreq: ChangeFrequency;
   priority: number;
 }
 
-export async function GET(context: APIContext) {
-  const site = context.site!.toString().replace(/\/$/, '');
+function toDateOnly(date: Date): string {
+  return date.toISOString().slice(0, 10);
+}
 
-  // ── Static pages ────────────────────────────────────────────────
-  const now = toW3CDate(new Date());
+function latestDate(dates: Date[]): Date {
+  return new Date(Math.max(...dates.map((date) => date.valueOf())));
+}
+
+function escapeXml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+export async function GET(context: APIContext) {
+  const site = context.site?.toString().replace(/\/$/, '') ?? 'https://princejain.me';
+  const posts = await getCollection('blog');
+
+  const latestPostDate = latestDate(
+    posts.map((post) => post.data.updatedDate ?? post.data.pubDate)
+  );
+  const latestPostLastmod = toDateOnly(latestPostDate);
 
   const staticPages: SitemapEntry[] = [
     {
       loc: `${site}/`,
-      lastmod: now,
+      lastmod: latestPostLastmod,
       changefreq: 'weekly',
       priority: 1.0,
     },
     {
       loc: `${site}/blogs/`,
-      lastmod: now,
+      lastmod: latestPostLastmod,
       changefreq: 'weekly',
       priority: 0.9,
     },
     {
       loc: `${site}/work/`,
-      lastmod: now,
+      lastmod: '2026-06-09',
       changefreq: 'monthly',
       priority: 0.8,
     },
     {
       loc: `${site}/about/`,
-      lastmod: now,
+      lastmod: '2026-06-09',
+      changefreq: 'monthly',
+      priority: 0.8,
+    },
+    {
+      loc: `${site}/vibes/`,
+      lastmod: '2026-06-09',
       changefreq: 'monthly',
       priority: 0.7,
     },
     {
-      loc: `${site}/links/`,
-      lastmod: now,
+      loc: `${site}/homelab/`,
+      lastmod: '2026-06-09',
       changefreq: 'monthly',
-      priority: 0.5,
+      priority: 0.7,
     },
     {
       loc: `${site}/tools/`,
-      lastmod: now,
+      lastmod: '2026-06-09',
       changefreq: 'monthly',
       priority: 0.6,
     },
     {
-      loc: `${site}/vibes/`,
-      lastmod: now,
-      changefreq: 'monthly',
-      priority: 0.7,
-    },
-    {
       loc: `${site}/tools/json-formatter/`,
-      lastmod: now,
+      lastmod: '2026-06-09',
       changefreq: 'monthly',
       priority: 0.6,
     },
     {
       loc: `${site}/tools/google-meet-summariser/`,
-      lastmod: now,
+      lastmod: '2026-06-09',
       changefreq: 'monthly',
       priority: 0.6,
     },
     {
       loc: `${site}/tools/autoparse/`,
-      lastmod: now,
+      lastmod: '2026-06-09',
       changefreq: 'monthly',
       priority: 0.6,
     },
     {
+      loc: `${site}/links/`,
+      lastmod: '2026-06-09',
+      changefreq: 'monthly',
+      priority: 0.5,
+    },
+    {
       loc: `${site}/privacy-policy/`,
-      lastmod: now,
+      lastmod: '2026-06-09',
       changefreq: 'yearly',
-      priority: 0.3,
+      priority: 0.2,
     },
   ];
-
-  // ── Blog posts (with real dates from frontmatter) ───────────────
-  const posts = await getCollection('blog');
 
   const blogEntries: SitemapEntry[] = posts
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
     .map((post) => ({
       loc: `${site}/blogs/${post.id}/`,
-      lastmod: toW3CDate(post.data.updatedDate ?? post.data.pubDate),
-      changefreq: 'yearly' as const,
-      priority: 0.7,
+      lastmod: toDateOnly(post.data.updatedDate ?? post.data.pubDate),
+      changefreq: 'yearly',
+      priority: post.data.featured ? 0.8 : 0.7,
     }));
 
-  // ── Combine & render XML ────────────────────────────────────────
   const allEntries = [...staticPages, ...blogEntries];
-
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-    http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
->
-${allEntries
-  .map(
-    (entry) => `  <url>
-    <loc>${entry.loc}</loc>
+  const urls = allEntries
+    .map(
+      (entry) => `  <url>
+    <loc>${escapeXml(entry.loc)}</loc>
     <lastmod>${entry.lastmod}</lastmod>
     <changefreq>${entry.changefreq}</changefreq>
     <priority>${entry.priority.toFixed(1)}</priority>
   </url>`
-  )
-  .join('\n')}
+    )
+    .join('\n');
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
 </urlset>`;
 
   return new Response(xml, {
