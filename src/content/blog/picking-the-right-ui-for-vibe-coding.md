@@ -69,9 +69,7 @@ After enough prototypes, almost every project I've built falls into one of eight
 - **Brutalist** — Hard edges, mono font for labels, no shadow, no radius, one off-colour accent. Vercel-blog, GitHub Primer, Are.na. _For: dev portfolios, indie tools, raw blogs._
 - **Glass / Spatial** — Frosted-blur surfaces with depth via translucency. Vision OS, iOS Settings. Sage or icy accents, ambient. _For: spatial / ambient interfaces, meditative tools._
 
-When in doubt, lean restrained. Editorial, Utility, Warm Consumer, and Soft SaaS are forgiving — half-committing still looks fine. Sharp Product, Playful, Brutalist, and Glass punish a half-committed execution _(if you go Brutalist and then quietly add a soft shadow on one card, the whole thing falls apart)._
-
-> **Sharp Product vs Soft SaaS, one-line test:** Is the product grounded on a precise grid, or floating in atmospheric space? If you'd put a blurred 600px violet blob in the background → Soft SaaS. If you'd never → Sharp Product.
+When in doubt choose from Editorial, Utility, Warm Consumer, and Soft SaaS. Sharp Product, Playful, Brutalist, and Glass punish a half-committed execution _(if you go Brutalist and then quietly add a soft shadow on one card, the whole thing falls apart)._
 
 ### Play with each vibe
 
