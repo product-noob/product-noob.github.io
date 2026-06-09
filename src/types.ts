@@ -33,6 +33,7 @@ export interface WorkHighlight {
   role: string;
   highlight: string;
   link: string;
+  linkText?: string;
   accentColor: string;
 }
 

@@ -3,6 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import profilePhoto from '../assets/profile-photo-1.webp';
 import { skills } from '../data/skills';
+
+const RESUME_URL =
+  'https://drive.google.com/file/d/150T9ti3Mqdquq7UbNqWnElOGwD-Ij9rD/view?usp=share_link';
+const CONTACT_EMAIL = 'princemnit@gmail.com';
+const LINKEDIN_URL = 'https://linkedin.com/in/princejain17';
+const TWITTER_URL = 'https://twitter.com/Prince_Jain17';
+const GITHUB_URL = 'https://github.com/product-noob';
 ---
 
 <BaseLayout
@@ -30,11 +37,11 @@ import { skills } from '../data/skills';
           </span>
           <span class="page-header__separator">·</span>
           <span class="page-header__stat">
-            <strong>9+</strong> years total
+            <strong>3</strong> companies
           </span>
           <span class="page-header__separator">·</span>
           <span class="page-header__stat">
-            Based in Bangalore, India
+            Bangalore, India
           </span>
         </div>
       </div>
@@ -48,39 +55,78 @@ import { skills } from '../data/skills';
       <div class="about-grid">
         <div class="about-content">
           <div class="prose">
-            <p class="text-lg mb-6">
-              I'm a Product Leader at
-              <strong>Flipkart</strong>, currently focused
-              on building the next generation of AI-native
-              commerce experiences.
-            </p>
-
-            <p class="mb-6">
-              With over 9 years of experience (7+ as a PM),
-               I've specialized in taking complex
-              ideas from 0 to 1. Whether it's scaling
-              <strong>Paytm Mini Apps</strong> to 10M MAU or
-              leading the build of a fresh app from grounds up: <strong>SLAP</strong>
-              (Flipkart's AI-first app), I thrive in
-              high-uncertainty environments where speed and
-              user-centricity are important. 
+            <p class="about-lead">
+              I'm Prince — a product leader with a maker's
+              mindset. In the AI era, knowing how to tinker
+              under the hood does a lot of heavy lifting.
             </p>
 
             <p>
-              Throughout my career, I have been recognized as a <strong>top performer</strong>, 
-              consistently earning top-tier ratings and individual and team awards  at 
-              <strong>Paytm and Flipkart</strong>. I pride myself on extreme ownership and high agency: whether 
-              it's navigating the ambiguity of a new product launch or scaling platforms 
-              to serve millions.
+              I lead the <strong>Conversational Commerce & AI</strong>
+              charter at <strong>Flipkart</strong>. Currently,
+              I'm building <strong>SLAP</strong> — a 0→1
+              multi-marketplace AI shopping app — and making
+              the core Flipkart app more AI-native by
+              launching <strong>"AI Mode"</strong>
+              experiences across the platform.
             </p>
 
-            <p class="mb-6">
-              My philosophy (more so lately!) is :
-              <strong>Ship fast, learn faster.</strong> I
-              believe the best products are built by teams
-              that are deeply curious about user behavior, go deep and
-              are willing to challenge the status quo.
+            <p>
+              Before this, I led <strong>Flippi</strong>
+              (Flipkart's AI assistant) from launch to
+              <strong>3M+ MAU</strong> and <strong>₹600 Cr+</strong>
+              in incremental GMV.
             </p>
+
+            <p>
+              Earlier at <strong>Paytm</strong>, I built
+              <strong>Mini Apps</strong> from idea to a
+              <strong>10M MAU</strong> ecosystem, launched
+              <strong>Paytm Health</strong> as a founding
+              PM, and shipped India's largest private COVID
+              vaccine slot finder — used by <strong>10M+</strong>
+              people during the peak of the pandemic.
+            </p>
+
+            <p>
+              Along the way, the Growth Hack team I was part
+              of won Flipkart's <strong>Business Excellence Award</strong>
+              for the top product team in the org. I tend
+              to do my best work in early-stage,
+              high-ambiguity zones — the kind of environment
+              where the goal is to turn a blurry thesis into
+              a scalable product.
+            </p>
+
+            <h2 class="about-section__heading">How I work</h2>
+            <ul class="about-list">
+              <li>
+                <strong>I prototype to understand.</strong>
+                I don't push production code, but I
+                vibe-code, tinker, and build throwaway
+                prototypes. It's how I grasp the technical
+                constraints and possibilities of the
+                problems I'm solving.
+              </li>
+              <li>
+                <strong>I write to think.</strong> My
+                <a href="/blogs">blog</a> is where messy
+                ideas get worked out before they ever show
+                up in a PRD or a meeting.
+              </li>
+              <li>
+                <strong>I thrive in 0→1.</strong> I lose
+                steam when optimizing things that already
+                work perfectly. Building from the ground up
+                is where I add the most value.
+              </li>
+              <li>
+                <strong>Momentum over perfection.</strong>
+                I'd rather ship a thin slice and learn from
+                real users than ship the "perfect" thing six
+                months too late.
+              </li>
+            </ul>
 
             <h2 class="about-section__heading">Expertise</h2>
             <div class="skills-tags">
@@ -90,14 +136,16 @@ import { skills } from '../data/skills';
             </div>
 
             <h2 class="about-section__heading">
-              Beyond Work
+              Beyond the day job
             </h2>
             <p>
-              When I'm not building products, you'll find me
-              tinkering with my self-hosted home lab,
-              exploring the latest in open-source AI, or
-              sharing my thoughts on product leadership
-              through my blog.
+              When I'm not at Flipkart, I'm probably
+              tinkering with my <a href="/homelab">home lab</a>,
+              hacking together a weekend project, or
+              <a href="/blogs">writing</a> about how AI is
+              fundamentally changing product work. I don't
+              really do "idle" — for me, relaxing usually
+              just looks like building something new.
             </p>
           </div>
         </div>
@@ -115,6 +163,83 @@ import { skills } from '../data/skills';
             <div class="image-caption">
               This is me.
             </div>
+
+            <div class="image-card__divider" aria-hidden="true"></div>
+
+            <p class="image-card__currently">
+              <span class="image-card__currently-label">Currently</span>
+              Leading SLAP at Flipkart — a 0→1 AI shopping app.
+            </p>
+
+            <div class="image-card__socials" aria-label="Find me online">
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="image-card__social"
+                aria-label="LinkedIn"
+                data-track="about_linkedin"
+                data-track-location="about_card"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a
+                href={TWITTER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="image-card__social"
+                aria-label="Twitter / X"
+                data-track="about_twitter"
+                data-track-location="about_card"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a
+                href={GITHUB_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="image-card__social"
+                aria-label="GitHub"
+                data-track="about_github"
+                data-track-location="about_card"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+              </a>
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                class="image-card__social"
+                aria-label="Email"
+                data-track="about_email"
+                data-track-location="about_card"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="2"/>
+                  <path d="m3 7 9 6 9-6"/>
+                </svg>
+              </a>
+            </div>
+
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="image-card__resume"
+              data-track="resume_download"
+              data-track-location="about_card"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              <span>Download Resume</span>
+            </a>
           </div>
         </div>
       </div>
@@ -162,6 +287,62 @@ import { skills } from '../data/skills';
   .prose p {
     color: var(--gray-600);
     line-height: 1.8;
+    margin-bottom: var(--space-5);
+  }
+
+  /* Lead paragraph — first impression, slightly larger and darker */
+  .about-lead {
+    font-size: var(--text-lg);
+    color: var(--gray-800) !important;
+    line-height: 1.6 !important;
+    font-weight: 500;
+  }
+
+  /* "How I work" list */
+  .about-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .about-list li {
+    position: relative;
+    padding-left: var(--space-5);
+    color: var(--gray-700);
+    line-height: 1.65;
+  }
+
+  .about-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 10px;
+    height: 2px;
+    background: var(--color-accent);
+    border-radius: 1px;
+    opacity: 0.7;
+  }
+
+  .about-list li strong {
+    color: var(--gray-900);
+    font-weight: 600;
+  }
+
+  .about-list li a,
+  .prose p a {
+    color: var(--color-accent);
+    text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
+    transition: border-color var(--transition-fast);
+  }
+
+  .about-list li a:hover,
+  .prose p a:hover {
+    border-bottom-color: var(--color-accent);
   }
 
   .skills-tags {
@@ -201,9 +382,108 @@ import { skills } from '../data/skills';
     font-weight: 500;
   }
 
+  /* Card divider */
+  .image-card__divider {
+    height: 1px;
+    background: var(--gray-100);
+    margin: var(--space-4) 0;
+  }
+
+  /* "Currently" line */
+  .image-card__currently {
+    font-size: var(--text-xs);
+    color: var(--gray-600);
+    line-height: 1.55;
+    text-align: center;
+    margin: 0 0 var(--space-4);
+    padding: 0 var(--space-2);
+  }
+
+  .image-card__currently-label {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 4px;
+  }
+
+  /* Social icon row */
+  .image-card__socials {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .image-card__social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: var(--gray-500);
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: var(--radius-md);
+    transition:
+      color var(--transition-fast),
+      background var(--transition-fast),
+      transform var(--transition-fast),
+      border-color var(--transition-fast);
+  }
+
+  .image-card__social:hover {
+    color: var(--color-accent);
+    background: white;
+    border-color: color-mix(in srgb, var(--color-accent) 25%, var(--gray-200));
+    transform: translateY(-2px);
+  }
+
+  /* Resume button — quiet, full-width inside card */
+  .image-card__resume {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px var(--space-3);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--gray-700);
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition:
+      color var(--transition-fast),
+      background var(--transition-fast),
+      border-color var(--transition-fast);
+  }
+
+  .image-card__resume:hover {
+    color: var(--gray-900);
+    background: white;
+    border-color: var(--gray-300);
+  }
+
+  .image-card__resume svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
   @media (max-width: 768px) {
     .page-header {
       padding-bottom: var(--space-6);
+    }
+
+    .image-card {
+      transform: rotate(0deg);
+    }
+
+    .image-card__currently {
+      font-size: var(--text-xs);
     }
   }
 </style>

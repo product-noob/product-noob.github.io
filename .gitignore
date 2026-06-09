@@ -21,3 +21,8 @@ Thumbs.db
 
 # Debug logs
 npm-debug.log*
+
+# Local screenshots / mockups (Playwright MCP, design review)
+/desktop-hero-*.png
+/mobile-hero-*.png
+/.playwright-mcp/

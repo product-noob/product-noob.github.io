@@ -195,6 +195,20 @@
    Responsive Token Overrides
    ========================================================================== */
 
+/* Wide viewports — bump body type for long-form reading comfort.
+   Headings scale with body via em-based modular scale. */
+@media (min-width: 1440px) {
+  :root {
+    --text-base: 1.125rem;   /* 17 → 18 */
+  }
+}
+
+@media (min-width: 1800px) {
+  :root {
+    --text-base: 1.1875rem;  /* 18 → 19 */
+  }
+}
+
 @media (max-width: 1024px) {
   :root {
     --text-hero: 5rem;
@@ -211,6 +225,11 @@
     --text-4xl: 1.875rem;
     --text-3xl: 1.5rem;
     --text-2xl: 1.375rem;
+    /* Mid-tier body sizes — desktop kept large for magazine feel,
+       mobile steps down to typical product-site density. */
+    --text-base: 1rem;        /* 17 → 16 */
+    --text-lg: 1.125rem;      /* 19 → 18 */
+    --text-xl: 1.25rem;       /* 22 → 20 */
     --space-32: 4rem;
     --space-24: 3rem;
     --space-16: 2.5rem;
@@ -223,7 +242,17 @@
     --text-5xl: 2rem;
     --text-4xl: 1.625rem;
     --text-3xl: 1.375rem;
-    --space-32: 3rem;
+    /* Small-phone body scale — typical iOS/Android density. */
+    --text-base: 0.9375rem;   /* 16 → 15 */
+    --text-lg: 1.0625rem;     /* 18 → 17 */
+    --text-xl: 1.1875rem;     /* 20 → 19 */
+    /* Workhorse spacing — tightens card/section padding on small phones
+       where 24/32px steals too much vertical space. */
+    --space-6: 1.25rem;       /* 24 → 20 */
+    --space-8: 1.5rem;        /* 32 → 24 */
+    --space-12: 2rem;         /* 48 → 32 */
+    --space-16: 2rem;         /* 40 → 32 */
     --space-24: 2.5rem;
+    --space-32: 3rem;
   }
 }

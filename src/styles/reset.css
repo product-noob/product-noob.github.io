@@ -55,6 +55,13 @@ body {
   background-attachment: fixed;
 }
 
+/* Tighten body line-height on mobile for better vertical density. */
+@media (max-width: 768px) {
+  body {
+    line-height: 1.55;
+  }
+}
+
 img,
 picture,
 video,

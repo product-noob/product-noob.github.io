@@ -8,20 +8,41 @@ import HeroSection from '../components/home/HeroSection.astro';
 import SelectedWork from '../components/home/SelectedWork.astro';
 import DigitalGarden from '../components/home/DigitalGarden.astro';
 import SpeakingEvents from '../components/home/SpeakingEvents.astro';
+import LatestWriting from '../components/home/LatestWriting.astro';
 import Inspirations from '../components/home/Inspirations.astro';
+import { getImage } from 'astro:assets';
+import { getCollection } from 'astro:content';
 import { workHighlights } from '../data/works';
 import { workshopProjects, homelabServices } from '../data/projects';
+import { calculateReadingTime } from '../utils/readingTime';
+import profilePhoto1 from '../assets/profile-photo-1.webp';
+
+const heroImage = await getImage({ src: profilePhoto1, width: 640, height: 640 });
+
+// Latest writing: featured posts first, then by pubDate descending. Take 2.
+const allPosts = await getCollection('blog');
+const latestPosts = allPosts
+  .sort((a, b) => {
+    if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
+    return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+  })
+  .slice(0, 2)
+  .map((post) => ({
+    ...post,
+    readingTime: calculateReadingTime(post.body ?? ''),
+  }));
 ---
 
 <BaseLayout
   title="Prince Jain - Product Leader & Builder"
   description="Prince Jain — Group Product Manager at Flipkart. Building 0→1 agentic AI experiences and next-gen AI-native products."
-  preloadImage="/profile-photo-1.webp"
+  preloadImage={heroImage.src}
   breadcrumbs={[{ name: "Home" }]}
 >
   <HeroSection />
   <SelectedWork items={workHighlights} />
-  <DigitalGarden projects={workshopProjects} services={homelabServices} />
+  <DigitalGarden projects={workshopProjects} services={homelabServices.slice(0, 3)} />
   <SpeakingEvents />
+  <LatestWriting posts={latestPosts} />
   <Inspirations />
 </BaseLayout>

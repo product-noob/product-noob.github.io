@@ -114,11 +114,7 @@ _Every one of these took a day or less to build. Every one of them influenced we
 
 **What I built:** A working demo of an agentic commerce interaction. User conversing with an AI that searches products, compares options, simulates a purchase flow. One day. No production code, no backend. Just enough to make it feel real.
 
-<div style="max-width: 300px; margin: 1.5rem auto;">
-
-![SLAP Day 0 Demo - agentic commerce prototype](/images/vibe-coding-slap-demo.gif)
-
-</div>
+<video src="/images/vibe-coding-slap-demo.mp4" autoplay loop muted playsinline aria-label="SLAP Day 0 Demo - agentic commerce prototype" style="max-width: 300px; display: block; margin: 1.5rem auto;"></video>
 
 **The interesting bit:** This demo created more strategic clarity in 20 minutes than weeks of PRD review would have. Once people could _interact_ with the hypothesis, conversations shifted from "is this the right thing to build?" to "here's what we need to make this work." Conviction to execution, in one meeting.
 

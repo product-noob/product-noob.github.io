@@ -197,7 +197,7 @@ Thanks for reaching this far to the end. If want to try the tool for your self y
 
 Let me conclude by sharing that this has been the single most satisfying project I have undertaken in my professional career. The ability to impact millions of people around me and see people getting benefitted from something I build is the utmost gratification for a Product Manager. ✌️
 
-![Onto the Next challenge](/images/onto_the_next.gif)
+<video src="/images/onto_the_next.mp4" autoplay loop muted playsinline aria-label="Onto the next challenge"></video>
 
 Back to drawing boards.
 

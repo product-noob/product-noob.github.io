@@ -17,80 +17,94 @@ import profilePhoto4 from '../../assets/profile-photo-4.webp';
       <!-- Left Column - Content -->
       <div class="hero-v2__content">
         <h1 class="hero-v2__headline">
-          I build cool<br>
+          I build<br>
           <span class="text-accent-primary">AI</span> <span class="text-accent-secondary">Products</span>.
         </h1>
 
         <p class="hero-v2__intro">
-          I'm <strong>Prince Jain</strong>, Product Leader at <strong>Flipkart</strong>.<br>
-          I build 0→1 agentic AI experiences and next generation of AI-native products.
+          I'm <strong>Prince Jain</strong> — Group Product Manager at <strong>Flipkart</strong>,<br>
+          building 0→1 agentic AI experiences and the next wave of AI-native products.
         </p>
 
         <div class="hero-v2__cta">
-          <a href="/work" class="btn-gradient">
+          <a href="/work" class="btn-gradient" data-track="hero_work" data-track-location="hero">
             <span>View my work</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
-          <a href="/blogs" class="btn-outline">
-            <span>Read my thoughts</span>
+          <a href="/blogs" class="btn-outline" data-track="hero_blog" data-track-location="hero">
+            <span>Read the blog</span>
           </a>
         </div>
 
+        <div class="hero-v2__proof">
         <!-- Companies -->
-        <p class="hero-v2__inline-row">
-          <span>Currently PM at</span>
-          <span class="hero-v2__icon-card">
-            <img src="/icons/flipkart.svg" alt="Flipkart" class="hero-v2__icon-card-logo" width="36" height="36" />
-          </span>
-          <span>previously at</span>
-          <span class="hero-v2__icon-card">
-            <img src="/icons/paytm.svg" alt="Paytm" class="hero-v2__icon-card-logo" width="36" height="36" />
-          </span>
-          <span class="hero-v2__icon-card">
-            <img src="/icons/oracle.svg" alt="Oracle" class="hero-v2__icon-card-logo" width="36" height="36" />
-          </span>
-        </p>
+        <div class="hero-v2__inline-row hero-v2__inline-row--companies">
+          <div class="hero-v2__co-row hero-v2__co-row--current">
+            <span class="hero-v2__co-text">Currently PM at</span>
+            <span class="hero-v2__co-label">Currently at</span>
+            <span class="hero-v2__icon-card">
+              <img src="/icons/flipkart.svg" alt="Flipkart" class="hero-v2__icon-card-logo" width="36" height="36" />
+            </span>
+          </div>
+          <div class="hero-v2__co-row hero-v2__co-row--previous">
+            <span class="hero-v2__co-text">previously at</span>
+            <span class="hero-v2__co-label">Previously at</span>
+            <span class="hero-v2__icon-card">
+              <img src="/icons/paytm.svg" alt="Paytm" class="hero-v2__icon-card-logo" width="36" height="36" />
+            </span>
+            <span class="hero-v2__co-text">and</span>
+            <span class="hero-v2__icon-card">
+              <img src="/icons/oracle.svg" alt="Oracle" class="hero-v2__icon-card-logo hero-v2__icon-card-logo--desktop" width="36" height="36" />
+              <img src="/icons/oracle-mark.svg" alt="Oracle" class="hero-v2__icon-card-logo hero-v2__icon-card-logo--mobile" width="36" height="36" />
+            </span>
+          </div>
+        </div>
 
         <!-- Side Projects -->
-        <p class="hero-v2__inline-row">
+        <p class="hero-v2__inline-row hero-v2__inline-row--projects">
           <span>Some recent side projects</span>
           <span class="hero-v2__cluster">
-            <ExternalLink href="https://pm-vault.princejain.me/" class="hero-v2__cluster-item" style="z-index: 3;">
+            <ExternalLink href="https://pm-vault.princejain.me/" class="hero-v2__cluster-item hero-v2__cluster-item--z3" data-track="side_project_pm_vault" data-track-location="hero">
               <span class="hero-v2__cluster-card">
-                <img src="/icons/pm-vault.svg" alt="PM Vault" width="128" height="128" loading="lazy" />
+                <img src="/icons/pm-vault.svg" alt="PM Vault" width="48" height="48" loading="lazy" />
               </span>
               <span class="hero-v2__cluster-tip">PM interview prep tool</span>
+              <span class="hero-v2__cluster-name">PM Vault</span>
             </ExternalLink>
-            <ExternalLink href="https://whispr.princejain.me/" class="hero-v2__cluster-item hero-v2__cluster-item--stacked" style="z-index: 2;">
+            <ExternalLink href="https://whispr.princejain.me/" class="hero-v2__cluster-item hero-v2__cluster-item--stacked hero-v2__cluster-item--z2" data-track="side_project_whispr" data-track-location="hero">
               <span class="hero-v2__cluster-card">
-                <img src="/icons/whisprflow.webp" alt="Whisprflow" width="960" height="960" loading="lazy" />
+                <img src="/icons/whisprflow.webp" alt="Whisprflow" width="48" height="48" loading="lazy" />
               </span>
               <span class="hero-v2__cluster-tip">Voice-to-text Transcription</span>
+              <span class="hero-v2__cluster-name">Whispr</span>
             </ExternalLink>
-            <ExternalLink href="https://chromewebstore.google.com/detail/chatgpt-google-meet-summa/kofkiemddfpekcadmaeheonbbkhnclhj" class="hero-v2__cluster-item hero-v2__cluster-item--stacked" style="z-index: 1;">
+            <ExternalLink href="https://chromewebstore.google.com/detail/chatgpt-google-meet-summa/kofkiemddfpekcadmaeheonbbkhnclhj" class="hero-v2__cluster-item hero-v2__cluster-item--stacked hero-v2__cluster-item--z1" data-track="side_project_gmeet_summariser" data-track-location="hero">
               <span class="hero-v2__cluster-card">
                 <img src="/icons/gmeet-summariser.svg" alt="G-meet Summariser" width="48" height="48" loading="lazy" />
               </span>
               <span class="hero-v2__cluster-tip">AI meeting notes</span>
+              <span class="hero-v2__cluster-name">G-Meet</span>
             </ExternalLink>
-            <ExternalLink href="https://launchpad.princejain.me/" class="hero-v2__cluster-item hero-v2__cluster-item--stacked" style="z-index: 0;">
+            <ExternalLink href="https://launchpad.princejain.me/" class="hero-v2__cluster-item hero-v2__cluster-item--stacked hero-v2__cluster-item--z0" data-track="side_project_launchpad" data-track-location="hero">
               <span class="hero-v2__cluster-card">
                 <img src="/icons/launchpad.svg" alt="Launchpad" width="48" height="48" loading="lazy" />
               </span>
               <span class="hero-v2__cluster-tip">Effortlessly run local apps</span>
+              <span class="hero-v2__cluster-name">Launchpad</span>
             </ExternalLink>
 
           </span>
         </p>
+        </div>
 
       </div>
 
       <!-- Right Column - Profile Image with Rotation Effect -->
       <div class="hero-v2__image-wrapper">
         <div class="hero-v2__image-container" id="profile-container" tabindex="0" aria-label="Profile image carousel. Hover or focus to pause.">
-          <Image src={profilePhoto1} alt="Prince Jain" class="hero-v2__image hero-v2__image--active" data-index="0" width={640} height={640} fetchpriority="high" />
+          <Image src={profilePhoto1} alt="Prince Jain" class="hero-v2__image hero-v2__image--active" data-index="0" width={640} height={640} fetchpriority="high" loading="eager" decoding="sync" />
           <Image src={profilePhoto2} alt="Prince Jain" class="hero-v2__image" data-index="1" width={640} height={640} loading="lazy" />
           <Image src={profilePhoto3} alt="Prince Jain" class="hero-v2__image" data-index="2" width={640} height={640} loading="lazy" />
           <Image src={profilePhoto4} alt="Prince Jain" class="hero-v2__image" data-index="3" width={640} height={640} loading="lazy" />
@@ -148,6 +162,11 @@ import profilePhoto4 from '../../assets/profile-photo-4.webp';
       isPaused = false;
     });
   }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopRotation();
+    else onMotionPreferenceChange();
+  });
 
   const onMotionPreferenceChange = () => {
     if (reduceMotionQuery.matches) {
@@ -332,6 +351,26 @@ import profilePhoto4 from '../../assets/profile-photo-4.webp';
     object-fit: contain;
   }
 
+  /* Proof block (companies + side projects). Transparent on desktop — children
+     flow as siblings in hero-v2__content; on mobile becomes a bounding card. */
+  .hero-v2__proof {
+    display: contents;
+  }
+
+  /* Companies row groups — desktop flattens them into one inline sentence,
+     mobile uses them as the two stacked label-rows ("Now" / "Previously"). */
+  .hero-v2__co-row {
+    display: contents;
+  }
+
+  .hero-v2__co-label {
+    display: none;
+  }
+
+  .hero-v2__icon-card-logo--mobile {
+    display: none;
+  }
+
   /* Icon cluster — overlapping group that spreads */
   .hero-v2__cluster {
     display: inline-flex;
@@ -354,8 +393,13 @@ import profilePhoto4 from '../../assets/profile-photo-4.webp';
     box-shadow: var(--shadow-md);
   }
 
+  .hero-v2__cluster-item--z0 { z-index: 0; }
+  .hero-v2__cluster-item--z1 { z-index: 1; }
+  .hero-v2__cluster-item--z2 { z-index: 2; }
+  .hero-v2__cluster-item--z3 { z-index: 3; }
+
   .hero-v2__cluster-item:hover {
-    z-index: 20 !important;
+    z-index: 20;
     transform: scale(1.1);
     box-shadow: var(--shadow-lg);
   }
@@ -422,44 +466,117 @@ import profilePhoto4 from '../../assets/profile-photo-4.webp';
     transform: translateX(-50%) translateY(0) rotate(2deg);
   }
 
+  /* Short product-name caption — desktop uses the hover tooltip instead */
+  .hero-v2__cluster-name {
+    display: none;
+  }
+
   @media (max-width: 767px) {
     .hero-v2 {
       padding: var(--space-12) 0 var(--space-8);
     }
 
+    /* Promote content children into the grid so the photo can sit between
+       the headline and intro (interleaving across the two columns). */
     .hero-v2__grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
+      gap: 0;
     }
 
     .hero-v2__content {
-      align-items: center;
+      display: contents;
     }
 
-    .hero-v2__intro {
-      text-align: center;
-    }
-
-    .hero-v2__cta {
-      justify-content: center;
-    }
-
-    .hero-v2__image-wrapper {
-      margin-top: var(--space-4);
-    }
-
-    .hero-v2__image-container {
-      max-width: 240px;
-      transform: rotate(0deg);
-    }
+    /* Tier order: Headline → Photo → Intro → CTAs → Companies → Projects */
+    .hero-v2__headline { order: 1; }
+    .hero-v2__image-wrapper { order: 2; }
+    .hero-v2__intro { order: 3; }
+    .hero-v2__cta { order: 4; }
+    .hero-v2__inline-row--companies { order: 5; }
+    .hero-v2__inline-row--projects { order: 6; }
 
     .hero-v2__headline {
       font-size: 2.5rem;
     }
 
+    /* Identity tier — photo + intro read as one unit under the headline */
+    .hero-v2__image-wrapper {
+      width: 100%;
+      margin-top: var(--space-6);
+    }
+
+    .hero-v2__image-container {
+      max-width: 220px;
+      transform: rotate(0deg);
+    }
+
+    .hero-v2__intro {
+      margin-top: var(--space-5);
+      text-align: center;
+      font-size: var(--text-base);
+    }
+
+    /* Action tier — generous break so the CTAs stand alone */
+    .hero-v2__cta {
+      margin-top: var(--space-8);
+      justify-content: center;
+    }
+
+    /* Proof / explore tier — detached by a divider and visually de-emphasized */
     .hero-v2__inline-row {
       justify-content: center;
-      font-size: var(--text-sm);
+      font-size: var(--text-xs);
       gap: var(--space-1);
+    }
+
+    /* Bounding card groups the social-proof + projects as one block */
+    .hero-v2__proof {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      order: 5;
+      width: 100%;
+      margin-top: var(--space-16);
+      padding: var(--space-6) var(--space-5);
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Companies — break inline sentence into two labeled rows.
+       Now [Flipkart]
+       Previously [Paytm] [Oracle] */
+    .hero-v2__inline-row--companies {
+      width: 100%;
+      margin-top: 0;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .hero-v2__co-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      width: max-content;
+      max-width: 100%;
+    }
+
+    .hero-v2__co-text {
+      display: none;
+    }
+
+    .hero-v2__co-label {
+      display: inline-block;
+      min-width: 96px;
+      font-size: var(--text-xs);
+      color: var(--gray-500);
+      font-weight: 400;
+      text-align: left;
     }
 
     .hero-v2__icon-card {
@@ -473,19 +590,78 @@ import profilePhoto4 from '../../assets/profile-photo-4.webp';
       height: 28px;
     }
 
-    .hero-v2__cluster-item {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
+    .hero-v2__icon-card-logo--desktop {
+      display: none;
+    }
+
+    .hero-v2__icon-card-logo--mobile {
+      display: block;
+    }
+
+    /* Side projects → secondary tier; smaller cards + dimmer labels so the
+       companies strip above remains the dominant trust signal. */
+    .hero-v2__inline-row--projects {
+      width: 100%;
+      margin-top: 0;
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--border-subtle);
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .hero-v2__inline-row--projects > span:first-child {
+      text-align: center;
+      font-size: var(--text-2xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray-500);
+      font-weight: 500;
+    }
+
+    .hero-v2__inline-row--projects .hero-v2__cluster {
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+      margin: 0;
+      gap: var(--space-4);
+    }
+
+    .hero-v2__cluster-item,
+    .hero-v2__cluster-item--stacked {
+      flex-direction: column;
+      align-items: center;
+      width: auto;
+      height: auto;
+      gap: var(--space-2);
+      margin-left: 0;
+      box-shadow: none;
+    }
+
+    .hero-v2__cluster-item:hover {
+      transform: none;
+      box-shadow: none;
     }
 
     .hero-v2__cluster-card {
-      border-radius: 10px;
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+      border-radius: 9px;
     }
 
+    /* Hide the hover tooltip; show the persistent product-name caption */
     .hero-v2__cluster-tip {
-      top: -40px;
-      font-size: 9px;
+      display: none;
+    }
+
+    .hero-v2__cluster-name {
+      display: block;
+      font-size: var(--text-2xs);
+      font-weight: 500;
+      color: var(--gray-500);
+      text-align: center;
+      line-height: 1.2;
     }
 
   }

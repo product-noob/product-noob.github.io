@@ -67,6 +67,12 @@ export async function GET(context: APIContext) {
       priority: 0.6,
     },
     {
+      loc: `${site}/vibes/`,
+      lastmod: now,
+      changefreq: 'monthly',
+      priority: 0.7,
+    },
+    {
       loc: `${site}/tools/json-formatter/`,
       lastmod: now,
       changefreq: 'monthly',
@@ -98,7 +104,7 @@ export async function GET(context: APIContext) {
   const blogEntries: SitemapEntry[] = posts
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
     .map((post) => ({
-      loc: `${site}/blogs/${post.slug}/`,
+      loc: `${site}/blogs/${post.id}/`,
       lastmod: toW3CDate(post.data.updatedDate ?? post.data.pubDate),
       changefreq: 'yearly' as const,
       priority: 0.7,

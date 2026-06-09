@@ -47,7 +47,7 @@ const recentPosts = (await getCollection('blog'))
               title={post.data.title}
               description={post.data.description}
               pubDate={post.data.pubDate || new Date()}
-              slug={post.slug}
+              slug={post.id}
               readingTime={calculateReadingTime(post.body ?? '')}
               tags={post.data.tags}
             />
