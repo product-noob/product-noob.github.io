@@ -1,7 +1,7 @@
 ---
 pubDate: '2026-06-09'
 title: "How I Pick the UI Before Writing a Single Prompt"
-description: "Eight vibes, six shapes, and the 30-second decision that decides whether your vibe-coded prototype looks generic or considered."
+description: "Why your vibe-coded prototype looks generic, and the two questions trick that fixes it before you write a single prompt."
 tags: ['AI', 'Vibe Coding', 'Design']
 featured: true
 ---
