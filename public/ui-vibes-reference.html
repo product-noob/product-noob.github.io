@@ -65,11 +65,30 @@
         @keyframes bounce-light { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
         .bounce-light { animation: bounce-light 2s ease-in-out infinite; }
 
-        /* Nav active */
-        .nav-btn { transition: all 150ms; }
-        .nav-btn.is-active { color: #000; border-bottom-color: #000; }
-        .nav-btn-softsaas.is-active { color: #6366f1; border-bottom-color: #6366f1; }
-        .nav-btn-glass.is-active { color: #5E5CE6; border-bottom-color: #5E5CE6; }
+        /* Nav active — prominent pill + thicker accent so the selected vibe
+           reads as the dominant tab even at a glance. */
+        .nav-btn {
+            transition: all 150ms;
+            position: relative;
+            border-radius: 8px 8px 0 0;
+        }
+        .nav-btn.is-active {
+            color: #0F172A;
+            font-weight: 700;
+            background: linear-gradient(180deg, #F1F5F9 0%, #FFFFFF 100%);
+            box-shadow: inset 0 -3px 0 0 #0F172A;
+            border-bottom-color: transparent;
+        }
+        .nav-btn-softsaas.is-active {
+            color: #4F46E5;
+            background: linear-gradient(180deg, #EEF2FF 0%, #FFFFFF 100%);
+            box-shadow: inset 0 -3px 0 0 #6366f1;
+        }
+        .nav-btn-glass.is-active {
+            color: #4744C7;
+            background: linear-gradient(180deg, #EEF1FF 0%, #FFFFFF 100%);
+            box-shadow: inset 0 -3px 0 0 #5E5CE6;
+        }
 
         /* Glass / Spatial — Apple Liquid Glass / Vision OS palette */
         .glass-surface {
@@ -116,22 +135,17 @@
             vertical-align: 1px;
         }
 
-        /* Nav scroll wrapper — no fade, just clean horizontal scroll */
+        /* Nav scroll wrapper — clean horizontal scroll with hidden scrollbar */
         .nav-scroll-wrapper { position: relative; }
-        .nav-count {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            color: #94A3B8;
-            letter-spacing: 0.06em;
-            padding: 3px 8px;
-            border: 1px solid #E5E7EB;
-            border-radius: 999px;
-            white-space: nowrap;
+        .nav-scroll-track {
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;        /* Firefox */
+            -ms-overflow-style: none;     /* old Edge / IE */
         }
-        .nav-count strong { color: #0F172A; font-weight: 600; }
+        .nav-scroll-track::-webkit-scrollbar {
+            display: none;                /* Safari, Chrome */
+        }
 
         /* Toast notification */
         .toast {
@@ -775,9 +789,9 @@
 
 <!-- TOP NAV -->
 <nav class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
-        <div class="nav-scroll-wrapper flex-1 min-w-0">
-            <div class="flex overflow-x-auto scrollbar-none">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="nav-scroll-wrapper">
+            <div class="nav-scroll-track">
                 <button onclick="switchTab('editorial')" class="nav-btn tab-trigger px-4 md:px-5 py-3.5 md:py-4 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="editorial">Editorial</button>
                 <button onclick="switchTab('utility')" class="nav-btn tab-trigger px-4 md:px-5 py-3.5 md:py-4 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="utility">Utility</button>
                 <button onclick="switchTab('warm')" class="nav-btn tab-trigger px-4 md:px-5 py-3.5 md:py-4 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="warm">Warm Consumer</button>
@@ -788,7 +802,6 @@
                 <button onclick="switchTab('glass')" class="nav-btn nav-btn-glass tab-trigger px-4 md:px-5 py-3.5 md:py-4 text-gray-500 hover:text-[#5E5CE6] font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="glass">Glass / Spatial</button>
             </div>
         </div>
-        <span class="nav-count pr-2 flex-shrink-0 ml-2"><strong>8</strong> vibes</span>
     </div>
 </nav>
 

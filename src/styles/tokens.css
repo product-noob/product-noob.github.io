@@ -195,6 +195,20 @@
    Responsive Token Overrides
    ========================================================================== */
 
+/* Wide viewports — bump body type for long-form reading comfort.
+   Headings scale with body via em-based modular scale. */
+@media (min-width: 1440px) {
+  :root {
+    --text-base: 1.125rem;   /* 17 → 18 */
+  }
+}
+
+@media (min-width: 1800px) {
+  :root {
+    --text-base: 1.1875rem;  /* 18 → 19 */
+  }
+}
+
 @media (max-width: 1024px) {
   :root {
     --text-hero: 5rem;

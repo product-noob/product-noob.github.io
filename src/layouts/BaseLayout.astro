@@ -66,6 +66,69 @@ const canonicalUrl = new URL(
 ).toString();
 
 const siteUrl = "https://princejain.me";
+
+// Single @graph instead of N separate <script> tags — same structured data,
+// fewer bytes and the schema.org-recommended shape.
+const schemaGraph: Record<string, unknown>[] = [
+  {
+    "@type": "Person",
+    "@id": `${siteUrl}/#person`,
+    name: "Prince Jain",
+    url: siteUrl,
+    image: `${siteUrl}/profile-photo-1.webp`,
+    jobTitle: "Group Product Manager",
+    worksFor: {
+      "@type": "Organization",
+      name: "Flipkart",
+      url: "https://www.flipkart.com",
+    },
+    alumniOf: {
+      "@type": "CollegeOrUniversity",
+      name: "Malaviya National Institute of Technology, Jaipur",
+    },
+    knowsAbout: [
+      "Product Management",
+      "Artificial Intelligence",
+      "Agentic AI",
+      "Software Engineering",
+      "User Experience Design",
+    ],
+    sameAs: [
+      "https://twitter.com/Prince_Jain17",
+      "https://linkedin.com/in/princejain17",
+      "https://github.com/product-noob",
+      "mailto:princemnit@gmail.com",
+    ],
+    description:
+      "Group Product Manager at Flipkart building AI products at scale.",
+  },
+  {
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    name: "Prince Jain",
+    url: siteUrl,
+    description: "Personal website and blog of Prince Jain — Product Leader at Flipkart building AI products at scale.",
+    publisher: { "@id": `${siteUrl}/#person` },
+  },
+];
+
+if (breadcrumbs && breadcrumbs.length > 0) {
+  schemaGraph.push({
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbs.map((crumb, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: crumb.name,
+      ...(crumb.url ? { item: crumb.url } : {}),
+    })),
+  });
+}
+
+if (extraSchema) {
+  // Strip the @context if a caller included one — the graph wrapper owns it.
+  const { "@context": _ctx, ...rest } = extraSchema as Record<string, unknown>;
+  schemaGraph.push(rest);
+}
 ---
 
 <!DOCTYPE html>
@@ -141,79 +204,15 @@ const siteUrl = "https://princejain.me";
 
     <title>{title}</title>
 
-    <!-- JSON-LD: Person (site-wide identity) -->
+    <!-- JSON-LD: single @graph containing Person, WebSite, BreadcrumbList,
+         and any page-specific schema (e.g. BlogPosting). -->
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "Person",
-        name: "Prince Jain",
-        url: siteUrl,
-        image: `${siteUrl}/profile-photo-1.webp`,
-        jobTitle: "Group Product Manager",
-        worksFor: {
-          "@type": "Organization",
-          name: "Flipkart",
-          url: "https://www.flipkart.com",
-        },
-        alumniOf: {
-          "@type": "CollegeOrUniversity",
-          name: "Malaviya National Institute of Technology, Jaipur",
-        },
-        knowsAbout: [
-          "Product Management",
-          "Artificial Intelligence",
-          "Agentic AI",
-          "Software Engineering",
-          "User Experience Design",
-        ],
-        sameAs: [
-          "https://twitter.com/Prince_Jain17",
-          "https://linkedin.com/in/princejain17",
-          "https://github.com/product-noob",
-          "mailto:princemnit@gmail.com",
-        ],
-        description:
-          "Group Product Manager at Flipkart building AI products at scale.",
+        "@graph": schemaGraph,
       })}
     />
-
-    <!-- JSON-LD: WebSite (enables sitelinks search box) -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        name: "Prince Jain",
-        url: siteUrl,
-        description: "Personal website and blog of Prince Jain — Product Leader at Flipkart building AI products at scale.",
-      })}
-    />
-
-    {/* JSON-LD: BreadcrumbList (per-page navigation context) */}
-    {breadcrumbs && breadcrumbs.length > 0 && (
-      <script
-        type="application/ld+json"
-        set:html={JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: breadcrumbs.map((crumb, index) => ({
-            "@type": "ListItem",
-            position: index + 1,
-            name: crumb.name,
-            ...(crumb.url ? { item: crumb.url } : {}),
-          })),
-        })}
-      />
-    )}
-
-    {/* JSON-LD: Extra page-specific schema (e.g. BlogPosting) */}
-    {extraSchema && (
-      <script
-        type="application/ld+json"
-        set:html={JSON.stringify(extraSchema)}
-      />
-    )}
 
   </head>
   <body>

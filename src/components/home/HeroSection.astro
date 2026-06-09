@@ -66,28 +66,28 @@ import profilePhoto4 from '../../assets/profile-photo-4.webp';
         <p class="hero-v2__inline-row hero-v2__inline-row--projects">
           <span>Some recent side projects</span>
           <span class="hero-v2__cluster">
-            <ExternalLink href="https://pm-vault.princejain.me/" class="hero-v2__cluster-item" style="z-index: 3;" data-track="side_project_pm_vault" data-track-location="hero">
+            <ExternalLink href="https://pm-vault.princejain.me/" class="hero-v2__cluster-item hero-v2__cluster-item--z3" data-track="side_project_pm_vault" data-track-location="hero">
               <span class="hero-v2__cluster-card">
-                <img src="/icons/pm-vault.svg" alt="PM Vault" width="128" height="128" loading="lazy" />
+                <img src="/icons/pm-vault.svg" alt="PM Vault" width="48" height="48" loading="lazy" />
               </span>
               <span class="hero-v2__cluster-tip">PM interview prep tool</span>
               <span class="hero-v2__cluster-name">PM Vault</span>
             </ExternalLink>
-            <ExternalLink href="https://whispr.princejain.me/" class="hero-v2__cluster-item hero-v2__cluster-item--stacked" style="z-index: 2;" data-track="side_project_whispr" data-track-location="hero">
+            <ExternalLink href="https://whispr.princejain.me/" class="hero-v2__cluster-item hero-v2__cluster-item--stacked hero-v2__cluster-item--z2" data-track="side_project_whispr" data-track-location="hero">
               <span class="hero-v2__cluster-card">
-                <img src="/icons/whisprflow.webp" alt="Whisprflow" width="960" height="960" loading="lazy" />
+                <img src="/icons/whisprflow.webp" alt="Whisprflow" width="48" height="48" loading="lazy" />
               </span>
               <span class="hero-v2__cluster-tip">Voice-to-text Transcription</span>
               <span class="hero-v2__cluster-name">Whispr</span>
             </ExternalLink>
-            <ExternalLink href="https://chromewebstore.google.com/detail/chatgpt-google-meet-summa/kofkiemddfpekcadmaeheonbbkhnclhj" class="hero-v2__cluster-item hero-v2__cluster-item--stacked" style="z-index: 1;" data-track="side_project_gmeet_summariser" data-track-location="hero">
+            <ExternalLink href="https://chromewebstore.google.com/detail/chatgpt-google-meet-summa/kofkiemddfpekcadmaeheonbbkhnclhj" class="hero-v2__cluster-item hero-v2__cluster-item--stacked hero-v2__cluster-item--z1" data-track="side_project_gmeet_summariser" data-track-location="hero">
               <span class="hero-v2__cluster-card">
                 <img src="/icons/gmeet-summariser.svg" alt="G-meet Summariser" width="48" height="48" loading="lazy" />
               </span>
               <span class="hero-v2__cluster-tip">AI meeting notes</span>
               <span class="hero-v2__cluster-name">G-Meet</span>
             </ExternalLink>
-            <ExternalLink href="https://launchpad.princejain.me/" class="hero-v2__cluster-item hero-v2__cluster-item--stacked" style="z-index: 0;" data-track="side_project_launchpad" data-track-location="hero">
+            <ExternalLink href="https://launchpad.princejain.me/" class="hero-v2__cluster-item hero-v2__cluster-item--stacked hero-v2__cluster-item--z0" data-track="side_project_launchpad" data-track-location="hero">
               <span class="hero-v2__cluster-card">
                 <img src="/icons/launchpad.svg" alt="Launchpad" width="48" height="48" loading="lazy" />
               </span>
@@ -104,7 +104,7 @@ import profilePhoto4 from '../../assets/profile-photo-4.webp';
       <!-- Right Column - Profile Image with Rotation Effect -->
       <div class="hero-v2__image-wrapper">
         <div class="hero-v2__image-container" id="profile-container" tabindex="0" aria-label="Profile image carousel. Hover or focus to pause.">
-          <Image src={profilePhoto1} alt="Prince Jain" class="hero-v2__image hero-v2__image--active" data-index="0" width={640} height={640} fetchpriority="high" />
+          <Image src={profilePhoto1} alt="Prince Jain" class="hero-v2__image hero-v2__image--active" data-index="0" width={640} height={640} fetchpriority="high" loading="eager" decoding="sync" />
           <Image src={profilePhoto2} alt="Prince Jain" class="hero-v2__image" data-index="1" width={640} height={640} loading="lazy" />
           <Image src={profilePhoto3} alt="Prince Jain" class="hero-v2__image" data-index="2" width={640} height={640} loading="lazy" />
           <Image src={profilePhoto4} alt="Prince Jain" class="hero-v2__image" data-index="3" width={640} height={640} loading="lazy" />
@@ -162,6 +162,11 @@ import profilePhoto4 from '../../assets/profile-photo-4.webp';
       isPaused = false;
     });
   }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopRotation();
+    else onMotionPreferenceChange();
+  });
 
   const onMotionPreferenceChange = () => {
     if (reduceMotionQuery.matches) {
@@ -388,8 +393,13 @@ import profilePhoto4 from '../../assets/profile-photo-4.webp';
     box-shadow: var(--shadow-md);
   }
 
+  .hero-v2__cluster-item--z0 { z-index: 0; }
+  .hero-v2__cluster-item--z1 { z-index: 1; }
+  .hero-v2__cluster-item--z2 { z-index: 2; }
+  .hero-v2__cluster-item--z3 { z-index: 3; }
+
   .hero-v2__cluster-item:hover {
-    z-index: 20 !important;
+    z-index: 20;
     transform: scale(1.1);
     box-shadow: var(--shadow-lg);
   }

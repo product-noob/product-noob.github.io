@@ -7,10 +7,10 @@ export default defineConfig({
     output: 'static',
     build: {
         assets: 'assets',
-        // Inline all stylesheets directly into <style> tags to eliminate
-        // render-blocking CSS requests (est. 840ms savings on mobile).
-        // CSS content is identical — only the delivery changes (embedded
-        // in HTML vs separate file requests).
-        inlineStylesheets: 'always'
+        // 'auto' lets Astro inline only stylesheets below ~4KB and link
+        // larger ones. Trades a tiny FCP delay for cross-page caching of
+        // the shared bundle — net win over 'always' once the visitor
+        // navigates beyond the landing page.
+        inlineStylesheets: 'auto'
     }
 });
