@@ -3,7 +3,7 @@ pubDate: '2026-06-09'
 title: "How I Pick the UI Before Writing a Single Prompt"
 description: "The two UI decisions I make before vibe-coding to avoid generic output, wasted iterations, and burnt tokens."
 tags: ['AI', 'Vibe Coding', 'Design']
-ogImage: '/images/og/picking-the-right-ui-for-vibe-coding.webp'
+ogImage: '/images/og/picking-the-right-ui-for-vibe-coding.jpg'
 featured: true
 ---
 
