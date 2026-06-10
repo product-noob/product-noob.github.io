@@ -830,7 +830,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         <span class="copy-fab__label">Copy <span id="copy-fab__vibe">Editorial</span> prompt</span>
     </button>
-    <a class="copy-fab__link" href="/vibes/" aria-label="Customize this vibe into a prompt">
+    <a class="copy-fab__link" href="/vibes/?vibe=editorial#builder" data-builder-link aria-label="Customize this vibe into a prompt">
         Customize →
     </a>
 </div>
@@ -865,14 +865,14 @@
                 <p class="lg:hidden text-slate-300 text-[15px] leading-relaxed mt-4">Eight complete screens to help you pick a direction before you prompt.</p>
                 <p class="hidden lg:block text-slate-300 text-lg leading-relaxed max-w-2xl mt-5">These are the eight UI directions I keep reusing. Compare the full screens, pick the closest one, and save yourself a few rounds of fixing generic UI later.</p>
                 <div class="grid grid-cols-2 gap-2.5 mt-6 lg:hidden">
-                    <a href="/vibes/" class="inline-flex items-center justify-center rounded-lg bg-white text-slate-950 px-3 py-2.5 text-sm font-semibold hover:bg-slate-200 transition-colors">Build my prompt</a>
+                    <a href="/vibes/?vibe=editorial#builder" data-builder-link class="inline-flex items-center justify-center rounded-lg bg-white text-slate-950 px-3 py-2.5 text-sm font-semibold hover:bg-slate-200 transition-colors">Use Editorial</a>
                     <a href="/blogs/picking-the-right-ui-for-vibe-coding/" class="inline-flex items-center justify-center rounded-lg border border-slate-700 text-white px-3 py-2.5 text-sm font-medium hover:border-slate-500 hover:bg-slate-900 transition-colors">Read the framework</a>
                 </div>
             </div>
             <div class="hidden lg:block lg:border-l lg:border-slate-800 lg:pl-8">
                 <p class="text-sm leading-relaxed text-slate-300 mb-5">Pick the one that feels closest to what you are building. You can copy its prompt as-is or tune it in the prompt builder.</p>
                 <div class="flex flex-wrap gap-3">
-                    <a href="/vibes/" class="inline-flex items-center justify-center rounded-lg bg-white text-slate-950 px-4 py-2.5 text-sm font-semibold hover:bg-slate-200 transition-colors">Build my prompt</a>
+                    <a href="/vibes/?vibe=editorial#builder" data-builder-link class="inline-flex items-center justify-center rounded-lg bg-white text-slate-950 px-4 py-2.5 text-sm font-semibold hover:bg-slate-200 transition-colors">Use Editorial in my prompt</a>
                     <a href="/blogs/picking-the-right-ui-for-vibe-coding/" class="inline-flex items-center justify-center rounded-lg border border-slate-700 text-white px-4 py-2.5 text-sm font-medium hover:border-slate-500 hover:bg-slate-900 transition-colors">Read the framework</a>
                 </div>
             </div>
@@ -888,7 +888,10 @@
                 <span class="hidden sm:inline font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">Selected</span>
                 <p class="text-xs sm:text-sm text-slate-700"><strong id="active-vibe-name" class="text-slate-950">Editorial</strong><span class="text-slate-300 mx-1.5">/</span><span id="active-vibe-summary">Calm, text-first, and typographic.</span></p>
             </div>
-            <p id="active-vibe-fit" class="hidden md:block text-xs text-slate-500">Best for long-form reading, portfolios, and thoughtful tools.</p>
+            <div class="flex items-center gap-4">
+                <p id="active-vibe-fit" class="hidden lg:block text-xs text-slate-500">Best for long-form reading, portfolios, and thoughtful tools.</p>
+                <a href="/vibes/?vibe=editorial#builder" data-builder-link class="inline-flex items-center justify-center rounded-md bg-slate-950 text-white px-3 py-2 text-xs font-semibold whitespace-nowrap hover:bg-slate-800 transition-colors">Use Editorial →</a>
+            </div>
         </div>
         <div class="nav-scroll-wrapper">
             <div class="nav-scroll-track" role="tablist" aria-label="UI vibe examples">
@@ -896,8 +899,8 @@
                 <button type="button" id="tab-utility" role="tab" aria-selected="false" aria-controls="utility" tabindex="-1" onclick="switchTab('utility')" class="nav-btn tab-trigger flex flex-col items-start justify-center px-4 md:px-5 py-2.5 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="utility"><span class="nav-btn__index">02</span><span>Utility</span></button>
                 <button type="button" id="tab-warm" role="tab" aria-selected="false" aria-controls="warm" tabindex="-1" onclick="switchTab('warm')" class="nav-btn tab-trigger flex flex-col items-start justify-center px-4 md:px-5 py-2.5 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="warm"><span class="nav-btn__index">03</span><span>Warm Consumer</span></button>
                 <button type="button" id="tab-sharp" role="tab" aria-selected="false" aria-controls="sharp" tabindex="-1" onclick="switchTab('sharp')" class="nav-btn tab-trigger flex flex-col items-start justify-center px-4 md:px-5 py-2.5 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="sharp"><span class="nav-btn__index">04</span><span>Sharp Product</span></button>
-                <button type="button" id="tab-playful" role="tab" aria-selected="false" aria-controls="playful" tabindex="-1" onclick="switchTab('playful')" class="nav-btn tab-trigger flex flex-col items-start justify-center px-4 md:px-5 py-2.5 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="playful"><span class="nav-btn__index">05</span><span>Playful</span></button>
-                <button type="button" id="tab-softsaas" role="tab" aria-selected="false" aria-controls="softsaas" tabindex="-1" onclick="switchTab('softsaas')" class="nav-btn nav-btn-softsaas tab-trigger flex flex-col items-start justify-center px-4 md:px-5 py-2.5 text-gray-500 hover:text-indigo-600 font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="softsaas"><span class="nav-btn__index">06</span><span>Soft SaaS</span></button>
+                <button type="button" id="tab-softsaas" role="tab" aria-selected="false" aria-controls="softsaas" tabindex="-1" onclick="switchTab('softsaas')" class="nav-btn nav-btn-softsaas tab-trigger flex flex-col items-start justify-center px-4 md:px-5 py-2.5 text-gray-500 hover:text-indigo-600 font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="softsaas"><span class="nav-btn__index">05</span><span>Soft SaaS</span></button>
+                <button type="button" id="tab-playful" role="tab" aria-selected="false" aria-controls="playful" tabindex="-1" onclick="switchTab('playful')" class="nav-btn tab-trigger flex flex-col items-start justify-center px-4 md:px-5 py-2.5 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="playful"><span class="nav-btn__index">06</span><span>Playful</span></button>
                 <button type="button" id="tab-brutalist" role="tab" aria-selected="false" aria-controls="brutalist" tabindex="-1" onclick="switchTab('brutalist')" class="nav-btn nav-btn-brutalist tab-trigger flex flex-col items-start justify-center px-4 md:px-5 py-2.5 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="brutalist"><span class="nav-btn__index">07</span><span>Brutalist</span></button>
                 <button type="button" id="tab-glass" role="tab" aria-selected="false" aria-controls="glass" tabindex="-1" onclick="switchTab('glass')" class="nav-btn nav-btn-glass tab-trigger flex flex-col items-start justify-center px-4 md:px-5 py-2.5 text-gray-500 hover:text-[#5E5CE6] font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="glass"><span class="nav-btn__index">08</span><span>Glass / Spatial</span></button>
             </div>
@@ -3448,9 +3451,19 @@
             document.getElementById('active-vibe-name').textContent = meta.name;
             document.getElementById('active-vibe-summary').textContent = meta.summary;
             document.getElementById('active-vibe-fit').textContent = meta.fit;
+            document.querySelectorAll('[data-builder-link]').forEach(link => {
+                link.href = `/vibes/?vibe=${meta.key}#builder`;
+                if (link.classList.contains('copy-fab__link')) return;
+                link.textContent = link.closest('#vibe-chooser')
+                    ? `Use ${meta.name} →`
+                    : `Use ${meta.name} in my prompt`;
+            });
             const fabBtn = document.getElementById('copy-fab__btn');
             fabBtn?.classList.remove('is-copied');
             expandFab();
+        }
+        if (window.location.hash !== `#${tabId}`) {
+            window.history.replaceState({}, '', `#${tabId}`);
         }
     }
 
@@ -3637,11 +3650,9 @@
         }
     }
 
-    // Set initial active state
-    document.querySelector('[data-tab="editorial"]').classList.remove('text-gray-500', 'border-transparent');
-    document.querySelector('[data-tab="editorial"]').classList.add('text-black', 'border-black');
-    document.querySelector('[data-tab="editorial"]').classList.add('is-active');
-    document.querySelectorAll('.tab-content:not(#editorial)').forEach(panel => { panel.hidden = true; });
+    // Restore a directly linked vibe, falling back to Editorial.
+    const initialVibeId = window.location.hash.slice(1);
+    switchTab(VIBE_MAP[initialVibeId] ? initialVibeId : 'editorial');
 
     // Demo links with no destination should not jump the reference back to the top.
     document.addEventListener('click', (event) => {

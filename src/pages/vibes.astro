@@ -7,16 +7,6 @@ import {
   stackOptions,
   vibes,
 } from '../data/vibes';
-import type { VibeCategory } from '../types';
-
-const categories: Array<'All' | VibeCategory> = [
-  'All',
-  'Content',
-  'Internal tools',
-  'Consumer',
-  'B2B',
-  'Experimental',
-];
 
 const defaultVibe = vibes[0];
 const defaultScreen = screenTypes[0];
@@ -38,29 +28,49 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
     <section class="vibes-hero">
       <div class="container">
         <p class="vibes-hero__eyebrow">UI PROMPT BUILDER</p>
-        <h1 class="vibes-hero__title">Pick the UI before you start prompting.</h1>
+        <h1 class="vibes-hero__title">Build a better UI prompt in under two minutes.</h1>
         <p class="vibes-hero__subtitle">
-          Choose how the product should feel and what kind of screen you are building.
-          Get a copy-ready prompt that saves iterations, context, and tokens.
+          Pick how it should feel. Pick the screen you are building. Copy a prompt that gives your
+          coding model less room to fall back to generic UI.
         </p>
+        <ol class="vibes-hero__steps" aria-label="How the prompt builder works">
+          <li><span>1</span>Choose a vibe</li>
+          <li><span>2</span>Choose a screen</li>
+          <li><span>3</span>Copy the prompt</li>
+        </ol>
+        <div class="vibes-hero__actions">
+          <a class="vibes-hero__primary" href="#builder">Start with the UI direction →</a>
+          <a class="vibes-hero__secondary" href="/ui-vibes-reference.html">Not sure? Compare all 8</a>
+        </div>
         <div class="vibes-hero__meta">
-          <a href="/blogs/picking-the-right-ui-for-vibe-coding/">Read how I use this framework</a>
+          <a href="/blogs/picking-the-right-ui-for-vibe-coding/">Why this saves tokens and rework</a>
           <span aria-hidden="true">·</span>
           <span>No signup. Nothing leaves your browser.</span>
         </div>
       </div>
     </section>
 
-    <section class="vibe-builder" aria-labelledby="builder-title">
+    <section class="vibe-builder" id="builder" aria-labelledby="builder-title">
       <div class="container">
         <div class="builder-heading">
           <p class="builder-heading__eyebrow">BUILD YOUR PROMPT</p>
-          <h2 id="builder-title">Two choices first. Project context second.</h2>
+          <h2 id="builder-title">Choose, choose, copy.</h2>
           <p>
-            Start with the direction and screen shape. The generated prompt updates as you make
-            each choice.
+            The prompt updates as you go. Project details are optional and can be added before you
+            copy.
           </p>
         </div>
+
+        <aside class="compare-panel">
+          <div>
+            <p class="compare-panel__eyebrow">NEED TO SEE THE DIFFERENCE?</p>
+            <h3>Compare all eight as complete interfaces.</h3>
+            <p>Use the visual reference if the thumbnails are not enough to make the choice.</p>
+          </div>
+          <a href="/ui-vibes-reference.html" data-reference-link>
+            Open the full visual reference →
+          </a>
+        </aside>
 
         <section class="builder-step" aria-labelledby="vibe-step-title">
           <div class="builder-step__heading">
@@ -71,19 +81,6 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
             <p>Choose the closest direction. You can tune the details after the first build.</p>
           </div>
 
-          <div class="vibe-filters" role="group" aria-label="Filter UI directions">
-            {categories.map((category) => (
-              <button
-                class:list={['vibe-filter', { 'is-active': category === 'All' }]}
-                type="button"
-                data-vibe-filter={category}
-                aria-pressed={category === 'All' ? 'true' : 'false'}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
           <div class="vibe-grid" data-vibe-grid>
             {vibes.map((vibe, index) => (
               <button
@@ -91,7 +88,6 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
                 type="button"
                 data-vibe-option={vibe.id}
                 data-vibe={vibe.id}
-                data-categories={vibe.categories.join('|')}
                 aria-pressed={index === 0 ? 'true' : 'false'}
               >
                 <span class="vibe-option__preview" aria-hidden="true">
@@ -228,6 +224,18 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
               </button>
             ))}
           </div>
+
+          <div class="builder-next">
+            <p>Selected: <strong data-selected-vibe-next>{defaultVibe.name}</strong></p>
+            <div>
+              <a href="/ui-vibes-reference.html#editorial" data-selected-reference>
+                See the full example
+              </a>
+              <a class="builder-next__primary" href="#screen-step-title">
+                Next: choose the screen ↓
+              </a>
+            </div>
+          </div>
         </section>
 
         <section class="builder-step" aria-labelledby="screen-step-title">
@@ -360,17 +368,25 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
             </div>
             <p class="screen-carousel__hint">Swipe, scroll, or use the arrows</p>
           </div>
+
+          <div class="builder-next">
+            <p>Selected: <strong data-selected-screen-next>{defaultScreen.name}</strong></p>
+            <div>
+              <a class="builder-next__primary" href="#prompt-step-title">
+                Next: copy the prompt ↓
+              </a>
+            </div>
+          </div>
         </section>
 
-        <section class="builder-step" aria-labelledby="context-step-title">
-          <div class="builder-step__heading">
-            <div>
-              <p class="builder-step__number">03</p>
-              <h3 id="context-step-title">Add the project context.</h3>
-            </div>
-            <p>Optional, but this is what turns a reusable direction into your product.</p>
-          </div>
-
+        <details class="project-context">
+          <summary>
+            <span>
+              <strong>Add project details</strong>
+              <small>Optional, but makes the prompt specific to your product.</small>
+            </span>
+            <span aria-hidden="true">+</span>
+          </summary>
           <div class="project-fields">
             <label class="project-field">
               <span>Project name</span>
@@ -400,12 +416,12 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
               ></textarea>
             </label>
           </div>
-        </section>
+        </details>
 
         <section class="builder-step builder-step--prompt" aria-labelledby="prompt-step-title">
           <div class="builder-step__heading builder-step__heading--prompt">
             <div>
-              <p class="builder-step__number">04</p>
+              <p class="builder-step__number">03</p>
               <h3 id="prompt-step-title">Copy the prompt.</h3>
             </div>
             <label class="prompt-detail">
@@ -430,71 +446,13 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
                 </button>
               </div>
             </div>
-            <pre class="prompt-output__pre" data-no-copy><code data-generated-prompt>{defaultPrompt}</code></pre>
+            <details class="prompt-inspector">
+              <summary>Inspect the full prompt</summary>
+              <pre class="prompt-output__pre" data-no-copy><code data-generated-prompt>{defaultPrompt}</code></pre>
+            </details>
             <p class="prompt-output__status" data-copy-status aria-live="polite"></p>
           </div>
         </section>
-      </div>
-    </section>
-
-    <section class="vibe-reference" aria-labelledby="reference-title">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-heading__eyebrow">DETAILED REFERENCE</p>
-          <h2 id="reference-title">Need to compare the directions more closely?</h2>
-          <p>
-            The builder above is for choosing quickly. These notes show the references and full
-            design specification behind each direction.
-          </p>
-        </div>
-
-        <div class="reference-list">
-          {vibes.map((vibe) => (
-            <article class="reference-item" id={vibe.id}>
-              <div class="reference-item__summary">
-                <div class="reference-item__identity">
-                  <span
-                    class="reference-item__swatch"
-                    data-vibe-swatch={vibe.id}
-                    aria-hidden="true"
-                  ></span>
-                  <div>
-                    <h3><a href={`#${vibe.id}`}>{vibe.name}</a></h3>
-                    <p>{vibe.blurb}</p>
-                  </div>
-                </div>
-              </div>
-
-              <p class="reference-item__use"><strong>Best for:</strong> {vibe.useFor}</p>
-              <ul class="reference-item__brands" aria-label={`${vibe.name} references`}>
-                {vibe.references.map((reference) => <li>{reference}</li>)}
-              </ul>
-
-              <details class="reference-item__details">
-                <summary>Read the design specification</summary>
-                <pre data-no-copy><code>{vibe.designSystem}</code></pre>
-              </details>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="playground-panel">
-      <div class="container">
-        <div class="playground-panel__inner">
-          <div>
-            <p class="playground-panel__eyebrow">FULL COMPONENT PLAYGROUND</p>
-            <h2>Inspect every direction across a complete interface.</h2>
-            <p>
-              The standalone reference includes larger page examples, component states, responsive
-              layouts, and interactive details. It is useful once you have narrowed the choice.
-            </p>
-          </div>
-          <a href="/ui-vibes-reference.html" target="_blank" rel="noopener noreferrer">
-            Open the full visual reference ↗
-          </a>
-        </div>
       </div>
     </section>
 
@@ -528,8 +486,7 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
   }
   .vibes-hero__eyebrow,
   .builder-heading__eyebrow,
-  .section-heading__eyebrow,
-  .playground-panel__eyebrow {
+  .compare-panel__eyebrow {
     margin-bottom: var(--space-3);
     color: var(--color-accent);
     font-size: var(--text-xs);
@@ -551,6 +508,67 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
     font-size: var(--text-lg);
     line-height: 1.6;
   }
+  .vibes-hero__steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-6);
+    margin: var(--space-6) 0 0;
+    padding: 0;
+    color: var(--gray-700);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    list-style: none;
+  }
+  .vibes-hero__steps li {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  .vibes-hero__steps span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-full);
+    background: var(--gray-900);
+    color: white;
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+  }
+  .vibes-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+  .vibes-hero__actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 var(--space-5);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .vibes-hero__primary {
+    background: var(--gray-900);
+    color: white;
+  }
+  .vibes-hero__primary:hover {
+    background: var(--gray-800);
+  }
+  .vibes-hero__secondary {
+    border: 1px solid var(--gray-300);
+    background: white;
+    color: var(--gray-800);
+  }
+  .vibes-hero__secondary:hover {
+    border-color: var(--gray-500);
+    color: var(--gray-900);
+  }
   .vibes-hero__meta {
     display: flex;
     flex-wrap: wrap;
@@ -571,25 +589,60 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
   .vibe-builder {
     padding: var(--space-12) 0 var(--space-24);
   }
-  .builder-heading,
-  .section-heading {
+  .builder-heading {
     max-width: 720px;
     margin-bottom: var(--space-12);
   }
-  .builder-heading h2,
-  .section-heading h2,
-  .playground-panel h2 {
+  .builder-heading h2 {
     margin-bottom: var(--space-3);
     color: var(--gray-900);
     font-family: var(--font-display);
     font-size: var(--text-3xl);
     line-height: 1.15;
   }
-  .builder-heading > p:last-child,
-  .section-heading > p:last-child,
-  .playground-panel p {
+  .builder-heading > p:last-child {
     color: var(--gray-600);
     line-height: 1.65;
+  }
+
+  .compare-panel {
+    display: grid;
+    gap: var(--space-5);
+    margin-bottom: var(--space-4);
+    padding: var(--space-6);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    background: var(--gray-50);
+  }
+  .compare-panel__eyebrow {
+    margin-bottom: var(--space-2);
+  }
+  .compare-panel h3 {
+    margin-bottom: var(--space-2);
+    color: var(--gray-900);
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+  }
+  .compare-panel p:last-child {
+    color: var(--gray-600);
+    font-size: var(--text-sm);
+    line-height: 1.55;
+  }
+  .compare-panel > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 var(--space-5);
+    border-radius: var(--radius-md);
+    background: var(--gray-900);
+    color: white;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .compare-panel > a:hover {
+    background: var(--gray-800);
   }
 
   .builder-step {
@@ -623,44 +676,6 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     font-weight: 700;
-  }
-
-  .vibe-filters {
-    display: flex;
-    gap: var(--space-2);
-    margin-bottom: var(--space-6);
-    padding-bottom: var(--space-1);
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .vibe-filters::-webkit-scrollbar {
-    display: none;
-  }
-  .vibe-filter {
-    min-height: 40px;
-    padding: 0 var(--space-4);
-    border: 1px solid var(--gray-300);
-    border-radius: var(--radius-full);
-    background: white;
-    color: var(--gray-600);
-    font: inherit;
-    font-size: var(--text-sm);
-    font-weight: 600;
-    white-space: nowrap;
-    cursor: pointer;
-    transition:
-      color var(--transition-fast),
-      border-color var(--transition-fast),
-      background var(--transition-fast);
-  }
-  .vibe-filter:hover {
-    border-color: var(--gray-500);
-    color: var(--gray-900);
-  }
-  .vibe-filter.is-active {
-    border-color: var(--gray-900);
-    background: var(--gray-900);
-    color: white;
   }
 
   .vibe-grid {
@@ -1492,6 +1507,54 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
     font-size: var(--text-xs);
     line-height: 1.45;
   }
+  .builder-next {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+    padding: var(--space-4);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    background: var(--gray-50);
+  }
+  .builder-next p {
+    margin: 0;
+    color: var(--gray-600);
+    font-size: var(--text-sm);
+  }
+  .builder-next p strong {
+    color: var(--gray-900);
+  }
+  .builder-next > div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .builder-next a {
+    color: var(--gray-700);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .builder-next a:hover {
+    color: var(--color-accent);
+  }
+  .builder-next .builder-next__primary {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 var(--space-4);
+    border-radius: var(--radius-md);
+    background: var(--gray-900);
+    color: white;
+  }
+  .builder-next .builder-next__primary:hover {
+    background: var(--gray-800);
+    color: white;
+  }
 
   .builder-step__heading--carousel,
   .builder-step__heading--prompt {
@@ -1899,6 +1962,48 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
     display: grid;
     gap: var(--space-5);
   }
+  .project-context {
+    margin: 0 0 var(--space-4);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    background: var(--gray-50);
+  }
+  .project-context > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    color: var(--gray-900);
+    cursor: pointer;
+    list-style: none;
+  }
+  .project-context > summary::-webkit-details-marker {
+    display: none;
+  }
+  .project-context > summary > span:first-child {
+    display: grid;
+    gap: var(--space-1);
+  }
+  .project-context > summary strong {
+    font-size: var(--text-base);
+  }
+  .project-context > summary small {
+    color: var(--gray-500);
+    font-size: var(--text-sm);
+    font-weight: 400;
+  }
+  .project-context > summary > span:last-child {
+    color: var(--color-accent);
+    font-size: var(--text-2xl);
+    transition: transform var(--transition-fast);
+  }
+  .project-context[open] > summary > span:last-child {
+    transform: rotate(45deg);
+  }
+  .project-context .project-fields {
+    padding: 0 var(--space-5) var(--space-5);
+  }
   .project-field {
     display: grid;
     gap: var(--space-2);
@@ -2029,6 +2134,17 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
     white-space: pre-wrap;
     tab-size: 2;
   }
+  .prompt-inspector {
+    border-top: 1px solid var(--gray-200);
+  }
+  .prompt-inspector > summary {
+    padding: var(--space-3) var(--space-5);
+    background: white;
+    color: var(--gray-700);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    cursor: pointer;
+  }
   .prompt-output__pre code {
     padding: 0;
     border-radius: 0;
@@ -2050,162 +2166,6 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
     background: white;
     color: var(--gray-600);
     font-size: var(--text-xs);
-  }
-
-  .vibe-reference {
-    padding: var(--space-24) 0;
-    background: var(--gray-50);
-  }
-  .reference-list {
-    border-top: 1px solid var(--gray-200);
-  }
-  .reference-item {
-    padding: var(--space-8) 0;
-    border-bottom: 1px solid var(--gray-200);
-    scroll-margin-top: var(--space-16);
-  }
-  .reference-item__summary {
-    display: grid;
-    gap: var(--space-5);
-  }
-  .reference-item__identity {
-    display: grid;
-    grid-template-columns: 52px 1fr;
-    gap: var(--space-4);
-  }
-  .reference-item__swatch {
-    width: 52px;
-    height: 52px;
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius-md);
-    background: var(--gray-100);
-  }
-  .reference-item__swatch[data-vibe-swatch='editorial'] {
-    background: linear-gradient(135deg, #fafaf7 50%, #0b1f3a 50%);
-  }
-  .reference-item__swatch[data-vibe-swatch='utility'] {
-    background: linear-gradient(135deg, #fafafa 50%, #3b82f6 50%);
-  }
-  .reference-item__swatch[data-vibe-swatch='warm-consumer'] {
-    background: linear-gradient(135deg, #fffaf3 50%, #d97757 50%);
-  }
-  .reference-item__swatch[data-vibe-swatch='sharp-product'] {
-    background: linear-gradient(135deg, #ffffff 50%, #4f46e5 50%);
-  }
-  .reference-item__swatch[data-vibe-swatch='soft-saas'] {
-    background: linear-gradient(135deg, #eaf7ff, #8b5cf6);
-  }
-  .reference-item__swatch[data-vibe-swatch='playful'] {
-    background: linear-gradient(135deg, #ffd93d 50%, #ff6b6b 50%);
-  }
-  .reference-item__swatch[data-vibe-swatch='brutalist'] {
-    border: 2px solid #000000;
-    border-radius: 0;
-    background: linear-gradient(135deg, #ffffff 50%, #ffff00 50%);
-  }
-  .reference-item__swatch[data-vibe-swatch='glass-spatial'] {
-    background: linear-gradient(135deg, #edf0f6, #5e5ce6 65%, #ff80b0);
-  }
-  .reference-item h3 {
-    margin-bottom: var(--space-1);
-    font-family: var(--font-display);
-    font-size: var(--text-xl);
-  }
-  .reference-item h3 a {
-    color: var(--gray-900);
-    text-decoration: none;
-  }
-  .reference-item h3 a:hover {
-    color: var(--color-accent);
-  }
-  .reference-item__identity p,
-  .reference-item__use {
-    color: var(--gray-600);
-    font-size: var(--text-sm);
-    line-height: 1.55;
-  }
-  .reference-item__use {
-    margin-top: var(--space-4);
-  }
-  .reference-item__brands {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    margin: var(--space-3) 0 0;
-    padding: 0;
-    list-style: none;
-  }
-  .reference-item__brands li {
-    padding: 4px 9px;
-    border-radius: var(--radius-full);
-    background: var(--gray-100);
-    color: var(--gray-600);
-    font-size: var(--text-xs);
-  }
-  .reference-item__details {
-    margin-top: var(--space-4);
-  }
-  .reference-item__details summary {
-    color: var(--gray-700);
-    font-size: var(--text-sm);
-    font-weight: 600;
-    cursor: pointer;
-  }
-  .reference-item__details pre {
-    max-height: 420px;
-    margin-top: var(--space-4);
-    padding: var(--space-5);
-    overflow: auto;
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius-md);
-    background: white;
-    color: var(--gray-800);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    line-height: 1.6;
-    white-space: pre-wrap;
-  }
-  .reference-item__details pre code {
-    padding: 0;
-    border-radius: 0;
-    background: transparent;
-    color: inherit;
-    font: inherit;
-    line-height: inherit;
-    white-space: inherit;
-  }
-
-  .playground-panel {
-    padding: var(--space-16) 0;
-  }
-  .playground-panel__inner {
-    display: grid;
-    gap: var(--space-6);
-    padding: var(--space-8);
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius-lg);
-    background: white;
-    box-shadow: var(--shadow-md);
-  }
-  .playground-panel h2 {
-    font-size: var(--text-2xl);
-  }
-  .playground-panel a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 48px;
-    padding: 0 var(--space-5);
-    border-radius: var(--radius-md);
-    background: var(--gray-900);
-    color: white;
-    font-size: var(--text-sm);
-    font-weight: 700;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-  .playground-panel a:hover {
-    background: var(--gray-800);
   }
 
   .vibes-footer {
@@ -2263,7 +2223,7 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
     .screen-option {
       flex-basis: 380px;
     }
-    .playground-panel__inner {
+    .compare-panel {
       grid-template-columns: minmax(0, 1fr) auto;
       align-items: center;
     }
@@ -2290,6 +2250,18 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
     }
     .prompt-copy {
       width: 100%;
+    }
+    .vibes-hero__actions a,
+    .compare-panel > a {
+      width: 100%;
+    }
+    .builder-next,
+    .builder-next > div {
+      align-items: stretch;
+      flex-direction: column;
+    }
+    .builder-next a {
+      text-align: center;
     }
   }
 </style>
@@ -2320,9 +2292,6 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
   const screenButtons = Array.from(
     document.querySelectorAll<HTMLButtonElement>('[data-screen-option]')
   );
-  const filterButtons = Array.from(
-    document.querySelectorAll<HTMLButtonElement>('[data-vibe-filter]')
-  );
   const screenDots = Array.from(
     document.querySelectorAll<HTMLButtonElement>('[data-screen-dot]')
   );
@@ -2332,7 +2301,14 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
   const carousel = document.querySelector<HTMLElement>('[data-screen-carousel]');
   const generatedPrompt = document.querySelector<HTMLElement>('[data-generated-prompt]');
   const selectedVibe = document.querySelector<HTMLElement>('[data-selected-vibe]');
+  const selectedVibeNext =
+    document.querySelector<HTMLElement>('[data-selected-vibe-next]');
   const selectedScreen = document.querySelector<HTMLElement>('[data-selected-screen]');
+  const selectedScreenNext =
+    document.querySelector<HTMLElement>('[data-selected-screen-next]');
+  const selectedReference =
+    document.querySelector<HTMLAnchorElement>('[data-selected-reference]');
+  const referenceLink = document.querySelector<HTMLAnchorElement>('[data-reference-link]');
   const tokenEstimate = document.querySelector<HTMLElement>('[data-token-estimate]');
   const carouselStatus = document.querySelector<HTMLElement>('[data-carousel-status]');
   const copyStatus = document.querySelector<HTMLElement>('[data-copy-status]');
@@ -2343,6 +2319,16 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
   const stackSelect = document.querySelector<HTMLSelectElement>('[data-stack]');
   const promptModeSelect =
     document.querySelector<HTMLSelectElement>('[data-prompt-mode-select]');
+  const referenceIds: Record<string, string> = {
+    editorial: 'editorial',
+    utility: 'utility',
+    'warm-consumer': 'warm',
+    'sharp-product': 'sharp',
+    'soft-saas': 'softsaas',
+    playful: 'playful',
+    brutalist: 'brutalist',
+    'glass-spatial': 'glass',
+  };
 
   function getActiveVibe() {
     return vibes.find((vibe) => vibe.id === builderState.vibeId) ?? vibes[0];
@@ -2390,9 +2376,17 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
     const screen = getActiveScreen();
     if (generatedPrompt) generatedPrompt.textContent = prompt;
     if (selectedVibe) selectedVibe.textContent = vibe.name;
+    if (selectedVibeNext) selectedVibeNext.textContent = vibe.name;
     if (selectedScreen) selectedScreen.textContent = screen.name;
+    if (selectedScreenNext) selectedScreenNext.textContent = screen.name;
     if (tokenEstimate) tokenEstimate.textContent = `≈ ${Math.ceil(prompt.length / 4)} tokens`;
     if (mainCopyLabel) mainCopyLabel.textContent = 'Copy prompt';
+    const referenceUrl = `/ui-vibes-reference.html#${referenceIds[vibe.id] ?? vibe.id}`;
+    if (selectedReference) {
+      selectedReference.href = referenceUrl;
+      selectedReference.textContent = `See the full ${vibe.name} example`;
+    }
+    if (referenceLink) referenceLink.href = referenceUrl;
 
     const screenIndex = screenTypes.findIndex((item) => item.id === screen.id);
     if (carouselStatus) {
@@ -2415,6 +2409,9 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
     builderState.vibeId = vibeId;
     setPressedState(vibeButtons, vibeId, 'vibeOption');
     renderPrompt();
+    const url = new URL(window.location.href);
+    url.searchParams.set('vibe', vibeId);
+    window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
   }
 
   function scrollScreenIntoView(screenTypeId: string) {
@@ -2439,28 +2436,6 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
   function selectPromptMode(mode: PromptMode) {
     builderState.mode = mode;
     renderPrompt();
-  }
-
-  function setFilter(filter: string) {
-    filterButtons.forEach((button) => {
-      const isSelected = button.dataset.vibeFilter === filter;
-      button.classList.toggle('is-active', isSelected);
-      button.setAttribute('aria-pressed', String(isSelected));
-    });
-
-    vibeButtons.forEach((button) => {
-      const categories = button.dataset.categories?.split('|') ?? [];
-      button.hidden = filter !== 'All' && !categories.includes(filter);
-    });
-
-    const activeButton = vibeButtons.find(
-      (button) => button.dataset.vibeOption === builderState.vibeId
-    );
-    if (activeButton?.hidden) {
-      const firstVisible = vibeButtons.find((button) => !button.hidden);
-      const nextVibeId = firstVisible?.dataset.vibeOption;
-      if (nextVibeId) selectVibe(nextVibeId);
-    }
   }
 
   function moveCarousel(direction: number) {
@@ -2509,13 +2484,6 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
     button.addEventListener('click', () => {
       const screenTypeId = button.dataset.screenOption;
       if (screenTypeId) selectScreen(screenTypeId, true);
-    });
-  });
-
-  filterButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const filter = button.dataset.vibeFilter;
-      if (filter) setFilter(filter);
     });
   });
 
@@ -2586,6 +2554,12 @@ const defaultPrompt = buildCompactPrompt(defaultVibe, {
       );
     }
   );
+
+  const initialVibeId = new URLSearchParams(window.location.search).get('vibe');
+  if (initialVibeId && vibes.some((vibe) => vibe.id === initialVibeId)) {
+    builderState.vibeId = initialVibeId;
+    setPressedState(vibeButtons, initialVibeId, 'vibeOption');
+  }
 
   renderPrompt();
 </script>
