@@ -1,312 +1,2217 @@
 ---
-/**
- * /vibes — prompt reference index for the 8 UI vibes.
- *
- * Each row: vibe name + id + blurb + "For:" + reference brand chips + a
- * collapsible <details> showing the full prompt, plus a "Copy prompt" button.
- * No per-vibe styling — the visuals live in the blog widget (interactive
- * preview) and the HTML reference (full multi-component examples). This page
- * is the canonical deep-linkable prompt index.
- */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { vibes, buildFullPrompt } from '../data/vibes';
+import {
+  buildCompactPrompt,
+  buildFullPrompt,
+  screenTypes,
+  stackOptions,
+  vibes,
+} from '../data/vibes';
+import type { VibeCategory } from '../types';
+
+const categories: Array<'All' | VibeCategory> = [
+  'All',
+  'Content',
+  'Internal tools',
+  'Consumer',
+  'B2B',
+  'Experimental',
+];
+
+const defaultVibe = vibes[0];
+const defaultScreen = screenTypes[0];
+const defaultPrompt = buildCompactPrompt(defaultVibe, {
+  screenTypeId: defaultScreen.id,
+  stackId: stackOptions[0].id,
+});
 ---
 
 <BaseLayout
-  title="UI Vibes — Prompt Reference | Prince Jain"
-  description="Eight named UI aesthetics with copy-paste prompt blocks. Pick a vibe, copy the prompt, paste into Claude, get a UI that doesn't look generic."
+  title="UI Vibes — Build a Better UI Prompt | Prince Jain"
+  description="Choose a visual direction and screen type, then generate a copy-ready UI prompt for Claude, Cursor, v0, Lovable, or any coding LLM."
   breadcrumbs={[
     { name: 'Home', url: 'https://princejain.me' },
     { name: 'UI Vibes' },
   ]}
 >
-  <section class="vibes-header">
-    <div class="container">
-      <p class="vibes-eyebrow">REFERENCE</p>
-      <h1 class="vibes-title">UI Vibes — Prompt Reference</h1>
-      <p class="vibes-subtitle">
-        Eight design systems for vibe-coding. Pick one, copy its prompt block, paste into Claude
-        (or any LLM that builds UIs). Each prompt includes the full design system, layout guidance,
-        responsive rules, and non-negotiables.
-      </p>
-      <p class="vibes-meta">
-        New here?
-        <a href="/blogs/picking-the-right-ui-for-vibe-coding/">The blog post</a>
-        explains how to pick the right vibe. Want to see each one at full scale across multiple
-        components?
-        <a href="/ui-vibes-reference.html" target="_blank" rel="noopener noreferrer">
-          Open the HTML reference ↗
-        </a>
-      </p>
-    </div>
-  </section>
+  <main class="vibes-page">
+    <section class="vibes-hero">
+      <div class="container">
+        <p class="vibes-hero__eyebrow">UI PROMPT BUILDER</p>
+        <h1 class="vibes-hero__title">Pick the UI before you start prompting.</h1>
+        <p class="vibes-hero__subtitle">
+          Choose how the product should feel and what kind of screen you are building.
+          Get a copy-ready prompt that saves iterations, context, and tokens.
+        </p>
+        <div class="vibes-hero__meta">
+          <a href="/blogs/picking-the-right-ui-for-vibe-coding/">Read how I use this framework</a>
+          <span aria-hidden="true">·</span>
+          <span>No signup. Nothing leaves your browser.</span>
+        </div>
+      </div>
+    </section>
 
-  <section class="vibes-list-section">
-    <div class="container">
-      <ol class="vibes-list">
-        {vibes.map((vibe) => {
-          const prompt = buildFullPrompt(vibe);
-          return (
-            <li class="vibe-row" id={vibe.id}>
-              <div class="vibe-row__head">
-                <div class="vibe-row__name-block">
-                  <h2 class="vibe-row__name">{vibe.name}</h2>
-                  <span class="vibe-row__id">#{vibe.id}</span>
-                </div>
-                <div class="vibe-row__actions">
-                  <button
-                    class="vibe-copy-btn"
-                    type="button"
-                    data-copy-prompt={vibe.id}
-                    aria-label={`Copy ${vibe.name} prompt block`}
-                  >
-                    <span class="vibe-copy-btn__label">Copy prompt</span>
-                  </button>
-                  <a
-                    class="vibe-row__permalink"
-                    href={`#${vibe.id}`}
-                    aria-label={`Permalink to ${vibe.name}`}
-                  >
-                    #
-                  </a>
+    <section class="vibe-builder" aria-labelledby="builder-title">
+      <div class="container">
+        <div class="builder-heading">
+          <p class="builder-heading__eyebrow">BUILD YOUR PROMPT</p>
+          <h2 id="builder-title">Two choices first. Project context second.</h2>
+          <p>
+            Start with the direction and screen shape. The generated prompt updates as you make
+            each choice.
+          </p>
+        </div>
+
+        <section class="builder-step" aria-labelledby="vibe-step-title">
+          <div class="builder-step__heading">
+            <div>
+              <p class="builder-step__number">01</p>
+              <h3 id="vibe-step-title">How should it feel?</h3>
+            </div>
+            <p>Choose the closest direction. You can tune the details after the first build.</p>
+          </div>
+
+          <div class="vibe-filters" role="group" aria-label="Filter UI directions">
+            {categories.map((category) => (
+              <button
+                class:list={['vibe-filter', { 'is-active': category === 'All' }]}
+                type="button"
+                data-vibe-filter={category}
+                aria-pressed={category === 'All' ? 'true' : 'false'}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          <div class="vibe-grid" data-vibe-grid>
+            {vibes.map((vibe, index) => (
+              <button
+                class:list={['vibe-option', { 'is-selected': index === 0 }]}
+                type="button"
+                data-vibe-option={vibe.id}
+                data-vibe={vibe.id}
+                data-categories={vibe.categories.join('|')}
+                aria-pressed={index === 0 ? 'true' : 'false'}
+              >
+                <span class="vibe-option__preview" aria-hidden="true">
+                  {vibe.id === 'editorial' && (
+                    <span class="vibe-mini vibe-mini--editorial">
+                      <span class="editorial-mini__masthead">
+                        <strong>The Folio</strong><small>VOL II · ISSUE 07</small>
+                      </span>
+                      <span class="editorial-mini__rule"></span>
+                      <span class="editorial-mini__kicker">DESIGN & CULTURE</span>
+                      <span class="editorial-mini__headline">The quiet return of restraint.</span>
+                      <span class="editorial-mini__deck">
+                        Interfaces are learning to trust their content again.
+                      </span>
+                      <span class="editorial-mini__columns">
+                        <i></i><i></i><i></i>
+                      </span>
+                    </span>
+                  )}
+
+                  {vibe.id === 'utility' && (
+                    <span class="vibe-mini vibe-mini--utility">
+                      <span class="utility-mini__sidebar">
+                        <b>PX</b><i></i><i></i><i></i><i></i>
+                      </span>
+                      <span class="utility-mini__main">
+                        <span class="utility-mini__topbar">
+                          <strong>Deployments</strong><small>⌘ K</small>
+                        </span>
+                        <span class="utility-mini__stats">
+                          <i><small>Healthy</small><strong>24</strong></i>
+                          <i><small>Queued</small><strong>06</strong></i>
+                          <i><small>Failed</small><strong>02</strong></i>
+                        </span>
+                        <span class="utility-mini__table">
+                          <i><b></b><em>auth-service</em><small>Healthy</small></i>
+                          <i><b></b><em>search-api</em><small>Building</small></i>
+                          <i><b></b><em>checkout</em><small>Healthy</small></i>
+                        </span>
+                      </span>
+                    </span>
+                  )}
+
+                  {vibe.id === 'warm-consumer' && (
+                    <span class="vibe-mini vibe-mini--warm">
+                      <span class="warm-mini__date">SATURDAY, MAY 23</span>
+                      <span class="warm-mini__hello">Good morning, Alex.</span>
+                      <span class="warm-mini__sub">Take it gently today.</span>
+                      <span class="warm-mini__card">
+                        <span class="warm-mini__card-head">
+                          <strong>This week</strong><small>14-day streak</small>
+                        </span>
+                        <span class="warm-mini__days">
+                          <i>✓</i><i>✓</i><i>✓</i><i>–</i><i>✓</i><i class="is-today">S</i><i>S</i>
+                        </span>
+                        <span class="warm-mini__action">Log today's mood</span>
+                      </span>
+                    </span>
+                  )}
+
+                  {vibe.id === 'sharp-product' && (
+                    <span class="vibe-mini vibe-mini--sharp">
+                      <span class="sharp-mini__nav">
+                        <strong>ACME</strong><small>Docs · Pricing · Login</small>
+                      </span>
+                      <span class="sharp-mini__badge">NEW IN V3.0</span>
+                      <span class="sharp-mini__headline">Build products customers trust.</span>
+                      <span class="sharp-mini__deck">Typed APIs for authentication and billing.</span>
+                      <span class="sharp-mini__actions"><b>Start building</b><i>View docs</i></span>
+                      <span class="sharp-mini__stats"><i>99.99%<small>UPTIME</small></i><i>42ms<small>LATENCY</small></i><i>120k<small>TEAMS</small></i></span>
+                    </span>
+                  )}
+
+                  {vibe.id === 'soft-saas' && (
+                    <span class="vibe-mini vibe-mini--saas">
+                      <span class="saas-mini__orb saas-mini__orb--one"></span>
+                      <span class="saas-mini__orb saas-mini__orb--two"></span>
+                      <span class="saas-mini__badge"><i></i>AI-POWERED · LIVE</span>
+                      <span class="saas-mini__headline">Writing copilot</span>
+                      <span class="saas-mini__chat">
+                        <span class="saas-mini__message">Make this launch note clearer and more direct.</span>
+                        <span class="saas-mini__reply">
+                          <i></i><b></b><b></b><b class="is-short"></b>
+                        </span>
+                        <span class="saas-mini__input">Ask Copilot… <strong>↑</strong></span>
+                      </span>
+                    </span>
+                  )}
+
+                  {vibe.id === 'playful' && (
+                    <span class="vibe-mini vibe-mini--playful">
+                      <span class="playful-mini__confetti"><i></i><i></i><i></i><i></i></span>
+                      <span class="playful-mini__badge">QUEST COMPLETE</span>
+                      <span class="playful-mini__headline">Level 14!</span>
+                      <span class="playful-mini__deck">You learned 8 new words today.</span>
+                      <span class="playful-mini__progress"><i></i><small>1440 / 2000 XP</small></span>
+                      <span class="playful-mini__actions"><b>Next lesson</b><i>Share</i></span>
+                    </span>
+                  )}
+
+                  {vibe.id === 'brutalist' && (
+                    <span class="vibe-mini vibe-mini--brutalist">
+                      <span class="brutal-mini__issue">ISSUE 014 — 06/2026</span>
+                      <span class="brutal-mini__headline">SHIP<br />BEFORE<br />YOU'RE READY.</span>
+                      <span class="brutal-mini__deck">
+                        A bulletin about indie tools and unfinished work.
+                      </span>
+                      <span class="brutal-mini__actions"><b>SUBSCRIBE →</b><i>READ ARCHIVE</i></span>
+                    </span>
+                  )}
+
+                  {vibe.id === 'glass-spatial' && (
+                    <span class="vibe-mini vibe-mini--glass">
+                      <span class="glass-mini__orb glass-mini__orb--one"></span>
+                      <span class="glass-mini__orb glass-mini__orb--two"></span>
+                      <span class="glass-mini__card">
+                        <span class="glass-mini__chip"><i></i>Focus mode · 24 min</span>
+                        <span class="glass-mini__headline">Good morning, Maya.</span>
+                        <span class="glass-mini__deck">Three quiet hours before your first meeting.</span>
+                        <span class="glass-mini__actions"><i>Pause</i><b>Extend +15</b></span>
+                      </span>
+                      <span class="glass-mini__dock"><i></i><i></i><i></i><i></i></span>
+                    </span>
+                  )}
+                </span>
+                <span class="vibe-option__content">
+                  <span class="vibe-option__name">
+                    {vibe.name}
+                    <span class="vibe-option__check" aria-hidden="true">✓</span>
+                  </span>
+                  <span class="vibe-option__blurb">{vibe.blurb}</span>
+                  <span class="vibe-option__use">{vibe.useFor}</span>
+                </span>
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <section class="builder-step" aria-labelledby="screen-step-title">
+          <div class="builder-step__heading builder-step__heading--carousel">
+            <div>
+              <p class="builder-step__number">02</p>
+              <h3 id="screen-step-title">What kind of screen is it?</h3>
+            </div>
+            <div class="screen-carousel__controls">
+              <button type="button" data-carousel-direction="previous" aria-label="Previous screen type">
+                ←
+              </button>
+              <button type="button" data-carousel-direction="next" aria-label="Next screen type">
+                →
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="screen-carousel__viewport"
+            data-carousel-viewport
+          >
+            <div
+              class="screen-carousel"
+              data-screen-carousel
+              tabindex="0"
+              aria-label="Screen type carousel. Swipe, scroll, or use the arrow buttons."
+            >
+              {screenTypes.map((screen, index) => (
+                <button
+                  class:list={['screen-option', { 'is-selected': index === 0 }]}
+                  type="button"
+                  data-screen-option={screen.id}
+                  data-screen={screen.id}
+                  aria-pressed={index === 0 ? 'true' : 'false'}
+                >
+                <span class="screen-option__preview" aria-hidden="true">
+                  <span class="screen-preview__browser">
+                    <span></span><span></span><span></span>
+                  </span>
+
+                  {screen.id === 'dashboard' && (
+                    <span class="screen-preview screen-preview--dashboard">
+                      <span class="screen-preview__sidebar"></span>
+                      <span class="screen-preview__main">
+                        <span class="screen-preview__header"></span>
+                        <span class="screen-preview__metrics">
+                          <span></span><span></span><span></span>
+                        </span>
+                        <span class="screen-preview__chart"></span>
+                      </span>
+                    </span>
+                  )}
+
+                  {screen.id === 'single-screen' && (
+                    <span class="screen-preview screen-preview--single">
+                      <span class="screen-preview__single-title"></span>
+                      <span class="screen-preview__single-input"></span>
+                      <span class="screen-preview__single-result"></span>
+                    </span>
+                  )}
+
+                  {screen.id === 'form-wizard' && (
+                    <span class="screen-preview screen-preview--form">
+                      <span class="screen-preview__progress"><span></span></span>
+                      <span class="screen-preview__form-title"></span>
+                      <span class="screen-preview__field"></span>
+                      <span class="screen-preview__field"></span>
+                      <span class="screen-preview__form-action"></span>
+                    </span>
+                  )}
+
+                  {screen.id === 'list-feed' && (
+                    <span class="screen-preview screen-preview--list">
+                      <span class="screen-preview__filters"></span>
+                      <span class="screen-preview__row"><i></i><b></b></span>
+                      <span class="screen-preview__row"><i></i><b></b></span>
+                      <span class="screen-preview__row"><i></i><b></b></span>
+                    </span>
+                  )}
+
+                  {screen.id === 'reading' && (
+                    <span class="screen-preview screen-preview--reading">
+                      <span class="screen-preview__reading-kicker"></span>
+                      <span class="screen-preview__reading-title"></span>
+                      <span class="screen-preview__reading-copy"></span>
+                      <span class="screen-preview__reading-copy screen-preview__reading-copy--short"></span>
+                    </span>
+                  )}
+
+                  {screen.id === 'landing' && (
+                    <span class="screen-preview screen-preview--landing">
+                      <span class="screen-preview__landing-nav"></span>
+                      <span class="screen-preview__landing-title"></span>
+                      <span class="screen-preview__landing-copy"></span>
+                      <span class="screen-preview__landing-cta"></span>
+                      <span class="screen-preview__landing-cards">
+                        <span></span><span></span><span></span>
+                      </span>
+                    </span>
+                  )}
+                </span>
+                <span class="screen-option__content">
+                  <span class="screen-option__name">
+                    {screen.name}
+                    <span class="screen-option__check" aria-hidden="true">✓</span>
+                  </span>
+                  <span class="screen-option__description">{screen.description}</span>
+                  <span class="screen-option__use">Best for: {screen.useFor}</span>
+                </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="screen-carousel__footer">
+            <p class="screen-carousel__status" data-carousel-status aria-live="polite">
+              1 of {screenTypes.length} · {defaultScreen.name}
+            </p>
+            <div class="screen-carousel__dots" aria-label="Choose a screen type">
+              {screenTypes.map((screen, index) => (
+                <button
+                  class:list={['screen-carousel__dot', { 'is-active': index === 0 }]}
+                  type="button"
+                  data-screen-dot={screen.id}
+                  aria-label={`Show ${screen.name}`}
+                  aria-pressed={index === 0 ? 'true' : 'false'}
+                ></button>
+              ))}
+            </div>
+            <p class="screen-carousel__hint">Swipe, scroll, or use the arrows</p>
+          </div>
+        </section>
+
+        <section class="builder-step" aria-labelledby="context-step-title">
+          <div class="builder-step__heading">
+            <div>
+              <p class="builder-step__number">03</p>
+              <h3 id="context-step-title">Add the project context.</h3>
+            </div>
+            <p>Optional, but this is what turns a reusable direction into your product.</p>
+          </div>
+
+          <div class="project-fields">
+            <label class="project-field">
+              <span>Project name</span>
+              <input
+                type="text"
+                data-project-name
+                placeholder="e.g. Personal finance tracker"
+                autocomplete="off"
+              />
+            </label>
+
+            <label class="project-field">
+              <span>Implementation stack</span>
+              <select data-stack>
+                {stackOptions.map((stack) => (
+                  <option value={stack.id}>{stack.name}</option>
+                ))}
+              </select>
+            </label>
+
+            <label class="project-field project-field--wide">
+              <span>What are you building?</span>
+              <textarea
+                data-project-description
+                rows="4"
+                placeholder="A personal finance tool for young professionals to track spending, understand monthly patterns, and set simple budgets."
+              ></textarea>
+            </label>
+          </div>
+        </section>
+
+        <section class="builder-step builder-step--prompt" aria-labelledby="prompt-step-title">
+          <div class="builder-step__heading builder-step__heading--prompt">
+            <div>
+              <p class="builder-step__number">04</p>
+              <h3 id="prompt-step-title">Copy the prompt.</h3>
+            </div>
+            <label class="prompt-detail">
+              <span>Prompt detail</span>
+              <select data-prompt-mode-select>
+                <option value="compact">Lean · recommended</option>
+                <option value="full">Detailed guardrails</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="prompt-output">
+            <div class="prompt-output__meta">
+              <div class="prompt-output__selections">
+                <span data-selected-vibe>{defaultVibe.name}</span>
+                <span data-selected-screen>{defaultScreen.name}</span>
+                <span data-token-estimate>≈ {Math.ceil(defaultPrompt.length / 4)} tokens</span>
+              </div>
+              <div class="prompt-output__actions">
+                <button class="prompt-copy" type="button" data-copy-generated>
+                  <span data-main-copy-label>Copy prompt</span>
+                </button>
+              </div>
+            </div>
+            <pre class="prompt-output__pre" data-no-copy><code data-generated-prompt>{defaultPrompt}</code></pre>
+            <p class="prompt-output__status" data-copy-status aria-live="polite"></p>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="vibe-reference" aria-labelledby="reference-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-heading__eyebrow">DETAILED REFERENCE</p>
+          <h2 id="reference-title">Need to compare the directions more closely?</h2>
+          <p>
+            The builder above is for choosing quickly. These notes show the references and full
+            design specification behind each direction.
+          </p>
+        </div>
+
+        <div class="reference-list">
+          {vibes.map((vibe) => (
+            <article class="reference-item" id={vibe.id}>
+              <div class="reference-item__summary">
+                <div class="reference-item__identity">
+                  <span
+                    class="reference-item__swatch"
+                    data-vibe-swatch={vibe.id}
+                    aria-hidden="true"
+                  ></span>
+                  <div>
+                    <h3><a href={`#${vibe.id}`}>{vibe.name}</a></h3>
+                    <p>{vibe.blurb}</p>
+                  </div>
                 </div>
               </div>
 
-              <p class="vibe-row__blurb">{vibe.blurb}</p>
-              <p class="vibe-row__usefor">
-                <strong>For:</strong> {vibe.useFor}
-              </p>
-              <ul class="vibe-row__refs">
-                {vibe.references.map((ref) => (
-                  <li>{ref}</li>
-                ))}
+              <p class="reference-item__use"><strong>Best for:</strong> {vibe.useFor}</p>
+              <ul class="reference-item__brands" aria-label={`${vibe.name} references`}>
+                {vibe.references.map((reference) => <li>{reference}</li>)}
               </ul>
 
-              <details class="vibe-row__details">
-                <summary>Show prompt</summary>
-                <pre class="vibe-row__pre"><code>{prompt}</code></pre>
+              <details class="reference-item__details">
+                <summary>Read the design specification</summary>
+                <pre data-no-copy><code>{vibe.designSystem}</code></pre>
               </details>
-            </li>
-          );
-        })}
-      </ol>
-    </div>
-  </section>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
 
-  <section class="vibes-footer">
-    <div class="container">
-      <p>
-        Don't see a vibe that fits? Tell me on
-        <a
-          href="https://twitter.com/Prince_Jain17"
-          target="_blank"
-          rel="noopener noreferrer">Twitter</a>
-        or
-        <a
-          href="https://www.linkedin.com/in/princejain17/"
-          target="_blank"
-          rel="noopener noreferrer">LinkedIn</a>
-        — I'll add it if it clears the bar.
-      </p>
-    </div>
-  </section>
+    <section class="playground-panel">
+      <div class="container">
+        <div class="playground-panel__inner">
+          <div>
+            <p class="playground-panel__eyebrow">FULL COMPONENT PLAYGROUND</p>
+            <h2>Inspect every direction across a complete interface.</h2>
+            <p>
+              The standalone reference includes larger page examples, component states, responsive
+              layouts, and interactive details. It is useful once you have narrowed the choice.
+            </p>
+          </div>
+          <a href="/ui-vibes-reference.html" target="_blank" rel="noopener noreferrer">
+            Open the full visual reference ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="vibes-footer">
+      <div class="container">
+        <p>
+          Missing a useful direction? Send it to me on
+          <a href="https://twitter.com/Prince_Jain17" target="_blank" rel="noopener noreferrer">
+            Twitter
+          </a>
+          or
+          <a
+            href="https://www.linkedin.com/in/princejain17/"
+            target="_blank"
+            rel="noopener noreferrer">LinkedIn</a
+          >.
+        </p>
+      </div>
+    </section>
+  </main>
 </BaseLayout>
 
 <style>
-  /* ============================================================
-     Page chrome
-     ============================================================ */
-  .vibes-header {
-    padding: var(--space-16) 0 var(--space-8);
+  .vibes-page {
+    overflow: hidden;
   }
-  .vibes-eyebrow {
-    font-size: var(--text-xs);
-    font-weight: 600;
-    letter-spacing: 0.12em;
+
+  .vibes-hero {
+    padding: var(--space-16) 0 var(--space-12);
+    background: var(--gradient-glow);
+  }
+  .vibes-hero__eyebrow,
+  .builder-heading__eyebrow,
+  .section-heading__eyebrow,
+  .playground-panel__eyebrow {
+    margin-bottom: var(--space-3);
     color: var(--color-accent);
-    margin-bottom: var(--space-3);
-  }
-  .vibes-title {
-    font-family: var(--font-display);
-    font-size: var(--text-4xl);
+    font-size: var(--text-xs);
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.12em;
+  }
+  .vibes-hero__title {
+    max-width: 820px;
+    margin-bottom: var(--space-4);
     color: var(--gray-900);
-    margin-bottom: var(--space-3);
+    font-family: var(--font-display);
+    font-size: var(--text-5xl);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
   }
-  .vibes-subtitle {
-    font-size: var(--text-lg);
+  .vibes-hero__subtitle {
+    max-width: 720px;
     color: var(--gray-600);
-    max-width: 720px;
+    font-size: var(--text-lg);
     line-height: 1.6;
   }
-  .vibes-meta {
-    margin-top: var(--space-4);
-    font-size: var(--text-sm);
+  .vibes-hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-5);
     color: var(--gray-500);
-    max-width: 720px;
-    line-height: 1.6;
+    font-size: var(--text-sm);
   }
-  .vibes-meta a {
-    color: var(--gray-700);
+  .vibes-hero__meta a {
+    color: var(--gray-800);
     text-decoration: underline;
     text-underline-offset: 3px;
   }
-  .vibes-meta a:hover {
+  .vibes-hero__meta a:hover {
     color: var(--color-accent);
   }
 
-  /* ============================================================
-     Prompt list — uniform rows, no per-vibe styling
-     ============================================================ */
-  .vibes-list-section {
-    padding: var(--space-8) 0 var(--space-16);
+  .vibe-builder {
+    padding: var(--space-12) 0 var(--space-24);
   }
-  .vibes-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    border-top: 1px solid var(--gray-200);
+  .builder-heading,
+  .section-heading {
+    max-width: 720px;
+    margin-bottom: var(--space-12);
+  }
+  .builder-heading h2,
+  .section-heading h2,
+  .playground-panel h2 {
+    margin-bottom: var(--space-3);
+    color: var(--gray-900);
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    line-height: 1.15;
+  }
+  .builder-heading > p:last-child,
+  .section-heading > p:last-child,
+  .playground-panel p {
+    color: var(--gray-600);
+    line-height: 1.65;
   }
 
-  .vibe-row {
-    padding: var(--space-6) 0;
-    border-bottom: 1px solid var(--gray-200);
-    scroll-margin-top: var(--space-16);
+  .builder-step {
+    padding: var(--space-12) 0;
+    border-top: 1px solid var(--gray-200);
   }
-  .vibe-row__head {
+  .builder-step__heading {
+    display: grid;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+  .builder-step__heading > div:first-child {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+  }
+  .builder-step__heading h3 {
+    color: var(--gray-900);
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    line-height: 1.2;
+  }
+  .builder-step__heading > p {
+    max-width: 560px;
+    color: var(--gray-500);
+    font-size: var(--text-sm);
+    line-height: 1.55;
+  }
+  .builder-step__number {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 700;
+  }
+
+  .vibe-filters {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-1);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .vibe-filters::-webkit-scrollbar {
+    display: none;
+  }
+  .vibe-filter {
+    min-height: 40px;
+    padding: 0 var(--space-4);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-full);
+    background: white;
+    color: var(--gray-600);
+    font: inherit;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      color var(--transition-fast),
+      border-color var(--transition-fast),
+      background var(--transition-fast);
+  }
+  .vibe-filter:hover {
+    border-color: var(--gray-500);
+    color: var(--gray-900);
+  }
+  .vibe-filter.is-active {
+    border-color: var(--gray-900);
+    background: var(--gray-900);
+    color: white;
+  }
+
+  .vibe-grid {
+    display: grid;
+    gap: var(--space-4);
+  }
+  .vibe-option {
+    display: grid;
+    grid-template-rows: 220px 1fr;
+    min-width: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    background: white;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition:
+      transform var(--transition-fast),
+      border-color var(--transition-fast),
+      box-shadow var(--transition-fast);
+  }
+  .vibe-option:hover {
+    transform: translateY(-2px);
+    border-color: var(--gray-400);
+    box-shadow: var(--shadow-lg);
+  }
+  .vibe-option.is-selected {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px var(--color-accent-glow), var(--shadow-lg);
+  }
+  .vibe-option[hidden] {
+    display: none;
+  }
+  .vibe-option__preview {
+    display: block;
+    height: 220px;
+    overflow: hidden;
+    background: var(--gray-50);
+  }
+  .vibe-mini,
+  .vibe-mini span,
+  .vibe-mini strong,
+  .vibe-mini small,
+  .vibe-mini i,
+  .vibe-mini b,
+  .vibe-mini em {
+    box-sizing: border-box;
+  }
+  .vibe-mini {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-style: normal;
+    text-align: left;
+  }
+  .vibe-mini strong,
+  .vibe-mini small,
+  .vibe-mini i,
+  .vibe-mini b,
+  .vibe-mini em {
+    font-style: normal;
+  }
+
+  .vibe-mini--editorial {
+    padding: var(--space-4) var(--space-5);
+    background: #fafaf7;
+    color: #1a1a1a;
+  }
+  .editorial-mini__masthead {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    gap: var(--space-4);
-    margin-bottom: var(--space-2);
+    gap: var(--space-2);
   }
-  .vibe-row__name-block {
-    display: flex;
-    align-items: baseline;
-    gap: var(--space-3);
-    flex-wrap: wrap;
-  }
-  .vibe-row__name {
+  .editorial-mini__masthead strong {
+    color: #0b1f3a;
     font-family: var(--font-display);
-    font-size: var(--text-2xl);
-    font-weight: 700;
-    color: var(--gray-900);
-    letter-spacing: -0.01em;
+    font-size: var(--text-lg);
+    font-weight: 500;
   }
-  .vibe-row__id {
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    color: var(--gray-500);
+  .editorial-mini__masthead small,
+  .editorial-mini__kicker {
+    color: #77736a;
+    font-family: var(--font-body);
+    font-size: 8px;
+    letter-spacing: 0.12em;
   }
-  .vibe-row__actions {
+  .editorial-mini__rule {
+    display: block;
+    height: 1px;
+    margin: var(--space-3) 0 var(--space-4);
+    background: #0b1f3a;
+  }
+  .editorial-mini__kicker,
+  .editorial-mini__headline,
+  .editorial-mini__deck {
+    display: block;
+  }
+  .editorial-mini__kicker {
+    margin-bottom: var(--space-2);
+    color: #0b1f3a;
+  }
+  .editorial-mini__headline {
+    max-width: 92%;
+    font-family: var(--font-display);
+    font-size: 25px;
+    line-height: 0.98;
+  }
+  .editorial-mini__deck {
+    max-width: 88%;
+    margin-top: var(--space-2);
+    color: #666159;
+    font-family: var(--font-body);
+    font-size: 9px;
+    line-height: 1.4;
+  }
+  .editorial-mini__columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+  }
+  .editorial-mini__columns i {
+    height: 29px;
+    background: repeating-linear-gradient(
+      to bottom,
+      #bcb8af 0,
+      #bcb8af 2px,
+      transparent 2px,
+      transparent 6px
+    );
+  }
+
+  .vibe-mini--utility {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    background: #fafafa;
+    color: #0a0a0a;
+    font-family: var(--font-body);
+  }
+  .utility-mini__sidebar {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: var(--space-3);
-    flex-shrink: 0;
+    padding: var(--space-3) var(--space-2);
+    border-right: 1px solid #e5e5e5;
+    background: #ffffff;
   }
-  .vibe-row__permalink {
-    color: var(--gray-400);
-    font-family: var(--font-mono);
-    font-size: var(--text-base);
-    text-decoration: none;
+  .utility-mini__sidebar b {
+    display: grid;
+    width: 25px;
+    height: 25px;
+    place-items: center;
+    border-radius: 5px;
+    background: #0a0a0a;
+    color: #ffffff;
+    font-size: 8px;
+  }
+  .utility-mini__sidebar i {
+    width: 16px;
+    height: 4px;
+    border-radius: 3px;
+    background: #cfcfcf;
+  }
+  .utility-mini__main {
+    padding: var(--space-3);
+  }
+  .utility-mini__topbar,
+  .utility-mini__stats,
+  .utility-mini__table,
+  .utility-mini__table i {
+    display: flex;
+  }
+  .utility-mini__topbar {
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .utility-mini__topbar strong {
+    font-size: 11px;
+  }
+  .utility-mini__topbar small {
+    padding: 3px 6px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    color: #666666;
+    font-size: 7px;
+  }
+  .utility-mini__stats {
+    gap: var(--space-2);
+    margin: var(--space-3) 0;
+  }
+  .utility-mini__stats i {
+    flex: 1;
+    padding: var(--space-2);
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    background: #ffffff;
+  }
+  .utility-mini__stats small,
+  .utility-mini__stats strong {
+    display: block;
+  }
+  .utility-mini__stats small {
+    color: #777777;
+    font-size: 6px;
+  }
+  .utility-mini__stats strong {
+    margin-top: 2px;
+    font-size: 14px;
+  }
+  .utility-mini__table {
+    flex-direction: column;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    background: #ffffff;
+  }
+  .utility-mini__table i {
+    align-items: center;
+    gap: var(--space-2);
+    padding: 7px;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 7px;
+  }
+  .utility-mini__table i:last-child {
+    border-bottom: 0;
+  }
+  .utility-mini__table b {
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-full);
+    background: #10b981;
+  }
+  .utility-mini__table em {
+    flex: 1;
+  }
+  .utility-mini__table small {
+    color: #3b82f6;
+    font-size: 6px;
+  }
+
+  .vibe-mini--warm {
+    padding: var(--space-4) var(--space-5);
+    background: #fffaf3;
+    color: #2d2620;
+    font-family: var(--font-body);
+    text-align: center;
+  }
+  .warm-mini__date,
+  .warm-mini__hello,
+  .warm-mini__sub,
+  .warm-mini__card,
+  .warm-mini__action {
+    display: block;
+  }
+  .warm-mini__date {
+    color: #d97757;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  .warm-mini__hello {
+    margin-top: 4px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .warm-mini__sub {
+    margin-top: 2px;
+    color: #7a6d60;
+    font-size: 9px;
+  }
+  .warm-mini__card {
+    margin-top: var(--space-4);
+    padding: var(--space-3);
+    border: 1px solid #f1e4d2;
+    border-radius: 16px;
+    background: #ffffff;
+    text-align: left;
+    box-shadow: 0 5px 18px rgba(45, 38, 32, 0.06);
+  }
+  .warm-mini__card-head {
+    display: flex;
+    justify-content: space-between;
+    font-size: 8px;
+  }
+  .warm-mini__card-head small {
+    color: #d97757;
+  }
+  .warm-mini__days {
+    display: flex;
+    justify-content: space-between;
+    margin: var(--space-3) 0;
+  }
+  .warm-mini__days i {
+    display: grid;
+    width: 21px;
+    height: 21px;
+    place-items: center;
+    border-radius: var(--radius-full);
+    background: #f5ecde;
+    color: #a89884;
+    font-size: 7px;
+  }
+  .warm-mini__days i:nth-child(-n + 5) {
+    background: #d97757;
+    color: #ffffff;
+  }
+  .warm-mini__days i.is-today {
+    border: 2px solid #d97757;
+    background: #ffffff;
+    color: #d97757;
+  }
+  .warm-mini__action {
+    padding: 6px;
+    border-radius: var(--radius-full);
+    background: #d97757;
+    color: #ffffff;
+    font-size: 7px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .vibe-mini--sharp {
+    padding: var(--space-4);
+    background: #ffffff;
+    color: #0f172a;
+    font-family: var(--font-body);
+    text-align: center;
+  }
+  .sharp-mini__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid #e2e8f0;
+    text-align: left;
+  }
+  .sharp-mini__nav strong {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+  }
+  .sharp-mini__nav small {
+    color: #64748b;
+    font-size: 6px;
+  }
+  .sharp-mini__badge,
+  .sharp-mini__headline,
+  .sharp-mini__deck,
+  .sharp-mini__actions,
+  .sharp-mini__stats {
+    display: block;
+  }
+  .sharp-mini__badge {
+    width: max-content;
+    margin: var(--space-4) auto var(--space-2);
+    padding: 3px 7px;
+    border-radius: var(--radius-full);
+    background: #eef2ff;
+    color: #4f46e5;
+    font-size: 6px;
+    font-weight: 700;
+  }
+  .sharp-mini__headline {
+    max-width: 90%;
+    margin: auto;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.05;
+  }
+  .sharp-mini__deck {
+    margin-top: var(--space-2);
+    color: #64748b;
+    font-size: 8px;
+  }
+  .sharp-mini__actions {
+    margin: var(--space-3) 0;
+  }
+  .sharp-mini__actions b,
+  .sharp-mini__actions i {
+    display: inline-block;
+    padding: 6px 9px;
+    border-radius: 5px;
+    font-size: 7px;
+  }
+  .sharp-mini__actions b {
+    background: #4f46e5;
+    color: #ffffff;
+  }
+  .sharp-mini__actions i {
+    margin-left: 4px;
+    border: 1px solid #d6dbe4;
+  }
+  .sharp-mini__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-top: var(--space-3);
+    border-top: 1px solid #e2e8f0;
+  }
+  .sharp-mini__stats i {
+    color: #0f172a;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .sharp-mini__stats small {
+    display: block;
+    margin-top: 2px;
+    color: #94a3b8;
+    font-size: 5px;
+  }
+
+  .vibe-mini--saas {
+    padding: var(--space-4);
+    background: #ffffff;
+    color: #0f172a;
+    font-family: var(--font-body);
+  }
+  .saas-mini__orb,
+  .glass-mini__orb {
+    position: absolute;
+    border-radius: var(--radius-full);
+    filter: blur(32px);
+  }
+  .saas-mini__orb--one {
+    top: -30px;
+    right: -25px;
+    width: 105px;
+    height: 105px;
+    background: rgba(139, 92, 246, 0.28);
+  }
+  .saas-mini__orb--two {
+    bottom: -35px;
+    left: -25px;
+    width: 110px;
+    height: 110px;
+    background: rgba(14, 165, 233, 0.2);
+  }
+  .saas-mini__badge,
+  .saas-mini__headline,
+  .saas-mini__chat {
+    position: relative;
+    display: block;
+  }
+  .saas-mini__badge {
+    width: max-content;
+    padding: 4px 8px;
+    border: 1px solid #e0e7ff;
+    border-radius: var(--radius-full);
+    background: #eef2ff;
+    color: #6366f1;
+    font-size: 6px;
+    font-weight: 700;
+  }
+  .saas-mini__badge i {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin-right: 4px;
+    border-radius: var(--radius-full);
+    background: #6366f1;
+  }
+  .saas-mini__headline {
+    margin: var(--space-3) 0 var(--space-2);
+    font-size: 20px;
+    font-weight: 650;
+  }
+  .saas-mini__chat {
+    padding: var(--space-3);
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.12);
+  }
+  .saas-mini__message {
+    display: block;
+    margin-left: 22%;
+    padding: 7px;
+    border-radius: 9px 9px 2px;
+    background: #6366f1;
+    color: #ffffff;
+    font-size: 7px;
+    line-height: 1.35;
+  }
+  .saas-mini__reply {
+    display: block;
+    margin: var(--space-2) 18% var(--space-2) 0;
+    padding: 7px;
+    border-radius: 2px 9px 9px;
+    background: #f1f5f9;
+  }
+  .saas-mini__reply b {
+    display: block;
+    height: 3px;
+    margin: 4px 0;
+    border-radius: var(--radius-full);
+    background: #94a3b8;
+  }
+  .saas-mini__reply b.is-short {
+    width: 58%;
+  }
+  .saas-mini__input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    color: #94a3b8;
+    font-size: 7px;
+  }
+  .saas-mini__input strong {
+    display: grid;
+    width: 18px;
+    height: 18px;
+    place-items: center;
+    border-radius: 6px;
+    background: #6366f1;
+    color: #ffffff;
+  }
+
+  .vibe-mini--playful {
+    padding: var(--space-5);
+    background: #e8f5e9;
+    color: #2c2c2e;
+    font-family: var(--font-body);
+  }
+  .vibe-mini--playful::before {
+    position: absolute;
+    inset: var(--space-4);
+    border: 3px solid #2c2c2e;
+    border-radius: 22px;
+    background: #ffffff;
+    box-shadow: 5px 5px 0 #2c2c2e;
+    content: '';
+  }
+  .playful-mini__confetti,
+  .playful-mini__badge,
+  .playful-mini__headline,
+  .playful-mini__deck,
+  .playful-mini__progress,
+  .playful-mini__actions {
+    position: relative;
+    display: block;
+  }
+  .playful-mini__confetti i {
+    position: absolute;
+    width: 5px;
+    height: 9px;
+    background: #ffd93d;
+    transform: rotate(20deg);
+  }
+  .playful-mini__confetti i:nth-child(1) { left: 8px; top: -6px; }
+  .playful-mini__confetti i:nth-child(2) { left: 54px; top: 5px; background: #4ecdc4; transform: rotate(-18deg); }
+  .playful-mini__confetti i:nth-child(3) { right: 48px; top: -3px; background: #ff6b6b; }
+  .playful-mini__confetti i:nth-child(4) { right: 8px; top: 12px; background: #6a4c93; transform: rotate(-28deg); }
+  .playful-mini__badge {
+    margin-top: var(--space-4);
+    color: #4ecdc4;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+  .playful-mini__headline {
+    margin-top: 2px;
+    font-size: 29px;
+    font-weight: 800;
     line-height: 1;
   }
-  .vibe-row__permalink:hover {
-    color: var(--gray-700);
-  }
-  .vibe-copy-btn {
-    appearance: none;
-    border: 1px solid var(--gray-900);
-    background: var(--gray-900);
-    color: white;
-    padding: 7px 14px;
-    border-radius: var(--radius-md);
-    font-size: var(--text-sm);
+  .playful-mini__deck {
+    margin-top: var(--space-2);
+    color: #666666;
+    font-size: 8px;
     font-weight: 600;
+  }
+  .playful-mini__progress {
+    height: 20px;
+    margin-top: var(--space-3);
+    overflow: hidden;
+    border: 2px solid #2c2c2e;
+    border-radius: var(--radius-full);
+    background: #f0ebff;
+  }
+  .playful-mini__progress i {
+    display: block;
+    width: 72%;
+    height: 100%;
+    border-right: 2px solid #2c2c2e;
+    background: #ff6b6b;
+  }
+  .playful-mini__progress small {
+    position: absolute;
+    top: 3px;
+    right: 8px;
+    font-size: 6px;
+    font-weight: 800;
+  }
+  .playful-mini__actions {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+  }
+  .playful-mini__actions b,
+  .playful-mini__actions i {
+    flex: 1;
+    padding: 7px 4px;
+    border: 2px solid #2c2c2e;
+    border-radius: 9px;
+    box-shadow: 2px 2px 0 #2c2c2e;
+    font-size: 7px;
+    font-weight: 800;
+    text-align: center;
+  }
+  .playful-mini__actions b {
+    background: #ff6b6b;
+    color: #ffffff;
+  }
+  .playful-mini__actions i {
+    background: #4ecdc4;
+  }
+
+  .vibe-mini--brutalist {
+    padding: var(--space-4);
+    border: 2px solid #000000;
+    background: #ffffff;
+    color: #000000;
+    font-family: var(--font-mono);
+  }
+  .brutal-mini__issue,
+  .brutal-mini__headline,
+  .brutal-mini__deck,
+  .brutal-mini__actions {
+    display: block;
+  }
+  .brutal-mini__issue {
+    width: max-content;
+    padding: 3px 6px;
+    background: #f5dc1f;
+    font-size: 6px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  .brutal-mini__headline {
+    margin-top: var(--space-3);
+    font-family: var(--font-body);
+    font-size: 25px;
+    font-weight: 800;
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+  }
+  .brutal-mini__deck {
+    max-width: 92%;
+    margin-top: var(--space-3);
+    font-size: 7px;
+    line-height: 1.4;
+  }
+  .brutal-mini__actions {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+  }
+  .brutal-mini__actions b,
+  .brutal-mini__actions i {
+    padding: 6px 7px;
+    border: 2px solid #000000;
+    font-size: 6px;
+    font-weight: 800;
+  }
+  .brutal-mini__actions b {
+    background: #000000;
+    color: #f5dc1f;
+  }
+
+  .vibe-mini--glass {
+    padding: var(--space-5);
+    background: linear-gradient(155deg, #edf0f6, #f1ecf8 55%, #ffffff);
+    color: #1d1d1f;
+    font-family: var(--font-body);
+  }
+  .glass-mini__orb--one {
+    top: -35px;
+    right: -30px;
+    width: 130px;
+    height: 130px;
+    background: rgba(94, 92, 230, 0.28);
+  }
+  .glass-mini__orb--two {
+    bottom: -40px;
+    left: -30px;
+    width: 125px;
+    height: 125px;
+    background: rgba(255, 128, 176, 0.25);
+  }
+  .glass-mini__card {
+    position: relative;
+    display: block;
+    padding: var(--space-4);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.58);
+    box-shadow: 0 8px 28px rgba(60, 70, 100, 0.16);
+    backdrop-filter: blur(18px);
+  }
+  .glass-mini__chip,
+  .glass-mini__headline,
+  .glass-mini__deck,
+  .glass-mini__actions {
+    display: block;
+  }
+  .glass-mini__chip {
+    width: max-content;
+    padding: 4px 7px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.5);
+    color: #5e5ce6;
+    font-size: 6px;
+  }
+  .glass-mini__chip i {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin-right: 4px;
+    border-radius: var(--radius-full);
+    background: #5e5ce6;
+  }
+  .glass-mini__headline {
+    margin-top: var(--space-3);
+    font-size: 21px;
+    font-weight: 600;
+  }
+  .glass-mini__deck {
+    margin-top: var(--space-2);
+    color: #6e6e73;
+    font-size: 8px;
+    line-height: 1.4;
+  }
+  .glass-mini__actions {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+  }
+  .glass-mini__actions i,
+  .glass-mini__actions b {
+    padding: 6px 9px;
+    border-radius: var(--radius-full);
+    font-size: 7px;
+  }
+  .glass-mini__actions i {
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.55);
+  }
+  .glass-mini__actions b {
+    background: rgba(94, 92, 230, 0.92);
+    color: #ffffff;
+  }
+  .glass-mini__dock {
+    position: relative;
+    display: flex;
+    width: max-content;
+    gap: var(--space-2);
+    margin: var(--space-3) auto 0;
+    padding: 6px 9px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.48);
+    backdrop-filter: blur(12px);
+  }
+  .glass-mini__dock i {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    background: rgba(94, 92, 230, 0.18);
+  }
+  .vibe-option__content {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-5);
+  }
+  .vibe-option__name,
+  .screen-option__name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+    color: var(--gray-900);
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+  }
+  .vibe-option__check,
+  .screen-option__check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-full);
+    background: var(--color-accent);
+    color: white;
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    opacity: 0;
+    transform: scale(0.7);
+    transition:
+      opacity var(--transition-fast),
+      transform var(--transition-fast);
+  }
+  .vibe-option.is-selected .vibe-option__check,
+  .screen-option.is-selected .screen-option__check {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .vibe-option__blurb {
+    color: var(--gray-600);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+  }
+  .vibe-option__use {
+    margin-top: auto;
+    padding-top: var(--space-4);
+    color: var(--gray-500);
+    font-size: var(--text-xs);
+    line-height: 1.45;
+  }
+
+  .builder-step__heading--carousel,
+  .builder-step__heading--prompt {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+  .screen-carousel__controls {
+    display: flex;
+    gap: var(--space-2);
+  }
+  .screen-carousel__controls button {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-full);
+    background: white;
+    color: var(--gray-800);
+    font: inherit;
+    font-size: var(--text-xl);
     cursor: pointer;
     transition:
-      transform 120ms ease,
-      background 120ms ease;
+      border-color var(--transition-fast),
+      background var(--transition-fast);
   }
-  .vibe-copy-btn:hover {
-    background: black;
+  .screen-carousel__controls button:hover {
+    border-color: var(--gray-700);
+    background: var(--gray-50);
   }
-  .vibe-copy-btn:active {
-    transform: scale(0.98);
+  .screen-carousel__controls button:disabled {
+    border-color: var(--gray-200);
+    color: var(--gray-300);
+    cursor: not-allowed;
   }
-  .vibe-copy-btn.is-copied {
-    background: var(--color-accent);
+  .screen-carousel__viewport {
+    position: relative;
+    margin: 0 calc(var(--space-4) * -1);
+  }
+  .screen-carousel__viewport::before,
+  .screen-carousel__viewport::after {
+    position: absolute;
+    top: 0;
+    bottom: var(--space-5);
+    z-index: 2;
+    width: var(--space-6);
+    pointer-events: none;
+    content: '';
+  }
+  .screen-carousel__viewport::before {
+    left: 0;
+    background: linear-gradient(90deg, white, transparent);
+  }
+  .screen-carousel__viewport::after {
+    right: 0;
+    background: linear-gradient(270deg, white, transparent);
+  }
+  .screen-carousel {
+    display: flex;
+    gap: var(--space-4);
+    padding: var(--space-1) var(--space-6) var(--space-5);
+    overflow-x: scroll;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--space-6);
+    scrollbar-width: auto;
+    scrollbar-color: var(--gray-400) var(--gray-100);
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
+  }
+  .screen-carousel::-webkit-scrollbar {
+    height: 10px;
+  }
+  .screen-carousel::-webkit-scrollbar-track {
+    border-radius: var(--radius-full);
+    background: var(--gray-100);
+  }
+  .screen-carousel::-webkit-scrollbar-thumb {
+    border: 2px solid var(--gray-100);
+    border-radius: var(--radius-full);
+    background: var(--gray-400);
+  }
+  .screen-option {
+    flex: 0 0 min(82vw, 350px);
+    padding: 0;
+    overflow: hidden;
+    scroll-snap-align: start;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    background: white;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition:
+      transform var(--transition-fast),
+      border-color var(--transition-fast),
+      box-shadow var(--transition-fast);
+  }
+  .screen-option:hover {
+    transform: translateY(-2px);
+    border-color: var(--gray-400);
+    box-shadow: var(--shadow-lg);
+  }
+  .screen-option.is-selected {
     border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px var(--color-accent-glow), var(--shadow-lg);
   }
-
-  .vibe-row__blurb {
-    color: var(--gray-700);
-    font-size: var(--text-base);
-    line-height: 1.55;
-    margin-bottom: var(--space-2);
+  .screen-option__preview {
+    display: block;
+    height: 235px;
+    padding: var(--space-4);
+    background: var(--gray-100);
   }
-  .vibe-row__usefor {
-    font-size: var(--text-sm);
-    color: var(--gray-600);
+  .screen-preview__browser {
+    display: flex;
+    gap: var(--space-1);
+    height: var(--space-5);
+    padding: 6px var(--space-2);
+    border: 1px solid var(--gray-200);
+    border-bottom: 0;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    background: white;
+  }
+  .screen-preview__browser span {
+    width: 5px;
+    height: 5px;
+    border-radius: var(--radius-full);
+    background: var(--gray-300);
+  }
+  .screen-preview {
+    display: block;
+    height: 182px;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+    background: white;
+  }
+  .screen-preview--dashboard {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+  }
+  .screen-preview__sidebar {
+    background: var(--gray-900);
+  }
+  .screen-preview__main {
+    padding: var(--space-3);
+  }
+  .screen-preview__header,
+  .screen-preview__filters,
+  .screen-preview__form-title,
+  .screen-preview__reading-kicker,
+  .screen-preview__landing-nav,
+  .screen-preview__landing-copy {
+    display: block;
+    height: 7px;
+    border-radius: var(--radius-full);
+    background: var(--gray-300);
+  }
+  .screen-preview__header {
+    width: 45%;
     margin-bottom: var(--space-3);
   }
-  .vibe-row__usefor strong {
-    color: var(--gray-800);
-    font-weight: 600;
+  .screen-preview__metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
+  }
+  .screen-preview__metrics span {
+    height: 42px;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    background: var(--gray-50);
+  }
+  .screen-preview__chart {
+    display: block;
+    height: 76px;
+    margin-top: var(--space-2);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    background:
+      linear-gradient(170deg, transparent 46%, var(--color-accent) 48%, transparent 51%),
+      var(--gray-50);
+  }
+  .screen-preview--single,
+  .screen-preview--form,
+  .screen-preview--reading,
+  .screen-preview--landing {
+    padding: var(--space-6);
+  }
+  .screen-preview--single {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .screen-preview__single-title {
+    width: 55%;
+    height: 14px;
+    margin-bottom: var(--space-4);
+    border-radius: var(--radius-full);
+    background: var(--gray-800);
+  }
+  .screen-preview__single-input {
+    width: 85%;
+    height: 36px;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    background: var(--gray-50);
+  }
+  .screen-preview__single-result {
+    width: 68%;
+    height: 42px;
+    margin-top: var(--space-3);
+    border-radius: var(--radius-md);
+    background: var(--color-accent-glow);
+  }
+  .screen-preview__progress {
+    display: block;
+    height: 4px;
+    margin-bottom: var(--space-5);
+    border-radius: var(--radius-full);
+    background: var(--gray-200);
+  }
+  .screen-preview__progress span {
+    display: block;
+    width: 45%;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--color-accent);
+  }
+  .screen-preview__form-title {
+    width: 45%;
+    height: 12px;
+    margin-bottom: var(--space-4);
+    background: var(--gray-800);
+  }
+  .screen-preview__field {
+    display: block;
+    height: 30px;
+    margin-bottom: var(--space-2);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+  }
+  .screen-preview__form-action {
+    display: block;
+    width: 40%;
+    height: 28px;
+    margin-top: var(--space-3);
+    margin-left: auto;
+    border-radius: var(--radius-sm);
+    background: var(--color-accent);
+  }
+  .screen-preview--list {
+    padding: var(--space-4);
+  }
+  .screen-preview__filters {
+    width: 62%;
+    height: 22px;
+    margin-bottom: var(--space-3);
+    border-radius: var(--radius-sm);
+  }
+  .screen-preview__row {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: var(--space-3);
+    align-items: center;
+    padding: var(--space-2) 0;
+    border-top: 1px solid var(--gray-200);
+  }
+  .screen-preview__row i {
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-full);
+    background: var(--color-accent-glow);
+  }
+  .screen-preview__row b {
+    width: 72%;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--gray-300);
+  }
+  .screen-preview--reading {
+    padding-right: var(--space-12);
+    padding-left: var(--space-12);
+  }
+  .screen-preview__reading-kicker {
+    width: 28%;
+    margin-bottom: var(--space-3);
+    background: var(--color-accent);
+  }
+  .screen-preview__reading-title {
+    display: block;
+    width: 85%;
+    height: 32px;
+    margin-bottom: var(--space-4);
+    background: var(--gray-900);
+  }
+  .screen-preview__reading-copy {
+    display: block;
+    height: 32px;
+    margin-bottom: var(--space-3);
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--gray-300) 0,
+      var(--gray-300) 4px,
+      transparent 4px,
+      transparent 10px
+    );
+  }
+  .screen-preview__reading-copy--short {
+    width: 72%;
+  }
+  .screen-preview__landing-nav {
+    width: 100%;
+    margin-bottom: var(--space-5);
+  }
+  .screen-preview__landing-title {
+    display: block;
+    width: 68%;
+    height: 24px;
+    margin: 0 auto var(--space-3);
+    background: var(--gray-900);
+  }
+  .screen-preview__landing-copy {
+    width: 52%;
+    margin: 0 auto var(--space-3);
+  }
+  .screen-preview__landing-cta {
+    display: block;
+    width: 30%;
+    height: 24px;
+    margin: 0 auto var(--space-5);
+    border-radius: var(--radius-sm);
+    background: var(--color-accent);
+  }
+  .screen-preview__landing-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
+  }
+  .screen-preview__landing-cards span {
+    height: 44px;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    background: var(--gray-50);
+  }
+  .screen-option__content {
+    display: flex;
+    flex-direction: column;
+    min-height: 185px;
+    padding: var(--space-5);
+  }
+  .screen-option__description {
+    color: var(--gray-600);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+  }
+  .screen-option__use {
+    margin-top: auto;
+    padding-top: var(--space-4);
+    color: var(--gray-500);
+    font-size: var(--text-xs);
+  }
+  .screen-carousel__status {
+    margin: 0;
+    color: var(--gray-500);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+  .screen-carousel__footer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    align-items: center;
+    margin-top: var(--space-3);
+  }
+  .screen-carousel__dots {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+  }
+  .screen-carousel__dot {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-full);
+    background: var(--gray-300);
+    cursor: pointer;
+    transition:
+      width var(--transition-fast),
+      background var(--transition-fast);
+  }
+  .screen-carousel__dot.is-active {
+    width: 26px;
+    background: var(--color-accent);
+  }
+  .screen-carousel__hint {
+    margin: 0;
+    color: var(--gray-500);
+    font-size: var(--text-xs);
   }
 
-  .vibe-row__refs {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 var(--space-3);
+  .project-fields {
+    display: grid;
+    gap: var(--space-5);
+  }
+  .project-field {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .project-field > span {
+    color: var(--gray-800);
+    font-size: var(--text-sm);
+    font-weight: 600;
+  }
+  .project-field input,
+  .project-field select,
+  .project-field textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    background: white;
+    color: var(--gray-900);
+    font: inherit;
+    font-size: var(--text-sm);
+    transition:
+      border-color var(--transition-fast),
+      box-shadow var(--transition-fast);
+  }
+  .project-field textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.55;
+  }
+  .project-field input:focus,
+  .project-field select:focus,
+  .project-field textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-glow);
+  }
+
+  .builder-step--prompt {
+    padding-bottom: 0;
+  }
+  .prompt-detail {
+    display: grid;
+    gap: var(--space-1);
+    min-width: 190px;
+  }
+  .prompt-detail span {
+    color: var(--gray-600);
+    font-size: var(--text-2xs);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .prompt-detail select {
+    min-height: 42px;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    background: white;
+    color: var(--gray-800);
+    font: inherit;
+    font-size: var(--text-xs);
+    font-weight: 700;
+  }
+  .prompt-output {
+    overflow: hidden;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-lg);
+    background: white;
+    box-shadow: var(--shadow-xl);
+  }
+  .prompt-output__meta {
+    display: grid;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--gray-200);
+    background: var(--gray-50);
+  }
+  .prompt-output__selections {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-2);
   }
-  .vibe-row__refs li {
-    background: var(--gray-100);
+  .prompt-output__selections span {
+    padding: 5px 9px;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-full);
     color: var(--gray-700);
-    padding: 3px 8px;
-    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+  }
+  .prompt-output__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .prompt-copy {
+    min-height: 42px;
+    padding: 0 var(--space-4);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    background: var(--color-accent);
+    color: white;
+    font: inherit;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      transform var(--transition-fast),
+      background var(--transition-fast);
+  }
+  .prompt-copy:hover {
+    background: var(--color-accent-light);
+  }
+  .prompt-copy:active {
+    transform: scale(0.98);
+  }
+  .prompt-output__pre {
+    max-height: 520px;
+    margin: 0;
+    padding: var(--space-6);
+    overflow: auto;
+    background: var(--gray-900);
+    color: var(--gray-100);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    white-space: pre-wrap;
+    tab-size: 2;
+  }
+  .prompt-output__pre code {
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+    white-space: inherit;
+  }
+  .prompt-output__pre ::selection {
+    background: var(--color-accent);
+    color: white;
+  }
+  .prompt-output__status {
+    min-height: 32px;
+    margin: 0;
+    padding: var(--space-2) var(--space-5);
+    border-top: 1px solid var(--gray-200);
+    background: white;
+    color: var(--gray-600);
     font-size: var(--text-xs);
-    font-weight: 500;
   }
 
-  .vibe-row__details {
-    font-size: var(--text-sm);
-  }
-  .vibe-row__details summary {
-    cursor: pointer;
-    color: var(--gray-600);
-    font-weight: 500;
-    user-select: none;
-    padding: 4px 0;
-  }
-  .vibe-row__details summary:hover {
-    color: var(--gray-900);
-  }
-  .vibe-row__pre {
-    margin-top: var(--space-3);
+  .vibe-reference {
+    padding: var(--space-24) 0;
     background: var(--gray-50);
+  }
+  .reference-list {
+    border-top: 1px solid var(--gray-200);
+  }
+  .reference-item {
+    padding: var(--space-8) 0;
+    border-bottom: 1px solid var(--gray-200);
+    scroll-margin-top: var(--space-16);
+  }
+  .reference-item__summary {
+    display: grid;
+    gap: var(--space-5);
+  }
+  .reference-item__identity {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: var(--space-4);
+  }
+  .reference-item__swatch {
+    width: 52px;
+    height: 52px;
     border: 1px solid var(--gray-200);
-    border-radius: var(--radius-sm);
-    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    background: var(--gray-100);
+  }
+  .reference-item__swatch[data-vibe-swatch='editorial'] {
+    background: linear-gradient(135deg, #fafaf7 50%, #0b1f3a 50%);
+  }
+  .reference-item__swatch[data-vibe-swatch='utility'] {
+    background: linear-gradient(135deg, #fafafa 50%, #3b82f6 50%);
+  }
+  .reference-item__swatch[data-vibe-swatch='warm-consumer'] {
+    background: linear-gradient(135deg, #fffaf3 50%, #d97757 50%);
+  }
+  .reference-item__swatch[data-vibe-swatch='sharp-product'] {
+    background: linear-gradient(135deg, #ffffff 50%, #4f46e5 50%);
+  }
+  .reference-item__swatch[data-vibe-swatch='soft-saas'] {
+    background: linear-gradient(135deg, #eaf7ff, #8b5cf6);
+  }
+  .reference-item__swatch[data-vibe-swatch='playful'] {
+    background: linear-gradient(135deg, #ffd93d 50%, #ff6b6b 50%);
+  }
+  .reference-item__swatch[data-vibe-swatch='brutalist'] {
+    border: 2px solid #000000;
+    border-radius: 0;
+    background: linear-gradient(135deg, #ffffff 50%, #ffff00 50%);
+  }
+  .reference-item__swatch[data-vibe-swatch='glass-spatial'] {
+    background: linear-gradient(135deg, #edf0f6, #5e5ce6 65%, #ff80b0);
+  }
+  .reference-item h3 {
+    margin-bottom: var(--space-1);
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+  }
+  .reference-item h3 a {
+    color: var(--gray-900);
+    text-decoration: none;
+  }
+  .reference-item h3 a:hover {
+    color: var(--color-accent);
+  }
+  .reference-item__identity p,
+  .reference-item__use {
+    color: var(--gray-600);
+    font-size: var(--text-sm);
+    line-height: 1.55;
+  }
+  .reference-item__use {
+    margin-top: var(--space-4);
+  }
+  .reference-item__brands {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: var(--space-3) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .reference-item__brands li {
+    padding: 4px 9px;
+    border-radius: var(--radius-full);
+    background: var(--gray-100);
+    color: var(--gray-600);
+    font-size: var(--text-xs);
+  }
+  .reference-item__details {
+    margin-top: var(--space-4);
+  }
+  .reference-item__details summary {
+    color: var(--gray-700);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .reference-item__details pre {
+    max-height: 420px;
+    margin-top: var(--space-4);
+    padding: var(--space-5);
     overflow: auto;
-    max-height: 360px;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    background: white;
+    color: var(--gray-800);
     font-family: var(--font-mono);
     font-size: 12px;
-    line-height: 1.55;
-    color: var(--gray-800);
+    line-height: 1.6;
+    white-space: pre-wrap;
+  }
+  .reference-item__details pre code {
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+    white-space: inherit;
   }
 
-  /* ============================================================
-     Footer
-     ============================================================ */
+  .playground-panel {
+    padding: var(--space-16) 0;
+  }
+  .playground-panel__inner {
+    display: grid;
+    gap: var(--space-6);
+    padding: var(--space-8);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    background: white;
+    box-shadow: var(--shadow-md);
+  }
+  .playground-panel h2 {
+    font-size: var(--text-2xl);
+  }
+  .playground-panel a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 var(--space-5);
+    border-radius: var(--radius-md);
+    background: var(--gray-900);
+    color: white;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .playground-panel a:hover {
+    background: var(--gray-800);
+  }
+
   .vibes-footer {
     padding: var(--space-8) 0 var(--space-16);
-    text-align: center;
     color: var(--gray-600);
+    text-align: center;
     font-size: var(--text-sm);
   }
   .vibes-footer a {
@@ -318,83 +2223,369 @@ import { vibes, buildFullPrompt } from '../data/vibes';
     color: var(--color-accent);
   }
 
-  /* Mobile: stack head into two rows */
-  @media (max-width: 640px) {
-    .vibe-row__head {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-3);
+  @media (min-width: 700px) {
+    .vibe-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    .vibe-row__actions {
+    .project-fields {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .project-field--wide {
+      grid-column: 1 / -1;
+    }
+    .prompt-output__meta {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+    }
+    .prompt-output__actions {
+      justify-content: flex-end;
+    }
+    .screen-carousel__footer {
+      grid-template-columns: auto 1fr auto;
+    }
+    .screen-carousel__dots {
+      justify-content: center;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .builder-step__heading {
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.65fr);
+      align-items: end;
+    }
+    .builder-step__heading--carousel,
+    .builder-step__heading--prompt {
+      display: flex;
+    }
+    .vibe-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .screen-option {
+      flex-basis: 380px;
+    }
+    .playground-panel__inner {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 699px) {
+    .vibes-hero__title {
+      font-size: var(--text-4xl);
+    }
+    .builder-step__heading--carousel,
+    .builder-step__heading--prompt {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .prompt-detail {
       width: 100%;
-      justify-content: flex-start;
+    }
+    .prompt-detail select {
+      width: 100%;
+    }
+    .prompt-output__actions {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .prompt-copy {
+      width: 100%;
     }
   }
 </style>
 
 <script>
-  /**
-   * Wires the "Copy prompt" buttons to clipboard. Pulls prompts from
-   * /vibes-prompts.json (single source of truth), caches after first fetch,
-   * falls back to the visible <pre> block if the fetch ever fails.
-   */
-  type PromptMap = Record<string, string>;
-  let promptsCache: PromptMap | null = null;
+  import {
+    buildCompactPrompt,
+    buildFullPrompt,
+    screenTypes,
+    stackOptions,
+    vibes,
+  } from '../data/vibes';
 
-  async function loadPrompts(): Promise<PromptMap> {
-    if (promptsCache) return promptsCache;
-    const res = await fetch('/vibes-prompts.json');
-    if (!res.ok) throw new Error('Failed to load prompts');
-    promptsCache = (await res.json()) as PromptMap;
-    return promptsCache;
+  type PromptMode = 'compact' | 'full';
+
+  const builderState = {
+    vibeId: vibes[0].id,
+    screenTypeId: screenTypes[0].id,
+    stackId: stackOptions[0].id,
+    projectName: '',
+    description: '',
+    mode: 'compact' as PromptMode,
+  };
+
+  const vibeButtons = Array.from(
+    document.querySelectorAll<HTMLButtonElement>('[data-vibe-option]')
+  );
+  const screenButtons = Array.from(
+    document.querySelectorAll<HTMLButtonElement>('[data-screen-option]')
+  );
+  const filterButtons = Array.from(
+    document.querySelectorAll<HTMLButtonElement>('[data-vibe-filter]')
+  );
+  const screenDots = Array.from(
+    document.querySelectorAll<HTMLButtonElement>('[data-screen-dot]')
+  );
+  const carouselButtons = Array.from(
+    document.querySelectorAll<HTMLButtonElement>('[data-carousel-direction]')
+  );
+  const carousel = document.querySelector<HTMLElement>('[data-screen-carousel]');
+  const generatedPrompt = document.querySelector<HTMLElement>('[data-generated-prompt]');
+  const selectedVibe = document.querySelector<HTMLElement>('[data-selected-vibe]');
+  const selectedScreen = document.querySelector<HTMLElement>('[data-selected-screen]');
+  const tokenEstimate = document.querySelector<HTMLElement>('[data-token-estimate]');
+  const carouselStatus = document.querySelector<HTMLElement>('[data-carousel-status]');
+  const copyStatus = document.querySelector<HTMLElement>('[data-copy-status]');
+  const mainCopyLabel = document.querySelector<HTMLElement>('[data-main-copy-label]');
+  const projectNameInput = document.querySelector<HTMLInputElement>('[data-project-name]');
+  const descriptionInput =
+    document.querySelector<HTMLTextAreaElement>('[data-project-description]');
+  const stackSelect = document.querySelector<HTMLSelectElement>('[data-stack]');
+  const promptModeSelect =
+    document.querySelector<HTMLSelectElement>('[data-prompt-mode-select]');
+
+  function getActiveVibe() {
+    return vibes.find((vibe) => vibe.id === builderState.vibeId) ?? vibes[0];
   }
 
-  function fallbackPrompt(vibeId: string): string | null {
-    const row = document.querySelector(`.vibe-row[id="${vibeId}"]`);
-    const pre = row?.querySelector('.vibe-row__pre');
-    return pre?.textContent ?? null;
+  function getActiveScreen() {
+    return (
+      screenTypes.find((screen) => screen.id === builderState.screenTypeId) ??
+      screenTypes[0]
+    );
   }
 
-  async function copyPrompt(button: HTMLButtonElement): Promise<void> {
-    const vibeId = button.dataset.copyPrompt;
-    if (!vibeId) return;
+  function getPromptOptions() {
+    return {
+      projectName: builderState.projectName,
+      description: builderState.description,
+      screenTypeId: builderState.screenTypeId,
+      stackId: builderState.stackId,
+    };
+  }
 
-    let text: string | null = null;
-    try {
-      const prompts = await loadPrompts();
-      text = prompts[vibeId] ?? null;
-    } catch {
-      text = fallbackPrompt(vibeId);
+  function currentPrompt(): string {
+    const vibe = getActiveVibe();
+    return builderState.mode === 'full'
+      ? buildFullPrompt(vibe, getPromptOptions())
+      : buildCompactPrompt(vibe, getPromptOptions());
+  }
+
+  function setPressedState(
+    buttons: HTMLButtonElement[],
+    selectedValue: string,
+    attribute: 'vibeOption' | 'screenOption' | 'promptMode'
+  ) {
+    buttons.forEach((button) => {
+      const isSelected = button.dataset[attribute] === selectedValue;
+      button.classList.toggle('is-selected', isSelected);
+      button.classList.toggle('is-active', isSelected);
+      button.setAttribute('aria-pressed', String(isSelected));
+    });
+  }
+
+  function renderPrompt() {
+    const prompt = currentPrompt();
+    const vibe = getActiveVibe();
+    const screen = getActiveScreen();
+    if (generatedPrompt) generatedPrompt.textContent = prompt;
+    if (selectedVibe) selectedVibe.textContent = vibe.name;
+    if (selectedScreen) selectedScreen.textContent = screen.name;
+    if (tokenEstimate) tokenEstimate.textContent = `≈ ${Math.ceil(prompt.length / 4)} tokens`;
+    if (mainCopyLabel) mainCopyLabel.textContent = 'Copy prompt';
+
+    const screenIndex = screenTypes.findIndex((item) => item.id === screen.id);
+    if (carouselStatus) {
+      carouselStatus.textContent = `${screenIndex + 1} of ${screenTypes.length} · ${screen.name}`;
     }
-    if (!text) return;
+    screenDots.forEach((dot) => {
+      const isSelected = dot.dataset.screenDot === screen.id;
+      dot.classList.toggle('is-active', isSelected);
+      dot.setAttribute('aria-pressed', String(isSelected));
+    });
+    carouselButtons.forEach((button) => {
+      const direction = button.dataset.carouselDirection;
+      button.disabled =
+        (direction === 'previous' && screenIndex === 0) ||
+        (direction === 'next' && screenIndex === screenTypes.length - 1);
+    });
+  }
 
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch {
-      return;
-    }
+  function selectVibe(vibeId: string) {
+    builderState.vibeId = vibeId;
+    setPressedState(vibeButtons, vibeId, 'vibeOption');
+    renderPrompt();
+  }
 
-    const label = button.querySelector('.vibe-copy-btn__label');
-    const original = label?.textContent ?? 'Copy prompt';
-    if (label) label.textContent = 'Copied ✓';
-    button.classList.add('is-copied');
+  function scrollScreenIntoView(screenTypeId: string) {
+    if (!carousel) return;
+    const button = screenButtons.find(
+      (screenButton) => screenButton.dataset.screenOption === screenTypeId
+    );
+    if (!button) return;
+    const targetLeft =
+      button.offsetLeft - carousel.offsetLeft - (carousel.clientWidth - button.offsetWidth) / 2;
+    carousel.scrollTo({ left: targetLeft, behavior: 'smooth' });
+  }
 
-    window.gtag?.('event', 'vibe_prompt_copied', {
-      vibe_id: vibeId,
-      source: 'vibes_page',
+  function selectScreen(screenTypeId: string, shouldScroll = false) {
+    builderState.screenTypeId = screenTypeId;
+    setPressedState(screenButtons, screenTypeId, 'screenOption');
+    renderPrompt();
+
+    if (shouldScroll) scrollScreenIntoView(screenTypeId);
+  }
+
+  function selectPromptMode(mode: PromptMode) {
+    builderState.mode = mode;
+    renderPrompt();
+  }
+
+  function setFilter(filter: string) {
+    filterButtons.forEach((button) => {
+      const isSelected = button.dataset.vibeFilter === filter;
+      button.classList.toggle('is-active', isSelected);
+      button.setAttribute('aria-pressed', String(isSelected));
     });
 
-    setTimeout(() => {
-      if (label) label.textContent = original;
-      button.classList.remove('is-copied');
-    }, 1800);
+    vibeButtons.forEach((button) => {
+      const categories = button.dataset.categories?.split('|') ?? [];
+      button.hidden = filter !== 'All' && !categories.includes(filter);
+    });
+
+    const activeButton = vibeButtons.find(
+      (button) => button.dataset.vibeOption === builderState.vibeId
+    );
+    if (activeButton?.hidden) {
+      const firstVisible = vibeButtons.find((button) => !button.hidden);
+      const nextVibeId = firstVisible?.dataset.vibeOption;
+      if (nextVibeId) selectVibe(nextVibeId);
+    }
   }
 
-  document.addEventListener('click', (event) => {
-    const target = (event.target as Element)?.closest<HTMLButtonElement>(
-      '[data-copy-prompt]'
+  function moveCarousel(direction: number) {
+    const currentIndex = screenTypes.findIndex(
+      (screen) => screen.id === builderState.screenTypeId
     );
-    if (!target) return;
-    void copyPrompt(target);
+    const nextIndex = Math.max(
+      0,
+      Math.min(screenTypes.length - 1, currentIndex + direction)
+    );
+    selectScreen(screenTypes[nextIndex].id, true);
+  }
+
+  async function copyText(
+    text: string,
+    successMessage: string,
+    button?: HTMLButtonElement
+  ) {
+    try {
+      await navigator.clipboard.writeText(text);
+      if (copyStatus) copyStatus.textContent = successMessage;
+      const feedbackTarget =
+        button?.querySelector<HTMLElement>('[data-main-copy-label]') ?? button;
+      const original = feedbackTarget?.textContent;
+      if (feedbackTarget) feedbackTarget.textContent = 'Copied ✓';
+      window.setTimeout(() => {
+        if (feedbackTarget && original) feedbackTarget.textContent = original;
+        if (copyStatus?.textContent === successMessage) copyStatus.textContent = '';
+      }, 1800);
+    } catch {
+      if (copyStatus) {
+        copyStatus.textContent =
+          'Clipboard access was blocked. Expand the prompt and copy it manually.';
+      }
+    }
+  }
+
+  vibeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const vibeId = button.dataset.vibeOption;
+      if (vibeId) selectVibe(vibeId);
+    });
   });
+
+  screenButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const screenTypeId = button.dataset.screenOption;
+      if (screenTypeId) selectScreen(screenTypeId, true);
+    });
+  });
+
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.vibeFilter;
+      if (filter) setFilter(filter);
+    });
+  });
+
+  screenDots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const screenTypeId = dot.dataset.screenDot;
+      if (screenTypeId) selectScreen(screenTypeId, true);
+    });
+  });
+
+  carouselButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      moveCarousel(button.dataset.carouselDirection === 'next' ? 1 : -1);
+    });
+  });
+
+  carousel?.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    moveCarousel(event.key === 'ArrowRight' ? 1 : -1);
+  });
+
+  let carouselScrollTimer = 0;
+  carousel?.addEventListener('scroll', () => {
+    window.clearTimeout(carouselScrollTimer);
+    carouselScrollTimer = window.setTimeout(() => {
+      if (!carousel) return;
+      const viewportCenter = carousel.scrollLeft + carousel.clientWidth / 2;
+      const closest = screenButtons.reduce<HTMLButtonElement | null>((best, button) => {
+        const buttonCenter = button.offsetLeft + button.offsetWidth / 2;
+        if (!best) return button;
+        const bestCenter = best.offsetLeft + best.offsetWidth / 2;
+        return Math.abs(buttonCenter - viewportCenter) < Math.abs(bestCenter - viewportCenter)
+          ? button
+          : best;
+      }, null);
+      const screenTypeId = closest?.dataset.screenOption;
+      if (screenTypeId && screenTypeId !== builderState.screenTypeId) {
+        selectScreen(screenTypeId);
+      }
+    }, 120);
+  });
+
+  projectNameInput?.addEventListener('input', () => {
+    builderState.projectName = projectNameInput.value;
+    renderPrompt();
+  });
+  descriptionInput?.addEventListener('input', () => {
+    builderState.description = descriptionInput.value;
+    renderPrompt();
+  });
+  stackSelect?.addEventListener('change', () => {
+    builderState.stackId = stackSelect.value;
+    renderPrompt();
+  });
+  promptModeSelect?.addEventListener('change', () => {
+    const mode = promptModeSelect.value;
+    if (mode === 'compact' || mode === 'full') selectPromptMode(mode);
+  });
+
+  document.querySelector<HTMLButtonElement>('[data-copy-generated]')?.addEventListener(
+    'click',
+    (event) => {
+      void copyText(
+        currentPrompt(),
+        `${builderState.mode === 'full' ? 'Full' : 'Compact'} prompt copied.`,
+        event.currentTarget as HTMLButtonElement
+      );
+    }
+  );
+
+  renderPrompt();
 </script>

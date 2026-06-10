@@ -2,7 +2,7 @@
  * Custom XML sitemap with explicit crawl metadata.
  *
  * Keep this in sync with public, indexable routes in src/pages. Do not include
- * utility JSON endpoints, 404 pages, or private/reference files from public/.
+ * utility JSON endpoints, 404 pages, or private files from public/.
  */
 import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
@@ -76,6 +76,12 @@ export async function GET(context: APIContext) {
     },
     {
       loc: `${site}/vibes/`,
+      lastmod: '2026-06-09',
+      changefreq: 'monthly',
+      priority: 0.7,
+    },
+    {
+      loc: `${site}/ui-vibes-reference.html`,
       lastmod: '2026-06-09',
       changefreq: 'monthly',
       priority: 0.7,

@@ -103,6 +103,46 @@ export interface StackItem {
   icon: string;
 }
 
+// ─── UI Vibes ───────────────────────────────────────────────────────────────
+
+export type VibeCategory =
+  | 'Content'
+  | 'Internal tools'
+  | 'Consumer'
+  | 'B2B'
+  | 'Experimental';
+
+export interface VibeDef {
+  id: string;
+  name: string;
+  useFor: string;
+  references: string[];
+  categories: VibeCategory[];
+  blurb: string;
+  designSystem: string;
+}
+
+export interface ScreenTypeDef {
+  id: string;
+  name: string;
+  description: string;
+  useFor: string;
+  prompt: string;
+}
+
+export interface VibeStackOption {
+  id: string;
+  name: string;
+  prompt: string;
+}
+
+export interface VibePromptOptions {
+  projectName?: string;
+  description?: string;
+  screenTypeId?: string;
+  stackId?: string;
+}
+
 // ─── Component Props ────────────────────────────────────────────────────────
 
 export interface BlogCardProps {

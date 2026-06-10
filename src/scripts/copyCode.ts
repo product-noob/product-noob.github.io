@@ -8,7 +8,11 @@ export function addCopyButtons(): void {
 
   codeBlocks.forEach((code) => {
     const pre = code.parentElement;
-    if (!pre || pre.dataset.copyInitialized === 'true') return;
+    if (
+      !pre ||
+      pre.dataset.copyInitialized === 'true' ||
+      pre.dataset.noCopy !== undefined
+    ) return;
     pre.dataset.copyInitialized = 'true';
 
     const wrapper = document.createElement('div');

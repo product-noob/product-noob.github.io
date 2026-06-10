@@ -1,64 +1,75 @@
 ---
 pubDate: '2026-06-09'
 title: "How I Pick the UI Before Writing a Single Prompt"
-description: "Why your vibe-coded prototype looks generic, and the two questions trick that fixes it before you write a single prompt."
+description: "The two UI decisions I make before vibe-coding to avoid generic output, wasted iterations, and burnt tokens."
 tags: ['AI', 'Vibe Coding', 'Design']
+ogImage: '/images/og/picking-the-right-ui-for-vibe-coding.webp'
 featured: true
 ---
 
+The era of effectively free AI tokens was never going to last. As VC money gets tighter and five-hour windows, weekly caps, and usage credits become normal, we need to get more deliberate about where those tokens go.
+
+UI iteration is one of the easiest places to waste them. You ask for a dashboard, get the usual purple gradient and floating cards, then spend four prompts saying "less purple", "more rounded", "the buttons feel off", and "please remove the emoji." The model keeps generating; your context keeps growing; your actual product has barely moved.
+
 Last week, three different people sent me their vibe-coded prototypes for feedback. Different products, different problem spaces. All three looked _exactly_ the same: system-ui font, a purple-to-pink gradient somewhere, decorative emoji in the headings, an unrequested dark mode, and not a single focus ring in sight.
 
-That's not Claude's fault _(or v0's, or Lovable's, or Cursor's)_. The model picked the average of every UI it has ever seen, because nobody told it what "good" looked like. Average of everything = generic. That's the entire game.
+That isn't Claude's fault _(or v0's, Lovable's, or Cursor's)_. Nobody told the model what "good" looked like, so it reached for the most probable version of a modern app. The output worked. It just looked like every other first attempt.
 
-I [vibe-code almost every day](https://princejain.me/blogs/vibe-coding-what-i-built-in-12-months) — internal tools at work, weekend prototypes, this site you're reading on. After enough builds, I worked out that 30 seconds of upfront thinking saves me roughly three rounds of "no, less purple, more rounded, the buttons feel off." This post is the 30 seconds.
+I [vibe-code almost every day](https://princejain.me/blogs/vibe-coding-what-i-built-in-12-months) — internal tools at work, weekend prototypes, this site you're reading on. After enough builds, I found that a minute of upfront UI direction saves several rounds of visual correction later. This post is the small decision I now make before writing the first prompt.
 
 _A note: I'm a PM, not a designer. What follows isn't a design system manifesto. It's the cheat sheet I keep going back to so that what I ship doesn't look like everyone else's first prompt._
 
 <aside class="skip-ahead">
   <p class="skip-ahead__eyebrow">SKIP AHEAD</p>
-  <p class="skip-ahead__body">Want to just play? <a href="/ui-vibes-reference.html" target="_blank" rel="noopener noreferrer">Open the live HTML reference ↗</a> — all 8 vibes rendered as full pages with 10+ components each, and a floating button to copy each vibe's prompt straight to your clipboard.</p>
+  <p class="skip-ahead__body">Want to just use it? <a href="/vibes/">Open the UI Vibes reference</a> — copy the prompts, or jump from there into the full HTML visual reference.</p>
 </aside>
 
 ---
 
 ## TL;DR
 
-1. **The model averages unless you constrain it.** Ask for "a habit tracker" and you'll get the average of every habit tracker on the internet. Concrete tokens (hex codes, font, spacing scale) stop the averaging.
+1. **Spend one minute before you spend tokens.** Choosing the UI direction upfront saves repeated "less purple, more rounded" prompting later.
 
-2. **Two questions before the prompt: what's the vibe, and what's the shape.** Vibe is how it _feels_. Shape is how it's _organised_. Thirty seconds here, five rounds of iteration saved later.
+2. **Answer two questions:** What should the product feel like, and what kind of screen are you building?
 
-3. **Eight vibes cover almost every project I've built.** Editorial, Utility, Warm Consumer, Sharp Product, Soft SaaS, Playful, Brutalist, Glass / Spatial. Pick one, commit hard, bake its tokens into the prompt.
+3. **Give the model a small design spec, not adjectives.** Fonts, colours, spacing, radius, motion, and interaction states produce a direction. "Modern and friendly" does not.
 
-4. **Six shapes cover almost every screen.** Dashboard, single-screen tool, form/wizard, list/feed, reading column, landing page. Most products are one shape; a few stitch two together.
+4. **Reuse your defaults.** I keep eight UI directions and a short list of non-negotiables ready to paste into every build.
 
-5. **Bake it into the prompt as concrete tokens, not adjectives.** "Make it warm and friendly" produces generic. "Background #FFFAF3, DM Sans, 12px corner radius, terracotta accent for primary only" produces something you'd actually screenshot.
+5. **The payoff is practical:** fewer generations, less wasted context, and a first version that does not look like every other vibe-coded app.
 
 ---
 
-## Why Most Vibe-Coded UIs Look the Same
+## Why Every Vibe-Coded UI Looks the Same
 
-If you've prompted any of these tools recently, you already know the shape of the output. System font. Cards with the same shadow. Buttons that lean indigo. A linear-gradient header somewhere. Emoji sprinkled into headings _(why does every AI-generated UI think a 🚀 belongs next to "Get Started"?)._
+If you've prompted any of these tools recently, you already know the pattern: system font, familiar card shadows, indigo buttons, a gradient header, decorative emoji, and usually a dark mode nobody asked for.
 
 It's not a bug. The model is doing exactly what you asked: produce the most likely UI given the prompt "build me an X." The most likely UI is the average of every X it saw during training. The average of a million SaaS landing pages is, predictably, a SaaS landing page that looks like every other SaaS landing page.
 
-The fix is not "become a better designer." The fix is to **stop letting the model average**. Give it constraints specific enough that the most likely output is the one you actually want.
+The fix is not to become a designer before opening Claude Code. It is to make a few choices that the model would otherwise make for you.
 
-Two constraints do almost all the work: vibe and shape.
-
----
-
-## The Two Questions I Ask Before Any Prompt
-
-1. **What's the vibe?** How should this thing _feel_ to use? Calm and editorial? Dense and utilitarian? Playful? Premium B2B?
-2. **What's the shape?** How is the screen organised? A dashboard with a sidebar? A single focused canvas? A reading column? A landing page?
-
-That's it. Thirty seconds. The rest of the prompt is project-specific (what the feature does, what data it shows), but vibe + shape is the part that decides whether the output looks considered or generic.
+I have found that two choices do most of the work: the **vibe** and the **kind of screen**.
 
 ---
 
-## The Eight Vibes
+## The Two Questions I Answer Before Prompting
 
-After enough prototypes, almost every project I've built falls into one of eight aesthetic buckets. Pick one, commit to it, and bake its tokens — background, accent, font, radius, spacing scale, motion — into your prompt.
+Before I describe the features, data, or stack, I answer:
+
+1. **What should this feel like?** Calm and editorial? Dense and utilitarian? Warm and consumer-friendly? Sharp and premium?
+2. **What kind of screen is it?** A dashboard, a single-purpose tool, a reading page, an onboarding flow, or a landing page?
+
+That is usually enough direction. I am not trying to design the entire interface before the model sees it. I am trying to remove the two biggest sources of ambiguity.
+
+### 1. What Should It Feel Like?
+
+**What's the vibe?** How should this thing _feel_ to use? Calm and editorial? Dense and utilitarian? Playful? Premium B2B?
+
+This is the larger of the two calls because it influences almost everything the model generates: typography, colour, density, spacing, corner radius, shadows, and motion.
+
+### The Eight UI Vibes I Keep Reusing
+
+These are not the eight official categories of interface design. They are simply the eight directions that cover most things I build:
 
 - **Editorial** — Magazine-like. Calm, text-first, generous spacing. Serif headings on warm white. _For: blogs, portfolios, essay-style products. This site sits here._
 - **Utility** — Dense, fast, professional. Linear or Notion. Information-first. _For: dashboards, internal tools, dev tools. Most of what I build at work lives here._
@@ -69,7 +80,7 @@ After enough prototypes, almost every project I've built falls into one of eight
 - **Brutalist** — Hard edges, mono font for labels, no shadow, no radius, one off-colour accent. Vercel-blog, GitHub Primer, Are.na. _For: dev portfolios, indie tools, raw blogs._
 - **Glass / Spatial** — Frosted-blur surfaces with depth via translucency. Vision OS, iOS Settings. Sage or icy accents, ambient. _For: spatial / ambient interfaces, meditative tools._
 
-When in doubt choose from Editorial, Utility, Warm Consumer, and Soft SaaS. Sharp Product, Playful, Brutalist, and Glass punish a half-committed execution _(if you go Brutalist and then quietly add a soft shadow on one card, the whole thing falls apart)._
+When in doubt, I start with Editorial, Utility, Warm Consumer, or Soft SaaS. Sharp Product, Playful, Brutalist, and Glass need more commitment. Half-executing them tends to look worse than choosing a safer direction and doing it properly.
 
 ### Play with each vibe
 
@@ -109,47 +120,19 @@ Same component, eight skins. Tap a name to swap. Each redraws the card with the 
 
 ---
 
-## The Six Shapes
+### 2. What Kind of Screen Is It?
 
-Vibe is how it _feels_. Shape is how it's _organised_. Six options cover almost every screen I've ever built:
+After the vibe, I add one plain layout sentence: "make this a dashboard", "single-screen tool", "reading page", "onboarding flow", or "landing page."
 
-- **Dashboard** — Sidebar nav + grid of cards. Multiple views, overview-first.
-- **Single-screen tool** — One focused canvas, one main task. A calculator, a converter, a chat UI.
-- **Form / wizard** — Vertical flow, progressive disclosure. One column, sticky CTA.
-- **List / feed** — Repeating items with filters. Inbox, search results, feed.
-- **Reading / content** — Centred column 640–720px, generous vertical rhythm. The page _is_ the product.
-- **Landing page** — Hero → features → CTA → footer. Full-width sections.
+The goal is not to create another framework. It is to stop the model from giving you a marketing page when you wanted a working tool, or a dense dashboard when you wanted a calm reading experience.
 
-Most products are one shape. A few are two stitched together — a landing page that opens into a dashboard, for example. Pick the dominant one for the screen you're prompting for.
+A few examples from things I've actually shipped: the [SLAP debug dashboard](https://princejain.me/blogs/vibe-coding-what-i-built-in-12-months#slap-debug-dashboard) was Utility with a dashboard layout. [Whispr Flow](https://whispr.princejain.me/) was Sharp Product around one focused screen. This site is Editorial with a reading-first layout.
 
 ---
 
-## The Pairing Matrix
+## See What One Minute of Direction Changes
 
-The shortcut: vibe × shape gives you most of the design decision in one line. Some pairings I keep coming back to:
-
-| Project | Vibe | Shape |
-|---|---|---|
-| Internal PM tool | Utility | Dashboard |
-| Personal finance tracker | Warm Consumer | Dashboard |
-| SaaS marketing site | Sharp Product | Landing page |
-| AI agent / chat UI | Soft SaaS | Single-screen |
-| Personal blog or portfolio | Editorial | Reading |
-| Habit tracker for friends | Playful | Single-screen |
-| Onboarding wizard | Sharp Product | Form / wizard |
-| Reading list app | Editorial | List / feed |
-| Dev portfolio / link-in-bio | Brutalist | Landing page |
-| Ambient meditation app | Glass / Spatial | Single-screen |
-
-A few examples from things I've actually shipped: the [SLAP debug dashboard](https://princejain.me/blogs/vibe-coding-what-i-built-in-12-months#slap-debug-dashboard) was Utility + Dashboard. [Whispr Flow](https://whispr.princejain.me/) was Sharp Product + Single-screen. This site is Editorial + Reading. The quiet thing those three have in common: I picked the vibe and shape before writing the first prompt, and each came out close to what I wanted on the first attempt.
-
-Don't overthink the matrix. Wrong on the first pass is fine — you'll feel it within five minutes of looking at the output, and swapping vibes is one prompt away.
-
----
-
-## Bake It Into the Prompt
-
-Here's the actual lever. Most "build me an X" prompts look like this:
+Most "build me an X" prompts look like this:
 
 ```text
 Build me a habit tracker. I want to track 5 habits a day,
@@ -158,7 +141,7 @@ see a calendar view, and get a streak count.
 
 You'll get a working habit tracker. It will also be generic.
 
-Here's the same prompt with vibe + shape pre-loaded:
+Here is the same product after answering the two questions:
 
 ```text
 Build me a habit tracker. Track 5 habits a day, calendar view,
@@ -173,7 +156,7 @@ Design system: Warm Consumer
 - 8pt spacing scale; card padding 24px; section spacing 48px
 - Motion: 250-350ms ease-out; subtle scale-down (0.97) on tap
 
-Shape: Single-screen tool
+Layout hint: one focused screen
 - Centred canvas, max-width 720px
 - 5 habit rows stacked vertically, each with a circular check
 - Calendar strip sticky at top, streak counter top-right
@@ -187,46 +170,38 @@ Non-negotiables:
 - Icons from lucide-react only. No emoji in the UI.
 ```
 
-Same project. Two different worlds. The second prompt produces something you'd actually screenshot.
+The second prompt is longer, but it usually saves prompts overall. It gives the model fewer visual decisions to improvise, and gives me a much better first version to react to.
 
-You don't need to write this block from scratch every time. I've pre-built the design-system block for all eight vibes on the [vibes reference page](/vibes/) — copy, paste, fill in the project context, ship.
-
----
-
-## The Non-Negotiables I Paste Into Every Prompt
-
-Some rules are vibe-independent. I keep these at the bottom of every build prompt because each one is something I had to learn the hard way:
-
-- **Light mode by default.** Dark only if the vibe explicitly calls for it _and_ I asked. Default-dark from the model is almost always wrong.
-- **Real content, not Lorem ipsum.** Real habit names, real product titles, real user names. The output reads completely differently — and you can actually demo it.
-- **Every interactive element gets hover, active, focus, and disabled states.** The focus ring is a 2px accent-coloured ring with 2px offset. Skip this and you'll ship something inaccessible without realising it.
-- **Mobile-first.** Build for 375px, then enhance to 768px and 1280px. Test no horizontal scroll at the smallest size.
-- **Icons from one library only.** I use lucide-react. 16px or 20px inline, never larger. Mixing icon libraries is the fastest tell that a UI was glued together by a model.
-- **No emoji in the UI.** Decorative emoji in headings is the single fastest tell of an AI-default UI.
-- **No generic SaaS gradients.** Purple-to-pink, blue-to-purple. If gradients are used, they have to fit the vibe (Soft SaaS earns one; Editorial does not).
-
-That's roughly 80% of the gap between a default-looking output and one that feels considered. The other 20% is just commitment to the vibe — not flinching halfway through and softening a Brutalist build because the model suggested it.
+I do not write this block from scratch every time. I have pre-built the design-system directions for all eight vibes on the [UI Vibes reference page](/vibes/). I copy one, add the product context, and adjust only what is specific to the build.
 
 ---
 
-## What Still Trips Me Up
+## The Defaults That Save Me More Rework
 
-This isn't a clean playbook. A few things still go wrong:
+The vibe changes from project to project. These rules mostly do not:
 
-- **Vibe drift across screens.** I pick Sharp Product for the landing page, then on screen three the model quietly drifts to Soft SaaS because that's its default. Fix: paste the vibe tokens into _every_ prompt in the session, not just the first one.
-- **Hybrid shapes confuse the model.** A landing page that opens into a dashboard is two shapes. Prompt for both at once and you get something that's neither. I now build them as separate prompts and stitch them.
-- **The matrix is a starting point, not gospel.** A couple of times I picked Editorial + Reading for what should have been Utility + Dashboard, and spent an hour wondering why the data felt cramped before realising the vibe was the problem, not the layout.
-- **Some products genuinely need a custom vibe.** The eight cover ~90% of what I build. For the other 10%, I steal tokens from a real product I admire — open the site, inspect colours, copy hex values into the prompt. Don't try to invent a vibe from scratch in a vibe-coding session; that's not what the model is good at.
+- **Light mode by default.** Dark only if I explicitly ask for it.
+- **Real content.** No lorem, no fake placeholder names, no generic marketing fog.
+- **Designed states.** Hover, active, focus, disabled, loading, empty, and error states.
+- **Mobile-first.** Build for 375px, then enhance to tablet and desktop.
+- **One icon library.** I usually ask for lucide-react, 16px or 20px.
+- **No decorative emoji.** It is still the fastest tell of an AI-default UI.
+
+Two things still trip me up. First, the UI drifts as the session gets longer: screen one is Sharp Product, while screen four has somehow acquired a purple glow. I now repeat the visual direction when prompting a new screen instead of assuming the model remembers it.
+
+Second, mixed products confuse the model. A landing page that opens into a dashboard is really two different screens with different jobs. I build them separately, then stitch them together.
 
 ---
 
 ## The Actual Point
 
-Vibe-coding well isn't about being a designer. It's about being _specific_. The model is trained on every UI ever published; if you don't constrain it, it averages. If you hand it concrete tokens — hex codes, font families, spacing scale, motion timings — it stops averaging and starts executing.
+This is not really about making prettier prototypes. It is about reducing avoidable iteration.
 
-Thirty seconds of "Warm Consumer + Single-screen tool" beats thirty minutes of "no, more rounded, less purple, can the buttons be softer."
+As usage limits get tighter and the era of endlessly subsidised tokens fades, vague prompting becomes expensive in a very boring way. Not because one bad prompt costs a fortune, but because every unnecessary correction adds more context, more generations, and more chances for the build to drift.
 
-The thing I've internalised is that this isn't really a design skill. It's a product skill. Knowing _which_ vibe fits _which_ product is a judgment call about who the user is and what they expect to feel. That's the same call a PM makes every day, just compressed into a single prompt.
+One minute of "Warm Consumer + single-screen tool" is cheaper than thirty minutes of "no, more rounded, less purple, can the buttons be softer."
+
+And the choice itself is not purely a design skill. Knowing which direction fits a product is a judgment call about the user, the task, and what the experience should communicate. That is a product decision. The prompt is just where it gets expressed.
 
 ---
 

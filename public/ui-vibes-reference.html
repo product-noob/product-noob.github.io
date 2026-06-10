@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UI Vibes — Full Reference</title>
+    <meta name="description" content="Compare eight distinct UI directions through complete, interactive interface examples.">
+    <meta name="theme-color" content="#020617">
+    <title>Eight UI Vibes — Full Visual Reference</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         'fraunces': ['Fraunces', 'serif'],
-                        'inter': ['Inter', 'sans-serif'],
+                        'inter': ['ui-sans-serif', 'system-ui', 'sans-serif'],
                         'dmsans': ['DM Sans', 'sans-serif'],
-                        'outfit': ['Outfit', 'sans-serif'],
-                        'geist': ['"Inter"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        'outfit': ['"Trebuchet MS"', 'ui-rounded', 'sans-serif'],
+                        'geist': ['ui-sans-serif', 'system-ui', 'sans-serif'],
                         'mono': ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
                     }
                 }
@@ -25,6 +24,42 @@
         }
     </script>
     <style>
+        @font-face {
+            font-family: 'DM Sans';
+            src: url('/fonts/dm-sans-latin.woff2') format('woff2');
+            font-style: normal;
+            font-weight: 100 900;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'DM Sans';
+            src: url('/fonts/dm-sans-latin-italic.woff2') format('woff2');
+            font-style: italic;
+            font-weight: 100 900;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Fraunces';
+            src: url('/fonts/fraunces-latin.woff2') format('woff2');
+            font-style: normal;
+            font-weight: 100 900;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Fraunces';
+            src: url('/fonts/fraunces-latin-italic.woff2') format('woff2');
+            font-style: italic;
+            font-weight: 100 900;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'JetBrains Mono';
+            src: url('/fonts/jetbrains-mono-latin.woff2') format('woff2');
+            font-style: normal;
+            font-weight: 100 900;
+            font-display: swap;
+        }
+
         .tab-content { display: none; }
         .tab-content.active { display: block; animation: fadeIn 250ms ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
@@ -71,6 +106,17 @@
             transition: all 150ms;
             position: relative;
             border-radius: 8px 8px 0 0;
+            min-height: 52px;
+        }
+        .nav-btn__index {
+            color: #94A3B8;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+        }
+        .nav-btn.is-active .nav-btn__index {
+            color: currentColor;
         }
         .nav-btn.is-active {
             color: #0F172A;
@@ -747,16 +793,34 @@
         @media (max-width: 640px) {
             .copy-fab:not(.copy-fab--positioned) { bottom: 12px; right: 12px; }
         }
+
+        :focus-visible {
+            outline: 2px solid currentColor;
+            outline-offset: 3px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-slate-100 min-h-screen font-inter text-sm">
 
+<a href="#vibe-chooser" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-white focus:text-slate-950 focus:px-4 focus:py-2 focus:rounded-md focus:shadow-lg">Skip to vibe chooser</a>
+
 <!-- TOAST NOTIFICATION -->
-<div id="toast" class="toast">
+<div id="toast" class="toast" role="status" aria-live="polite">
     <div class="bg-gray-900 text-white font-inter text-sm px-5 py-3 rounded-lg shadow-lg flex items-center gap-3">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
         <span id="toast-msg">Changes saved successfully</span>
-        <button onclick="hideToast()" class="text-gray-400 hover:text-white ml-2 transition-colors">&times;</button>
+        <button type="button" onclick="hideToast()" aria-label="Dismiss notification" class="text-gray-400 hover:text-white ml-2 transition-colors">&times;</button>
     </div>
 </div>
 
@@ -766,49 +830,86 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         <span class="copy-fab__label">Copy <span id="copy-fab__vibe">Editorial</span> prompt</span>
     </button>
-    <a class="copy-fab__link" href="/vibes/" aria-label="See all 8 prompts">
-        All 8 →
+    <a class="copy-fab__link" href="/vibes/" aria-label="Customize this vibe into a prompt">
+        Customize →
     </a>
 </div>
 
 <!-- DELETE MODAL (Sharp Product) -->
-<div id="delete-modal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
+<div id="delete-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="delete-modal-title" onclick="if(event.target===this)closeModal()">
     <div class="modal-content bg-white rounded-xl p-6 max-w-md w-full shadow-xl border border-gray-200">
-        <h3 class="font-inter font-semibold text-[#0F172A] text-lg mb-2">Delete workspace?</h3>
+        <h3 id="delete-modal-title" class="font-inter font-semibold text-[#0F172A] text-lg mb-2">Delete workspace?</h3>
         <p class="font-inter text-sm text-[#475569] mb-5">This will permanently remove all data, members, and active subscriptions. This action cannot be undone.</p>
         <div class="flex items-center gap-2 mb-4">
-            <label class="font-inter text-xs text-[#475569]">Type <strong class="text-[#0F172A]">delete my workspace</strong> to confirm</label>
+            <label for="delete-confirm-input" class="font-inter text-xs text-[#475569]">Type <strong class="text-[#0F172A]">delete my workspace</strong> to confirm</label>
         </div>
         <input type="text" id="delete-confirm-input" placeholder="delete my workspace" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm mb-4 focus:outline-none focus:border-red-400 focus:ring-1 focus:ring-red-400" oninput="document.getElementById('confirm-delete-btn').disabled = this.value !== 'delete my workspace'">
         <div class="flex justify-end gap-2">
-            <button onclick="closeModal()" class="border border-gray-300 text-[#0F172A] font-inter text-sm px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors">Cancel</button>
-            <button id="confirm-delete-btn" disabled class="bg-red-600 text-white font-inter text-sm font-medium px-4 py-2 rounded-lg hover:bg-red-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-red-600">Delete permanently</button>
+            <button type="button" onclick="closeModal()" class="border border-gray-300 text-[#0F172A] font-inter text-sm px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors">Cancel</button>
+            <button type="button" id="confirm-delete-btn" disabled class="bg-red-600 text-white font-inter text-sm font-medium px-4 py-2 rounded-lg hover:bg-red-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-red-600">Delete permanently</button>
         </div>
     </div>
 </div>
 
-<!-- TOP NAV -->
-<nav class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4">
+<!-- REFERENCE INTRO -->
+<header class="bg-slate-950 text-white border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-7 md:py-12">
+        <div class="flex items-center justify-between gap-4 mb-6 md:mb-10">
+            <a href="/" class="text-xs font-semibold tracking-[0.16em] uppercase text-slate-300 hover:text-white transition-colors">princejain.me</a>
+            <span class="hidden md:inline font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500">8 UI directions</span>
+        </div>
+        <div class="grid lg:grid-cols-[minmax(0,1fr)_340px] gap-8 lg:gap-16 items-end">
+            <div>
+                <p class="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-cyan-300 mb-3 md:mb-4">Full UI reference</p>
+                <h1 class="font-dmsans text-[32px] sm:text-5xl md:text-6xl font-semibold tracking-[-0.04em] leading-[1.05] max-w-3xl">See what each UI vibe actually looks like.</h1>
+                <p class="lg:hidden text-slate-300 text-[15px] leading-relaxed mt-4">Eight complete screens to help you pick a direction before you prompt.</p>
+                <p class="hidden lg:block text-slate-300 text-lg leading-relaxed max-w-2xl mt-5">These are the eight UI directions I keep reusing. Compare the full screens, pick the closest one, and save yourself a few rounds of fixing generic UI later.</p>
+                <div class="grid grid-cols-2 gap-2.5 mt-6 lg:hidden">
+                    <a href="/vibes/" class="inline-flex items-center justify-center rounded-lg bg-white text-slate-950 px-3 py-2.5 text-sm font-semibold hover:bg-slate-200 transition-colors">Build my prompt</a>
+                    <a href="/blogs/picking-the-right-ui-for-vibe-coding/" class="inline-flex items-center justify-center rounded-lg border border-slate-700 text-white px-3 py-2.5 text-sm font-medium hover:border-slate-500 hover:bg-slate-900 transition-colors">Read the framework</a>
+                </div>
+            </div>
+            <div class="hidden lg:block lg:border-l lg:border-slate-800 lg:pl-8">
+                <p class="text-sm leading-relaxed text-slate-300 mb-5">Pick the one that feels closest to what you are building. You can copy its prompt as-is or tune it in the prompt builder.</p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="/vibes/" class="inline-flex items-center justify-center rounded-lg bg-white text-slate-950 px-4 py-2.5 text-sm font-semibold hover:bg-slate-200 transition-colors">Build my prompt</a>
+                    <a href="/blogs/picking-the-right-ui-for-vibe-coding/" class="inline-flex items-center justify-center rounded-lg border border-slate-700 text-white px-4 py-2.5 text-sm font-medium hover:border-slate-500 hover:bg-slate-900 transition-colors">Read the framework</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- VIBE CHOOSER -->
+<nav id="vibe-chooser" aria-label="Choose a UI vibe" class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-1 md:gap-8 py-2.5 md:py-3 border-b border-slate-100">
+            <div class="flex items-center gap-2">
+                <span class="hidden sm:inline font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">Selected</span>
+                <p class="text-xs sm:text-sm text-slate-700"><strong id="active-vibe-name" class="text-slate-950">Editorial</strong><span class="text-slate-300 mx-1.5">/</span><span id="active-vibe-summary">Calm, text-first, and typographic.</span></p>
+            </div>
+            <p id="active-vibe-fit" class="hidden md:block text-xs text-slate-500">Best for long-form reading, portfolios, and thoughtful tools.</p>
+        </div>
         <div class="nav-scroll-wrapper">
-            <div class="nav-scroll-track">
-                <button onclick="switchTab('editorial')" class="nav-btn tab-trigger px-4 md:px-5 py-3.5 md:py-4 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="editorial">Editorial</button>
-                <button onclick="switchTab('utility')" class="nav-btn tab-trigger px-4 md:px-5 py-3.5 md:py-4 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="utility">Utility</button>
-                <button onclick="switchTab('warm')" class="nav-btn tab-trigger px-4 md:px-5 py-3.5 md:py-4 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="warm">Warm Consumer</button>
-                <button onclick="switchTab('sharp')" class="nav-btn tab-trigger px-4 md:px-5 py-3.5 md:py-4 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="sharp">Sharp Product</button>
-                <button onclick="switchTab('playful')" class="nav-btn tab-trigger px-4 md:px-5 py-3.5 md:py-4 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="playful">Playful</button>
-                <button onclick="switchTab('softsaas')" class="nav-btn nav-btn-softsaas tab-trigger px-4 md:px-5 py-3.5 md:py-4 text-gray-500 hover:text-indigo-600 font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="softsaas">Soft SaaS</button>
-                <button onclick="switchTab('brutalist')" class="nav-btn nav-btn-brutalist tab-trigger px-4 md:px-5 py-3.5 md:py-4 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="brutalist">Brutalist</button>
-                <button onclick="switchTab('glass')" class="nav-btn nav-btn-glass tab-trigger px-4 md:px-5 py-3.5 md:py-4 text-gray-500 hover:text-[#5E5CE6] font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="glass">Glass / Spatial</button>
+            <div class="nav-scroll-track" role="tablist" aria-label="UI vibe examples">
+                <button type="button" id="tab-editorial" role="tab" aria-selected="true" aria-controls="editorial" tabindex="0" onclick="switchTab('editorial')" class="nav-btn tab-trigger flex flex-col items-start justify-center px-4 md:px-5 py-2.5 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="editorial"><span class="nav-btn__index">01</span><span>Editorial</span></button>
+                <button type="button" id="tab-utility" role="tab" aria-selected="false" aria-controls="utility" tabindex="-1" onclick="switchTab('utility')" class="nav-btn tab-trigger flex flex-col items-start justify-center px-4 md:px-5 py-2.5 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="utility"><span class="nav-btn__index">02</span><span>Utility</span></button>
+                <button type="button" id="tab-warm" role="tab" aria-selected="false" aria-controls="warm" tabindex="-1" onclick="switchTab('warm')" class="nav-btn tab-trigger flex flex-col items-start justify-center px-4 md:px-5 py-2.5 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="warm"><span class="nav-btn__index">03</span><span>Warm Consumer</span></button>
+                <button type="button" id="tab-sharp" role="tab" aria-selected="false" aria-controls="sharp" tabindex="-1" onclick="switchTab('sharp')" class="nav-btn tab-trigger flex flex-col items-start justify-center px-4 md:px-5 py-2.5 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="sharp"><span class="nav-btn__index">04</span><span>Sharp Product</span></button>
+                <button type="button" id="tab-playful" role="tab" aria-selected="false" aria-controls="playful" tabindex="-1" onclick="switchTab('playful')" class="nav-btn tab-trigger flex flex-col items-start justify-center px-4 md:px-5 py-2.5 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="playful"><span class="nav-btn__index">05</span><span>Playful</span></button>
+                <button type="button" id="tab-softsaas" role="tab" aria-selected="false" aria-controls="softsaas" tabindex="-1" onclick="switchTab('softsaas')" class="nav-btn nav-btn-softsaas tab-trigger flex flex-col items-start justify-center px-4 md:px-5 py-2.5 text-gray-500 hover:text-indigo-600 font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="softsaas"><span class="nav-btn__index">06</span><span>Soft SaaS</span></button>
+                <button type="button" id="tab-brutalist" role="tab" aria-selected="false" aria-controls="brutalist" tabindex="-1" onclick="switchTab('brutalist')" class="nav-btn nav-btn-brutalist tab-trigger flex flex-col items-start justify-center px-4 md:px-5 py-2.5 text-gray-500 hover:text-black font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="brutalist"><span class="nav-btn__index">07</span><span>Brutalist</span></button>
+                <button type="button" id="tab-glass" role="tab" aria-selected="false" aria-controls="glass" tabindex="-1" onclick="switchTab('glass')" class="nav-btn nav-btn-glass tab-trigger flex flex-col items-start justify-center px-4 md:px-5 py-2.5 text-gray-500 hover:text-[#5E5CE6] font-medium border-b-2 border-transparent whitespace-nowrap focus:outline-none transition-colors text-xs md:text-sm" data-tab="glass"><span class="nav-btn__index">08</span><span>Glass / Spatial</span></button>
             </div>
         </div>
     </div>
 </nav>
 
+<main id="reference-preview">
 <!-- ===================== EDITORIAL ===================== -->
-<div id="editorial" class="tab-content active bg-[#FAFAF7]">
+<div id="editorial" role="tabpanel" aria-labelledby="tab-editorial" class="tab-content active bg-[#FAFAF7]">
     <!-- // reading progress -->
-    <div class="editorial-progress" id="editorial__progress" aria-hidden="true"></div>
+     <!-- <div class="editorial-progress" id="editorial__progress" aria-hidden="true"></div> -->
 
     <!-- // masthead -->
     <div id="editorial__masthead" class="border-b border-[#E5E5DF] bg-[#FAFAF7]">
@@ -879,7 +980,7 @@
 
             <!-- // body continues -->
             <p class="font-inter text-[#333] text-[15px] md:text-[17px] leading-[1.75] md:leading-[1.8] mb-5 md:mb-6">The movement is not about minimalism for its own sake. It is about restoring hierarchy — letting readers know where to look, what matters, and what can wait. In a world saturated with visual competition, restraint has become radical.</p>
-            <p class="font-inter text-[#333] text-[15px] md:text-[17px] leading-[1.75] md:leading-[1.8] mb-8 md:mb-12">This recovery is showing up in product design too. Dashboards stripped back to signal. Landing pages that prioritise a single, quiet argument. Navigation that hides until asked. Each choice is a small act of confidence: that the content is enough.</p>
+            <p class="font-inter text-[#333] text-[15px] md:text-[17px] leading-[1.75] md:leading-[1.8] mb-8 md:mb-12">This recovery is showing up in product design too. Interfaces stripped back to signal. Pages that prioritise a single, quiet argument. Navigation that hides until asked. Each choice is a small act of confidence: that the content is enough.</p>
 
             <!-- // image plate -->
             <div id="editorial__plate">
@@ -997,7 +1098,7 @@
 </div>
 
 <!-- ===================== UTILITY ===================== -->
-<div id="utility" class="tab-content bg-[#FAFAFA]">
+<div id="utility" role="tabpanel" aria-labelledby="tab-utility" class="tab-content bg-[#FAFAFA]">
 
     <!-- // command palette (Utility signature) -->
     <div id="cmdk-overlay" class="cmdk-overlay" onclick="if(event.target===this)toggleCmdK()">
@@ -1432,7 +1533,7 @@
 </div>
 
 <!-- ===================== WARM CONSUMER ===================== -->
-<div id="warm" class="tab-content bg-[#FFFAF3] pb-24">
+<div id="warm" role="tabpanel" aria-labelledby="tab-warm" class="tab-content bg-[#FFFAF3] pb-24">
     <div class="max-w-[520px] mx-auto px-4 md:px-5 py-8 md:py-10">
 
         <!-- // greeting -->
@@ -1804,7 +1905,7 @@
 </div>
 
 <!-- ===================== SHARP PRODUCT ===================== -->
-<div id="sharp" class="tab-content bg-white">
+<div id="sharp" role="tabpanel" aria-labelledby="tab-sharp" class="tab-content bg-white">
     <div class="max-w-[1100px] mx-auto px-5 md:px-8 py-8 md:py-12">
 
         <!-- // hero -->
@@ -2117,7 +2218,7 @@
 </div>
 
 <!-- ===================== PLAYFUL ===================== -->
-<div id="playful" class="tab-content bg-[#E8F5E9]">
+<div id="playful" role="tabpanel" aria-labelledby="tab-playful" class="tab-content bg-[#E8F5E9]">
     <div class="max-w-[580px] mx-auto px-4 md:px-5 py-8 md:py-10">
 
         <!-- // hero celebration -->
@@ -2377,7 +2478,7 @@
 </div>
 
 <!-- ===================== SOFT SAAS ===================== -->
-<div id="softsaas" class="tab-content bg-white relative overflow-hidden">
+<div id="softsaas" role="tabpanel" aria-labelledby="tab-softsaas" class="tab-content bg-white relative overflow-hidden">
     <!-- // atmospheric blobs (animated) -->
     <div class="fixed top-[-5%] right-[-5%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-violet-400/12 rounded-full blur-[120px] pointer-events-none saas-blob"></div>
     <div class="fixed bottom-[-10%] left-[-5%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-sky-300/10 rounded-full blur-[120px] pointer-events-none saas-blob-2"></div>
@@ -2392,7 +2493,7 @@
                 <span class="w-2 h-2 rounded-full bg-indigo-500 pulse-dot"></span>
                 AI-powered · Live
             </div>
-            <h1 class="font-geist text-[28px] sm:text-[36px] md:text-[44px] font-semibold tracking-[-0.02em] text-slate-900 mb-2 md:mb-3">Analytics Dashboard</h1>
+            <h1 class="font-geist text-[28px] sm:text-[36px] md:text-[44px] font-semibold tracking-[-0.02em] text-slate-900 mb-2 md:mb-3">Analytics Overview</h1>
             <p class="font-geist text-slate-500 text-sm md:text-lg max-w-xl">Your product's performance at a glance — with AI anomaly detection running continuously in the background.</p>
         </div>
 
@@ -2407,7 +2508,7 @@
                         </div>
                         <div>
                             <p class="font-geist text-sm font-medium text-slate-900">Drafts · writing copilot</p>
-                            <p class="font-geist text-[10px] text-slate-400 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Claude Sonnet 4 · ready</p>
+                            <p class="font-geist text-[10px] text-slate-400 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> AI writing model · ready</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-1">
@@ -2488,7 +2589,7 @@
                             <div class="flex items-center gap-2 text-[11px] font-geist text-slate-500">
                                 <button class="inline-flex items-center gap-1 px-2 py-1 rounded-md border border-slate-200 bg-white hover:bg-slate-50 transition-colors">
                                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                                    Claude Sonnet 4
+                                    AI writing model
                                     <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                                 </button>
                                 <button class="inline-flex items-center gap-1 px-2 py-1 rounded-md hover:bg-white transition-colors">
@@ -2737,7 +2838,7 @@
 </div>
 
 <!-- ===================== BRUTALIST ===================== -->
-<div id="brutalist" class="tab-content bg-white">
+<div id="brutalist" role="tabpanel" aria-labelledby="tab-brutalist" class="tab-content bg-white">
     <div class="max-w-[1100px] mx-auto px-4 md:px-6 py-8 md:py-12">
 
         <!-- Manifesto hero -->
@@ -2990,7 +3091,7 @@
 </div>
 
 <!-- ===================== GLASS / SPATIAL ===================== -->
-<div id="glass" class="tab-content relative overflow-hidden" style="background: linear-gradient(175deg, #EDF0F6 0%, #F1ECF8 35%, #F8F4FB 65%, #FFFFFF 100%);">
+<div id="glass" role="tabpanel" aria-labelledby="tab-glass" class="tab-content relative overflow-hidden" style="background: linear-gradient(175deg, #EDF0F6 0%, #F1ECF8 35%, #F8F4FB 65%, #FFFFFF 100%);">
     <!-- Ambient orbs — Apple-style pearl tints -->
     <div class="glass-orb absolute pointer-events-none" style="top: -140px; right: -100px; width: 460px; height: 460px; border-radius: 50%; background: #5E5CE6; opacity: 0.18; filter: blur(120px); z-index: 0;"></div>
     <div class="glass-orb absolute pointer-events-none" style="bottom: -120px; left: -80px; width: 420px; height: 420px; border-radius: 50%; background: #0A84FF; opacity: 0.14; filter: blur(130px); z-index: 0; animation-delay: -7s;"></div>
@@ -3293,31 +3394,41 @@
 
     </div>
 </div>
+</main>
 
 <script>
     // Map: HTML tab id → display name + /vibes-prompts.json key
     const VIBE_MAP = {
-        editorial:  { name: 'Editorial',       key: 'editorial' },
-        utility:    { name: 'Utility',         key: 'utility' },
-        warm:       { name: 'Warm Consumer',   key: 'warm-consumer' },
-        sharp:      { name: 'Sharp Product',   key: 'sharp-product' },
-        playful:    { name: 'Playful',         key: 'playful' },
-        softsaas:   { name: 'Soft SaaS',       key: 'soft-saas' },
-        brutalist:  { name: 'Brutalist',       key: 'brutalist' },
-        glass:      { name: 'Glass / Spatial', key: 'glass-spatial' },
+        editorial:  { name: 'Editorial',       key: 'editorial',     summary: 'Calm, text-first, and typographic.',        fit: 'Best for long-form reading, portfolios, and thoughtful tools.' },
+        utility:    { name: 'Utility',         key: 'utility',       summary: 'Dense, direct, and operational.',           fit: 'Best for admin tools, infrastructure, and expert workflows.' },
+        warm:       { name: 'Warm Consumer',   key: 'warm-consumer', summary: 'Friendly, reassuring, and human.',          fit: 'Best for wellness, habits, finance, and personal products.' },
+        sharp:      { name: 'Sharp Product',   key: 'sharp-product', summary: 'Precise, confident, and product-led.',      fit: 'Best for modern B2B products, settings, and team software.' },
+        playful:    { name: 'Playful',         key: 'playful',       summary: 'Expressive, energetic, and rewarding.',     fit: 'Best for learning, creation, communities, and younger audiences.' },
+        softsaas:   { name: 'Soft SaaS',       key: 'soft-saas',     summary: 'Airy, approachable, and quietly polished.', fit: 'Best for AI tools, collaborative work, and lightweight SaaS.' },
+        brutalist:  { name: 'Brutalist',       key: 'brutalist',     summary: 'Raw, loud, and intentionally unpolished.',  fit: 'Best for culture, fashion, experiments, and strong points of view.' },
+        glass:      { name: 'Glass / Spatial', key: 'glass-spatial', summary: 'Layered, luminous, and spatial.',           fit: 'Best for media, ambient dashboards, and immersive experiences.' },
     };
     let activeVibeId = 'editorial';
 
     // Tab switching with fade animation
     function switchTab(tabId) {
-        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(el => {
+            el.classList.remove('active');
+            el.hidden = true;
+        });
         document.querySelectorAll('.tab-trigger').forEach(btn => {
             btn.classList.remove('is-active', 'text-black', 'border-black', 'text-indigo-600', 'border-indigo-600', 'text-[#5E5CE6]', 'border-[#5E5CE6]');
             btn.classList.add('text-gray-500', 'border-transparent');
+            btn.setAttribute('aria-selected', 'false');
+            btn.setAttribute('tabindex', '-1');
         });
-        document.getElementById(tabId).classList.add('active');
+        const panel = document.getElementById(tabId);
+        panel.hidden = false;
+        panel.classList.add('active');
         const btn = document.querySelector(`[data-tab="${tabId}"]`);
         btn.classList.remove('text-gray-500', 'border-transparent');
+        btn.setAttribute('aria-selected', 'true');
+        btn.setAttribute('tabindex', '0');
         if (tabId === 'softsaas') {
             btn.classList.add('text-indigo-600', 'border-indigo-600');
         } else if (tabId === 'glass') {
@@ -3334,11 +3445,29 @@
         if (meta) {
             const label = document.getElementById('copy-fab__vibe');
             if (label) label.textContent = meta.name;
+            document.getElementById('active-vibe-name').textContent = meta.name;
+            document.getElementById('active-vibe-summary').textContent = meta.summary;
+            document.getElementById('active-vibe-fit').textContent = meta.fit;
             const fabBtn = document.getElementById('copy-fab__btn');
             fabBtn?.classList.remove('is-copied');
             expandFab();
         }
     }
+
+    document.querySelector('[role="tablist"]')?.addEventListener('keydown', (event) => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        const tabs = [...document.querySelectorAll('.tab-trigger')];
+        const currentIndex = tabs.indexOf(document.activeElement);
+        if (currentIndex < 0) return;
+        event.preventDefault();
+        let nextIndex = currentIndex;
+        if (event.key === 'ArrowRight') nextIndex = (currentIndex + 1) % tabs.length;
+        if (event.key === 'ArrowLeft') nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        if (event.key === 'Home') nextIndex = 0;
+        if (event.key === 'End') nextIndex = tabs.length - 1;
+        tabs[nextIndex].focus();
+        switchTab(tabs[nextIndex].dataset.tab);
+    });
 
     // ─── Floating Copy-Prompt FAB ────────────────────────────────
     // Behaviour: starts expanded showing the vibe name, auto-collapses
@@ -3511,6 +3640,13 @@
     // Set initial active state
     document.querySelector('[data-tab="editorial"]').classList.remove('text-gray-500', 'border-transparent');
     document.querySelector('[data-tab="editorial"]').classList.add('text-black', 'border-black');
+    document.querySelector('[data-tab="editorial"]').classList.add('is-active');
+    document.querySelectorAll('.tab-content:not(#editorial)').forEach(panel => { panel.hidden = true; });
+
+    // Demo links with no destination should not jump the reference back to the top.
+    document.addEventListener('click', (event) => {
+        if (event.target.closest('a[href="#"]')) event.preventDefault();
+    });
 
     // Toast notification
     let toastTimer;
@@ -3527,15 +3663,23 @@
     }
 
     // Modal (Sharp Product delete confirmation)
+    let modalTrigger = null;
     function openModal() {
-        document.getElementById('delete-modal').classList.add('open');
+        modalTrigger = document.activeElement;
+        const modal = document.getElementById('delete-modal');
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
         document.getElementById('delete-confirm-input').value = '';
         document.getElementById('confirm-delete-btn').disabled = true;
         document.body.style.overflow = 'hidden';
+        requestAnimationFrame(() => document.getElementById('delete-confirm-input').focus());
     }
     function closeModal() {
-        document.getElementById('delete-modal').classList.remove('open');
+        const modal = document.getElementById('delete-modal');
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
+        modalTrigger?.focus();
     }
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeModal();

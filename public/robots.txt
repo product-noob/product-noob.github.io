@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /ui-vibes-reference.html
 Disallow: /vibes-prompts.json
 
 Sitemap: https://princejain.me/sitemap.xml

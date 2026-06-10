@@ -1,130 +1,120 @@
 /**
- * UI Vibes — the 8 aesthetic systems shipped with the site.
+ * UI Vibes data and prompt builders.
  *
- * Each vibe has:
- *  - metadata for display (name, use case, real-world references)
- *  - preview tokens used to render a mini sample card
- *  - a hand-written `<design_system>` block that gets wrapped into a full
- *    copy-pasteable prompt via `buildFullPrompt()`.
- *
- * Used by:
- *  - /vibes page (full reference grid + copy buttons)
- *  - /vibes-prompts.json endpoint (consumed by the blog's vibe-switcher widget)
+ * Used by /vibes, /vibes-prompts.json, and the blog's interactive preview.
  */
+import type {
+  ScreenTypeDef,
+  VibeDef,
+  VibePromptOptions,
+  VibeStackOption,
+} from '../types';
 
-export interface VibeDef {
-  id: string;
-  name: string;
-  useFor: string;
-  references: string[];
-  /** One-line summary surfaced on the /vibes card */
-  blurb: string;
-  /** The vibe-specific design_system XML block */
-  designSystem: string;
-}
+export type {
+  ScreenTypeDef,
+  VibeDef,
+  VibePromptOptions,
+  VibeStackOption,
+} from '../types';
 
-const commonPromptHeader = `# [Your project name here]
+export const screenTypes: ScreenTypeDef[] = [
+  {
+    id: 'dashboard',
+    name: 'Dashboard',
+    description: 'Overview-first, with navigation, metrics, filters, and multiple data regions.',
+    useFor: 'Analytics, admin panels, internal tools',
+    prompt:
+      'Use an overview-first dashboard layout. Include clear navigation, a compact page header, a responsive metric grid, and scannable data regions. Collapse navigation below 768px and stack cards without losing priority.',
+  },
+  {
+    id: 'single-screen',
+    name: 'Single-screen tool',
+    description: 'One focused canvas built around a single action or interaction.',
+    useFor: 'Calculators, chat tools, converters, editors',
+    prompt:
+      'Use one focused screen with a clear primary task. Keep the main interaction above the fold, minimise navigation, and place supporting controls close to the work area. On mobile, use the full width with reachable controls.',
+  },
+  {
+    id: 'form-wizard',
+    name: 'Form / wizard',
+    description: 'A guided vertical flow with progressive disclosure and clear completion.',
+    useFor: 'Onboarding, checkout, setup, applications',
+    prompt:
+      'Use a guided form or wizard layout with one clear step at a time, visible progress, concise validation, and a persistent primary action. Keep the form column narrow on desktop and full-width on mobile.',
+  },
+  {
+    id: 'list-feed',
+    name: 'List / feed',
+    description: 'Repeatable rows or cards with search, filtering, sorting, and states.',
+    useFor: 'Inboxes, search results, catalogues, feeds',
+    prompt:
+      'Use a list or feed layout with strong row hierarchy, a compact filter and search region, and designed empty, loading, and error states. Keep repeated items easy to scan and controls usable on mobile.',
+  },
+  {
+    id: 'reading',
+    name: 'Reading page',
+    description: 'A calm content column where typography and rhythm carry the experience.',
+    useFor: 'Blogs, documentation, reports, essays',
+    prompt:
+      'Use a reading-first layout with a 640-720px content column, excellent typography, generous vertical rhythm, and restrained supporting navigation. Preserve comfortable line length and padding on mobile.',
+  },
+  {
+    id: 'landing',
+    name: 'Landing page',
+    description: 'A persuasive sequence from promise to proof to action.',
+    useFor: 'Products, launches, portfolios, campaigns',
+    prompt:
+      'Use a landing-page flow: focused hero, proof or trust signal, benefits, product demonstration, and one clear final CTA. Avoid repetitive card grids and keep each section advancing the argument.',
+  },
+];
 
-## What you're building
-[Replace this with 1-2 sentences describing your project.]
+export const stackOptions: VibeStackOption[] = [
+  {
+    id: 'existing',
+    name: 'Use my existing stack',
+    prompt: 'Work inside the existing project stack and follow its established component and styling patterns.',
+  },
+  {
+    id: 'react-tailwind',
+    name: 'React + Tailwind',
+    prompt: 'React + TypeScript + Tailwind CSS. Use lucide-react for icons.',
+  },
+  {
+    id: 'next-shadcn',
+    name: 'Next.js + shadcn/ui',
+    prompt:
+      'Next.js App Router + TypeScript + Tailwind CSS + shadcn/ui. Use lucide-react for icons.',
+  },
+  {
+    id: 'astro',
+    name: 'Astro',
+    prompt:
+      'Astro with scoped component styles and minimal client-side JavaScript. Use static rendering unless interaction requires otherwise.',
+  },
+  {
+    id: 'html-css',
+    name: 'HTML + CSS + JS',
+    prompt: 'Semantic HTML, modern CSS, and minimal vanilla JavaScript. Do not use a framework.',
+  },
+];
 
-## Stack
-[Pick one:
-- Claude.ai artifact → React + Tailwind (single file), lucide-react for icons, recharts if charts needed
-- Claude Code → Next.js 14 (App Router) + TypeScript + Tailwind + shadcn/ui, lucide-react for icons]
-`;
+const compactQualityBar = `<quality_bar>
+- Build mobile-first for 375px, 768px, and 1280px. No horizontal scroll; touch targets are at least 44px.
+- Use real product-specific content. No lorem ipsum, decorative emoji, or generic marketing copy.
+- Define hover, active, focus, disabled, loading, empty, and error states where relevant.
+- Use one icon library only. Prefer lucide. Keep motion and visual effects consistent with the chosen direction.
+- Do not invent extra features, dark mode, gradients, or dashboard cards unless the brief requires them.
+</quality_bar>`;
 
-const commonPromptFooter = `
-<layout>
-
-[Pick the UI shape that matches your project:
-- Dashboard → sidebar nav (240px) + main grid (12-col), header with breadcrumbs
-- Single-screen tool → centred canvas, max-width 1200px, focused interaction area
-- Form/wizard → centred 480-640px column, vertical flow, progress at top, sticky CTA
-- List/feed → centred 720-960px column, card or row items, filter bar sticky at top
-- Reading/content → centred 640-720px column, generous vertical rhythm
-- Landing page → full-width sections (hero, features, CTA, footer), 1200px content max]
-
-</layout>
-
-<responsive_behaviour>
-
-Mobile-first. Build for mobile, then enhance for larger screens.
-
-**Breakpoints to design for:**
-- 375px (mobile — primary target, iPhone-class)
-- 768px (tablet)
-- 1280px (desktop — primary target)
-
-**Touch targets:** All tappable elements minimum 44×44px on mobile.
-
-**Typography on mobile:** Scale heading sizes down by ~30% on mobile (e.g. desktop 48px hero → mobile 32-36px). Body text stays the same.
-
-**No horizontal scroll. Ever.** Test by checking all content fits at 375px width.
-
-**Per UI shape:**
-- Dashboard → sidebar collapses to hamburger drawer below 768px; cards stack single-column below 768px, 2-col at tablet, full grid at desktop
-- Single-screen tool → canvas takes full width below 768px with 16px padding; controls may need bottom-sheet pattern on mobile
-- Form/wizard → full-width inputs below 768px with 16px horizontal padding; sticky CTA at bottom on mobile
-- List/feed → full-width items below 768px; filter bar collapses to a filter button opening a drawer on mobile
-- Reading/content → 16-20px horizontal padding on mobile, content column scales to viewport; larger line-height holds
-- Landing page → single column below 768px, all heroes stack vertically, CTAs become full-width buttons on mobile
-
-</responsive_behaviour>
-
-<interactions>
-
-Every interactive element must have:
-- **Hover state** — subtle background or border shift, not just colour (desktop only)
-- **Active/pressed state** — slight scale-down (0.97-0.98) or darker background
-- **Focus state** — visible focus ring (2px, accent colour, with 2px offset), always
-- **Disabled state** — reduced opacity (0.5), no pointer events, no hover
-- **Loading state** — skeleton shimmer (not spinners) for content; inline spinner only for button actions
-- **Empty state** — every list, feed, or data view has a designed empty state with an icon and one sentence of guidance
-- **Error state** — inline, near the input or action that caused it, not a top-of-screen toast
-
-</interactions>
-
-<icons>
-
-- Use lucide-react for all icons
-- 16px or 20px sizes only, never larger inline
-- Stroke width 2 (default)
-- Never mix icon libraries
-
-</icons>
-
-<non_negotiables>
-
-1. **Light mode by default.** Use dark mode only if the design system above specifies "Mode: Dark".
-2. **Use the typography spec above.** Do not fall back to system-ui or default Tailwind fonts.
-3. **Use the spacing grid above.** No arbitrary pixel values like \`mt-[7px]\` or \`p-[13px]\`.
-4. **Motion is purposeful.** Every transition uses the duration and easing above. No bouncy springs unless this vibe spec calls for them.
-5. **Icons from lucide-react only.** No emoji in the UI. No mixed icon libraries.
-6. **No generic SaaS gradients** (purple-to-pink, blue-to-purple, etc.). If gradients are used, they must be subtle and vibe-appropriate.
-7. **Use real, plausible content.** Not "Lorem ipsum", not "John Doe", not "user@example.com". Write content that fits the actual product.
-8. **All interactive elements have hover, active, focus, and disabled states defined.**
-9. **Mobile-first responsive.** Every layout must work at 375px, 768px, and 1280px. No horizontal scroll. Touch targets minimum 44px.
-
-</non_negotiables>
-
-<anti_patterns>
-
-Do not do these:
-
-- Dark mode when the design system says light (and vice versa)
-- Centre-aligning everything
-- Using shadow-lg on every card (use shadow sparingly, prefer borders)
-- Generic stock photography or AI-generated hero images
-- Marketing copy with hedges and superlatives ("revolutionary", "game-changing", "the best")
-- Adding decorative emoji to headings or buttons
-- Using \`<details>\` or HTML accordions when a real disclosure component is needed
-- Tailwind colour names everywhere (\`bg-blue-500\`) — use the design system tokens above
-- Building desktop-first then adding \`md:\` overrides — start mobile, enhance up
-- Fixed widths in pixels for layout containers — use max-widths with full-width fallback
-
-</anti_patterns>
-`;
+const extendedQualityBar = `<implementation_rules>
+- Preserve semantic HTML, keyboard access, visible focus, labels, and sufficient contrast.
+- Use a consistent spacing scale and named design tokens instead of arbitrary one-off values.
+- Prefer borders and hierarchy over heavy shadows. Do not centre-align every section.
+- Keep responsive behaviour intentional: collapse layouts, preserve the primary action, and avoid clipped controls.
+- Use skeletons for content loading and inline progress only for action buttons.
+- Place errors beside the action or field that caused them. Give empty states one useful next step.
+- Use plausible names, values, and labels that fit the actual product.
+</implementation_rules>`;
 
 export const vibes: VibeDef[] = [
   {
@@ -132,6 +122,7 @@ export const vibes: VibeDef[] = [
     name: 'Editorial',
     useFor: 'Blogs, portfolios, reading apps, essay-style products',
     references: ['Vox', 'NYT Magazine', 'Pitchfork', 'Robin Sloan'],
+    categories: ['Content'],
     blurb:
       'Magazine-like. Serif headlines, warm white, generous space. Text is the hero.',
     designSystem: `<design_system name="Editorial">
@@ -177,6 +168,7 @@ export const vibes: VibeDef[] = [
     name: 'Utility',
     useFor: 'Dashboards, internal tools, dev tools, admin panels',
     references: ['Linear', 'Notion', 'Stripe Dashboard', 'Plausible'],
+    categories: ['Internal tools', 'B2B'],
     blurb:
       'Dense, fast, professional. Linear or Notion. Information-first, zero decoration.',
     designSystem: `<design_system name="Utility">
@@ -220,6 +212,7 @@ export const vibes: VibeDef[] = [
     name: 'Warm Consumer',
     useFor: 'Personal apps, finance, health, wellness, non-technical users',
     references: ['Headspace', 'Apple Health', 'Calm', 'Tinybird marketing'],
+    categories: ['Consumer'],
     blurb:
       'Soft, friendly, rounded. Cream backgrounds, warm dark text, terracotta or sage accent.',
     designSystem: `<design_system name="Warm Consumer">
@@ -264,6 +257,7 @@ export const vibes: VibeDef[] = [
     name: 'Sharp Product',
     useFor: 'SaaS landing pages, B2B products, premium-feeling tools',
     references: ['Stripe', 'Vercel', 'Linear marketing', 'Resend'],
+    categories: ['B2B'],
     blurb:
       'Flat, precise, premium B2B. Pure white, one surgical brand colour. NO atmospheric effects.',
     designSystem: `<design_system name="Sharp Product">
@@ -309,6 +303,7 @@ export const vibes: VibeDef[] = [
     name: 'Soft SaaS',
     useFor: 'AI products, dev tools, agent / LLM-powered apps, modern B2B',
     references: ['Lovable', 'Cursor', 'v0.dev', 'Anthropic marketing'],
+    categories: ['B2B', 'Experimental'],
     blurb:
       'Atmospheric, ethereal. White with blurred colour blobs, indigo/violet accents. Floating-in-space feel.',
     designSystem: `<design_system name="Soft SaaS">
@@ -362,6 +357,7 @@ export const vibes: VibeDef[] = [
     name: 'Playful',
     useFor: 'Consumer fun apps, learning tools, games, social, side projects',
     references: ['Duolingo', 'Mercury', 'Linear bento sections', 'Arc browser'],
+    categories: ['Consumer', 'Experimental'],
     blurb:
       'Bold, colourful, expressive. Pastel/cream backgrounds, paired bold accents, bouncy motion.',
     designSystem: `<design_system name="Playful">
@@ -405,6 +401,7 @@ export const vibes: VibeDef[] = [
     name: 'Brutalist',
     useFor: 'Dev portfolios, indie tools, raw blogs, GitHub-style interfaces',
     references: ['Vercel blog', 'GitHub Primer', 'Are.na', 'Pirate Wires'],
+    categories: ['Content', 'Experimental'],
     blurb:
       'Hard edges, no shadow, no radius, one off-colour accent. Raw and deliberate.',
     designSystem: `<design_system name="Brutalist">
@@ -456,6 +453,7 @@ export const vibes: VibeDef[] = [
     name: 'Glass / Spatial',
     useFor: 'Spatial computing, Vision OS-style apps, ambient interfaces, meditative tools',
     references: ['Apple Vision OS', 'iOS Settings', 'Raycast', 'Arc browser'],
+    categories: ['Consumer', 'Experimental'],
     blurb:
       'Frosted-glass surfaces with depth via translucency. Sage or icy accents, ambient and weightless.',
     designSystem: `<design_system name="Glass / Spatial">
@@ -507,12 +505,81 @@ export const vibes: VibeDef[] = [
   },
 ];
 
-/** Build the full copy-pasteable prompt for a given vibe. */
-export function buildFullPrompt(vibe: VibeDef): string {
-  return [commonPromptHeader, '', vibe.designSystem, commonPromptFooter].join('\n');
+function resolvePromptOptions(options: VibePromptOptions) {
+  const screenType = options.screenTypeId
+    ? screenTypes.find((item) => item.id === options.screenTypeId)
+    : undefined;
+  const stack =
+    stackOptions.find((item) => item.id === options.stackId) ?? stackOptions[0];
+
+  return {
+    projectName: options.projectName?.trim() || '[Project name]',
+    description:
+      options.description?.trim() ||
+      '[Describe what you are building, who it is for, and the primary action in 1-2 sentences.]',
+    screenType,
+    stack,
+  };
 }
 
-/** Lookup by id for convenience. */
+function buildPromptHeader(options: VibePromptOptions): string {
+  const resolved = resolvePromptOptions(options);
+  const screenSection = resolved.screenType
+    ? `<screen_type name="${resolved.screenType.name}">
+${resolved.screenType.prompt}
+</screen_type>`
+    : `<screen_type>
+[Describe the screen shape: dashboard, single-screen tool, form/wizard, list/feed, reading page, or landing page.]
+</screen_type>`;
+
+  return `# ${resolved.projectName}
+
+<product_brief>
+${resolved.description}
+</product_brief>
+
+<implementation>
+${resolved.stack.prompt}
+Build a polished, working interface rather than a static mockup.
+</implementation>
+
+${screenSection}`;
+}
+
+/** The visual direction only, useful inside an existing project prompt. */
+export function buildVibePrompt(vibe: VibeDef): string {
+  return vibe.designSystem;
+}
+
+/** A shorter default prompt designed to preserve context and tokens. */
+export function buildCompactPrompt(
+  vibe: VibeDef,
+  options: VibePromptOptions = {}
+): string {
+  return [
+    buildPromptHeader(options),
+    vibe.designSystem,
+    compactQualityBar,
+  ].join('\n\n');
+}
+
+/** A fuller prompt with implementation and accessibility guardrails. */
+export function buildFullPrompt(
+  vibe: VibeDef,
+  options: VibePromptOptions = {}
+): string {
+  return [
+    buildPromptHeader(options),
+    vibe.designSystem,
+    compactQualityBar,
+    extendedQualityBar,
+  ].join('\n\n');
+}
+
 export function getVibe(id: string): VibeDef | undefined {
   return vibes.find((v) => v.id === id);
+}
+
+export function getScreenType(id: string): ScreenTypeDef | undefined {
+  return screenTypes.find((screenType) => screenType.id === id);
 }
