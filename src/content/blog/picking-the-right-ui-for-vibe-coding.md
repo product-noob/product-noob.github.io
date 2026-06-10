@@ -20,8 +20,13 @@ I [vibe-code almost every day](https://princejain.me/blogs/vibe-coding-what-i-bu
 _A note: I'm a PM, not a designer. What follows isn't a design system manifesto. It's the cheat sheet I keep going back to so that what I ship doesn't look like everyone else's first prompt._
 
 <aside class="skip-ahead">
-  <p class="skip-ahead__eyebrow">SKIP AHEAD</p>
-  <p class="skip-ahead__body">Want to just use it? <a href="/vibes/">Open the UI Vibes reference</a> — copy the prompts, or jump from there into the full HTML visual reference.</p>
+  <p class="skip-ahead__eyebrow">SKIP THE THEORY</p>
+  <h2 class="skip-ahead__title">Build your UI prompt in under two minutes.</h2>
+  <p class="skip-ahead__body">Choose how the product should feel, choose the screen you are building, and get a copy-ready prompt.</p>
+  <div class="skip-ahead__actions">
+    <a class="skip-ahead__primary" href="/vibes/#builder">Build my UI prompt →</a>
+    <a class="skip-ahead__secondary" href="/ui-vibes-reference.html">Compare all 8 visually</a>
+  </div>
 </aside>
 
 ---
@@ -108,12 +113,15 @@ Same component, eight skins. Tap a name to swap. Each redraws the card with the 
   </div>
 
   <div class="vibe-switcher__actions">
+    <a class="vibe-builder-link" data-vibe-builder-link href="/vibes/?vibe=editorial#builder">
+      Use <span data-active-vibe-name>Editorial</span> in the prompt builder →
+    </a>
     <button class="vibe-copy" type="button" data-action="copy-active-vibe">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-      <span class="vibe-copy__label">Copy this vibe's prompt</span>
+      <span class="vibe-copy__label">Copy vibe only</span>
     </button>
     <p class="vibe-switcher__caption">
-      Want all 8 side-by-side? <a href="/vibes/">Browse the full library →</a>
+      Want to see the complete screen? <a data-vibe-reference-link href="/ui-vibes-reference.html#editorial">Open the Editorial reference →</a>
     </p>
   </div>
 </div>
@@ -172,7 +180,7 @@ Non-negotiables:
 
 The second prompt is longer, but it usually saves prompts overall. It gives the model fewer visual decisions to improvise, and gives me a much better first version to react to.
 
-I do not write this block from scratch every time. I have pre-built the design-system directions for all eight vibes on the [UI Vibes reference page](/vibes/). I copy one, add the product context, and adjust only what is specific to the build.
+I do not write this block from scratch every time. I keep all eight directions in the [UI prompt builder](/vibes/#builder). I choose the vibe and screen, add the product context if it matters, and copy the generated prompt.
 
 ---
 
@@ -203,6 +211,16 @@ One minute of "Warm Consumer + single-screen tool" is cheaper than thirty minute
 
 And the choice itself is not purely a design skill. Knowing which direction fits a product is a judgment call about the user, the task, and what the experience should communicate. That is a product decision. The prompt is just where it gets expressed.
 
+<aside class="article-cta">
+  <p class="article-cta__eyebrow">PUT IT TO WORK</p>
+  <h2>Pick the direction. Get the prompt. Start building.</h2>
+  <p>The builder combines one of these eight UI directions with the screen you are making and gives you a prompt ready for Claude, Cursor, v0, or Lovable.</p>
+  <div class="article-cta__actions">
+    <a class="article-cta__primary" href="/vibes/#builder">Build my UI prompt →</a>
+    <a class="article-cta__secondary" href="/ui-vibes-reference.html">Compare the 8 full interfaces</a>
+  </div>
+</aside>
+
 ---
 
 _This is the first post in a short series on getting more out of Claude Code and vibe-coding tools. Next up: writing prompts the model actually follows — XML structure, anti-patterns, and why specificity beats verbosity. After that: choosing a stack, iterating without burning context, and shipping a vibe-coded prototype past the demo._
@@ -214,33 +232,76 @@ _If you're vibe-coding and want to compare notes on any of this, find me on [Twi
      Skip-ahead callout (top of post)
      ============================================================ */
   .skip-ahead {
-    margin: 1.75rem 0 0;
-    padding: 16px 20px;
-    background: linear-gradient(180deg, #FFF7EE 0%, #FFFAF3 100%);
-    border: 1px solid #F0E0C5;
-    border-left: 3px solid var(--color-accent, #FF6B00);
-    border-radius: 8px;
+    margin: 2rem 0 0;
+    padding: 24px;
+    background: var(--gray-900);
+    border: 1px solid var(--gray-800);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
   }
   .skip-ahead__eyebrow {
     font-size: 10px;
     letter-spacing: 0.14em;
     font-weight: 700;
     color: var(--color-accent, #FF6B00);
-    margin: 0 0 4px;
+    margin: 0 0 8px;
+  }
+  .skip-ahead__title {
+    margin: 0 0 8px;
+    color: white;
+    font-size: 24px;
+    line-height: 1.2;
   }
   .skip-ahead__body {
     margin: 0;
+    max-width: 620px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--gray-300);
+  }
+  .skip-ahead__actions,
+  .article-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .skip-ahead__actions a,
+  .article-cta__actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: 8px;
     font-size: 14px;
-    line-height: 1.55;
-    color: var(--gray-700);
-  }
-  .skip-ahead__body a {
-    color: var(--gray-900);
     font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    text-decoration: none;
   }
-  .skip-ahead__body a:hover { color: var(--color-accent, #FF6B00); }
+  .skip-ahead__primary {
+    background: var(--color-accent, #FF6B00);
+    color: white;
+  }
+  .skip-ahead__primary:hover {
+    background: var(--color-accent-light, #FF8533);
+    color: white;
+  }
+  .skip-ahead__secondary {
+    border: 1px solid var(--gray-600);
+    color: var(--gray-100);
+  }
+  .skip-ahead__secondary:hover {
+    border-color: var(--gray-400);
+    color: white;
+  }
+  .blog-post__content .skip-ahead__actions .skip-ahead__primary {
+    color: var(--gray-50);
+    text-decoration: none;
+  }
+  .blog-post__content .skip-ahead__actions .skip-ahead__secondary {
+    color: var(--gray-100);
+    text-decoration: none;
+  }
 
   /* ============================================================
      Vibe switcher — inline interactive widget
@@ -306,17 +367,35 @@ _If you're vibe-coding and want to compare notes on any of this, find me on [Twi
 
   .vibe-switcher__actions {
     display: flex;
-    flex-direction: column;
     align-items: flex-start;
+    flex-wrap: wrap;
     gap: 10px;
     margin-top: 4px;
   }
-  .vibe-copy {
-    appearance: none;
+  .vibe-builder-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 0 18px;
     border: 1px solid var(--gray-900);
+    border-radius: 8px;
     background: var(--gray-900);
     color: white;
-    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .vibe-builder-link:hover {
+    background: black;
+    color: white;
+  }
+  .vibe-copy {
+    appearance: none;
+    min-height: 42px;
+    border: 1px solid var(--gray-300);
+    background: white;
+    color: var(--gray-800);
+    padding: 0 16px;
     border-radius: 8px;
     font-size: 13px;
     font-weight: 600;
@@ -327,13 +406,17 @@ _If you're vibe-coding and want to compare notes on any of this, find me on [Twi
     gap: 8px;
   }
   .vibe-copy svg { opacity: 0.85; }
-  .vibe-copy:hover { background: black; }
+  .vibe-copy:hover {
+    border-color: var(--gray-500);
+    background: var(--gray-50);
+  }
   .vibe-copy:active { transform: scale(0.98); }
   .vibe-copy.is-copied {
     background: var(--color-accent, #FF6B00);
     border-color: var(--color-accent, #FF6B00);
   }
   .vibe-switcher__caption {
+    flex-basis: 100%;
     font-size: 12px;
     color: var(--gray-500);
     margin: 0;
@@ -346,6 +429,49 @@ _If you're vibe-coding and want to compare notes on any of this, find me on [Twi
     font-weight: 500;
   }
   .vibe-switcher__caption a:hover { color: var(--color-accent, #FF6B00); }
+
+  .article-cta {
+    margin: 3rem 0 2rem;
+    padding: 28px;
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    background: var(--gray-50);
+  }
+  .article-cta__eyebrow {
+    margin: 0 0 8px;
+    color: var(--color-accent, #FF6B00);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+  }
+  .article-cta h2 {
+    margin: 0 0 10px;
+    font-size: 28px;
+    line-height: 1.2;
+  }
+  .article-cta > p:not(.article-cta__eyebrow) {
+    margin: 0;
+    color: var(--gray-600);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .article-cta__primary {
+    background: var(--gray-900);
+    color: white;
+  }
+  .article-cta__primary:hover {
+    background: black;
+    color: white;
+  }
+  .article-cta__secondary {
+    border: 1px solid var(--gray-300);
+    background: white;
+    color: var(--gray-800);
+  }
+  .article-cta__secondary:hover {
+    border-color: var(--gray-500);
+    color: var(--gray-900);
+  }
 
   /* ============================================================
      Per-vibe token scopes — the only place the look changes
@@ -476,6 +602,13 @@ _If you're vibe-coding and want to compare notes on any of this, find me on [Twi
   @media (max-width: 768px) {
     .vibe-stage { min-height: 220px; padding: 24px 16px; }
     .vibe-sample { max-width: 100%; }
+    .skip-ahead__actions a,
+    .article-cta__actions a,
+    .vibe-builder-link,
+    .vibe-copy {
+      width: 100%;
+      justify-content: center;
+    }
   }
 </style>
 
@@ -487,6 +620,39 @@ _If you're vibe-coding and want to compare notes on any of this, find me on [Twi
     const pills = switcher.querySelectorAll('[data-set-vibe]');
     const copyBtn = switcher.querySelector('[data-action="copy-active-vibe"]');
     const copyLabel = copyBtn?.querySelector('.vibe-copy__label');
+    const builderLink = switcher.querySelector('[data-vibe-builder-link]');
+    const referenceLink = switcher.querySelector('[data-vibe-reference-link]');
+    const activeVibeName = switcher.querySelector('[data-active-vibe-name]');
+    const vibeNames = {
+      editorial: 'Editorial',
+      utility: 'Utility',
+      'warm-consumer': 'Warm Consumer',
+      'sharp-product': 'Sharp Product',
+      'soft-saas': 'Soft SaaS',
+      playful: 'Playful',
+      brutalist: 'Brutalist',
+      'glass-spatial': 'Glass / Spatial',
+    };
+    const referenceIds = {
+      editorial: 'editorial',
+      utility: 'utility',
+      'warm-consumer': 'warm',
+      'sharp-product': 'sharp',
+      'soft-saas': 'softsaas',
+      playful: 'playful',
+      brutalist: 'brutalist',
+      'glass-spatial': 'glass',
+    };
+
+    function updateVibeLinks(vibe) {
+      const name = vibeNames[vibe] ?? 'this vibe';
+      if (builderLink) builderLink.href = `/vibes/?vibe=${vibe}#builder`;
+      if (activeVibeName) activeVibeName.textContent = name;
+      if (referenceLink) {
+        referenceLink.href = `/ui-vibes-reference.html#${referenceIds[vibe] ?? vibe}`;
+        referenceLink.textContent = `Open the ${name} reference →`;
+      }
+    }
 
     pills.forEach((pill) => {
       pill.addEventListener('click', () => {
@@ -498,6 +664,7 @@ _If you're vibe-coding and want to compare notes on any of this, find me on [Twi
           p.classList.toggle('is-active', isActive);
           p.setAttribute('aria-selected', String(isActive));
         });
+        updateVibeLinks(vibe);
         window.gtag?.('event', 'vibe_previewed', { vibe_id: vibe });
       });
     });
