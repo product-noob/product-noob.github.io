@@ -36,7 +36,7 @@ What you **don't** need: root, a USB cable, an unlocked bootloader, or any Andro
 > **Use the strongest model you have.** My first try was accidentally on Haiku, which gave generic advice and insisted it _"cannot access your laptop terminal"_. Switching to Opus, the same question had it running commands on my TV within minutes.
 
 <figure>
-<img src="/images/android-tv-stock-launcher.jpg" alt="The stock Google TV launcher on the Xiaomi OLED TV, full of sponsored rows">
+<img src="/images/android-tv-stock-launcher.webp" alt="The stock Google TV launcher on the Xiaomi OLED TV, full of sponsored rows">
 <figcaption>Before: a sponsored banner, "Top-selling movies" and "Trending on Google" rows, and my own apps squeezed into one small strip.</figcaption>
 </figure>
 
@@ -105,7 +105,7 @@ When it's ready:
 Claude asked me three questions with clickable options (which rows, which buttons at the top, static or glowing background), then wrote the app, built it, installed it and set it as my home screen. **I never opened Android Studio.**
 
 <figure>
-<img src="/images/android-tv-launcher-v1.jpg" alt="The first version of the custom launcher: large clock, greeting, Wi-Fi and Settings buttons, app name in large text and a row of app tiles over a blue glow">
+<img src="/images/android-tv-updated-launcher.jpg" alt="The first version of the custom launcher: large clock, greeting, Wi-Fi and Settings buttons, app name in large text and a row of app tiles over a blue glow">
 <figcaption>The first version: clock, Wi-Fi and Settings buttons, the selected app's name in large text, and a glow that takes the app's brand colour.</figcaption>
 </figure>
 
