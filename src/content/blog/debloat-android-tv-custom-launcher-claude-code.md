@@ -48,9 +48,31 @@ Everything rests on **ADB** (Android Debug Bridge), a tool that lets a computer 
 
 This is the only part you do yourself, with the remote:
 
-1. Go to **Settings → Device Preferences → About** and click **Build** seven times. You'll see "You are now a developer".
-2. Go back to **Developer options** and turn on **USB debugging** (on most Android TVs this also enables debugging over the network).
-3. Note the TV's IP address from **Settings → Network**. (should look like 192.168.0.104)
+1. Go to **Settings → Device Preferences → About** and click **Build** (or **Android TV OS Build**) seven times until you see _"You are now a developer"_.
+
+<figure>
+<img src="/images/android-tv-settings-about.jpg" alt="Android TV Settings About screen" loading="lazy">
+<figcaption>Navigate to Settings → System/Device Preferences → About.</figcaption>
+</figure>
+
+<figure>
+<img src="/images/android-tv-build-tap.jpg" alt="Tapping Android TV OS Build seven times" loading="lazy">
+<figcaption>Scroll down and tap the Build entry seven times to unlock Developer options.</figcaption>
+</figure>
+
+2. Go back to **Developer options** and turn on **USB debugging** and **Wireless debugging**.
+
+<figure>
+<img src="/images/android-tv-enable-developer-options.jpg" alt="Enabling Developer options on Android TV" loading="lazy">
+<figcaption>Enable Developer options under System/Device Preferences.</figcaption>
+</figure>
+
+<figure>
+<img src="/images/android-tv-enable-wireless-debugging.jpg" alt="Enabling Wireless debugging on Android TV" loading="lazy">
+<figcaption>Turn on Wireless debugging in the Debugging section.</figcaption>
+</figure>
+
+3. Note the TV's IP address from **Settings → Network** (or under the Wireless debugging screen).
 
 ---
 
@@ -70,7 +92,12 @@ Ask me before removing anything. Hide apps instead of deleting them so they can 
 and write a debloat script and a restore script so I can redo or undo this later.
 ```
 
-The first time Claude connects, a popup appears on the TV asking **"Allow USB debugging?"** Tick **"Always allow from this computer"** and press Allow. That's the last time you need the remote for a while.
+The first time Claude connects, a popup appears on the TV asking **"Allow USB debugging?"** (or Wireless debugging). Tick **"Always allow from this computer"** and press Allow. That's the last time you need the remote for a while.
+
+<figure>
+<img src="/images/android-tv-allow-debugging-popup.jpg" alt="Allow wireless debugging popup prompt on Android TV" loading="lazy">
+<figcaption>Tick 'Always allow on this network/computer' and tap Allow to authorize Claude Code.</figcaption>
+</figure>
 
 Claude then comes back with the list. On my TV it flagged **32 packages**, including Mi TV+, a "TV Manager" memory cleaner with analytics baked in, a shop demo mode and a store disclaimer app. Just as importantly, it flagged what to **leave alone**: Live TV, the MediaTek chip services, the remote's Bluetooth service and the picture settings. Choose your pick or as in my case go with Claude recommendations.
 
