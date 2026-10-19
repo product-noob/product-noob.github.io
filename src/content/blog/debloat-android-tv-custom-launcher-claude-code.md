@@ -28,7 +28,7 @@ _A note before you start: this is completely safe and reversible. No root, nothi
 
 - **An Android TV or Google TV.** A TV with Android built in, or a streaming box. I did mine on a Xiaomi 65" OLED running Android TV 11.
 - **A laptop on the same Wi-Fi.** I used a Mac. Windows and Linux work too.
-- **Claude Code.** or any other SOTA Coding agent works (Gemini, ChatGPT and even DeepSeek!)
+- **Claude Code**, or any other SOTA coding agent (Gemini, ChatGPT and even DeepSeek work!).
 - **Android Studio** (free), but only for the custom launcher. Claude uses its build tools; you never have to open it.
 
 What you **don't** need: root, a USB cable, an unlocked bootloader, or any Android knowledge.
@@ -72,7 +72,7 @@ This is the only part you do yourself, with the remote:
 <figcaption>Turn on Wireless debugging in the Debugging section.</figcaption>
 </figure>
 
-3. Note the TV's IP address from **Settings → Network** (or under the Wireless debugging screen).
+3. Note the TV's IP address from **Settings → Network** (or under the Wireless debugging screen). If the Wireless debugging screen also shows a port and a pairing code (newer Google TVs do), give Claude those too; it handles the pairing.
 
 ---
 
@@ -152,7 +152,9 @@ Telling Android "use my launcher as home" doesn't always stick. The stock Google
 
 This one took me a whole evening to understand (and I'd never have found it alone). After disabling the stock launcher, "Ok Google" just stopped working. Claude found the cause in a single log line: Android was refusing to give the Google Assistant the microphone.
 
-On Android 11, a background app like the Assistant can only use the mic if the app on screen **lends it** that permission. The stock launcher had been doing exactly that, silently, all along. Remove it, and nothing lends the Assistant the mic any more. The fix is a tiny service in your own launcher that holds microphone permission (it never records anything) and shares it with the Assistant. **If you disable your stock launcher and voice stops working, this is why.** Asking for it upfront saves you the detective work.
+On Android 11, a background app like the Assistant can only use the mic if the app on screen **lends it** that permission. The stock launcher had been doing exactly that, silently, all along. Remove it, and nothing lends the Assistant the mic any more. The fix is a tiny service in your own launcher that holds microphone permission (it never records anything) and shares it with the Assistant. **If you disable your stock launcher and voice stops working, this is why.** Asking for it upfront (that last line of the prompt) saves you the detective work.
+
+I've kept this fix out of the public repo: it only matters on TVs with a hands-free microphone, and the voice button on the remote works either way. If you rely on hands-free "Ok Google", the repo's README explains exactly what to ask your coding agent for.
 
 ---
 
@@ -170,7 +172,7 @@ Once the basics worked, I kept going (as one does at 10pm on a Sunday). In short
 <figcaption>Where it ended up after a few more prompts.</figcaption>
 </figure>
 
-Each of these was one or two prompts, and none of them are needed for a clean, ad-free TV. If you want them, they're all in the repo.
+Each of these was one or two prompts, and none of them are needed for a clean, ad-free TV. If you want them, they're all in the repo. The trending banner needs a free TMDB key, and the README walks you through getting one in a couple of minutes. (The fixes that only make sense on my TV, like switching straight to my Apple TV on power-on, aren't in there.)
 
 ---
 
@@ -178,12 +180,12 @@ Each of these was one or two prompts, and none of them are needed for a clean, a
 
 Your TV is debloated and running your own launcher. Four quick checks make sure it stays that way:
 
-- **Reboot once.** The TV should come back straight to your launcher, and "Ok Google" should still respond. If both work after a reboot, you're done.
+- **Reboot once.** The TV should come back straight to your launcher. If you use hands-free "Ok Google", check it still responds (see gotcha 2). If both work after a reboot, you're done.
 - **Re-run the debloat after firmware updates.** Updates can quietly bring removed apps back. `./debloat.sh <tv-ip>` clears them again in seconds.
 - **Know your undo.** `./restore.sh <tv-ip>` brings back every removed app. Worth knowing before someone at home picks up the remote and asks where something went.
 - **Save the context.** Before ending the session, ask: _"Create a README with everything we have done, so you can pick this up next time."_ Weeks later, a fresh session reads it and continues exactly where you left off.
 
-**Don't want to start from scratch?** Clone the repo ([GitHub repo](https://github.com/product-noob/android-tv-launcher)), open your coding agent inside the folder, and say _"Adapt this launcher for my TV at &lt;IP&gt;. Ask me what I want in the favourites row."_ The gotchas are already written into the project notes.
+**Don't want to start from scratch?** Clone the repo ([GitHub repo](https://github.com/product-noob/android-tv-launcher)), open your coding agent inside the folder, and say _"Adapt this launcher for my TV at &lt;IP&gt;. Ask me what I want in the favourites row."_ Keep your free TMDB key handy if you want the trending banner. The gotchas are already written into the project notes.
 
 ---
 
