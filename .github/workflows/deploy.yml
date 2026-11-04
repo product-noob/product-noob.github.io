@@ -43,3 +43,19 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+      # Clear Cloudflare's edge cache so the new build is served immediately.
+      # Skipped (not failed) until the CLOUDFLARE_PURGE_TOKEN repo secret exists.
+      - name: Purge Cloudflare cache
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_PURGE_TOKEN }}
+          CF_ZONE_ID: f24dfe43b4e5c9262a9a3369a0897f2d
+        run: |
+          if [ -z "$CF_API_TOKEN" ]; then
+            echo "::warning::CLOUDFLARE_PURGE_TOKEN not set; skipping Cloudflare cache purge"
+            exit 0
+          fi
+          curl -fsS -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" \
+            -H "Authorization: Bearer $CF_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data '{"hosts":["princejain.me","www.princejain.me"]}'
